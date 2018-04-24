@@ -1,1 +1,0 @@
-# olimpiada-2018

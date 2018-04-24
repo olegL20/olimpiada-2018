@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7904d07d1e1765a0a199aa11d6301a3",
+    "content-hash": "9945999cb6561724578df8a7ed2b9788",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1252,6 +1252,62 @@
                 "uuid"
             ],
             "time": "2018-01-20T00:28:24+00:00"
+        },
+        {
+            "name": "schepotin/laravel-api",
+            "version": "v5.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Shchepotin/laravel-api.git",
+                "reference": "23e6951d6d1a8a4a86a52cf2a8aea95d56f5f93e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Shchepotin/laravel-api/zipball/23e6951d6d1a8a4a86a52cf2a8aea95d56f5f93e",
+                "reference": "23e6951d6d1a8a4a86a52cf2a8aea95d56f5f93e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5",
+                "illuminate/support": "~5",
+                "nikic/php-parser": "^3.0|^4.0",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Schepotin\\LaravelApi\\LaravelApiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Schepotin\\LaravelApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vladislav Schepotin",
+                    "email": "vl.schepotin@gmail.com"
+                },
+                {
+                    "name": "Rostyslav Khaniukov",
+                    "email": "rost.khanyukov@gmail.com"
+                }
+            ],
+            "description": "Laravel API",
+            "keywords": [
+                "api",
+                "boilerplate",
+                "laravel",
+                "vue"
+            ],
+            "time": "2018-04-23T06:27:43+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

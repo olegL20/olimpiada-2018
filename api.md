@@ -27,3 +27,22 @@ Response:
     }
 }
 ```
+
+### /student
+
+Method: `PUT`
+
+Request:
+
+| param            | required |
+| ---------------- | -------- |
+| user_id          |          | if Auth::user()->role == ROLE_UNIVERSITY_ADMIN field requred
+| birthday         |          | 
+
+Response:
+
+```json
+{
+    "status": 1
+}
+```

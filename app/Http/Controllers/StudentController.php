@@ -31,4 +31,45 @@ class StudentController extends Controller
         }
         return response()->json($data);
     }
+
+    public function putStudent(Request $request) {
+
+        if (Auth::user()->role == User::GLOBAL_ADMIN) {
+            if ($request->filled("user_id")) {
+
+                $student = User::find($request->input("user_id"));
+            } else {
+                $data = [
+                    "status" => 0,
+                    "errors" => "translation.userIdNotSpecified",
+                ];
+                return response()->json($data);
+            }
+        } else if (Auth::user()->role == User::USER) {
+            $student = Auth::user();
+        } else {
+            $data = [
+                "status" => 0,
+                "errors" => "translation.youDontHaveEnoughRights",
+            ];
+            return response()->json($data);
+        }
+
+        if (!is_null($student)) {
+            if ($request->filled("birthday")) {
+                $student->birthday = $request->input("birthday");
+            }
+            $student->save();
+
+            $data = [
+                "status" => 1,
+            ];
+        } else {
+            $data = [
+                "status" => 0,
+                "errors" => "translation.studentNotFound",
+            ];
+        }
+        return response()->json($data);
+    }
 }

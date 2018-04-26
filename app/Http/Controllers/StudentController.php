@@ -46,60 +46,68 @@ class StudentController extends Controller
         return response()->json($data);
     }
 
-    public function putStudent(Request $request) {
-        if (Auth::user()->role == User::ROLE_GLOBAL_ADMIN) {
-            $validator = Validator::make($request->all(), [
-                "user_id" => "required|integer",
-            ]);
+    public function putStudent(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "user_id" => "integer",
+            "birthday" => "date",
+            "password" => "string|min:6|confirmed",
+            "email" => "email",
+        ]);
 
-            if ($validator->fails()) {
-                $data = [
-                    "status" => 0,
-                    "errors" => $validator->errors(),
-                ];
-                return response()->json($data);
-            } else {
-                $student = User::find($request->input("user_id"));
-            }
-
-        } else if (Auth::user()->role == User::ROLE_USER) {
-            $student = Auth::user();
-
-        } else {
+        if ($validator->fails()) {
             $data = [
                 "status" => 0,
-                "errors" => "translation.youDontHaveEnoughRights",
+                "errors" => $validator->errors(),
             ];
             return response()->json($data);
+        } else {
+            if ($request->filled("user_id")) {
+                $student = User::find($request->input("user_id"));
+            } else {
+                $student = User::where([
+                    ["id", Auth::id()],
+                    ["role", User::ROLE_USER],
+                ])->first();
+            }
         }
-
         if (!is_null($student)) {
-            if ($request->filled("password")) {
-
-                $validator = Validator::make($request->all(), [
-                    "password" => "string|min:6|confirmed",
-                ]);
-
-                if ($validator->fails()) {
-                    $data = [
-                        "status" => 0,
-                        "errors" => $validator->errors(),
-                    ];
-                    return response()->json($data);
-                } else {
-                    $student->birthday = $request->input("password");
+            if (Auth::user()->role == User::ROLE_GLOBAL_ADMIN) {
+                if ($request->filled("role")) {
+                    $student->role = $request->input("role");
+                }
+                if ($request->filled("name")) {
+                    $student->name = $request->input("name");
+                }
+                if ($request->filled("surname")) {
+                    $student->surname = $request->input("surname");
                 }
             }
-
+            if ($request->filled("password")) {
+                $student->password = bcrypt($request->input("password"));
+            }
             if ($request->filled("birthday")) {
                 $student->birthday = $request->input("birthday");
             }
+            if ($request->filled("email")) {
+                $student->email = $request->input("email");
+                // TODO: send email;
+            }
+            if ($request->filled("uuid") && $request->filled("provider")) {
+                $student->uuid = $request->input("uuid");
+                $student->provider = $request->input("provider");
+            }
             $student->save();
-        }
-        $data = [
-            "status" => 1,
-        ];
 
+            $data = [
+                "status" => 1,
+            ];
+        } else {
+            $data = [
+                "status" => 0,
+                "errors" => "translation.userNotFound",
+            ];
+        }
         return response()->json($data);
     }
 }

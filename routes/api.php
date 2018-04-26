@@ -25,4 +25,6 @@ Route::group([
     Route::put('/student', 'StudentController@putStudent');
 
     Route::post('/university', 'GlobalAdminController@setUniversity');
+    Route::put('/university', 'GlobalAdminController@putUniversity');
+    Route::get('/university', 'GlobalAdminController@getUniversity');
 });

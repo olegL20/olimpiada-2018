@@ -86,3 +86,21 @@ Response:
     "status": 1
 }
 ```
+
+### /university
+
+Method: `GET`
+
+Request:
+
+| param         | required |
+| ------------- | -------- |
+| university_id | *        | 
+
+Response:
+
+```json
+{
+    "status": 1
+}
+```

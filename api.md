@@ -46,3 +46,43 @@ Response:
     "status": 1
 }
 ```
+
+### /university
+
+Method: `POST`
+
+Request:
+
+| param       | required |
+| ----------- | -------- |
+| name        | *        | 
+| position    | *        | 
+| description | *        | 
+
+Response:
+
+```json
+{
+    "status": 1
+}
+```
+
+### /university
+
+Method: `PUT`
+
+Request:
+
+| param       | required |
+| ----------- | -------- |
+| name        | *        | 
+| position    | *        | 
+| description | *        | 
+
+Response:
+
+```json
+{
+    "status": 1
+}
+```

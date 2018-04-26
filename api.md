@@ -104,3 +104,44 @@ Response:
     "status": 1
 }
 ```
+
+### /university/admin
+
+Method: `POST`
+
+Request:
+
+| param                      | required |
+| -------------------------- | -------- |
+| name                       | *        |
+| surname                    | *        |
+| email                      | *        | 
+| password                   | *        | 
+| password_confirmation      | *        | 
+| birthday                   | *        | 
+
+Response:
+
+```json
+{
+    "status": 1
+}
+```
+
+### /university/admin
+
+Method: `DELETE`
+
+Request:
+
+| param     | required |
+| --------- | -------- |
+| user_id   | *        |
+
+Response:
+
+```json
+{
+    "status": 1
+}
+```

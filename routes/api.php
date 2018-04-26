@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\User;
 use Illuminate\Http\Request;
 
 /*
@@ -15,4 +16,11 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group([
+    'middleware' => ['auth:api'],
+], function () {
+    Route::get('/student', 'StudentController@getStudent');
+    Route::put('/student', 'StudentController@putStudent');
 });

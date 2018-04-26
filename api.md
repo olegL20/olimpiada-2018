@@ -148,6 +148,29 @@ Response:
 
 ### /university/admin
 
+Method: `PUT`
+
+Request:
+
+| param                      | required |
+| -------------------------- | -------- |
+| name                       | *        |
+| surname                    | *        |
+| email                      | *        | 
+| password                   |          | 
+| password_confirmation      |          | 
+| birthday                   |          | 
+
+Response:
+
+```json
+{
+    "status": 1
+}
+```
+
+### /university/admin
+
 Method: `DELETE`
 
 Request:

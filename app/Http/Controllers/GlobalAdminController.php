@@ -78,34 +78,6 @@ class GlobalAdminController extends Controller
         return response()->json($data);
     }
 
-    public function deleteUniversity(Request $request) {
-        $validator = Validator::make($request->all(), [
-            "university_id" => "required|integer",
-        ]);
-
-        if ($validator->fails()) {
-            $data = [
-                "status" => 0,
-                "errors" => $validator->errors(),
-            ];
-        } else {
-            $university = User::find($request->input("university_id"));
-
-            if (!is_null($university)) {
-                $university->delete();
-                $data = [
-                    "status" => 1,
-                ];
-            } else {
-                $data = [
-                    "status" => 0,
-                    "errors" => "translation.universityNotFound",
-                ];
-            }
-        }
-        return response()->json($data);
-    }
-
     public function getUniversity(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -121,6 +93,34 @@ class GlobalAdminController extends Controller
             $university = University::find($request->input("university_id"));
 
             if (!is_null($university)) {
+                $data = [
+                    "status" => 1,
+                ];
+            } else {
+                $data = [
+                    "status" => 0,
+                    "errors" => "translation.universityNotFound",
+                ];
+            }
+        }
+        return response()->json($data);
+    }
+
+    public function deleteUniversity(Request $request) {
+        $validator = Validator::make($request->all(), [
+            "university_id" => "required|integer",
+        ]);
+
+        if ($validator->fails()) {
+            $data = [
+                "status" => 0,
+                "errors" => $validator->errors(),
+            ];
+        } else {
+            $university = User::find($request->input("university_id"));
+
+            if (!is_null($university)) {
+                $university->delete();
                 $data = [
                     "status" => 1,
                 ];
@@ -162,6 +162,43 @@ class GlobalAdminController extends Controller
                 $user->birthday = $request->input("birthday");
             }
 
+            $user->save();
+
+            $data = [
+                "status" => 1,
+            ];
+        }
+        return response()->json($data);
+    }
+
+    public function putUniversityAdmin(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "name" => "required|string|max:255",
+            "surname" => "required|string|max:255",
+            "email" => "required|string|email|max:255|unique:users",
+//            "password" => "",
+//            "birthday" => "",
+        ]);
+
+        if ($validator->fails()) {
+            $data = [
+                "status" => 0,
+                "errors" => $validator->errors(),
+            ];
+        } else {
+            $user = new User();
+
+            $user->name = $request->input("name");
+            $user->surname = $request->input("surname");
+            $user->email = $request->input("email");
+
+            if ($request->filled("password")) {
+                $user->password = bcrypt($request->input("password"));
+            }
+            if ($request->filled("birthday")) {
+                $user->birthday = $request->input("birthday");
+            }
             $user->save();
 
             $data = [

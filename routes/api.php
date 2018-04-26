@@ -30,5 +30,6 @@ Route::group([
     Route::delete('/university', 'GlobalAdminController@deleteUniversity');
 
     Route::post('/university/admin', 'GlobalAdminController@setUniversityAdmin');
+    Route::put('/university/admin', 'GlobalAdminController@putUniversityAdmin');
     Route::delete('/university/admin', 'GlobalAdminController@deleteUniversityAdmin');
 });

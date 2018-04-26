@@ -78,4 +78,33 @@ class GlobalAdminController extends Controller
         return response()->json($data);
     }
 
+    public function getUniversity(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "university_id" => "required|integer",
+        ]);
+
+        if ($validator->fails()) {
+            $data = [
+                "status" => 0,
+                "errors" => $validator->errors(),
+            ];
+        } else {
+
+            $university = University::find($request->input("university_id"));
+
+            if (!is_null($university)) {
+                $data = [
+                    "status" => 1,
+                ];
+            } else {
+                $data = [
+                    "status" => 0,
+                    "errors" => "translation.universityNotFound",
+                ];
+            }
+        }
+        return response()->json($data);
+    }
+
 }

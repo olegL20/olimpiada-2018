@@ -6,7 +6,7 @@ Request:
 
 | param            | required |
 | ---------------- | -------- |
-| user_id          |          | if user_id == null get Auth::user();
+| user_id          |          | if user_id == null get all students;
 
 Response:
 

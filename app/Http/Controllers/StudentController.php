@@ -10,23 +10,37 @@ use Illuminate\Support\Facades\Auth;
 class StudentController extends Controller
 {
     public function getStudent(Request $request) {
-        $query = User::where("role", User::USER);
 
-        $query = ($request->filled("user_id"))
-            ? $query->where("id", $request->input("user_id"))
-            : $query->where("id", Auth::id());
+        if ($request->filled("user_id")) {
+            $validator = Validator::make($request->all(), [
+                "user_id" => "required|integer",
+            ]);
 
-        $student = $query->first();
+            if ($validator->fails()) {
+                $data = [
+                    "status" => 0,
+                    "errors" => $validator->errors(),
+                ];
+                return response()->json($data);
+            } else {
+                $students = User::where([
+                    ["role", User::ROLE_USER],
+                    ["id", $request->input("user_id")],
+                ])->first();
+            }
+        } else {
+            $students = User::where("role", User::ROLE_USER)->get();
+        }
 
-        if (is_null($student)) {
+        if (!is_null($students)) {
             $data = [
-                "status" => 0,
-                "errors" => "translation.studentNotFound",
+                "status" => 1,
+                "data" => $students,
             ];
         } else {
             $data = [
-                "status" => 1,
-                "data" => $student,
+                "status" => 0,
+                "errors" => "translation.userStudentNotFound",
             ];
         }
         return response()->json($data);

@@ -46,6 +46,7 @@ class GlobalAdminController extends Controller
 
     public function putUniversity(Request $request) {
         $validator = Validator::make($request->all(), [
+            "university_id" => "required|integer",
             "name" => "required|string|max:255",
             "position" => "required|string|max:255",
             "description" => "required|string|max:255",
@@ -59,11 +60,12 @@ class GlobalAdminController extends Controller
         } else {
 
             if (Auth::user()->role == User::ROLE_UNIVERSITY_ADMIN) {
-                University::update([
-                    "name" => $request->input("name"),
-                    "position" => $request->input("position"),
-                    "description" => $request->input("description"),
-                ]);
+                University::find($request->input("university_id"))
+                    ->update([
+                        "name" => $request->input("name"),
+                        "position" => $request->input("position"),
+                        "description" => $request->input("description"),
+                    ]);
 
                 $data = [
                     "status" => 1,
@@ -95,6 +97,7 @@ class GlobalAdminController extends Controller
             if (!is_null($university)) {
                 $data = [
                     "status" => 1,
+                    "data" => $university,
                 ];
             } else {
                 $data = [
@@ -117,7 +120,7 @@ class GlobalAdminController extends Controller
                 "errors" => $validator->errors(),
             ];
         } else {
-            $university = User::find($request->input("university_id"));
+            $university = University::find($request->input("university_id"));
 
             if (!is_null($university)) {
                 $university->delete();
@@ -174,9 +177,16 @@ class GlobalAdminController extends Controller
     public function putUniversityAdmin(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            "user_id" => "required|integer",
             "name" => "required|string|max:255",
             "surname" => "required|string|max:255",
-            "email" => "required|string|email|max:255|unique:users",
+            "email" => [
+                "required",
+                "string",
+                "email",
+                "max:255",
+                Rule::unique("users")->ignore($request->input("user_id")),
+            ],
 //            "password" => "",
 //            "birthday" => "",
         ]);
@@ -187,7 +197,7 @@ class GlobalAdminController extends Controller
                 "errors" => $validator->errors(),
             ];
         } else {
-            $user = new User();
+            $user = User::find($request->input("user_id"));
 
             $user->name = $request->input("name");
             $user->surname = $request->input("surname");

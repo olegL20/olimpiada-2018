@@ -215,11 +215,12 @@ Method: `PUT`
 
 Request:
 
-| param       | required |
-| ----------- | -------- |
-| name        | *        | 
-| position    | *        | 
-| description | *        | 
+| param         | required |
+| ------------- | -------- |
+| university_id | *        | 
+| name          | *        | 
+| position      | *        | 
+| description   | *        | 
 
 Response:
 
@@ -243,7 +244,15 @@ Response:
 
 ```json
 {
-    "status": 1
+    "status": 1,
+    "data": {
+        "id": 1,
+        "name": "university",
+        "position": "sumy",
+        "description": "description",
+        "created_at": "2018-04-26 17:33:52",
+        "updated_at": "2018-04-26 17:38:47"
+    }
 }
 ```
 

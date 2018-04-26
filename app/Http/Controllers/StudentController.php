@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use App\Model\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class StudentController extends Controller
 {
     public function getStudent(Request $request) {
-
         $query = User::where("role", User::USER);
 
         $query = ($request->filled("user_id"))
@@ -33,20 +33,24 @@ class StudentController extends Controller
     }
 
     public function putStudent(Request $request) {
+        if (Auth::user()->role == User::ROLE_GLOBAL_ADMIN) {
+            $validator = Validator::make($request->all(), [
+                "user_id" => "required|integer",
+            ]);
 
-        if (Auth::user()->role == User::GLOBAL_ADMIN) {
-            if ($request->filled("user_id")) {
-
-                $student = User::find($request->input("user_id"));
-            } else {
+            if ($validator->fails()) {
                 $data = [
                     "status" => 0,
-                    "errors" => "translation.userIdNotSpecified",
+                    "errors" => $validator->errors(),
                 ];
                 return response()->json($data);
+            } else {
+                $student = User::find($request->input("user_id"));
             }
-        } else if (Auth::user()->role == User::USER) {
+
+        } else if (Auth::user()->role == User::ROLE_USER) {
             $student = Auth::user();
+
         } else {
             $data = [
                 "status" => 0,
@@ -56,20 +60,32 @@ class StudentController extends Controller
         }
 
         if (!is_null($student)) {
+            if ($request->filled("password")) {
+
+                $validator = Validator::make($request->all(), [
+                    "password" => "string|min:6|confirmed",
+                ]);
+
+                if ($validator->fails()) {
+                    $data = [
+                        "status" => 0,
+                        "errors" => $validator->errors(),
+                    ];
+                    return response()->json($data);
+                } else {
+                    $student->birthday = $request->input("password");
+                }
+            }
+
             if ($request->filled("birthday")) {
                 $student->birthday = $request->input("birthday");
             }
             $student->save();
-
-            $data = [
-                "status" => 1,
-            ];
-        } else {
-            $data = [
-                "status" => 0,
-                "errors" => "translation.studentNotFound",
-            ];
         }
+        $data = [
+            "status" => 1,
+        ];
+
         return response()->json($data);
     }
 }

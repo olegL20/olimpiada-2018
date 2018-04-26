@@ -46,6 +46,7 @@ class GlobalAdminController extends Controller
 
     public function putUniversity(Request $request) {
         $validator = Validator::make($request->all(), [
+            "university_id" => "required|integer",
             "name" => "required|string|max:255",
             "position" => "required|string|max:255",
             "description" => "required|string|max:255",
@@ -59,11 +60,12 @@ class GlobalAdminController extends Controller
         } else {
 
             if (Auth::user()->role == User::ROLE_UNIVERSITY_ADMIN) {
-                University::update([
-                    "name" => $request->input("name"),
-                    "position" => $request->input("position"),
-                    "description" => $request->input("description"),
-                ]);
+                University::find($request->input("university_id"))
+                    ->update([
+                        "name" => $request->input("name"),
+                        "position" => $request->input("position"),
+                        "description" => $request->input("description"),
+                    ]);
 
                 $data = [
                     "status" => 1,
@@ -95,6 +97,7 @@ class GlobalAdminController extends Controller
             if (!is_null($university)) {
                 $data = [
                     "status" => 1,
+                    "data" => $university,
                 ];
             } else {
                 $data = [

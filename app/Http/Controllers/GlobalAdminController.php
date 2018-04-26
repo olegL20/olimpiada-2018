@@ -177,9 +177,16 @@ class GlobalAdminController extends Controller
     public function putUniversityAdmin(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            "user_id" => "required|integer",
             "name" => "required|string|max:255",
             "surname" => "required|string|max:255",
-            "email" => "required|string|email|max:255|unique:users",
+            "email" => [
+                "required",
+                "string",
+                "email",
+                "max:255",
+                Rule::unique("users")->ignore($request->input("user_id")),
+            ],
 //            "password" => "",
 //            "birthday" => "",
         ]);
@@ -190,7 +197,7 @@ class GlobalAdminController extends Controller
                 "errors" => $validator->errors(),
             ];
         } else {
-            $user = new User();
+            $user = User::find($request->input("user_id"));
 
             $user->name = $request->input("name");
             $user->surname = $request->input("surname");

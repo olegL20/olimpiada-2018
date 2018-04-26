@@ -105,6 +105,24 @@ Response:
 }
 ```
 
+### /university
+
+Method: `DELETE`
+
+Request:
+
+| param         | required |
+| ------------- | -------- |
+| university_id | *        | 
+
+Response:
+
+```json
+{
+    "status": 1
+}
+```
+
 ### /university/admin
 
 Method: `POST`

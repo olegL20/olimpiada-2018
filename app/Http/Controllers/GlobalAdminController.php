@@ -78,6 +78,34 @@ class GlobalAdminController extends Controller
         return response()->json($data);
     }
 
+    public function deleteUniversity(Request $request) {
+        $validator = Validator::make($request->all(), [
+            "university_id" => "required|integer",
+        ]);
+
+        if ($validator->fails()) {
+            $data = [
+                "status" => 0,
+                "errors" => $validator->errors(),
+            ];
+        } else {
+            $university = User::find($request->input("university_id"));
+
+            if (!is_null($university)) {
+                $university->delete();
+                $data = [
+                    "status" => 1,
+                ];
+            } else {
+                $data = [
+                    "status" => 0,
+                    "errors" => "translation.universityNotFound",
+                ];
+            }
+        }
+        return response()->json($data);
+    }
+
     public function getUniversity(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -90,7 +118,6 @@ class GlobalAdminController extends Controller
                 "errors" => $validator->errors(),
             ];
         } else {
-
             $university = University::find($request->input("university_id"));
 
             if (!is_null($university)) {
@@ -160,7 +187,6 @@ class GlobalAdminController extends Controller
 
             if (!is_null($user)) {
                 $user->delete();
-
                 $data = [
                     "status" => 1,
                 ];

@@ -27,6 +27,7 @@ Route::group([
     Route::post('/university', 'GlobalAdminController@setUniversity');
     Route::put('/university', 'GlobalAdminController@putUniversity');
     Route::get('/university', 'GlobalAdminController@getUniversity');
+    Route::delete('/university', 'GlobalAdminController@deleteUniversity');
 
     Route::post('/university/admin', 'GlobalAdminController@setUniversityAdmin');
     Route::delete('/university/admin', 'GlobalAdminController@deleteUniversityAdmin');

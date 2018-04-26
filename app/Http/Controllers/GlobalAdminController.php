@@ -120,7 +120,7 @@ class GlobalAdminController extends Controller
                 "errors" => $validator->errors(),
             ];
         } else {
-            $university = User::find($request->input("university_id"));
+            $university = University::find($request->input("university_id"));
 
             if (!is_null($university)) {
                 $university->delete();

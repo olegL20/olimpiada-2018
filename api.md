@@ -36,10 +36,7 @@ Request:
 
 | param                 | required |
 | --------------------- | -------- |
-| name                  |          | if Auth::user()->role == ROLE_UNIVERSITY_ADMIN 
-| surname               |          | if Auth::user()->role == ROLE_UNIVERSITY_ADMIN 
-| role                  |          | if Auth::user()->role == ROLE_UNIVERSITY_ADMIN 
-| user_id               |          | if Auth::user()->role == ROLE_UNIVERSITY_ADMIN field requred
+| user_id               | *        | 
 | email                 |          | 
 | birthday              |          | 
 | password              |          | 

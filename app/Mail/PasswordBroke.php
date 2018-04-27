@@ -26,8 +26,8 @@ class PasswordBroke implements EmailNotificationInterface
         $this->mailer = $mailer;
     }
 
-    public function send(array $user)
+    public function send(array $data)
     {
-        $this->mailer->send($user, 'emails.password_broker', 'Восстановление пароля');
+        $this->mailer->send($data, 'emails.password_broker', 'Восстановление пароля');
     }
 }

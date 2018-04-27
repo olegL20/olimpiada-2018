@@ -26,8 +26,8 @@ class Confirmation implements EmailNotificationInterface
         $this->mailer = $mailer;
     }
 
-    public function send(array $user)
+    public function send(array $data)
     {
-        $this->mailer->send($user, 'emails.confirmation', 'Подтвердите свой аккаунт');
+        $this->mailer->send($data, 'emails.confirmation', 'Подтвердите свой аккаунт');
     }
 }

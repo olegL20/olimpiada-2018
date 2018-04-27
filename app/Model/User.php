@@ -3,9 +3,9 @@
 namespace App\Model;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
     use Notifiable;
 
@@ -25,7 +25,10 @@ class User extends Model
         'surname',
         'role',
         'uuid',
-        'birthday'
+        'birthday',
+
+        'confirmed',
+        'confirmed_token',
     ];
 
     /**
@@ -34,11 +37,17 @@ class User extends Model
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'confirmed_token',
     ];
 
     public function image()
     {
         return $this->morphOne(Asset::class, 'assetable');
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 }

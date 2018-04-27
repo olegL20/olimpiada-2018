@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\AuthenticationRequest;
+use Tymon\JWTAuth\JWTAuth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AuthenticationRequest;
 use App\Http\Requests\ConfirmationRequest;
 use App\Http\Requests\RegistrationRequest;
+use App\Http\Requests\SocialAuthenticationRequest;
 use App\Mail\Confirmation;
 use App\Model\Asset;
 use App\Model\User;
 use App\Services\AssetService;
 use App\Services\ImageService;
-use Tymon\JWTAuth\JWTAuth;
 
 class AuthenticateController extends Controller
 {
@@ -127,6 +128,41 @@ class AuthenticateController extends Controller
             'data' => compact('user'),
             'message' => trans('api.user_created')
         ]);
+    }
+
+    public function social(SocialAuthenticationRequest $request, AssetService $fileService)
+    {
+        if ($request->has('email')) {
+            if ($this->user->where('email', $request->get('email'))->where('uuid', '')->count() > 0) {
+                return response()->json([
+                    'message' => trans('messages.user_already_exists'),
+                ], 400);
+            }
+        }
+
+        $user = $this->user->where('provider', $request->get('provider'))
+            ->where('uuid', $request->get('uuid'))
+            ->first();
+
+        if (!$user) {
+            $user = new User();
+            $user->fill($request->all());
+            $user->role = User::USER;
+            $user->confirmed = true;
+            $user->save();
+
+            $imagePath = $fileService
+                ->fromUrl($request->get('image'))
+                ->changeFileName($user->id . '-' . str_random() . '.jpg')
+                ->save();
+
+            $image = new Asset(['source' => $imagePath, 'type' => Asset::IMAGE]);
+            $user->image()->save($image);
+        }
+
+        $token = $this->auth->fromUser($user);
+
+        return response()->json(['data' => ['token' => $token, 'user' => $user]]);
     }
 
 }

@@ -13,5 +13,7 @@ Route::group(['middleware' => 'api'], function () {
             Route::post('recovery', 'Auth\PasswordController@recovery');
             Route::post('reset', 'Auth\PasswordController@reset');
         });
+
+        Route::post('social-auth', 'Auth\AuthenticateController@social');
     });
 });

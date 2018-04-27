@@ -26,6 +26,7 @@ class User extends Authenticatable
         'role',
         'uuid',
         'birthday',
+        'provider',
 
         'confirmed',
         'confirmed_token',

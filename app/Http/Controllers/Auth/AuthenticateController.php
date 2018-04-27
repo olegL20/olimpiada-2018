@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ConfirmationRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Mail\Confirmation;
+use App\Model\Asset;
 use App\Model\User;
+use App\Services\AssetService;
+use App\Services\ImageService;
 use Tymon\JWTAuth\JWTAuth;
 
 class AuthenticateController extends Controller
@@ -96,18 +99,29 @@ class AuthenticateController extends Controller
         ]);
     }
 
-    public function signUp(RegistrationRequest $register, Confirmation $confirmation)
+    public function signUp(RegistrationRequest $register, Confirmation $confirmation, AssetService $assetService, ImageService $imageService)
     {
-        $user = new User();
-        $user->fill($register->all());
-        $user->role = User::USER;
-        $user->confirmed = false;
-        $user->confirmed_token = hash('md5', $user->email . time());
-        $user->save();
+        \DB::transaction(function () use ($register, $confirmation, $imageService, $assetService) {
+            $user = new User();
+            $user->fill($register->except('image'));
+            $user->role = User::USER;
+            $user->confirmed = false;
+            $user->confirmed_token = hash('md5', $user->email . time());
+            $user->save();
 
-        $data = $user->toArray();
-        $data['token'] = $user->confirmed_token;
-        $confirmation->send($data);
+            $image = $imageService->from($register->get('image'))->secureResize()->stream();
+            $path = $assetService
+                ->changeContent((string)$image)
+                ->changeFileName(str_random(8) . '_' . $user->id . '.jpg')
+                ->save();
+
+            $image= new Asset(['source' => $path, 'type' => Asset::IMAGE]);
+            $user->image()->save($image);
+
+            $data = $user->toArray();
+            $data['token'] = $user->confirmed_token;
+            $confirmation->send($data);
+        });
 
         return response()->json([
             'data' => compact('user'),

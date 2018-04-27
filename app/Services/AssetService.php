@@ -29,6 +29,9 @@ use Symfony\Component\HttpFoundation\File\Exception\UploadException;
  */
 class AssetService
 {
+    const IMAGES = 'images';
+    const FILES = 'files';
+
     /**
      * File content
      *
@@ -58,7 +61,7 @@ class AssetService
     /**
      * @var string
      */
-    protected $relativePath = 'uploads';
+    protected $relativePath = AssetService::IMAGES;
 
     /**
      * @var null|\Storage

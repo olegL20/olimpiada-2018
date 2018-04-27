@@ -8,5 +8,10 @@ Route::group(['middleware' => 'api'], function () {
         Route::post('signup', 'Auth\AuthenticateController@signUp');
 
         Route::post('confirmation', 'Auth\AuthenticateController@confirmation');
+
+        Route::group(['prefix' => 'password'], function () {
+            Route::post('recovery', 'Auth\PasswordController@recovery');
+            Route::post('reset', 'Auth\PasswordController@reset');
+        });
     });
 });

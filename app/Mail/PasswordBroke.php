@@ -13,7 +13,7 @@ namespace App\Mail;
  * Class Confirmation
  * @package App\Mail
  */
-class Confirmation implements EmailNotificationInterface
+class PasswordBroke implements EmailNotificationInterface
 {
 
     /**
@@ -28,6 +28,6 @@ class Confirmation implements EmailNotificationInterface
 
     public function send(array $data)
     {
-        $this->mailer->send($data, 'emails.confirmation', 'Подтвердите свой аккаунт');
+        $this->mailer->send($data, 'emails.password_broker', 'Восстановление пароля');
     }
 }

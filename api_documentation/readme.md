@@ -1,5 +1,5 @@
 
-[Authentication](Authentication)  
+[Authentication.md](Authentication)  
 
 
 ### Типы ответов

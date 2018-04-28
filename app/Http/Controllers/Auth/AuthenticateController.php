@@ -42,7 +42,7 @@ class AuthenticateController extends Controller
         if (!$user) {
             return response()->json([
                 'message' => trans('messages.user_not_found'),
-            ], 401);
+            ], 404);
         }
 
         if ($user && $user->role === User::USER && !$user->confirmed) {
@@ -82,7 +82,7 @@ class AuthenticateController extends Controller
         if ($user->confirmed) {
             return response()->json([
                 'message' => trans('api.user_confirmed')
-            ], 401);
+            ], 400);
         }
 
         if ($user->confirmed_token !== $confirmationRequest->get('token')) {

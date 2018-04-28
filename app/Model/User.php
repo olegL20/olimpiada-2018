@@ -42,6 +42,10 @@ class User extends Authenticatable
         'confirmed_token',
     ];
 
+    protected $with = [
+        'image'
+    ];
+
     public function image()
     {
         return $this->morphOne(Asset::class, 'assetable');

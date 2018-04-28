@@ -200,4 +200,16 @@ class AssetService
         }
     }
 
+    public static function dropboxMakeFileUrl($relativePath)
+    {
+        $storage = \Storage::drive('dropbox');
+        $adapter = $storage->getAdapter();
+        /**
+         * @var \Spatie\Dropbox\Client $client
+         */
+        $client = $adapter->getClient();
+
+        return $client->getTemporaryLink($relativePath);
+    }
+
 }

@@ -17,6 +17,13 @@ class Asset extends Model
         'type'
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'assetable_id',
+        'assetable_type',
+    ];
+
     public function assetable()
     {
         return $this->morphTo();

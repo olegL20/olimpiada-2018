@@ -11,6 +11,7 @@
 ```json
 {
     "message": "message",
+    "data": {},
     "errors": {
         "email": [
             "The email has already been taken."

@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+
 use App\Services\AssetService;
 use Illuminate\Database\Eloquent\Model;
 

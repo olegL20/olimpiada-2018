@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Faculty extends Model
@@ -12,14 +13,18 @@ class Faculty extends Model
         'description'
     ];
 
+    public function image()
+    {
+        return $this->morphOne(Asset::class, 'assetable');
+    }
 
     public function university()
     {
         return $this->belongsTo(University::class);
     }
 
-    public function majors()
+    public function departments()
     {
-        return $this->hasMany(Major::class);
+        return $this->hasMany(Department::class);
     }
 }

@@ -5,17 +5,16 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Major extends Model
+class Department extends Model
 {
     protected $fillable = [
-        'faculty_id',
         'name',
         'description'
     ];
 
-
-    public function faculty()
+    public function majors()
     {
-        return $this->belongsTo(Faculty::class);
+        return $this->hasMany(Major::class);
     }
+
 }

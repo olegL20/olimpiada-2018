@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +13,10 @@ class User extends Model
     const USER = 'user';
     const UNIVERSITY_ADMIN = 'uni_admin';
     const GLOBAL_ADMIN = 'global_admin';
+
+    // extramula
+    const DAY_FORM = 0;
+    const CORRESPONDENCE_FORM = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +30,8 @@ class User extends Model
         'surname',
         'role',
         'uuid',
-        'birthday'
+        'birthday',
+        'extramula'
     ];
 
     /**

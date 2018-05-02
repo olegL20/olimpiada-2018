@@ -23,6 +23,7 @@ Route::group(['middleware' => 'api'], function () {
         'namespace' => 'Admin'
     ], function () {
         Route::resource('university', 'UniversityController');
+        Route::resource('faculty', 'FacultyController');
     });
 
     Route::group([

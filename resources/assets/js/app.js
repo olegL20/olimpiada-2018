@@ -3,6 +3,7 @@
  */
 
 import Vue from 'vue';
+import vClickOutside from 'v-click-outside';
 
 /**
  * Import and bootstrap the plugins.
@@ -27,6 +28,7 @@ import App from './pages/App.vue';
 store.dispatch('user/checkLogged');
 
 Vue.config.productionTip = false;
+Vue.use(vClickOutside);
 
 /* eslint-disable no-new */
 new Vue({

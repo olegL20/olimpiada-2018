@@ -1,0 +1,18 @@
+ul.list {
+  margin: 0;
+  padding-left: 1.21rem;
+
+  li {
+    margin-bottom: .29rem;
+  }
+
+  &__accent {
+    li {
+      color: $accent-color;
+
+      span {
+        color: $gray-color;
+      }
+    }
+  }
+}

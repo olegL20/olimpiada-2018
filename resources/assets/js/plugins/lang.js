@@ -4,6 +4,7 @@ import store from '../store';
 
 import en from '../lang/en/en';
 import he from '../lang/he/he';
+import ua from '../lang/ua/ua';
 
 Vue.use(VueI18n);
 
@@ -12,5 +13,6 @@ export default new VueI18n({
     messages: {
         en,
         he,
+        ua,
     },
 });

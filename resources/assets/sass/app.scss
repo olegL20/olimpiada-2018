@@ -1,3 +1,6 @@
+// Variables
+@import "variables";
+
 // Bootstrap
 @import "node_modules/bootstrap/scss/bootstrap";
 
@@ -46,3 +49,31 @@
     transform: scale(0.6);
   }
 }
+
+// Default values
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: $font-family;
+  color: $gray-color;
+}
+
+#app {
+  height: 100vh;
+  background: url("/images/background.png");
+}
+
+// Navbar
+.navbar {
+  padding: 3.57rem 0;
+}
+
+@import "components/buttons";
+@import "components/links";
+@import "components/lists";
+@import "components/inputs";
+@import "components/modals";
+@import "components/typography";
+@import "pages/homepage";

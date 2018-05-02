@@ -6,7 +6,7 @@ export default {
     passwordConfirmation: null,
     logged: false,
     token: null,
-    currentLang: window.Cookies.get('locale') || 'en',
+    currentLang: window.Cookies.get('locale') || 'ua',
     createdAt: null,
     updatedAt: null,
 };

@@ -12,6 +12,9 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://use.fontawesome.com/76a027f079.js"></script>
 </head>
 <body>
     <div id="app">

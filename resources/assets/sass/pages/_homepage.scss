@@ -1,0 +1,11 @@
+.bg-right-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: calc(100vh - 10.79rem);
+  background-image: url("/images/bg-right-image.png");
+  background-size: contain;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+}

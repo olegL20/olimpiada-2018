@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 169:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(56)
 /* script */
-var __vue_script__ = __webpack_require__(178)
+var __vue_script__ = __webpack_require__(185)
 /* template */
-var __vue_template__ = __webpack_require__(179)
+var __vue_template__ = __webpack_require__(186)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/pages/auth/Login.vue"
+Component.options.__file = "resources/assets/js/pages/auth/PasswordEmail.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-53abf8ff", Component.options)
+    hotAPI.createRecord("data-v-a9f46d52", Component.options)
   } else {
-    hotAPI.reload("data-v-53abf8ff", Component.options)
+    hotAPI.reload("data-v-a9f46d52", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 178:
+/***/ 185:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76,7 +76,7 @@ exports.default = {
     mixins: [_user2.default],
     metaInfo: function metaInfo() {
         return {
-            title: this.$t('translation.login')
+            title: this.$t('translation.forgotPassword')
         };
     },
     data: function data() {
@@ -84,18 +84,9 @@ exports.default = {
             progress: false
         };
     },
-    created: function created() {
-        this.$validator.attach({
-            name: 'password',
-            rules: 'login'
-        });
-    },
-    beforeDestroy: function beforeDestroy() {
-        this.userPassword = null;
-    },
 
     methods: {
-        auth: function auth() {
+        passwordEmail: function passwordEmail() {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -111,7 +102,7 @@ exports.default = {
                                 valid = _context.sent;
 
                                 if (!valid) {
-                                    _context.next = 15;
+                                    _context.next = 16;
                                     break;
                                 }
 
@@ -119,31 +110,40 @@ exports.default = {
 
                                 _context.prev = 5;
                                 _context.next = 8;
-                                return _this.$store.dispatch('user/login', {
-                                    email: _this.userEmail,
-                                    password: _this.userPassword
+                                return _this.$store.dispatch('user/passwordEmail', {
+                                    email: _this.userEmail
                                 });
 
                             case 8:
 
-                                _this.$router.push(_this.$route.query.redirect || { name: 'home' });
-                                _context.next = 15;
+                                _this.$toast.success({
+                                    title: _this.$t('translation.emailHasBeenSent'),
+                                    message: _this.$t('translation.checkEmailBox')
+                                });
+
+                                _this.$router.push({
+                                    name: 'auth.login'
+                                });
+                                _context.next = 16;
                                 break;
 
-                            case 11:
-                                _context.prev = 11;
+                            case 12:
+                                _context.prev = 12;
                                 _context.t0 = _context['catch'](5);
 
-                                _this.$validator.validate('password', 0);
+                                _this.$toast.error({
+                                    title: _this.$t('translation.emailHasNotBeenSent'),
+                                    message: _this.$t('translation.tryAgain')
+                                });
 
                                 _this.progress = false;
 
-                            case 15:
+                            case 16:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[5, 11]]);
+                }, _callee, _this, [[5, 12]]);
             }))();
         }
     }
@@ -195,31 +195,10 @@ exports.default = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
 
-/***/ 179:
+/***/ 186:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -233,7 +212,7 @@ var render = function() {
           _c("div", { staticClass: "card-header" }, [
             _vm._v(
               "\n                    " +
-                _vm._s(_vm.$t("translation.login")) +
+                _vm._s(_vm.$t("translation.forgotPassword")) +
                 "\n                "
             )
           ]),
@@ -249,7 +228,7 @@ var render = function() {
                     on: {
                       submit: function($event) {
                         $event.preventDefault()
-                        return _vm.auth($event)
+                        return _vm.passwordEmail($event)
                       }
                     }
                   },
@@ -320,76 +299,6 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "password" } }, [
-                        _vm._v(
-                          "\n                                        " +
-                            _vm._s(_vm.$t("translation.password")) +
-                            "\n                                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.userPassword,
-                            expression: "userPassword"
-                          },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required|min:6",
-                            expression: "'required|min:6'"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        class: { "is-invalid": _vm.errors.has("password") },
-                        attrs: {
-                          id: "password",
-                          type: "password",
-                          name: "password"
-                        },
-                        domProps: { value: _vm.userPassword },
-                        on: {
-                          input: [
-                            function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.userPassword = $event.target.value
-                            },
-                            function($event) {
-                              _vm.$validator.validate("password", 1)
-                            }
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("password"),
-                              expression: "errors.has('password')"
-                            }
-                          ],
-                          staticClass: "invalid-feedback"
-                        },
-                        [
-                          _vm._v(
-                            "\n                                        " +
-                              _vm._s(_vm.errors.first("password")) +
-                              "\n                                    "
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
                     _c(
                       "button",
                       {
@@ -399,28 +308,14 @@ var render = function() {
                       [
                         _vm._v(
                           "\n                                    " +
-                            _vm._s(_vm.$t("translation.login")) +
-                            "\n                                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-link",
-                        attrs: { to: { name: "auth.password.email" } }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                    " +
-                            _vm._s(_vm.$t("translation.forgotPassword")) +
+                            _vm._s(
+                              _vm.$t("translation.sendPasswordResetLink")
+                            ) +
                             "\n                                "
                         )
                       ]
                     )
-                  ],
-                  1
+                  ]
                 )
               ])
             ])
@@ -436,7 +331,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-53abf8ff", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-a9f46d52", module.exports)
   }
 }
 

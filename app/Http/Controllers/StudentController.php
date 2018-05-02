@@ -23,16 +23,17 @@ class StudentController extends Controller
         if (!is_null($students)) {
             $data = [
                 'status' => 200,
+                'message' => 'api.studentReceived',
                 'data' => $students,
             ];
         } else {
             $data = [
                 'status' => 404,
-                'errors' => 'translation.usersWithRoleStudentNotFound',
+                'message' => 'api.usersWithRoleStudentNotFound',
             ];
         }
 
-        return response()->json($data, $data['status']);
+        return response()->json([$data], $data['status']);
     }
 
     public function putStudent(PutStudentRequest $request)
@@ -54,11 +55,12 @@ class StudentController extends Controller
 
             $data = [
                 'status' => 200,
+                'message' => 'studentDataСhanged',
             ];
         } else {
             $data = [
                 'status' => 404,
-                'errors' => 'translation.userNotFound',
+                'message' => 'api.userNotFound',
             ];
         }
 

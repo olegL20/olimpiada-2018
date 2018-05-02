@@ -2,6 +2,11 @@
 [Authentication](Authentication.md)  
 
 
+Защищенные роуты
+ - [University](Auth/University.md) 
+ - [Faculty](Auth/Faculty.md) 
+
+
 ### Типы ответов
 
 ---
@@ -25,6 +30,21 @@
 | message  | *  |  сообщение, может быть локализировано или как ключ локализации на фронте |
 | errors  |   |  ошибки, пример ниже |
 
+
+___
+
+
+#### Роуты только для аутентифицированных пользователей
+Слать запросы нужно только с заголовком `Authorization`
+
+Токен получаем с роута `auth/signin` у поле `token`
+
+Пример
+```text
+Content-Type:application/json
+Accept:application/json
+Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvc2lnbmluIiwiaWF0IjoxNTI1Mjc4NTk5LCJleHAiOjE1MjUzNjQ5OTksIm5iZiI6MTUyNTI3ODU5OSwianRpIjoiRjIwME5SeFhwTDhKMEk0ayJ9.2tcwjCK507v0qd3PYaooT7Y9LPTJmhhe7cmzFLhXQuQ
+```
 
 ---
 

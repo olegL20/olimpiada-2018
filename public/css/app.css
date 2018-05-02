@@ -14114,6 +14114,12 @@ input::-webkit-input-placeholder {
   padding: 2.5rem;
   width: 390px;
   background-color: #fff;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+}
+
+.modal__md {
+  width: 600px;
 }
 
 .modal__head {
@@ -14144,11 +14150,23 @@ p {
   font-size: .93rem;
 }
 
+.image-circle {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-top: .71rem;
+}
+
+.image-circle__50 {
+  width: 3.58rem;
+  height: 3.58rem;
+}
+
 .bg-right-image {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 50%;
+  width: 53%;
   height: calc(100vh - 10.79rem);
   background-image: url("/images/bg-right-image.png");
   background-size: contain;

@@ -13,10 +13,12 @@ export default {
         }, [
             'logged',
             'name',
+            'surname',
             'email',
             'password',
             'passwordConfirmation',
             'currentLang',
+            'dateOfBirth',
         ]),
     },
 };

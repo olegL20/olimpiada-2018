@@ -1,0 +1,10 @@
+.image-circle {
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: .71rem;
+
+  &__50 {
+    width: 3.58rem;
+    height: 3.58rem;
+  }
+}

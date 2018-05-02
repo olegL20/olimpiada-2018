@@ -7,10 +7,10 @@
                 </router-link>
 
                 <div class="pull-right">
-                    <router-link :to="{ name: 'home' }" class="link link__accent mr-3">
+                    <a href="javascript:" @click="modalsIsShowRegister = true" class="link link__accent mr-3">
                         {{ $t("translation.register") }}
-                    </router-link>
-                    <a href="javascript:;" @click="modalsIsShowLogin = true" class="link link__accent">
+                    </a>
+                    <a href="javascript:" @click="modalsIsShowLogin = true" class="link link__accent">
                         {{ $t("translation.login") }}
                     </a>
                 </div>
@@ -43,13 +43,13 @@
                 this.userCurrentLang = data;
                 this.$validator.locale = data;
             },
-            async logout() {
-                await this.$store.dispatch('user/logout');
-
-                this.$router.push({
-                    name: 'auth.login',
-                });
-            },
+            // async logout() {
+            //     await this.$store.dispatch('user/logout');
+            //
+            //     this.$router.push({
+            //         name: 'auth.login',
+            //     });
+            // },
         },
     };
 </script>

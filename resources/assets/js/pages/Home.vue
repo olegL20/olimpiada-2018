@@ -10,7 +10,7 @@
                         </span>
                     </h1>
 
-                    <p class="gray-color mt-4">{{ $t("translation.beforeEveryone") }}:</p>
+                    <p class="gray-color mt-4 mb-1">{{ $t("translation.beforeEveryone") }}:</p>
 
                     <ul class="list list__accent mb-5">
                         <li>
@@ -36,15 +36,18 @@
             </div>
         </div>
         <login-modal></login-modal>
+        <register-modal></register-modal>
     </div>
 </template>
 
 <script>
     import * as loginModal from '../components/modals/Login.vue';
+    import * as registerModal from '../components/modals/Register.vue';
 
     export default {
         components: {
             loginModal,
+            registerModal,
         },
         metaInfo() {
             return {

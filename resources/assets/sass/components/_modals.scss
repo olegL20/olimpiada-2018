@@ -18,6 +18,12 @@
     padding: 2.5rem;
     width: 390px;
     background-color: #fff;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+  }
+
+  &__md {
+    width: 600px;
   }
 
   &__head {
@@ -25,5 +31,4 @@
     font-weight: bold;
     text-align: center;
   }
-
 }

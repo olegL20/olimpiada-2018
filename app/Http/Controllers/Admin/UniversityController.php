@@ -60,7 +60,7 @@ class UniversityController extends Controller
             $university->document()->save($file);
         }
 
-        $university->load('image');
+        $university->load(['image', 'document']);
 
         return response()->json([
             'data' => $university,
@@ -76,7 +76,11 @@ class UniversityController extends Controller
      */
     public function show($id)
     {
-        return $this->university->find($id);
+        $university = $this->university->find($id);
+
+        return response()->json([
+            'data' => $university
+        ]);
     }
 
     /**
@@ -122,6 +126,11 @@ class UniversityController extends Controller
     {
         $university = $this->university->find($id);
         $university->image->delete();
+        $document = $university->document;
+
+        if ($document) {
+            $document->delete();
+        }
         $university->delete();
 
         return response()->json([

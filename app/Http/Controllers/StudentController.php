@@ -22,17 +22,17 @@ class StudentController extends Controller
 
         if (!is_null($students)) {
             $data = [
-                'status' => 1,
+                'status' => 200,
                 'data' => $students,
             ];
         } else {
             $data = [
-                'status' => 0,
+                'status' => 404,
                 'errors' => 'translation.usersWithRoleStudentNotFound',
             ];
         }
 
-        return response()->json($data);
+        return response()->json($data, $data['status']);
     }
 
     public function putStudent(PutStudentRequest $request)
@@ -53,15 +53,15 @@ class StudentController extends Controller
             $student->save();
 
             $data = [
-                'status' => 1,
+                'status' => 200,
             ];
         } else {
             $data = [
-                'status' => 0,
+                'status' => 404,
                 'errors' => 'translation.userNotFound',
             ];
         }
 
-        return response()->json($data);
+        return response()->json($data, $data['status']);
     }
 }

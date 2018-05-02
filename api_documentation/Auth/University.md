@@ -119,7 +119,7 @@ ___
 {
 	"name":"University",
 	"address":"address",
-	"position": "{}",
+	"position": {"lat": 31.123981293, "lng": 30.12381233},
 	"email":"nostresss7721123@gmail.com",
 	"phone":"2342384823423",
     "site": "site.com",

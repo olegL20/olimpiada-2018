@@ -41,12 +41,11 @@ class CreateAdminAccountCommand extends Command
 
         $str = str_random(8);
         $email = $str . '@gmail.com';
-        $password = bcrypt($str);
 
         $user = new User();
         $user->name = 'Admin';
         $user->email = $email;
-        $user->password = $password;
+        $user->password = $str;
         $user->surname = 'Admin';
         $user->role = User::GLOBAL_ADMIN;
         $user->birthday = '2018-05-05';
@@ -54,6 +53,6 @@ class CreateAdminAccountCommand extends Command
         $user->confirmed = true;
         $user->save();
 
-        $this->info('Admin data: email: ' . $email . 'password: ' . $str);
+        $this->info('Admin data: email: ' . $email . ' password: ' . $str);
     }
 }

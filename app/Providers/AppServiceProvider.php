@@ -2,13 +2,15 @@
 
 namespace App\Providers;
 
+
+use App\Model\Asset;
 use App\Model\Faculty;
 use App\Model\Major;
 use App\Model\University;
 use App\Model\User;
+use App\Observer\AssetObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
-
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Asset::observe(AssetObserver::class);
     }
 
     /**

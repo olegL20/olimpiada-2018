@@ -16,4 +16,20 @@ Route::group(['middleware' => 'api'], function () {
 
         Route::post('social-auth', 'Auth\AuthenticateController@social');
     });
+
+    Route::group([
+        'middleware' => 'role:' . \App\Model\User::GLOBAL_ADMIN . ',jwt.auth',
+        'prefix' => 'admin',
+        'namespace' => 'Admin'
+    ], function () {
+        Route::resource('university', 'UniversityController');
+    });
+
+    Route::group([
+        'middleware' => 'role:' . \App\Model\User::USER . ',jwt.auth',
+        'prefix' => 'user',
+        'namespace' => 'User'
+    ], function () {
+        // user routes
+    });
 });

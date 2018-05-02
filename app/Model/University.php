@@ -16,11 +16,17 @@ class University extends Model
         'email',
         'phone',
         'site',
-        'parent_id'
+        'parent_id',
+        'zip_code',
     ];
 
     protected $casts = [
-        'position' => 'json'
+        'position' => 'json',
+    ];
+
+    protected $with = [
+        'image',
+        'document',
     ];
 
     public function faculties()

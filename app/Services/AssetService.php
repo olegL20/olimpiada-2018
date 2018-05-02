@@ -9,6 +9,7 @@
 namespace App\Services;
 
 
+use App\Model\Asset;
 use GuzzleHttp\Client;
 use Symfony\Component\HttpFoundation\File\Exception\UploadException;
 
@@ -67,11 +68,16 @@ class AssetService
      * @var null|\Storage
      */
     protected $storage = null;
+    /**
+     * @var ImageService
+     */
+    private $imageService;
 
     /**
      * FileUploader constructor.
+     * @param ImageService $imageService
      */
-    public function __construct()
+    public function __construct(ImageService $imageService)
     {
         $this->destinationDirectory = config('core.upload_root');
 
@@ -80,6 +86,8 @@ class AssetService
         if (!$this->storage->exists($this->destinationDirectory)) {
             $this->storage->makeDirectory($this->destinationDirectory);
         }
+
+        $this->imageService = $imageService;
     }
 
     /**
@@ -203,6 +211,30 @@ class AssetService
         }
     }
 
+    public function create($data, $name, $type)
+    {
+        $path = $this
+            ->changeContent((string)$data)
+            ->changeFileName($name)
+            ->save();
+
+        $asset = new Asset(['source' => $path, 'type' => $type]);
+
+        return $asset;
+    }
+
+    public function image($name, $data)
+    {
+        $image = $this->imageService->from($data)->secureResize()->stream();
+
+        return $this->create((string)$image, $name, Asset::IMAGE);
+    }
+
+    public function file($data, $name)
+    {
+        return $this->create($data, $name, Asset::IMAGE);
+    }
+
     public static function dropboxMakeFileUrl($relativePath)
     {
         $storage = \Storage::drive('dropbox');
@@ -213,6 +245,13 @@ class AssetService
         $client = $adapter->getClient();
 
         return $client->getTemporaryLink($relativePath);
+    }
+
+    public static function fileRandomName($extension, $prefix = null)
+    {
+        $prefix = $prefix ?? '_' . $prefix;
+
+        return str_random(8) . $prefix . '.' . $extension;
     }
 
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use JWTAuth;
 
 class RoleMiddleware
 {
@@ -21,7 +22,9 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next, $role)
     {
-        if (auth()->user()->role !== $role) {
+        $user = JWTAuth::parseToken()->authenticate();
+
+        if ($user->role !== $role) {
             return response()->json([
                 'message' => 'Access denied',
                 'data' => null

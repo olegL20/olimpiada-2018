@@ -2,16 +2,21 @@
 
 namespace App\Model;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
 {
     use Notifiable;
 
     const USER = 'user';
     const UNIVERSITY_ADMIN = 'uni_admin';
     const GLOBAL_ADMIN = 'global_admin';
+
+    // extramula
+    const DAY_FORM = 0;
+    const CORRESPONDENCE_FORM = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +30,12 @@ class User extends Model
         'surname',
         'role',
         'uuid',
-        'birthday'
+        'birthday',
+        'provider',
+        'extramula',
+
+        'confirmed',
+        'confirmed_token',
     ];
 
     /**
@@ -34,11 +44,21 @@ class User extends Model
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'confirmed_token',
+    ];
+
+    protected $with = [
+        'image'
     ];
 
     public function image()
     {
         return $this->morphOne(Asset::class, 'assetable');
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 }

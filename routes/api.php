@@ -1,18 +1,36 @@
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::group(['middleware' => 'api'], function () {
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('signin', 'Auth\AuthenticateController@signIn');
+        Route::post('signup', 'Auth\AuthenticateController@signUp');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+        Route::post('confirmation', 'Auth\AuthenticateController@confirmation');
+
+        Route::group(['prefix' => 'password'], function () {
+            Route::post('recovery', 'Auth\PasswordController@recovery');
+            Route::post('reset', 'Auth\PasswordController@reset');
+        });
+
+        Route::post('social-auth', 'Auth\AuthenticateController@social');
+    });
+
+    Route::group([
+        'middleware' => 'role:' . \App\Model\User::GLOBAL_ADMIN . ',jwt.auth',
+        'prefix' => 'admin',
+        'namespace' => 'Admin'
+    ], function () {
+        Route::resource('university', 'UniversityController');
+        Route::resource('faculty', 'FacultyController');
+    });
+
+    Route::group([
+        'middleware' => 'role:' . \App\Model\User::USER . ',jwt.auth',
+        'prefix' => 'user',
+        'namespace' => 'User'
+    ], function () {
+        // user routes
+    });
 });

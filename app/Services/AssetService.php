@@ -9,7 +9,8 @@
 namespace App\Services;
 
 
-use GuzzleHttp\Client;
+use App\Model\Asset;
+use GuzzleHttp\Client as GuzzleClient;
 use Symfony\Component\HttpFoundation\File\Exception\UploadException;
 
 
@@ -29,6 +30,9 @@ use Symfony\Component\HttpFoundation\File\Exception\UploadException;
  */
 class AssetService
 {
+    const IMAGES = 'images';
+    const FILES = 'files';
+
     /**
      * File content
      *
@@ -58,17 +62,28 @@ class AssetService
     /**
      * @var string
      */
-    protected $relativePath = 'uploads';
+    protected $relativePath = AssetService::IMAGES;
 
     /**
      * @var null|\Storage
      */
     protected $storage = null;
+    /**
+     * @var ImageService
+     */
+    private $imageService;
+    /**
+     * @var GuzzleClient
+     */
+    private $httpClient;
 
     /**
      * FileUploader constructor.
+     * @param ImageService $imageService
+     * @param GuzzleClient $httpClient
+     * @internal param GuzzleClient $client
      */
-    public function __construct()
+    public function __construct(ImageService $imageService, GuzzleClient $httpClient)
     {
         $this->destinationDirectory = config('core.upload_root');
 
@@ -77,6 +92,9 @@ class AssetService
         if (!$this->storage->exists($this->destinationDirectory)) {
             $this->storage->makeDirectory($this->destinationDirectory);
         }
+
+        $this->imageService = $imageService;
+        $this->httpClient = $httpClient;
     }
 
     /**
@@ -107,8 +125,7 @@ class AssetService
      */
     public function fromUrl($url)
     {
-        $client = new Client();
-        $response = $client->get($url);
+        $response = $this->httpClient->get($url);
 
         $this->content = (string)$response->getBody();
 
@@ -200,6 +217,30 @@ class AssetService
         }
     }
 
+    public function create($data, $name, $type)
+    {
+        $path = $this
+            ->changeContent((string)$data)
+            ->changeFileName($name)
+            ->save();
+
+        $asset = new Asset(['source' => $path, 'type' => $type]);
+
+        return $asset;
+    }
+
+    public function image($name, $data)
+    {
+        $image = $this->imageService->from($data)->secureResize()->stream();
+
+        return $this->create((string)$image, $name, Asset::IMAGE);
+    }
+
+    public function file($data, $name)
+    {
+        return $this->create($data, $name, Asset::IMAGE);
+    }
+
     public static function dropboxMakeFileUrl($relativePath)
     {
         $storage = \Storage::drive('dropbox');
@@ -210,6 +251,13 @@ class AssetService
         $client = $adapter->getClient();
 
         return $client->getTemporaryLink($relativePath);
+    }
+
+    public static function fileRandomName($extension, $prefix = null)
+    {
+        $prefix = $prefix ?? '_' . $prefix;
+
+        return str_random(8) . $prefix . '.' . $extension;
     }
 
 }

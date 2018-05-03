@@ -1,0 +1,18 @@
+.link {
+  color: $gray-color;
+  text-decoration: underline;
+  font-weight: bold;
+
+  &:hover {
+    color: $accent-color;
+  }
+
+  &__accent {
+    color: $accent-color;
+  }
+
+  .fa-relative {
+    position: relative;
+    top: 5px;
+  }
+}

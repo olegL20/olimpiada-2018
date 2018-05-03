@@ -34,6 +34,7 @@
     "jquery": "^3.1.1",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.4",
+    "luxon": "^1.2.0",
     "popper.js": "^1.12.9",
     "schepotin-vuex-helpers": "^0.0.7",
     "v-click-outside": "^1.0.4",

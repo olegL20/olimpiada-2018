@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 176:
+/***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(57)
 /* script */
-var __vue_script__ = __webpack_require__(183)
+var __vue_script__ = __webpack_require__(184)
 /* template */
-var __vue_template__ = __webpack_require__(192)
+var __vue_template__ = __webpack_require__(193)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 183:
+/***/ 184:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58,11 +58,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Login = __webpack_require__(184);
+var _Login = __webpack_require__(185);
 
 var loginModal = _interopRequireWildcard(_Login);
 
-var _Register = __webpack_require__(187);
+var _Register = __webpack_require__(188);
 
 var registerModal = _interopRequireWildcard(_Register);
 
@@ -125,15 +125,15 @@ exports.default = {
 
 /***/ }),
 
-/***/ 184:
+/***/ 185:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(57)
 /* script */
-var __vue_script__ = __webpack_require__(185)
+var __vue_script__ = __webpack_require__(186)
 /* template */
-var __vue_template__ = __webpack_require__(186)
+var __vue_template__ = __webpack_require__(187)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -173,7 +173,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 185:
+/***/ 186:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -250,7 +250,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 186:
+/***/ 187:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -395,15 +395,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 187:
+/***/ 188:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(57)
 /* script */
-var __vue_script__ = __webpack_require__(188)
+var __vue_script__ = __webpack_require__(189)
 /* template */
-var __vue_template__ = __webpack_require__(191)
+var __vue_template__ = __webpack_require__(192)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -443,7 +443,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 188:
+/***/ 189:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -461,11 +461,11 @@ var _asyncToGenerator2 = __webpack_require__(22);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _vuejsDatepicker = __webpack_require__(189);
+var _vuejsDatepicker = __webpack_require__(190);
 
 var _vuejsDatepicker2 = _interopRequireDefault(_vuejsDatepicker);
 
-var _vueBase64FileUpload = __webpack_require__(190);
+var _vueBase64FileUpload = __webpack_require__(191);
 
 var _vueBase64FileUpload2 = _interopRequireDefault(_vueBase64FileUpload);
 
@@ -479,6 +479,7 @@ var _user2 = _interopRequireDefault(_user);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
 //
 //
 //
@@ -653,7 +654,7 @@ exports.default = {
                                     name: _this.userName,
                                     surname: _this.userSurname,
                                     password_confirmation: _this.userPasswordConfirmation,
-                                    birthday: _this.userDateOfBirth,
+                                    birthday: window.luxon.DateTime.fromJSDate(_this.userDateOfBirth).toFormat('yyyy-LL-dd'),
                                     image: _this.photo
                                 });
 
@@ -701,7 +702,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 189:
+/***/ 190:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2012,7 +2013,7 @@ var Datepicker = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
 
 /***/ }),
 
-/***/ 190:
+/***/ 191:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2150,7 +2151,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 191:
+/***/ 192:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -2301,7 +2302,8 @@ var render = function() {
                           _c("datepicker", {
                             attrs: {
                               "input-class": "input",
-                              format: "dd-MM-yyyy",
+                              format: "yyyy-MM-dd",
+                              initialView: "year",
                               id: "dateOfBirth",
                               placeholder: _vm.$t("translation.birthday")
                             },
@@ -2428,7 +2430,7 @@ var render = function() {
                     [
                       _vm._v(
                         "\n                    " +
-                          _vm._s(_vm.$t("translation.enter")) +
+                          _vm._s(_vm.$t("translation.register")) +
                           "\n                "
                       )
                     ]
@@ -2498,7 +2500,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 192:
+/***/ 193:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

@@ -196,7 +196,7 @@ class AssetService
         $filePath = $fullPath . $filename;
 
         $result = $this->storage->put($filePath, $this->content);
-
+        \Log::info('result', [ $result ]);
         if (!$result) {
             throw new UploadException("Couldn't upload " . $fullPath);
         }

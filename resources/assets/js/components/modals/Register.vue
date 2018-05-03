@@ -49,7 +49,8 @@
                                 <label for="dateOfBirth">{{ $t("translation.birthday") }}</label>
                                 <datepicker v-model="userDateOfBirth"
                                             :input-class="'input'"
-                                            :format="'dd-MM-yyyy'"
+                                            :format="'yyyy-MM-dd'"
+                                            :initialView="'year'"
                                             id="dateOfBirth"
                                             :placeholder="$t('translation.birthday')">
                                 </datepicker>
@@ -100,7 +101,7 @@
                     <button @click="register"
                             type="button"
                             class="btn btn-md btn-accent btn-center mb-4">
-                        {{ $t("translation.enter") }}
+                        {{ $t("translation.register") }}
                     </button>
 
                     <p class="small">
@@ -162,7 +163,7 @@
                             name: this.userName,
                             surname: this.userSurname,
                             password_confirmation: this.userPasswordConfirmation,
-                            birthday: this.userDateOfBirth,
+                            birthday: window.luxon.DateTime.fromJSDate(this.userDateOfBirth).toFormat('yyyy-LL-dd'),
                             image: this.photo,
                         });
                     } catch (e) {

@@ -15,6 +15,8 @@ Route::group(['middleware' => 'api'], function () {
         });
 
         Route::post('social-auth', 'Auth\AuthenticateController@social');
+
+        Route::post('register-by-invite/{inviteCode}', 'Admin\InviteAdminUniversityController@register');
     });
 
     Route::group([
@@ -24,6 +26,8 @@ Route::group(['middleware' => 'api'], function () {
     ], function () {
         Route::resource('university', 'UniversityController');
         Route::resource('faculty', 'FacultyController');
+        Route::post('send-invite', 'InviteAdminUniversityController@invite');
+        Route::post('associate', 'InviteAdminUniversityController@associate');
     });
 
     Route::group([

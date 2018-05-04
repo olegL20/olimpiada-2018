@@ -1,0 +1,1 @@
+Приглашение <a href="{{ config('core.front_url') }}/invite/{{ $data['invite']['invite_code'] }}/">зарегистрироваться</a> и закрепиться за университетом {{ $data['university']['name'] }}

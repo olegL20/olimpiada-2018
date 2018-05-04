@@ -36,6 +36,8 @@ class User extends Authenticatable
 
         'confirmed',
         'confirmed_token',
+
+        'university_id',
     ];
 
     /**

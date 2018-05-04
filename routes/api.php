@@ -24,6 +24,7 @@ Route::group(['middleware' => 'api'], function () {
     ], function () {
         Route::resource('university', 'UniversityController');
         Route::resource('faculty', 'FacultyController');
+        Route::resource('major', 'MajorController');
         Route::resource('department', 'DepartmentController');
     });
 

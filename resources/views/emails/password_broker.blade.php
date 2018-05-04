@@ -1,1 +1,1 @@
-Перейдите по <a href="{{ config('core.front_url')  }}/confirmation/{{$data['token']}}">этой ссылке</a> для сброса пароля
+Перейдите по <a href="{{ config('core.front_url')  }}/password_recovery/{{$data['token']}}">этой ссылке</a> для сброса пароля

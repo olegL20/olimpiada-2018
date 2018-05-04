@@ -96,10 +96,18 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         $department = $this->department->find($id);
-        $department->delete();
+
+        if (!is_null($department)) {
+            $department->delete();
+            $trans = trans('api.department_deleted');
+            $status = 200;
+        } else {
+            $trans = trans('api.department_not_found');
+            $status = 204;
+        }
 
         return response()->json([
-            'message' => trans('api.department_deleted')
-        ], 204);
+            'message' => $trans,
+        ], $status);
     }
 }

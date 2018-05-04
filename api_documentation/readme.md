@@ -1,10 +1,12 @@
 
-[Authentication](Authentication.md)  
+ - [Authentication](Authentication.md)  
+ - [Invite](Invite.md)  
 
 
 Защищенные роуты
- - [University](Auth/University.md) 
- - [Faculty](Auth/Faculty.md) 
+ - [University](Auth/Admin/University.md) 
+ - [Faculty](Auth/Admin/Faculty.md) 
+ - [Invite](Auth/Admin/Invite.md) 
 
 
 ### Типы ответов

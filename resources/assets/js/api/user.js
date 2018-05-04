@@ -1,13 +1,31 @@
+const url = 'https://itpm-194220.appspot.com';
 export default {
-    // async login(params) {
-    //     const { data } = await window.axios.post('/api/v1/login', params);
-    //
-    //     return data;
-    // },
-    async register(params) {
-        const { data } = await window.axios.post('/api/auth/signup', params);
+    async login(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/auth/signin`, params);
 
-        return data;
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async register(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/auth/signup`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async confirmationEmail(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/auth/confirmation`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
     },
     // async passwordEmail(params) {
     //     const { data } = await window.axios.post('/api/v1/password/email', params);

@@ -11,6 +11,14 @@
     color: $accent-color;
   }
 
+  &__accent-dark {
+    color: $accent-dark-color;
+
+    &:hover {
+      color: $accent-dark-color;
+    }
+  }
+
   .fa-relative {
     position: relative;
     top: 5px;

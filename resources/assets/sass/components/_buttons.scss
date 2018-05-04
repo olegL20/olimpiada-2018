@@ -1,7 +1,13 @@
 .btn-accent {
-  background-color: $accent-color;
   color: #fff;
+  background-color: $accent-color;
   border-bottom: .29rem solid darken($accent-color, 10%);
+}
+
+.btn-error {
+  color: #fff;
+  background-color: $danger-color;
+  border-bottom: .29rem solid darken($danger-color, 10%);
 }
 
 .btn-md {

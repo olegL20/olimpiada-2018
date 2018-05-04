@@ -10,3 +10,4 @@ export const PASSWORD_CONFIRMATION = 'PASSWORD_CONFIRMATION';
 export const CURRENT_LANG = 'CURRENT_LANG';
 export const CREATED_AT = 'CREATED_AT';
 export const UPDATED_AT = 'UPDATED_AT';
+export const USER = 'USER';

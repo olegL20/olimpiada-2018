@@ -4,6 +4,7 @@ import store from '../store';
 
 import validationEn from '../lang/en/validator';
 import validationHe from '../lang/he/validator';
+import validationUa from '../lang/ua/validator';
 
 Validator.extend('login', {
     async validate(value) {
@@ -29,5 +30,6 @@ Vue.use(VeeValidate, {
     dictionary: {
         en: validationEn,
         he: validationHe,
+        ua: validationUa,
     },
 });

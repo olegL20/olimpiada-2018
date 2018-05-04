@@ -1,4 +1,4 @@
-import messages from 'vee-validate/dist/locale/en';
+import messages from 'vee-validate/dist/locale/uk';
 
 export default {
     messages: {
@@ -11,9 +11,12 @@ export default {
         },
     },
     attributes: {
-        name: 'name',
-        email: 'email',
-        password: 'password',
-        passwordConfirmation: 'confirm password',
+        name: 'Ім\'я',
+        surname: 'Прізвище',
+        dateOfBirth: 'Дата народження',
+        email: 'E-mail',
+        password: 'Пароль',
+        rePassword: 'Підтвердження паролю',
+        photo: 'Фото',
     },
 };

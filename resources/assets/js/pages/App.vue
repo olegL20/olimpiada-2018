@@ -1,22 +1,6 @@
 <template>
     <div id="app">
-        <nav class="navbar">
-            <div class="container">
-                <router-link :to="{ name: 'home' }">
-                    <img src="/images/logo.png" alt="BigFut">
-                </router-link>
-
-                <div class="pull-right">
-                    <a href="javascript:" @click="modalsIsShowRegister = true" class="link link__accent mr-3">
-                        {{ $t("translation.register") }}
-                    </a>
-                    <a href="javascript:" @click="modalsIsShowLogin = true" class="link link__accent">
-                        {{ $t("translation.login") }}
-                    </a>
-                </div>
-            </div>
-        </nav>
-
+        <user-header></user-header>
         <transition name="slide-fade" mode="out-in">
             <router-view></router-view>
         </transition>
@@ -24,14 +8,12 @@
 </template>
 
 <script>
-    import userMixin from '../mixins/user';
-    import modalsMixin from '../mixins/modals';
+    import * as userHeader from '../components/Header.vue';
 
     export default {
-        mixins: [
-            userMixin,
-            modalsMixin,
-        ],
+        components: {
+            userHeader,
+        },
         computed: {
             languages() {
                 return Object.keys(this.$i18n.messages);
@@ -43,13 +25,6 @@
                 this.userCurrentLang = data;
                 this.$validator.locale = data;
             },
-            // async logout() {
-            //     await this.$store.dispatch('user/logout');
-            //
-            //     this.$router.push({
-            //         name: 'auth.login',
-            //     });
-            // },
         },
     };
 </script>

@@ -33,6 +33,12 @@
 
                 </div>
                 <div class="d-none d-md-block bg-right-image"></div>
+                <span class="copyright">
+                    {{ $t("translation.developedByStudents") }}
+                    <a href="http://sumdu.edu.ua/" class="link link__accent">
+                        {{ $t("translation.sumdu") }}
+                    </a>
+                </span>
             </div>
         </div>
         <login-modal></login-modal>

@@ -3,16 +3,40 @@ import * as types from './mutation-types';
 
 export const login = async ({ dispatch, commit }, payload) => {
     const json = await user.login(payload);
-
-    if (json.status === 1) {
+    if (json.status === 200) {
         commit(types.LOGIN, {
-            token: json.token,
+            token: json.data.data.token,
+            user: json.data.data.user,
         });
+        // window.localStorage.setItem('token', json.data.data.token);
+        // window.localStorage.setItem('user', JSON.stringify(json.data.data.user));
 
-        await dispatch('getUserCurrent');
-    } else {
-        throw json;
+        return json.data;
     }
+
+    throw json;
+};
+
+export const register = async ({ dispatch, commit }, payload) => {
+    const json = await user.register(payload);
+
+    console.log(json);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const confirmation = async ({ dispatch, commit }, payload) => {
+    const json = await user.confirmationEmail(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
 };
 
 export const logout = async ({ commit }) => {
@@ -22,20 +46,6 @@ export const logout = async ({ commit }) => {
     commit(types.CREATED_AT, null);
     commit(types.UPDATED_AT, null);
     commit(types.LOGOUT);
-};
-
-export const register = async ({ dispatch, commit }, payload) => {
-    const json = await user.register(payload);
-
-    if (json.status === 1) {
-        commit(types.LOGIN, {
-            token: json.token,
-        });
-
-        await dispatch('getUserCurrent');
-    } else {
-        throw json;
-    }
 };
 
 export const passwordEmail = async (context, payload) => {
@@ -54,29 +64,29 @@ export const resetPassword = async (context, payload) => {
     }
 };
 
-export const getUserCurrent = async ({ commit }) => {
-    const json = await user.getUserCurrent();
+// export const getUserCurrent = async ({ commit }) => {
+//     const json = await user.getUserCurrent();
+//
+//     if (json.status === 1) {
+//         commit(types.ID, json.data.id);
+//         commit(types.NAME, json.data.name);
+//         commit(types.EMAIL, json.data.email);
+//         commit(types.CREATED_AT, json.data.created_at);
+//         commit(types.UPDATED_AT, json.data.updated_at);
+//     } else {
+//         throw json;
+//     }
+// };
 
-    if (json.status === 1) {
-        commit(types.ID, json.data.id);
-        commit(types.NAME, json.data.name);
-        commit(types.EMAIL, json.data.email);
-        commit(types.CREATED_AT, json.data.created_at);
-        commit(types.UPDATED_AT, json.data.updated_at);
-    } else {
-        throw json;
-    }
-};
-
-export const checkLogged = async ({ dispatch, commit }) => {
+export const checkLogged = async ({ commit }) => {
     const token = window.Cookies.get('token');
+    const currentUser = window.Cookies.get('user');
 
-    if (token !== undefined) {
+    if (token !== undefined && currentUser !== undefined) {
         commit(types.LOGIN, {
             token,
+            user: window.JSON.parse(currentUser),
         });
-
-        await dispatch('getUserCurrent');
     }
 };
 
@@ -86,6 +96,6 @@ export default {
     register,
     passwordEmail,
     resetPassword,
-    getUserCurrent,
     checkLogged,
+    confirmation,
 };

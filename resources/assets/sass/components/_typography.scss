@@ -16,6 +16,14 @@ p {
   color: $gray-color;
 }
 
+.dark-color {
+  color: $accent-dark-color;
+}
+
 .small {
   font-size: .93rem;
+}
+
+.lh-text {
+  line-height: 0.8;
 }

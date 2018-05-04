@@ -13,41 +13,9 @@ const routes = [
         component: () => import('../pages/Home.vue'),
     },
     {
-        path: '/profile',
-        name: 'auth.profile',
-        component: () => import('../pages/auth/Profile.vue'),
-        meta: {
-            auth: true,
-        },
-    },
-    {
-        path: '/login',
-        name: 'auth.login',
-        component: () => import('../pages/auth/Login.vue'),
-        meta: {
-            guest: true,
-        },
-    },
-    {
-        path: '/register',
-        name: 'auth.register',
-        component: () => import('../pages/auth/Register.vue'),
-        meta: {
-            guest: true,
-        },
-    },
-    {
-        path: '/password/reset',
-        name: 'auth.password.email',
-        component: () => import('../pages/auth/PasswordEmail.vue'),
-        meta: {
-            guest: true,
-        },
-    },
-    {
-        path: '/password/reset/:token',
-        name: 'auth.reset.password',
-        component: () => import('../pages/auth/ResetPassword.vue'),
+        path: '/confirmation/:id',
+        name: 'auth.confirmation',
+        component: () => import('../pages/auth/EmailConfirmation.vue'),
         meta: {
             guest: true,
         },

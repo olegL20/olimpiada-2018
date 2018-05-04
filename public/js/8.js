@@ -1,4 +1,4 @@
-webpackJsonp([0],{
+webpackJsonp([8],{
 
 /***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
@@ -68,6 +68,12 @@ var registerModal = _interopRequireWildcard(_Register);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -279,7 +285,7 @@ exports.default = {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-                var valid, response;
+                var valid;
                 return _regenerator2.default.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
@@ -291,7 +297,7 @@ exports.default = {
                                 valid = _context.sent;
 
                                 if (!valid) {
-                                    _context.next = 15;
+                                    _context.next = 14;
                                     break;
                                 }
 
@@ -303,28 +309,26 @@ exports.default = {
                                 });
 
                             case 7:
-                                response = _context.sent;
-
-                                _this.$toast.error({
-                                    title: _this.$t('translation.error'),
-                                    message: _this.$t(response.data.message)
-                                });
                                 _this.hide();
-                                _context.next = 15;
+                                _context.next = 14;
                                 break;
 
-                            case 12:
-                                _context.prev = 12;
+                            case 10:
+                                _context.prev = 10;
                                 _context.t0 = _context['catch'](4);
 
-                                console.log(_context.t0);
+                                _this.hide();
+                                _this.$toast.error({
+                                    title: _this.$t('translation.error'),
+                                    message: _this.$t(_context.t0.data.message)
+                                });
 
-                            case 15:
+                            case 14:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[4, 12]]);
+                }, _callee, _this, [[4, 10]]);
             }))();
         }
     }
@@ -860,7 +864,7 @@ exports.default = {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-                var valid, response;
+                var valid;
                 return _regenerator2.default.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
@@ -873,7 +877,7 @@ exports.default = {
                                 valid = _context.sent;
 
                                 if (!valid) {
-                                    _context.next = 17;
+                                    _context.next = 15;
                                     break;
                                 }
 
@@ -891,28 +895,25 @@ exports.default = {
                                 });
 
                             case 9:
-                                response = _context.sent;
-
                                 _this.hide();
-                                _this.$toast.error({
-                                    title: _this.$t('translation.error'),
-                                    message: _this.$t(response.message)
-                                });
-                                _context.next = 17;
+                                _context.next = 15;
                                 break;
 
-                            case 14:
-                                _context.prev = 14;
+                            case 12:
+                                _context.prev = 12;
                                 _context.t0 = _context['catch'](6);
 
-                                console.log(_context.t0);
+                                _this.$toast.error({
+                                    title: _this.$t('translation.error'),
+                                    message: _this.$t(_context.t0.message)
+                                });
 
-                            case 17:
+                            case 15:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[6, 14]]);
+                }, _callee, _this, [[6, 12]]);
             }))();
         },
         hide: function hide() {
@@ -929,15 +930,6 @@ exports.default = {
         },
         onLoad: function onLoad(dataUri) {
             this.imageBase64 = dataUri;
-            console.log(dataUri);
-        },
-        onSizeExceeded: function onSizeExceeded(size) {
-            console.log('Max size ' + size);
-        }
-    },
-    mounted: function mounted() {
-        if (this.$refs) {
-            console.log(this.$refs);
         }
     },
     beforeDestroy: function beforeDestroy() {
@@ -2869,7 +2861,7 @@ var render = function() {
                               attrs: {
                                 accept: "image/png,image/jpeg",
                                 "image-class":
-                                  "image-circle image-circle__50 mt-3",
+                                  "image-circle image-circle__45 mt-3",
                                 "input-class": "input",
                                 "max-size": _vm.customImageMaxSize,
                                 id: "image",
@@ -3063,7 +3055,29 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "d-none d-md-block bg-right-image" })
+          _c("div", { staticClass: "d-none d-md-block bg-right-image" }),
+          _vm._v(" "),
+          _c("span", { staticClass: "copyright" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$t("translation.developedByStudents")) +
+                "\n                "
+            ),
+            _c(
+              "a",
+              {
+                staticClass: "link link__accent",
+                attrs: { href: "http://sumdu.edu.ua/" }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.$t("translation.sumdu")) +
+                    "\n                "
+                )
+              ]
+            )
+          ])
         ])
       ]),
       _vm._v(" "),

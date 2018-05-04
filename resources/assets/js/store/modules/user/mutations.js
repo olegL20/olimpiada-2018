@@ -19,10 +19,13 @@ export default {
     }),
     [types.LOGIN](state, payload) {
         window.Cookies.set('token', payload.token);
+        window.Cookies.set('user', window.JSON.stringify(payload.user));
+
         window.axios.defaults.headers.common.Authorization = `Bearer ${payload.token}`;
 
         state.token = payload.token;
         state.logged = true;
+        state.user = payload.user;
     },
     [types.LOGOUT](state) {
         window.Cookies.remove('token');

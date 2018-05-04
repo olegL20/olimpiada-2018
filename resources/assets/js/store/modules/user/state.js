@@ -11,4 +11,5 @@ export default {
     currentLang: window.Cookies.get('locale') || 'ua',
     createdAt: null,
     updatedAt: null,
+    user: null,
 };

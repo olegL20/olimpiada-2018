@@ -11,6 +11,7 @@ export default {
             namespace: 'user',
             prefix: true,
         }, [
+            'user',
             'logged',
             'name',
             'surname',

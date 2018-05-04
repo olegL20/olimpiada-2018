@@ -14029,9 +14029,15 @@ body {
 }
 
 .btn-accent {
-  background-color: #007add;
   color: #fff;
+  background-color: #007add;
   border-bottom: 0.29rem solid #005eaa;
+}
+
+.btn-error {
+  color: #fff;
+  background-color: #dc3545;
+  border-bottom: 0.29rem solid #bd2130;
 }
 
 .btn-md {
@@ -14059,6 +14065,14 @@ body {
 
 .link__accent {
   color: #007add;
+}
+
+.link__accent-dark {
+  color: #153b50;
+}
+
+.link__accent-dark:hover {
+  color: #153b50;
 }
 
 .link .fa-relative {
@@ -14100,6 +14114,27 @@ input.input:focus {
   color: #153b50;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+input.input__danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+input.input__danger:focus {
+  border-color: #dc3545;
+}
+
+.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+.is-invalid__date input.input {
+  border-color: #dc3545;
+}
+
+.is-invalid__date .invalid-feedback {
+  display: block;
 }
 
 input::-webkit-input-placeholder {
@@ -14169,20 +14204,49 @@ p {
   color: #929292;
 }
 
+.dark-color {
+  color: #153b50;
+}
+
 .small {
   font-size: .93rem;
+}
+
+.lh-text {
+  line-height: 0.8;
 }
 
 .image-circle {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
-  margin-top: .71rem;
 }
 
-.image-circle__50 {
-  width: 3.58rem;
-  height: 3.58rem;
+.image-circle__45 {
+  width: 3.21rem;
+  height: 3.21rem;
+}
+
+.image-circle__60 {
+  width: 4.29rem;
+  height: 4.29rem;
+}
+
+.notification__parent {
+  position: relative;
+}
+
+.notification__child {
+  position: absolute;
+  z-index: 2;
+  top: 1.93rem;
+  left: 0;
+  right: 0;
+  min-width: 15.71rem;
+  padding: 1.07rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: .71rem;
+  border: 1px solid #e3ebe8;
 }
 
 .bg-right-image {
@@ -14195,5 +14259,20 @@ p {
   background-size: contain;
   background-position: 100% 100%;
   background-repeat: no-repeat;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 40px;
+}
+
+.alert-accent {
+  background-color: #fff;
+  color: #007add;
+  border-color: #007add;
+}
+
+.alert-accent hr {
+  border-color: #007add;
 }
 

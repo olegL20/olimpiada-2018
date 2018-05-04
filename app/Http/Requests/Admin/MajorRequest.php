@@ -24,7 +24,7 @@ class MajorRequest extends FormRequest
     public function rules()
     {
         return [
-            'university_id' => 'required|integer',
+            'faculty_id' => 'required|integer',
             'name' => 'required|string|max:255',
             'description' => 'string|max:255',
         ];

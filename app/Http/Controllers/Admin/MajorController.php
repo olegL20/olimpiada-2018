@@ -95,11 +95,11 @@ class MajorController extends Controller
      */
     public function destroy($id)
     {
-        $major = $this->major->find($id);
+        $major = $this->major->findOrFail($id);
         $major->delete();
 
         return response()->json([
             'message' => trans('api.major_deleted')
-        ], 204);
+        ], 200);
     }
 }

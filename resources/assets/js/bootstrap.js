@@ -7,11 +7,9 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-try {
-    window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap-sass');
-} catch (e) {}
+window.$ = window.jQuery = require('jquery');
+window.luxon = require('luxon');
+require('bootstrap');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -20,8 +18,10 @@ try {
  */
 
 window.axios = require('axios');
+window.Cookies = require('js-cookie');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.Cookies.defaults.expires = 365 * 10;
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -29,7 +29,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
+const token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
@@ -49,7 +49,5 @@ if (token) {
 
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
-//     key: 'your-pusher-key',
-//     cluster: 'mt1',
-//     encrypted: true
+//     key: 'your-pusher-key'
 // });

@@ -1,0 +1,9 @@
+.alert-accent {
+  background-color: #fff;
+  color: $accent-color;
+  border-color: $accent-color;
+
+  hr {
+    border-color: $accent-color;
+  }
+}

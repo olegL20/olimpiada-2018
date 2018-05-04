@@ -1,0 +1,57 @@
+input.input {
+  display: block;
+  width: 100%;
+  padding: .71rem 0;
+  font-weight: bold;
+  color: $accent-dark-color;
+  border: none;
+  border-bottom: 2px solid $gray-light-color;
+  outline: 0;
+  transition:
+          border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out,
+          -webkit-box-shadow 0.15s ease-in-out;
+
+  &:focus {
+    border-color: $accent-color;
+    color: $accent-dark-color;
+    box-shadow: none;
+  }
+
+  &__danger {
+    border-color: $danger-color;
+    color: $danger-color;
+
+    &:focus {
+      border-color: $danger-color;
+    }
+  }
+}
+
+.is-invalid {
+  ~ .invalid-feedback {
+    display: block;
+  }
+
+  &__date {
+    input.input {
+      border-color: $danger-color;
+    }
+
+    .invalid-feedback {
+      display: block;
+    }
+  }
+}
+
+input::-webkit-input-placeholder {
+  color: lighten($gray-color, 20%);
+  font-weight: normal;
+}
+
+.form-group {
+  label {
+    font-weight: bold;
+    margin: 0;
+  }
+}

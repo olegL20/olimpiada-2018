@@ -1,0 +1,13 @@
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const ID = 'ID';
+export const NAME = 'NAME';
+export const SURNAME = 'SURNAME';
+export const DATE_OF_BIRTH = 'DATE_OF_BIRTH';
+export const EMAIL = 'EMAIL';
+export const PASSWORD = 'PASSWORD';
+export const PASSWORD_CONFIRMATION = 'PASSWORD_CONFIRMATION';
+export const CURRENT_LANG = 'CURRENT_LANG';
+export const CREATED_AT = 'CREATED_AT';
+export const UPDATED_AT = 'UPDATED_AT';
+export const USER = 'USER';

@@ -1,0 +1,17 @@
+.notification {
+  &__parent {
+    position: relative;
+  }
+  &__child {
+    position: absolute;
+    z-index: 2;
+    top: 1.93rem;
+    left: 0;
+    right: 0;
+    min-width: 15.71rem;
+    padding: 1.07rem;
+    background: rgba(#fff, .85);
+    border-radius: .71rem;
+    border: 1px solid #e3ebe8;
+  }
+}

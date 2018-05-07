@@ -56,7 +56,12 @@ class User extends Authenticatable
 
     public function image()
     {
-        return $this->morphOne(Asset::class, 'assetable');
+        return $this->morphOne(Asset::class, 'assetable')->where('type', Asset::IMAGE);
+    }
+
+    public function attachments()
+    {
+        return $this->morphOne(Asset::class, 'assetable', Asset::FILE);
     }
 
     public function setPasswordAttribute($value)

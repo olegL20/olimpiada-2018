@@ -27,7 +27,7 @@ class MajorRequest extends FormRequest
             'faculty_id' => 'required|integer',
             'name' => 'required|string|max:255',
             'description' => 'string|max:255',
-            'koeficient' => 'required'
+            'koef' => 'required'
         ];
     }
 }

@@ -3003,7 +3003,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 //
 //
 //
-//
 
 exports.default = {
     components: {
@@ -3014,6 +3013,13 @@ exports.default = {
         return {
             title: this.$t('translation.homepage')
         };
+    },
+    created: function created() {
+        if (Number(window.Cookies.get('first_stage'))) {
+            this.$router.push({
+                name: 'user.room'
+            });
+        }
     }
 };
 

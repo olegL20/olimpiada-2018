@@ -3098,7 +3098,8 @@ exports.default = {
         this.userBackground = 'background__white';
     },
     mounted: function mounted() {
-        this.userFirstStage = Number(window.Cookies.get('first_stage'));
+        this.$store.dispatch('user/getUniversities');
+        this.userFirstStage = Number(window.Cookies.get('first_stage')) ? Number(window.Cookies.get('first_stage')) : 1;
     }
 };
 

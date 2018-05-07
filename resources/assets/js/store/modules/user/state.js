@@ -13,5 +13,5 @@ export default {
     updatedAt: null,
     user: null,
     background: null,
-    firstStage: 0,
+    firstStage: 1,
 };

@@ -23399,7 +23399,7 @@ exports.default = {
     updatedAt: null,
     user: null,
     background: null,
-    firstStage: 0
+    firstStage: 1
 };
 
 /***/ }),
@@ -59246,7 +59246,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.checkLogged = exports.resetPassword = exports.passwordEmail = exports.logout = exports.confirmation = exports.registerInvite = exports.register = exports.login = undefined;
+exports.checkLogged = exports.logout = exports.getUniversities = exports.confirmation = exports.registerInvite = exports.register = exports.login = undefined;
 
 var _regenerator = __webpack_require__(15);
 
@@ -59428,12 +59428,51 @@ var confirmation = exports.confirmation = function () {
     };
 }();
 
-var logout = exports.logout = function () {
-    var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(_ref12) {
-        var commit = _ref12.commit;
+var getUniversities = exports.getUniversities = function () {
+    var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
+        var json;
         return _regenerator2.default.wrap(function _callee5$(_context5) {
             while (1) {
                 switch (_context5.prev = _context5.next) {
+                    case 0:
+                        _context5.next = 2;
+                        return _user2.default.getUniversities();
+
+                    case 2:
+                        json = _context5.sent;
+
+
+                        console.log(json);
+
+                        if (!(json.status === 200)) {
+                            _context5.next = 6;
+                            break;
+                        }
+
+                        return _context5.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context5.stop();
+                }
+            }
+        }, _callee5, undefined);
+    }));
+
+    return function getUniversities() {
+        return _ref11.apply(this, arguments);
+    };
+}();
+
+var logout = exports.logout = function () {
+    var _ref12 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(_ref13) {
+        var commit = _ref13.commit;
+        return _regenerator2.default.wrap(function _callee6$(_context6) {
+            while (1) {
+                switch (_context6.prev = _context6.next) {
                     case 0:
                         commit(types.ID, null);
                         commit(types.NAME, null);
@@ -59444,104 +59483,24 @@ var logout = exports.logout = function () {
 
                     case 6:
                     case 'end':
-                        return _context5.stop();
-                }
-            }
-        }, _callee5, undefined);
-    }));
-
-    return function logout(_x9) {
-        return _ref11.apply(this, arguments);
-    };
-}();
-
-var passwordEmail = exports.passwordEmail = function () {
-    var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(context, payload) {
-        var json;
-        return _regenerator2.default.wrap(function _callee6$(_context6) {
-            while (1) {
-                switch (_context6.prev = _context6.next) {
-                    case 0:
-                        _context6.next = 2;
-                        return _user2.default.passwordEmail(payload);
-
-                    case 2:
-                        json = _context6.sent;
-
-                        if (!(json.status !== 1)) {
-                            _context6.next = 5;
-                            break;
-                        }
-
-                        throw json;
-
-                    case 5:
-                    case 'end':
                         return _context6.stop();
                 }
             }
         }, _callee6, undefined);
     }));
 
-    return function passwordEmail(_x10, _x11) {
-        return _ref13.apply(this, arguments);
+    return function logout(_x9) {
+        return _ref12.apply(this, arguments);
     };
 }();
 
-var resetPassword = exports.resetPassword = function () {
-    var _ref14 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(context, payload) {
-        var json;
+var checkLogged = exports.checkLogged = function () {
+    var _ref14 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(_ref15) {
+        var commit = _ref15.commit;
+        var token, currentUser;
         return _regenerator2.default.wrap(function _callee7$(_context7) {
             while (1) {
                 switch (_context7.prev = _context7.next) {
-                    case 0:
-                        _context7.next = 2;
-                        return _user2.default.resetPassword(payload);
-
-                    case 2:
-                        json = _context7.sent;
-
-                        if (!(json.status !== 1)) {
-                            _context7.next = 5;
-                            break;
-                        }
-
-                        throw json;
-
-                    case 5:
-                    case 'end':
-                        return _context7.stop();
-                }
-            }
-        }, _callee7, undefined);
-    }));
-
-    return function resetPassword(_x12, _x13) {
-        return _ref14.apply(this, arguments);
-    };
-}();
-
-// export const getUserCurrent = async ({ commit }) => {
-//     const json = await user.getUserCurrent();
-//
-//     if (json.status === 1) {
-//         commit(types.ID, json.data.id);
-//         commit(types.NAME, json.data.name);
-//         commit(types.EMAIL, json.data.email);
-//         commit(types.CREATED_AT, json.data.created_at);
-//         commit(types.UPDATED_AT, json.data.updated_at);
-//     } else {
-//         throw json;
-//     }
-// };
-
-var checkLogged = exports.checkLogged = function () {
-    var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8(_ref16) {
-        var commit = _ref16.commit;
-        var token, currentUser;
-        return _regenerator2.default.wrap(function _callee8$(_context8) {
-            while (1) {
-                switch (_context8.prev = _context8.next) {
                     case 0:
                         token = window.Cookies.get('token');
                         currentUser = window.Cookies.get('user');
@@ -59556,14 +59515,14 @@ var checkLogged = exports.checkLogged = function () {
 
                     case 3:
                     case 'end':
-                        return _context8.stop();
+                        return _context7.stop();
                 }
             }
-        }, _callee8, undefined);
+        }, _callee7, undefined);
     }));
 
-    return function checkLogged(_x14) {
-        return _ref15.apply(this, arguments);
+    return function checkLogged(_x10) {
+        return _ref14.apply(this, arguments);
     };
 }();
 
@@ -59572,10 +59531,9 @@ exports.default = {
     logout: logout,
     register: register,
     registerInvite: registerInvite,
-    passwordEmail: passwordEmail,
-    resetPassword: resetPassword,
     checkLogged: checkLogged,
-    confirmation: confirmation
+    confirmation: confirmation,
+    getUniversities: getUniversities
 };
 
 /***/ }),
@@ -61441,6 +61399,32 @@ exports.default = {
                     }
                 }
             }, _callee4, _this4, [[0, 9]]);
+        }))();
+    },
+    getUniversities: function getUniversities() {
+        var _this5 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
+            var _ref5, data;
+
+            return _regenerator2.default.wrap(function _callee5$(_context5) {
+                while (1) {
+                    switch (_context5.prev = _context5.next) {
+                        case 0:
+                            _context5.next = 2;
+                            return window.axios.get('/api/university/university');
+
+                        case 2:
+                            _ref5 = _context5.sent;
+                            data = _ref5.data;
+                            return _context5.abrupt('return', data);
+
+                        case 5:
+                        case 'end':
+                            return _context5.stop();
+                    }
+                }
+            }, _callee5, _this5);
         }))();
     }
 };

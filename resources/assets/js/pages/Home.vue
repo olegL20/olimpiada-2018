@@ -30,7 +30,6 @@
                     <router-link tag="button" :to="{ name: 'user.room' }" type="button" class="btn btn-md btn-accent">
                         {{ $t("translation.forward") }}
                     </router-link>
-
                 </div>
                 <div class="d-none d-md-block bg-right-image"></div>
                 <span class="copyright ml-3">
@@ -59,6 +58,13 @@
             return {
                 title: this.$t('translation.homepage'),
             };
+        },
+        created() {
+            if (Number(window.Cookies.get('first_stage'))) {
+                this.$router.push({
+                    name: 'user.room',
+                });
+            }
         },
     };
 </script>

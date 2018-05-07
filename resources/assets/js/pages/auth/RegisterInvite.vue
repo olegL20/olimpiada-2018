@@ -41,24 +41,29 @@
                 </span>
             </div>
         </div>
-        <login-modal></login-modal>
         <register-modal></register-modal>
     </div>
 </template>
 
 <script>
-    import * as loginModal from '../components/modals/Login.vue';
-    import * as registerModal from '../components/modals/Register.vue';
+    import modalsMixin from '../../mixins/modals';
+    import * as registerModal from '../../components/modals/Register.vue';
 
     export default {
+        mixins: [
+            modalsMixin,
+        ],
         components: {
-            loginModal,
             registerModal,
         },
         metaInfo() {
             return {
-                title: this.$t('translation.homepage'),
+                title: this.$t('translation.registerInvite'),
             };
+        },
+        mounted() {
+            console.log(this.modalsIsShowRegister);
+            this.modalsIsShowRegister = true;
         },
     };
 </script>

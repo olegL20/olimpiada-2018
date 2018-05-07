@@ -13,6 +13,8 @@ export default {
         }, [
             'isShowLogin',
             'isShowRegister',
+            'isShowAdvice',
+            'isShowSelectVuz',
         ]),
     },
 };

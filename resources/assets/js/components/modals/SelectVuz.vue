@@ -1,24 +1,25 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <div v-if="modalsIsShowLogin" class="modal__wrap">
+        <!--<div v-if="true" class="modal__wrap">-->
+        <div v-if="modalsIsShowSelectVuz" class="modal__wrap">
             <div v-click-outside="hide" class="modal__content">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.login") }}
+                    {{ $t("translation.selectVuz") }}
                 </h4>
 
                 <div class="modal__body">
 
                     <div class="form-group mt-4 mb-4">
-                        <label for="email">{{ $t("translation.email") }}</label>
-                        <input v-model="userEmail"
-                               type="text"
-                               id="email"
-                               name="email"
-                               v-validate="'required|email'"
-                               :class="{ 'is-invalid input__danger': errors.has('email') }"
-                               :placeholder="$t('translation.email')"
-                               class="input">
+                        <label for="">{{ $t("translation.email") }}</label>
+                        <multiselect v-model="value"
+                                     :options="options"
+                                     :searchable="false"
+                                     :close-on-select="false"
+                                     :show-labels="false"
+                                     class="input"
+                                     placeholder="Pick a value">
+                        </multiselect>
                         <div v-show="errors.has('email')" class="invalid-feedback">
                             {{ errors.first('email') }}
                         </div>
@@ -72,9 +73,15 @@
             modalsMixin,
             userMixin,
         ],
+        data() {
+            return {
+                options: [1, 2, 3],
+                value: '',
+            };
+        },
         methods: {
             hide() {
-                this.modalsIsShowLogin = false;
+                this.modalsIsShowSelectVuz = false;
                 this.userEmail = null;
                 this.userPassword = null;
             },

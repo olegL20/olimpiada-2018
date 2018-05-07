@@ -18,6 +18,16 @@ export default {
             return e.response;
         }
     },
+    async registerInvite(id, params) {
+        try {
+            console.log(id);
+            const { data, status } = await window.axios.post(`${url}/api/auth/register-by-invite/${id}`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
     async confirmationEmail(params) {
         try {
             const { data, status } = await window.axios.post(`${url}/api/auth/confirmation`, params);

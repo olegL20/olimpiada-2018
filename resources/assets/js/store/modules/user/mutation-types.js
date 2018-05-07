@@ -11,3 +11,5 @@ export const CURRENT_LANG = 'CURRENT_LANG';
 export const CREATED_AT = 'CREATED_AT';
 export const UPDATED_AT = 'UPDATED_AT';
 export const USER = 'USER';
+export const BACKGROUND = 'BACKGROUND';
+export const FIRST_STAGE = 'FIRST_STAGE';

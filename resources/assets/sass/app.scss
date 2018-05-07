@@ -7,6 +7,9 @@
 // Toastr
 @import "node_modules/cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr";
 
+// Multiselect
+@import 'node_modules/vue-multiselect/dist/vue-multiselect.min';
+
 .loading {
   position: absolute;
   top: 0;
@@ -62,12 +65,20 @@ body {
 
 #app {
   height: 100vh;
+}
+
+.background__white {
   background: url("/images/background.png");
+}
+
+.background__blue {
+  background: url("/images/background-blue.png"),
+              #b0d9f0;
 }
 
 // Navbar
 .navbar {
-  padding: 3.57rem 0;
+  padding: 3.57rem 0 0;
 }
 
 @import "components/buttons";
@@ -80,3 +91,4 @@ body {
 @import "components/notifications";
 @import "pages/homepage";
 @import "pages/confirmation";
+@import "pages/room";

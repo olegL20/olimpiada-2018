@@ -43,6 +43,7 @@
     "vue-base64-file-upload": "^1.0.4",
     "vue-i18n": "^7.3.3",
     "vue-meta": "^1.4.0",
+    "vue-multiselect": "^2.1.0",
     "vue-router": "^3.0.1",
     "vuejs-datepicker": "^1.1.2",
     "vuex": "^3.0.1",

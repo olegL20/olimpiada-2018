@@ -1,0 +1,115 @@
+.things {
+  height: calc(100vh - 11.8rem);
+  background: url("/images/things.png") no-repeat 50% 100%;
+  background-size: contain;
+}
+
+.calendar {
+  width: 100%;
+}
+
+.phone {
+  clear: both;
+  position: absolute;
+  bottom: -50px;
+  width: calc(100% - 30px);
+  height: calc(100vh - 30.6rem);
+  max-height: 20rem;
+  display: flex;
+  justify-content: center;
+  background-image: url("/images/phone.png");
+  background-size: cover;
+  transition: all ease-out 1s;
+
+  &__show {
+    height: 20rem;
+  }
+
+  .message {
+    &__new-message {
+      height: 12rem;
+      margin-left: -.75rem;
+      margin-top: 8rem;
+      width: 54%;
+      background: url("/images/new-message.png") no-repeat;
+      background-size: contain;
+    }
+
+    &__ann {
+      position: relative;
+      height: 12rem;
+      margin-top: 8rem;
+      width: 54%;
+      background: url("/images/ann.png") no-repeat;
+      background-size: contain;
+      animation-name: opacity;
+      animation-duration: 1s;
+      animation-timing-function: ease-in;
+    }
+
+    &__name {
+      color: $accent-light-color;
+      font-size: 24px;
+      font-weight: bold;
+      position: absolute;
+      top: 80px;
+      animation-name: opacity;
+      animation-duration: 1s;
+      animation-timing-function: ease-in;
+    }
+
+    &__angle {
+      opacity: 0;
+      background: url("/images/chat-angle.png") no-repeat;
+      height: 65px;
+      width: 58px;
+      position: absolute;
+      top: 0;
+      left: -22px;
+      background-size: contain;
+      animation-delay: 1s;
+      animation-name: opacity;
+      animation-duration: 1s;
+      animation-timing-function: ease-in;
+      animation-fill-mode: forwards;
+    }
+
+    &__quote {
+      opacity: 0;
+      background: $accent-color;
+      //height: 110px;
+      width: 500px;
+      position: absolute;
+      border-radius: 20px;
+      bottom: 168px;
+      left: -307px;
+      background-size: contain;
+      color: #fff;
+      padding: 13px;
+      animation-delay: 1s;
+      animation-name: opacity;
+      animation-duration: 1s;
+      animation-timing-function: ease-in;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .86;
+  }
+}
+
+@media (min-width: 1200px) {
+  .phone {
+    height: calc(100vh - 33.6rem);
+
+    &__show {
+      height: 20rem;
+    }
+  }
+}

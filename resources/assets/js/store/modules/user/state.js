@@ -12,4 +12,6 @@ export default {
     createdAt: null,
     updatedAt: null,
     user: null,
+    background: null,
+    firstStage: 0,
 };

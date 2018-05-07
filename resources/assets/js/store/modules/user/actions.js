@@ -8,8 +8,6 @@ export const login = async ({ dispatch, commit }, payload) => {
             token: json.data.data.token,
             user: json.data.data.user,
         });
-        // window.localStorage.setItem('token', json.data.data.token);
-        // window.localStorage.setItem('user', JSON.stringify(json.data.data.user));
 
         return json.data;
     }
@@ -17,10 +15,18 @@ export const login = async ({ dispatch, commit }, payload) => {
     throw json;
 };
 
-export const register = async ({ dispatch, commit }, payload) => {
-    const json = await user.register(payload);
+export const register = async ({ dispatch, commit }, { params }) => {
+    const json = await user.register(params);
 
-    console.log(json);
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const registerInvite = async ({ dispatch, commit }, { id, params }) => {
+    const json = await user.registerInvite(id, params);
 
     if (json.status === 200) {
         return json.data;
@@ -94,6 +100,7 @@ export default {
     login,
     logout,
     register,
+    registerInvite,
     passwordEmail,
     resetPassword,
     checkLogged,

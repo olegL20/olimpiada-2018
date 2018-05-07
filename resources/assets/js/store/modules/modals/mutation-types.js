@@ -1,3 +1,4 @@
-export const LOGIN = 'LOGIN';
 export const IS_SHOW_LOGIN = 'IS_SHOW_LOGIN';
 export const IS_SHOW_REGISTER = 'IS_SHOW_REGISTER';
+export const IS_SHOW_ADVICE = 'IS_SHOW_ADVICE';
+export const IS_SHOW_SELECT_VUZ = 'IS_SHOW_SELECT_VUZ';

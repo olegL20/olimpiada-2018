@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" ref="app" :class="userBackground">
         <user-header></user-header>
         <transition name="slide-fade" mode="out-in">
             <router-view></router-view>
@@ -9,8 +9,12 @@
 
 <script>
     import * as userHeader from '../components/Header.vue';
+    import userMixin from '../mixins/user';
 
     export default {
+        mixins: [
+            userMixin,
+        ],
         components: {
             userHeader,
         },
@@ -25,6 +29,9 @@
                 this.userCurrentLang = data;
                 this.$validator.locale = data;
             },
+        },
+        created() {
+            this.userBackground = 'background__white';
         },
     };
 </script>

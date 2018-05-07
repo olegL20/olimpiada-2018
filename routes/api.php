@@ -13,7 +13,6 @@ Route::group(['middleware' => 'api'], function () {
             Route::post('recovery', 'Auth\PasswordController@recovery');
             Route::post('reset', 'Auth\PasswordController@reset');
         });
-<<<<<<< HEAD
 
         Route::post('social-auth', 'Auth\AuthenticateController@social');
 
@@ -38,8 +37,6 @@ Route::group(['middleware' => 'api'], function () {
         'prefix' => 'user',
         'namespace' => 'User'
     ], function () {
-        // user routes
-=======
->>>>>>> password-broker
+        // user routes password-broker
     });
 });

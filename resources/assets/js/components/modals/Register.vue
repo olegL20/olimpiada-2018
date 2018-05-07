@@ -18,7 +18,7 @@
                                        type="text"
                                        id="name"
                                        name="name"
-                                       v-validate="'required'"
+                                       v-validate="'required|min:3'"
                                        :class="{ 'is-invalid input__danger': errors.has('name') }"
                                        :placeholder="$t('translation.name')"
                                        class="input">
@@ -35,7 +35,7 @@
                                        type="text"
                                        id="surname"
                                        name="surname"
-                                       v-validate="'required'"
+                                       v-validate="'required|min:3'"
                                        :class="{ 'is-invalid input__danger': errors.has('surname') }"
                                        :placeholder="$t('translation.surname')"
                                        class="input">
@@ -127,7 +127,6 @@
                                             image-class="image-circle image-circle__45 mt-3"
                                             input-class="input"
                                             :max-size="customImageMaxSize"
-                                            @size-exceeded="onSizeExceeded"
                                             @file="onFile"
                                             @load="onLoad"
                                             id="image"
@@ -202,13 +201,11 @@
         },
         methods: {
             async register() {
-                console.log('a');
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
-                    console.log('b');
                     try {
-                        await this.$store.dispatch('user/register', {
+                        const params = {
                             email: this.userEmail,
                             password: this.userPassword,
                             name: this.userName,
@@ -216,18 +213,48 @@
                             password_confirmation: this.userPasswordConfirmation,
                             birthday: window.luxon.DateTime.fromJSDate(this.userDateOfBirth).toFormat('yyyy-LL-dd'),
                             image: this.photo,
-                        });
+                        };
+                        if (this.$route.name === 'auth.invite') {
+                            await this.$store.dispatch('user/registerInvite', {
+                                id: this.$route.params.id,
+                                params,
+                            });
+                            this.$router.push({
+                                name: 'home',
+                            });
+                        } else {
+                            await this.$store.dispatch('user/register', {
+                                params,
+                            });
+                        }
                         this.hide();
+                        window.Cookies.set('first_stage', 2);
+                        this.userFirstStage = 2;
                     } catch (e) {
-                        this.$toast.error({
-                            title: this.$t('translation.error'),
-                            message: this.$t(e.message),
-                        });
+                        if (e.status === 404 && this.$route.name === 'auth.invite') {
+                            this.$toast.error({
+                                title: this.$t('translation.error'),
+                                message: this.$t('translation.inviteNotFound'),
+                            });
+                        } else {
+                            this.$toast.error({
+                                title: this.$t('translation.error'),
+                                message: this.$t(e.message),
+                            });
+                        }
+                        this.hide();
                     }
                 }
             },
             hide() {
-                this.modalsIsShowRegister = false;
+                if (this.$route.name === 'auth.invite') {
+                    this.modalsIsShowRegister = false;
+                    this.$router.push({
+                        name: 'home',
+                    });
+                } else {
+                    this.modalsIsShowRegister = false;
+                }
                 this.userName = null;
                 this.userSurname = null;
                 this.userDateOfBirth = null;

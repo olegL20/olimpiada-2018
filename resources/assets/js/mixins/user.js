@@ -20,6 +20,8 @@ export default {
             'passwordConfirmation',
             'currentLang',
             'dateOfBirth',
+            'background',
+            'firstStage',
         ]),
     },
 };

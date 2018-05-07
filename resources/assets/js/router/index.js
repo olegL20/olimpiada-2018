@@ -12,13 +12,23 @@ const routes = [
         name: 'home',
         component: () => import('../pages/Home.vue'),
     },
+    // {
+    //     path: '/confirmation/:id',
+    //     name: 'auth.confirmation',
+    //     component: () => import('../pages/auth/EmailConfirmation.vue'),
+    //     meta: {
+    //         guest: true,
+    //     },
+    // },
     {
-        path: '/confirmation/:id',
-        name: 'auth.confirmation',
-        component: () => import('../pages/auth/EmailConfirmation.vue'),
-        meta: {
-            guest: true,
-        },
+        path: '/room',
+        name: 'user.room',
+        component: () => import('../pages/Room.vue'),
+    },
+    {
+        path: '/invite/:id',
+        name: 'auth.invite',
+        component: () => import('../pages/Auth/RegisterInvite.vue'),
     },
 
     /**

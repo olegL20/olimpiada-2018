@@ -794,6 +794,14 @@ var _university = __webpack_require__(273);
 
 var _university2 = _interopRequireDefault(_university);
 
+var _modals = __webpack_require__(36);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+var _CreateUniversity = __webpack_require__(279);
+
+var _CreateUniversity2 = _interopRequireDefault(_CreateUniversity);
+
 var _constants = __webpack_require__(274);
 
 var constants = _interopRequireWildcard(_constants);
@@ -853,12 +861,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
-    mixins: [_university2.default],
+    mixins: [_modals2.default, _university2.default],
     components: {
         Vuetable: _Vuetable2.default,
-        VuetablePagination: _VuetablePagination2.default
+        VuetablePagination: _VuetablePagination2.default,
+        ModalCreateUniversity: _CreateUniversity2.default
     },
     methods: {
         deleteProductCategory: function deleteProductCategory() {
@@ -4713,77 +4736,98 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row mt-3" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerUniversity")))])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-12" },
-        [
-          _c("vuetable", {
-            ref: "listUniversities",
-            attrs: {
-              "api-url": "https://vuetable.ratiw.net/api/users",
-              fields: _vm.fields
-            },
-            scopedSlots: _vm._u([
+    _c(
+      "div",
+      { staticClass: "col-md-12" },
+      [
+        _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
+          _c("div", { staticClass: "col-md-10" }, [
+            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerUniversity")))])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 align-self-center" }, [
+            _c(
+              "a",
               {
-                key: "actions",
-                fn: function(props) {
-                  return [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-outline-secondary btn-md",
-                        attrs: { title: _vm.$t("translation.edit") }
-                      },
-                      [
-                        _c("i", {
-                          staticClass: "fa fa-pencil",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-outline-danger btn-md",
-                        attrs: {
-                          type: "button",
-                          title: _vm.$t("translation.remove")
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.deleteProductCategory(props.rowData.id)
-                          }
-                        }
-                      },
-                      [_c("i", { staticClass: "fa fa-trash-o" })]
-                    )
-                  ]
+                staticClass: "btn btn-success btn-md float-right",
+                attrs: { href: "javascript:" },
+                on: {
+                  click: function($event) {
+                    _vm.modalsIsShowCreateUniversity = true
+                  }
                 }
-              }
-            ])
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("button", { staticClass: "btn btn-success btn-md float-right" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.$t("translation.addUniversity")) +
-              "\n            "
-          )
-        ])
-      ])
-    ])
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.$t("translation.addUniversity")) +
+                    "\n                "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-12 mt-3" },
+            [
+              _c("vuetable", {
+                ref: "listUniversities",
+                attrs: {
+                  "api-url": "https://vuetable.ratiw.net/api/users",
+                  fields: _vm.fields
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "actions",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-secondary btn-md",
+                            attrs: { title: _vm.$t("translation.edit") }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-pencil",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-danger btn-md",
+                            attrs: {
+                              type: "button",
+                              title: _vm.$t("translation.remove")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.deleteProductCategory(props.rowData.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash-o" })]
+                        )
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-12" })
+        ]),
+        _vm._v(" "),
+        _c("modal-create-university")
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -4793,6 +4837,331 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-3700248b", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 279:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(23)
+/* script */
+var __vue_script__ = __webpack_require__(280)
+/* template */
+var __vue_template__ = __webpack_require__(281)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/modals/CreateUniversity.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-432e958c", Component.options)
+  } else {
+    hotAPI.reload("data-v-432e958c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 280:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _modals = __webpack_require__(36);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import userMixin from '../../../mixins/user';
+
+exports.default = {
+    mixins: [_modals2.default],
+    methods: {
+        hide: function hide() {
+            this.modalsIsShowCreateUniversity = false;
+            this.userEmail = null;
+            this.userPassword = null;
+        }
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 281:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowCreateUniversity
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "click-outside",
+                  rawName: "v-click-outside",
+                  value: _vm.hide,
+                  expression: "hide"
+                }
+              ],
+              staticClass: "modal__content"
+            },
+            [
+              _c("h4", { staticClass: "modal__head" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("translation.login")) +
+                    "\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal__body" }, [
+                _c("div", { staticClass: "form-group mt-4 mb-4" }, [
+                  _c("label", { attrs: { for: "email" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.email")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.userEmail,
+                        expression: "userEmail"
+                      },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|email",
+                        expression: "'required|email'"
+                      }
+                    ],
+                    staticClass: "input",
+                    class: {
+                      "is-invalid input__danger": _vm.errors.has("email")
+                    },
+                    attrs: {
+                      type: "text",
+                      id: "email",
+                      name: "email",
+                      placeholder: _vm.$t("translation.email")
+                    },
+                    domProps: { value: _vm.userEmail },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.userEmail = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("email"),
+                          expression: "errors.has('email')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("email")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group mb-4" }, [
+                  _c("label", { attrs: { for: "password" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.password")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.userPassword,
+                        expression: "userPassword"
+                      },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|min:8",
+                        expression: "'required|min:8'"
+                      }
+                    ],
+                    staticClass: "input",
+                    class: {
+                      "is-invalid input__danger": _vm.errors.has("password")
+                    },
+                    attrs: {
+                      type: "password",
+                      id: "password",
+                      name: "password",
+                      placeholder: _vm.$t("translation.password")
+                    },
+                    domProps: { value: _vm.userPassword },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.userPassword = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("password"),
+                          expression: "errors.has('password')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("password")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "btn-style btn-style-md btn-style-accent btn-style-center mb-4",
+                    attrs: { type: "button" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.enter")) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ])
+            ]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-432e958c", module.exports)
   }
 }
 

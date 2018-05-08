@@ -3,4 +3,5 @@ export default {
     isShowRegister: false,
     isShowAdvice: false,
     isShowSelectVuz: false,
+    isShowCreateUniversity: false,
 };

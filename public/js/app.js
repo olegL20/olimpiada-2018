@@ -12222,7 +12222,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'modals',
         prefix: true
-    }, ['isShowLogin', 'isShowRegister', 'isShowAdvice', 'isShowSelectVuz']))
+    }, ['isShowLogin', 'isShowRegister', 'isShowAdvice', 'isShowSelectVuz', 'isShowCreateUniversity']))
 };
 
 /***/ }),
@@ -23530,7 +23530,8 @@ exports.default = {
     isShowLogin: false,
     isShowRegister: false,
     isShowAdvice: false,
-    isShowSelectVuz: false
+    isShowSelectVuz: false,
+    isShowCreateUniversity: false
 };
 
 /***/ }),
@@ -62110,6 +62111,7 @@ var IS_SHOW_LOGIN = exports.IS_SHOW_LOGIN = 'IS_SHOW_LOGIN';
 var IS_SHOW_REGISTER = exports.IS_SHOW_REGISTER = 'IS_SHOW_REGISTER';
 var IS_SHOW_ADVICE = exports.IS_SHOW_ADVICE = 'IS_SHOW_ADVICE';
 var IS_SHOW_SELECT_VUZ = exports.IS_SHOW_SELECT_VUZ = 'IS_SHOW_SELECT_VUZ';
+var IS_SHOW_CREATE_UNIVERSITY = exports.IS_SHOW_CREATE_UNIVERSITY = 'IS_SHOW_CREATE_UNIVERSITY';
 
 /***/ }),
 /* 153 */

@@ -15,6 +15,7 @@ export default {
             'isShowRegister',
             'isShowAdvice',
             'isShowSelectVuz',
+            'isShowCreateUniversity',
         ]),
     },
 };

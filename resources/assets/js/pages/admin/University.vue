@@ -1,12 +1,19 @@
 <template>
     <div class="container">
-        <div class="row mt-3">
-            <div class="col-md-12">
-                <h1>{{ $t('translation.managerUniversity') }}</h1>
-            </div>
-        </div>
+
+    <div class="col-md-12">
         <div class="row border rounded bg-white pt-3 pb-3">
-            <div class="col-md-12">
+            <!--<div class="mt-3">-->
+                <div class="col-md-10">
+                    <h1>{{ $t('translation.managerUniversity') }}</h1>
+                </div>
+                <div class="col-md-2 align-self-center">
+                    <a href="javascript:" @click="modalsIsShowCreateUniversity = true" class="btn btn-success btn-md float-right">
+                        {{ $t("translation.addUniversity") }}
+                    </a>
+                </div>
+            <!--</div>-->
+            <div class="col-md-12 mt-3">
                 <vuetable ref="listUniversities"
                           api-url="https://vuetable.ratiw.net/api/users"
                           :fields="fields"
@@ -41,11 +48,18 @@
                 <!--</vuetable>-->
             </div>
             <div class="col-md-12">
-                <button class="btn btn-success btn-md float-right">
-                    {{ $t('translation.addUniversity') }}
-                </button>
+                <!--<button class="btn btn-success btn-md float-right">-->
+                    <!--{{ $t('translation.addUniversity') }}-->
+                <!--</button>-->
+                <!--<a href="javascript:" @click="modalsIsShowCreateUniversity = true" class="btn btn-success btn-md float-right">-->
+                    <!--{{ $t("translation.addUniversity") }}-->
+                <!--</a>-->
             </div>
         </div>
+
+        <modal-create-university></modal-create-university>
+
+    </div>
     </div>
 </template>
 
@@ -53,17 +67,21 @@
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
     import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue';
 
-    import UniversityFields from '../../mixins/formFields/university';
+    import MixinUniversityFields from '../../mixins/formFields/university';
+    import MixinModals from '../../mixins/modals';
+    import ModalCreateUniversity from '../../components/admin/modals/CreateUniversity.vue';
 
     import * as constants from '../../utils/constants';
 
     export default {
         mixins: [
-            UniversityFields,
+            MixinModals,
+            MixinUniversityFields,
         ],
         components: {
             Vuetable,
             VuetablePagination,
+            ModalCreateUniversity,
         },
         methods: {
             async deleteProductCategory() {

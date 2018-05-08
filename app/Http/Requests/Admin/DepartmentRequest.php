@@ -26,6 +26,7 @@ class DepartmentRequest extends FormRequest
         return [
             "name" => "required|string|max:255",
             "description" => "string|max:255",
+            'faculty_id' => 'required'
         ];
     }
 }

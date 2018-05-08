@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Major extends Model
 {
     protected $fillable = [
-        'faculty_id',
+        'department_id',
         'name',
         'description',
         'koef'

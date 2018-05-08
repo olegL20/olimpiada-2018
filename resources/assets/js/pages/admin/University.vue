@@ -16,7 +16,7 @@
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </button>
                         <button type="button" class="btn btn-outline-danger btn-sm"
-                            @click="deleteProductCategory(props.rowData.id)">
+                                @click="deleteProductCategory(props.rowData.id)">
                             {{ $t('translation.remove') }}
                         </button>
                     </template>
@@ -55,6 +55,8 @@
 
     import UniversityFields from '../../mixins/formFields/university';
 
+    import * as constants from '../../utils/constants';
+
     export default {
         mixins: [
             UniversityFields,
@@ -62,6 +64,33 @@
         components: {
             Vuetable,
             VuetablePagination,
+        },
+        methods: {
+            async deleteProductCategory() {
+                const result = await this.$swal({
+                    title: this.$t('translation.areYouSure'),
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: constants.BUTTON_COLOR_CONFIRM,
+                    confirmButtonText: this.$t('translation.yes'),
+                    cancelButtonColor: constants.BUTTON_COLOR_CANCEL,
+                    cancelButtonText: this.$t('translation.cancel'),
+                });
+                if (result.value) {
+                    try {
+                        // await this.$store.dispatch('admin/deleteProductCategory', {
+                        //     data: {
+                        //         product_category_id: productCategoryId,
+                        //     },
+                        // });
+                    } catch (e) {
+                        this.$toasted.show(this.$t(e.errors), {
+                            theme: 'primary',
+                            type: 'error',
+                        });
+                    }
+                }
+            },
         },
     };
 </script>

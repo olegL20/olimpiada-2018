@@ -78,6 +78,9 @@ export default {
         addUniversity: 'Додати університет',
         remove: 'Видалити',
         actions: 'Дії',
+        areYouSure: 'Ви впевнені',
+        yes: 'Так',
+        cancel: 'Скасувати',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

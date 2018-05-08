@@ -17,6 +17,7 @@ import i18n from './plugins/lang';
 import './plugins/toastr';
 import './plugins/validator';
 import './plugins/meta';
+import './plugins/swal';
 
 /**
  * Main App.

@@ -77,6 +77,7 @@ export default {
         managerUniversity: 'Менеджер університетів',
         addUniversity: 'Додати університет',
         remove: 'Видалити',
+        edit: 'Редагувати',
         actions: 'Дії',
         areYouSure: 'Ви впевнені',
         yes: 'Так',

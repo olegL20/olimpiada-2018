@@ -4737,7 +4737,10 @@ var render = function() {
                   return [
                     _c(
                       "button",
-                      { staticClass: "btn btn-outline-secondary btn-sm" },
+                      {
+                        staticClass: "btn btn-outline-secondary btn-md",
+                        attrs: { title: _vm.$t("translation.edit") }
+                      },
                       [
                         _c("i", {
                           staticClass: "fa fa-pencil",
@@ -4749,21 +4752,18 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-outline-danger btn-sm",
-                        attrs: { type: "button" },
+                        staticClass: "btn btn-outline-danger btn-md",
+                        attrs: {
+                          type: "button",
+                          title: _vm.$t("translation.remove")
+                        },
                         on: {
                           click: function($event) {
                             _vm.deleteProductCategory(props.rowData.id)
                           }
                         }
                       },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.$t("translation.remove")) +
-                            "\n                    "
-                        )
-                      ]
+                      [_c("i", { staticClass: "fa fa-trash-o" })]
                     )
                   ]
                 }

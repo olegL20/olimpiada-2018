@@ -12,12 +12,12 @@
                           :fields="fields"
                 >
                     <template slot="actions" slot-scope="props">
-                        <button class="btn btn-outline-secondary btn-sm">
+                        <button class="btn btn-outline-secondary btn-md" :title="$t('translation.edit')">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </button>
-                        <button type="button" class="btn btn-outline-danger btn-sm"
+                        <button type="button" class="btn btn-outline-danger btn-md" :title="$t('translation.remove')"
                                 @click="deleteProductCategory(props.rowData.id)">
-                            {{ $t('translation.remove') }}
+                            <i class="fa fa-trash-o"></i>
                         </button>
                     </template>
                 </vuetable>

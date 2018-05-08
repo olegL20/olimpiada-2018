@@ -15,8 +15,8 @@ class Major extends Model
     ];
 
 
-    public function faculty()
+    public function department()
     {
-        return $this->belongsTo(Faculty::class);
+        return $this->belongsTo(Department::class);
     }
 }

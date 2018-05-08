@@ -782,64 +782,69 @@ var _VuetablePagination = __webpack_require__(258);
 
 var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
 
+var _university = __webpack_require__(272);
+
+var _university2 = _interopRequireDefault(_university);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 exports.default = {
+    mixins: [_university2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -4606,11 +4611,50 @@ var render = function() {
         { staticClass: "col-md-12" },
         [
           _c("vuetable", {
-            ref: "vuetable",
+            ref: "listUniversities",
             attrs: {
               "api-url": "https://vuetable.ratiw.net/api/users",
-              fields: ["name", "email", "birthdate"]
-            }
+              fields: _vm.fields
+            },
+            scopedSlots: _vm._u([
+              {
+                key: "actions",
+                fn: function(props) {
+                  return [
+                    _c(
+                      "button",
+                      { staticClass: "btn btn-outline-secondary btn-sm" },
+                      [
+                        _c("i", {
+                          staticClass: "fa fa-pencil",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-danger btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteProductCategory(props.rowData.id)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("translation.remove")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ]
+                }
+              }
+            ])
           })
         ],
         1
@@ -4637,6 +4681,42 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-3700248b", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 272:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    data: function data() {
+        return {
+            fields: [{
+                name: 'name',
+                sortField: 'name',
+                title: this.$t('translation.name'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'email',
+                sortField: 'email',
+                title: this.$t('translation.email'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: '__slot:actions',
+                title: this.$t('translation.actions'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }]
+        };
+    }
+};
 
 /***/ })
 

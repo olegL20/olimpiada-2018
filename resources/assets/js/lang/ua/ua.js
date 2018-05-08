@@ -76,6 +76,8 @@ export default {
         'майбутньому студенту у вигляді захопливого квесту',
         managerUniversity: 'Менеджер університетів',
         addUniversity: 'Додати університет',
+        remove: 'Видалити',
+        actions: 'Дії',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

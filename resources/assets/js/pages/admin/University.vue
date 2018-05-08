@@ -7,10 +7,20 @@
         </div>
         <div class="row border rounded bg-white pt-3 pb-3">
             <div class="col-md-12">
-                <vuetable ref="vuetable"
+                <vuetable ref="listUniversities"
                           api-url="https://vuetable.ratiw.net/api/users"
-                          :fields="['name', 'email', 'birthdate']"
-                ></vuetable>
+                          :fields="fields"
+                >
+                    <template slot="actions" slot-scope="props">
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-sm"
+                            @click="deleteProductCategory(props.rowData.id)">
+                            {{ $t('translation.remove') }}
+                        </button>
+                    </template>
+                </vuetable>
                 <!--<vuetable ref="productCategories"-->
                           <!--api-url="/api/v1/default/list"-->
                           <!--data-path="data.product_categories"-->
@@ -27,15 +37,7 @@
                     <!--<template slot="parent_id" slot-scope="props">-->
                         <!--{{ props.rowData.parent_id !== null ? props.rowData.parent_id : $t('translation.null') }}-->
                     <!--</template>-->
-                    <!--<template slot="actions" slot-scope="props">-->
-                        <!--<b-button size="sm" variant="outline-secondary" @click="showModalPutProductCategory(props.rowData)">-->
-                            <!--<i class="fa fa-pencil" aria-hidden="true"></i>-->
-                        <!--</b-button>-->
-                        <!--<button type="button" class="btn btn-outline-danger btn-sm"-->
-                                <!--@click="deleteProductCategory(props.rowData.id)">-->
-                            <!--{{ $t('translation.remove') }}-->
-                        <!--</button>-->
-                    <!--</template>-->
+
                 <!--</vuetable>-->
             </div>
             <div class="col-md-12">
@@ -51,7 +53,12 @@
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
     import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue';
 
+    import UniversityFields from '../../mixins/formFields/university';
+
     export default {
+        mixins: [
+            UniversityFields,
+        ],
         components: {
             Vuetable,
             VuetablePagination,

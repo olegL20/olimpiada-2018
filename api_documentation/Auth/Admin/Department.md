@@ -18,6 +18,7 @@
                 "id": 3,
                 "name": "department 1",
                 "description": "department description 1",
+                "faculty_id": 1,
                 "created_at": "2018-05-04 09:49:46",
                 "updated_at": "2018-05-04 09:49:46"
             },
@@ -25,6 +26,7 @@
                 "id": 4,
                 "name": "department 2",
                 "description": "department description 2",
+                "faculty_id": 1,
                 "created_at": "2018-05-04 09:49:47",
                 "updated_at": "2018-05-04 09:49:47"
             }
@@ -59,6 +61,7 @@
     "data": {
         "id": 3,
         "name": "department,",
+        "faculty_id": 1,
         "description": "department description 1",
         "created_at": "2018-05-04 09:49:46",
         "updated_at": "2018-05-04 09:49:46"
@@ -110,6 +113,7 @@ ___
     "data": {
         "name": "department,",
         "description": "department description 1",
+        "faculty_id": 1,
         "updated_at": "2018-05-04 13:23:49",
         "created_at": "2018-05-04 13:23:49",
         "id": 5
@@ -142,6 +146,7 @@ ___
         "id": 3,
         "name": "department name",
         "description": "department description",
+        "faculty_id": 1,
         "created_at": "2018-05-04 09:49:46",
         "updated_at": "2018-05-04 13:25:27"
     },

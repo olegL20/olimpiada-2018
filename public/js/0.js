@@ -4596,7 +4596,7 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row mt-3" }, [
       _c("div", { staticClass: "col-md-12" }, [
-        _c("h1", [_vm._v(_vm._s(_vm.$t("translation.listUniversity")))])
+        _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerUniversity")))])
       ])
     ]),
     _vm._v(" "),

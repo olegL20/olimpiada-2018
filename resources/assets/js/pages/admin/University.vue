@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row mt-3">
             <div class="col-md-12">
-                <h1>{{ $t('translation.listUniversity') }}</h1>
+                <h1>{{ $t('translation.managerUniversity') }}</h1>
             </div>
         </div>
         <div class="row border rounded bg-white pt-3 pb-3">

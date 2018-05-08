@@ -63,12 +63,9 @@
                 </template>
 
                 <template v-else>
-                    <a href="javascript:" @click="modalsIsShowRegister = true" class="link link__accent mr-3">
-                        {{ $t("translation.register") }}
-                    </a>
-                    <a href="javascript:" @click="modalsIsShowLogin = true" class="link link__accent">
-                        {{ $t("translation.login") }}
-                    </a>
+                    <router-link :to="{ name: 'admin.university' }" class="link link__accent mr-3">
+                        {{ $t('translation.managerUniversity') }}
+                    </router-link>
                 </template>
             </div>
         </div>

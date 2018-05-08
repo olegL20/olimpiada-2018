@@ -63947,7 +63947,7 @@ exports.default = {
         acquaintWithStudentLife: 'спробувати самому зібрати потрібні документи документи та відправити їх' + 'у приймальнукомісію',
         annHello: 'Привіт! Я вчуся на другому курсі за спеціальністю психолог, тому легко знаходжу спільну мову' + ' з людьми. Думаю і з тобою ми порозуміємося. Я допоможу тобі в усьому розібратися. Давай знайомитися?',
         beforeEveryone: 'Перед кожним школярем рано чи пізно постає питання вибору' + 'професії та вступу до ВНЗ. Цей сервіс допоможе' + 'майбутньому студенту у вигляді захопливого квесту',
-        listUniversity: 'Список університетів',
+        managerUniversity: 'Менеджер університетів',
         addUniversity: 'Додати університет'
     },
     messages: {
@@ -71374,9 +71374,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
 
 exports.default = {
     mixins: [_modals2.default, _user2.default],
@@ -71571,40 +71568,15 @@ var render = function() {
                   ]
                 : [
                     _c(
-                      "a",
+                      "router-link",
                       {
                         staticClass: "link link__accent mr-3",
-                        attrs: { href: "javascript:" },
-                        on: {
-                          click: function($event) {
-                            _vm.modalsIsShowRegister = true
-                          }
-                        }
+                        attrs: { to: { name: "admin.university" } }
                       },
                       [
                         _vm._v(
                           "\n                    " +
-                            _vm._s(_vm.$t("translation.register")) +
-                            "\n                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "link link__accent",
-                        attrs: { href: "javascript:" },
-                        on: {
-                          click: function($event) {
-                            _vm.modalsIsShowLogin = true
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(_vm.$t("translation.login")) +
+                            _vm._s(_vm.$t("translation.managerUniversity")) +
                             "\n                "
                         )
                       ]

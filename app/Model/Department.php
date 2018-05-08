@@ -9,8 +9,14 @@ class Department extends Model
 {
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'faculty_id',
     ];
+
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class);
+    }
 
     public function majors()
     {

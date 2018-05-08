@@ -1,6 +1,6 @@
 <template>
     <div id="app" ref="app" :class="userBackground">
-        <user-header></user-header>
+        <user-header v-if="false"></user-header>
         <transition name="slide-fade" mode="out-in">
             <router-view></router-view>
         </transition>

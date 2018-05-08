@@ -35,6 +35,11 @@ const routes = [
         name: 'admin.login',
         component: () => import('../pages/admin/Login.vue'),
     },
+    {
+        path: '/admin/university',
+        name: 'admin.university',
+        component: () => import('../pages/admin/University.vue'),
+    },
 
     /**
      * Must be the last entry in array.

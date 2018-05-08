@@ -14544,19 +14544,19 @@ body {
   padding: 3.57rem 0 0;
 }
 
-.btn-accent {
+.btn-style-accent {
   color: #fff;
   background-color: #007add;
   border-bottom: 0.29rem solid #005eaa;
 }
 
-.btn-error {
+.btn-style-error {
   color: #fff;
   background-color: #dc3545;
   border-bottom: 0.29rem solid #bd2130;
 }
 
-.btn-md {
+.btn-style-md {
   font-size: .93rem;
   border-radius: .714rem;
   font-weight: 600;
@@ -14564,7 +14564,7 @@ body {
   padding: .5rem 2.57rem;
 }
 
-.btn-center {
+.btn-style-center {
   margin: 0 auto;
   display: block;
 }

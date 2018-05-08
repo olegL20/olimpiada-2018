@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="row">
-                            <button type="button" @click="myChoice" class="btn btn-md btn-error mt-5 mx-auto">{{ $t("translation.myLifeMyRules") }} (0б)</button>
+                            <button type="button" @click="myChoice" class="btn-style btn-style-md btn-style-error mt-5 mx-auto">{{ $t("translation.myLifeMyRules") }} (0б)</button>
                         </div>
 
                     </div>

@@ -39,7 +39,7 @@
                         </div>
                     </div>
 
-                    <button @click="login" type="button" class="btn btn-md btn-accent btn-center mb-4">
+                    <button @click="login" type="button" class="btn-style btn-style-md btn-style-accent btn-style-center mb-4">
                         {{ $t("translation.enter") }}
                     </button>
 

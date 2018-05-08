@@ -10,7 +10,8 @@ class Major extends Model
     protected $fillable = [
         'faculty_id',
         'name',
-        'description'
+        'description',
+        'koef'
     ];
 
 

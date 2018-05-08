@@ -4,9 +4,12 @@
 
 
 Защищенные роуты
- - [University](Auth/Admin/University.md) 
- - [Faculty](Auth/Admin/Faculty.md) 
- - [Invite](Auth/Admin/Invite.md) 
+ - Admin prefix `admin`
+     - [University](Auth/Admin/University.md) 
+     - [Faculty](Auth/Admin/Faculty.md) 
+     - [Invite](Auth/Admin/Invite.md) 
+ - User prefix `user`
+     - [University](Auth/User/University.md) 
 
 
 ### Типы ответов

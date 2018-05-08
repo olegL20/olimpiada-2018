@@ -37,6 +37,6 @@ Route::group(['middleware' => 'api'], function () {
         'prefix' => 'user',
         'namespace' => 'User'
     ], function () {
-        // user routes password-broker
+        Route::resource('university', 'UniversityController');
     });
 });

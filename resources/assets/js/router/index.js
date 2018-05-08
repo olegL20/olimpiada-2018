@@ -30,6 +30,11 @@ const routes = [
         name: 'auth.invite',
         component: () => import('../pages/Auth/RegisterInvite.vue'),
     },
+    {
+        path: '/admin/login',
+        name: 'admin.login',
+        component: () => import('../pages/admin/Login.vue'),
+    },
 
     /**
      * Must be the last entry in array.

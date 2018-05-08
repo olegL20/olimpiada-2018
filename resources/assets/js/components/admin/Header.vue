@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar-custom">
+    <nav class="navbar">
         <div class="container">
             <router-link :to="{ name: 'home' }" class="mb-3">
                 <img src="/images/logo.png" alt="BigFut">
@@ -76,8 +76,8 @@
 </template>
 
 <script>
-    import userMixin from '../mixins/user';
-    import modalsMixin from '../mixins/modals';
+    import userMixin from '../../mixins/user';
+    import modalsMixin from '../../mixins/modals';
 
     export default {
         mixins: [

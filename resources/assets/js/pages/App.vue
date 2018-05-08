@@ -1,6 +1,7 @@
 <template>
     <div id="app" ref="app" :class="userBackground">
         <user-header v-if="false"></user-header>
+        <admin-header v-else ></admin-header>
         <transition name="slide-fade" mode="out-in">
             <router-view></router-view>
         </transition>
@@ -9,6 +10,7 @@
 
 <script>
     import * as userHeader from '../components/Header.vue';
+    import * as adminHeader from '../components/admin/Header.vue';
     import userMixin from '../mixins/user';
 
     export default {
@@ -17,6 +19,7 @@
         ],
         components: {
             userHeader,
+            adminHeader,
         },
         computed: {
             languages() {

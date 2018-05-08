@@ -70587,6 +70587,10 @@ var _Header = __webpack_require__(179);
 
 var userHeader = _interopRequireWildcard(_Header);
 
+var _Header2 = __webpack_require__(269);
+
+var adminHeader = _interopRequireWildcard(_Header2);
+
 var _user = __webpack_require__(35);
 
 var _user2 = _interopRequireDefault(_user);
@@ -70595,20 +70599,11 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 exports.default = {
     mixins: [_user2.default],
     components: {
-        userHeader: userHeader
+        userHeader: userHeader,
+        adminHeader: adminHeader
     },
     computed: {
         languages: function languages() {
@@ -70625,7 +70620,16 @@ exports.default = {
     created: function created() {
         this.userBackground = 'background__white';
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 175 */
@@ -70871,7 +70875,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "navbar" }, [
+  return _c("nav", { staticClass: "navbar-custom" }, [
     _c(
       "div",
       { staticClass: "container" },
@@ -71107,7 +71111,7 @@ var render = function() {
     "div",
     { ref: "app", class: _vm.userBackground, attrs: { id: "app" } },
     [
-      false ? _c("user-header") : _vm._e(),
+      false ? _c("user-header") : _c("admin-header"),
       _vm._v(" "),
       _c(
         "transition",
@@ -71134,6 +71138,514 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(34)
+/* script */
+var __vue_script__ = __webpack_require__(270)
+/* template */
+var __vue_template__ = __webpack_require__(271)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/Header.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5a577484", Component.options)
+  } else {
+    hotAPI.reload("data-v-5a577484", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 270 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(15);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(16);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _user = __webpack_require__(35);
+
+var _user2 = _interopRequireDefault(_user);
+
+var _modals = __webpack_require__(59);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    mixins: [_modals2.default, _user2.default],
+    data: function data() {
+        return {
+            isShowUniversityDetails: false
+        };
+    },
+
+    methods: {
+        logout: function logout() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$store.dispatch('user/logout');
+
+                            case 2:
+
+                                _this.$router.push({
+                                    name: 'auth.login'
+                                });
+
+                            case 3:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this);
+            }))();
+        }
+    }
+};
+
+/***/ }),
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("nav", { staticClass: "navbar" }, [
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c(
+          "router-link",
+          { staticClass: "mb-3", attrs: { to: { name: "home" } } },
+          [_c("img", { attrs: { src: "/images/logo.png", alt: "BigFut" } })]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "pull-right" },
+          [
+            _vm.userLogged
+              ? [
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-inline-block mb-3 mr-4 notification__parent"
+                    },
+                    [
+                      _c("strong", [
+                        _vm._v(_vm._s(_vm.$t("translation.vnz")) + ":")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.isShowUniversityDetails,
+                              expression: "isShowUniversityDetails"
+                            }
+                          ],
+                          staticClass: "notification__child"
+                        },
+                        [
+                          _c("span", { staticClass: "row" }, [
+                            _c("span", { staticClass: "col-4" }, [
+                              _c("img", {
+                                staticClass:
+                                  "image-circle image-circle__60 mt-3",
+                                attrs: { src: _vm.userUser.image.source }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "col" }, [
+                              _c("p", { staticClass: "mb-0" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("translation.faculty")) + ":"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(0),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "mt-2 mb-0" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("translation.speciality")) + ":"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(1)
+                            ])
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "link link__accent-dark",
+                          attrs: { href: "javascript:" },
+                          on: {
+                            mouseover: function($event) {
+                              _vm.isShowUniversityDetails = true
+                            },
+                            mouseleave: function($event) {
+                              _vm.isShowUniversityDetails = false
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Сумський державний університет\n                    "
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "d-inline-block" }, [
+                    _c("strong", [
+                      _vm._v(_vm._s(_vm.$t("translation.welcome")) + ":")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { href: "javascript:" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.userUser.name) +
+                            "\n                        "
+                        ),
+                        _vm.userUser.image.source
+                          ? [
+                              _c("img", {
+                                staticClass:
+                                  "image-circle image-circle__45 ml-2 mb-3",
+                                attrs: { src: _vm.userUser.image.source }
+                              })
+                            ]
+                          : [
+                              _c("img", {
+                                staticClass:
+                                  "image-circle image-circle__45 ml-2 mb-3",
+                                attrs: { src: "/images/no-photo.png" }
+                              })
+                            ]
+                      ],
+                      2
+                    )
+                  ])
+                ]
+              : _vm.$route.name === "user.room"
+                ? [
+                    _c("span", { staticClass: "d-inline-block" }, [
+                      _c("strong", [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("translation.welcome")) +
+                            ":\n                        " +
+                            _vm._s(_vm.$t("translation.entrant")) +
+                            "!\n                    "
+                        )
+                      ])
+                    ])
+                  ]
+                : [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { href: "javascript:" },
+                        on: {
+                          click: function($event) {
+                            _vm.modalsIsShowRegister = true
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.$t("translation.register")) +
+                            "\n                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "link link__accent",
+                        attrs: { href: "javascript:" },
+                        on: {
+                          click: function($event) {
+                            _vm.modalsIsShowLogin = true
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.$t("translation.login")) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  ]
+          ],
+          2
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("p", { staticClass: "dark-color lh-text mb-0" }, [_vm._v("ЕЛіТ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("p", { staticClass: "dark-color lh-text mb-0" }, [
+        _vm._v("Прикладна математика")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5a577484", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

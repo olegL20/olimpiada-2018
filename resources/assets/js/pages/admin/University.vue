@@ -3,20 +3,19 @@
 
     <div class="col-md-12">
         <div class="row border rounded bg-white pt-3 pb-3">
-            <!--<div class="mt-3">-->
-                <div class="col-md-10">
-                    <h1>{{ $t('translation.managerUniversity') }}</h1>
-                </div>
-                <div class="col-md-2 align-self-center">
-                    <a href="javascript:" @click="modalsIsShowCreateUniversity = true" class="btn btn-success btn-md float-right">
-                        {{ $t("translation.addUniversity") }}
-                    </a>
-                </div>
-            <!--</div>-->
+            <div class="col-md-10">
+                <h1>{{ $t('translation.managerUniversity') }}</h1>
+            </div>
+            <div class="col-md-2 align-self-center">
+                <a href="javascript:" @click="modalsIsShowCreateUniversity = true" class="btn btn-primary btn-md float-right">
+                    {{ $t("translation.addUniversity") }}
+                </a>
+            </div>
             <div class="col-md-12 mt-3">
                 <vuetable ref="listUniversities"
                           api-url="https://vuetable.ratiw.net/api/users"
                           :fields="fields"
+                          pagination-path = ""
                 >
                     <template slot="actions" slot-scope="props">
                         <button class="btn btn-outline-secondary btn-md" :title="$t('translation.edit')">
@@ -28,32 +27,6 @@
                         </button>
                     </template>
                 </vuetable>
-                <!--<vuetable ref="productCategories"-->
-                          <!--api-url="/api/v1/default/list"-->
-                          <!--data-path="data.product_categories"-->
-                          <!--:fields="fields"-->
-                          <!--pagination-path = ""-->
-                          <!--:http-options="{-->
-                                      <!--headers: {-->
-                                          <!--Authorization: `Bearer ${userToken}`,-->
-                                      <!--},-->
-                                  <!--}">-->
-                    <!--<template slot="value" slot-scope="props">-->
-                        <!--{{ props.rowData.value !== null ? props.rowData.value : $t('translation.null') }}-->
-                    <!--</template>-->
-                    <!--<template slot="parent_id" slot-scope="props">-->
-                        <!--{{ props.rowData.parent_id !== null ? props.rowData.parent_id : $t('translation.null') }}-->
-                    <!--</template>-->
-
-                <!--</vuetable>-->
-            </div>
-            <div class="col-md-12">
-                <!--<button class="btn btn-success btn-md float-right">-->
-                    <!--{{ $t('translation.addUniversity') }}-->
-                <!--</button>-->
-                <!--<a href="javascript:" @click="modalsIsShowCreateUniversity = true" class="btn btn-success btn-md float-right">-->
-                    <!--{{ $t("translation.addUniversity") }}-->
-                <!--</a>-->
             </div>
         </div>
 
@@ -96,7 +69,7 @@
                 });
                 if (result.value) {
                     try {
-                        // await this.$store.dispatch('admin/deleteProductCategory', {
+                        // await this.$store.dispatch('admin/deleteUniversity', {
                         //     data: {
                         //         product_category_id: productCategoryId,
                         //     },

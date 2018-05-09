@@ -63958,7 +63958,21 @@ exports.default = {
         actions: 'Дії',
         areYouSure: 'Ви впевнені',
         yes: 'Так',
-        cancel: 'Скасувати'
+        cancel: 'Скасувати',
+        universityName: 'Ім\'я',
+        universityNamePlaceholder: 'Ім\'я',
+        universityDescription: 'Опис',
+        universityDescriptionPlaceholder: 'Опис',
+        universityAddress: 'Адреса',
+        universityAddressPlaceholder: 'Адреса',
+        universityEmail: 'E-mail',
+        universityEmailPlaceholder: 'example@gmail.com',
+        universityPhone: 'Телефон',
+        universityPhonePlaceholder: '+380-01-222-03',
+        universitySite: 'web-сайт',
+        universitySitePlaceholder: 'URL',
+        save: 'Зберегти',
+        infoAboutUniversity: 'Інформація про університет'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'

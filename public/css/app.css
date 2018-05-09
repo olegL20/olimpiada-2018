@@ -14544,6 +14544,10 @@ body {
   padding: 3.57rem 0 0;
 }
 
+.resize-none {
+  resize: none;
+}
+
 .btn-style-accent {
   color: #fff;
   background-color: #007add;

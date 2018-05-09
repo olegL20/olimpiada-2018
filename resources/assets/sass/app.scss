@@ -81,6 +81,11 @@ body {
   padding: 3.57rem 0 0;
 }
 
+// Text Area
+.resize-none {
+  resize: none;
+}
+
 @import "components/buttons";
 @import "components/links";
 @import "components/lists";

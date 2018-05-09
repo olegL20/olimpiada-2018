@@ -1,46 +1,83 @@
 <template>
     <transition name="slide-fade" mode="out-in">
         <div v-if="modalsIsShowCreateUniversity" class="modal__wrap">
-            <div v-click-outside="hide" class="modal__content">
+            <div v-click-outside="hide" class="modal__content modal__md">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.login") }}
+                    {{ $t("translation.infoAboutUniversity") }}
                 </h4>
 
                 <div class="modal__body">
-
-                    <div class="form-group mt-4 mb-4">
-                        <label for="email">{{ $t("translation.email") }}</label>
-                        <input v-model="userEmail"
-                               type="text"
-                               id="email"
-                               name="email"
-                               v-validate="'required|email'"
-                               :class="{ 'is-invalid input__danger': errors.has('email') }"
-                               :placeholder="$t('translation.email')"
-                               class="input">
-                        <div v-show="errors.has('email')" class="invalid-feedback">
+                    <div class="form-group">
+                        <label for="universityName">{{ $t("translation.universityName") }}</label>
+                        <input type="text" class="form-control" id="universityName" aria-describedby="universityNameHelp"
+                               :placeholder="$t('translation.universityNamePlaceholder')"
+                               name="universityName"
+                               v-validate="'required|max:255'"
+                               v-model="universityName">
+                        <small id="universityNameHelp" class="form-text text-danger" v-show="errors.has('universityName')">
+                            {{ errors.first('universityName') }}
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="universityDescription">{{ $t("translation.universityDescription") }}</label>
+                        <textarea type="text" class="form-control resize-none" id="universityDescription" aria-describedby="universityDescriptionHelp"
+                               :placeholder="$t('translation.universityDescriptionPlaceholder')"
+                               name="universityDescription"
+                               v-validate="'required'"
+                               v-model="universityDescription">
+                        </textarea>
+                        <small id="universityDescriptionHelp" class="form-text text-danger" v-show="errors.has('universityDescription')">
+                            {{ errors.first('universityDescription') }}
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="universityAddress">{{ $t("translation.universityAddress") }}</label>
+                        <input type="text" class="form-control" id="universityAddress" aria-describedby="universityAddress"
+                               :placeholder="$t('translation.universityAddressPlaceholder')"
+                               name="universityAddress"
+                               v-validate="'required|max:255'"
+                               v-model="universityAddress">
+                        <small id="universityAddressHelp" class="form-text text-danger" v-show="errors.has('universityAddress')">
+                            {{ errors.first('universityAddress') }}
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="universityEmail">{{ $t("translation.universityEmail") }}</label>
+                        <input type="email" class="form-control" id="universityEmail" aria-describedby="universityEmailHelp"
+                               :placeholder="$t('translation.universityEmailPlaceholder')"
+                               name="universityEmail"
+                               v-validate="'required|email|max:255'"
+                               v-model="universityEmail">
+                        <small id="universityEmailHelp" class="form-text text-danger" v-show="errors.has('email')">
                             {{ errors.first('email') }}
-                        </div>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="universityPhone">{{ $t("translation.universityPhone") }}</label>
+                        <input type="email" class="form-control" id="universityPhone" aria-describedby="universityPhoneHelp"
+                               :placeholder="$t('translation.universityPhonePlaceholder')"
+                               name="universityPhone"
+                               v-validate="'required'"
+                               v-model="universityPhone">
+                        <small id="universityPhoneHelp" class="form-text text-danger" v-show="errors.has('phone')">
+                            {{ errors.first('phone') }}
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="universitySite">{{ $t("translation.universitySite") }}</label>
+                        <input type="email" class="form-control" id="universitySite" aria-describedby="universitySiteHelp"
+                               :placeholder="$t('translation.universitySitePlaceholder')"
+                               name="universitySite"
+                               v-validate="'required|url|max:255'"
+                               v-model="universitySite">
+                        <small id="universitySiteHelp" class="form-text text-danger" v-show="errors.has('universitySite')">
+                            {{ errors.first('universitySite') }}
+                        </small>
                     </div>
 
-                    <div class="form-group mb-4">
-                        <label for="password">{{ $t("translation.password") }}</label>
-                        <input v-model="userPassword"
-                               type="password"
-                               id="password"
-                               name="password"
-                               v-validate="'required|min:8'"
-                               :class="{ 'is-invalid input__danger': errors.has('password') }"
-                               :placeholder="$t('translation.password')"
-                               class="input">
-                        <div v-show="errors.has('password')" class="invalid-feedback">
-                            {{ errors.first('password') }}
-                        </div>
-                    </div>
-
-                    <button type="button" class="btn-style btn-style-md btn-style-accent btn-style-center mb-4">
-                        {{ $t("translation.enter") }}
+                    <button type="button" class="btn btn-md btn-success float-right mt-4">
+                        {{ $t("translation.save") }}
                     </button>
 
                 </div>
@@ -52,40 +89,27 @@
 
 <script>
     import modalsMixin from '../../../mixins/modals';
-    // import userMixin from '../../../mixins/user';
 
     export default {
         mixins: [
             modalsMixin,
-            // userMixin,
         ],
+        data() {
+            return {
+                universityName: '',
+                universityDescription: '',
+                universityAddress: '',
+                universityEmail: '',
+                universityPhone: '',
+                universitySite: '',
+            };
+        },
         methods: {
             hide() {
                 this.modalsIsShowCreateUniversity = false;
                 this.userEmail = null;
                 this.userPassword = null;
             },
-            // async login() {
-            //     const valid = await this.$validator.validateAll();
-            //
-            //     if (valid) {
-            //         try {
-            //             await this.$store.dispatch('user/login', {
-            //                 email: this.userEmail,
-            //                 password: this.userPassword,
-            //             });
-            //             window.Cookies.set('first_stage', 3);
-            //             this.userFirstStage = 3;
-            //             this.hide();
-            //         } catch (e) {
-            //             this.hide();
-            //             this.$toast.error({
-            //                 title: this.$t('translation.error'),
-            //                 message: this.$t(e.data.message),
-            //             });
-            //         }
-            //     }
-            // },
         },
     };
 </script>

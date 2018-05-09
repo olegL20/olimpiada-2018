@@ -8,7 +8,7 @@ var normalizeComponent = __webpack_require__(23)
 /* script */
 var __vue_script__ = __webpack_require__(231)
 /* template */
-var __vue_template__ = __webpack_require__(275)
+var __vue_template__ = __webpack_require__(278)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -798,11 +798,11 @@ var _modals = __webpack_require__(36);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _CreateUniversity = __webpack_require__(279);
+var _CreateUniversity = __webpack_require__(274);
 
 var _CreateUniversity2 = _interopRequireDefault(_CreateUniversity);
 
-var _constants = __webpack_require__(274);
+var _constants = __webpack_require__(277);
 
 var constants = _interopRequireWildcard(_constants);
 
@@ -810,33 +810,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -909,7 +882,7 @@ exports.default = {
 
                                 if (result.value) {
                                     try {
-                                        // await this.$store.dispatch('admin/deleteProductCategory', {
+                                        // await this.$store.dispatch('admin/deleteUniversity', {
                                         //     data: {
                                         //         product_category_id: productCategoryId,
                                         //     },
@@ -4717,140 +4690,12 @@ exports.default = {
 /***/ 274:
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var BUTTON_COLOR_CONFIRM = exports.BUTTON_COLOR_CONFIRM = '#3085d6';
-var BUTTON_COLOR_CANCEL = exports.BUTTON_COLOR_CANCEL = '#d33d33';
-
-/***/ }),
-
-/***/ 275:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: "col-md-12" },
-      [
-        _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
-          _c("div", { staticClass: "col-md-10" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerUniversity")))])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 align-self-center" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-success btn-md float-right",
-                attrs: { href: "javascript:" },
-                on: {
-                  click: function($event) {
-                    _vm.modalsIsShowCreateUniversity = true
-                  }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.$t("translation.addUniversity")) +
-                    "\n                "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-12 mt-3" },
-            [
-              _c("vuetable", {
-                ref: "listUniversities",
-                attrs: {
-                  "api-url": "https://vuetable.ratiw.net/api/users",
-                  fields: _vm.fields
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "actions",
-                    fn: function(props) {
-                      return [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-outline-secondary btn-md",
-                            attrs: { title: _vm.$t("translation.edit") }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-pencil",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-outline-danger btn-md",
-                            attrs: {
-                              type: "button",
-                              title: _vm.$t("translation.remove")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.deleteProductCategory(props.rowData.id)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-trash-o" })]
-                        )
-                      ]
-                    }
-                  }
-                ])
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-12" })
-        ]),
-        _vm._v(" "),
-        _c("modal-create-university")
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3700248b", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 279:
-/***/ (function(module, exports, __webpack_require__) {
-
 var disposed = false
 var normalizeComponent = __webpack_require__(23)
 /* script */
-var __vue_script__ = __webpack_require__(280)
+var __vue_script__ = __webpack_require__(275)
 /* template */
-var __vue_template__ = __webpack_require__(281)
+var __vue_template__ = __webpack_require__(276)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4890,7 +4735,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 280:
+/***/ 275:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4906,10 +4751,19 @@ var _modals2 = _interopRequireDefault(_modals);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import userMixin from '../../../mixins/user';
-
 exports.default = {
     mixins: [_modals2.default],
+    data: function data() {
+        return {
+            universityName: '',
+            universityDescription: '',
+            universityAddress: '',
+            universityEmail: '',
+            universityPhone: '',
+            universitySite: ''
+        };
+    },
+
     methods: {
         hide: function hide() {
             this.modalsIsShowCreateUniversity = false;
@@ -4969,10 +4823,47 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
-/***/ 281:
+/***/ 276:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4993,61 +4884,256 @@ var render = function() {
                   expression: "hide"
                 }
               ],
-              staticClass: "modal__content"
+              staticClass: "modal__content modal__md"
             },
             [
               _c("h4", { staticClass: "modal__head" }, [
                 _vm._v(
                   "\n                " +
-                    _vm._s(_vm.$t("translation.login")) +
+                    _vm._s(_vm.$t("translation.infoAboutUniversity")) +
                     "\n            "
                 )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal__body" }, [
-                _c("div", { staticClass: "form-group mt-4 mb-4" }, [
-                  _c("label", { attrs: { for: "email" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.email")))
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityName" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityName")))
                   ]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.userEmail,
-                        expression: "userEmail"
-                      },
-                      {
                         name: "validate",
                         rawName: "v-validate",
-                        value: "required|email",
-                        expression: "'required|email'"
+                        value: "required|max:255",
+                        expression: "'required|max:255'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityName,
+                        expression: "universityName"
                       }
                     ],
-                    staticClass: "input",
-                    class: {
-                      "is-invalid input__danger": _vm.errors.has("email")
-                    },
+                    staticClass: "form-control",
                     attrs: {
                       type: "text",
-                      id: "email",
-                      name: "email",
-                      placeholder: _vm.$t("translation.email")
+                      id: "universityName",
+                      "aria-describedby": "universityNameHelp",
+                      placeholder: _vm.$t(
+                        "translation.universityNamePlaceholder"
+                      ),
+                      name: "universityName"
                     },
-                    domProps: { value: _vm.userEmail },
+                    domProps: { value: _vm.universityName },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.userEmail = $event.target.value
+                        _vm.universityName = $event.target.value
                       }
                     }
                   }),
                   _vm._v(" "),
                   _c(
-                    "div",
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universityName"),
+                          expression: "errors.has('universityName')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityNameHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universityName")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityDescription" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityDescription")))
+                  ]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityDescription,
+                        expression: "universityDescription"
+                      }
+                    ],
+                    staticClass: "form-control resize-none",
+                    attrs: {
+                      type: "text",
+                      id: "universityDescription",
+                      "aria-describedby": "universityDescriptionHelp",
+                      placeholder: _vm.$t(
+                        "translation.universityDescriptionPlaceholder"
+                      ),
+                      name: "universityDescription"
+                    },
+                    domProps: { value: _vm.universityDescription },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityDescription = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universityDescription"),
+                          expression: "errors.has('universityDescription')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityDescriptionHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universityDescription")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityAddress" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityAddress")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|max:255",
+                        expression: "'required|max:255'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityAddress,
+                        expression: "universityAddress"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "universityAddress",
+                      "aria-describedby": "universityAddress",
+                      placeholder: _vm.$t(
+                        "translation.universityAddressPlaceholder"
+                      ),
+                      name: "universityAddress"
+                    },
+                    domProps: { value: _vm.universityAddress },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityAddress = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universityAddress"),
+                          expression: "errors.has('universityAddress')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityAddressHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universityAddress")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityEmail" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityEmail")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|email|max:255",
+                        expression: "'required|email|max:255'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityEmail,
+                        expression: "universityEmail"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "email",
+                      id: "universityEmail",
+                      "aria-describedby": "universityEmailHelp",
+                      placeholder: _vm.$t(
+                        "translation.universityEmailPlaceholder"
+                      ),
+                      name: "universityEmail"
+                    },
+                    domProps: { value: _vm.universityEmail },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityEmail = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
                     {
                       directives: [
                         {
@@ -5057,7 +5143,8 @@ var render = function() {
                           expression: "errors.has('email')"
                         }
                       ],
-                      staticClass: "invalid-feedback"
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityEmailHelp" }
                     },
                     [
                       _vm._v(
@@ -5069,64 +5156,130 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group mb-4" }, [
-                  _c("label", { attrs: { for: "password" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.password")))
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityPhone" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityPhone")))
                   ]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.userPassword,
-                        expression: "userPassword"
-                      },
-                      {
                         name: "validate",
                         rawName: "v-validate",
-                        value: "required|min:8",
-                        expression: "'required|min:8'"
+                        value: "required",
+                        expression: "'required'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityPhone,
+                        expression: "universityPhone"
                       }
                     ],
-                    staticClass: "input",
-                    class: {
-                      "is-invalid input__danger": _vm.errors.has("password")
-                    },
+                    staticClass: "form-control",
                     attrs: {
-                      type: "password",
-                      id: "password",
-                      name: "password",
-                      placeholder: _vm.$t("translation.password")
+                      type: "email",
+                      id: "universityPhone",
+                      "aria-describedby": "universityPhoneHelp",
+                      placeholder: _vm.$t(
+                        "translation.universityPhonePlaceholder"
+                      ),
+                      name: "universityPhone"
                     },
-                    domProps: { value: _vm.userPassword },
+                    domProps: { value: _vm.universityPhone },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.userPassword = $event.target.value
+                        _vm.universityPhone = $event.target.value
                       }
                     }
                   }),
                   _vm._v(" "),
                   _c(
-                    "div",
+                    "small",
                     {
                       directives: [
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.errors.has("password"),
-                          expression: "errors.has('password')"
+                          value: _vm.errors.has("phone"),
+                          expression: "errors.has('phone')"
                         }
                       ],
-                      staticClass: "invalid-feedback"
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityPhoneHelp" }
                     },
                     [
                       _vm._v(
                         "\n                        " +
-                          _vm._s(_vm.errors.first("password")) +
+                          _vm._s(_vm.errors.first("phone")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universitySite" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universitySite")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|url|max:255",
+                        expression: "'required|url|max:255'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universitySite,
+                        expression: "universitySite"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "email",
+                      id: "universitySite",
+                      "aria-describedby": "universitySiteHelp",
+                      placeholder: _vm.$t(
+                        "translation.universitySitePlaceholder"
+                      ),
+                      name: "universitySite"
+                    },
+                    domProps: { value: _vm.universitySite },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universitySite = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universitySite"),
+                          expression: "errors.has('universitySite')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universitySiteHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universitySite")) +
                           "\n                    "
                       )
                     ]
@@ -5136,14 +5289,13 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass:
-                      "btn-style btn-style-md btn-style-accent btn-style-center mb-4",
+                    staticClass: "btn btn-md btn-success float-right mt-4",
                     attrs: { type: "button" }
                   },
                   [
                     _vm._v(
                       "\n                    " +
-                        _vm._s(_vm.$t("translation.enter")) +
+                        _vm._s(_vm.$t("translation.save")) +
                         "\n                "
                     )
                   ]
@@ -5162,6 +5314,133 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-432e958c", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 277:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var BUTTON_COLOR_CONFIRM = exports.BUTTON_COLOR_CONFIRM = '#3085d6';
+var BUTTON_COLOR_CANCEL = exports.BUTTON_COLOR_CANCEL = '#d33d33';
+
+/***/ }),
+
+/***/ 278:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: "col-md-12" },
+      [
+        _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
+          _c("div", { staticClass: "col-md-10" }, [
+            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerUniversity")))])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 align-self-center" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary btn-md float-right",
+                attrs: { href: "javascript:" },
+                on: {
+                  click: function($event) {
+                    _vm.modalsIsShowCreateUniversity = true
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("translation.addUniversity")) +
+                    "\n            "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-12 mt-3" },
+            [
+              _c("vuetable", {
+                ref: "listUniversities",
+                attrs: {
+                  "api-url": "https://vuetable.ratiw.net/api/users",
+                  fields: _vm.fields,
+                  "pagination-path": ""
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "actions",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-secondary btn-md",
+                            attrs: { title: _vm.$t("translation.edit") }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-pencil",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-danger btn-md",
+                            attrs: {
+                              type: "button",
+                              title: _vm.$t("translation.remove")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.deleteProductCategory(props.rowData.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash-o" })]
+                        )
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("modal-create-university")
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3700248b", module.exports)
   }
 }
 

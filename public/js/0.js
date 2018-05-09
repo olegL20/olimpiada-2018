@@ -848,6 +848,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     mixins: [_modals2.default, _university2.default],
@@ -902,6 +911,12 @@ exports.default = {
                     }
                 }, _callee, _this);
             }))();
+        },
+        onPaginationData: function onPaginationData(paginationData) {
+            this.$refs.pagination.setPaginationData(paginationData);
+        },
+        onChangePage: function onChangePage(page) {
+            this.$refs.vuetableAllFields.changePage(page);
         }
     }
 };
@@ -4680,7 +4695,30 @@ exports.default = {
                 title: this.$t('translation.actions'),
                 titleClass: 'text-center',
                 dataClass: 'text-center'
-            }]
+            }],
+            css: {
+                table: {
+                    tableClass: 'table',
+                    loadingClass: 'loading',
+                    ascendingIcon: 'fa fa-angle-up ',
+                    descendingIcon: 'fa fa-angle-down ',
+                    handleIcon: 'glyphicon glyphicon-menu-hamburger'
+                },
+                pagination: {
+                    infoClass: 'pull-left',
+                    wrapperClass: 'vuetable-pagination text-center',
+                    activeClass: 'btn btn-primary text-white',
+                    disabledClass: 'btn text-secondary',
+                    pageClass: 'btn pgn-btn-border border',
+                    linkClass: 'btn pgn-btn-border border',
+                    icons: {
+                        first: 'fa fa-angle-double-left',
+                        prev: 'fa fa-angle-left',
+                        next: 'fa fa-angle-right',
+                        last: 'fa fa-angle-double-right'
+                    }
+                }
+            }
         };
     }
 };
@@ -5364,9 +5402,9 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                " +
+                  "\n                    " +
                     _vm._s(_vm.$t("translation.addUniversity")) +
-                    "\n            "
+                    "\n                "
                 )
               ]
             )
@@ -5381,8 +5419,10 @@ var render = function() {
                 attrs: {
                   "api-url": "https://vuetable.ratiw.net/api/users",
                   fields: _vm.fields,
-                  "pagination-path": ""
+                  "pagination-path": "",
+                  css: _vm.css.table
                 },
+                on: { "vuetable:pagination-data": _vm.onPaginationData },
                 scopedSlots: _vm._u([
                   {
                     key: "actions",
@@ -5422,6 +5462,19 @@ var render = function() {
                     }
                   }
                 ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-12 m-3" },
+            [
+              _c("vuetable-pagination", {
+                ref: "pagination",
+                attrs: { css: _vm.css.pagination },
+                on: { "vuetable-pagination:change-page": _vm.onChangePage }
               })
             ],
             1

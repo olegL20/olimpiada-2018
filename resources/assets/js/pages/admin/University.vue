@@ -20,9 +20,11 @@
                               @vuetable:pagination-data="onPaginationData"
                     >
                         <template slot="actions" slot-scope="props">
-                            <button class="btn btn-outline-secondary btn-md" :title="$t('translation.edit')">
+                            <a href="javascript:" class="btn btn-outline-secondary btn-md"
+                                    @click="modalsIsShowEditUniversity = true"
+                                    :title="$t('translation.edit')">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </button>
+                            </a>
                             <button type="button" class="btn btn-outline-danger btn-md" :title="$t('translation.remove')"
                                     @click="deleteProductCategory(props.rowData.id)">
                                 <i class="fa fa-trash-o"></i>
@@ -40,6 +42,7 @@
             </div>
 
             <modal-create-university></modal-create-university>
+            <modal-edit-university></modal-edit-university>
 
         </div>
     </div>
@@ -52,6 +55,7 @@
     import MixinUniversityFields from '../../mixins/formFields/university';
     import MixinModals from '../../mixins/modals';
     import ModalCreateUniversity from '../../components/admin/modals/CreateUniversity.vue';
+    import ModalEditUniversity from '../../components/admin/modals/EditUniversity.vue';
 
     import * as constants from '../../utils/constants';
 
@@ -64,6 +68,7 @@
             Vuetable,
             VuetablePagination,
             ModalCreateUniversity,
+            ModalEditUniversity,
         },
         methods: {
             async deleteProductCategory() {

@@ -1,10 +1,10 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <div v-if="modalsIsShowCreateUniversity" class="modal__wrap">
+        <div v-if="modalsIsShowEditUniversity" class="modal__wrap">
             <div v-click-outside="hide" class="modal__content modal__md">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.infoAboutUniversity") }}
+                    {{ $t("translation.editUniversity") }}
                 </h4>
 
                 <div class="modal__body">
@@ -22,10 +22,10 @@
                     <div class="form-group">
                         <label for="universityDescription">{{ $t("translation.universityDescription") }}</label>
                         <textarea type="text" class="form-control resize-none" id="universityDescription" aria-describedby="universityDescriptionHelp"
-                               :placeholder="$t('translation.universityDescriptionPlaceholder')"
-                               name="universityDescription"
-                               v-validate="'required'"
-                               v-model="universityDescription">
+                                  :placeholder="$t('translation.universityDescriptionPlaceholder')"
+                                  name="universityDescription"
+                                  v-validate="'required'"
+                                  v-model="universityDescription">
                         </textarea>
                         <small id="universityDescriptionHelp" class="form-text text-danger" v-show="errors.has('universityDescription')">
                             {{ errors.first('universityDescription') }}
@@ -60,7 +60,7 @@
                                name="universityPhone"
                                v-validate="'required'"
                                v-model="universityPhone">
-                        <small id="universityPhoneHelp" class="form-text text-danger" v-show="errors.has('phuniversityPhoneone')">
+                        <small id="universityPhoneHelp" class="form-text text-danger" v-show="errors.has('universityPhone')">
                             {{ errors.first('universityPhone') }}
                         </small>
                     </div>
@@ -106,7 +106,7 @@
         },
         methods: {
             hide() {
-                this.modalsIsShowCreateUniversity = false;
+                this.modalsIsShowEditUniversity = false;
                 this.universityName = null;
                 this.universityDescription = null;
                 this.universityAddress = null;

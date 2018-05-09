@@ -79,7 +79,7 @@ export default {
         remove: 'Видалити',
         edit: 'Редагувати',
         actions: 'Дії',
-        areYouSure: 'Ви впевнені',
+        areYouSure: 'Ви впевнені ?',
         yes: 'Так',
         cancel: 'Скасувати',
         universityName: 'Ім\'я',
@@ -96,6 +96,7 @@ export default {
         universitySitePlaceholder: 'URL',
         save: 'Зберегти',
         infoAboutUniversity: 'Інформація про університет',
+        editUniversity: 'Редагувати університет',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

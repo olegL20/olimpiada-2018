@@ -4,4 +4,5 @@ export default {
     isShowAdvice: false,
     isShowSelectVuz: false,
     isShowCreateUniversity: false,
+    isShowEditUniversity: false,
 };

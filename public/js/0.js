@@ -1,6 +1,5 @@
-webpackJsonp([0],{
-
-/***/ 198:
+webpackJsonp([0],Array(198).concat([
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -47,8 +46,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 200:
+/* 199 */,
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -354,16 +353,22 @@ module.exports = {
 
 
 /***/ }),
-
-/***/ 209:
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.f = __webpack_require__(3);
 
 
 /***/ }),
-
-/***/ 210:
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
@@ -378,8 +383,7 @@ module.exports = function (name) {
 
 
 /***/ }),
-
-/***/ 211:
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -480,8 +484,7 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
 /***/ }),
-
-/***/ 212:
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
@@ -494,8 +497,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 
 /***/ }),
-
-/***/ 213:
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -513,8 +515,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-
-/***/ 214:
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -698,8 +699,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-
-/***/ 215:
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -723,8 +723,7 @@ module.exports = function createError(message, config, code, response) {
 
 
 /***/ }),
-
-/***/ 216:
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -736,8 +735,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-
-/***/ 217:
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -763,8 +761,20 @@ module.exports = Cancel;
 
 
 /***/ }),
-
-/***/ 231:
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -802,6 +812,10 @@ var _CreateUniversity = __webpack_require__(274);
 
 var _CreateUniversity2 = _interopRequireDefault(_CreateUniversity);
 
+var _EditUniversity = __webpack_require__(284);
+
+var _EditUniversity2 = _interopRequireDefault(_EditUniversity);
+
 var _constants = __webpack_require__(277);
 
 var constants = _interopRequireWildcard(_constants);
@@ -810,60 +824,13 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 exports.default = {
     mixins: [_modals2.default, _university2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default,
-        ModalCreateUniversity: _CreateUniversity2.default
+        ModalCreateUniversity: _CreateUniversity2.default,
+        ModalEditUniversity: _EditUniversity2.default
     },
     methods: {
         deleteProductCategory: function deleteProductCategory() {
@@ -919,11 +886,59 @@ exports.default = {
             this.$refs.vuetableAllFields.changePage(page);
         }
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
-
-/***/ 232:
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -974,8 +989,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 233:
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -1001,8 +1015,7 @@ if(false) {
 }
 
 /***/ }),
-
-/***/ 234:
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(42)(false);
@@ -1016,8 +1029,7 @@ exports.push([module.i, "\n[v-cloak][data-v-15965e3b] {\n  display: none;\n}\n.v
 
 
 /***/ }),
-
-/***/ 235:
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1972,8 +1984,7 @@ exports.default = {
 };
 
 /***/ }),
-
-/***/ 236:
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2000,15 +2011,13 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-
-/***/ 237:
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(238), __esModule: true };
 
 /***/ }),
-
-/***/ 238:
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(65);
@@ -2017,15 +2026,13 @@ module.exports = __webpack_require__(209).f('iterator');
 
 
 /***/ }),
-
-/***/ 239:
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(240), __esModule: true };
 
 /***/ }),
-
-/***/ 240:
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(241);
@@ -2036,8 +2043,7 @@ module.exports = __webpack_require__(2).Symbol;
 
 
 /***/ }),
-
-/***/ 241:
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2278,8 +2284,7 @@ setToStringTag(global.JSON, 'JSON', true);
 
 
 /***/ }),
-
-/***/ 242:
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var META = __webpack_require__(38)('meta');
@@ -2338,8 +2343,7 @@ var meta = module.exports = {
 
 
 /***/ }),
-
-/***/ 243:
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
@@ -2360,8 +2364,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-
-/***/ 244:
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
@@ -2372,8 +2375,7 @@ module.exports = Array.isArray || function isArray(arg) {
 
 
 /***/ }),
-
-/***/ 245:
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
@@ -2398,8 +2400,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 
 /***/ }),
-
-/***/ 246:
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE = __webpack_require__(61);
@@ -2421,31 +2422,27 @@ exports.f = __webpack_require__(8) ? gOPD : function getOwnPropertyDescriptor(O,
 
 
 /***/ }),
-
-/***/ 247:
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(210)('asyncIterator');
 
 
 /***/ }),
-
-/***/ 248:
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(210)('observable');
 
 
 /***/ }),
-
-/***/ 249:
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(250);
 
 /***/ }),
-
-/***/ 250:
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2504,8 +2501,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-
-/***/ 251:
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2597,8 +2593,7 @@ module.exports = Axios;
 
 
 /***/ }),
-
-/***/ 252:
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2617,8 +2612,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-
-/***/ 253:
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2650,8 +2644,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-
-/***/ 254:
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2677,8 +2670,7 @@ module.exports = function enhanceError(error, config, code, response) {
 
 
 /***/ }),
-
-/***/ 255:
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2753,8 +2745,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-
-/***/ 256:
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2798,8 +2789,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-
-/***/ 257:
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2874,8 +2864,7 @@ module.exports = (
 
 
 /***/ }),
-
-/***/ 258:
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2918,8 +2907,7 @@ module.exports = btoa;
 
 
 /***/ }),
-
-/***/ 259:
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2979,8 +2967,7 @@ module.exports = (
 
 
 /***/ }),
-
-/***/ 260:
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3039,8 +3026,7 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-
-/***/ 261:
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3126,8 +3112,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-
-/***/ 262:
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3154,8 +3139,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-
-/***/ 263:
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3176,8 +3160,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-
-/***/ 264:
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3196,8 +3179,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-
-/***/ 265:
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3261,8 +3243,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-
-/***/ 266:
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3296,8 +3277,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-
-/***/ 267:
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4298,8 +4278,7 @@ if (false) {
 }
 
 /***/ }),
-
-/***/ 268:
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -4346,8 +4325,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 269:
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4368,8 +4346,7 @@ exports.default = {
 };
 
 /***/ }),
-
-/***/ 270:
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -4416,8 +4393,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 271:
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4505,8 +4481,7 @@ exports.default = {
 };
 
 /***/ }),
-
-/***/ 272:
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4665,8 +4640,7 @@ if (false) {
 }
 
 /***/ }),
-
-/***/ 273:
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4724,8 +4698,7 @@ exports.default = {
 };
 
 /***/ }),
-
-/***/ 274:
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -4772,8 +4745,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 275:
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4793,20 +4765,24 @@ exports.default = {
     mixins: [_modals2.default],
     data: function data() {
         return {
-            universityName: '',
-            universityDescription: '',
-            universityAddress: '',
-            universityEmail: '',
-            universityPhone: '',
-            universitySite: ''
+            universityName: null,
+            universityDescription: null,
+            universityAddress: null,
+            universityEmail: null,
+            universityPhone: null,
+            universitySite: null
         };
     },
 
     methods: {
         hide: function hide() {
             this.modalsIsShowCreateUniversity = false;
-            this.userEmail = null;
-            this.userPassword = null;
+            this.universityName = null;
+            this.universityDescription = null;
+            this.universityAddress = null;
+            this.universityEmail = null;
+            this.universityPhone = null;
+            this.universitySite = null;
         }
     }
 }; //
@@ -4900,8 +4876,7 @@ exports.default = {
 //
 
 /***/ }),
-
-/***/ 276:
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5177,8 +5152,8 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.errors.has("email"),
-                          expression: "errors.has('email')"
+                          value: _vm.errors.has("universityEmail"),
+                          expression: "errors.has('universityEmail')"
                         }
                       ],
                       staticClass: "form-text text-danger",
@@ -5187,7 +5162,7 @@ var render = function() {
                     [
                       _vm._v(
                         "\n                        " +
-                          _vm._s(_vm.errors.first("email")) +
+                          _vm._s(_vm.errors.first("universityEmail")) +
                           "\n                    "
                       )
                     ]
@@ -5242,8 +5217,8 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.errors.has("phone"),
-                          expression: "errors.has('phone')"
+                          value: _vm.errors.has("phuniversityPhoneone"),
+                          expression: "errors.has('phuniversityPhoneone')"
                         }
                       ],
                       staticClass: "form-text text-danger",
@@ -5252,7 +5227,7 @@ var render = function() {
                     [
                       _vm._v(
                         "\n                        " +
-                          _vm._s(_vm.errors.first("phone")) +
+                          _vm._s(_vm.errors.first("universityPhone")) +
                           "\n                    "
                       )
                     ]
@@ -5269,8 +5244,8 @@ var render = function() {
                       {
                         name: "validate",
                         rawName: "v-validate",
-                        value: "required|url|max:255",
-                        expression: "'required|url|max:255'"
+                        value: "url|max:255",
+                        expression: "'url|max:255'"
                       },
                       {
                         name: "model",
@@ -5356,8 +5331,7 @@ if (false) {
 }
 
 /***/ }),
-
-/***/ 277:
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5370,8 +5344,7 @@ var BUTTON_COLOR_CONFIRM = exports.BUTTON_COLOR_CONFIRM = '#3085d6';
 var BUTTON_COLOR_CANCEL = exports.BUTTON_COLOR_CANCEL = '#d33d33';
 
 /***/ }),
-
-/***/ 278:
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5429,10 +5402,18 @@ var render = function() {
                     fn: function(props) {
                       return [
                         _c(
-                          "button",
+                          "a",
                           {
                             staticClass: "btn btn-outline-secondary btn-md",
-                            attrs: { title: _vm.$t("translation.edit") }
+                            attrs: {
+                              href: "javascript:",
+                              title: _vm.$t("translation.edit")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.modalsIsShowEditUniversity = true
+                              }
+                            }
                           },
                           [
                             _c("i", {
@@ -5481,7 +5462,9 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("modal-create-university")
+        _c("modal-create-university"),
+        _vm._v(" "),
+        _c("modal-edit-university")
       ],
       1
     )
@@ -5497,6 +5480,643 @@ if (false) {
   }
 }
 
-/***/ })
+/***/ }),
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */
+/***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+var normalizeComponent = __webpack_require__(23)
+/* script */
+var __vue_script__ = __webpack_require__(285)
+/* template */
+var __vue_template__ = __webpack_require__(286)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/modals/EditUniversity.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d0f886cc", Component.options)
+  } else {
+    hotAPI.reload("data-v-d0f886cc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 285 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
+
+var _modals = __webpack_require__(36);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    mixins: [_modals2.default],
+    data: function data() {
+        return {
+            universityName: null,
+            universityDescription: null,
+            universityAddress: null,
+            universityEmail: null,
+            universityPhone: null,
+            universitySite: null
+        };
+    },
+
+    methods: {
+        hide: function hide() {
+            this.modalsIsShowEditUniversity = false;
+            this.universityName = null;
+            this.universityDescription = null;
+            this.universityAddress = null;
+            this.universityEmail = null;
+            this.universityPhone = null;
+            this.universitySite = null;
+        }
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 286 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowEditUniversity
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "click-outside",
+                  rawName: "v-click-outside",
+                  value: _vm.hide,
+                  expression: "hide"
+                }
+              ],
+              staticClass: "modal__content modal__md"
+            },
+            [
+              _c("h4", { staticClass: "modal__head" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("translation.editUniversity")) +
+                    "\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal__body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityName" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityName")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|max:255",
+                        expression: "'required|max:255'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityName,
+                        expression: "universityName"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "universityName",
+                      "aria-describedby": "universityNameHelp",
+                      placeholder: _vm.$t(
+                        "translation.universityNamePlaceholder"
+                      ),
+                      name: "universityName"
+                    },
+                    domProps: { value: _vm.universityName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityName = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universityName"),
+                          expression: "errors.has('universityName')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityNameHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universityName")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityDescription" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityDescription")))
+                  ]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityDescription,
+                        expression: "universityDescription"
+                      }
+                    ],
+                    staticClass: "form-control resize-none",
+                    attrs: {
+                      type: "text",
+                      id: "universityDescription",
+                      "aria-describedby": "universityDescriptionHelp",
+                      placeholder: _vm.$t(
+                        "translation.universityDescriptionPlaceholder"
+                      ),
+                      name: "universityDescription"
+                    },
+                    domProps: { value: _vm.universityDescription },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityDescription = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universityDescription"),
+                          expression: "errors.has('universityDescription')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityDescriptionHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universityDescription")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityAddress" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityAddress")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|max:255",
+                        expression: "'required|max:255'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityAddress,
+                        expression: "universityAddress"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "universityAddress",
+                      "aria-describedby": "universityAddress",
+                      placeholder: _vm.$t(
+                        "translation.universityAddressPlaceholder"
+                      ),
+                      name: "universityAddress"
+                    },
+                    domProps: { value: _vm.universityAddress },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityAddress = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universityAddress"),
+                          expression: "errors.has('universityAddress')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityAddressHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universityAddress")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityEmail" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityEmail")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|email|max:255",
+                        expression: "'required|email|max:255'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityEmail,
+                        expression: "universityEmail"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "email",
+                      id: "universityEmail",
+                      "aria-describedby": "universityEmailHelp",
+                      placeholder: _vm.$t(
+                        "translation.universityEmailPlaceholder"
+                      ),
+                      name: "universityEmail"
+                    },
+                    domProps: { value: _vm.universityEmail },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityEmail = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universityEmail"),
+                          expression: "errors.has('universityEmail')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityEmailHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universityEmail")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityPhone" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityPhone")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityPhone,
+                        expression: "universityPhone"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "email",
+                      id: "universityPhone",
+                      "aria-describedby": "universityPhoneHelp",
+                      placeholder: _vm.$t(
+                        "translation.universityPhonePlaceholder"
+                      ),
+                      name: "universityPhone"
+                    },
+                    domProps: { value: _vm.universityPhone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityPhone = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universityPhone"),
+                          expression: "errors.has('universityPhone')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityPhoneHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universityPhone")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universitySite" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universitySite")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "url|max:255",
+                        expression: "'url|max:255'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universitySite,
+                        expression: "universitySite"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "email",
+                      id: "universitySite",
+                      "aria-describedby": "universitySiteHelp",
+                      placeholder: _vm.$t(
+                        "translation.universitySitePlaceholder"
+                      ),
+                      name: "universitySite"
+                    },
+                    domProps: { value: _vm.universitySite },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universitySite = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universitySite"),
+                          expression: "errors.has('universitySite')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universitySiteHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universitySite")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-md btn-success float-right mt-4",
+                    attrs: { type: "button" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.save")) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ])
+            ]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d0f886cc", module.exports)
+  }
+}
+
+/***/ })
+]));

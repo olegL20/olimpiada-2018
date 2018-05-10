@@ -1,18 +1,36 @@
 <template>
-    <div id="app">
-        <user-header></user-header>
+    <div id="app" ref="app" :class="userBackground">
+        <user-header v-if="true"></user-header>
+        <admin-header v-else></admin-header>
         <transition name="slide-fade" mode="out-in">
             <router-view></router-view>
         </transition>
+        <admin-footer v-if="false"></admin-footer>
+        <preload v-if="showPreload"></preload>
     </div>
 </template>
 
 <script>
     import * as userHeader from '../components/Header.vue';
+    import * as adminHeader from '../components/admin/Header.vue';
+    import * as adminFooter from '../components/admin/Footer.vue';
+
+    import userMixin from '../mixins/user';
+    import preloadMixin from '../mixins/preload';
 
     export default {
+        data() {
+            return {
+            };
+        },
+        mixins: [
+            userMixin,
+            preloadMixin,
+        ],
         components: {
             userHeader,
+            adminHeader,
+            adminFooter,
         },
         computed: {
             languages() {
@@ -25,6 +43,9 @@
                 this.userCurrentLang = data;
                 this.$validator.locale = data;
             },
+        },
+        created() {
+            this.userBackground = 'background__white';
         },
     };
 </script>

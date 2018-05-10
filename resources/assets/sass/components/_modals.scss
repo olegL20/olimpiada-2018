@@ -14,6 +14,10 @@
     overflow: auto;
   }
 
+  &__white {
+    background: rgba(#fff, .6);
+  }
+
   &__content {
     padding: 2.5rem;
     width: 390px;
@@ -26,9 +30,73 @@
     width: 600px;
   }
 
+  &__full-width {
+    width: 100%;
+    background: none;
+  }
+
   &__head {
     color: $accent-color;
     font-weight: bold;
     text-align: center;
+  }
+}
+
+.advice {
+  .media {
+    img {
+      width: 5.71rem;
+      height: 5.71rem;
+      border-radius: 50%;
+    }
+
+    &-body {
+      height: 5.71rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__angle {
+    background: url("/images/chat-angle.png") no-repeat;
+    height: 4.64rem;
+    width: 4.14rem;
+    background-size: contain;
+    transform: scale(-1);
+    margin-left: 2.5rem;
+    opacity: 0.86;
+  }
+
+  &__info {
+    opacity: 0.86;
+    width: 100%;
+    max-width: 20rem;
+    background-color: $accent-color;
+    border-radius: 1.43rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 20rem;
+  }
+
+  &__text {
+    padding: 1.07rem 1.07rem 0;
+    color: #fff;
+  }
+
+  &__links {
+    display: table;
+    border-top: 1px solid #f3f8fc;
+  }
+
+  &__link {
+    display: table-cell;
+    padding: 1.07rem;
+    text-align: center;
+
+    &:first-child {
+      border-right: 1px solid #f3f8fc;
+    }
   }
 }

@@ -1,16 +1,16 @@
-.btn-accent {
+.button-accent {
   color: #fff;
   background-color: $accent-color;
   border-bottom: .29rem solid darken($accent-color, 10%);
 }
 
-.btn-error {
+.button-error {
   color: #fff;
   background-color: $danger-color;
   border-bottom: .29rem solid darken($danger-color, 10%);
 }
 
-.btn-md {
+.button-md {
   font-size: .93rem;
   border-radius: .714rem;
   font-weight: 600;
@@ -18,7 +18,7 @@
   padding: .5rem 2.57rem;
 }
 
-.btn-center {
+.button-center {
   margin: 0 auto;
   display: block;
 }

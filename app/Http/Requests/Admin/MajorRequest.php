@@ -24,9 +24,10 @@ class MajorRequest extends FormRequest
     public function rules()
     {
         return [
-            'faculty_id' => 'required|integer',
+            'department_id' => 'required|integer',
             'name' => 'required|string|max:255',
             'description' => 'string|max:255',
+            'koef' => 'required'
         ];
     }
 }

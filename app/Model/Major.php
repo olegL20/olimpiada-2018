@@ -8,14 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Major extends Model
 {
     protected $fillable = [
-        'faculty_id',
+        'department_id',
         'name',
-        'description'
+        'description',
+        'koef'
     ];
 
 
-    public function faculty()
+    public function department()
     {
-        return $this->belongsTo(Faculty::class);
+        return $this->belongsTo(Department::class);
+    }
+
+    public function subjectsCoefficient()
+    {
+        return $this->hasOne(SubjectCoefficient::class);
     }
 }

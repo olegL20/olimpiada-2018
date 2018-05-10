@@ -30,6 +30,7 @@ Route::group(['middleware' => 'api'], function () {
         Route::post('associate', 'InviteAdminUniversityController@associate');
         Route::resource('major', 'MajorController');
         Route::resource('department', 'DepartmentController');
+        Route::resource('subjects-coefficients', 'SubjectCoefficientController');
     });
 
     Route::group([
@@ -38,5 +39,8 @@ Route::group(['middleware' => 'api'], function () {
         'namespace' => 'User'
     ], function () {
         // user routes
+        Route::resource('university', 'UniversityController');
+        Route::post('score', 'ScoreController@write');
+        Route::get('score', 'ScoreController@show');
     });
 });

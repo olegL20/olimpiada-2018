@@ -5,6 +5,7 @@
 import Vue from 'vue';
 import vClickOutside from 'v-click-outside';
 import Multiselect from 'vue-multiselect';
+import preload from './components/Preloader.vue';
 
 /**
  * Import and bootstrap the plugins.
@@ -31,6 +32,7 @@ store.dispatch('user/checkLogged');
 
 Vue.config.productionTip = false;
 Vue.use(vClickOutside);
+Vue.component('preload', preload);
 Vue.component('multiselect', Multiselect);
 
 /* eslint-disable no-new */

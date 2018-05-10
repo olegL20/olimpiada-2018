@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 210:
+/***/ 212:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(11)
+var normalizeComponent = __webpack_require__(12)
 /* script */
-var __vue_script__ = __webpack_require__(294)
+var __vue_script__ = __webpack_require__(236)
 /* template */
-var __vue_template__ = __webpack_require__(295)
+var __vue_template__ = __webpack_require__(237)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/pages/admin/UniversityAdministrators.vue"
+Component.options.__file = "resources/assets/js/pages/NotFound.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-70bf7fb1", Component.options)
+    hotAPI.createRecord("data-v-f07f1fa8", Component.options)
   } else {
-    hotAPI.reload("data-v-70bf7fb1", Component.options)
+    hotAPI.reload("data-v-f07f1fa8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,10 +48,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 294:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
 //
 //
 //
@@ -66,38 +75,54 @@ module.exports = Component.exports
 //
 //
 
+exports.default = {
+    metaInfo: function metaInfo() {
+        return {
+            title: this.$t('translation.notFoundTitle')
+        };
+    }
+};
 
 /***/ }),
 
-/***/ 295:
+/***/ 237:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
-          _vm._v("\n            Admin University\n        ")
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.$t("translation.notFoundTitle")) +
+                "\n                "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.$t("translation.notFoundText")) +
+                "\n                "
+            )
+          ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-70bf7fb1", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-f07f1fa8", module.exports)
   }
 }
 

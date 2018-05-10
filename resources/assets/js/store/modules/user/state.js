@@ -14,4 +14,7 @@ export default {
     user: null,
     background: null,
     firstStage: 1,
+    universities: [],
+    selectedUniversity: null,
+    showPreload: false,
 };

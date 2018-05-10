@@ -62,7 +62,6 @@
             };
         },
         mounted() {
-            console.log(this.modalsIsShowRegister);
             this.modalsIsShowRegister = true;
         },
     };

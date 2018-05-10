@@ -55,7 +55,6 @@
 
     import MixinUniversityFields from '../../mixins/formFields/university';
     import MixinModals from '../../mixins/modals';
-    import MixinPreload from '../../mixins/preload';
     import ModalCreateUniversity from '../../components/admin/modals/CreateUniversity.vue';
     import ModalEditUniversity from '../../components/admin/modals/EditUniversity.vue';
 
@@ -64,7 +63,6 @@
     export default {
         mixins: [
             MixinModals,
-            MixinPreload,
             MixinUniversityFields,
         ],
         components: {

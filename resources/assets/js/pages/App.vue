@@ -1,12 +1,12 @@
 <template>
     <div id="app" ref="app" :class="userBackground">
-        <user-header v-if="false"></user-header>
+        <user-header v-if="true"></user-header>
         <admin-header v-else></admin-header>
         <transition name="slide-fade" mode="out-in">
             <router-view></router-view>
         </transition>
-        <admin-footer v-if="true"></admin-footer>
-        <preload v-if="preloadShowPreload"></preload>
+        <admin-footer v-if="false"></admin-footer>
+        <preload v-if="showPreload"></preload>
     </div>
 </template>
 
@@ -14,21 +14,23 @@
     import * as userHeader from '../components/Header.vue';
     import * as adminHeader from '../components/admin/Header.vue';
     import * as adminFooter from '../components/admin/Footer.vue';
-    import preload from '../components/Preloader.vue';
 
     import userMixin from '../mixins/user';
-    import MixinPreload from '../mixins/preload';
+    import preloadMixin from '../mixins/preload';
 
     export default {
+        data() {
+            return {
+            };
+        },
         mixins: [
             userMixin,
-            MixinPreload,
+            preloadMixin,
         ],
         components: {
             userHeader,
             adminHeader,
             adminFooter,
-            preload,
         },
         computed: {
             languages() {

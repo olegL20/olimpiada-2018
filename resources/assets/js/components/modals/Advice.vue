@@ -91,7 +91,9 @@
                         </div>
 
                         <div class="row">
-                            <button type="button" @click="myChoice" class="btn-style btn-style-md btn-style-error mt-5 mx-auto">{{ $t("translation.myLifeMyRules") }} (0б)</button>
+                            <button type="button" @click="myChoice" class="btn btn-md btn-error mt-5 mx-auto">
+                                {{ $t("translation.myLifeMyRules") }} (0б)
+                            </button>
                         </div>
 
                     </div>
@@ -119,6 +121,18 @@
                 this.hide();
                 this.modalsIsShowSelectVuz = true;
             },
+        },
+        async mounted() {
+            try {
+                await this.$store.dispatch('user/getUniversities');
+                // window.Cookies.set('first_stage', 2);
+                // this.userFirstStage = 2;
+            } catch (e) {
+                this.$toast.error({
+                    title: this.$t('translation.error'),
+                    message: this.$t(e.message),
+                });
+            }
         },
     };
 </script>

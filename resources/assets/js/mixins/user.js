@@ -22,6 +22,9 @@ export default {
             'dateOfBirth',
             'background',
             'firstStage',
+            'universities',
+            'selectedUniversity',
+            'showPreload',
         ]),
     },
 };

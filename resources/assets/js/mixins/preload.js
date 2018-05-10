@@ -1,18 +1,17 @@
 import { mapTwoWayState } from 'schepotin-vuex-helpers';
 
 export default {
-    ...mapTwoWayState({
-        namespace: 'preload',
-        prefix: true,
-    }, [
-        'showPreload',
-    ]),
-    methods: {
-        showPreload() {
-            this.showPreload = true;
-        },
-        hidePreload() {
-            this.showPreload = false;
-        },
+    computed: {
+        /**
+         * Generates two way {@link https://vuejs.org/v2/guide/computed.html#Computed-Setter | computed properties}
+         *
+         * Documentation {@link https://www.npmjs.com/package/schepotin-vuex-helpers#maptwowaystate | mapTwoWayState}
+         */
+        ...mapTwoWayState({
+            namespace: 'user',
+            prefix: false,
+        }, [
+            'showPreload',
+        ]),
     },
 };

@@ -132,7 +132,6 @@
             this.userBackground = 'background__white';
         },
         mounted() {
-            this.$store.dispatch('user/getUniversities');
             this.userFirstStage = Number(window.Cookies.get('first_stage')) ? Number(window.Cookies.get('first_stage')) : 1;
         },
     };

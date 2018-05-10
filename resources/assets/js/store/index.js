@@ -8,7 +8,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import user from './modules/user';
 import modals from './modules/modals';
-import preload from './modules/preload';
 
 Vue.use(Vuex);
 
@@ -21,7 +20,6 @@ export default new Vuex.Store({
     modules: {
         user,
         modals,
-        preload,
     },
 
     /**

@@ -45,15 +45,16 @@ export const confirmation = async ({ dispatch, commit }, payload) => {
     throw json;
 };
 
-export const getUniversities = async () => {
+export const getUniversities = async ({ commit }) => {
     const json = await user.getUniversities();
 
-    console.log(json);
-    if (json.status === 200) {
-        return json.data;
-    }
+    commit(types.UNIVERSITIES, json.data);
 
-    throw json;
+    // if (json.status === 200) {
+    //     return json.data;
+    // }
+    //
+    // throw json;
 };
 
 export const logout = async ({ commit }) => {

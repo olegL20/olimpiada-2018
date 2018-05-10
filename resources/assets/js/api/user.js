@@ -1,3 +1,4 @@
+// const url = '';
 const url = 'https://itpm-194220.appspot.com';
 export default {
     async login(params) {
@@ -38,7 +39,7 @@ export default {
         }
     },
     async getUniversities() {
-        const { data } = await window.axios.get('/api/university/university');
+        const { data } = await window.axios.get('/api/user/university');
 
         return data;
     },

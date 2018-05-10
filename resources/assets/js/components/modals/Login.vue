@@ -51,10 +51,10 @@
                         <i class="fa fa-google-plus-square fa-2x mr-2 fa-relative" aria-hidden="true"></i>
                         <span>{{ $t("translation.throughGoogle") }}</span>
                     </router-link>
-                    <router-link :to="{ name: 'home' }" class="link">
+                    <a href="javascript:" @click="authenticate('facebook')" class="link">
                         <i class="fa fa-facebook-square fa-2x mr-2 fa-relative" aria-hidden="true"></i>
                         {{ $t("translation.throughFacebook") }}
-                    </router-link>
+                    </a>
 
                 </div>
 
@@ -98,6 +98,11 @@
                         });
                     }
                 }
+            },
+            authenticate(provider) {
+                this.$auth.authenticate(provider).then(() => {
+                    // Execute application logic after successful social authentication
+                });
             },
         },
     };

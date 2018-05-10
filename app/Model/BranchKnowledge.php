@@ -6,12 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class BranchKnowledge extends Model
 {
-    protected $table = 'branch_knowledges';
-
     protected $fillable = [
         'name',
         'major_id',
-        'level',
         'parent_id',
     ];
 
@@ -29,6 +26,6 @@ class BranchKnowledge extends Model
 
     public function major()
     {
-        return $this->hasOne(Major::class);
+        return $this->belongsTo(Major::class);
     }
 }

@@ -58,7 +58,7 @@
                         </div>
                     </div>
 
-                    <button @click="select" type="button" class="btn btn-md btn-accent btn-center mb-4">
+                    <button @click="select" type="button" class="btn button-md button-accent button-center mb-4">
                         {{ $t("translation.accept") }}
                     </button>
                 </div>

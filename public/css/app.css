@@ -14540,7 +14540,7 @@ body {
   background: url("/images/background-blue.png"), #b0d9f0;
 }
 
-.navbar-custom {
+.navbar__custom {
   padding: 3.57rem 0 0;
 }
 
@@ -14548,19 +14548,19 @@ body {
   resize: none;
 }
 
-.btn-style-accent {
+.button-accent {
   color: #fff;
   background-color: #007add;
   border-bottom: 0.29rem solid #005eaa;
 }
 
-.btn-style-error {
+.button-error {
   color: #fff;
   background-color: #dc3545;
   border-bottom: 0.29rem solid #bd2130;
 }
 
-.btn-style-md {
+.button-md {
   font-size: .93rem;
   border-radius: .714rem;
   font-weight: 600;
@@ -14568,7 +14568,7 @@ body {
   padding: .5rem 2.57rem;
 }
 
-.btn-style-center {
+.button-center {
   margin: 0 auto;
   display: block;
 }

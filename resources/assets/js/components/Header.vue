@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar-custom">
+    <nav class="navbar navbar__custom">
         <div class="container">
             <router-link :to="{ name: 'home' }" class="mb-3">
                 <img src="/images/logo.png" alt="BigFut">

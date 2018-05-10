@@ -145,7 +145,7 @@
 
                     <button @click="register"
                             type="button"
-                            class="btn-style btn-style-md btn-style-accent btn-style-center mb-4">
+                            class="btn button-md button-accent button-center mb-4">
                         {{ $t("translation.register") }}
                     </button>
 

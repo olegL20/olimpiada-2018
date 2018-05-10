@@ -27,7 +27,7 @@
                         </li>
                     </ul>
 
-                    <router-link tag="button" :to="{ name: 'user.room' }" type="button" class="btn-style btn-style-md btn-style-accent">
+                    <router-link tag="button" :to="{ name: 'user.room' }" type="button" class="btn button-md button-accent">
                         {{ $t("translation.forward") }}
                     </router-link>
 

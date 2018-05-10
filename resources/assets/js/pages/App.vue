@@ -6,6 +6,7 @@
             <router-view></router-view>
         </transition>
         <admin-footer v-if="true"></admin-footer>
+        <preload v-if="preloadShowPreload"></preload>
     </div>
 </template>
 
@@ -13,16 +14,21 @@
     import * as userHeader from '../components/Header.vue';
     import * as adminHeader from '../components/admin/Header.vue';
     import * as adminFooter from '../components/admin/Footer.vue';
+    import preload from '../components/Preloader.vue';
+
     import userMixin from '../mixins/user';
+    import MixinPreload from '../mixins/preload';
 
     export default {
         mixins: [
             userMixin,
+            MixinPreload,
         ],
         components: {
             userHeader,
             adminHeader,
             adminFooter,
+            preload,
         },
         computed: {
             languages() {

@@ -17,6 +17,7 @@
                               :fields="fields"
                               pagination-path = ""
                               :css="css.table"
+                              @vuetable:load-success="hidePreload"
                               @vuetable:pagination-data="onPaginationData"
                     >
                         <template slot="actions" slot-scope="props">
@@ -54,6 +55,7 @@
 
     import MixinUniversityFields from '../../mixins/formFields/university';
     import MixinModals from '../../mixins/modals';
+    import MixinPreload from '../../mixins/preload';
     import ModalCreateUniversity from '../../components/admin/modals/CreateUniversity.vue';
     import ModalEditUniversity from '../../components/admin/modals/EditUniversity.vue';
 
@@ -62,6 +64,7 @@
     export default {
         mixins: [
             MixinModals,
+            MixinPreload,
             MixinUniversityFields,
         ],
         components: {
@@ -69,6 +72,9 @@
             VuetablePagination,
             ModalCreateUniversity,
             ModalEditUniversity,
+        },
+        mounted() {
+            this.showPreload();
         },
         methods: {
             async deleteProductCategory() {

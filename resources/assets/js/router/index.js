@@ -12,13 +12,38 @@ const routes = [
         name: 'home',
         component: () => import('../pages/Home.vue'),
     },
+    // {
+    //     path: '/confirmation/:id',
+    //     name: 'auth.confirmation',
+    //     component: () => import('../pages/auth/EmailConfirmation.vue'),
+    //     meta: {
+    //         guest: true,
+    //     },
+    // },
     {
-        path: '/confirmation/:id',
-        name: 'auth.confirmation',
-        component: () => import('../pages/auth/EmailConfirmation.vue'),
-        meta: {
-            guest: true,
-        },
+        path: '/room',
+        name: 'user.room',
+        component: () => import('../pages/Room.vue'),
+    },
+    {
+        path: '/invite/:id',
+        name: 'auth.invite',
+        component: () => import('../pages/Auth/RegisterInvite.vue'),
+    },
+    {
+        path: '/admin/login',
+        name: 'admin.login',
+        component: () => import('../pages/admin/Login.vue'),
+    },
+    {
+        path: '/admin/university',
+        name: 'admin.university',
+        component: () => import('../pages/admin/University.vue'),
+    },
+    {
+        path: '/admin/university/administrators',
+        name: 'admin.university.administrators',
+        component: () => import('../pages/admin/UniversityAdministrators.vue'),
     },
 
     /**

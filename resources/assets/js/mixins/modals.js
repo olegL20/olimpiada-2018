@@ -13,6 +13,10 @@ export default {
         }, [
             'isShowLogin',
             'isShowRegister',
+            'isShowAdvice',
+            'isShowSelectVuz',
+            'isShowCreateUniversity',
+            'isShowEditUniversity',
         ]),
     },
 };

@@ -19,6 +19,7 @@ class CreateUserScoresTable extends Migration
             $table->float('average_score_zno');
             $table->float('additional_courses')->default(0);
             $table->text('subjects_score');
+            $table->float('summary')->default(0);
         });
     }
 

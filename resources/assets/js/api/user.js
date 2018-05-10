@@ -1,3 +1,4 @@
+// const url = '';
 const url = 'https://itpm-194220.appspot.com';
 export default {
     async login(params) {
@@ -18,6 +19,16 @@ export default {
             return e.response;
         }
     },
+    async registerInvite(id, params) {
+        try {
+            console.log(id);
+            const { data, status } = await window.axios.post(`${url}/api/auth/register-by-invite/${id}`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
     async confirmationEmail(params) {
         try {
             const { data, status } = await window.axios.post(`${url}/api/auth/confirmation`, params);
@@ -27,6 +38,11 @@ export default {
             return e.response;
         }
     },
+    async getUniversities() {
+        const { data } = await window.axios.get('/api/user/university');
+
+        return data;
+    },
     // async passwordEmail(params) {
     //     const { data } = await window.axios.post('/api/v1/password/email', params);
     //
@@ -34,11 +50,6 @@ export default {
     // },
     // async resetPassword(params) {
     //     const { data } = await window.axios.post('/api/v1/reset/password', params);
-    //
-    //     return data;
-    // },
-    // async getUserCurrent() {
-    //     const { data } = await window.axios.get('/api/v1/user/current');
     //
     //     return data;
     // },

@@ -20,6 +20,11 @@ export default {
             'passwordConfirmation',
             'currentLang',
             'dateOfBirth',
+            'background',
+            'firstStage',
+            'universities',
+            'selectedUniversity',
+            'showPreload',
         ]),
     },
 };

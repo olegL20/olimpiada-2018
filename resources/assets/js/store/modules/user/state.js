@@ -12,4 +12,9 @@ export default {
     createdAt: null,
     updatedAt: null,
     user: null,
+    background: null,
+    firstStage: 1,
+    universities: [],
+    selectedUniversity: null,
+    showPreload: false,
 };

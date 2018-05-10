@@ -27,13 +27,12 @@
                         </li>
                     </ul>
 
-                    <button type="button" class="btn btn-md btn-accent">
+                    <router-link tag="button" :to="{ name: 'user.room' }" type="button" class="btn button-md button-accent">
                         {{ $t("translation.forward") }}
-                    </button>
-
+                    </router-link>
                 </div>
                 <div class="d-none d-md-block bg-right-image"></div>
-                <span class="copyright">
+                <span class="copyright ml-3">
                     {{ $t("translation.developedByStudents") }}
                     <a href="http://sumdu.edu.ua/" class="link link__accent">
                         {{ $t("translation.sumdu") }}
@@ -59,6 +58,13 @@
             return {
                 title: this.$t('translation.homepage'),
             };
+        },
+        created() {
+            if (Number(window.Cookies.get('first_stage'))) {
+                this.$router.push({
+                    name: 'user.room',
+                });
+            }
         },
     };
 </script>

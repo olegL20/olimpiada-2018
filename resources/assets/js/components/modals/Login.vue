@@ -39,7 +39,7 @@
                         </div>
                     </div>
 
-                    <button @click="login" type="button" class="btn btn-md btn-accent btn-center mb-4">
+                    <button @click="login" type="button" class="btn button-md button-accent button-center mb-4">
                         {{ $t("translation.enter") }}
                     </button>
 
@@ -51,10 +51,10 @@
                         <i class="fa fa-google-plus-square fa-2x mr-2 fa-relative" aria-hidden="true"></i>
                         <span>{{ $t("translation.throughGoogle") }}</span>
                     </router-link>
-                    <router-link :to="{ name: 'home' }" class="link">
+                    <a href="javascript:" @click="authenticate('facebook')" class="link">
                         <i class="fa fa-facebook-square fa-2x mr-2 fa-relative" aria-hidden="true"></i>
                         {{ $t("translation.throughFacebook") }}
-                    </router-link>
+                    </a>
 
                 </div>
 
@@ -87,6 +87,8 @@
                             email: this.userEmail,
                             password: this.userPassword,
                         });
+                        window.Cookies.set('first_stage', 3);
+                        this.userFirstStage = 3;
                         this.hide();
                     } catch (e) {
                         this.hide();
@@ -96,6 +98,11 @@
                         });
                     }
                 }
+            },
+            authenticate(provider) {
+                this.$auth.authenticate(provider).then(() => {
+                    // Execute application logic after successful social authentication
+                });
             },
         },
     };

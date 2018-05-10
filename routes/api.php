@@ -30,6 +30,7 @@ Route::group(['middleware' => 'api'], function () {
         Route::post('associate', 'InviteAdminUniversityController@associate');
         Route::resource('major', 'MajorController');
         Route::resource('department', 'DepartmentController');
+        Route::resource('subjects-coefficients', 'SubjectCoefficientController');
     });
 
     Route::group([

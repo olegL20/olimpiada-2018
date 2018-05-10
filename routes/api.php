@@ -37,6 +37,9 @@ Route::group(['middleware' => 'api'], function () {
         'prefix' => 'user',
         'namespace' => 'User'
     ], function () {
+        // user routes
         Route::resource('university', 'UniversityController');
+        Route::post('score', 'ScoreController@write');
+        Route::get('score', 'ScoreController@show');
     });
 });

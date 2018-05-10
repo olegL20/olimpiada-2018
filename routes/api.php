@@ -38,5 +38,7 @@ Route::group(['middleware' => 'api'], function () {
         'namespace' => 'User'
     ], function () {
         // user routes
+        Route::post('score', 'ScoreController@write');
+        Route::get('score', 'ScoreController@show');
     });
 });

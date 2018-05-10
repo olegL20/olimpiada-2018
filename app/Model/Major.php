@@ -19,4 +19,9 @@ class Major extends Model
     {
         return $this->belongsTo(Faculty::class);
     }
+
+    public function subjectsCoefficient()
+    {
+        return $this->hasOne(SubjectCoefficient::class);
+    }
 }

@@ -24,7 +24,7 @@ class ScoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'average_score_zno' => 'required',
+            'average_score_school' => 'required',
             'additional_courses' => 'required',
             'subjects_score' => 'required',
         ];

@@ -100,6 +100,12 @@ export default {
         save: 'Зберегти',
         infoAboutUniversity: 'Інформація про університет',
         editUniversity: 'Редагувати університет',
+        description: 'Опис',
+        created_at: 'Час створення',
+        address: 'Адреса',
+        zip_code: 'Поштовий індекс',
+        phone: 'Телефон',
+        site: 'Сайт',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

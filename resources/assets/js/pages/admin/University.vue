@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="col-md-12">
             <div class="row border rounded bg-white pt-3 pb-3">
@@ -13,21 +13,22 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listUniversities"
-                              api-url="https://vuetable.ratiw.net/api/users"
+                              api-url="/api/admin/university"
                               :fields="fields"
                               pagination-path = ""
                               :css="css.table"
-                              @vuetable:load-success="hidePreload"
+                              data-path="data.data"
+                              @vuetable:load-success="showPreload = false"
                               @vuetable:pagination-data="onPaginationData"
                     >
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"
-                                    @click="modalsIsShowEditUniversity = true"
+                                    @click="editUniversity(props.rowData.id)"
                                     :title="$t('translation.edit')">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
                             <button type="button" class="btn btn-outline-danger btn-md" :title="$t('translation.remove')"
-                                    @click="deleteProductCategory(props.rowData.id)">
+                                    @click="destroyUniversity(props.rowData.id)">
                                 <i class="fa fa-trash-o"></i>
                             </button>
                         </template>
@@ -55,6 +56,7 @@
 
     import MixinUniversityFields from '../../mixins/formFields/university';
     import MixinModals from '../../mixins/modals';
+    import MixinPreloader from '../../mixins/preload';
     import ModalCreateUniversity from '../../components/admin/modals/CreateUniversity.vue';
     import ModalEditUniversity from '../../components/admin/modals/EditUniversity.vue';
 
@@ -63,6 +65,7 @@
     export default {
         mixins: [
             MixinModals,
+            MixinPreloader,
             MixinUniversityFields,
         ],
         components: {
@@ -72,10 +75,26 @@
             ModalEditUniversity,
         },
         mounted() {
-            this.showPreload();
+            this.showPreload = true;
         },
         methods: {
-            async deleteProductCategory() {
+            async editUniversity(universityId) {
+                try {
+                    await this.$store.dispatch('admin/getUniversity', universityId);
+
+                    this.modalsIsShowEditUniversity = true;
+
+                    this.universityAddress = null;
+                    this.universityDescription = null;
+                    this.universityEmail = null;
+                    this.universityName = null;
+                    this.universityPhone = null;
+                    this.universitySite = null;
+                } catch (e) {
+                    console.log(e);
+                }
+            },
+            async destroyUniversity(universityId) {
                 const result = await this.$swal({
                     title: this.$t('translation.areYouSure'),
                     type: 'warning',
@@ -87,15 +106,13 @@
                 });
                 if (result.value) {
                     try {
-                        // await this.$store.dispatch('admin/deleteUniversity', {
-                        //     data: {
-                        //         product_category_id: productCategoryId,
-                        //     },
-                        // });
+                        await this.$store.dispatch('admin/destroyUniversity', universityId);
+                        this.$refs.listUniversities.refresh();
+                        this.showPreload = true;
                     } catch (e) {
-                        this.$toasted.show(this.$t(e.errors), {
-                            theme: 'primary',
-                            type: 'error',
+                        this.$toast.error({
+                            title: this.$t('translation.error'),
+                            message: this.$t(e.statusText),
                         });
                     }
                 }
@@ -104,7 +121,7 @@
                 this.$refs.pagination.setPaginationData(paginationData);
             },
             onChangePage(page) {
-                this.$refs.vuetableAllFields.changePage(page);
+                this.$refs.listUniversities.changePage(page);
             },
         },
     };

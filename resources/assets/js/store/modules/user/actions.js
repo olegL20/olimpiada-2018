@@ -16,6 +16,7 @@ export const login = async ({ dispatch, commit }, payload) => {
 };
 
 export const register = async ({ dispatch, commit }, { params }) => {
+    console.log('lalka');
     const json = await user.register(params);
 
     if (json.status === 200) {

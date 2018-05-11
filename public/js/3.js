@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 201:
+/***/ 208:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(11)
+var normalizeComponent = __webpack_require__(13)
 /* script */
-var __vue_script__ = __webpack_require__(234)
+var __vue_script__ = __webpack_require__(241)
 /* template */
-var __vue_template__ = __webpack_require__(235)
+var __vue_template__ = __webpack_require__(242)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,15 +48,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 207:
+/***/ 214:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(11)
+var normalizeComponent = __webpack_require__(13)
 /* script */
-var __vue_script__ = __webpack_require__(208)
+var __vue_script__ = __webpack_require__(215)
 /* template */
-var __vue_template__ = __webpack_require__(211)
+var __vue_template__ = __webpack_require__(218)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -96,7 +96,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 208:
+/***/ 215:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -106,19 +106,19 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _regenerator = __webpack_require__(12);
+var _regenerator = __webpack_require__(7);
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = __webpack_require__(13);
+var _asyncToGenerator2 = __webpack_require__(8);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _vuejsDatepicker = __webpack_require__(209);
+var _vuejsDatepicker = __webpack_require__(216);
 
 var _vuejsDatepicker2 = _interopRequireDefault(_vuejsDatepicker);
 
-var _vueBase64FileUpload = __webpack_require__(210);
+var _vueBase64FileUpload = __webpack_require__(217);
 
 var _vueBase64FileUpload2 = _interopRequireDefault(_vueBase64FileUpload);
 
@@ -449,7 +449,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 209:
+/***/ 216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1767,7 +1767,7 @@ var Datepicker = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
 
 /***/ }),
 
-/***/ 210:
+/***/ 217:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1905,7 +1905,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 211:
+/***/ 218:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -2493,7 +2493,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 234:
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2507,7 +2507,7 @@ var _modals = __webpack_require__(36);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _Register = __webpack_require__(207);
+var _Register = __webpack_require__(214);
 
 var registerModal = _interopRequireWildcard(_Register);
 
@@ -2580,7 +2580,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 235:
+/***/ 242:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -2645,7 +2645,7 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass: "btn-style btn-style-md btn-style-accent",
+                  staticClass: "btn button-md button-accent",
                   attrs: {
                     tag: "button",
                     to: { name: "user.room" },

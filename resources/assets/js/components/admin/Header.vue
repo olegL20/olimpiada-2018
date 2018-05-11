@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar">
-        <div class="container">
+        <div class="container-fluid">
             <router-link :to="{ name: 'home' }" class="mb-3">
                 <img src="/images/logo.png" alt="BigFut">
             </router-link>

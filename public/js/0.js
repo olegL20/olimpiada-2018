@@ -1176,6 +1176,8 @@ exports.default = {
 //
 //
 //
+//
+//
 
 /***/ }),
 /* 246 */
@@ -4933,7 +4935,7 @@ exports.default = {
                 sortField: 'description',
                 title: this.$t('translation.description'),
                 titleClass: 'text-left',
-                dataClass: 'text-left'
+                dataClass: 'text-left ellipsis'
             }, {
                 name: 'created_at',
                 sortField: 'created_at',
@@ -5031,29 +5033,65 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _regenerator = __webpack_require__(7);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(8);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _vueBase64FileUpload = __webpack_require__(214);
+
+var _vueBase64FileUpload2 = _interopRequireDefault(_vueBase64FileUpload);
+
 var _modals = __webpack_require__(36);
 
 var _modals2 = _interopRequireDefault(_modals);
 
+var _admin = __webpack_require__(231);
+
+var _admin2 = _interopRequireDefault(_admin);
+
+var _preload = __webpack_require__(74);
+
+var _preload2 = _interopRequireDefault(_preload);
+
+var _constants = __webpack_require__(294);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-    mixins: [_modals2.default],
+    mixins: [_modals2.default, _admin2.default, _preload2.default],
+    components: {
+        VueBase64FileUpload: _vueBase64FileUpload2.default
+    },
     data: function data() {
         return {
-            universityName: null,
-            universityDescription: null,
-            universityAddress: null,
-            universityEmail: null,
-            universityPhone: null,
-            universitySite: null,
-            universityZipCode: null
+            customImageMaxSize: _constants.IMAGE_MAX_SIZE,
+            imageSubstringLength: null,
+            imageBase64: null
         };
     },
 
+    computed: {
+        photo: function photo() {
+            if (this.imageBase64) {
+                return this.imageBase64.substr(this.imageSubstringLength);
+            }
+            return '';
+        }
+    },
     methods: {
+        onFile: function onFile(file) {
+            this.imageSubstringLength = file.type.length + 13;
+        },
+        onLoad: function onLoad(dataUri) {
+            this.imageBase64 = dataUri;
+        },
         hide: function hide() {
             this.modalsIsShowCreateUniversity = false;
+
             this.universityName = null;
             this.universityDescription = null;
             this.universityAddress = null;
@@ -5061,9 +5099,103 @@ exports.default = {
             this.universityPhone = null;
             this.universitySite = null;
             this.universityZipCode = null;
+        },
+        createUniversity: function createUniversity() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+                                if (!valid) {
+                                    _context.next = 17;
+                                    break;
+                                }
+
+                                _context.prev = 4;
+
+                                _this.showPreloader();
+                                _context.next = 8;
+                                return _this.$store.dispatch('admin/createUniversity', {
+                                    name: _this.universityName,
+                                    description: _this.universityDescription,
+                                    address: _this.universityAddress,
+                                    email: _this.universityEmail,
+                                    phone: _this.universityPhone,
+                                    site: _this.universitySite,
+                                    zip_code: _this.universityZipCode,
+                                    // parent_id: this.universityParentId,
+                                    image: _this.photo,
+                                    position: '2'
+                                });
+
+                            case 8:
+                                _this.switchRefreshTable(true);
+                                _this.hide();
+                                _this.$toast.success({
+                                    title: _this.$t('translation.success'),
+                                    message: _this.$t('translation.createUniversity')
+                                });
+                                _context.next = 17;
+                                break;
+
+                            case 13:
+                                _context.prev = 13;
+                                _context.t0 = _context['catch'](4);
+
+                                if (_context.t0.status === 404) {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t('translation.inviteNotFound')
+                                    });
+                                } else {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t(_context.t0.message)
+                                    });
+                                }
+                                _this.hide();
+
+                            case 17:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[4, 13]]);
+            }))();
         }
     }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5415,7 +5547,7 @@ var render = function() {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "email",
+                      type: "text",
                       id: "universityPhone",
                       "aria-describedby": "universityPhoneHelp",
                       placeholder: _vm.$t(
@@ -5468,8 +5600,8 @@ var render = function() {
                       {
                         name: "validate",
                         rawName: "v-validate",
-                        value: "url|max:255",
-                        expression: "'url|max:255'"
+                        value: "required|url|max:255",
+                        expression: "'required|url|max:255'"
                       },
                       {
                         name: "model",
@@ -5480,7 +5612,7 @@ var render = function() {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "email",
+                      type: "text",
                       id: "universitySite",
                       "aria-describedby": "universitySiteHelp",
                       placeholder: _vm.$t(
@@ -5545,13 +5677,13 @@ var render = function() {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "email",
+                      type: "text",
                       id: "universityZipCode",
                       "aria-describedby": "universityZipCodeHelp",
                       placeholder: _vm.$t(
                         "translation.universityZipCodePlaceholder"
                       ),
-                      name: "universitySite"
+                      name: "universityZipCode"
                     },
                     domProps: { value: _vm.universityZipCode },
                     on: {
@@ -5598,8 +5730,8 @@ var render = function() {
                       {
                         name: "validate",
                         rawName: "v-validate",
-                        value: "required",
-                        expression: "'required'"
+                        value: "required|max:255",
+                        expression: "'required|max:255'"
                       },
                       {
                         name: "model",
@@ -5608,7 +5740,7 @@ var render = function() {
                         expression: "universityDescription"
                       }
                     ],
-                    staticClass: "form-control resize-none",
+                    staticClass: "form-control resize-none h-10",
                     attrs: {
                       type: "text",
                       id: "universityDescription",
@@ -5653,11 +5785,70 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "div",
+                    { class: { "is-invalid__date": _vm.errors.has("photo") } },
+                    [
+                      _c("label", { attrs: { for: "image" } }, [
+                        _vm._v(_vm._s(_vm.$t("translation.photo")))
+                      ]),
+                      _vm._v(" "),
+                      _c("vue-base64-file-upload", {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required",
+                            expression: "'required'"
+                          }
+                        ],
+                        staticClass: "v1",
+                        attrs: {
+                          accept: "image/png,image/jpeg",
+                          "image-class": "img-fluid mt-3 max-w-20",
+                          "input-class": "input",
+                          "max-size": _vm.customImageMaxSize,
+                          id: "image",
+                          "data-vv-name": "photo",
+                          "data-vv-value-path": "file",
+                          placeholder: _vm.$t("translation.photo")
+                        },
+                        on: { file: _vm.onFile, load: _vm.onLoad }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.errors.has("photo"),
+                              expression: "errors.has('photo')"
+                            }
+                          ],
+                          staticClass: "invalid-feedback"
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(_vm.errors.first("photo")) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
                 _c(
                   "button",
                   {
                     staticClass: "btn btn-md btn-success float-right mt-4",
-                    attrs: { type: "button" }
+                    attrs: { type: "button" },
+                    on: { click: _vm.createUniversity }
                   },
                   [
                     _vm._v(
@@ -5766,140 +5957,9 @@ var _preload = __webpack_require__(74);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _constants = __webpack_require__(294);
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
     mixins: [_admin2.default, _modals2.default, _preload2.default],
@@ -5908,7 +5968,7 @@ exports.default = {
     },
     data: function data() {
         return {
-            customImageMaxSize: 3,
+            customImageMaxSize: _constants.IMAGE_MAX_SIZE,
             imageSubstringLength: null,
             imageBase64: null
         };
@@ -5958,7 +6018,7 @@ exports.default = {
                                 valid = _context.sent;
 
                                 if (!valid) {
-                                    _context.next = 19;
+                                    _context.next = 18;
                                     break;
                                 }
 
@@ -5973,9 +6033,9 @@ exports.default = {
                                     phone: _this.universityPhone,
                                     site: _this.universitySite,
                                     zip_code: _this.universityZipCode,
-                                    parent_id: _this.universityParentId,
+                                    // parent_id: this.universityParentId,
                                     image: _this.photo,
-                                    position: 'hgf'
+                                    position: '1'
                                 };
                                 _context.next = 9;
                                 return _this.$store.dispatch('admin/editUniversity', {
@@ -5990,15 +6050,14 @@ exports.default = {
                                     title: _this.$t('translation.success'),
                                     message: _this.$t('translation.infoUpdate')
                                 });
-                                _this.hidePreloader();
-                                _context.next = 19;
+                                _context.next = 18;
                                 break;
 
-                            case 15:
-                                _context.prev = 15;
+                            case 14:
+                                _context.prev = 14;
                                 _context.t0 = _context['catch'](4);
 
-                                if (_context.t0.status === 404 && _this.$route.name === 'auth.invite') {
+                                if (_context.t0.status === 404) {
                                     _this.$toast.error({
                                         title: _this.$t('translation.error'),
                                         message: _this.$t('translation.inviteNotFound')
@@ -6011,16 +6070,147 @@ exports.default = {
                                 }
                                 _this.hide();
 
-                            case 19:
+                            case 18:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[4, 15]]);
+                }, _callee, _this, [[4, 14]]);
             }))();
         }
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 293 */
@@ -6273,7 +6463,7 @@ var render = function() {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "email",
+                      type: "text",
                       id: "universityPhone",
                       "aria-describedby": "universityPhoneHelp",
                       placeholder: _vm.$t(
@@ -6338,7 +6528,7 @@ var render = function() {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "email",
+                      type: "text",
                       id: "universitySite",
                       "aria-describedby": "universitySiteHelp",
                       placeholder: _vm.$t(
@@ -6403,13 +6593,13 @@ var render = function() {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "email",
+                      type: "text",
                       id: "universityZipCode",
                       "aria-describedby": "universityZipCodeHelp",
                       placeholder: _vm.$t(
                         "translation.universityZipCodePlaceholder"
                       ),
-                      name: "universitySite"
+                      name: "universityZipCode"
                     },
                     domProps: { value: _vm.universityZipCode },
                     on: {
@@ -6466,7 +6656,7 @@ var render = function() {
                         expression: "universityDescription"
                       }
                     ],
-                    staticClass: "form-control resize-none",
+                    staticClass: "form-control resize-none h-10",
                     attrs: {
                       type: "text",
                       id: "universityDescription",
@@ -6617,6 +6807,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var BUTTON_COLOR_CONFIRM = exports.BUTTON_COLOR_CONFIRM = '#3085d6';
 var BUTTON_COLOR_CANCEL = exports.BUTTON_COLOR_CANCEL = '#d33d33';
+var IMAGE_MAX_SIZE = exports.IMAGE_MAX_SIZE = 3;
 
 /***/ }),
 /* 295 */
@@ -6680,14 +6871,27 @@ var render = function() {
                     key: "description",
                     fn: function(props) {
                       return [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(
-                              props.rowData.description === null
-                                ? _vm.$t("translation.noData")
-                                : props.rowData.description
-                            ) +
-                            "\n                    "
+                        _c(
+                          "div",
+                          {
+                            staticClass: "cursor-pointer",
+                            on: {
+                              click: function($event) {
+                                _vm.editUniversity(props.rowData.id)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(
+                                  props.rowData.description === null
+                                    ? _vm.$t("translation.noData")
+                                    : props.rowData.description
+                                ) +
+                                "\n                        "
+                            )
+                          ]
                         )
                       ]
                     }

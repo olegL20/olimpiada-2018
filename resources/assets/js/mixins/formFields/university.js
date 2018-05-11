@@ -49,7 +49,7 @@ export default {
                     sortField: 'description',
                     title: this.$t('translation.description'),
                     titleClass: 'text-left',
-                    dataClass: 'text-left',
+                    dataClass: 'text-left ellipsis',
                 },
                 {
                     name: 'created_at',

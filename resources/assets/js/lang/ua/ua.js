@@ -113,7 +113,7 @@ export default {
         universityParentId: 'Батьківський ідентифікатор',
         infoUpdate: 'Інформацію оновлено',
         success: 'Успіх',
-
+        createUniversity: 'Університет створено',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

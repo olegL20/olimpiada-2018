@@ -28,4 +28,13 @@ export default {
             return e.response;
         }
     },
+    async createUniversity(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/admin/university`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
 };

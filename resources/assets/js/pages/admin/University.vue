@@ -22,7 +22,9 @@
                               @vuetable:pagination-data="onPaginationData"
                     >
                         <template slot="description" slot-scope="props">
-                            {{ props.rowData.description === null ? $t('translation.noData') : props.rowData.description}}
+                            <div class="cursor-pointer" @click="editUniversity(props.rowData.id)">
+                                {{ props.rowData.description === null ? $t('translation.noData') : props.rowData.description}}
+                            </div>
                         </template>
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"

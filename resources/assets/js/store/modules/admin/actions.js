@@ -39,9 +39,20 @@ export const editUniversity = async ({ dispatch, commit }, { id, params }) => {
 
     throw json;
 };
+export const createUniversity = async ({ dispatch, commit }, payload) => {
+    console.log(payload);
+    const json = await admin.createUniversity(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
 
 export default {
     destroyUniversity,
     getUniversity,
     editUniversity,
+    createUniversity,
 };

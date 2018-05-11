@@ -62343,7 +62343,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
+exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
 
 var _regenerator = __webpack_require__(7);
 
@@ -62489,11 +62489,50 @@ var editUniversity = exports.editUniversity = function () {
         return _ref5.apply(this, arguments);
     };
 }();
+var createUniversity = exports.createUniversity = function () {
+    var _ref8 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(_ref9, payload) {
+        var dispatch = _ref9.dispatch,
+            commit = _ref9.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee4$(_context4) {
+            while (1) {
+                switch (_context4.prev = _context4.next) {
+                    case 0:
+                        console.log(payload);
+                        _context4.next = 3;
+                        return _admin2.default.createUniversity(payload);
+
+                    case 3:
+                        json = _context4.sent;
+
+                        if (!(json.status === 200)) {
+                            _context4.next = 6;
+                            break;
+                        }
+
+                        return _context4.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context4.stop();
+                }
+            }
+        }, _callee4, undefined);
+    }));
+
+    return function createUniversity(_x7, _x8) {
+        return _ref8.apply(this, arguments);
+    };
+}();
 
 exports.default = {
     destroyUniversity: destroyUniversity,
     getUniversity: getUniversity,
-    editUniversity: editUniversity
+    editUniversity: editUniversity,
+    createUniversity: createUniversity
 };
 
 /***/ }),
@@ -62617,6 +62656,39 @@ exports.default = {
                     }
                 }
             }, _callee3, _this3, [[0, 9]]);
+        }))();
+    },
+    createUniversity: function createUniversity(params) {
+        var _this4 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {
+            var _ref4, data, status;
+
+            return _regenerator2.default.wrap(function _callee4$(_context4) {
+                while (1) {
+                    switch (_context4.prev = _context4.next) {
+                        case 0:
+                            _context4.prev = 0;
+                            _context4.next = 3;
+                            return window.axios.post(url + '/api/admin/university', params);
+
+                        case 3:
+                            _ref4 = _context4.sent;
+                            data = _ref4.data;
+                            status = _ref4.status;
+                            return _context4.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context4.prev = 9;
+                            _context4.t0 = _context4['catch'](0);
+                            return _context4.abrupt('return', _context4.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context4.stop();
+                    }
+                }
+            }, _callee4, _this4, [[0, 9]]);
         }))();
     }
 };
@@ -64554,8 +64626,8 @@ exports.default = {
         noData: 'Інформація відсутня',
         universityParentId: 'Батьківський ідентифікатор',
         infoUpdate: 'Інформацію оновлено',
-        success: 'Успіх'
-
+        success: 'Успіх',
+        createUniversity: 'Університет створено'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'

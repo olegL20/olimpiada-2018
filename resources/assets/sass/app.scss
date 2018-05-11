@@ -109,6 +109,21 @@ body {
   max-width: 20rem;
 }
 
+.h-10 {
+    height: 10rem;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 200px;
+    text-overflow: ellipsis;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
 @import "components/buttons";
 @import "components/links";
 @import "components/lists";

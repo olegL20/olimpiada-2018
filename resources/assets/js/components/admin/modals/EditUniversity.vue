@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group">
                         <label for="universityPhone">{{ $t("translation.universityPhone") }}</label>
-                        <input type="email" class="form-control" id="universityPhone" aria-describedby="universityPhoneHelp"
+                        <input type="text" class="form-control" id="universityPhone" aria-describedby="universityPhoneHelp"
                                :placeholder="$t('translation.universityPhonePlaceholder')"
                                name="universityPhone"
                                v-validate="'required|max:255'"
@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group">
                         <label for="universitySite">{{ $t("translation.universitySite") }}</label>
-                        <input type="email" class="form-control" id="universitySite" aria-describedby="universitySiteHelp"
+                        <input type="text" class="form-control" id="universitySite" aria-describedby="universitySiteHelp"
                                :placeholder="$t('translation.universitySitePlaceholder')"
                                name="universitySite"
                                v-validate="'required|url|max:255'"
@@ -65,9 +65,9 @@
                     </div>
                     <div class="form-group">
                         <label for="universityZipCode">{{ $t("translation.universityZipCode") }}</label>
-                        <input type="email" class="form-control" id="universityZipCode" aria-describedby="universityZipCodeHelp"
+                        <input type="text" class="form-control" id="universityZipCode" aria-describedby="universityZipCodeHelp"
                                :placeholder="$t('translation.universityZipCodePlaceholder')"
-                               name="universitySite"
+                               name="universityZipCode"
                                v-validate="'required|max:255'"
                                v-model="universityZipCode">
                         <small id="universityZipCodeHelp" class="form-text text-danger" v-show="errors.has('universityZipCode')">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group">
                         <label for="universityDescription">{{ $t("translation.universityDescription") }}</label>
-                        <textarea type="text" class="form-control resize-none" id="universityDescription" aria-describedby="universityDescriptionHelp"
+                        <textarea type="text" class="form-control resize-none h-10" id="universityDescription" aria-describedby="universityDescriptionHelp"
                                   :placeholder="$t('translation.universityDescriptionPlaceholder')"
                                   name="universityDescription"
                                   v-validate="'required|max:255'"
@@ -137,6 +137,8 @@
     import MixinAdmin from '../../../mixins/admin';
     import MixinPreload from '../../../mixins/preload';
 
+    import { IMAGE_MAX_SIZE } from '../../../utils/constants';
+
     export default {
         mixins: [
             MixinAdmin,
@@ -148,7 +150,7 @@
         },
         data() {
             return {
-                customImageMaxSize: 3,
+                customImageMaxSize: IMAGE_MAX_SIZE,
                 imageSubstringLength: null,
                 imageBase64: null,
             };
@@ -195,9 +197,9 @@
                             phone: this.universityPhone,
                             site: this.universitySite,
                             zip_code: this.universityZipCode,
-                            parent_id: this.universityParentId,
+                            // parent_id: this.universityParentId,
                             image: this.photo,
-                            position: 'hgf',
+                            position: '1',
                         };
                         await this.$store.dispatch('admin/editUniversity', {
                             id: this.universityId,
@@ -209,9 +211,8 @@
                             title: this.$t('translation.success'),
                             message: this.$t('translation.infoUpdate'),
                         });
-                        this.hidePreloader();
                     } catch (e) {
-                        if (e.status === 404 && this.$route.name === 'auth.invite') {
+                        if (e.status === 404) {
                             this.$toast.error({
                                 title: this.$t('translation.error'),
                                 message: this.$t('translation.inviteNotFound'),

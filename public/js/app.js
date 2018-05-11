@@ -12225,7 +12225,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'modals',
         prefix: true
-    }, ['isShowLogin', 'isShowRegister', 'isShowAdvice', 'isShowSelectVuz', 'isShowCreateUniversity', 'isShowEditUniversity']))
+    }, ['isShowLogin', 'isShowRegister', 'isShowAdvice', 'isShowSelectVuz', 'isShowCreateUniversity', 'isShowEditUniversity', 'isShowDescription']))
 };
 
 /***/ }),
@@ -23543,7 +23543,8 @@ exports.default = {
     isShowAdvice: false,
     isShowSelectVuz: false,
     isShowCreateUniversity: false,
-    isShowEditUniversity: false
+    isShowEditUniversity: false,
+    isShowDescription: false
 };
 
 /***/ }),
@@ -62291,6 +62292,7 @@ var IS_SHOW_ADVICE = exports.IS_SHOW_ADVICE = 'IS_SHOW_ADVICE';
 var IS_SHOW_SELECT_VUZ = exports.IS_SHOW_SELECT_VUZ = 'IS_SHOW_SELECT_VUZ';
 var IS_SHOW_CREATE_UNIVERSITY = exports.IS_SHOW_CREATE_UNIVERSITY = 'IS_SHOW_CREATE_UNIVERSITY';
 var IS_SHOW_EDIT_UNIVERSITY = exports.IS_SHOW_EDIT_UNIVERSITY = 'IS_SHOW_EDIT_UNIVERSITY';
+var IS_SHOW_DESCRIPTION = exports.IS_SHOW_DESCRIPTION = 'IS_SHOW_DESCRIPTION';
 
 /***/ }),
 /* 158 */
@@ -64627,7 +64629,8 @@ exports.default = {
         universityParentId: 'Батьківський ідентифікатор',
         infoUpdate: 'Інформацію оновлено',
         success: 'Успіх',
-        createUniversity: 'Університет створено'
+        createUniversity: 'Університет створено',
+        close: 'Закрити'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'

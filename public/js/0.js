@@ -987,6 +987,10 @@ var _EditUniversity = __webpack_require__(291);
 
 var _EditUniversity2 = _interopRequireDefault(_EditUniversity);
 
+var _ShowDescription = __webpack_require__(301);
+
+var _ShowDescription2 = _interopRequireDefault(_ShowDescription);
+
 var _constants = __webpack_require__(294);
 
 var constants = _interopRequireWildcard(_constants);
@@ -995,13 +999,73 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 exports.default = {
     mixins: [_admin2.default, _modals2.default, _preload2.default, _university2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default,
         ModalCreateUniversity: _CreateUniversity2.default,
-        ModalEditUniversity: _EditUniversity2.default
+        ModalEditUniversity: _EditUniversity2.default,
+        ModalShowDescription: _ShowDescription2.default
     },
     mounted: function mounted() {
         this.showPreloader();
@@ -1025,6 +1089,10 @@ exports.default = {
         //     }));
         //     this.universityParentsId = universitiesId;
         // },
+        showDescription: function showDescription(description) {
+            this.universityDescription = description;
+            this.modalsIsShowDescription = true;
+        },
         editUniversity: function editUniversity(universityId) {
             var _this = this;
 
@@ -1121,63 +1189,7 @@ exports.default = {
             this.$refs.listUniversities.changePage(page);
         }
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 /* 246 */
@@ -6874,10 +6886,10 @@ var render = function() {
                         _c(
                           "div",
                           {
-                            staticClass: "cursor-pointer",
+                            staticClass: "cursor-pointer text-blue-hover",
                             on: {
                               click: function($event) {
-                                _vm.editUniversity(props.rowData.id)
+                                _vm.showDescription(props.rowData.description)
                               }
                             }
                           },
@@ -6963,7 +6975,9 @@ var render = function() {
         _vm._v(" "),
         _c("modal-create-university"),
         _vm._v(" "),
-        _c("modal-edit-university")
+        _c("modal-edit-university"),
+        _vm._v(" "),
+        _c("modal-show-description")
       ],
       1
     )
@@ -6976,6 +6990,191 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-3700248b", module.exports)
+  }
+}
+
+/***/ }),
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(13)
+/* script */
+var __vue_script__ = __webpack_require__(302)
+/* template */
+var __vue_template__ = __webpack_require__(303)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/modals/ShowDescription.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-69263f4d", Component.options)
+  } else {
+    hotAPI.reload("data-v-69263f4d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 302 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _modals = __webpack_require__(36);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+var _admin = __webpack_require__(231);
+
+var _admin2 = _interopRequireDefault(_admin);
+
+var _preload = __webpack_require__(74);
+
+var _preload2 = _interopRequireDefault(_preload);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    mixins: [_modals2.default, _admin2.default, _preload2.default],
+    methods: {
+        hide: function hide() {
+            this.modalsIsShowDescription = false;
+            this.universityDescription = null;
+        }
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 303 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowDescription
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "click-outside",
+                  rawName: "v-click-outside",
+                  value: _vm.hide,
+                  expression: "hide"
+                }
+              ],
+              staticClass: "modal__content modal__md"
+            },
+            [
+              _c("h4", { staticClass: "modal__head" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("translation.universityDescription")) +
+                    "\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal__body" }, [
+                _c("div", { staticClass: "p-3" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.universityDescription) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-md btn-primary float-right mt-4",
+                    attrs: { type: "button" },
+                    on: { click: _vm.hide }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.close")) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ])
+            ]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-69263f4d", module.exports)
   }
 }
 

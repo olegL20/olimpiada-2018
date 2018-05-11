@@ -114,6 +114,7 @@ export default {
         infoUpdate: 'Інформацію оновлено',
         success: 'Успіх',
         createUniversity: 'Університет створено',
+        close: 'Закрити',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

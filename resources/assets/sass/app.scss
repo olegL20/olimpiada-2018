@@ -124,6 +124,10 @@ body {
     cursor: pointer;
 }
 
+.text-blue-hover:hover {
+    color: $accent-color;
+}
+
 @import "components/buttons";
 @import "components/links";
 @import "components/lists";

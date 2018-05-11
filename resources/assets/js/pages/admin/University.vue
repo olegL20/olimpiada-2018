@@ -22,7 +22,7 @@
                               @vuetable:pagination-data="onPaginationData"
                     >
                         <template slot="description" slot-scope="props">
-                            <div class="cursor-pointer" @click="editUniversity(props.rowData.id)">
+                            <div class="cursor-pointer text-blue-hover" @click="showDescription(props.rowData.description)">
                                 {{ props.rowData.description === null ? $t('translation.noData') : props.rowData.description}}
                             </div>
                         </template>
@@ -50,6 +50,7 @@
 
             <modal-create-university></modal-create-university>
             <modal-edit-university></modal-edit-university>
+            <modal-show-description></modal-show-description>
 
         </div>
     </div>
@@ -65,6 +66,7 @@
     import MixinAdmin from '../../mixins/admin';
     import ModalCreateUniversity from '../../components/admin/modals/CreateUniversity.vue';
     import ModalEditUniversity from '../../components/admin/modals/EditUniversity.vue';
+    import ModalShowDescription from '../../components/admin/modals/ShowDescription.vue';
 
     import * as constants from '../../utils/constants';
 
@@ -80,6 +82,7 @@
             VuetablePagination,
             ModalCreateUniversity,
             ModalEditUniversity,
+            ModalShowDescription,
         },
         mounted() {
             this.showPreloader();
@@ -102,6 +105,10 @@
             //     }));
             //     this.universityParentsId = universitiesId;
             // },
+            showDescription(description) {
+                this.universityDescription = description;
+                this.modalsIsShowDescription = true;
+            },
             async editUniversity(universityId) {
                 try {
                     await this.$store.dispatch('admin/getUniversity', universityId);

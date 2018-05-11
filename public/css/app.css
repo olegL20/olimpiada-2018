@@ -14587,6 +14587,10 @@ body {
   cursor: pointer;
 }
 
+.text-blue-hover:hover {
+  color: #007add;
+}
+
 .button-accent {
   color: #fff;
   background-color: #007add;

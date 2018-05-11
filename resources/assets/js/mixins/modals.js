@@ -17,6 +17,7 @@ export default {
             'isShowSelectVuz',
             'isShowCreateUniversity',
             'isShowEditUniversity',
+            'isShowDescription',
         ]),
     },
 };

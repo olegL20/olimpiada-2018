@@ -18,9 +18,12 @@
                               pagination-path = ""
                               :css="css.table"
                               data-path="data.data"
-                              @vuetable:load-success="showPreload = false"
+                              @vuetable:load-success="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
                     >
+                        <template slot="description" slot-scope="props">
+                            {{ props.rowData.description === null ? $t('translation.noData') : props.rowData.description}}
+                        </template>
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"
                                     @click="editUniversity(props.rowData.id)"
@@ -57,6 +60,7 @@
     import MixinUniversityFields from '../../mixins/formFields/university';
     import MixinModals from '../../mixins/modals';
     import MixinPreloader from '../../mixins/preload';
+    import MixinAdmin from '../../mixins/admin';
     import ModalCreateUniversity from '../../components/admin/modals/CreateUniversity.vue';
     import ModalEditUniversity from '../../components/admin/modals/EditUniversity.vue';
 
@@ -64,6 +68,7 @@
 
     export default {
         mixins: [
+            MixinAdmin,
             MixinModals,
             MixinPreloader,
             MixinUniversityFields,
@@ -75,23 +80,35 @@
             ModalEditUniversity,
         },
         mounted() {
-            this.showPreload = true;
+            this.showPreloader();
+        },
+        watch: {
+            refreshTable() {
+                if (this.refreshTable) {
+                    this.$refs.listUniversities.refresh();
+                    this.switchRefreshTable(false);
+                }
+            },
         },
         methods: {
+            // getUniversitiesId(payload) {
+            //     this.hidePreloader();
+            //     const universitiesId = payload.data.data.data.map(el => ({
+            //         ...el,
+            //         id: el.id,
+            //         name: el.name,
+            //     }));
+            //     this.universityParentsId = universitiesId;
+            // },
             async editUniversity(universityId) {
                 try {
                     await this.$store.dispatch('admin/getUniversity', universityId);
-
                     this.modalsIsShowEditUniversity = true;
-
-                    this.universityAddress = null;
-                    this.universityDescription = null;
-                    this.universityEmail = null;
-                    this.universityName = null;
-                    this.universityPhone = null;
-                    this.universitySite = null;
                 } catch (e) {
-                    console.log(e);
+                    this.$toast.error({
+                        title: this.$t('translation.error'),
+                        message: this.$t(e.message),
+                    });
                 }
             },
             async destroyUniversity(universityId) {
@@ -108,7 +125,7 @@
                     try {
                         await this.$store.dispatch('admin/destroyUniversity', universityId);
                         this.$refs.listUniversities.refresh();
-                        this.showPreload = true;
+                        this.showPreloader();
                     } catch (e) {
                         this.$toast.error({
                             title: this.$t('translation.error'),

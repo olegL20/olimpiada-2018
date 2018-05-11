@@ -20,15 +20,14 @@
                         </small>
                     </div>
                     <div class="form-group">
-                        <label for="universityDescription">{{ $t("translation.universityDescription") }}</label>
-                        <textarea type="text" class="form-control resize-none" id="universityDescription" aria-describedby="universityDescriptionHelp"
-                               :placeholder="$t('translation.universityDescriptionPlaceholder')"
-                               name="universityDescription"
-                               v-validate="'required'"
-                               v-model="universityDescription">
-                        </textarea>
-                        <small id="universityDescriptionHelp" class="form-text text-danger" v-show="errors.has('universityDescription')">
-                            {{ errors.first('universityDescription') }}
+                        <label for="universityEmail">{{ $t("translation.universityEmail") }}</label>
+                        <input type="email" class="form-control" id="universityEmail" aria-describedby="universityEmailHelp"
+                               :placeholder="$t('translation.universityEmailPlaceholder')"
+                               name="universityEmail"
+                               v-validate="'required|email|max:255'"
+                               v-model="universityEmail">
+                        <small id="universityEmailHelp" class="form-text text-danger" v-show="errors.has('universityEmail')">
+                            {{ errors.first('universityEmail') }}
                         </small>
                     </div>
                     <div class="form-group">
@@ -43,24 +42,13 @@
                         </small>
                     </div>
                     <div class="form-group">
-                        <label for="universityEmail">{{ $t("translation.universityEmail") }}</label>
-                        <input type="email" class="form-control" id="universityEmail" aria-describedby="universityEmailHelp"
-                               :placeholder="$t('translation.universityEmailPlaceholder')"
-                               name="universityEmail"
-                               v-validate="'required|email|max:255'"
-                               v-model="universityEmail">
-                        <small id="universityEmailHelp" class="form-text text-danger" v-show="errors.has('universityEmail')">
-                            {{ errors.first('universityEmail') }}
-                        </small>
-                    </div>
-                    <div class="form-group">
                         <label for="universityPhone">{{ $t("translation.universityPhone") }}</label>
                         <input type="email" class="form-control" id="universityPhone" aria-describedby="universityPhoneHelp"
                                :placeholder="$t('translation.universityPhonePlaceholder')"
                                name="universityPhone"
-                               v-validate="'required'"
+                               v-validate="'required|max:255'"
                                v-model="universityPhone">
-                        <small id="universityPhoneHelp" class="form-text text-danger" v-show="errors.has('phuniversityPhoneone')">
+                        <small id="universityPhoneHelp" class="form-text text-danger" v-show="errors.has('universityPhone')">
                             {{ errors.first('universityPhone') }}
                         </small>
                     </div>
@@ -73,6 +61,29 @@
                                v-model="universitySite">
                         <small id="universitySiteHelp" class="form-text text-danger" v-show="errors.has('universitySite')">
                             {{ errors.first('universitySite') }}
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="universityZipCode">{{ $t("translation.universityZipCode") }}</label>
+                        <input type="email" class="form-control" id="universityZipCode" aria-describedby="universityZipCodeHelp"
+                               :placeholder="$t('translation.universityZipCodePlaceholder')"
+                               name="universitySite"
+                               v-validate="'required|max:255'"
+                               v-model="universityZipCode">
+                        <small id="universityZipCodeHelp" class="form-text text-danger" v-show="errors.has('universityZipCode')">
+                            {{ errors.first('universityZipCode') }}
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="universityDescription">{{ $t("translation.universityDescription") }}</label>
+                        <textarea type="text" class="form-control resize-none" id="universityDescription" aria-describedby="universityDescriptionHelp"
+                                  :placeholder="$t('translation.universityDescriptionPlaceholder')"
+                                  name="universityDescription"
+                                  v-validate="'required'"
+                                  v-model="universityDescription">
+                        </textarea>
+                        <small id="universityDescriptionHelp" class="form-text text-danger" v-show="errors.has('universityDescription')">
+                            {{ errors.first('universityDescription') }}
                         </small>
                     </div>
 
@@ -102,6 +113,7 @@
                 universityEmail: null,
                 universityPhone: null,
                 universitySite: null,
+                universityZipCode: null,
             };
         },
         methods: {
@@ -113,6 +125,7 @@
                 this.universityEmail = null;
                 this.universityPhone = null;
                 this.universitySite = null;
+                this.universityZipCode = null;
             },
         },
     };

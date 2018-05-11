@@ -97,6 +97,8 @@ export default {
         universityPhonePlaceholder: '+380-01-222-03',
         universitySite: 'web-сайт',
         universitySitePlaceholder: 'URL',
+        universityZipCode: 'Поштовий індекс',
+        universityZipCodePlaceholder: 'Поштовий індекс',
         save: 'Зберегти',
         infoAboutUniversity: 'Інформація про університет',
         editUniversity: 'Редагувати університет',
@@ -105,7 +107,13 @@ export default {
         address: 'Адреса',
         zip_code: 'Поштовий індекс',
         phone: 'Телефон',
-        site: 'Сайт',
+        site: 'web-сайт',
+        absent: 'Відсутній',
+        noData: 'Інформація відсутня',
+        universityParentId: 'Батьківський ідентифікатор',
+        infoUpdate: 'Інформацію оновлено',
+        success: 'Успіх',
+
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

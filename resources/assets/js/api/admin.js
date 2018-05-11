@@ -19,4 +19,13 @@ export default {
             return e.response;
         }
     },
+    async editUniversity(id, params) {
+        try {
+            const { data, status } = await window.axios.put(`${url}/api/admin/university/${id}`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
 };

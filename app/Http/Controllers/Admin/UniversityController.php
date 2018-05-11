@@ -95,8 +95,10 @@ class UniversityController extends Controller
         $university = $this->university->find($id)->fill($request->except('image'));
 
         $universityImage = $university->image;
-        $this->asset->removeFiles([$universityImage->source]);
-        $university->image->delete();
+        if (!is_null($universityImage)) {
+            $this->asset->removeFiles([$universityImage->source]);
+            $university->image->delete();
+        }
 
         $university->save();
 
@@ -125,7 +127,11 @@ class UniversityController extends Controller
     public function destroy($id)
     {
         $university = $this->university->find($id);
-        $university->image->delete();
+
+        if (!is_null($university->image)) {
+            $university->image->delete();
+        }
+
         $document = $university->document;
 
         if ($document) {
@@ -135,6 +141,6 @@ class UniversityController extends Controller
 
         return response()->json([
             'message' => trans('api.university_deleted')
-        ], 204);
+        ], 200);
     }
 }

@@ -45,7 +45,7 @@ export default {
                     dataClass: 'text-center',
                 },
                 {
-                    name: 'description',
+                    name: '__slot:description',
                     sortField: 'description',
                     title: this.$t('translation.description'),
                     titleClass: 'text-left',

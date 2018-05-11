@@ -8,22 +8,19 @@ export default {
          * Documentation {@link https://www.npmjs.com/package/schepotin-vuex-helpers#maptwowaystate | mapTwoWayState}
          */
         ...mapTwoWayState({
-            namespace: 'user',
+            namespace: 'admin',
             prefix: false,
         }, [
-            'showPreload',
-            'refreshTable',
+            'universityId',
+            'universityAddress',
+            'universityDescription',
+            'universityEmail',
+            'universityName',
+            'universityPhone',
+            'universitySite',
+            'universityZipCode',
+            'universityParentId',
+            'universityParentsId',
         ]),
-    },
-    methods: {
-        showPreloader() {
-            this.showPreload = true;
-        },
-        hidePreloader() {
-            this.showPreload = false;
-        },
-        switchRefreshTable(value) {
-            this.refreshTable = value;
-        },
     },
 };

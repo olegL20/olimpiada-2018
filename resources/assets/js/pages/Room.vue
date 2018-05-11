@@ -4,7 +4,60 @@
             <div class="row">
 
                 <div class="col-md-9 col-sm-8">
-                    <div class="things"></div>
+                    <div v-if="userFirstStage !== 4 && userFirstStage !== 5" class="things"></div>
+                    <div v-if="userFirstStage === 4" class="room__content">
+                        <div class="university__wrapper">
+                            <div class="university__header"
+                                 :style="{'background': userUser.image
+                                                        ? `url(${userUser.image.source})`
+                                                        : 'white'}">
+                                <div class="university__short-info">
+                                    <div class="media">
+                                        <img v-if="userUser.image"
+                                             :src="userUser.image.source"
+                                             class="image-circle image-circle__60 mr-4">
+                                        <div class="media-body dark-color mt-1">
+                                            <strong>
+                                                <h4>{{ userSelectedUniversity.name }}</h4>
+                                            </strong>
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            <span>{{ userSelectedUniversity.address }}</span>
+                                            <a href="#map" class="link link__accent-dark">
+                                                {{ $t("translation.watchMap") }}
+                                            </a>
+                                            <button type="button" class="btn button-md button-transparent d-block mt-4">
+                                                {{ $t("translation.goToSite") }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="university__info">
+                                <div class="col">
+                                    <p v-if="userSelectedUniversity.description">{{ userSelectedUniversity.description }}</p>
+                                    <p v-else>{{ $t("translation.emptyUniversityDescription") }}</p>
+                                </div>
+                            </div>
+                            <div name="map" class="university__map">
+                                <GmapMap
+                                        :center="userSelectedUniversity.position"
+                                        :zoom="17"
+                                        style="width: 100%; height: 100%"
+                                >
+                                    <GmapMarker
+                                            :position="userSelectedUniversity.position"
+                                            :clickable="true"
+                                            :draggable="true"
+                                    />
+                                </GmapMap>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="userFirstStage === 5" class="room__content">
+                        <div class="puzzle__wrapper">
+                            <puzzle></puzzle>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-3 col-sm-4">
@@ -69,13 +122,27 @@
                                     </div>
                                 </template>
 
-                                <div v-if="userFirstStage === 3" class="message__quote">
-                                    <p class="mb-0">{{ $t("translation.annAdvice") }}</p>
+                                <template v-if="userFirstStage === 3">
+                                    <div class="message__angle"></div>
+                                    <div class="message__quote">
+                                        <p class="mb-0">{{ $t("translation.annAdvice") }}</p>
 
-                                    <a href="javascript:" @click="modalsIsShowAdvice = true" class="link link__white pull-right mr-4">
-                                        {{ $t("translation.next") }}
-                                    </a>
-                                </div>
+                                        <a href="javascript:" @click="modalsIsShowAdvice = true" class="link link__white pull-right mr-4">
+                                            {{ $t("translation.next") }}
+                                        </a>
+                                    </div>
+                                </template>
+
+                                <template v-if="userFirstStage === 4">
+                                    <div class="message__angle"></div>
+                                    <div class="message__quote">
+                                        <p class="mb-0">{{ $t("translation.annAdvice") }}</p>
+
+                                        <a href="javascript:" @click="modalsIsShowAdvice = true" class="link link__white pull-right mr-4">
+                                            {{ $t("translation.next") }}
+                                        </a>
+                                    </div>
+                                </template>
 
                             </div>
 
@@ -102,6 +169,7 @@
     import * as registerModal from '../components/modals/Register.vue';
     import * as adviceModal from '../components/modals/Advice.vue';
     import * as SelectVuzModal from '../components/modals/SelectVuz.vue';
+    import * as puzzle from '../plugins/puzzle/Puzzle.vue';
 
     export default {
         components: {
@@ -109,6 +177,7 @@
             loginModal,
             registerModal,
             adviceModal,
+            puzzle,
         },
         mixins: [
             modalsMixin,
@@ -125,14 +194,18 @@
                 title: this.$t('translation.room'),
             };
         },
-        created() {
-            this.userBackground = 'background__blue';
-        },
         beforeDestroy() {
-            this.userBackground = 'background__white';
+            this.userBackground = 'background-white';
         },
         mounted() {
-            this.userFirstStage = Number(window.Cookies.get('first_stage')) ? Number(window.Cookies.get('first_stage')) : 1;
+            this.userFirstStage = Number(window.Cookies.get('first_stage'))
+                ? Number(window.Cookies.get('first_stage')) : 1;
+            if (this.userFirstStage === 4) {
+                this.userBackground = 'background-green';
+                this.userSelectedUniversity = JSON.parse(window.Cookies.get('university'));
+            } else {
+                this.userBackground = 'background-blue';
+            }
         },
     };
 </script>

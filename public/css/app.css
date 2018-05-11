@@ -14532,12 +14532,16 @@ body {
   height: 100vh;
 }
 
-.background__white {
+.background-white {
   background: url("/images/background.png");
 }
 
-.background__blue {
+.background-blue {
   background: url("/images/background-blue.png"), #b0d9f0;
+}
+
+.background-green {
+  background: url("/images/background-green.png"), #aee8d3;
 }
 
 .navbar__custom {
@@ -14551,13 +14555,13 @@ body {
 .button-accent {
   color: #fff;
   background-color: #007add;
-  border-bottom: 0.29rem solid #005eaa;
+  border-bottom: 1px solid #005eaa;
 }
 
 .button-error {
   color: #fff;
   background-color: #dc3545;
-  border-bottom: 0.29rem solid #bd2130;
+  border-bottom: 1px solid #bd2130;
 }
 
 .button-md {
@@ -14571,6 +14575,17 @@ body {
 .button-center {
   margin: 0 auto;
   display: block;
+}
+
+.button-transparent {
+  background: none;
+  border: 1px solid #007add;
+  color: #007add;
+}
+
+.button-transparent:hover {
+  color: #fff;
+  background: #007add;
 }
 
 .link {
@@ -14977,7 +14992,7 @@ p {
 .phone {
   clear: both;
   position: absolute;
-  bottom: -50px;
+  bottom: 0;
   width: calc(100% - 30px);
   height: calc(100vh - 30.6rem);
   max-height: 20rem;
@@ -15063,7 +15078,7 @@ p {
   position: absolute;
   border-radius: 20px;
   bottom: 168px;
-  left: -307px;
+  right: -25px;
   background-size: contain;
   color: #fff;
   padding: 13px;
@@ -15107,5 +15122,63 @@ p {
   .phone__show {
     height: 20rem;
   }
+}
+
+.room {
+  overflow: hidden;
+}
+
+.room__content {
+  height: calc(100vh - 8.2rem);
+}
+
+.university__wrapper {
+  background-color: #fff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 100%;
+}
+
+.university__header {
+  height: 18rem;
+  background-size: cover !important;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom: 1px solid #ececec;
+  position: relative;
+}
+
+.university__header:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18rem;
+  width: 100%;
+  content: '';
+  background: rgba(255, 255, 255, 0.8);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.university__short-info {
+  position: absolute;
+  z-index: 1;
+  margin-left: 6rem;
+  margin-top: 4rem;
+}
+
+.university__info {
+  margin: 2rem 0 2rem 2rem;
+  overflow-x: auto;
+  height: calc(100vh - 668px);
+}
+
+.university__info p {
+  border-left: 2px solid #007add;
+  padding-left: 1.5rem;
+}
+
+.university__map {
+  height: 250px;
 }
 

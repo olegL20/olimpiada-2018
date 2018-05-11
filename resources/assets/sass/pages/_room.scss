@@ -11,7 +11,7 @@
 .phone {
   clear: both;
   position: absolute;
-  bottom: -50px;
+  bottom: 0;
   width: calc(100% - 30px);
   height: calc(100vh - 30.6rem);
   max-height: 20rem;
@@ -82,7 +82,7 @@
       position: absolute;
       border-radius: 20px;
       bottom: 168px;
-      left: -307px;
+      right: -25px;
       background-size: contain;
       color: #fff;
       padding: 13px;
@@ -111,5 +111,70 @@
     &__show {
       height: 20rem;
     }
+  }
+}
+
+.room {
+  overflow: hidden;
+  &__content {
+    height: calc(100vh - 8.2rem);
+  }
+}
+
+.university {
+  &__wrapper {
+    background-color: #fff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 100%;
+  }
+
+  &__header {
+    height: 18rem;
+    background-size: cover !important;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 1px solid #ececec;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 18rem;
+      width: 100%;
+      content: '';
+      background: rgba(255,255,255, .8);
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+  }
+
+  &__short-info {
+    position: absolute;
+    z-index: 1;
+    margin-left: 6rem;
+    margin-top: 4rem;
+  }
+
+  &__info {
+    margin: 2rem 0 2rem 2rem;
+    overflow-x: auto;
+    height: calc(100vh - 668px);
+
+    p {
+      border-left: 2px solid $accent-color;
+      padding-left: 1.5rem;
+    }
+  }
+
+  &__map {
+    height: 250px;
+  }
+}
+
+.puzzle {
+  &__wrapper {
+
   }
 }

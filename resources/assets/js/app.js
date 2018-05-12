@@ -5,6 +5,7 @@
 import Vue from 'vue';
 import vClickOutside from 'v-click-outside';
 import Multiselect from 'vue-multiselect';
+import * as VueGoogleMaps from 'vue2-google-maps';
 import preload from './components/Preloader.vue';
 
 /**
@@ -34,6 +35,14 @@ Vue.config.productionTip = false;
 Vue.use(vClickOutside);
 Vue.component('preload', preload);
 Vue.component('multiselect', Multiselect);
+
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyBa9fM_dmZpxHs9T-tMSixREt92Mt4gNL8',
+        libraries: 'places',
+    },
+    installComponents: true,
+});
 
 /* eslint-disable no-new */
 new Vue({

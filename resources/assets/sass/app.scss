@@ -67,13 +67,18 @@ body {
   height: 100vh;
 }
 
-.background__white {
+.background-white {
   background: url("/images/background.png");
 }
 
-.background__blue {
+.background-blue {
   background: url("/images/background-blue.png"),
               #b0d9f0;
+}
+
+.background-green {
+  background: url("/images/background-green.png"),
+              #aee8d3;
 }
 
 // Navbar

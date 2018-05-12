@@ -1,13 +1,13 @@
 .button-accent {
   color: #fff;
   background-color: $accent-color;
-  border-bottom: .29rem solid darken($accent-color, 10%);
+  border-bottom: 1px solid darken($accent-color, 10%);
 }
 
 .button-error {
   color: #fff;
   background-color: $danger-color;
-  border-bottom: .29rem solid darken($danger-color, 10%);
+  border-bottom: 1px solid darken($danger-color, 10%);
 }
 
 .button-md {
@@ -21,4 +21,15 @@
 .button-center {
   margin: 0 auto;
   display: block;
+}
+
+.button-transparent {
+  background: none;
+  border: 1px solid $accent-color;
+  color: $accent-color;
+
+  &:hover {
+    color: #fff;
+    background: $accent-color;
+  }
 }

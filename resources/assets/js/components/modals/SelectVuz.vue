@@ -84,11 +84,11 @@
         methods: {
             hide() {
                 this.modalsIsShowSelectVuz = false;
-                this.userEmail = null;
-                this.userPassword = null;
             },
             select() {
-                console.log('s');
+                this.hide();
+                window.Cookies.set('first_stage', 4);
+                window.Cookies.set('university', JSON.stringify(this.userSelectedUniversity));
             },
         },
     };

@@ -20,7 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->integer('type');
             // ручной или id ответа/ов
             $table->integer('type_fill');
-            $table->text('answers');
+            $table->text('answers')->nullable();
             $table->timestamps();
         });
     }

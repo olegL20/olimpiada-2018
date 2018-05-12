@@ -4,14 +4,36 @@
             <div v-click-outside="hide" class="modal__content modal__md">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.universityDescription") }}
+                    {{ $t("translation.moreInfo") }}
                 </h4>
 
                 <div class="modal__body">
-                    <div class="p-3">
-                        {{ universityDescription }}
+                    <div class="form-group">
+                        <label for="universityAddress">{{ $t("translation.universityAddress") }}</label>
+                        <input class="form-control" id="universityAddress"
+                               name="universityAddress"
+                              v-model="universityAddress"
+                              readonly
+                        >
                     </div>
-                    <button type="button" class="btn btn-md btn-primary float-right mt-4"
+                    <div class="form-group">
+                        <label for="universityZipCode">{{ $t("translation.universityZipCode") }}</label>
+                        <input type="text" class="form-control" id="universityZipCode"
+                               name="universityZipCode"
+                               v-model="universityZipCode"
+                               readonly
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="universityDescription">{{ $t("translation.universityDescription") }}</label>
+                        <textarea type="text" class="form-control resize-none h-10" id="universityDescription"
+                                  name="universityDescription"
+                                  v-model="universityDescription"
+                                  readonly
+                        >
+                        </textarea>
+                    </div>
+                    <button type="button" class="btn btn-md btn-secondary float-right mt-4"
                         @click="hide">
                         {{ $t("translation.close") }}
                     </button>
@@ -38,6 +60,9 @@
         methods: {
             hide() {
                 this.modalsIsShowDescription = false;
+
+                this.universityAddress = null;
+                this.universityZipCode = null;
                 this.universityDescription = null;
             },
         },

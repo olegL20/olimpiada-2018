@@ -32,14 +32,16 @@
                             {{ errors.first('universityEmail') }}
                         </small>
                     </div>
-                    <div class="form-group">
-                        <label for="universityAddress">{{ $t("translation.universityAddress") }}</label>
-                        <input type="text" class="form-control" id="universityAddress" aria-describedby="universityAddress"
-                               :placeholder="$t('translation.universityAddressPlaceholder')"
-                               name="universityAddress"
-                               v-validate="'required|max:255'"
-                               :data-vv-as="$t('translation.universityAddress')"
-                               v-model="universityAddress">
+                    <div class="form-group-custom">
+                        <gmap-place-input className="form-control" name="universityAddress"
+                                          @place_changed="setPlace"
+                                          :default-place="universityAddress"
+                                          :label="$t('translation.universityAddress')"
+                                          :placeholder="$t('translation.universityAddressPlaceholder')"
+                                          data-vv-rules="required|max:255"
+                                          :data-vv-as="$t('translation.universityAddress')"
+                        >
+                        </gmap-place-input>
                         <small id="universityAddressHelp" class="form-text text-danger" v-show="errors.has('universityAddress')">
                             {{ errors.first('universityAddress') }}
                         </small>
@@ -82,7 +84,7 @@
                     </div>
                     <div class="form-group">
                         <label for="universityDescription">{{ $t("translation.universityDescription") }}</label>
-                        <textarea type="text" class="form-control resize-none h-10" id="universityDescription" aria-describedby="universityDescriptionHelp"
+                        <textarea type="text" class="form-control resize-none h-5" id="universityDescription" aria-describedby="universityDescriptionHelp"
                                   :placeholder="$t('translation.universityDescriptionPlaceholder')"
                                   name="universityDescription"
                                   v-validate="'required|max:255'"
@@ -161,6 +163,7 @@
                 customImageMaxSize: IMAGE_MAX_SIZE,
                 imageSubstringLength: null,
                 imageBase64: null,
+                latLng: {},
             };
         },
         computed: {
@@ -172,6 +175,14 @@
             },
         },
         methods: {
+            setPlace(universityAddress) {
+                console.log(universityAddress);
+                this.latLng = {
+                    lat: universityAddress.geometry.location.lat(),
+                    lng: universityAddress.geometry.location.lng(),
+                };
+                this.universityAddress = universityAddress.formatted_address;
+            },
             onFile(file) {
                 this.imageSubstringLength = file.type.length + 13;
             },
@@ -207,7 +218,7 @@
                             zip_code: this.universityZipCode,
                             // parent_id: this.universityParentId,
                             image: this.photo,
-                            position: '1',
+                            position: this.latLng,
                         };
                         await this.$store.dispatch('admin/editUniversity', {
                             id: this.universityId,

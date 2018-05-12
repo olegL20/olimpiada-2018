@@ -5146,7 +5146,6 @@ exports.default = {
             customImageMaxSize: _constants.IMAGE_MAX_SIZE,
             imageSubstringLength: null,
             imageBase64: null,
-            // universityAddress: '',
             latLng: {}
         };
     },
@@ -5161,7 +5160,6 @@ exports.default = {
     },
     methods: {
         setPlace: function setPlace(universityAddress) {
-            console.log(universityAddress);
             this.latLng = {
                 lat: universityAddress.geometry.location.lat(),
                 lng: universityAddress.geometry.location.lng()
@@ -6063,7 +6061,8 @@ exports.default = {
         return {
             customImageMaxSize: _constants.IMAGE_MAX_SIZE,
             imageSubstringLength: null,
-            imageBase64: null
+            imageBase64: null,
+            latLng: {}
         };
     },
 
@@ -6076,6 +6075,14 @@ exports.default = {
         }
     },
     methods: {
+        setPlace: function setPlace(universityAddress) {
+            console.log(universityAddress);
+            this.latLng = {
+                lat: universityAddress.geometry.location.lat(),
+                lng: universityAddress.geometry.location.lng()
+            };
+            this.universityAddress = universityAddress.formatted_address;
+        },
         onFile: function onFile(file) {
             this.imageSubstringLength = file.type.length + 13;
         },
@@ -6128,7 +6135,7 @@ exports.default = {
                                     zip_code: _this.universityZipCode,
                                     // parent_id: this.universityParentId,
                                     image: _this.photo,
-                                    position: '1'
+                                    position: _this.latLng
                                 };
                                 _context.next = 9;
                                 return _this.$store.dispatch('admin/editUniversity', {
@@ -6173,6 +6180,8 @@ exports.default = {
         }
     }
 }; //
+//
+//
 //
 //
 //
@@ -6480,71 +6489,50 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universityAddress" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.universityAddress")))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|max:255",
-                        expression: "'required|max:255'"
+                _c(
+                  "div",
+                  { staticClass: "form-group-custom" },
+                  [
+                    _c("gmap-place-input", {
+                      attrs: {
+                        className: "form-control",
+                        name: "universityAddress",
+                        "default-place": _vm.universityAddress,
+                        label: _vm.$t("translation.universityAddress"),
+                        placeholder: _vm.$t(
+                          "translation.universityAddressPlaceholder"
+                        ),
+                        "data-vv-rules": "required|max:255",
+                        "data-vv-as": _vm.$t("translation.universityAddress")
                       },
+                      on: { place_changed: _vm.setPlace }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "small",
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.universityAddress,
-                        expression: "universityAddress"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "universityAddress",
-                      "aria-describedby": "universityAddress",
-                      placeholder: _vm.$t(
-                        "translation.universityAddressPlaceholder"
-                      ),
-                      name: "universityAddress",
-                      "data-vv-as": _vm.$t("translation.universityAddress")
-                    },
-                    domProps: { value: _vm.universityAddress },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.universityAddress = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("universityAddress"),
-                          expression: "errors.has('universityAddress')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "universityAddressHelp" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("universityAddress")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ]),
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("universityAddress"),
+                            expression: "errors.has('universityAddress')"
+                          }
+                        ],
+                        staticClass: "form-text text-danger",
+                        attrs: { id: "universityAddressHelp" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.errors.first("universityAddress")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "universityPhone" } }, [
@@ -6764,7 +6752,7 @@ var render = function() {
                         expression: "universityDescription"
                       }
                     ],
-                    staticClass: "form-control resize-none h-10",
+                    staticClass: "form-control resize-none h-5",
                     attrs: {
                       type: "text",
                       id: "universityDescription",

@@ -158,7 +158,6 @@
                 customImageMaxSize: IMAGE_MAX_SIZE,
                 imageSubstringLength: null,
                 imageBase64: null,
-                // universityAddress: '',
                 latLng: {},
             };
         },
@@ -172,7 +171,6 @@
         },
         methods: {
             setPlace(universityAddress) {
-                console.log(universityAddress);
                 this.latLng = {
                     lat: universityAddress.geometry.location.lat(),
                     lng: universityAddress.geometry.location.lng(),

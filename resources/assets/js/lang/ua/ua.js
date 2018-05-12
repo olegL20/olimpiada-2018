@@ -123,6 +123,7 @@ export default {
         university: 'Університет',
         inviteUniversityAdmin: 'Запрошення стати адміністратором університету',
         inviteUniversityAdminSent: 'Запрошення стати адміністратором університету надіслано',
+        moreInfo: 'Докладніше',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

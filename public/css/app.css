@@ -14580,6 +14580,10 @@ body {
   height: 10rem;
 }
 
+.h-5 {
+  height: 5rem;
+}
+
 .ellipsis {
   white-space: nowrap;
   overflow: hidden;
@@ -14593,6 +14597,16 @@ body {
 
 .text-blue-hover:hover {
   color: #007add;
+}
+
+.form-group-custom {
+  margin-bottom: 1rem;
+}
+
+.form-group-custom label {
+  font-weight: bold;
+  margin: 0;
+  width: 100%;
 }
 
 .button-accent {

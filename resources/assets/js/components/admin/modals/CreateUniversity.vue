@@ -1,7 +1,7 @@
 <template>
     <transition name="slide-fade" mode="out-in">
         <div v-if="modalsIsShowCreateUniversity" class="modal__wrap">
-            <div v-click-outside="hide" class="modal__content modal__md">
+            <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
                     {{ $t("translation.infoAboutUniversity") }}
@@ -32,14 +32,16 @@
                             {{ errors.first('universityEmail') }}
                         </small>
                     </div>
-                    <div class="form-group">
-                        <label for="universityAddress">{{ $t("translation.universityAddress") }}</label>
-                        <input type="text" class="form-control" id="universityAddress" aria-describedby="universityAddress"
-                               :placeholder="$t('translation.universityAddressPlaceholder')"
-                               name="universityAddress"
-                               v-validate="'required|max:255'"
-                               :data-vv-as="$t('translation.universityAddress')"
-                               v-model="universityAddress">
+                    <div class="form-group-custom">
+                        <gmap-place-input className="form-control" name="universityAddress"
+                                          @place_changed="setPlace"
+                                          :default-place="universityAddress"
+                                          :label="$t('translation.universityAddress')"
+                                          :placeholder="$t('translation.universityAddressPlaceholder')"
+                                          data-vv-rules="required|max:255"
+                                          :data-vv-as="$t('translation.universityAddress')"
+                        >
+                        </gmap-place-input>
                         <small id="universityAddressHelp" class="form-text text-danger" v-show="errors.has('universityAddress')">
                             {{ errors.first('universityAddress') }}
                         </small>
@@ -82,7 +84,7 @@
                     </div>
                     <div class="form-group">
                         <label for="universityDescription">{{ $t("translation.universityDescription") }}</label>
-                        <textarea type="text" class="form-control resize-none h-10" id="universityDescription" aria-describedby="universityDescriptionHelp"
+                        <textarea type="text" class="form-control resize-none h-5" id="universityDescription" aria-describedby="universityDescriptionHelp"
                                   :placeholder="$t('translation.universityDescriptionPlaceholder')"
                                   name="universityDescription"
                                   v-validate="'required|max:255'"
@@ -116,7 +118,12 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-md btn-success float-right mt-4"
+                    <button type="button" class="btn btn-md btn-secondary float-right mt-4"
+                        @click="hide">
+                        {{ $t("translation.close") }}
+                    </button>
+
+                    <button type="button" class="btn btn-md btn-success mt-4"
                         @click="createUniversity">
                         {{ $t("translation.save") }}
                     </button>
@@ -151,6 +158,8 @@
                 customImageMaxSize: IMAGE_MAX_SIZE,
                 imageSubstringLength: null,
                 imageBase64: null,
+                // universityAddress: '',
+                latLng: {},
             };
         },
         computed: {
@@ -162,6 +171,14 @@
             },
         },
         methods: {
+            setPlace(universityAddress) {
+                console.log(universityAddress);
+                this.latLng = {
+                    lat: universityAddress.geometry.location.lat(),
+                    lng: universityAddress.geometry.location.lng(),
+                };
+                this.universityAddress = universityAddress.formatted_address;
+            },
             onFile(file) {
                 this.imageSubstringLength = file.type.length + 13;
             },
@@ -196,10 +213,9 @@
                             zip_code: this.universityZipCode,
                             // parent_id: this.universityParentId,
                             image: this.photo,
-                            position: '2',
+                            position: this.latLng,
                         });
                         this.switchRefreshTable(true);
-                        this.hide();
                         this.$toast.success({
                             title: this.$t('translation.success'),
                             message: this.$t('translation.createUniversity'),
@@ -216,8 +232,8 @@
                                 message: this.$t(e.message),
                             });
                         }
-                        this.hide();
                     }
+                    this.hide();
                 }
             },
         },

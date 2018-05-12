@@ -16,13 +16,13 @@ export default {
                     titleClass: 'text-left',
                     dataClass: 'text-left',
                 },
-                {
-                    name: 'address',
-                    sortField: 'address',
-                    title: this.$t('translation.address'),
-                    titleClass: 'text-left',
-                    dataClass: 'text-left',
-                },
+                // {
+                //     name: 'address',
+                //     sortField: 'address',
+                //     title: this.$t('translation.address'),
+                //     titleClass: 'text-left',
+                //     dataClass: 'text-left',
+                // },
                 {
                     name: 'phone',
                     sortField: 'phone',
@@ -37,20 +37,20 @@ export default {
                     titleClass: 'text-left',
                     dataClass: 'text-left',
                 },
-                {
-                    name: 'zip_code',
-                    sortField: 'zip_code',
-                    title: this.$t('translation.zip_code'),
-                    titleClass: 'text-center',
-                    dataClass: 'text-center',
-                },
-                {
-                    name: '__slot:description',
-                    sortField: 'description',
-                    title: this.$t('translation.description'),
-                    titleClass: 'text-left',
-                    dataClass: 'text-left ellipsis',
-                },
+                // {
+                //     name: 'zip_code',
+                //     sortField: 'zip_code',
+                //     title: this.$t('translation.zip_code'),
+                //     titleClass: 'text-center',
+                //     dataClass: 'text-center',
+                // },
+                // {
+                //     name: '__slot:description',
+                //     sortField: 'description',
+                //     title: this.$t('translation.description'),
+                //     titleClass: 'text-left',
+                //     dataClass: 'text-left ellipsis',
+                // },
                 {
                     name: 'created_at',
                     sortField: 'created_at',
@@ -67,7 +67,7 @@ export default {
             ],
             css: {
                 table: {
-                    tableClass: 'table',
+                    tableClass: 'table table-hover cursor-pointer',
                     loadingClass: 'loading',
                     ascendingIcon: 'fa fa-angle-up ',
                     descendingIcon: 'fa fa-angle-down ',

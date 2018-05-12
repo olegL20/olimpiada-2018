@@ -18,8 +18,10 @@
                               pagination-path = ""
                               :css="css.table"
                               data-path="data.data"
+                              detail-row-component="my-detail-row"
                               @vuetable:load-success="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
+                              @vuetable:cell-clicked="onCellClicked"
                     >
                         <template slot="description" slot-scope="props">
                             <div class="cursor-pointer text-blue-hover" @click="showDescription(props.rowData.description)">
@@ -32,8 +34,9 @@
                                     :title="$t('translation.edit')">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
-                            <button type="button" class="btn btn-outline-danger btn-md" :title="$t('translation.remove')"
-                                    @click="destroyUniversity(props.rowData.id)">
+                            <button type="button" class="btn btn-outline-danger btn-md"
+                                    @click="destroyUniversity(props.rowData.id)"
+                                    :title="$t('translation.remove')">
                                 <i class="fa fa-trash-o"></i>
                             </button>
                         </template>
@@ -97,6 +100,12 @@
             },
         },
         methods: {
+            onCellClicked(data) {
+                this.universityAddress = data.address;
+                this.universityZipCode = data.zip_code;
+                this.universityDescription = data.description;
+                this.modalsIsShowDescription = true;
+            },
             // getUniversitiesId(payload) {
             //     this.hidePreloader();
             //     const universitiesId = payload.data.data.data.map(el => ({
@@ -106,10 +115,6 @@
             //     }));
             //     this.universityParentsId = universitiesId;
             // },
-            showDescription(description) {
-                this.universityDescription = description;
-                this.modalsIsShowDescription = true;
-            },
             async editUniversity(universityId) {
                 try {
                     await this.$store.dispatch('admin/getUniversity', universityId);

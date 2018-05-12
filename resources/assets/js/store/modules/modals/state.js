@@ -6,4 +6,5 @@ export default {
     isShowCreateUniversity: false,
     isShowEditUniversity: false,
     isShowDescription: false,
+    isShowInviteUniversityAdmin: false,
 };

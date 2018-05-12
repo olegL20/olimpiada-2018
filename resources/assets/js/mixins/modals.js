@@ -18,6 +18,7 @@ export default {
             'isShowCreateUniversity',
             'isShowEditUniversity',
             'isShowDescription',
+            'isShowInviteUniversityAdmin',
         ]),
     },
 };

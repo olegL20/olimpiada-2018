@@ -14,6 +14,7 @@
                                :placeholder="$t('translation.universityNamePlaceholder')"
                                name="universityName"
                                v-validate="'required|max:255'"
+                               :data-vv-as="$t('translation.universityName')"
                                v-model="universityName">
                         <small id="universityNameHelp" class="form-text text-danger" v-show="errors.has('universityName')">
                             {{ errors.first('universityName') }}
@@ -25,6 +26,7 @@
                                :placeholder="$t('translation.universityEmailPlaceholder')"
                                name="universityEmail"
                                v-validate="'required|email|max:255'"
+                               :data-vv-as="$t('translation.universityEmail')"
                                v-model="universityEmail">
                         <small id="universityEmailHelp" class="form-text text-danger" v-show="errors.has('universityEmail')">
                             {{ errors.first('universityEmail') }}
@@ -36,6 +38,7 @@
                                :placeholder="$t('translation.universityAddressPlaceholder')"
                                name="universityAddress"
                                v-validate="'required|max:255'"
+                               :data-vv-as="$t('translation.universityAddress')"
                                v-model="universityAddress">
                         <small id="universityAddressHelp" class="form-text text-danger" v-show="errors.has('universityAddress')">
                             {{ errors.first('universityAddress') }}
@@ -47,6 +50,7 @@
                                :placeholder="$t('translation.universityPhonePlaceholder')"
                                name="universityPhone"
                                v-validate="'required|max:255'"
+                               :data-vv-as="$t('translation.universityPhone')"
                                v-model="universityPhone">
                         <small id="universityPhoneHelp" class="form-text text-danger" v-show="errors.has('universityPhone')">
                             {{ errors.first('universityPhone') }}
@@ -58,6 +62,7 @@
                                :placeholder="$t('translation.universitySitePlaceholder')"
                                name="universitySite"
                                v-validate="'required|url|max:255'"
+                               :data-vv-as="$t('translation.universitySite')"
                                v-model="universitySite">
                         <small id="universitySiteHelp" class="form-text text-danger" v-show="errors.has('universitySite')">
                             {{ errors.first('universitySite') }}
@@ -69,6 +74,7 @@
                                :placeholder="$t('translation.universityZipCodePlaceholder')"
                                name="universityZipCode"
                                v-validate="'required|max:255'"
+                               :data-vv-as="$t('translation.universityZipCode')"
                                v-model="universityZipCode">
                         <small id="universityZipCodeHelp" class="form-text text-danger" v-show="errors.has('universityZipCode')">
                             {{ errors.first('universityZipCode') }}
@@ -80,6 +86,7 @@
                                   :placeholder="$t('translation.universityDescriptionPlaceholder')"
                                   name="universityDescription"
                                   v-validate="'required|max:255'"
+                                  :data-vv-as="$t('translation.universityDescription')"
                                   v-model="universityDescription">
                         </textarea>
                         <small id="universityDescriptionHelp" class="form-text text-danger" v-show="errors.has('universityDescription')">
@@ -111,6 +118,7 @@
                                     data-vv-name="photo"
                                     data-vv-value-path="file"
                                     v-validate="'required'"
+                                    :data-vv-as="$t('translation.photo')"
                                     :placeholder="$t('translation.photo')"/>
                             <div v-show="errors.has('photo')" class="invalid-feedback">
                                 {{ errors.first('photo') }}

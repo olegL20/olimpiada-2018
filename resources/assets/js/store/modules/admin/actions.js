@@ -1,7 +1,7 @@
 import admin from '../../../api/admin';
 import * as types from '../admin/mutation-types';
 
-export const destroyUniversity = async ({ dispatch, commit }, payload) => {
+export const destroyUniversity = async (context, payload) => {
     const json = await admin.destroyUniversity(payload);
 
     if (json.status === 200) {
@@ -11,7 +11,7 @@ export const destroyUniversity = async ({ dispatch, commit }, payload) => {
     throw json;
 };
 
-export const getUniversity = async ({ dispatch, commit }, payload) => {
+export const getUniversity = async ({ context, commit }, payload) => {
     const json = await admin.getUniversity(payload);
 
     if (json.status === 200) {
@@ -30,7 +30,7 @@ export const getUniversity = async ({ dispatch, commit }, payload) => {
     throw json;
 };
 
-export const editUniversity = async ({ dispatch, commit }, { id, params }) => {
+export const editUniversity = async (context, { id, params }) => {
     const json = await admin.editUniversity(id, params);
 
     if (json.status === 200) {
@@ -39,9 +39,30 @@ export const editUniversity = async ({ dispatch, commit }, { id, params }) => {
 
     throw json;
 };
-export const createUniversity = async ({ dispatch, commit }, payload) => {
-    console.log(payload);
+
+export const createUniversity = async (context, payload) => {
     const json = await admin.createUniversity(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getAllUniversities = async ({ commit }) => {
+    const json = await admin.getAllUniversities();
+
+    if (json.status === 200) {
+        commit(types.UNIVERSITIES, json.data.data.data);
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const sendInviteUniversityAdmin = async (context, payload) => {
+    const json = await admin.sendInviteUniversityAdmin(payload);
 
     if (json.status === 200) {
         return json.data;
@@ -55,4 +76,6 @@ export default {
     getUniversity,
     editUniversity,
     createUniversity,
+    getAllUniversities,
+    sendInviteUniversityAdmin,
 };

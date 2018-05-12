@@ -37,4 +37,22 @@ export default {
             return e.response;
         }
     },
+    async getAllUniversities() {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/admin/university`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async sendInviteUniversityAdmin(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/admin/send-invite`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
 };

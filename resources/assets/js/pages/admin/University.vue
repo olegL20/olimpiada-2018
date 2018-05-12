@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid">
-
         <div class="col-md-12">
             <div class="row border rounded bg-white pt-3 pb-3">
+
                 <div class="col-md-10">
                     <h1>{{ $t('translation.managerUniversity') }}</h1>
                 </div>
@@ -46,21 +46,22 @@
                     >
                     </vuetable-pagination>
                 </div>
+
             </div>
-
-            <modal-create-university></modal-create-university>
-            <modal-edit-university></modal-edit-university>
-            <modal-show-description></modal-show-description>
-
         </div>
+
+        <modal-create-university></modal-create-university>
+        <modal-edit-university></modal-edit-university>
+        <modal-show-description></modal-show-description>
+
     </div>
 </template>
 
 <script>
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
     import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue';
+    import FieldsUniversity from '../../mixins/formFields/university';
 
-    import MixinUniversityFields from '../../mixins/formFields/university';
     import MixinModals from '../../mixins/modals';
     import MixinPreloader from '../../mixins/preload';
     import MixinAdmin from '../../mixins/admin';
@@ -75,7 +76,7 @@
             MixinAdmin,
             MixinModals,
             MixinPreloader,
-            MixinUniversityFields,
+            FieldsUniversity,
         ],
         components: {
             Vuetable,

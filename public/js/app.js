@@ -11761,8 +11761,8 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(10);
-var IE8_DOM_DEFINE = __webpack_require__(68);
-var toPrimitive = __webpack_require__(64);
+var IE8_DOM_DEFINE = __webpack_require__(69);
+var toPrimitive = __webpack_require__(65);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(11) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -11998,7 +11998,7 @@ module.exports = true;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(71);
+var $keys = __webpack_require__(72);
 var enumBugKeys = __webpack_require__(41);
 
 module.exports = Object.keys || function keys(O) {
@@ -12225,7 +12225,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'modals',
         prefix: true
-    }, ['isShowLogin', 'isShowRegister', 'isShowAdvice', 'isShowSelectVuz', 'isShowCreateUniversity', 'isShowEditUniversity', 'isShowDescription']))
+    }, ['isShowLogin', 'isShowRegister', 'isShowAdvice', 'isShowSelectVuz', 'isShowCreateUniversity', 'isShowEditUniversity', 'isShowDescription', 'isShowInviteUniversityAdmin']))
 };
 
 /***/ }),
@@ -23200,7 +23200,7 @@ module.exports = Cancel;
 
 var LIBRARY = __webpack_require__(26);
 var $export = __webpack_require__(9);
-var redefine = __webpack_require__(69);
+var redefine = __webpack_require__(70);
 var hide = __webpack_require__(12);
 var Iterators = __webpack_require__(17);
 var $iterCreate = __webpack_require__(120);
@@ -23544,7 +23544,8 @@ exports.default = {
     isShowSelectVuz: false,
     isShowCreateUniversity: false,
     isShowEditUniversity: false,
-    isShowDescription: false
+    isShowDescription: false,
+    isShowInviteUniversityAdmin: false
 };
 
 /***/ }),
@@ -23567,6 +23568,7 @@ var UNIVERSITY_SITE = exports.UNIVERSITY_SITE = 'UNIVERSITY_SITE';
 var UNIVERSITY_ZIP_CODE = exports.UNIVERSITY_ZIP_CODE = 'UNIVERSITY_ZIP_CODE';
 var UNIVERSITY_PARENT_ID = exports.UNIVERSITY_PARENT_ID = 'UNIVERSITY_PARENT_ID';
 var UNIVERSITY_PARENTS_ID = exports.UNIVERSITY_PARENTS_ID = 'UNIVERSITY_PARENTS_ID';
+var UNIVERSITIES = exports.UNIVERSITIES = 'UNIVERSITIES';
 
 /***/ }),
 /* 62 */
@@ -23588,7 +23590,8 @@ exports.default = {
     universitySite: null,
     universityZipCode: null,
     universityParentId: null,
-    universityParentsId: []
+    universityParentsId: [],
+    universities: {}
 };
 
 /***/ }),
@@ -23600,6 +23603,43 @@ exports.f = {}.propertyIsEnumerable;
 
 /***/ }),
 /* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends2 = __webpack_require__(1);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _schepotinVuexHelpers = __webpack_require__(5);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
+        namespace: 'user',
+        prefix: false
+    }, ['showPreload', 'refreshTable'])),
+    methods: {
+        showPreloader: function showPreloader() {
+            this.showPreload = true;
+        },
+        hidePreloader: function hidePreloader() {
+            this.showPreload = false;
+        },
+        switchRefreshTable: function switchRefreshTable(value) {
+            this.refreshTable = value;
+        }
+    }
+};
+
+/***/ }),
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
@@ -23617,20 +23657,20 @@ module.exports = function (it, S) {
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23654,7 +23694,7 @@ __webpack_require__(49)(String, 'String', function (iterated) {
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(11) && !__webpack_require__(19)(function () {
@@ -23663,14 +23703,14 @@ module.exports = !__webpack_require__(11) && !__webpack_require__(19)(function (
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(12);
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
@@ -23717,7 +23757,7 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(18);
@@ -23740,7 +23780,7 @@ module.exports = function (object, names) {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(125);
@@ -23765,7 +23805,7 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -23991,43 +24031,6 @@ function applyToTag (styleElement, obj) {
   }
 }
 
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends2 = __webpack_require__(1);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _schepotinVuexHelpers = __webpack_require__(5);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
-        namespace: 'user',
-        prefix: false
-    }, ['showPreload', 'refreshTable'])),
-    methods: {
-        showPreloader: function showPreloader() {
-            this.showPreload = true;
-        },
-        hidePreloader: function hidePreloader() {
-            this.showPreload = false;
-        },
-        switchRefreshTable: function switchRefreshTable(value) {
-            this.refreshTable = value;
-        }
-    }
-};
 
 /***/ }),
 /* 75 */
@@ -56123,7 +56126,7 @@ var routes = [{
     path: '/',
     name: 'home',
     component: function component() {
-        return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 206));
+        return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 206));
     }
 },
 // {
@@ -56138,13 +56141,13 @@ var routes = [{
     path: '/room',
     name: 'user.room',
     component: function component() {
-        return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 207));
+        return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 207));
     }
 }, {
     path: '/invite/:id',
     name: 'auth.invite',
     component: function component() {
-        return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 208));
+        return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 208));
     }
 }, {
     path: '/admin/login',
@@ -56159,10 +56162,10 @@ var routes = [{
         return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 210));
     }
 }, {
-    path: '/admin/university/administrators',
-    name: 'admin.university.administrators',
+    path: '/admin/university/admins',
+    name: 'admin.university.admins',
     component: function component() {
-        return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 211));
+        return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 211));
     }
 },
 
@@ -61002,9 +61005,9 @@ module.exports = { "default": __webpack_require__(118), __esModule: true };
 /* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(66);
 __webpack_require__(67);
-__webpack_require__(72);
+__webpack_require__(68);
+__webpack_require__(73);
 __webpack_require__(128);
 __webpack_require__(140);
 __webpack_require__(141);
@@ -61040,7 +61043,7 @@ module.exports = function (TO_STRING) {
 
 "use strict";
 
-var create = __webpack_require__(70);
+var create = __webpack_require__(71);
 var descriptor = __webpack_require__(37);
 var setToStringTag = __webpack_require__(28);
 var IteratorPrototype = {};
@@ -62032,7 +62035,7 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(147) });
 
 // 19.1.2.1 Object.assign(target, source, ...)
 var getKeys = __webpack_require__(27);
-var gOPS = __webpack_require__(65);
+var gOPS = __webpack_require__(66);
 var pIE = __webpack_require__(63);
 var toObject = __webpack_require__(34);
 var IObject = __webpack_require__(50);
@@ -62293,6 +62296,7 @@ var IS_SHOW_SELECT_VUZ = exports.IS_SHOW_SELECT_VUZ = 'IS_SHOW_SELECT_VUZ';
 var IS_SHOW_CREATE_UNIVERSITY = exports.IS_SHOW_CREATE_UNIVERSITY = 'IS_SHOW_CREATE_UNIVERSITY';
 var IS_SHOW_EDIT_UNIVERSITY = exports.IS_SHOW_EDIT_UNIVERSITY = 'IS_SHOW_EDIT_UNIVERSITY';
 var IS_SHOW_DESCRIPTION = exports.IS_SHOW_DESCRIPTION = 'IS_SHOW_DESCRIPTION';
+var IS_SHOW_INVITE_UNIVERSITY_ADMIN = exports.IS_SHOW_INVITE_UNIVERSITY_ADMIN = 'IS_SHOW_INVITE_UNIVERSITY_ADMIN';
 
 /***/ }),
 /* 158 */
@@ -62345,7 +62349,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
+exports.sendInviteUniversityAdmin = exports.getAllUniversities = exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
 
 var _regenerator = __webpack_require__(7);
 
@@ -62368,9 +62372,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var destroyUniversity = exports.destroyUniversity = function () {
-    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(_ref2, payload) {
-        var dispatch = _ref2.dispatch,
-            commit = _ref2.commit;
+    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(context, payload) {
         var json;
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
@@ -62406,9 +62408,9 @@ var destroyUniversity = exports.destroyUniversity = function () {
 }();
 
 var getUniversity = exports.getUniversity = function () {
-    var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(_ref4, payload) {
-        var dispatch = _ref4.dispatch,
-            commit = _ref4.commit;
+    var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(_ref3, payload) {
+        var context = _ref3.context,
+            commit = _ref3.commit;
         var json;
         return _regenerator2.default.wrap(function _callee2$(_context2) {
             while (1) {
@@ -62448,16 +62450,14 @@ var getUniversity = exports.getUniversity = function () {
     }));
 
     return function getUniversity(_x3, _x4) {
-        return _ref3.apply(this, arguments);
+        return _ref2.apply(this, arguments);
     };
 }();
 
 var editUniversity = exports.editUniversity = function () {
-    var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(_ref6, _ref7) {
-        var dispatch = _ref6.dispatch,
-            commit = _ref6.commit;
-        var id = _ref7.id,
-            params = _ref7.params;
+    var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(context, _ref5) {
+        var id = _ref5.id,
+            params = _ref5.params;
         var json;
         return _regenerator2.default.wrap(function _callee3$(_context3) {
             while (1) {
@@ -62488,36 +62488,34 @@ var editUniversity = exports.editUniversity = function () {
     }));
 
     return function editUniversity(_x5, _x6) {
-        return _ref5.apply(this, arguments);
+        return _ref4.apply(this, arguments);
     };
 }();
+
 var createUniversity = exports.createUniversity = function () {
-    var _ref8 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(_ref9, payload) {
-        var dispatch = _ref9.dispatch,
-            commit = _ref9.commit;
+    var _ref6 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(context, payload) {
         var json;
         return _regenerator2.default.wrap(function _callee4$(_context4) {
             while (1) {
                 switch (_context4.prev = _context4.next) {
                     case 0:
-                        console.log(payload);
-                        _context4.next = 3;
+                        _context4.next = 2;
                         return _admin2.default.createUniversity(payload);
 
-                    case 3:
+                    case 2:
                         json = _context4.sent;
 
                         if (!(json.status === 200)) {
-                            _context4.next = 6;
+                            _context4.next = 5;
                             break;
                         }
 
                         return _context4.abrupt('return', json.data);
 
-                    case 6:
+                    case 5:
                         throw json;
 
-                    case 7:
+                    case 6:
                     case 'end':
                         return _context4.stop();
                 }
@@ -62526,7 +62524,81 @@ var createUniversity = exports.createUniversity = function () {
     }));
 
     return function createUniversity(_x7, _x8) {
-        return _ref8.apply(this, arguments);
+        return _ref6.apply(this, arguments);
+    };
+}();
+
+var getAllUniversities = exports.getAllUniversities = function () {
+    var _ref7 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(_ref8) {
+        var commit = _ref8.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee5$(_context5) {
+            while (1) {
+                switch (_context5.prev = _context5.next) {
+                    case 0:
+                        _context5.next = 2;
+                        return _admin2.default.getAllUniversities();
+
+                    case 2:
+                        json = _context5.sent;
+
+                        if (!(json.status === 200)) {
+                            _context5.next = 6;
+                            break;
+                        }
+
+                        commit(types.UNIVERSITIES, json.data.data.data);
+                        return _context5.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context5.stop();
+                }
+            }
+        }, _callee5, undefined);
+    }));
+
+    return function getAllUniversities(_x9) {
+        return _ref7.apply(this, arguments);
+    };
+}();
+
+var sendInviteUniversityAdmin = exports.sendInviteUniversityAdmin = function () {
+    var _ref9 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee6$(_context6) {
+            while (1) {
+                switch (_context6.prev = _context6.next) {
+                    case 0:
+                        _context6.next = 2;
+                        return _admin2.default.sendInviteUniversityAdmin(payload);
+
+                    case 2:
+                        json = _context6.sent;
+
+                        if (!(json.status === 200)) {
+                            _context6.next = 5;
+                            break;
+                        }
+
+                        return _context6.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context6.stop();
+                }
+            }
+        }, _callee6, undefined);
+    }));
+
+    return function sendInviteUniversityAdmin(_x10, _x11) {
+        return _ref9.apply(this, arguments);
     };
 }();
 
@@ -62534,7 +62606,9 @@ exports.default = {
     destroyUniversity: destroyUniversity,
     getUniversity: getUniversity,
     editUniversity: editUniversity,
-    createUniversity: createUniversity
+    createUniversity: createUniversity,
+    getAllUniversities: getAllUniversities,
+    sendInviteUniversityAdmin: sendInviteUniversityAdmin
 };
 
 /***/ }),
@@ -62691,6 +62765,72 @@ exports.default = {
                     }
                 }
             }, _callee4, _this4, [[0, 9]]);
+        }))();
+    },
+    getAllUniversities: function getAllUniversities() {
+        var _this5 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
+            var _ref5, data, status;
+
+            return _regenerator2.default.wrap(function _callee5$(_context5) {
+                while (1) {
+                    switch (_context5.prev = _context5.next) {
+                        case 0:
+                            _context5.prev = 0;
+                            _context5.next = 3;
+                            return window.axios.get(url + '/api/admin/university');
+
+                        case 3:
+                            _ref5 = _context5.sent;
+                            data = _ref5.data;
+                            status = _ref5.status;
+                            return _context5.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context5.prev = 9;
+                            _context5.t0 = _context5['catch'](0);
+                            return _context5.abrupt('return', _context5.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context5.stop();
+                    }
+                }
+            }, _callee5, _this5, [[0, 9]]);
+        }))();
+    },
+    sendInviteUniversityAdmin: function sendInviteUniversityAdmin(params) {
+        var _this6 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6() {
+            var _ref6, data, status;
+
+            return _regenerator2.default.wrap(function _callee6$(_context6) {
+                while (1) {
+                    switch (_context6.prev = _context6.next) {
+                        case 0:
+                            _context6.prev = 0;
+                            _context6.next = 3;
+                            return window.axios.post(url + '/api/admin/send-invite', params);
+
+                        case 3:
+                            _ref6 = _context6.sent;
+                            data = _ref6.data;
+                            status = _ref6.status;
+                            return _context6.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context6.prev = 9;
+                            _context6.t0 = _context6['catch'](0);
+                            return _context6.abrupt('return', _context6.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context6.stop();
+                    }
+                }
+            }, _callee6, _this6, [[0, 9]]);
         }))();
     }
 };
@@ -64542,6 +64682,7 @@ exports.default = {
         enter: 'Увійти',
         room: 'Кімната',
         error: 'Помилка',
+        success: 'Успіх',
         forward: 'Вперед',
         welcome: 'Вітаємо',
         profile: 'Profile',
@@ -64595,8 +64736,10 @@ exports.default = {
         managerUniversity: 'Менеджер університетів',
         managerUniversityAdmin: 'Менеджер адміністраторів',
         addUniversity: 'Додати університет',
+        addUniversityAdmin: 'Додати адміністратора',
         remove: 'Видалити',
         edit: 'Редагувати',
+        close: 'Закрити',
         actions: 'Дії',
         areYouSure: 'Ви впевнені ?',
         yes: 'Так',
@@ -64616,6 +64759,7 @@ exports.default = {
         universityZipCode: 'Поштовий індекс',
         universityZipCodePlaceholder: 'Поштовий індекс',
         save: 'Зберегти',
+        send: 'Надіслати',
         infoAboutUniversity: 'Інформація про університет',
         editUniversity: 'Редагувати університет',
         description: 'Опис',
@@ -64628,15 +64772,17 @@ exports.default = {
         noData: 'Інформація відсутня',
         universityParentId: 'Батьківський ідентифікатор',
         infoUpdate: 'Інформацію оновлено',
-        success: 'Успіх',
         createUniversity: 'Університет створено',
-        close: 'Закрити'
+        university: 'Університет',
+        inviteUniversityAdmin: 'Запрошення стати адміністратором університету',
+        inviteUniversityAdminSent: 'Запрошення стати адміністратором університету надіслано'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'
     },
     api: {
-        user_not_found_or_token: 'Користувача не знайдено або не вірний токен.'
+        user_not_found_or_token: 'Користувача не знайдено або не вірний токен.',
+        invite_by_email_exists: 'Запрошення на поточний e-mail вже надіслано.'
     }
 };
 
@@ -73686,7 +73832,7 @@ var content = __webpack_require__(190);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(73)("909892fc", content, false, {});
+var update = __webpack_require__(74)("909892fc", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73746,7 +73892,7 @@ var _user = __webpack_require__(24);
 
 var _user2 = _interopRequireDefault(_user);
 
-var _preload = __webpack_require__(74);
+var _preload = __webpack_require__(64);
 
 var _preload2 = _interopRequireDefault(_preload);
 
@@ -74628,9 +74774,7 @@ var render = function() {
                       "router-link",
                       {
                         staticClass: "link link__accent mr-3",
-                        attrs: {
-                          to: { name: "admin.university.administrators" }
-                        }
+                        attrs: { to: { name: "admin.university.admins" } }
                       },
                       [
                         _vm._v(

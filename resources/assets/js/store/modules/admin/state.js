@@ -9,4 +9,5 @@ export default {
     universityZipCode: null,
     universityParentId: null,
     universityParentsId: [],
+    universities: {},
 };

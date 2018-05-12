@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 208:
+/***/ 206:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(13)
 /* script */
-var __vue_script__ = __webpack_require__(242)
+var __vue_script__ = __webpack_require__(274)
 /* template */
-var __vue_template__ = __webpack_require__(243)
+var __vue_template__ = __webpack_require__(275)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/pages/Auth/RegisterInvite.vue"
+Component.options.__file = "resources/assets/js/pages/Home.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-02e74246", Component.options)
+    hotAPI.createRecord("data-v-440dff1c", Component.options)
   } else {
-    hotAPI.reload("data-v-02e74246", Component.options)
+    hotAPI.reload("data-v-440dff1c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -186,15 +186,15 @@ exports.default = {
 
 /***/ }),
 
-/***/ 215:
+/***/ 219:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(13)
 /* script */
-var __vue_script__ = __webpack_require__(216)
+var __vue_script__ = __webpack_require__(220)
 /* template */
-var __vue_template__ = __webpack_require__(218)
+var __vue_template__ = __webpack_require__(222)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -234,7 +234,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 216:
+/***/ 220:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -252,7 +252,7 @@ var _asyncToGenerator2 = __webpack_require__(8);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _vuejsDatepicker = __webpack_require__(217);
+var _vuejsDatepicker = __webpack_require__(221);
 
 var _vuejsDatepicker2 = _interopRequireDefault(_vuejsDatepicker);
 
@@ -587,7 +587,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 217:
+/***/ 221:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1905,7 +1905,7 @@ var Datepicker = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
 
 /***/ }),
 
-/***/ 218:
+/***/ 222:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -2493,7 +2493,55 @@ if (false) {
 
 /***/ }),
 
-/***/ 242:
+/***/ 230:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(13)
+/* script */
+var __vue_script__ = __webpack_require__(231)
+/* template */
+var __vue_template__ = __webpack_require__(232)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/modals/Login.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4052ce12", Component.options)
+  } else {
+    hotAPI.reload("data-v-4052ce12", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 231:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2503,15 +2551,21 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _regenerator = __webpack_require__(7);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(8);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
 var _modals = __webpack_require__(36);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _Register = __webpack_require__(215);
+var _user = __webpack_require__(24);
 
-var registerModal = _interopRequireWildcard(_Register);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _user2 = _interopRequireDefault(_user);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2562,25 +2616,438 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
-    mixins: [_modals2.default],
-    components: {
-        registerModal: registerModal
-    },
-    metaInfo: function metaInfo() {
-        return {
-            title: this.$t('translation.registerInvite')
-        };
-    },
-    mounted: function mounted() {
-        this.modalsIsShowRegister = true;
+    mixins: [_modals2.default, _user2.default],
+    methods: {
+        hide: function hide() {
+            this.modalsIsShowLogin = false;
+            this.userEmail = null;
+            this.userPassword = null;
+        },
+        login: function login() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+                                if (!valid) {
+                                    _context.next = 16;
+                                    break;
+                                }
+
+                                _context.prev = 4;
+                                _context.next = 7;
+                                return _this.$store.dispatch('user/login', {
+                                    email: _this.userEmail,
+                                    password: _this.userPassword
+                                });
+
+                            case 7:
+                                window.Cookies.set('first_stage', 3);
+                                _this.userFirstStage = 3;
+                                _this.hide();
+                                _context.next = 16;
+                                break;
+
+                            case 12:
+                                _context.prev = 12;
+                                _context.t0 = _context['catch'](4);
+
+                                _this.hide();
+                                _this.$toast.error({
+                                    title: _this.$t('translation.error'),
+                                    message: _this.$t(_context.t0.data.message)
+                                });
+
+                            case 16:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[4, 12]]);
+            }))();
+        },
+        authenticate: function authenticate(provider) {
+            this.$auth.authenticate(provider).then(function () {
+                // Execute application logic after successful social authentication
+            });
+        }
     }
 };
 
 /***/ }),
 
-/***/ 243:
+/***/ 232:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowLogin
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "click-outside",
+                  rawName: "v-click-outside",
+                  value: _vm.hide,
+                  expression: "hide"
+                }
+              ],
+              staticClass: "modal__content"
+            },
+            [
+              _c("h4", { staticClass: "modal__head" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("translation.login")) +
+                    "\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal__body" },
+                [
+                  _c("div", { staticClass: "form-group mt-4 mb-4" }, [
+                    _c("label", { attrs: { for: "email" } }, [
+                      _vm._v(_vm._s(_vm.$t("translation.email")))
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.userEmail,
+                          expression: "userEmail"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required|email",
+                          expression: "'required|email'"
+                        }
+                      ],
+                      staticClass: "input",
+                      class: {
+                        "is-invalid input__danger": _vm.errors.has("email")
+                      },
+                      attrs: {
+                        type: "text",
+                        id: "email",
+                        name: "email",
+                        placeholder: _vm.$t("translation.email")
+                      },
+                      domProps: { value: _vm.userEmail },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.userEmail = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("email"),
+                            expression: "errors.has('email')"
+                          }
+                        ],
+                        staticClass: "invalid-feedback"
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.errors.first("email")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group mb-4" }, [
+                    _c("label", { attrs: { for: "password" } }, [
+                      _vm._v(_vm._s(_vm.$t("translation.password")))
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.userPassword,
+                          expression: "userPassword"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required|min:8",
+                          expression: "'required|min:8'"
+                        }
+                      ],
+                      staticClass: "input",
+                      class: {
+                        "is-invalid input__danger": _vm.errors.has("password")
+                      },
+                      attrs: {
+                        type: "password",
+                        id: "password",
+                        name: "password",
+                        placeholder: _vm.$t("translation.password")
+                      },
+                      domProps: { value: _vm.userPassword },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.userPassword = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("password"),
+                            expression: "errors.has('password')"
+                          }
+                        ],
+                        staticClass: "invalid-feedback"
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.errors.first("password")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn button-md button-accent button-center mb-4",
+                      attrs: { type: "button" },
+                      on: { click: _vm.login }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(_vm.$t("translation.enter")) +
+                          "\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "small" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.enterTheSocialNetwork")) +
+                        ":\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "link mr-3",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _c("i", {
+                        staticClass:
+                          "fa fa-google-plus-square fa-2x mr-2 fa-relative",
+                        attrs: { "aria-hidden": "true" }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v(_vm._s(_vm.$t("translation.throughGoogle")))
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "link",
+                      attrs: { href: "javascript:" },
+                      on: {
+                        click: function($event) {
+                          _vm.authenticate("facebook")
+                        }
+                      }
+                    },
+                    [
+                      _c("i", {
+                        staticClass:
+                          "fa fa-facebook-square fa-2x mr-2 fa-relative",
+                        attrs: { "aria-hidden": "true" }
+                      }),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(_vm.$t("translation.throughFacebook")) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4052ce12", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 274:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Login = __webpack_require__(230);
+
+var loginModal = _interopRequireWildcard(_Login);
+
+var _Register = __webpack_require__(219);
+
+var registerModal = _interopRequireWildcard(_Register);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    components: {
+        loginModal: loginModal,
+        registerModal: registerModal
+    },
+    metaInfo: function metaInfo() {
+        return {
+            title: this.$t('translation.homepage')
+        };
+    },
+    created: function created() {
+        if (Number(window.Cookies.get('first_stage'))) {
+            this.$router.push({
+                name: 'user.room'
+            });
+        }
+    }
+};
+
+/***/ }),
+
+/***/ 275:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -2690,6 +3157,8 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
+      _c("login-modal"),
+      _vm._v(" "),
       _c("register-modal")
     ],
     1
@@ -2701,7 +3170,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-02e74246", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-440dff1c", module.exports)
   }
 }
 

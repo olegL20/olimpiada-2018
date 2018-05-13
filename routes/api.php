@@ -28,6 +28,8 @@ Route::group(['middleware' => 'api'], function () {
         Route::resource('question', 'Test\QuestionController');
         Route::resource('answer', 'Test\AnswerController');
 
+        Route::get('invites', 'InviteController@index');
+
         Route::resource('test', 'Test\TestController');
         Route::resource('university', 'UniversityController');
         Route::resource('faculty', 'FacultyController');

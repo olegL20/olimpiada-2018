@@ -1,7 +1,7 @@
 <template>
     <transition name="slide-fade" mode="out-in">
         <div v-if="modalsIsShowEditUniversity" class="modal__wrap">
-            <div v-click-outside="hide" class="modal__content modal__md">
+            <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
                     {{ $t("translation.editUniversity") }}
@@ -130,7 +130,12 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-md btn-success float-right mt-4"
+                    <button type="button" class="btn btn-md btn-secondary float-right mt-4"
+                            @click="hide">
+                        {{ $t("translation.cancel") }}
+                    </button>
+
+                    <button type="button" class="btn btn-md btn-success mt-4"
                             @click="saveEditUniversity()">
                         {{ $t("translation.save") }}
                     </button>
@@ -210,6 +215,7 @@
                 this.universitySite = null;
                 this.universityZipCode = null;
                 this.universityParentId = null;
+                this.universityImage = null;
                 this.isShowOldImage = true;
             },
             async saveEditUniversity() {

@@ -8,8 +8,10 @@
      - [University](Auth/Admin/University.md) 
      - [Faculty](Auth/Admin/Faculty.md) 
      - [Invite](Auth/Admin/Invite.md) 
+     - [SubjectCoefficient](Auth/Admin/SubjectCoefficient.md) 
  - User prefix `user`
      - [University](Auth/User/University.md) 
+     - [Score](Auth/User/Score.md) 
 
 
 ### Типы ответов

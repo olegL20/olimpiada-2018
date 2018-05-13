@@ -16,7 +16,7 @@
         "data": [
             {
                 "id": 1,
-                "faculty_id": 1,
+                "department_id": 1,
                 "name": "major name 1",
                 "description": "major description  1",
                 "created_at": "2018-05-04 13:31:13",
@@ -24,7 +24,7 @@
             },
             {
                 "id": 2,
-                "faculty_id": 2,
+                "department_id": 2,
                 "name": "major name 2",
                 "description": "major description  2",
                 "created_at": "2018-05-04 13:31:13",
@@ -60,7 +60,7 @@
 {
     "data": {
         "id": 2,
-        "faculty_id": 1,
+        "department_id": 1,
         "name": "major name 1",
         "description": "major description  1",
         "created_at": "2018-05-04 13:31:13",
@@ -104,7 +104,7 @@ ___
 {
 	"name": "major name",
 	"description": "major description",
-	"faculty_id": 1
+	"department_id": 1
 }
 ```
 
@@ -114,7 +114,7 @@ ___
     "data": {
         "name": "major name",
         "description": "major description",
-        "faculty_id": "1",
+        "department_id": "1",
         "updated_at": "2018-05-04 13:31:13",
         "created_at": "2018-05-04 13:31:13",
         "id": 2
@@ -145,7 +145,7 @@ ___
 {
     "data": {
         "id": 2,
-        "faculty_id": "1",
+        "department_id": "1",
         "name": "major name 1",
         "description": "major description  1",
         "created_at": "2018-05-04 13:31:13",

@@ -12,6 +12,7 @@
      - [Test](Auth/Admin/Test/Test.md) 
      - [Question](Auth/Admin/Test/Question.md) 
      - [Answer](Auth/Admin/Test/Answer.md) 
+     - [User](Auth/Admin/User.md) 
  - User prefix `user`
      - [University](Auth/User/University.md) 
      - [Score](Auth/User/Score.md) 

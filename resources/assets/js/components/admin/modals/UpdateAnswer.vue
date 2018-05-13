@@ -1,6 +1,6 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <div v-if="modalsIsShowCreateAnswer" class="modal__wrap">
+        <div v-if="modalsIsShowUpdateAnswer" class="modal__wrap">
             <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
@@ -28,7 +28,7 @@
                     </button>
 
                     <button type="button" class="btn btn-md btn-success mt-4"
-                        @click="createTest">
+                        @click="updateAnswer">
                         {{ $t("translation.save") }}
                     </button>
 
@@ -57,26 +57,26 @@
         },
         methods: {
             hide() {
-                this.modalsIsShowCreateAnswer = false;
+                this.modalsIsShowUpdateAnswer = false;
 
                 this.answerQuestionId = null;
                 this.answerName = null;
             },
 
-            async createTest() {
+            async updateAnswer() {
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
                     try {
                         this.showPreloader();
-                        await this.$store.dispatch('admin/createAnswer', {
+                        await this.$store.dispatch('admin/updateAnswer', {
                             question_id: this.answerQuestionId,
                             name: this.answerName,
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({
                             title: this.$t('translation.success'),
-                            message: this.$t('translation.createAnswer'),
+                            message: this.$t('translation.updateAnswer'),
                         });
                     } catch (e) {
                         if (e.status === 404) {

@@ -36,6 +36,11 @@ const routes = [
         component: () => import('../pages/admin/Login.vue'),
     },
     {
+        path: '/admin/home',
+        name: 'admin.home',
+        component: () => import('../pages/admin/Home.vue'),
+    },
+    {
         path: '/admin/university',
         name: 'admin.university',
         component: () => import('../pages/admin/University.vue'),
@@ -44,6 +49,26 @@ const routes = [
         path: '/admin/university/admins',
         name: 'admin.university.admins',
         component: () => import('../pages/admin/UniversityAdmins.vue'),
+    },
+    {
+        path: '/admin/coefficients',
+        name: 'admin.coefficients',
+        component: () => import('../pages/admin/Coefficients.vue'),
+    },
+    {
+        path: '/admin/tests',
+        name: 'admin.tests',
+        component: () => import('../pages/admin/tests/Tests.vue'),
+    },
+    {
+        path: '/admin/questions',
+        name: 'admin.questions',
+        component: () => import('../pages/admin/tests/Questions.vue'),
+    },
+    {
+        path: '/admin/answers',
+        name: 'admin.answers',
+        component: () => import('../pages/admin/tests/Answers.vue'),
     },
 
     /**

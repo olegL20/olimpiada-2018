@@ -3,6 +3,13 @@ export default {
         return {
             fields: [
                 {
+                    name: 'test_id',
+                    sortField: 'test_id',
+                    title: this.$t('translation.testId'),
+                    titleClass: 'text-left',
+                    dataClass: 'text-left',
+                },
+                {
                     name: 'name',
                     sortField: 'name',
                     title: this.$t('translation.name'),
@@ -10,15 +17,22 @@ export default {
                     dataClass: 'text-left',
                 },
                 {
-                    name: 'description',
-                    sortField: 'description',
-                    title: this.$t('translation.description'),
+                    name: 'type',
+                    sortField: 'type',
+                    title: this.$t('translation.typeTest'),
                     titleClass: 'text-left',
                     dataClass: 'text-left',
                 },
                 {
-                    name: '__slot:questions',
-                    title: this.$t('translation.questions'),
+                    name: 'type_fill',
+                    sortField: 'type_fill',
+                    title: this.$t('translation.typeFillTest'),
+                    titleClass: 'text-left',
+                    dataClass: 'text-left',
+                },
+                {
+                    name: '__slot:answers',
+                    title: this.$t('translation.answers'),
                     titleClass: 'text-center',
                     dataClass: 'text-center',
                 },

@@ -54,15 +54,24 @@
             loginModal,
             registerModal,
         },
+        data() {
+            return {
+                isAdmin: true,
+            };
+        },
         metaInfo() {
             return {
                 title: this.$t('translation.homepage'),
             };
         },
         created() {
-            if (Number(window.Cookies.get('first_stage'))) {
+            if (!this.isAdmin) {
                 this.$router.push({
                     name: 'user.room',
+                });
+            } else {
+                this.$router.push({
+                    name: 'admin.home',
                 });
             }
         },

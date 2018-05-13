@@ -1,10 +1,10 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <div v-if="modalsIsShowCreateQuestion" class="modal__wrap">
+        <div v-if="modalsIsShowUpdateQuestion" class="modal__wrap">
             <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.createTest") }}
+                    {{ $t("translation.updateQuestion") }}
                 </h4>
 
                 <div class="modal__body">
@@ -55,7 +55,7 @@
                     </button>
 
                     <button type="button" class="btn btn-md btn-success mt-4"
-                        @click="createTest">
+                        @click="updateQuestion">
                         {{ $t("translation.save") }}
                     </button>
 
@@ -92,13 +92,13 @@
                 this.questionTypeFill = null;
             },
 
-            async createTest() {
+            async updateQuestion() {
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
                     try {
                         this.showPreloader();
-                        await this.$store.dispatch('admin/createQuestion', {
+                        await this.$store.dispatch('admin/updateQuestion', {
                             test_id: this.questionTestId,
                             name: this.questionName,
                             type: this.questionType,

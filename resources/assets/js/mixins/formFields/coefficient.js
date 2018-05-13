@@ -3,16 +3,23 @@ export default {
         return {
             fields: [
                 {
-                    name: 'question_id',
-                    sortField: 'question_id',
-                    title: this.$t('translation.questionId'),
+                    name: 'name',
+                    sortField: 'name',
+                    title: this.$t('translation.name'),
                     titleClass: 'text-left',
                     dataClass: 'text-left',
                 },
                 {
-                    name: 'name',
-                    sortField: 'name',
-                    title: this.$t('translation.name'),
+                    name: 'major_id',
+                    sortField: 'major_id',
+                    title: this.$t('translation.majorId'),
+                    titleClass: 'text-left',
+                    dataClass: 'text-left',
+                },
+                {
+                    name: 'coefficient',
+                    sortField: 'coefficient',
+                    title: this.$t('translation.coefficient'),
                     titleClass: 'text-left',
                     dataClass: 'text-left',
                 },

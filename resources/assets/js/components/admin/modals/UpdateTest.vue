@@ -1,10 +1,10 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <div v-if="modalsIsShowCreateTest" class="modal__wrap">
+        <div v-if="modalsIsShowUpdateTest" class="modal__wrap">
             <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.infoAboutUniversity") }}
+                    {{ $t("translation.updateTest") }}
                 </h4>
 
                 <div class="modal__body">
@@ -40,7 +40,7 @@
                     </button>
 
                     <button type="button" class="btn btn-md btn-success mt-4"
-                        @click="createTest">
+                        @click="updateTest">
                         {{ $t("translation.save") }}
                     </button>
 
@@ -69,26 +69,26 @@
         },
         methods: {
             hide() {
-                this.modalsIsShowCreateTest = false;
+                this.modalsIsShowUpdateTest = false;
 
                 this.testName = null;
                 this.testDescription = null;
             },
 
-            async createTest() {
+            async updateTest() {
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
                     try {
                         this.showPreloader();
-                        await this.$store.dispatch('admin/createTest', {
+                        await this.$store.dispatch('admin/updateTest', {
                             name: this.testName,
                             description: this.testDescription,
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({
                             title: this.$t('translation.success'),
-                            message: this.$t('translation.createTest'),
+                            message: this.$t('translation.updateTest'),
                         });
                     } catch (e) {
                         if (e.status === 404) {

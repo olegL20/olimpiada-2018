@@ -4,18 +4,18 @@
             <div class="row border rounded bg-white pt-3 pb-3">
 
                 <div class="col-md-10">
-                    <h1>{{ $t('translation.managerUniversity') }}</h1>
+                    <h1>{{ $t('translation.managerQuestions') }}</h1>
                 </div>
-                <div class="col-md-2 align-self-center">
-                    <a href="javascript:" @click="modalsIsShowCreateTest = true" class="btn btn-primary btn-md float-right">
-                        {{ $t("translation.addTest") }}
-                    </a>
-                </div>
+                <!--<div class="col-md-2 align-self-center">-->
+                    <!--<a href="javascript:" @click="modalsIsShowCreateQuestion = true" class="btn btn-primary btn-md float-right">-->
+                        <!--{{ $t("translation.addQuestion") }}-->
+                    <!--</a>-->
+                <!--</div>-->
                 <div class="col-md-12 mt-3">
-                    <vuetable ref="listTests"
-                              api-url="/api/admin/test"
+                    <vuetable ref="listQuestions"
+                              api-url="/api/admin/questions"
                               :fields="fields"
-                              pagination-path = ""
+                              pagination-path=""
                               :css="css.table"
                               data-path="data.data"
                               detail-row-component="my-detail-row"
@@ -24,22 +24,17 @@
                               @vuetable:pagination-data="onPaginationData"
                               @vuetable:cell-clicked="onCellClicked"
                     >
-                        <template slot="questions" slot-scope="props">
-                            <a href="javascript:" class="btn btn-outline-secondary btn-md"
-                               @click="editTest(props.rowData.id)"
-                               :title="$t('translation.edit')">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </a>
+                        <template slot="answers" slot-scope="props">
                             <router-link></router-link>
                         </template>
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"
-                               @click="editTest(props.rowData.id)"
+                               @click="editQuestion(props.rowData.id)"
                                :title="$t('translation.edit')">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
                             <button type="button" class="btn btn-outline-danger btn-md"
-                                    @click="destroyTest(props.rowData.id)"
+                                    @click="destroyQuestion(props.rowData.id)"
                                     :title="$t('translation.remove')">
                                 <i class="fa fa-trash-o"></i>
                             </button>
@@ -57,9 +52,8 @@
             </div>
         </div>
 
-        <modal-create-test></modal-create-test>
-        <modal-update-test></modal-update-test>
-        <modal-show-description></modal-show-description>
+        <modal-create-question></modal-create-question>
+        <modal-update-question></modal-update-question>
 
     </div>
 </template>
@@ -67,14 +61,13 @@
 <script>
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
     import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue';
-    import FieldsTest from '../../../mixins/formFields/tests';
+    import FieldsQuestion from '../../../mixins/formFields/questions';
 
     import MixinModals from '../../../mixins/modals';
     import MixinPreloader from '../../../mixins/preload';
     import MixinAdmin from '../../../mixins/admin';
-    import ModalCreateTest from '../../../components/admin/modals/CreateTest.vue';
-    import ModalUpdateTest from '../../../components/admin/modals/UpdateTest.vue';
-    import ModalShowDescription from '../../../components/admin/modals/ShowDescription.vue';
+    import ModalCreateQuestion from '../../../components/admin/modals/CreateQuestion.vue';
+    import ModalUpdateQuestion from '../../../components/admin/modals/UpdateQuestion.vue';
 
     import * as constants from '../../../utils/constants';
 
@@ -83,14 +76,13 @@
             MixinAdmin,
             MixinModals,
             MixinPreloader,
-            FieldsTest,
+            FieldsQuestion,
         ],
         components: {
             Vuetable,
             VuetablePagination,
-            ModalCreateTest,
-            ModalUpdateTest,
-            ModalShowDescription,
+            ModalCreateQuestion,
+            ModalUpdateQuestion,
         },
         mounted() {
             this.showPreloader();
@@ -98,31 +90,16 @@
         watch: {
             refreshTable() {
                 if (this.refreshTable) {
-                    this.$refs.listTests.refresh();
+                    this.$refs.listQuestions.refresh();
                     this.switchRefreshTable(false);
                 }
             },
         },
         methods: {
-            onCellClicked(data) {
-                this.universityAddress = data.address;
-                this.universityZipCode = data.zip_code;
-                this.universityDescription = data.description;
-                this.modalsIsShowDescription = true;
-            },
-            // getUniversitiesId(payload) {
-            //     this.hidePreloader();
-            //     const universitiesId = payload.data.data.data.map(el => ({
-            //         ...el,
-            //         id: el.id,
-            //         name: el.name,
-            //     }));
-            //     this.universityParentsId = universitiesId;
-            // },
-            async editTest(id) {
+            async editQuestion(id) {
                 try {
-                    await this.$store.dispatch('admin/getTest', id);
-                    this.modalsIsShowUpdateTest = true;
+                    await this.$store.dispatch('admin/getQuestion', id);
+                    this.modalsIsShowUpdateQuestion = true;
                 } catch (e) {
                     this.$toast.error({
                         title: this.$t('translation.error'),
@@ -130,7 +107,7 @@
                     });
                 }
             },
-            async destroyTest(id) {
+            async destroyQuestion(id) {
                 const result = await this.$swal({
                     title: this.$t('translation.areYouSure'),
                     type: 'warning',
@@ -142,8 +119,8 @@
                 });
                 if (result.value) {
                     try {
-                        await this.$store.dispatch('admin/destroyTest', id);
-                        this.$refs.listTests.refresh();
+                        await this.$store.dispatch('admin/destroyQuestion', id);
+                        this.$refs.listQuestions.refresh();
                         this.showPreloader();
                     } catch (e) {
                         this.$toast.error({
@@ -157,7 +134,7 @@
                 this.$refs.pagination.setPaginationData(paginationData);
             },
             onChangePage(page) {
-                this.$refs.listTests.changePage(page);
+                this.$refs.listQuestions.changePage(page);
             },
         },
     };

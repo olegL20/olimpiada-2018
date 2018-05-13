@@ -1,37 +1,52 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <div v-if="modalsIsShowCreateTest" class="modal__wrap">
+        <div v-if="modalsIsShowCreateQuestion" class="modal__wrap">
             <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.createTest") }}
+                    {{ $t("translation.createQuestion") }}
                 </h4>
 
                 <div class="modal__body">
                     <div class="form-group">
-                        <label for="testName">{{ $t("translation.testName") }}</label>
-                        <input type="text" class="form-control" id="testName" aria-describedby="testName"
-                               :placeholder="$t('translation.testNamePlaceholder')"
-                               name="testName"
+                        <label for="questionName">{{ $t("translation.questionName") }}</label>
+                        <input type="text" class="form-control" id="questionName" aria-describedby="questionNameHelp"
+                               :placeholder="$t('translation.questionNamePlaceholder')"
+                               name="questionName"
                                v-validate="'required|max:255'"
-                               :data-vv-as="$t('translation.testName')"
-                               v-model="testName">
-                        <small id="testNameHelp" class="form-text text-danger" v-show="errors.has('testName')">
-                            {{ errors.first('testName') }}
+                               :data-vv-as="$t('translation.questionName')"
+                               v-model="questionName">
+                        <small id="questionNameHelp" class="form-text text-danger" v-show="errors.has('questionName')">
+                            {{ errors.first('questionName') }}
                         </small>
                     </div>
-                    <div class="form-group">
-                        <label for="testDescription">{{ $t("translation.testDescription") }}</label>
-                        <textarea type="text" class="form-control resize-none h-5" id="testDescription" aria-describedby="testDescriptionHelp"
-                                  :placeholder="$t('translation.testDescriptionPlaceholder')"
-                                  name="testDescription"
-                                  v-validate="'required|max:255'"
-                                  :data-vv-as="$t('translation.testDescription')"
-                                  v-model="testDescription">
-                        </textarea>
-                        <small id="testDescriptionHelp" class="form-text text-danger" v-show="errors.has('testDescription')">
-                            {{ errors.first('testDescription') }}
-                        </small>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ $t("translation.typeTest") }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-check form-check-inline">
+                                <input v-model="questionType" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">{{ $t("translation.typeTestOne") }}</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input v-model="questionType" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <label class="form-check-label" for="inlineRadio2">{{ $t("translation.typeTestPoly") }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ $t("translation.typeFillTest") }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-check form-check-inline">
+                                <input v-model="questionTypeFill" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1">
+                                <label class="form-check-label" for="inlineRadio3">{{ $t("translation.typeFillAuto") }}</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input v-model="questionTypeFill" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2">
+                                <label class="form-check-label" for="inlineRadio4">{{ $t("translation.typeFillManually") }}</label>
+                            </div>
+                        </div>
                     </div>
 
                     <button type="button" class="btn btn-md btn-secondary float-right mt-4"
@@ -40,7 +55,7 @@
                     </button>
 
                     <button type="button" class="btn btn-md btn-success mt-4"
-                        @click="createTest">
+                        @click="createQuestion">
                         {{ $t("translation.save") }}
                     </button>
 
@@ -69,26 +84,30 @@
         },
         methods: {
             hide() {
-                this.modalsIsShowCreateTest = false;
+                this.modalsIsShowCreateQuestion = false;
 
-                this.testName = null;
-                this.testDescription = null;
+                this.questionTestId = null;
+                this.questionName = null;
+                this.questionType = null;
+                this.questionTypeFill = null;
             },
 
-            async createTest() {
+            async createQuestion() {
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
                     try {
                         this.showPreloader();
-                        await this.$store.dispatch('admin/createTest', {
-                            name: this.testName,
-                            description: this.testDescription,
+                        await this.$store.dispatch('admin/createQuestion', {
+                            test_id: this.questionTestId,
+                            name: this.questionName,
+                            type: this.questionType,
+                            type_fill: this.questionTypeFill,
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({
                             title: this.$t('translation.success'),
-                            message: this.$t('translation.createTest'),
+                            message: this.$t('translation.createQuestion'),
                         });
                     } catch (e) {
                         if (e.status === 404) {

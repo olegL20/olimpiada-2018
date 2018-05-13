@@ -22,6 +22,8 @@ export default {
             'universityParentId',
             'universityParentsId',
             'universities',
+            'universityImage',
+            'universityPosition',
         ]),
     },
 };

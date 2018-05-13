@@ -24496,6 +24496,8 @@ var UNIVERSITY_ZIP_CODE = exports.UNIVERSITY_ZIP_CODE = 'UNIVERSITY_ZIP_CODE';
 var UNIVERSITY_PARENT_ID = exports.UNIVERSITY_PARENT_ID = 'UNIVERSITY_PARENT_ID';
 var UNIVERSITY_PARENTS_ID = exports.UNIVERSITY_PARENTS_ID = 'UNIVERSITY_PARENTS_ID';
 var UNIVERSITIES = exports.UNIVERSITIES = 'UNIVERSITIES';
+var UNIVERSITY_IMAGE = exports.UNIVERSITY_IMAGE = 'UNIVERSITY_IMAGE';
+var UNIVERSITY_POSITION = exports.UNIVERSITY_POSITION = 'UNIVERSITY_POSITION';
 
 /***/ }),
 /* 72 */
@@ -24518,7 +24520,9 @@ exports.default = {
     universityZipCode: null,
     universityParentId: null,
     universityParentsId: [],
-    universities: {}
+    universities: {},
+    universityImage: null,
+    universityPosition: null
 };
 
 /***/ }),
@@ -65022,10 +65026,11 @@ var getUniversity = exports.getUniversity = function () {
                         json = _context2.sent;
 
                         if (!(json.status === 200)) {
-                            _context2.next = 14;
+                            _context2.next = 17;
                             break;
                         }
 
+                        console.log(json.data.data);
                         commit(types.UNIVERSITY_ID, json.data.data.id);
                         commit(types.UNIVERSITY_NAME, json.data.data.name);
                         commit(types.UNIVERSITY_ADDRESS, json.data.data.address);
@@ -65035,12 +65040,14 @@ var getUniversity = exports.getUniversity = function () {
                         commit(types.UNIVERSITY_ZIP_CODE, json.data.data.zip_code);
                         commit(types.UNIVERSITY_SITE, json.data.data.site);
                         commit(types.UNIVERSITY_PARENT_ID, json.data.data.parent_id);
+                        commit(types.UNIVERSITY_IMAGE, json.data.data.image);
+                        commit(types.UNIVERSITY_POSITION, json.data.data.position);
                         return _context2.abrupt('return', json.data);
 
-                    case 14:
+                    case 17:
                         throw json;
 
-                    case 15:
+                    case 18:
                     case 'end':
                         return _context2.stop();
                 }

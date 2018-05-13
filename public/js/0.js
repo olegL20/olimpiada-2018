@@ -641,7 +641,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'admin',
         prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities']))
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition']))
 };
 
 /***/ }),
@@ -6062,7 +6062,9 @@ exports.default = {
             customImageMaxSize: _constants.IMAGE_MAX_SIZE,
             imageSubstringLength: null,
             imageBase64: null,
-            latLng: {}
+            latLng: {},
+            isShowOldImage: true,
+            fileName: ''
         };
     },
 
@@ -6074,9 +6076,13 @@ exports.default = {
             return '';
         }
     },
+    watch: {
+        universityPosition: function universityPosition() {
+            this.latLng = this.universityPosition;
+        }
+    },
     methods: {
         setPlace: function setPlace(universityAddress) {
-            console.log(universityAddress);
             this.latLng = {
                 lat: universityAddress.geometry.location.lat(),
                 lng: universityAddress.geometry.location.lng()
@@ -6088,6 +6094,7 @@ exports.default = {
         },
         onLoad: function onLoad(dataUri) {
             this.imageBase64 = dataUri;
+            this.isShowOldImage = false;
         },
         hide: function hide() {
             this.modalsIsShowEditUniversity = false;
@@ -6101,6 +6108,7 @@ exports.default = {
             this.universitySite = null;
             this.universityZipCode = null;
             this.universityParentId = null;
+            this.isShowOldImage = true;
         },
         saveEditUniversity: function saveEditUniversity() {
             var _this = this;
@@ -6180,6 +6188,8 @@ exports.default = {
         }
     }
 }; //
+//
+//
 //
 //
 //
@@ -6807,15 +6817,18 @@ var render = function() {
                         _vm._v(_vm._s(_vm.$t("translation.photo")))
                       ]),
                       _vm._v(" "),
+                      _vm.universityImage
+                        ? _c("div", [
+                            _vm.isShowOldImage
+                              ? _c("img", {
+                                  staticClass: "img-fluid mt-3 max-w-20",
+                                  attrs: { src: _vm.universityImage.source }
+                                })
+                              : _vm._e()
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
                       _c("vue-base64-file-upload", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
                         staticClass: "v1",
                         attrs: {
                           accept: "image/png,image/jpeg",

@@ -6,7 +6,6 @@ use App\Http\Requests\User\TestResultRequest;
 use App\Http\Controllers\Controller;
 use App\Model\TestResult;
 use App\Services\User\TestAnswers;
-use Illuminate\Contracts\Auth\Guard;
 
 class AnswerController extends Controller
 {
@@ -27,19 +26,17 @@ class AnswerController extends Controller
      * AnswerController constructor.
      * @param TestAnswers $testAnswers
      * @param TestResult $result
-     * @param Guard $guard
      */
-    public function __construct(TestAnswers $testAnswers, TestResult $result, Guard $guard)
+    public function __construct(TestAnswers $testAnswers, TestResult $result)
     {
         $this->testAnswers = $testAnswers;
         $this->result = $result;
-        $this->user = $guard->user();
     }
 
     public function answer(TestResultRequest $request)
     {
         $isAnswered = $this->result
-            ->where('user_id', $this->user->id)
+            ->where('user_id', auth()->user()->id)
             ->where('question_id', $request->get('question_id'))
             ->first();
 
@@ -61,7 +58,7 @@ class AnswerController extends Controller
 
     public function results()
     {
-        $data = $this->result->where('user_id', $this->user->id)->get();
+        $data = $this->result->where('user_id', auth()->user()->id)->get();
 
         return response()->json(compact('data'));
     }

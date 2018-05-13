@@ -48,7 +48,7 @@ Route::group(['middleware' => 'api'], function () {
         Route::post('score', 'ScoreController@write');
         Route::get('score', 'ScoreController@show');
 
-        Route::get('test/score', 'Test/AnswerController@results');
-        Route::post('test/answer', 'Test/AnswerController@answer');
+        Route::get('test/score', 'Test\AnswerController@results');
+        Route::post('test/answer', 'Test\AnswerController@answer');
     });
 });

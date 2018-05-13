@@ -5,6 +5,7 @@
 ##### Method: `POST`
 
 #### Body
+
  - ##### Один ответ, автоматический ввод
     ```json
     {
@@ -34,51 +35,41 @@
     }
     ```
 
-##### Response
+#### Body
 ```json
 {
-	
+    "answer": "Выше пример как должно быть",
+    "question_id": 1
 }
 ```
 
 #### Response
 ```json
 {
-    "data": {
-        "additional_courses": 102,
-        "subjects_score": [
-            {
-                "name": "Subject1",
-                "score": 10
+            "id": 3,
+            "user_id": 24,
+            "test_id": 2,
+            "question_id": 1,
+            "answer": {
+                "userSelected": 3,
+                "rightAnswer": 3
             },
-            {
-                "name": "Subject2",
-                "score": 12
-            },
-            {
-                "name": "Subject3",
-                "score": 7
-            }
-        ],
-        "user_id": 24,
-        "average_score_zno": 11.6,
-        "summary": 165.5,
-        "id": 1
-    },
-    "message": "api.score_updated"
+            "result": true,
+            "created_at": "2018-05-12 10:26:32",
+            "updated_at": "2018-05-12 10:26:32"
 }
 ```
 
 #### Возможные ошибки
-| name | why 
+| code | why 
 |---|---|
-| 400  | api.score_exists
+| 400  | api.answered
 
 
 ---
 
 
-### Показать результаты тестов
+### Показать результаты тестов ( все варианты ниже )
 
 ##### URL: `/test/score/`
 ##### Method: `GET`
@@ -88,26 +79,72 @@
 ##### Response
 ```json
 {
-    "data": {
-        "additional_courses": 102,
-        "subjects_score": [
-            {
-                "name": "Subject1",
-                "score": 10
+    "data": [
+        {
+            "id": 3,
+            "user_id": 24,
+            "test_id": 2,
+            "question_id": 1,
+            "answer": {
+                "userSelected": 3,
+                "rightAnswer": 3
             },
-            {
-                "name": "Subject2",
-                "score": 12
+            "result": true,
+            "created_at": "2018-05-12 10:26:32",
+            "updated_at": "2018-05-12 10:26:32"
+        },
+        {
+            "id": 4,
+            "user_id": 24,
+            "test_id": 2,
+            "question_id": 3,
+            "answer": {
+                "userSelected": 3,
+                "rightAnswer": 3
             },
-            {
-                "name": "Subject3",
-                "score": 7
-            }
-        ],
-        "user_id": 24,
-        "average_score_zno": 11.6,
-        "summary": 165.5,
-        "id": 1
-    }
+            "result": true,
+            "created_at": "2018-05-12 10:26:32",
+            "updated_at": "2018-05-12 10:26:32"
+        },
+        {
+            "id": 5,
+            "user_id": 24,
+            "test_id": 2,
+            "question_id": 4,
+            "answer": {
+                "userSelected": [
+                    3,
+                    4,
+                    5
+                ],
+                "rightAnswer": [
+                    3,
+                    4
+                ]
+            },
+            "result": true,
+            "created_at": "2018-05-12 10:26:32",
+            "updated_at": "2018-05-12 10:26:32"
+        },
+        {
+            "id": 6,
+            "user_id": 24,
+            "test_id": 2,
+            "question_id": 5,
+            "answer": {
+                "userSelected": [
+                    3,
+                    4
+                ],
+                "rightAnswer": [
+                    3,
+                    4
+                ]
+            },
+            "result": true,
+            "created_at": "2018-05-12 10:26:32",
+            "updated_at": "2018-05-12 10:26:32"
+        }
+    ]
 }
 ```

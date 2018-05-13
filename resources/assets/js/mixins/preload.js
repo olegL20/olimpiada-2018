@@ -12,6 +12,18 @@ export default {
             prefix: false,
         }, [
             'showPreload',
+            'refreshTable',
         ]),
+    },
+    methods: {
+        showPreloader() {
+            this.showPreload = true;
+        },
+        hidePreloader() {
+            this.showPreload = false;
+        },
+        switchRefreshTable(value) {
+            this.refreshTable = value;
+        },
     },
 };

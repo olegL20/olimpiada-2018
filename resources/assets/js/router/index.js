@@ -41,9 +41,9 @@ const routes = [
         component: () => import('../pages/admin/University.vue'),
     },
     {
-        path: '/admin/university/administrators',
-        name: 'admin.university.administrators',
-        component: () => import('../pages/admin/UniversityAdministrators.vue'),
+        path: '/admin/university/admins',
+        name: 'admin.university.admins',
+        component: () => import('../pages/admin/UniversityAdmins.vue'),
     },
 
     /**

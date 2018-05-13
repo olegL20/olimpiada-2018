@@ -1,11 +1,11 @@
 <template>
     <div id="app" ref="app" :class="userBackground">
-        <user-header v-if="true"></user-header>
-        <admin-header v-else></admin-header>
+        <admin-header v-if="isAdmin"></admin-header>
+        <user-header v-else></user-header>
         <transition name="slide-fade" mode="out-in">
             <router-view></router-view>
         </transition>
-        <admin-footer v-if="false"></admin-footer>
+        <admin-footer v-if="isAdmin"></admin-footer>
         <preload v-if="showPreload"></preload>
     </div>
 </template>
@@ -21,6 +21,7 @@
     export default {
         data() {
             return {
+                isAdmin: true,
             };
         },
         mixins: [

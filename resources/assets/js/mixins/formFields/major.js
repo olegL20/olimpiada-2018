@@ -2,13 +2,13 @@ export default {
     data() {
         return {
             fields: [
-                {
-                    name: 'name',
-                    sortField: 'name',
-                    title: this.$t('translation.name'),
-                    titleClass: 'text-left',
-                    dataClass: 'text-left',
-                },
+                // {
+                //     name: 'name',
+                //     sortField: 'name',
+                //     title: this.$t('translation.name'),
+                //     titleClass: 'text-left',
+                //     dataClass: 'text-left',
+                // },
                 {
                     name: 'email',
                     sortField: 'email',
@@ -23,20 +23,20 @@ export default {
                 //     titleClass: 'text-left',
                 //     dataClass: 'text-left',
                 // },
-                {
-                    name: 'phone',
-                    sortField: 'phone',
-                    title: this.$t('translation.phone'),
-                    titleClass: 'text-left',
-                    dataClass: 'text-left',
-                },
-                {
-                    name: 'site',
-                    sortField: 'site',
-                    title: this.$t('translation.site'),
-                    titleClass: 'text-left',
-                    dataClass: 'text-left',
-                },
+                // {
+                //     name: 'phone',
+                //     sortField: 'phone',
+                //     title: this.$t('translation.phone'),
+                //     titleClass: 'text-left',
+                //     dataClass: 'text-left',
+                // },
+                // {
+                //     name: 'site',
+                //     sortField: 'site',
+                //     title: this.$t('translation.site'),
+                //     titleClass: 'text-left',
+                //     dataClass: 'text-left',
+                // },
                 // {
                 //     name: 'zip_code',
                 //     sortField: 'zip_code',
@@ -58,16 +58,16 @@ export default {
                     titleClass: 'text-center',
                     dataClass: 'text-center',
                 },
-                {
-                    name: '__slot:actions',
-                    title: this.$t('translation.actions'),
-                    titleClass: 'text-center',
-                    dataClass: 'text-center',
-                },
+                // {
+                //     name: '__slot:actions',
+                //     title: this.$t('translation.actions'),
+                //     titleClass: 'text-center',
+                //     dataClass: 'text-center',
+                // },
             ],
             css: {
                 table: {
-                    tableClass: 'table table-hover cursor-pointer',
+                    tableClass: 'table',
                     loadingClass: 'loading',
                     ascendingIcon: 'fa fa-angle-up ',
                     descendingIcon: 'fa fa-angle-down ',

@@ -8,17 +8,20 @@ export default {
          * Documentation {@link https://www.npmjs.com/package/schepotin-vuex-helpers#maptwowaystate | mapTwoWayState}
          */
         ...mapTwoWayState({
-            namespace: 'modals',
-            prefix: true,
+            namespace: 'admin',
+            prefix: false,
         }, [
-            'isShowLogin',
-            'isShowRegister',
-            'isShowAdvice',
-            'isShowSelectVuz',
-            'isShowCreateUniversity',
-            'isShowEditUniversity',
-            'isShowDescription',
-            'isShowInviteUniversityAdmin',
+            'universityId',
+            'universityAddress',
+            'universityDescription',
+            'universityEmail',
+            'universityName',
+            'universityPhone',
+            'universitySite',
+            'universityZipCode',
+            'universityParentId',
+            'universityParentsId',
+            'universities',
         ]),
     },
 };

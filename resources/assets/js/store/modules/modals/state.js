@@ -5,4 +5,6 @@ export default {
     isShowSelectVuz: false,
     isShowCreateUniversity: false,
     isShowEditUniversity: false,
+    isShowDescription: false,
+    isShowInviteUniversityAdmin: false,
 };

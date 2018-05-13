@@ -39,11 +39,19 @@ const routes = [
         path: '/admin/university',
         name: 'admin.university',
         component: () => import('../pages/admin/University.vue'),
+        // meta: {
+        //     auth: true,
+        //     admin: true,
+        // },
     },
     {
         path: '/admin/university/admins',
         name: 'admin.university.admins',
         component: () => import('../pages/admin/UniversityAdmins.vue'),
+        // meta: {
+        //     auth: true,
+        //     admin: true,
+        // },
     },
 
     /**
@@ -70,10 +78,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.auth) && !store.getters['user/logged']) {
-        /**
-         * If the user is not authenticated and visits
-         * a page that requires authentication, redirect to the login page
-         */
         next({
             name: 'auth.login',
             query: {
@@ -81,13 +85,15 @@ router.beforeEach((to, from, next) => {
             },
         });
     } else if (to.matched.some(record => record.meta.guest) && store.getters['user/logged']) {
-        /**
-         * If the user is authenticated and visits
-         * an guest page, redirect to the homepage
-         */
         next({
             name: 'home',
         });
+    // } else if (!to.matched.some(record => record.meta.admin)
+    //     && store.getters['user/logged']
+    //     && to.matched.some(record => record.meta.auth)) {
+    //     next({
+    //         name: 'home',
+    //     });
     } else {
         next();
     }

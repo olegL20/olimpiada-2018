@@ -38,8 +38,6 @@ class UploadInfoTransferScores extends Command
         parent::__construct();
 
         $this->score = $score;
-
-        $this->score->truncate();
     }
 
     /**
@@ -49,6 +47,7 @@ class UploadInfoTransferScores extends Command
      */
     public function handle()
     {
+        $this->score->truncate();
         $file = storage_path('app/info_transfer_scores.csv');
 
         $bar = $bar = $this->output->createProgressBar($this->getCountLines($file));

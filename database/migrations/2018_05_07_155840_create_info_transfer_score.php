@@ -27,6 +27,6 @@ class CreateInfoTransferScore extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('info_transfer_score');
+        Schema::dropIfExists('info_transfer_scores');
     }
 }

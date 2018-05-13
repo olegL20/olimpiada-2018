@@ -27,7 +27,7 @@ class UniversityRequest extends FormRequest
             'name' => 'required',
             'address' => 'required',
             'position' => 'required',
-            'phone' => 'required',
+            // 'phone' => 'required',
             'site' => 'required',
             'email' => 'required|email',
             'zip_code' => 'required',

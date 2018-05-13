@@ -31,7 +31,7 @@ class UniversityRequest extends FormRequest
             'site' => 'required',
             'email' => 'required|email',
             'zip_code' => 'required',
-            'image' => 'required'
+            // 'image' => 'required'
         ];
     }
 }

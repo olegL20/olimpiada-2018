@@ -1,20 +1,21 @@
 <template>
     <div class="container-fluid">
-        <div class="col-md-12">
+        <div class="col-md-12 mb-5">
             <div class="row border rounded bg-white pt-3 pb-3">
 
                 <div class="col-md-10">
                     <h1>{{ $t('translation.managerUniversityAdmin') }}</h1>
                 </div>
+
                 <div class="col-md-2 align-self-center">
                     <a href="javascript:" @click="modalsIsShowInviteUniversityAdmin = true" class="btn btn-primary btn-md float-right">
-                        {{ $t("translation.addUniversityAdmin") }}
+                        {{ $t("translation.addInvite") }}
                     </a>
                 </div>
                 <div class="col-md-12 mt-3">
-                    <vuetable ref="listUniversitAdministrotors"
+                    <vuetable ref="listUniversityAdministrators"
                               :api-url="`/api/admin/users?role=${constants.UNIVERSITY_ADMIN}`"
-                              :fields="fields"
+                              :fields="fieldsListUniversityAdministrators"
                               pagination-path = "data"
                               :css="css.table"
                               data-path="data.data"
@@ -36,7 +37,7 @@
                     </vuetable>
                 </div>
                 <div class="col-md-12 m-3">
-                    <vuetable-pagination ref="pagination"
+                    <vuetable-pagination ref="paginationListUniversityAdministrators"
                                          :css="css.pagination"
                                          @vuetable-pagination:change-page="onChangePage"
                     >
@@ -45,7 +46,9 @@
 
             </div>
         </div>
+
         <modal-invite-university-admin></modal-invite-university-admin>
+
     </div>
 </template>
 

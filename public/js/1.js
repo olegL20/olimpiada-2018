@@ -4731,6 +4731,9 @@ exports.default = {
 //
 //
 //
+//
+//
+//
 
 /***/ }),
 
@@ -5155,7 +5158,7 @@ var render = function() {
     "div",
     { staticClass: "container-fluid" },
     [
-      _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "col-md-12 mb-5" }, [
         _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
           _c("div", { staticClass: "col-md-10" }, [
             _c("h1", [
@@ -5178,7 +5181,7 @@ var render = function() {
               [
                 _vm._v(
                   "\n                    " +
-                    _vm._s(_vm.$t("translation.addUniversityAdmin")) +
+                    _vm._s(_vm.$t("translation.addInvite")) +
                     "\n                "
                 )
               ]
@@ -5190,11 +5193,11 @@ var render = function() {
             { staticClass: "col-md-12 mt-3" },
             [
               _c("vuetable", {
-                ref: "listUniversitAdministrotors",
+                ref: "listUniversityAdministrators",
                 attrs: {
                   "api-url":
                     "/api/admin/users?role=" + _vm.constants.UNIVERSITY_ADMIN,
-                  fields: _vm.fields,
+                  fields: _vm.fieldsListUniversityAdministrators,
                   "pagination-path": "data",
                   css: _vm.css.table,
                   "data-path": "data.data"
@@ -5259,7 +5262,7 @@ var render = function() {
             { staticClass: "col-md-12 m-3" },
             [
               _c("vuetable-pagination", {
-                ref: "pagination",
+                ref: "paginationListUniversityAdministrators",
                 attrs: { css: _vm.css.pagination },
                 on: { "vuetable-pagination:change-page": _vm.onChangePage }
               })
@@ -5298,7 +5301,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     data: function data() {
         return {
-            fields: [{
+            fieldsListUniversityAdministrators: [{
                 name: 'surname',
                 sortField: 'surname',
                 title: this.$t('translation.surname'),
@@ -5322,6 +5325,13 @@ exports.default = {
                 titleClass: 'text-left',
                 dataClass: 'text-left'
             }, {
+                name: 'created_at',
+                sortField: 'created_at',
+                title: this.$t('translation.created_at'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }],
+            fieldsInvites: [{
                 name: 'created_at',
                 sortField: 'created_at',
                 title: this.$t('translation.created_at'),

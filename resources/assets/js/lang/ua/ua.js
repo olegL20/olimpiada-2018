@@ -125,6 +125,7 @@ export default {
         inviteUniversityAdminSent: 'Запрошення стати адміністратором університету надіслано',
         moreInfo: 'Докладніше',
         universityAdmin: 'Адміністратор університету',
+        addInvite: 'Створити запрошення',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

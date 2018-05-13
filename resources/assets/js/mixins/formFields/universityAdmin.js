@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            fields: [
+            fieldsListUniversityAdministrators: [
                 {
                     name: 'surname',
                     sortField: 'surname',
@@ -36,12 +36,15 @@ export default {
                     titleClass: 'text-center',
                     dataClass: 'text-center',
                 },
-                // {
-                //     name: '__slot:actions',
-                //     title: this.$t('translation.actions'),
-                //     titleClass: 'text-center',
-                //     dataClass: 'text-center',
-                // },
+            ],
+            fieldsInvites: [
+                {
+                    name: 'created_at',
+                    sortField: 'created_at',
+                    title: this.$t('translation.created_at'),
+                    titleClass: 'text-center',
+                    dataClass: 'text-center',
+                },
             ],
             css: {
                 table: {

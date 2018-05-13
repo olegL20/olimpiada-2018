@@ -4837,6 +4837,7 @@ exports.default = {
             this.$refs.pagination.setPaginationData(paginationData);
         },
         onChangePage: function onChangePage(page) {
+            this.showPreloader();
             this.$refs.listUniversities.changePage(page);
         },
         onCellClicked: function onCellClicked(data) {

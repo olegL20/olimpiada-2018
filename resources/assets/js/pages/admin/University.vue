@@ -103,6 +103,7 @@
                 this.$refs.pagination.setPaginationData(paginationData);
             },
             onChangePage(page) {
+                this.showPreloader();
                 this.$refs.listUniversities.changePage(page);
             },
             onCellClicked(data) {

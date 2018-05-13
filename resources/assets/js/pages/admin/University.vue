@@ -18,7 +18,6 @@
                               pagination-path = "data"
                               :css="css.table"
                               data-path="data.data"
-                              detail-row-component="my-detail-row"
                               @vuetable:load-success="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
                               @vuetable:cell-clicked="onCellClicked"

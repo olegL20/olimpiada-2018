@@ -4685,6 +4685,10 @@ var BUTTON_COLOR_CONFIRM = exports.BUTTON_COLOR_CONFIRM = '#3085d6';
 var BUTTON_COLOR_CANCEL = exports.BUTTON_COLOR_CANCEL = '#d33d33';
 var IMAGE_MAX_SIZE = exports.IMAGE_MAX_SIZE = 3;
 
+var USER = exports.USER = 'user';
+var UNIVERSITY_ADMIN = exports.UNIVERSITY_ADMIN = 'uni_admin';
+var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
+
 /***/ }),
 
 /***/ 357:
@@ -4749,7 +4753,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
 //
 //
 //
@@ -7264,8 +7267,7 @@ var render = function() {
                   fields: _vm.fields,
                   "pagination-path": "data",
                   css: _vm.css.table,
-                  "data-path": "data.data",
-                  "detail-row-component": "my-detail-row"
+                  "data-path": "data.data"
                 },
                 on: {
                   "vuetable:load-success": _vm.hidePreloader,

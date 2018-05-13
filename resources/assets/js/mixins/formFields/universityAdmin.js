@@ -2,13 +2,20 @@ export default {
     data() {
         return {
             fields: [
-                // {
-                //     name: 'name',
-                //     sortField: 'name',
-                //     title: this.$t('translation.name'),
-                //     titleClass: 'text-left',
-                //     dataClass: 'text-left',
-                // },
+                {
+                    name: 'surname',
+                    sortField: 'surname',
+                    title: this.$t('translation.surname'),
+                    titleClass: 'text-left',
+                    dataClass: 'text-left',
+                },
+                {
+                    name: 'name',
+                    sortField: 'name',
+                    title: this.$t('translation.name'),
+                    titleClass: 'text-left',
+                    dataClass: 'text-left',
+                },
                 {
                     name: 'email',
                     sortField: 'email',
@@ -16,41 +23,12 @@ export default {
                     titleClass: 'text-left',
                     dataClass: 'text-left',
                 },
-                // {
-                //     name: 'address',
-                //     sortField: 'address',
-                //     title: this.$t('translation.address'),
-                //     titleClass: 'text-left',
-                //     dataClass: 'text-left',
-                // },
-                // {
-                //     name: 'phone',
-                //     sortField: 'phone',
-                //     title: this.$t('translation.phone'),
-                //     titleClass: 'text-left',
-                //     dataClass: 'text-left',
-                // },
-                // {
-                //     name: 'site',
-                //     sortField: 'site',
-                //     title: this.$t('translation.site'),
-                //     titleClass: 'text-left',
-                //     dataClass: 'text-left',
-                // },
-                // {
-                //     name: 'zip_code',
-                //     sortField: 'zip_code',
-                //     title: this.$t('translation.zip_code'),
-                //     titleClass: 'text-center',
-                //     dataClass: 'text-center',
-                // },
-                // {
-                //     name: '__slot:description',
-                //     sortField: 'description',
-                //     title: this.$t('translation.description'),
-                //     titleClass: 'text-left',
-                //     dataClass: 'text-left ellipsis',
-                // },
+                {
+                    name: '__slot:university',
+                    title: this.$t('translation.universityAdmin'),
+                    titleClass: 'text-left',
+                    dataClass: 'text-left',
+                },
                 {
                     name: 'created_at',
                     sortField: 'created_at',

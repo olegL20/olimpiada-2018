@@ -12,4 +12,5 @@ export default {
     universities: {},
     universityImage: null,
     universityPosition: null,
+    universityUserId: null,
 };

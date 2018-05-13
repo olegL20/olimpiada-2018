@@ -81,7 +81,7 @@ export default {
         'професії та вступу до ВНЗ. Цей сервіс допоможе' +
         'майбутньому студенту у вигляді захопливого квесту',
         managerUniversity: 'Менеджер університетів',
-        managerUniversityAdmin: 'Менеджер адміністраторів',
+        managerUniversityAdmin: 'Адміністратори університетів',
         addUniversity: 'Додати університет',
         addUniversityAdmin: 'Додати адміністратора',
         remove: 'Видалити',
@@ -124,6 +124,7 @@ export default {
         inviteUniversityAdmin: 'Запрошення стати адміністратором університету',
         inviteUniversityAdminSent: 'Запрошення стати адміністратором університету надіслано',
         moreInfo: 'Докладніше',
+        universityAdmin: 'Адміністратор університету',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

@@ -83,7 +83,9 @@ class TestAnswers
                 break;
         }
 
-        return $this->fillAnswer($result, $answer);
+        $result = $this->fillAnswer($result, $answer);
+
+         return $result;
     }
 
     protected function fillAnswer($result, $answer)
@@ -103,24 +105,24 @@ class TestAnswers
 
         switch ($question->type_fill) {
             case Question::TYPE_FILL_AUTO:
-                $rightAnswer = $this->answer->findOrFail($rightAnswerId);
-                $userSelectedAnswer = $this->answer->findOrFail($userAnswer);
+//                $rightAnswer = $this->answer->findOrFail($rightAnswerId);
+//                $userSelectedAnswer = $this->answer->findOrFail($userAnswer);
 
                 return [
                     (int)$userAnswer === (int)$rightAnswerId,
-                    $userSelectedAnswer,
-                    $rightAnswer,
+                    $userAnswer,
+                    $rightAnswerId,
                 ];
                 break;
 
             case Question::TYPE_FILL_MANUAL:
-                $rightAnswer = $this->answer->where('name', $question->answer)->firstOrFail();
+                $rightAnswer = $this->answer->findOrFail($rightAnswerId);
                 $userSelectedAnswer = $this->answer->where('name', $userAnswer)->firstOrFail();
 
                 return [
-                    $userAnswer === $question->answer['right'],
-                    $userSelectedAnswer,
-                    $rightAnswer,
+                    $userAnswer === $rightAnswer->name,
+                    $userSelectedAnswer->id,
+                    $rightAnswerId,
                 ];
                 break;
         }
@@ -128,72 +130,63 @@ class TestAnswers
 
     protected function multipleAnswer($userAnswers, $question)
     {
-        $question->load(['answers']);
-        $rightAnswers = $question->answer['right'];
+        $userIds = $userAnswers;
+        $rightAnswers = $this->answer
+            ->whereIn('id', $question->answer['right'])
+            ->pluck('name')
+            ->toArray();
 
-        $count = count($userAnswers) === count($question->answer['right']);
-        $isExists = array_intersect($rightAnswers, $userAnswers) === $question->answer['right'];
-
-        if ($count && $isExists) {
-            return [
-                true,
-                $userAnswers,
-                $rightAnswers,
-            ];
-        }
-
-        return [
-            false,
-            $userAnswers,
-            $rightAnswers,
-        ];
-
-        /*switch ($question->type_fill) {
+        switch ($question->type_fill) {
             case Question::TYPE_FILL_AUTO:
+                $userAnswers = $this->answer
+                    ->whereIn('id', $userAnswers)
+                    ->pluck('name')
+                    ->toArray();
 
-                if (array_intersect($userAnswers, $question->answer) === count($question->answer->right)) {
-                    return [
-                        true,
-                        $userAnswers,
-                        $rightAnswers,
-                    ];
-                }
-
-                return [
-                    false,
+                return $this->checkMultipleResult(
                     $userAnswers,
                     $rightAnswers,
-                ];
+                    $question->answer['right'],
+                    $userIds
+                );
 
                 break;
 
             case Question::TYPE_FILL_MANUAL:
 
-                if (array_intersect($userAnswers, $question->answer) === count($question->answer->right)) {
-                    return [
-                        true,
-                        $userAnswers,
-                        $rightAnswers,
-                    ];
-                }
+                $userIds = $this->answer
+                    ->whereIn('name', $userAnswers)
+                    ->pluck('id')
+                    ->toArray();
 
-                return [
-                    false,
+                return $this->checkMultipleResult(
                     $userAnswers,
                     $rightAnswers,
-                ];
+                    $question->answer['right'],
+                    $userIds
+                );
 
                 break;
-        }*/
+        }
     }
 
-    /*protected function manual()
+    protected function checkMultipleResult($userAnswers, $rightAnswers, $rightIds, $userIds)
     {
+        $count = count($userAnswers) === count($rightAnswers);
+        $isExists = array_intersect($rightAnswers, $userAnswers) === $rightAnswers;
 
+        if ($count && $isExists) {
+            return [
+                true,
+                $userIds,
+                $rightIds,
+            ];
+        }
+
+        return [
+            false,
+            $userIds,
+            $rightIds,
+        ];
     }
-
-    protected function auto()
-    {
-
-    }*/
 }

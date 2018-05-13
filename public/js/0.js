@@ -4810,7 +4810,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
 
 exports.default = {
     mixins: [_admin2.default, _modals2.default, _preload2.default, _university2.default],
@@ -4834,6 +4833,12 @@ exports.default = {
         }
     },
     methods: {
+        onPaginationData: function onPaginationData(paginationData) {
+            this.$refs.pagination.setPaginationData(paginationData);
+        },
+        onChangePage: function onChangePage(page) {
+            this.$refs.listUniversities.changePage(page);
+        },
         onCellClicked: function onCellClicked(data) {
             this.universityAddress = data.address;
             this.universityZipCode = data.zip_code;
@@ -4938,12 +4943,6 @@ exports.default = {
                     }
                 }, _callee2, _this2, [[4, 11]]);
             }))();
-        },
-        onPaginationData: function onPaginationData(paginationData) {
-            this.$refs.pagination.setPaginationData(paginationData);
-        },
-        onChangePage: function onChangePage(page) {
-            this.$refs.listUniversities.changePage(page);
         }
     }
 };
@@ -5034,7 +5033,7 @@ exports.default = {
                     wrapperClass: 'vuetable-pagination text-center',
                     activeClass: 'btn btn-primary text-white',
                     disabledClass: 'btn text-secondary',
-                    pageClass: 'btn pgn-btn-border border',
+                    pageClass: 'btn pgn-btn-border border m-1',
                     linkClass: 'btn pgn-btn-border border',
                     icons: {
                         first: 'fa fa-angle-double-left',
@@ -7262,7 +7261,7 @@ var render = function() {
                 attrs: {
                   "api-url": "/api/admin/university",
                   fields: _vm.fields,
-                  "pagination-path": "",
+                  "pagination-path": "data",
                   css: _vm.css.table,
                   "data-path": "data.data",
                   "detail-row-component": "my-detail-row"
@@ -7348,15 +7347,8 @@ var render = function() {
                     }
                   }
                 ])
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-12 m-3" },
-            [
+              }),
+              _vm._v(" "),
               _c("vuetable-pagination", {
                 ref: "pagination",
                 attrs: { css: _vm.css.pagination },

@@ -29,6 +29,16 @@ class University extends Model
         'document',
     ];
 
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
+    public function invite()
+    {
+        return $this->hasOne(AdminUniversityInvite::class);
+    }
+
     public function faculties()
     {
         return $this->hasMany(Faculty::class);

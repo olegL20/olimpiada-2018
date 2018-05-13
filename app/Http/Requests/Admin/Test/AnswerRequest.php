@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Admin\Test;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UniversityRequest extends FormRequest
+class AnswerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,8 @@ class UniversityRequest extends FormRequest
     public function rules()
     {
         return [
+            'question_id' => 'required',
             'name' => 'required',
-            'address' => 'required',
-            'position' => 'required',
-            // 'phone' => 'required',
-            'site' => 'required',
-            'email' => 'required|email',
-            'zip_code' => 'required',
-            'image' => 'required'
         ];
     }
 }

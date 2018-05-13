@@ -24,6 +24,13 @@ Route::group(['middleware' => 'api'], function () {
         'prefix' => 'admin',
         'namespace' => 'Admin'
     ], function () {
+        Route::resource('test', 'Test\TestController');
+        Route::resource('question', 'Test\QuestionController');
+        Route::resource('answer', 'Test\AnswerController');
+
+        Route::get('invites', 'InviteController@index');
+
+        Route::resource('test', 'Test\TestController');
         Route::resource('university', 'UniversityController');
         Route::resource('faculty', 'FacultyController');
         Route::post('send-invite', 'InviteAdminUniversityController@invite');
@@ -42,5 +49,8 @@ Route::group(['middleware' => 'api'], function () {
         Route::resource('university', 'UniversityController');
         Route::post('score', 'ScoreController@write');
         Route::get('score', 'ScoreController@show');
+
+        Route::get('test/score', 'Test\AnswerController@results');
+        Route::post('test/answer', 'Test\AnswerController@answer');
     });
 });

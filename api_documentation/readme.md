@@ -17,6 +17,7 @@
      - [University](Auth/User/University.md) 
      - [Score](Auth/User/Score.md) 
      - [TestAnswer](Auth/User/TestAnswer.md) 
+     - [Test](Auth/User/Test.md) 
 
 
 ### Типы ответов

@@ -20,7 +20,7 @@ Route::group(['middleware' => 'api'], function () {
     });
 
     Route::group([
-//        'middleware' => 'role:' . \App\Model\User::GLOBAL_ADMIN . ',jwt.auth',
+        'middleware' => 'role:' . \App\Model\User::GLOBAL_ADMIN . ',jwt.auth',
         'prefix' => 'admin',
         'namespace' => 'Admin'
     ], function () {
@@ -42,12 +42,17 @@ Route::group(['middleware' => 'api'], function () {
     });
 
     Route::group([
-//        'middleware' => 'role:' . \App\Model\User::USER . ',jwt.auth',
+        'middleware' => 'role:' . \App\Model\User::USER . ',jwt.auth',
         'prefix' => 'user',
         'namespace' => 'User'
     ], function () {
         // user routes
-        Route::resource('university', 'UniversityController');
+        Route::get('university', 'UniversityController@index');
+        Route::get('university/{id}', 'UniversityController@show');
+        Route::get('faculty/{universityId}', 'UniversityController@getFacultiesByUniversity');
+        Route::get('department/{facultyId}', 'UniversityController@getDepartmentsByFaculty');
+        Route::get('majors/{departmentId}', 'UniversityController@getMajorsByDepartment');
+
         Route::post('score', 'ScoreController@write');
         Route::get('score', 'ScoreController@show');
 

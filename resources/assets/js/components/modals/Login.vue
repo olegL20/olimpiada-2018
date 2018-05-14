@@ -87,8 +87,14 @@
                             email: this.userEmail,
                             password: this.userPassword,
                         });
-                        window.Cookies.set('first_stage', 3);
-                        this.userFirstStage = 3;
+                        if (this.userRole === 'user') {
+                            window.Cookies.set('first_stage', 3);
+                            this.userFirstStage = 3;
+                        } else {
+                            this.$router.push({
+                                name: 'admin.home',
+                            });
+                        }
                         this.hide();
                     } catch (e) {
                         this.hide();

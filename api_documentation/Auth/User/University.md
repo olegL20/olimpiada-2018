@@ -76,3 +76,55 @@
 | name | required 
 |---|---|
 | id  | * 
+
+
+---
+
+### Показать факультеты по id университета
+
+##### URL: `/faculty/{universityId}`
+##### Method: `GET`
+
+#### Body - empty
+
+##### Response - см. Faculty admin
+
+#### Обязательные параметры URL
+| name | required 
+|---|---|
+| universityId  | * 
+
+
+---
+
+
+### Показать кафедры по id факультета
+
+##### URL: `/department/{facultyId}`
+##### Method: `GET`
+
+#### Body - empty
+
+##### Response - см. Department admin
+
+#### Обязательные параметры URL
+| name | required 
+|---|---|
+| facultyId  | * 
+
+
+---
+
+### Показать специальности по id кафедры
+
+##### URL: `/majors/{departmentId}`
+##### Method: `GET`
+
+#### Body - empty
+
+##### Response - см. Major admin
+
+#### Обязательные параметры URL
+| name | required 
+|---|---|
+| departmentId  | * 

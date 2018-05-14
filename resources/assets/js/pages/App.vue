@@ -1,11 +1,17 @@
 <template>
     <div id="app" ref="app" :class="userBackground">
-        <admin-header v-if="isAdmin"></admin-header>
+        <admin-header
+                v-if="userRole === 'global_admin'
+                || userRole === 'uni_admin'">
+        </admin-header>
         <user-header v-else></user-header>
         <transition name="slide-fade" mode="out-in">
             <router-view></router-view>
         </transition>
-        <admin-footer v-if="isAdmin"></admin-footer>
+        <admin-footer
+                v-if="userRole === 'global_admin'
+                || userRole === 'uni_admin'">
+        </admin-footer>
         <preload v-if="showPreload"></preload>
     </div>
 </template>

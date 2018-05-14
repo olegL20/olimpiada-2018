@@ -25,6 +25,8 @@ export default {
             'universities',
             'selectedUniversity',
             'showPreload',
+            'role',
+            'token',
         ]),
     },
 };

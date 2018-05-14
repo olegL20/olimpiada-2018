@@ -14,11 +14,16 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listUniversityAdministrators"
-                              :api-url="`/api/admin/users?role=${constants.UNIVERSITY_ADMIN}`"
+                              :api-url="`https://itpm-194220.appspot.com/api/admin/users?role=${constants.UNIVERSITY_ADMIN}`"
                               :fields="fieldsListUniversityAdministrators"
                               pagination-path = "data"
                               :css="css.table"
                               data-path="data.data"
+                              :http-options="{
+                                headers: {
+                                    Authorization: `Bearer ${userToken}`,
+                                },
+                              }"
                               @vuetable:load-success="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
                               @vuetable:cell-clicked="onCellClicked"
@@ -63,6 +68,7 @@
     import MixinModals from '../../mixins/modals';
     import MixinPreload from '../../mixins/preload';
     import MixinAdmin from '../../mixins/admin';
+    import MixinUser from '../../mixins/user';
 
     import ModalInviteUniversityAdmin from '../../components/admin/modals/InviteUniversityAdmin.vue';
     import ModalsAssociateUniversityAdmin from '../../components/admin/modals/AssociateUniversityAdmin.vue';
@@ -75,6 +81,7 @@
             MixinPreload,
             MixinModals,
             MixinAdmin,
+            MixinUser,
             FieldsUniversityAdmin,
         ],
         components: {

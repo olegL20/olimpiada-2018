@@ -60,7 +60,7 @@ class SubjectCoefficientController extends Controller
      */
     public function show($id)
     {
-        $data = $this->coefficient->first($id);
+        $data = $this->coefficient->find($id);
 
         return response()->json(compact('data'));
     }
@@ -92,7 +92,7 @@ class SubjectCoefficientController extends Controller
      */
     public function destroy($id)
     {
-        $this->coefficient->first($id)->delete();
+        $this->coefficient->find($id)->delete();
 
         return response()->json([
             'message' => trans('api.deleted')

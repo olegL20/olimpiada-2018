@@ -15038,7 +15038,7 @@ p {
 }
 
 .things {
-  height: calc(100vh - 11.8rem);
+  height: calc(100vh - 7.8rem);
   background: url("/images/things.png") no-repeat 50% 100%;
   background-size: contain;
 }

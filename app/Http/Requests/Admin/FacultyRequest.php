@@ -26,7 +26,7 @@ class FacultyRequest extends FormRequest
         return [
             'name' => 'required',
             'university_id' => 'required',
-            'image' => 'required',
+            // 'image' => 'required',
         ];
     }
 }

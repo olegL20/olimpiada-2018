@@ -18,4 +18,5 @@ export default {
     selectedUniversity: null,
     showPreload: false,
     refreshTable: false,
+    role: null,
 };

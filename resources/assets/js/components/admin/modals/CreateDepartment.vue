@@ -1,32 +1,48 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <div v-show="modalsIsShowCreateAnswer" class="modal__wrap">
+        <div v-show="modalsIsShowCreateDepartment" class="modal__wrap">
             <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.createAnswer") }}
+                    {{ $t("translation.createDepartment") }}
                 </h4>
 
                 <div class="modal__body">
                     <div class="form-group">
-                        <label for="answerName">{{ $t("translation.answerName") }}</label>
+                        <label for="departmentName">{{ $t("translation.departmentName") }}</label>
                         <input type="text"
                                class="form-control"
-                               id="answerName"
+                               id="departmentName"
                                v-validate="{required: true}"
-                               aria-describedby="answerNameHelp"
-                               :placeholder="$t('translation.answerNamePlaceholder')"
-                               name="answerName"
-                               :data-vv-as="$t('translation.answerName')"
-                               v-model="answerName">
-                        <small id="answerNameHelp" class="form-text text-danger" v-show="errors.has('answerName')">
-                            {{ errors.first('answerName') }}
+                               aria-describedby="departmentNameHelp"
+                               :placeholder="$t('translation.departmentNamePlaceholder')"
+                               name="departmentName"
+                               :data-vv-as="$t('translation.departmentName')"
+                               v-model="departmentName">
+                        <small id="departmentNameHelp" class="form-text text-danger" v-show="errors.has('departmentName')">
+                            {{ errors.first('departmentName') }}
                         </small>
                     </div>
 
-                    <template v-if="questions">
-                        <multiselect v-model="answerQuestionId"
-                                     :options="questions"
+                    <div class="form-group">
+                        <label for="departmentDescription">{{ $t("translation.majorDescription") }}</label>
+                        <textarea class="form-control resize-none h-5"
+                                  id="departmentDescription"
+                                  aria-describedby="departmentDescriptionHelp"
+                                  :placeholder="$t('translation.departmentDescriptionPlaceholder')"
+                                  name="departmentDescription"
+                                  v-validate="'required|max:255'"
+                                  :data-vv-as="$t('translation.departmentDescription')"
+                                  v-model="departmentDescription">
+                        </textarea>
+                        <small id="departmentDescriptionHelp" class="form-text text-danger" v-show="errors.has('departmentDescription')">
+                            {{ errors.first('departmentDescription') }}
+                        </small>
+                    </div>
+
+                    <template v-if="faculties">
+                        <multiselect v-model="departmentFacultyId"
+                                     :options="faculties"
                                      :searchable="true"
                                      :show-labels="false"
                                      label="name"
@@ -41,7 +57,7 @@
                     </button>
 
                     <button type="button" class="btn btn-md btn-success mt-4"
-                        @click="createAnswer">
+                        @click="createDepartment">
                         {{ $t("translation.save") }}
                     </button>
 
@@ -69,26 +85,28 @@
         },
         methods: {
             hide() {
-                this.modalsIsShowCreateAnswer = false;
+                this.modalsIsShowCreateDepartment = false;
 
-                this.answerQuestionId = null;
-                this.answerName = null;
+                this.departmentFacultyId = null;
+                this.departmentName = null;
+                this.departmentDescription = null;
             },
 
-            async createAnswer() {
+            async createDepartment() {
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
                     try {
                         this.showPreloader();
-                        await this.$store.dispatch('admin/createAnswer', {
-                            question_id: this.answerQuestionId.id,
-                            name: this.answerName,
+                        await this.$store.dispatch('admin/createDepartment', {
+                            faculty_id: this.departmentFacultyId.id,
+                            name: this.departmentName,
+                            description: this.departmentDescription,
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({
                             title: this.$t('translation.success'),
-                            message: this.$t('translation.createdAnswer'),
+                            message: this.$t('translation.createdDepartment'),
                         });
                     } catch (e) {
                         if (e.status === 404) {
@@ -108,7 +126,7 @@
             },
         },
         mounted() {
-            this.$store.dispatch('admin/getQuestions');
+            this.$store.dispatch('admin/getFaculties');
         },
     };
 </script>

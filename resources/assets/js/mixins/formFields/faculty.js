@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            fields: [
+            fieldsListFaculties: [
                 {
                     name: 'name',
                     sortField: 'name',
@@ -9,16 +9,22 @@ export default {
                     titleClass: 'text-left',
                     dataClass: 'text-left',
                 },
-                // {
-                //     name: 'description',
-                //     sortField: 'description',
-                //     title: this.$t('translation.description'),
-                //     titleClass: 'text-left',
-                //     dataClass: 'text-left',
-                // },
                 {
-                    name: '__slot:questions',
-                    title: this.$t('translation.questions'),
+                    name: '__slot:university',
+                    title: this.$t('translation.university'),
+                    titleClass: 'text-left',
+                    dataClass: 'text-left',
+                },
+                {
+                    name: 'description',
+                    title: this.$t('translation.description'),
+                    titleClass: 'text-left',
+                    dataClass: 'text-left',
+                },
+                {
+                    name: 'created_at',
+                    sortField: 'created_at',
+                    title: this.$t('translation.created_at'),
                     titleClass: 'text-center',
                     dataClass: 'text-center',
                 },
@@ -31,7 +37,7 @@ export default {
             ],
             css: {
                 table: {
-                    tableClass: 'table table-hover cursor-pointer',
+                    tableClass: 'table',
                     loadingClass: 'loading',
                     ascendingIcon: 'fa fa-angle-up ',
                     descendingIcon: 'fa fa-angle-down ',
@@ -42,7 +48,7 @@ export default {
                     wrapperClass: 'vuetable-pagination text-center',
                     activeClass: 'btn btn-primary text-white',
                     disabledClass: 'btn text-secondary',
-                    pageClass: 'btn pgn-btn-border border',
+                    pageClass: 'btn pgn-btn-border border m-1',
                     linkClass: 'btn pgn-btn-border border',
                     icons: {
                         first: 'fa fa-angle-double-left',

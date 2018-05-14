@@ -146,6 +146,16 @@ body {
   }
 }
 
+.is-invalid {
+  .multiselect__tags {
+    border-color: #dc3545;
+  }
+
+  ~ .invalid-feedback {
+    display: block;
+  }
+}
+
 @import "components/buttons";
 @import "components/links";
 @import "components/lists";

@@ -70,13 +70,16 @@
                     try {
                         this.showPreloader();
                         await this.$store.dispatch('admin/updateAnswer', {
-                            question_id: this.answerQuestionId,
-                            name: this.answerName,
+                            id: this.answerId,
+                            params: {
+                                question_id: this.answerQuestionId,
+                                name: this.answerName,
+                            },
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({
                             title: this.$t('translation.success'),
-                            message: this.$t('translation.updateAnswer'),
+                            message: this.$t('translation.updatedAnswer'),
                         });
                     } catch (e) {
                         if (e.status === 404) {

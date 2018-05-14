@@ -1,6 +1,6 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <div v-if="modalsIsShowAssociateUniversityAdmin" class="modal__wrap">
+        <div v-if="isShowAssociateUniversityAdmin" class="modal__wrap">
             <div v-click-outside="hide" class="modal__content modal__md">
 
                 <h4 class="modal__head">
@@ -45,7 +45,7 @@
         ],
         methods: {
             hide() {
-                this.modalsIsShowAssociateUniversityAdmin = false;
+                this.isShowAssociateUniversityAdmin = false;
 
                 this.universityAddress = null;
                 this.universityZipCode = null;

@@ -24,6 +24,7 @@
                                 },
                               }"
                               @vuetable:load-success="hidePreloader"
+                              @vuetable:load-error="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
                     >
                     </vuetable>
@@ -69,7 +70,8 @@
             ModalUpdateCoefficient,
         },
         mounted() {
-            // this.showPreloader();
+            this.showPreloader();
+            this.$store.dispatch('admin/getMajors');
         },
         methods: {
             onPaginationData(paginationData) {

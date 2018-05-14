@@ -31,7 +31,7 @@
                     </div>
 
                     <multiselect v-model="coefficientMajorId"
-                                 :options="options"
+                                 :options="majors"
                                  :searchable="true"
                                  :show-labels="false"
                                  label="name"
@@ -70,16 +70,6 @@
         ],
         data() {
             return {
-                options: [
-                    {
-                        name: '1',
-                        id: 1,
-                    },
-                    {
-                        name: '2',
-                        id: 2,
-                    },
-                ],
             };
         },
         methods: {
@@ -98,9 +88,9 @@
                     try {
                         this.showPreloader();
                         await this.$store.dispatch('admin/createCoefficient', {
-                            major_id: this.coefficientMajorId,
+                            major_id: this.coefficientMajorId.id,
                             name: this.coefficientName,
-                            coefficient: this.coefficientCoefficient,
+                            coefficient: Number(this.coefficientCoefficient),
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({
@@ -120,6 +110,7 @@
                             });
                         }
                     }
+                    this.hidePreloader();
                     this.hide();
                 }
             },

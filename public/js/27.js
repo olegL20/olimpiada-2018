@@ -1,52 +1,4 @@
-webpackJsonp([19],{
-
-/***/ 253:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(4)
-/* script */
-var __vue_script__ = __webpack_require__(416)
-/* template */
-var __vue_template__ = __webpack_require__(421)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/pages/admin/tests/Answers.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8c8485cc", Component.options)
-  } else {
-    hotAPI.reload("data-v-8c8485cc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+webpackJsonp([27],{
 
 /***/ 256:
 /***/ (function(module, exports, __webpack_require__) {
@@ -4553,15 +4505,15 @@ var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
 
 /***/ }),
 
-/***/ 322:
+/***/ 434:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(323)
+var __vue_script__ = __webpack_require__(435)
 /* template */
-var __vue_template__ = __webpack_require__(324)
+var __vue_template__ = __webpack_require__(437)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4578,7 +4530,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/UpdateAnswer.vue"
+Component.options.__file = "resources/assets/js/pages/admin/Departments.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -4587,9 +4539,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-124a7149", Component.options)
+    hotAPI.createRecord("data-v-7d10e098", Component.options)
   } else {
-    hotAPI.reload("data-v-124a7149", Component.options)
+    hotAPI.reload("data-v-7d10e098", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -4601,298 +4553,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 323:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _regenerator = __webpack_require__(9);
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(10);
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var _modals = __webpack_require__(43);
-
-var _modals2 = _interopRequireDefault(_modals);
-
-var _admin = __webpack_require__(257);
-
-var _admin2 = _interopRequireDefault(_admin);
-
-var _preload = __webpack_require__(73);
-
-var _preload2 = _interopRequireDefault(_preload);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    mixins: [_modals2.default, _admin2.default, _preload2.default],
-    data: function data() {
-        return {};
-    },
-
-    methods: {
-        hide: function hide() {
-            this.modalsIsShowUpdateAnswer = false;
-
-            this.answerQuestionId = null;
-            this.answerName = null;
-        },
-        updateAnswer: function updateAnswer() {
-            var _this = this;
-
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-                var valid;
-                return _regenerator2.default.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _this.$validator.validateAll();
-
-                            case 2:
-                                valid = _context.sent;
-
-                                if (!valid) {
-                                    _context.next = 16;
-                                    break;
-                                }
-
-                                _context.prev = 4;
-
-                                _this.showPreloader();
-                                _context.next = 8;
-                                return _this.$store.dispatch('admin/updateAnswer', {
-                                    id: _this.answerId,
-                                    params: {
-                                        question_id: _this.answerQuestionId,
-                                        name: _this.answerName
-                                    }
-                                });
-
-                            case 8:
-                                _this.switchRefreshTable(true);
-                                _this.$toast.success({
-                                    title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.updatedAnswer')
-                                });
-                                _context.next = 15;
-                                break;
-
-                            case 12:
-                                _context.prev = 12;
-                                _context.t0 = _context['catch'](4);
-
-                                if (_context.t0.status === 404) {
-                                    _this.$toast.error({
-                                        title: _this.$t('translation.error'),
-                                        message: _this.$t('translation.error')
-                                    });
-                                } else {
-                                    _this.$toast.error({
-                                        title: _this.$t('translation.error'),
-                                        message: _this.$t(_context.t0.message)
-                                    });
-                                }
-
-                            case 15:
-                                _this.hide();
-
-                            case 16:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, _this, [[4, 12]]);
-            }))();
-        }
-    }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-
-/***/ 324:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowUpdateAnswer
-      ? _c("div", { staticClass: "modal__wrap" }, [
-          _c("div", { staticClass: "modal__content modal__md" }, [
-            _c("h4", { staticClass: "modal__head" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.$t("translation.createAnswer")) +
-                  "\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal__body" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "answerName" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.answerName")))
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|max:255",
-                      expression: "'required|max:255'"
-                    },
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.answerName,
-                      expression: "answerName"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "answerName",
-                    "aria-describedby": "answerNameHelp",
-                    placeholder: _vm.$t("translation.answerNamePlaceholder"),
-                    name: "answerName",
-                    "data-vv-as": _vm.$t("translation.answerName")
-                  },
-                  domProps: { value: _vm.answerName },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.answerName = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "small",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("answerName"),
-                        expression: "errors.has('answerName')"
-                      }
-                    ],
-                    staticClass: "form-text text-danger",
-                    attrs: { id: "answerNameHelp" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.errors.first("answerName")) +
-                        "\n                    "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-secondary float-right mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.hide }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.close")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-success mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.updateAnswer }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.save")) +
-                      "\n                "
-                  )
-                ]
-              )
-            ])
-          ])
-        ])
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-124a7149", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 416:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4918,9 +4579,9 @@ var _VuetablePagination = __webpack_require__(303);
 
 var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
 
-var _answers = __webpack_require__(417);
+var _departments = __webpack_require__(436);
 
-var _answers2 = _interopRequireDefault(_answers);
+var _departments2 = _interopRequireDefault(_departments);
 
 var _modals = __webpack_require__(43);
 
@@ -4938,13 +4599,13 @@ var _user = __webpack_require__(29);
 
 var _user2 = _interopRequireDefault(_user);
 
-var _CreateAnswer = __webpack_require__(418);
+var _CreateDepartment = __webpack_require__(438);
 
-var _CreateAnswer2 = _interopRequireDefault(_CreateAnswer);
+var _CreateDepartment2 = _interopRequireDefault(_CreateDepartment);
 
-var _UpdateAnswer = __webpack_require__(322);
+var _UpdateDepartment = __webpack_require__(441);
 
-var _UpdateAnswer2 = _interopRequireDefault(_UpdateAnswer);
+var _UpdateDepartment2 = _interopRequireDefault(_UpdateDepartment);
 
 var _constants = __webpack_require__(308);
 
@@ -5017,12 +4678,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 
 exports.default = {
-    mixins: [_admin2.default, _user2.default, _modals2.default, _preload2.default, _answers2.default],
+    mixins: [_admin2.default, _user2.default, _modals2.default, _preload2.default, _departments2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default,
-        ModalCreateAnswer: _CreateAnswer2.default,
-        ModalUpdateAnswer: _UpdateAnswer2.default
+        ModalCreateDepartment: _CreateDepartment2.default,
+        ModalUpdateDepartment: _UpdateDepartment2.default
     },
     mounted: function mounted() {
         this.showPreloader();
@@ -5031,13 +4692,13 @@ exports.default = {
     watch: {
         refreshTable: function refreshTable() {
             if (this.refreshTable) {
-                this.$refs.listAnswers.refresh();
+                this.$refs.listDepartments.refresh();
                 this.switchRefreshTable(false);
             }
         }
     },
     methods: {
-        editAnswer: function editAnswer(id) {
+        editDepartment: function editDepartment(id) {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -5047,10 +4708,10 @@ exports.default = {
                             case 0:
                                 _context.prev = 0;
                                 _context.next = 3;
-                                return _this.$store.dispatch('admin/getAnswer', id);
+                                return _this.$store.dispatch('admin/getDepartment', id);
 
                             case 3:
-                                _this.modalsIsShowUpdateAnswer = true;
+                                _this.modalsIsShowUpdateDepartment = true;
                                 _context.next = 9;
                                 break;
 
@@ -5071,7 +4732,7 @@ exports.default = {
                 }, _callee, _this, [[0, 6]]);
             }))();
         },
-        destroyAnswer: function destroyAnswer(id) {
+        destroyDepartment: function destroyDepartment(id) {
             var _this2 = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
@@ -5101,10 +4762,10 @@ exports.default = {
 
                                 _context2.prev = 4;
                                 _context2.next = 7;
-                                return _this2.$store.dispatch('admin/destroyAnswer', id);
+                                return _this2.$store.dispatch('admin/destroyDepartment', id);
 
                             case 7:
-                                _this2.$refs.listAnswers.refresh();
+                                _this2.$refs.listDepartments.refresh();
                                 _this2.showPreloader();
                                 _context2.next = 14;
                                 break;
@@ -5130,14 +4791,14 @@ exports.default = {
             this.$refs.pagination.setPaginationData(paginationData);
         },
         onChangePage: function onChangePage(page) {
-            this.$refs.listAnswers.changePage(page);
+            this.$refs.listDepartments.changePage(page);
         }
     }
 };
 
 /***/ }),
 
-/***/ 417:
+/***/ 436:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5150,15 +4811,21 @@ exports.default = {
     data: function data() {
         return {
             fields: [{
-                name: 'question_id',
-                sortField: 'question_id',
-                title: this.$t('translation.questionId'),
+                name: 'name',
+                sortField: 'name',
+                title: this.$t('translation.departmentName'),
                 titleClass: 'text-left',
                 dataClass: 'text-left'
             }, {
-                name: 'name',
-                sortField: 'name',
-                title: this.$t('translation.name'),
+                name: 'faculty_id',
+                sortField: 'faculty_id',
+                title: this.$t('translation.facultyId'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'description',
+                sortField: 'description',
+                title: this.$t('translation.description'),
                 titleClass: 'text-left',
                 dataClass: 'text-left'
             }, {
@@ -5196,15 +4863,165 @@ exports.default = {
 
 /***/ }),
 
-/***/ 418:
+/***/ 437:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container-fluid" },
+    [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
+          _c("div", { staticClass: "col-md-10" }, [
+            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerDepartments")))])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 align-self-center" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary btn-md float-right",
+                attrs: { href: "javascript:" },
+                on: {
+                  click: function($event) {
+                    _vm.modalsIsShowCreateDepartment = true
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.$t("translation.addMajor")) +
+                    "\n                "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-12 mt-3" },
+            [
+              _c("vuetable", {
+                ref: "listDepartments",
+                attrs: {
+                  "api-url":
+                    "https://itpm-194220.appspot.com/api/admin/department",
+                  fields: _vm.fields,
+                  "pagination-path": "",
+                  css: _vm.css.table,
+                  "data-path": "data.data",
+                  "detail-row-component": "my-detail-row",
+                  "http-options": {
+                    headers: {
+                      Authorization: "Bearer " + _vm.userToken
+                    }
+                  }
+                },
+                on: {
+                  "vuetable:load-success": _vm.hidePreloader,
+                  "vuetable:load-error": _vm.hidePreloader,
+                  "vuetable:pagination-data": _vm.onPaginationData
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "actions",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-outline-secondary btn-md",
+                            attrs: {
+                              href: "javascript:",
+                              title: _vm.$t("translation.edit")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.editDepartment(props.rowData.id)
+                              }
+                            }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-pencil",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-danger btn-md",
+                            attrs: {
+                              type: "button",
+                              title: _vm.$t("translation.remove")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.destroyDepartment(props.rowData.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash-o" })]
+                        )
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-12 m-3" },
+            [
+              _c("vuetable-pagination", {
+                ref: "pagination",
+                attrs: { css: _vm.css.pagination },
+                on: { "vuetable-pagination:change-page": _vm.onChangePage }
+              })
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("modal-create-department"),
+      _vm._v(" "),
+      _c("modal-update-department")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7d10e098", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 438:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(419)
+var __vue_script__ = __webpack_require__(439)
 /* template */
-var __vue_template__ = __webpack_require__(420)
+var __vue_template__ = __webpack_require__(440)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -5221,7 +5038,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/CreateAnswer.vue"
+Component.options.__file = "resources/assets/js/components/admin/modals/CreateDepartment.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -5230,9 +5047,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-68c51488", Component.options)
+    hotAPI.createRecord("data-v-22d1ec50", Component.options)
   } else {
-    hotAPI.reload("data-v-68c51488", Component.options)
+    hotAPI.reload("data-v-22d1ec50", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -5244,7 +5061,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 419:
+/***/ 439:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5284,12 +5101,13 @@ exports.default = {
 
     methods: {
         hide: function hide() {
-            this.modalsIsShowCreateAnswer = false;
+            this.modalsIsShowCreateDepartment = false;
 
-            this.answerQuestionId = null;
-            this.answerName = null;
+            this.departmentFacultyId = null;
+            this.departmentName = null;
+            this.departmentDescription = null;
         },
-        createAnswer: function createAnswer() {
+        createDepartment: function createDepartment() {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -5313,16 +5131,17 @@ exports.default = {
 
                                 _this.showPreloader();
                                 _context.next = 8;
-                                return _this.$store.dispatch('admin/createAnswer', {
-                                    question_id: _this.answerQuestionId.id,
-                                    name: _this.answerName
+                                return _this.$store.dispatch('admin/createDepartment', {
+                                    faculty_id: _this.departmentFacultyId.id,
+                                    name: _this.departmentName,
+                                    description: _this.departmentDescription
                                 });
 
                             case 8:
                                 _this.switchRefreshTable(true);
                                 _this.$toast.success({
                                     title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.createdAnswer')
+                                    message: _this.$t('translation.createdDepartment')
                                 });
                                 _context.next = 15;
                                 break;
@@ -5356,7 +5175,7 @@ exports.default = {
         }
     },
     mounted: function mounted() {
-        this.$store.dispatch('admin/getQuestions');
+        this.$store.dispatch('admin/getFaculties');
     }
 }; //
 //
@@ -5412,10 +5231,26 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
-/***/ 420:
+/***/ 440:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5430,8 +5265,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.modalsIsShowCreateAnswer,
-            expression: "modalsIsShowCreateAnswer"
+            value: _vm.modalsIsShowCreateDepartment,
+            expression: "modalsIsShowCreateDepartment"
           }
         ],
         staticClass: "modal__wrap"
@@ -5441,7 +5276,7 @@ var render = function() {
           _c("h4", { staticClass: "modal__head" }, [
             _vm._v(
               "\n                " +
-                _vm._s(_vm.$t("translation.createAnswer")) +
+                _vm._s(_vm.$t("translation.createDepartment")) +
                 "\n            "
             )
           ]),
@@ -5451,8 +5286,8 @@ var render = function() {
             { staticClass: "modal__body" },
             [
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "answerName" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.answerName")))
+                _c("label", { attrs: { for: "departmentName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.departmentName")))
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -5466,26 +5301,28 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.answerName,
-                      expression: "answerName"
+                      value: _vm.departmentName,
+                      expression: "departmentName"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
                     type: "text",
-                    id: "answerName",
-                    "aria-describedby": "answerNameHelp",
-                    placeholder: _vm.$t("translation.answerNamePlaceholder"),
-                    name: "answerName",
-                    "data-vv-as": _vm.$t("translation.answerName")
+                    id: "departmentName",
+                    "aria-describedby": "departmentNameHelp",
+                    placeholder: _vm.$t(
+                      "translation.departmentNamePlaceholder"
+                    ),
+                    name: "departmentName",
+                    "data-vv-as": _vm.$t("translation.departmentName")
                   },
-                  domProps: { value: _vm.answerName },
+                  domProps: { value: _vm.departmentName },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.answerName = $event.target.value
+                      _vm.departmentName = $event.target.value
                     }
                   }
                 }),
@@ -5497,28 +5334,93 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: _vm.errors.has("answerName"),
-                        expression: "errors.has('answerName')"
+                        value: _vm.errors.has("departmentName"),
+                        expression: "errors.has('departmentName')"
                       }
                     ],
                     staticClass: "form-text text-danger",
-                    attrs: { id: "answerNameHelp" }
+                    attrs: { id: "departmentNameHelp" }
                   },
                   [
                     _vm._v(
                       "\n                        " +
-                        _vm._s(_vm.errors.first("answerName")) +
+                        _vm._s(_vm.errors.first("departmentName")) +
                         "\n                    "
                     )
                   ]
                 )
               ]),
               _vm._v(" "),
-              _vm.questions
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "departmentDescription" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.majorDescription")))
+                ]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.departmentDescription,
+                      expression: "departmentDescription"
+                    }
+                  ],
+                  staticClass: "form-control resize-none h-5",
+                  attrs: {
+                    id: "departmentDescription",
+                    "aria-describedby": "departmentDescriptionHelp",
+                    placeholder: _vm.$t(
+                      "translation.departmentDescriptionPlaceholder"
+                    ),
+                    name: "departmentDescription",
+                    "data-vv-as": _vm.$t("translation.departmentDescription")
+                  },
+                  domProps: { value: _vm.departmentDescription },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.departmentDescription = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("departmentDescription"),
+                        expression: "errors.has('departmentDescription')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "departmentDescriptionHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("departmentDescription")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _vm.faculties
                 ? [
                     _c("multiselect", {
                       attrs: {
-                        options: _vm.questions,
+                        options: _vm.faculties,
                         searchable: true,
                         "show-labels": false,
                         label: "name",
@@ -5526,11 +5428,11 @@ var render = function() {
                         placeholder: _vm.$t("translation.selectFromList")
                       },
                       model: {
-                        value: _vm.answerQuestionId,
+                        value: _vm.departmentFacultyId,
                         callback: function($$v) {
-                          _vm.answerQuestionId = $$v
+                          _vm.departmentFacultyId = $$v
                         },
-                        expression: "answerQuestionId"
+                        expression: "departmentFacultyId"
                       }
                     })
                   ]
@@ -5557,7 +5459,7 @@ var render = function() {
                 {
                   staticClass: "btn btn-md btn-success mt-4",
                   attrs: { type: "button" },
-                  on: { click: _vm.createAnswer }
+                  on: { click: _vm.createDepartment }
                 },
                 [
                   _vm._v(
@@ -5581,148 +5483,478 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-68c51488", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-22d1ec50", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 421:
+/***/ 441:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(442)
+/* template */
+var __vue_template__ = __webpack_require__(443)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/modals/UpdateDepartment.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0c4c595d", Component.options)
+  } else {
+    hotAPI.reload("data-v-0c4c595d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 442:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(9);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(10);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _modals = __webpack_require__(43);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+var _admin = __webpack_require__(257);
+
+var _admin2 = _interopRequireDefault(_admin);
+
+var _preload = __webpack_require__(73);
+
+var _preload2 = _interopRequireDefault(_preload);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    mixins: [_modals2.default, _admin2.default, _preload2.default],
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        hide: function hide() {
+            this.modalsIsShowUpdateDepartment = false;
+
+            this.departmentFacultyId = null;
+            this.departmentName = null;
+            this.departmentDescription = null;
+        },
+        updateDepartment: function updateDepartment() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+                                if (!valid) {
+                                    _context.next = 16;
+                                    break;
+                                }
+
+                                _context.prev = 4;
+
+                                _this.showPreloader();
+                                _context.next = 8;
+                                return _this.$store.dispatch('admin/updateDepartment', {
+                                    id: _this.departmentId,
+                                    params: {
+                                        faculty_id: _this.departmentFacultyId.id,
+                                        name: _this.departmentName,
+                                        description: _this.departmentDescription
+                                    }
+                                });
+
+                            case 8:
+                                _this.switchRefreshTable(true);
+                                _this.$toast.success({
+                                    title: _this.$t('translation.success'),
+                                    message: _this.$t('translation.updatedDepartment')
+                                });
+                                _context.next = 15;
+                                break;
+
+                            case 12:
+                                _context.prev = 12;
+                                _context.t0 = _context['catch'](4);
+
+                                if (_context.t0.status === 404) {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t('translation.error')
+                                    });
+                                } else {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t(_context.t0.message)
+                                    });
+                                }
+
+                            case 15:
+                                _this.hide();
+
+                            case 16:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[4, 12]]);
+            }))();
+        }
+    },
+    mounted: function mounted() {
+        this.$store.dispatch('admin/getFaculties');
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 443:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container-fluid" },
-    [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
-          _c("div", { staticClass: "col-md-10" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerAnswers")))])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 align-self-center" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-primary btn-md float-right",
-                attrs: { href: "javascript:" },
-                on: {
-                  click: function($event) {
-                    _vm.modalsIsShowCreateAnswer = true
-                  }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.$t("translation.addAnswer")) +
-                    "\n                "
-                )
-              ]
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.modalsIsShowUpdateDepartment,
+            expression: "modalsIsShowUpdateDepartment"
+          }
+        ],
+        staticClass: "modal__wrap"
+      },
+      [
+        _c("div", { staticClass: "modal__content modal__md" }, [
+          _c("h4", { staticClass: "modal__head" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$t("translation.updateDepartment")) +
+                "\n            "
             )
           ]),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-12 mt-3" },
+            { staticClass: "modal__body" },
             [
-              _c("vuetable", {
-                ref: "listAnswers",
-                attrs: {
-                  "api-url": "https://itpm-194220.appspot.com/api/admin/answer",
-                  fields: _vm.fields,
-                  "pagination-path": "",
-                  css: _vm.css.table,
-                  "data-path": "data.data",
-                  "detail-row-component": "my-detail-row",
-                  "http-options": {
-                    headers: {
-                      Authorization: "Bearer " + _vm.userToken
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "departmentName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.departmentName")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: { required: true },
+                      expression: "{required: true}"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.departmentName,
+                      expression: "departmentName"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "departmentName",
+                    "aria-describedby": "departmentNameHelp",
+                    placeholder: _vm.$t(
+                      "translation.departmentNamePlaceholder"
+                    ),
+                    name: "departmentName",
+                    "data-vv-as": _vm.$t("translation.departmentName")
+                  },
+                  domProps: { value: _vm.departmentName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.departmentName = $event.target.value
                     }
                   }
-                },
-                on: {
-                  "vuetable:load-success": _vm.hidePreloader,
-                  "vuetable:load-error": _vm.hidePreloader,
-                  "vuetable:pagination-data": _vm.onPaginationData
-                },
-                scopedSlots: _vm._u([
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
                   {
-                    key: "actions",
-                    fn: function(props) {
-                      return [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-outline-secondary btn-md",
-                            attrs: {
-                              href: "javascript:",
-                              title: _vm.$t("translation.edit")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.editAnswer(props.rowData.id)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-pencil",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-outline-danger btn-md",
-                            attrs: {
-                              type: "button",
-                              title: _vm.$t("translation.remove")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.destroyAnswer(props.rowData.id)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-trash-o" })]
-                        )
-                      ]
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("departmentName"),
+                        expression: "errors.has('departmentName')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "departmentNameHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("departmentName")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "departmentDescription" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.majorDescription")))
+                ]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.departmentDescription,
+                      expression: "departmentDescription"
+                    }
+                  ],
+                  staticClass: "form-control resize-none h-5",
+                  attrs: {
+                    id: "departmentDescription",
+                    "aria-describedby": "departmentDescriptionHelp",
+                    placeholder: _vm.$t(
+                      "translation.departmentDescriptionPlaceholder"
+                    ),
+                    name: "departmentDescription",
+                    "data-vv-as": _vm.$t("translation.departmentDescription")
+                  },
+                  domProps: { value: _vm.departmentDescription },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.departmentDescription = $event.target.value
                     }
                   }
-                ])
-              })
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("departmentDescription"),
+                        expression: "errors.has('departmentDescription')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "departmentDescriptionHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("departmentDescription")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _vm.faculties
+                ? [
+                    _c("multiselect", {
+                      attrs: {
+                        options: _vm.faculties,
+                        searchable: true,
+                        "show-labels": false,
+                        label: "name",
+                        "track-by": "id",
+                        placeholder: _vm.$t("translation.selectFromList")
+                      },
+                      model: {
+                        value: _vm.departmentFacultyId,
+                        callback: function($$v) {
+                          _vm.departmentFacultyId = $$v
+                        },
+                        expression: "departmentFacultyId"
+                      }
+                    })
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-secondary float-right mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.hide }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.close")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-success mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.updateDepartment }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.save")) +
+                      "\n                "
+                  )
+                ]
+              )
             ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-12 m-3" },
-            [
-              _c("vuetable-pagination", {
-                ref: "pagination",
-                attrs: { css: _vm.css.pagination },
-                on: { "vuetable-pagination:change-page": _vm.onChangePage }
-              })
-            ],
-            1
+            2
           )
         ])
-      ]),
-      _vm._v(" "),
-      _c("modal-create-answer"),
-      _vm._v(" "),
-      _c("modal-update-answer")
-    ],
-    1
-  )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -5730,7 +5962,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8c8485cc", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0c4c595d", module.exports)
   }
 }
 

@@ -25,7 +25,6 @@ class AssociateAdminUniversityRequest extends FormRequest
     {
         return [
             'user_id' => 'required|integer',
-            'university_id' => 'required|integer'
         ];
     }
 }

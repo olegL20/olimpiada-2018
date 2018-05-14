@@ -24,7 +24,11 @@
                               @vuetable:cell-clicked="onCellClicked"
                     >
                         <template slot="university" slot-scope="props">
-                            <select @change="setUniversityId" :value="props.rowData.university_id" :data-id="props.rowData.university_id" name="university_id" class="select-style" v-if="universities">
+                            <select  name="university_id" class="select-style"
+                                     @change="setUniversityId"
+                                     :value="props.rowData.university_id"
+                                     :data-id="props.rowData.id"
+                                     v-if="universities">
                                 <option value="">{{ $t('translation.noData') }}</option>
                                 <option v-for="item in universities"
                                         :value="item.id"
@@ -32,7 +36,6 @@
                                     {{ item.name }}
                                 </option>
                             </select>
-                            <!--{{ props.rowData.university_id ? props.rowData.university.name : $t('translation.noData') }}-->
                         </template>
                     </vuetable>
                 </div>
@@ -96,33 +99,28 @@
                 this.modalsIsShowAssociateUniversityAdmin = true;
             },
             onPaginationData(paginationData) {
-                this.$refs.pagination.setPaginationData(paginationData);
+                this.$refs.paginationListUniversityAdministrators.setPaginationData(paginationData);
             },
             onChangePage(page) {
-                this.$refs.listUniversities.changePage(page);
+                this.$refs.listUniversityAdministrators.changePage(page);
             },
-            async setUniversityId(e) {
-                console.log(e.target.dataset, e.target.value, e);
-                // try {
-                    // await this.$store.dispatch('admin/associate', {
-                    //     data: {
-                    //         user_id: e.target.dataset.id,
-                    //         university_id: e.target.value,
-                    //     },
-                    // });
-                //     this.$toasted.show(this.$t('translation.languageChanged'), {
-                //         theme: 'primary',
-                //         type: 'success',
-                //         duration: 1000,
-                //     });
-                // } catch (el) {
-                //     Object.values(el.errors).forEach((item) => {
-                //         this.$toasted.show(item[0], {
-                //             theme: 'primary',
-                //             type: 'error',
-                //         });
-                //     });
-                // }
+            async setUniversityId(el) {
+                try {
+                    await this.$store.dispatch('admin/associate', {
+                        user_id: el.target.dataset.id,
+                        university_id: el.target.value,
+                    });
+                    this.$refs.listUniversityAdministrators.refresh();
+                    this.$toast.success({
+                        title: this.$t('translation.success'),
+                        message: this.$t('translation.universityChanged'),
+                    });
+                } catch (e) {
+                    this.$toast.error({
+                        title: this.$t('translation.error'),
+                        message: this.$t(e.message),
+                    });
+                }
             },
         },
     };

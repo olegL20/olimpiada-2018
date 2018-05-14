@@ -24530,13 +24530,6 @@ exports.default = {
 
 /***/ }),
 /* 73 */
-/***/ (function(module, exports) {
-
-exports.f = {}.propertyIsEnumerable;
-
-
-/***/ }),
-/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24571,6 +24564,13 @@ exports.default = {
         }
     }
 };
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports) {
+
+exports.f = {}.propertyIsEnumerable;
+
 
 /***/ }),
 /* 75 */
@@ -64648,7 +64648,7 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(186) });
 // 19.1.2.1 Object.assign(target, source, ...)
 var getKeys = __webpack_require__(32);
 var gOPS = __webpack_require__(76);
-var pIE = __webpack_require__(73);
+var pIE = __webpack_require__(74);
 var toObject = __webpack_require__(42);
 var IObject = __webpack_require__(60);
 var $assign = Object.assign;
@@ -64961,7 +64961,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.sendInviteUniversityAdmin = exports.getAllUniversities = exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
+exports.associate = exports.sendInviteUniversityAdmin = exports.getAllUniversities = exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
 
 var _regenerator = __webpack_require__(9);
 
@@ -65217,13 +65217,50 @@ var sendInviteUniversityAdmin = exports.sendInviteUniversityAdmin = function () 
     };
 }();
 
+var associate = exports.associate = function () {
+    var _ref10 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee7$(_context7) {
+            while (1) {
+                switch (_context7.prev = _context7.next) {
+                    case 0:
+                        _context7.next = 2;
+                        return _admin2.default.associate(payload);
+
+                    case 2:
+                        json = _context7.sent;
+
+                        if (!(json.status === 200)) {
+                            _context7.next = 5;
+                            break;
+                        }
+
+                        return _context7.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context7.stop();
+                }
+            }
+        }, _callee7, undefined);
+    }));
+
+    return function associate(_x12, _x13) {
+        return _ref10.apply(this, arguments);
+    };
+}();
+
 exports.default = {
     destroyUniversity: destroyUniversity,
     getUniversity: getUniversity,
     editUniversity: editUniversity,
     createUniversity: createUniversity,
     getAllUniversities: getAllUniversities,
-    sendInviteUniversityAdmin: sendInviteUniversityAdmin
+    sendInviteUniversityAdmin: sendInviteUniversityAdmin,
+    associate: associate
 };
 
 /***/ }),
@@ -65446,6 +65483,39 @@ exports.default = {
                     }
                 }
             }, _callee6, _this6, [[0, 9]]);
+        }))();
+    },
+    associate: function associate(params) {
+        var _this7 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {
+            var _ref7, data, status;
+
+            return _regenerator2.default.wrap(function _callee7$(_context7) {
+                while (1) {
+                    switch (_context7.prev = _context7.next) {
+                        case 0:
+                            _context7.prev = 0;
+                            _context7.next = 3;
+                            return window.axios.post(url + '/api/admin/associate', params);
+
+                        case 3:
+                            _ref7 = _context7.sent;
+                            data = _ref7.data;
+                            status = _ref7.status;
+                            return _context7.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context7.prev = 9;
+                            _context7.t0 = _context7['catch'](0);
+                            return _context7.abrupt('return', _context7.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context7.stop();
+                    }
+                }
+            }, _callee7, _this7, [[0, 9]]);
         }))();
     }
 };
@@ -67363,7 +67433,8 @@ exports.default = {
         inviteUniversityAdminSent: 'Запрошення стати адміністратором університету надіслано',
         moreInfo: 'Докладніше',
         universityAdmin: 'Адміністратор університету',
-        addInvite: 'Створити запрошення'
+        addInvite: 'Створити запрошення',
+        universityChanged: 'Університет змінено'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'
@@ -76480,7 +76551,7 @@ var _user = __webpack_require__(28);
 
 var _user2 = _interopRequireDefault(_user);
 
-var _preload = __webpack_require__(74);
+var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 

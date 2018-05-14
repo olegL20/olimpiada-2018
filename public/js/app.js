@@ -13088,7 +13088,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'modals',
         prefix: true
-    }, ['isShowLogin', 'isShowRegister', 'isShowAdvice', 'isShowSelectVuz', 'isShowCreateUniversity', 'isShowEditUniversity', 'isShowDescription', 'isShowInviteUniversityAdmin', 'isShowCreateFaculty']))
+    }, ['isShowLogin', 'isShowRegister', 'isShowAdvice', 'isShowSelectVuz', 'isShowCreateUniversity', 'isShowEditUniversity', 'isShowDescription', 'isShowInviteUniversityAdmin', 'isShowCreateFaculty', 'isShowEditFaculty']))
 };
 
 /***/ }),
@@ -24473,8 +24473,9 @@ exports.default = {
     isShowEditUniversity: false,
     isShowDescription: false,
     isShowInviteUniversityAdmin: false,
-    modalsIsShowAssociateUniversityAdmin: false,
-    isShowCreateFaculty: false
+    isShowAssociateUniversityAdmin: false,
+    isShowCreateFaculty: false,
+    isShowEditFaculty: false
 };
 
 /***/ }),
@@ -24501,9 +24502,11 @@ var UNIVERSITIES = exports.UNIVERSITIES = 'UNIVERSITIES';
 var UNIVERSITY_IMAGE = exports.UNIVERSITY_IMAGE = 'UNIVERSITY_IMAGE';
 var UNIVERSITY_POSITION = exports.UNIVERSITY_POSITION = 'UNIVERSITY_POSITION';
 var UNIVERSITY_USER_ID = exports.UNIVERSITY_USER_ID = 'UNIVERSITY_USER_ID';
+var FACULTY_ID = exports.FACULTY_ID = 'FACULTY_ID';
 var FACULTY_NAME = exports.FACULTY_NAME = 'FACULTY_NAME';
 var FACULTY_DESCRIPTION = exports.FACULTY_DESCRIPTION = 'FACULTY_DESCRIPTION';
 var FACULTY_UNIVERSITY_ID = exports.FACULTY_UNIVERSITY_ID = 'FACULTY_UNIVERSITY_ID';
+var FACULTY_IMAGE = exports.FACULTY_IMAGE = 'FACULTY_IMAGE';
 
 /***/ }),
 /* 72 */
@@ -24530,9 +24533,11 @@ exports.default = {
     universityImage: null,
     universityPosition: null,
     universityUserId: null,
+    facultyId: null,
     facultyUniversityId: null,
     facultyName: null,
-    facultyDescription: null
+    facultyDescription: null,
+    facultyImage: null
 };
 
 /***/ }),
@@ -64927,6 +64932,7 @@ var IS_SHOW_EDIT_UNIVERSITY = exports.IS_SHOW_EDIT_UNIVERSITY = 'IS_SHOW_EDIT_UN
 var IS_SHOW_DESCRIPTION = exports.IS_SHOW_DESCRIPTION = 'IS_SHOW_DESCRIPTION';
 var IS_SHOW_INVITE_UNIVERSITY_ADMIN = exports.IS_SHOW_INVITE_UNIVERSITY_ADMIN = 'IS_SHOW_INVITE_UNIVERSITY_ADMIN';
 var IS_SHOW_CREATE_FACULTY = exports.IS_SHOW_CREATE_FACULTY = 'IS_SHOW_CREATE_FACULTY';
+var IS_SHOW_EDIT_FACULTY = exports.IS_SHOW_EDIT_FACULTY = 'IS_SHOW_EDIT_FACULTY';
 
 /***/ }),
 /* 197 */
@@ -64979,7 +64985,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.destroyFaculty = exports.setUniversityForFaculty = exports.createFaculty = exports.associate = exports.sendInviteUniversityAdmin = exports.getAllUniversities = exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
+exports.destroyFaculty = exports.setUniversityForFaculty = exports.getFaculty = exports.editFaculty = exports.createFaculty = exports.associate = exports.sendInviteUniversityAdmin = exports.getAllUniversities = exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
 
 var _regenerator = __webpack_require__(9);
 
@@ -65307,15 +65313,17 @@ var createFaculty = exports.createFaculty = function () {
     };
 }();
 
-var setUniversityForFaculty = exports.setUniversityForFaculty = function () {
-    var _ref12 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9(context, payload) {
+var editFaculty = exports.editFaculty = function () {
+    var _ref12 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9(context, _ref13) {
+        var id = _ref13.id,
+            params = _ref13.params;
         var json;
         return _regenerator2.default.wrap(function _callee9$(_context9) {
             while (1) {
                 switch (_context9.prev = _context9.next) {
                     case 0:
                         _context9.next = 2;
-                        return _admin2.default.setUniversityForFaculty(payload);
+                        return _admin2.default.editFaculty(id, params);
 
                     case 2:
                         json = _context9.sent;
@@ -65338,35 +65346,43 @@ var setUniversityForFaculty = exports.setUniversityForFaculty = function () {
         }, _callee9, undefined);
     }));
 
-    return function setUniversityForFaculty(_x16, _x17) {
+    return function editFaculty(_x16, _x17) {
         return _ref12.apply(this, arguments);
     };
 }();
 
-var destroyFaculty = exports.destroyFaculty = function () {
-    var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10(context, payload) {
+var getFaculty = exports.getFaculty = function () {
+    var _ref14 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10(_ref15, payload) {
+        var context = _ref15.context,
+            commit = _ref15.commit;
         var json;
         return _regenerator2.default.wrap(function _callee10$(_context10) {
             while (1) {
                 switch (_context10.prev = _context10.next) {
                     case 0:
                         _context10.next = 2;
-                        return _admin2.default.destroyFaculty(payload);
+                        return _admin2.default.getFaculty(payload);
 
                     case 2:
                         json = _context10.sent;
 
-                        if (!(json.status === 204)) {
-                            _context10.next = 5;
+                        if (!(json.status === 200)) {
+                            _context10.next = 11;
                             break;
                         }
 
+                        console.log(json.data.data);
+                        commit(types.FACULTY_ID, json.data.data.id);
+                        commit(types.FACULTY_UNIVERSITY_ID, json.data.data.university_id);
+                        commit(types.FACULTY_NAME, json.data.data.name);
+                        commit(types.FACULTY_DESCRIPTION, json.data.data.description);
+                        commit(types.FACULTY_IMAGE, json.data.data.image);
                         return _context10.abrupt('return', json.data);
 
-                    case 5:
+                    case 11:
                         throw json;
 
-                    case 6:
+                    case 12:
                     case 'end':
                         return _context10.stop();
                 }
@@ -65374,8 +65390,80 @@ var destroyFaculty = exports.destroyFaculty = function () {
         }, _callee10, undefined);
     }));
 
-    return function destroyFaculty(_x18, _x19) {
-        return _ref13.apply(this, arguments);
+    return function getFaculty(_x18, _x19) {
+        return _ref14.apply(this, arguments);
+    };
+}();
+
+var setUniversityForFaculty = exports.setUniversityForFaculty = function () {
+    var _ref16 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee11$(_context11) {
+            while (1) {
+                switch (_context11.prev = _context11.next) {
+                    case 0:
+                        _context11.next = 2;
+                        return _admin2.default.setUniversityForFaculty(payload);
+
+                    case 2:
+                        json = _context11.sent;
+
+                        if (!(json.status === 200)) {
+                            _context11.next = 5;
+                            break;
+                        }
+
+                        return _context11.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context11.stop();
+                }
+            }
+        }, _callee11, undefined);
+    }));
+
+    return function setUniversityForFaculty(_x20, _x21) {
+        return _ref16.apply(this, arguments);
+    };
+}();
+
+var destroyFaculty = exports.destroyFaculty = function () {
+    var _ref17 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee12$(_context12) {
+            while (1) {
+                switch (_context12.prev = _context12.next) {
+                    case 0:
+                        _context12.next = 2;
+                        return _admin2.default.destroyFaculty(payload);
+
+                    case 2:
+                        json = _context12.sent;
+
+                        if (!(json.status === 204)) {
+                            _context12.next = 5;
+                            break;
+                        }
+
+                        return _context12.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context12.stop();
+                }
+            }
+        }, _callee12, undefined);
+    }));
+
+    return function destroyFaculty(_x22, _x23) {
+        return _ref17.apply(this, arguments);
     };
 }();
 
@@ -65388,6 +65476,8 @@ exports.default = {
     sendInviteUniversityAdmin: sendInviteUniversityAdmin,
     associate: associate,
     createFaculty: createFaculty,
+    editFaculty: editFaculty,
+    getFaculty: getFaculty,
     setUniversityForFaculty: setUniversityForFaculty,
     destroyFaculty: destroyFaculty
 };
@@ -65680,7 +65770,7 @@ exports.default = {
             }, _callee8, _this8, [[0, 9]]);
         }))();
     },
-    setUniversityForFaculty: function setUniversityForFaculty(id, params) {
+    editFaculty: function editFaculty(id, params) {
         var _this9 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9() {
@@ -65713,7 +65803,7 @@ exports.default = {
             }, _callee9, _this9, [[0, 9]]);
         }))();
     },
-    destroyFaculty: function destroyFaculty(id) {
+    getFaculty: function getFaculty(id) {
         var _this10 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10() {
@@ -65725,7 +65815,7 @@ exports.default = {
                         case 0:
                             _context10.prev = 0;
                             _context10.next = 3;
-                            return window.axios.delete(url + '/api/admin/faculty/' + id);
+                            return window.axios.get(url + '/api/admin/faculty/' + id);
 
                         case 3:
                             _ref10 = _context10.sent;
@@ -65744,6 +65834,72 @@ exports.default = {
                     }
                 }
             }, _callee10, _this10, [[0, 9]]);
+        }))();
+    },
+    setUniversityForFaculty: function setUniversityForFaculty(id, params) {
+        var _this11 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11() {
+            var _ref11, data, status;
+
+            return _regenerator2.default.wrap(function _callee11$(_context11) {
+                while (1) {
+                    switch (_context11.prev = _context11.next) {
+                        case 0:
+                            _context11.prev = 0;
+                            _context11.next = 3;
+                            return window.axios.put(url + '/api/admin/faculty/' + id, params);
+
+                        case 3:
+                            _ref11 = _context11.sent;
+                            data = _ref11.data;
+                            status = _ref11.status;
+                            return _context11.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context11.prev = 9;
+                            _context11.t0 = _context11['catch'](0);
+                            return _context11.abrupt('return', _context11.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context11.stop();
+                    }
+                }
+            }, _callee11, _this11, [[0, 9]]);
+        }))();
+    },
+    destroyFaculty: function destroyFaculty(id) {
+        var _this12 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12() {
+            var _ref12, data, status;
+
+            return _regenerator2.default.wrap(function _callee12$(_context12) {
+                while (1) {
+                    switch (_context12.prev = _context12.next) {
+                        case 0:
+                            _context12.prev = 0;
+                            _context12.next = 3;
+                            return window.axios.delete(url + '/api/admin/faculty/' + id);
+
+                        case 3:
+                            _ref12 = _context12.sent;
+                            data = _ref12.data;
+                            status = _ref12.status;
+                            return _context12.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context12.prev = 9;
+                            _context12.t0 = _context12['catch'](0);
+                            return _context12.abrupt('return', _context12.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context12.stop();
+                    }
+                }
+            }, _callee12, _this12, [[0, 9]]);
         }))();
     }
 };
@@ -67651,6 +67807,7 @@ exports.default = {
         send: 'Надіслати',
         infoAboutUniversity: 'Інформація про університет',
         editUniversity: 'Редагувати університет',
+        editFaculty: 'Редагувати факультет',
         description: 'Опис',
         created_at: 'Час створення',
         address: 'Адреса',

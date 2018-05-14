@@ -20,6 +20,7 @@ export default {
             'isShowDescription',
             'isShowInviteUniversityAdmin',
             'isShowCreateFaculty',
+            'isShowEditFaculty',
         ]),
     },
 };

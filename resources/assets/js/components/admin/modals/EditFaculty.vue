@@ -1,10 +1,10 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <div v-if="modalsIsShowCreateFaculty" class="modal__wrap">
+        <div v-if="modalsIsShowEditFaculty" class="modal__wrap">
             <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.addFaculty") }}
+                    {{ $t("translation.editFaculty") }}
                 </h4>
 
                 <div class="modal__body">
@@ -62,7 +62,6 @@
                                     id="image"
                                     data-vv-name="photo"
                                     data-vv-value-path="file"
-                                    v-validate="'required'"
                                     :data-vv-as="$t('translation.photo')"
                                     :placeholder="$t('translation.photo')"/>
                             <div v-show="errors.has('photo')" class="invalid-feedback">
@@ -77,7 +76,7 @@
                     </button>
 
                     <button type="button" class="btn btn-md btn-success mt-4"
-                        @click="createFaculty">
+                        @click="saveEditFaculty">
                         {{ $t("translation.save") }}
                     </button>
 
@@ -143,7 +142,7 @@
                 this.isShowOldImage = false;
             },
             hide() {
-                this.modalsIsShowCreateFaculty = false;
+                this.modalsIsShowEditFaculty = false;
 
                 this.facultyId = null;
                 this.facultyUniversityId = this.universities[0].id;
@@ -153,17 +152,21 @@
 
                 this.isShowOldImage = true;
             },
-            async createFaculty() {
+            async saveEditFaculty() {
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
                     try {
                         this.showPreloader();
-                        await this.$store.dispatch('admin/createFaculty', {
+                        const params = {
                             university_id: this.facultyUniversityId,
                             name: this.facultyName,
                             description: this.facultyDescription,
                             image: this.photo,
+                        };
+                        await this.$store.dispatch('admin/editFaculty', {
+                            id: this.facultyId,
+                            params,
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({

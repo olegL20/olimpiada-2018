@@ -37,7 +37,7 @@ export default {
             ],
             css: {
                 table: {
-                    tableClass: 'table table-hover cursor-pointer',
+                    tableClass: 'table',
                     loadingClass: 'loading',
                     ascendingIcon: 'fa fa-angle-up ',
                     descendingIcon: 'fa fa-angle-down ',

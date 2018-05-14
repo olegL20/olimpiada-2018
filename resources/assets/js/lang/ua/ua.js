@@ -115,6 +115,7 @@ export default {
         send: 'Надіслати',
         infoAboutUniversity: 'Інформація про університет',
         editUniversity: 'Редагувати університет',
+        editFaculty: 'Редагувати факультет',
         description: 'Опис',
         created_at: 'Час створення',
         address: 'Адреса',

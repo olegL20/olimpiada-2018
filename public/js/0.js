@@ -377,7 +377,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'admin',
         prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'facultyUniversityId', 'facultyName', 'facultyDescription']))
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'facultyId', 'facultyUniversityId', 'facultyName', 'facultyDescription', 'facultyImage']))
 };
 
 /***/ }),
@@ -4868,16 +4868,19 @@ exports.default = {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.prev = 0;
-                                _context.next = 3;
+
+                                _this.showPreloader();
+                                _context.next = 4;
                                 return _this.$store.dispatch('admin/getUniversity', universityId);
 
-                            case 3:
+                            case 4:
                                 _this.modalsIsShowEditUniversity = true;
-                                _context.next = 9;
+                                _this.hidePreloader();
+                                _context.next = 11;
                                 break;
 
-                            case 6:
-                                _context.prev = 6;
+                            case 8:
+                                _context.prev = 8;
                                 _context.t0 = _context['catch'](0);
 
                                 _this.$toast.error({
@@ -4885,12 +4888,12 @@ exports.default = {
                                     message: _this.$t(_context.t0.message)
                                 });
 
-                            case 9:
+                            case 11:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[0, 6]]);
+                }, _callee, _this, [[0, 8]]);
             }))();
         },
         destroyUniversity: function destroyUniversity(universityId) {

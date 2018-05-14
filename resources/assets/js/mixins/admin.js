@@ -24,9 +24,11 @@ export default {
             'universities',
             'universityImage',
             'universityPosition',
+            'facultyId',
             'facultyUniversityId',
             'facultyName',
             'facultyDescription',
+            'facultyImage',
         ]),
     },
 };

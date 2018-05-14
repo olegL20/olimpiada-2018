@@ -122,8 +122,10 @@
             // },
             async editUniversity(universityId) {
                 try {
+                    this.showPreloader();
                     await this.$store.dispatch('admin/getUniversity', universityId);
                     this.modalsIsShowEditUniversity = true;
+                    this.hidePreloader();
                 } catch (e) {
                     this.$toast.error({
                         title: this.$t('translation.error'),

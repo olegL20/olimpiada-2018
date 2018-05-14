@@ -96,7 +96,7 @@
             onCellClicked(data) {
                 console.log(data);
                 this.universityUserId = data.id;
-                this.modalsIsShowAssociateUniversityAdmin = true;
+                this.isShowAssociateUniversityAdmin = true;
             },
             onPaginationData(paginationData) {
                 this.$refs.paginationListUniversityAdministrators.setPaginationData(paginationData);

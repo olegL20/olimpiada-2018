@@ -377,7 +377,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'admin',
         prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'facultyUniversityId', 'facultyName', 'facultyDescription']))
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'facultyId', 'facultyUniversityId', 'facultyName', 'facultyDescription', 'facultyImage']))
 };
 
 /***/ }),
@@ -5151,6 +5151,10 @@ var _CreateFaculty = __webpack_require__(385);
 
 var _CreateFaculty2 = _interopRequireDefault(_CreateFaculty);
 
+var _EditFaculty = __webpack_require__(388);
+
+var _EditFaculty2 = _interopRequireDefault(_EditFaculty);
+
 var _constants = __webpack_require__(265);
 
 var constants = _interopRequireWildcard(_constants);
@@ -5159,13 +5163,75 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 exports.default = {
     mixins: [_preload2.default, _modals2.default, _admin2.default, _faculty2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default,
         ModalInviteUniversityAdmin: _InviteUniversityAdmin2.default,
-        ModalCreateFaculty: _CreateFaculty2.default
+        ModalCreateFaculty: _CreateFaculty2.default,
+        ModalEditFaculty: _EditFaculty2.default
     },
     data: function data() {
         return {
@@ -5190,7 +5256,7 @@ exports.default = {
         onCellClicked: function onCellClicked(data) {
             console.log(data);
             this.universityUserId = data.id;
-            this.modalsIsShowAssociateUniversityAdmin = true;
+            this.isShowAssociateUniversityAdmin = true;
         },
         onPaginationData: function onPaginationData(paginationData) {
             this.$refs.paginationFaculties.setPaginationData(paginationData);
@@ -5244,122 +5310,101 @@ exports.default = {
                 }, _callee, _this, [[1, 8]]);
             }))();
         },
-        destroyFaculty: function destroyFaculty(id) {
+        editFaculty: function editFaculty(id) {
             var _this2 = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-                var result;
                 return _regenerator2.default.wrap(function _callee2$(_context2) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
                             case 0:
-                                _context2.next = 2;
-                                return _this2.$swal({
-                                    title: _this2.$t('translation.areYouSure'),
-                                    type: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: constants.BUTTON_COLOR_CONFIRM,
-                                    confirmButtonText: _this2.$t('translation.yes'),
-                                    cancelButtonColor: constants.BUTTON_COLOR_CANCEL,
-                                    cancelButtonText: _this2.$t('translation.cancel')
-                                });
-
-                            case 2:
-                                result = _context2.sent;
-
-                                if (!result.value) {
-                                    _context2.next = 15;
-                                    break;
-                                }
+                                _context2.prev = 0;
 
                                 _this2.showPreloader();
-                                _context2.prev = 5;
-                                _context2.next = 8;
-                                return _this2.$store.dispatch('admin/destroyFaculty', id);
+                                _context2.next = 4;
+                                return _this2.$store.dispatch('admin/getFaculty', id);
 
-                            case 8:
-                                _this2.$refs.listFaculties.refresh();
-                                _this2.showPreloader();
-                                _context2.next = 15;
+                            case 4:
+                                _this2.modalsIsShowEditFaculty = true;
+                                _this2.hidePreloader();
+                                _context2.next = 11;
                                 break;
 
-                            case 12:
-                                _context2.prev = 12;
-                                _context2.t0 = _context2['catch'](5);
+                            case 8:
+                                _context2.prev = 8;
+                                _context2.t0 = _context2['catch'](0);
 
                                 _this2.$toast.error({
                                     title: _this2.$t('translation.error'),
-                                    message: _this2.$t(_context2.t0.statusText)
+                                    message: _this2.$t(_context2.t0.message)
                                 });
 
-                            case 15:
+                            case 11:
                             case 'end':
                                 return _context2.stop();
                         }
                     }
-                }, _callee2, _this2, [[5, 12]]);
+                }, _callee2, _this2, [[0, 8]]);
+            }))();
+        },
+        destroyFaculty: function destroyFaculty(id) {
+            var _this3 = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
+                var result;
+                return _regenerator2.default.wrap(function _callee3$(_context3) {
+                    while (1) {
+                        switch (_context3.prev = _context3.next) {
+                            case 0:
+                                _context3.next = 2;
+                                return _this3.$swal({
+                                    title: _this3.$t('translation.areYouSure'),
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: constants.BUTTON_COLOR_CONFIRM,
+                                    confirmButtonText: _this3.$t('translation.yes'),
+                                    cancelButtonColor: constants.BUTTON_COLOR_CANCEL,
+                                    cancelButtonText: _this3.$t('translation.cancel')
+                                });
+
+                            case 2:
+                                result = _context3.sent;
+
+                                if (!result.value) {
+                                    _context3.next = 15;
+                                    break;
+                                }
+
+                                _this3.showPreloader();
+                                _context3.prev = 5;
+                                _context3.next = 8;
+                                return _this3.$store.dispatch('admin/destroyFaculty', id);
+
+                            case 8:
+                                _this3.$refs.listFaculties.refresh();
+                                _this3.showPreloader();
+                                _context3.next = 15;
+                                break;
+
+                            case 12:
+                                _context3.prev = 12;
+                                _context3.t0 = _context3['catch'](5);
+
+                                _this3.$toast.error({
+                                    title: _this3.$t('translation.error'),
+                                    message: _this3.$t(_context3.t0.statusText)
+                                });
+
+                            case 15:
+                            case 'end':
+                                return _context3.stop();
+                        }
+                    }
+                }, _callee3, _this3, [[5, 12]]);
             }))();
         }
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 
@@ -5451,7 +5496,7 @@ var render = function() {
                             },
                             on: {
                               click: function($event) {
-                                _vm.editUniversity(props.rowData.id)
+                                _vm.editFaculty(props.rowData.id)
                               }
                             }
                           },
@@ -5503,7 +5548,9 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("modal-create-faculty")
+      _c("modal-create-faculty"),
+      _vm._v(" "),
+      _c("modal-edit-faculty")
     ],
     1
   )
@@ -5562,7 +5609,7 @@ exports.default = {
             }],
             css: {
                 table: {
-                    tableClass: 'table table-hover cursor-pointer',
+                    tableClass: 'table',
                     loadingClass: 'loading',
                     ascendingIcon: 'fa fa-angle-up ',
                     descendingIcon: 'fa fa-angle-down ',
@@ -5685,7 +5732,8 @@ exports.default = {
             customImageMaxSize: _constants.IMAGE_MAX_SIZE,
             imageSubstringLength: null,
             imageBase64: null,
-            latLng: {}
+            latLng: {},
+            isShowOldImage: true
         };
     },
 
@@ -5715,13 +5763,18 @@ exports.default = {
         },
         onLoad: function onLoad(dataUri) {
             this.imageBase64 = dataUri;
+            this.isShowOldImage = false;
         },
         hide: function hide() {
             this.modalsIsShowCreateFaculty = false;
 
+            this.facultyId = null;
+            this.facultyUniversityId = this.universities[0].id;
             this.facultyName = null;
             this.facultyDescription = null;
-            this.facultyUniversityId = null;
+            this.facultyImage = null;
+
+            this.isShowOldImage = true;
         },
         createFaculty: function createFaculty() {
             var _this = this;
@@ -5793,6 +5846,9 @@ exports.default = {
         }
     }
 }; //
+//
+//
+//
 //
 //
 //
@@ -6089,6 +6145,17 @@ var render = function() {
                     _vm._v(_vm._s(_vm.$t("translation.photo")))
                   ]),
                   _vm._v(" "),
+                  _vm.facultyImage
+                    ? _c("div", [
+                        _vm.isShowOldImage
+                          ? _c("img", {
+                              staticClass: "img-fluid mt-3 max-w-20",
+                              attrs: { src: _vm.facultyImage.source }
+                            })
+                          : _vm._e()
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c("vue-base64-file-upload", {
                     directives: [
                       {
@@ -6182,6 +6249,619 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-e30b9554", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 388:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(5)
+/* script */
+var __vue_script__ = __webpack_require__(389)
+/* template */
+var __vue_template__ = __webpack_require__(390)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/modals/EditFaculty.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1bb1cdf0", Component.options)
+  } else {
+    hotAPI.reload("data-v-1bb1cdf0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 389:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(9);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(10);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _vueBase64FileUpload = __webpack_require__(257);
+
+var _vueBase64FileUpload2 = _interopRequireDefault(_vueBase64FileUpload);
+
+var _modals = __webpack_require__(44);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+var _admin = __webpack_require__(253);
+
+var _admin2 = _interopRequireDefault(_admin);
+
+var _preload = __webpack_require__(73);
+
+var _preload2 = _interopRequireDefault(_preload);
+
+var _constants = __webpack_require__(265);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    mixins: [_modals2.default, _admin2.default, _preload2.default],
+    components: {
+        VueBase64FileUpload: _vueBase64FileUpload2.default
+    },
+    data: function data() {
+        return {
+            customImageMaxSize: _constants.IMAGE_MAX_SIZE,
+            imageSubstringLength: null,
+            imageBase64: null,
+            latLng: {},
+            isShowOldImage: true
+        };
+    },
+
+    computed: {
+        photo: function photo() {
+            if (this.imageBase64) {
+                return this.imageBase64.substr(this.imageSubstringLength);
+            }
+            return '';
+        }
+    },
+    watch: {
+        universities: function universities() {
+            this.facultyUniversityId = this.universities[0].id;
+        }
+    },
+    methods: {
+        setPlace: function setPlace(universityAddress) {
+            this.latLng = {
+                lat: universityAddress.geometry.location.lat(),
+                lng: universityAddress.geometry.location.lng()
+            };
+            this.universityAddress = universityAddress.formatted_address;
+        },
+        onFile: function onFile(file) {
+            this.imageSubstringLength = file.type.length + 13;
+        },
+        onLoad: function onLoad(dataUri) {
+            this.imageBase64 = dataUri;
+            this.isShowOldImage = false;
+        },
+        hide: function hide() {
+            this.modalsIsShowEditFaculty = false;
+
+            this.facultyId = null;
+            this.facultyUniversityId = this.universities[0].id;
+            this.facultyName = null;
+            this.facultyDescription = null;
+            this.facultyImage = null;
+
+            this.isShowOldImage = true;
+        },
+        saveEditFaculty: function saveEditFaculty() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid, params;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+                                if (!valid) {
+                                    _context.next = 18;
+                                    break;
+                                }
+
+                                _context.prev = 4;
+
+                                _this.showPreloader();
+                                params = {
+                                    university_id: _this.facultyUniversityId,
+                                    name: _this.facultyName,
+                                    description: _this.facultyDescription,
+                                    image: _this.photo
+                                };
+                                _context.next = 9;
+                                return _this.$store.dispatch('admin/editFaculty', {
+                                    id: _this.facultyId,
+                                    params: params
+                                });
+
+                            case 9:
+                                _this.switchRefreshTable(true);
+                                _this.$toast.success({
+                                    title: _this.$t('translation.success'),
+                                    message: _this.$t('translation.createUniversity')
+                                });
+                                _context.next = 16;
+                                break;
+
+                            case 13:
+                                _context.prev = 13;
+                                _context.t0 = _context['catch'](4);
+
+                                if (_context.t0.status === 404) {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t('translation.inviteNotFound')
+                                    });
+                                } else {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t(_context.t0.message)
+                                    });
+                                }
+
+                            case 16:
+                                _this.hidePreloader();
+                                _this.hide();
+
+                            case 18:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[4, 13]]);
+            }))();
+        }
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 390:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowEditFaculty
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c("div", { staticClass: "modal__content modal__md" }, [
+            _c("h4", { staticClass: "modal__head" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.$t("translation.editFaculty")) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal__body" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "facultyName" } }, [
+                _vm._v(_vm._s(_vm.$t("translation.university")))
+              ]),
+              _vm._v(" "),
+              _vm.universities
+                ? _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.facultyUniversityId,
+                          expression: "facultyUniversityId"
+                        }
+                      ],
+                      staticClass: "select-style",
+                      attrs: { name: "university_id" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.facultyUniversityId = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    _vm._l(_vm.universities, function(item) {
+                      return _c("option", { domProps: { value: item.id } }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(item.name) +
+                            "\n                        "
+                        )
+                      ])
+                    })
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "facultyName" } }, [
+                _vm._v(_vm._s(_vm.$t("translation.facultyName")))
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required|max:255",
+                    expression: "'required|max:255'"
+                  },
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.facultyName,
+                    expression: "facultyName"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "facultyName",
+                  "aria-describedby": "facultyNameHelp",
+                  placeholder: _vm.$t("translation.facultyNamePlaceholder"),
+                  name: "facultyName",
+                  "data-vv-as": _vm.$t("translation.facultyName")
+                },
+                domProps: { value: _vm.facultyName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.facultyName = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "small",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("facultyName"),
+                      expression: "errors.has('facultyName')"
+                    }
+                  ],
+                  staticClass: "form-text text-danger",
+                  attrs: { id: "facultyNameHelp" }
+                },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.errors.first("facultyName")) +
+                      "\n                    "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "facultyDescription" } }, [
+                _vm._v(_vm._s(_vm.$t("translation.facultyDescription")))
+              ]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required|max:255",
+                    expression: "'required|max:255'"
+                  },
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.facultyDescription,
+                    expression: "facultyDescription"
+                  }
+                ],
+                staticClass: "form-control resize-none h-5",
+                attrs: {
+                  type: "text",
+                  id: "facultyDescription",
+                  "aria-describedby": "facultyDescriptionHelp",
+                  placeholder: _vm.$t(
+                    "translation.facultyDescriptionPlaceholder"
+                  ),
+                  name: "universityDescription",
+                  "data-vv-as": _vm.$t("translation.facultyDescription")
+                },
+                domProps: { value: _vm.facultyDescription },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.facultyDescription = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "small",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("facultyDescription"),
+                      expression: "errors.has('facultyDescription')"
+                    }
+                  ],
+                  staticClass: "form-text text-danger",
+                  attrs: { id: "facultyDescriptionHelp" }
+                },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.errors.first("facultyDescription")) +
+                      "\n                    "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "div",
+                { class: { "is-invalid__date": _vm.errors.has("photo") } },
+                [
+                  _c("label", { attrs: { for: "image" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.photo")))
+                  ]),
+                  _vm._v(" "),
+                  _vm.facultyImage
+                    ? _c("div", [
+                        _vm.isShowOldImage
+                          ? _c("img", {
+                              staticClass: "img-fluid mt-3 max-w-20",
+                              attrs: { src: _vm.facultyImage.source }
+                            })
+                          : _vm._e()
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("vue-base64-file-upload", {
+                    staticClass: "v1",
+                    attrs: {
+                      accept: "image/png,image/jpeg",
+                      "image-class": "img-fluid mt-3 max-w-20",
+                      "input-class": "input",
+                      "max-size": _vm.customImageMaxSize,
+                      id: "image",
+                      "data-vv-name": "photo",
+                      "data-vv-value-path": "file",
+                      "data-vv-as": _vm.$t("translation.photo"),
+                      placeholder: _vm.$t("translation.photo")
+                    },
+                    on: { file: _vm.onFile, load: _vm.onLoad }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("photo"),
+                          expression: "errors.has('photo')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.first("photo")) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-md btn-secondary float-right mt-4",
+                attrs: { type: "button" },
+                on: { click: _vm.hide }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.$t("translation.cancel")) +
+                    "\n                "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-md btn-success mt-4",
+                attrs: { type: "button" },
+                on: { click: _vm.saveEditFaculty }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.$t("translation.save")) +
+                    "\n                "
+                )
+              ]
+            )
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1bb1cdf0", module.exports)
   }
 }
 

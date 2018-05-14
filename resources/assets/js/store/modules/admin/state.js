@@ -13,7 +13,9 @@ export default {
     universityImage: null,
     universityPosition: null,
     universityUserId: null,
+    facultyId: null,
     facultyUniversityId: null,
     facultyName: null,
     facultyDescription: null,
+    facultyImage: null,
 };

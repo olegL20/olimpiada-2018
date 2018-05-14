@@ -29,7 +29,7 @@
                         </template>
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"
-                               @click="editUniversity(props.rowData.id)"
+                               @click="editFaculty(props.rowData.id)"
                                :title="$t('translation.edit')">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
@@ -53,6 +53,7 @@
         </div>
 
         <modal-create-faculty></modal-create-faculty>
+        <modal-edit-faculty></modal-edit-faculty>
 
     </div>
 </template>
@@ -68,6 +69,7 @@
 
     import ModalInviteUniversityAdmin from '../../components/admin/modals/InviteUniversityAdmin.vue';
     import ModalCreateFaculty from '../../components/admin/modals/CreateFaculty.vue';
+    import ModalEditFaculty from '../../components/admin/modals/EditFaculty.vue';
 
     import * as constants from '../../utils/constants';
 
@@ -84,6 +86,7 @@
             VuetablePagination,
             ModalInviteUniversityAdmin,
             ModalCreateFaculty,
+            ModalEditFaculty,
         },
         data() {
             return {
@@ -106,7 +109,7 @@
             onCellClicked(data) {
                 console.log(data);
                 this.universityUserId = data.id;
-                this.modalsIsShowAssociateUniversityAdmin = true;
+                this.isShowAssociateUniversityAdmin = true;
             },
             onPaginationData(paginationData) {
                 this.$refs.paginationFaculties.setPaginationData(paginationData);
@@ -130,6 +133,19 @@
                         title: this.$t('translation.success'),
                         message: this.$t('translation.universityChanged'),
                     });
+                } catch (e) {
+                    this.$toast.error({
+                        title: this.$t('translation.error'),
+                        message: this.$t(e.message),
+                    });
+                }
+            },
+            async editFaculty(id) {
+                try {
+                    this.showPreloader();
+                    await this.$store.dispatch('admin/getFaculty', id);
+                    this.modalsIsShowEditFaculty = true;
+                    this.hidePreloader();
                 } catch (e) {
                     this.$toast.error({
                         title: this.$t('translation.error'),

@@ -7,6 +7,7 @@ export default {
     isShowEditUniversity: false,
     isShowDescription: false,
     isShowInviteUniversityAdmin: false,
-    modalsIsShowAssociateUniversityAdmin: false,
+    isShowAssociateUniversityAdmin: false,
     isShowCreateFaculty: false,
+    isShowEditFaculty: false,
 };

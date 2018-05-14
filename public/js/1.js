@@ -377,7 +377,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'admin',
         prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'facultyUniversityId', 'facultyName', 'facultyDescription']))
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'facultyId', 'facultyUniversityId', 'facultyName', 'facultyDescription', 'facultyImage']))
 };
 
 /***/ }),
@@ -5117,7 +5117,7 @@ exports.default = {
     mixins: [_modals2.default, _admin2.default, _preload2.default],
     methods: {
         hide: function hide() {
-            this.modalsIsShowAssociateUniversityAdmin = false;
+            this.isShowAssociateUniversityAdmin = false;
 
             this.universityAddress = null;
             this.universityZipCode = null;
@@ -5168,7 +5168,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowAssociateUniversityAdmin
+    _vm.isShowAssociateUniversityAdmin
       ? _c("div", { staticClass: "modal__wrap" }, [
           _c(
             "div",
@@ -5348,7 +5348,7 @@ exports.default = {
         onCellClicked: function onCellClicked(data) {
             console.log(data);
             this.universityUserId = data.id;
-            this.modalsIsShowAssociateUniversityAdmin = true;
+            this.isShowAssociateUniversityAdmin = true;
         },
         onPaginationData: function onPaginationData(paginationData) {
             this.$refs.paginationListUniversityAdministrators.setPaginationData(paginationData);

@@ -157,7 +157,7 @@
 
         <login-modal></login-modal>
         <register-modal></register-modal>
-        <advice-modal></advice-modal>
+        <advice-modal v-if="userLogged"></advice-modal>
         <select-vuz-modal></select-vuz-modal>
     </div>
 </template>

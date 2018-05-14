@@ -91,6 +91,61 @@ body {
   resize: none;
 }
 
+.blur {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.select-style {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 15px;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0px;
+  box-sizing: border-box;
+  color: #333;
+}
+
+.max-w-20 {
+  max-width: 20rem;
+}
+
+.h-10 {
+    height: 10rem;
+}
+.h-5 {
+    height: 5rem;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 200px;
+    text-overflow: ellipsis;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-blue-hover:hover {
+    color: $accent-color;
+}
+
+.form-group-custom {
+  margin-bottom: 1rem;
+
+  label {
+    font-weight: bold;
+    margin: 0;
+    width: 100%;
+  }
+}
+
 @import "components/buttons";
 @import "components/links";
 @import "components/lists";

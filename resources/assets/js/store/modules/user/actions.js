@@ -7,6 +7,7 @@ export const login = async ({ dispatch, commit }, payload) => {
         commit(types.LOGIN, {
             token: json.data.data.token,
             user: json.data.data.user,
+            role: json.data.data.user.role,
         });
 
         return json.data;
@@ -69,11 +70,13 @@ export const logout = async ({ commit }) => {
 export const checkLogged = async ({ commit }) => {
     const token = window.Cookies.get('token');
     const currentUser = window.Cookies.get('user');
+    const role = window.Cookies.get('role');
 
     if (token !== undefined && currentUser !== undefined) {
         commit(types.LOGIN, {
             token,
             user: window.JSON.parse(currentUser),
+            role,
         });
     }
 };

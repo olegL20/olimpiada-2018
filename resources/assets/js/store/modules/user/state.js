@@ -17,4 +17,6 @@ export default {
     universities: [],
     selectedUniversity: null,
     showPreload: false,
+    refreshTable: false,
+    role: null,
 };

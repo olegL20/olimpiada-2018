@@ -1,8 +1,8 @@
 <template>
-    <div class="container">
-
+    <div class="container-fluid">
         <div class="col-md-12">
             <div class="row border rounded bg-white pt-3 pb-3">
+
                 <div class="col-md-10">
                     <h1>{{ $t('translation.managerUniversity') }}</h1>
                 </div>
@@ -13,69 +13,132 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listUniversities"
-                              api-url="https://vuetable.ratiw.net/api/users"
+                              api-url="https://itpm-194220.appspot.com/api/admin/university"
                               :fields="fields"
-                              pagination-path = ""
+                              pagination-path = "data"
                               :css="css.table"
-                              @vuetable:load-success="hidePreload"
+                              data-path="data.data"
+                              :http-options="{
+                                headers: {
+                                    Authorization: `Bearer ${userToken}`,
+                                },
+                              }"
+                              @vuetable:load-success="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
+                              @vuetable:cell-clicked="onCellClicked"
                     >
+                        <template slot="description" slot-scope="props">
+                            <div class="cursor-pointer text-blue-hover" @click="showDescription(props.rowData.description)">
+                                {{ props.rowData.description === null ? $t('translation.noData') : props.rowData.description}}
+                            </div>
+                        </template>
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"
-                                    @click="modalsIsShowEditUniversity = true"
+                                    @click="editUniversity(props.rowData.id)"
                                     :title="$t('translation.edit')">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
-                            <button type="button" class="btn btn-outline-danger btn-md" :title="$t('translation.remove')"
-                                    @click="deleteProductCategory(props.rowData.id)">
+                            <button type="button" class="btn btn-outline-danger btn-md"
+                                    @click="destroyUniversity(props.rowData.id)"
+                                    :title="$t('translation.remove')">
                                 <i class="fa fa-trash-o"></i>
                             </button>
                         </template>
                     </vuetable>
-                </div>
-                <div class="col-md-12 m-3">
+
                     <vuetable-pagination ref="pagination"
                                          :css="css.pagination"
                                          @vuetable-pagination:change-page="onChangePage"
                     >
                     </vuetable-pagination>
                 </div>
+
             </div>
-
-            <modal-create-university></modal-create-university>
-            <modal-edit-university></modal-edit-university>
-
         </div>
+
+        <modal-create-university></modal-create-university>
+        <modal-edit-university></modal-edit-university>
+        <modal-show-description></modal-show-description>
+
     </div>
 </template>
 
 <script>
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
     import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue';
+    import FieldsUniversity from '../../mixins/formFields/university';
 
-    import MixinUniversityFields from '../../mixins/formFields/university';
     import MixinModals from '../../mixins/modals';
+    import MixinPreloader from '../../mixins/preload';
+    import MixinAdmin from '../../mixins/admin';
+    import MixinUser from '../../mixins/user';
     import ModalCreateUniversity from '../../components/admin/modals/CreateUniversity.vue';
     import ModalEditUniversity from '../../components/admin/modals/EditUniversity.vue';
+    import ModalShowDescription from '../../components/admin/modals/ShowDescription.vue';
 
     import * as constants from '../../utils/constants';
 
     export default {
         mixins: [
+            MixinAdmin,
+            MixinUser,
             MixinModals,
-            MixinUniversityFields,
+            MixinPreloader,
+            FieldsUniversity,
         ],
         components: {
             Vuetable,
             VuetablePagination,
             ModalCreateUniversity,
             ModalEditUniversity,
+            ModalShowDescription,
         },
         mounted() {
-            this.showPreload();
+            this.showPreloader();
+        },
+        watch: {
+            refreshTable() {
+                if (this.refreshTable) {
+                    this.$refs.listUniversities.refresh();
+                    this.switchRefreshTable(false);
+                }
+            },
         },
         methods: {
-            async deleteProductCategory() {
+            onPaginationData(paginationData) {
+                this.$refs.pagination.setPaginationData(paginationData);
+            },
+            onChangePage(page) {
+                this.showPreloader();
+                this.$refs.listUniversities.changePage(page);
+            },
+            onCellClicked(data) {
+                this.universityAddress = data.address;
+                this.universityZipCode = data.zip_code;
+                this.universityDescription = data.description;
+                this.modalsIsShowDescription = true;
+            },
+            // getUniversitiesId(payload) {
+            //     this.hidePreloader();
+            //     const universitiesId = payload.data.data.data.map(el => ({
+            //         ...el,
+            //         id: el.id,
+            //         name: el.name,
+            //     }));
+            //     this.universityParentsId = universitiesId;
+            // },
+            async editUniversity(universityId) {
+                try {
+                    await this.$store.dispatch('admin/getUniversity', universityId);
+                    this.modalsIsShowEditUniversity = true;
+                } catch (e) {
+                    this.$toast.error({
+                        title: this.$t('translation.error'),
+                        message: this.$t(e.message),
+                    });
+                }
+            },
+            async destroyUniversity(universityId) {
                 const result = await this.$swal({
                     title: this.$t('translation.areYouSure'),
                     type: 'warning',
@@ -87,24 +150,16 @@
                 });
                 if (result.value) {
                     try {
-                        // await this.$store.dispatch('admin/deleteUniversity', {
-                        //     data: {
-                        //         product_category_id: productCategoryId,
-                        //     },
-                        // });
+                        await this.$store.dispatch('admin/destroyUniversity', universityId);
+                        this.$refs.listUniversities.refresh();
+                        this.showPreloader();
                     } catch (e) {
-                        this.$toasted.show(this.$t(e.errors), {
-                            theme: 'primary',
-                            type: 'error',
+                        this.$toast.error({
+                            title: this.$t('translation.error'),
+                            message: this.$t(e.statusText),
                         });
                     }
                 }
-            },
-            onPaginationData(paginationData) {
-                this.$refs.pagination.setPaginationData(paginationData);
-            },
-            onChangePage(page) {
-                this.$refs.vuetableAllFields.changePage(page);
             },
         },
     };

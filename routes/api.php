@@ -47,7 +47,12 @@ Route::group(['middleware' => 'api'], function () {
         'namespace' => 'User'
     ], function () {
         // user routes
-        Route::resource('university', 'UniversityController');
+        Route::get('university', 'UniversityController@index');
+        Route::get('university/{id}', 'UniversityController@show');
+        Route::get('faculty/{universityId}', 'UniversityController@getFacultiesByUniversity');
+        Route::get('department/{facultyId}', 'UniversityController@getDepartmentsByFaculty');
+        Route::get('majors/{departmentId}', 'UniversityController@getMajorsByDepartment');
+
         Route::post('score', 'ScoreController@write');
         Route::get('score', 'ScoreController@show');
 

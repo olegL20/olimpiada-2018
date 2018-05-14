@@ -1,52 +1,48 @@
 <template>
     <div class="container-fluid">
-        <div class="col-md-12">
+        <div class="col-md-12 mb-5">
             <div class="row border rounded bg-white pt-3 pb-3">
 
                 <div class="col-md-10">
-                    <h1>{{ $t('translation.managerUniversity') }}</h1>
+                    <h1>{{ $t('translation.managerFaculty') }}</h1>
                 </div>
+
                 <div class="col-md-2 align-self-center">
-                    <a href="javascript:" @click="modalsIsShowCreateUniversity = true" class="btn btn-primary btn-md float-right">
-                        {{ $t("translation.addUniversity") }}
+                    <a href="javascript:" @click="modalsIsShowCreateFaculty = true" class="btn btn-primary btn-md float-right">
+                        {{ $t("translation.addFaculty") }}
                     </a>
                 </div>
+
                 <div class="col-md-12 mt-3">
-                    <vuetable ref="listUniversities"
-                              api-url="https://itpm-194220.appspot.com/api/admin/university"
-                              :fields="fields"
+                    <vuetable ref="listFaculties"
+                              :api-url="`/api/admin/faculty`"
+                              :fields="fieldsListFaculties"
                               pagination-path = "data"
                               :css="css.table"
                               data-path="data.data"
-                              :http-options="{
-                                headers: {
-                                    Authorization: `Bearer ${userToken}`,
-                                },
-                              }"
                               @vuetable:load-success="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
                               @vuetable:cell-clicked="onCellClicked"
                     >
-                        <template slot="description" slot-scope="props">
-                            <div class="cursor-pointer text-blue-hover" @click="showDescription(props.rowData.description)">
-                                {{ props.rowData.description === null ? $t('translation.noData') : props.rowData.description}}
-                            </div>
+                        <template slot="university" slot-scope="props">
+                            {{ props.rowData.university_id ? props.rowData.university.name : $t('translation.noData') }}
                         </template>
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"
-                                    @click="editUniversity(props.rowData.id)"
-                                    :title="$t('translation.edit')">
+                               @click="editFaculty(props.rowData.id)"
+                               :title="$t('translation.edit')">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
                             <button type="button" class="btn btn-outline-danger btn-md"
-                                    @click="destroyUniversity(props.rowData.id)"
+                                    @click="destroyFaculty(props.rowData.id)"
                                     :title="$t('translation.remove')">
                                 <i class="fa fa-trash-o"></i>
                             </button>
                         </template>
                     </vuetable>
-
-                    <vuetable-pagination ref="pagination"
+                </div>
+                <div class="col-md-12 m-3">
+                    <vuetable-pagination ref="paginationFaculties"
                                          :css="css.pagination"
                                          @vuetable-pagination:change-page="onChangePage"
                     >
@@ -56,9 +52,8 @@
             </div>
         </div>
 
-        <modal-create-university></modal-create-university>
-        <modal-edit-university></modal-edit-university>
-        <modal-show-description></modal-show-description>
+        <modal-create-faculty></modal-create-faculty>
+        <modal-edit-faculty></modal-edit-faculty>
 
     </div>
 </template>
@@ -66,72 +61,88 @@
 <script>
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
     import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue';
-    import FieldsUniversity from '../../mixins/formFields/university';
+    import FieldsListFaculties from '../../mixins/formFields/faculty';
 
     import MixinModals from '../../mixins/modals';
-    import MixinPreloader from '../../mixins/preload';
+    import MixinPreload from '../../mixins/preload';
     import MixinAdmin from '../../mixins/admin';
-    import MixinUser from '../../mixins/user';
-    import ModalCreateUniversity from '../../components/admin/modals/CreateUniversity.vue';
-    import ModalEditUniversity from '../../components/admin/modals/EditUniversity.vue';
-    import ModalShowDescription from '../../components/admin/modals/ShowDescription.vue';
+
+    import ModalInviteUniversityAdmin from '../../components/admin/modals/InviteUniversityAdmin.vue';
+    import ModalCreateFaculty from '../../components/admin/modals/CreateFaculty.vue';
+    import ModalEditFaculty from '../../components/admin/modals/EditFaculty.vue';
 
     import * as constants from '../../utils/constants';
 
+
     export default {
         mixins: [
-            MixinAdmin,
-            MixinUser,
+            MixinPreload,
             MixinModals,
-            MixinPreloader,
-            FieldsUniversity,
+            MixinAdmin,
+            FieldsListFaculties,
         ],
         components: {
             Vuetable,
             VuetablePagination,
-            ModalCreateUniversity,
-            ModalEditUniversity,
-            ModalShowDescription,
+            ModalInviteUniversityAdmin,
+            ModalCreateFaculty,
+            ModalEditFaculty,
         },
-        mounted() {
-            this.showPreloader();
+        data() {
+            return {
+                constants,
+            };
         },
         watch: {
             refreshTable() {
                 if (this.refreshTable) {
-                    this.$refs.listUniversities.refresh();
+                    this.$refs.listFaculties.refresh();
                     this.switchRefreshTable(false);
                 }
             },
         },
+        mounted() {
+            this.showPreloader();
+            this.$store.dispatch('admin/getAllUniversities');
+        },
         methods: {
+            onCellClicked(data) {
+                this.universityUserId = data.id;
+                this.isShowAssociateUniversityAdmin = true;
+            },
             onPaginationData(paginationData) {
-                this.$refs.pagination.setPaginationData(paginationData);
+                this.$refs.paginationFaculties.setPaginationData(paginationData);
             },
             onChangePage(page) {
                 this.showPreloader();
-                this.$refs.listUniversities.changePage(page);
+                this.$refs.listFaculties.changePage(page);
             },
-            onCellClicked(data) {
-                this.universityAddress = data.address;
-                this.universityZipCode = data.zip_code;
-                this.universityDescription = data.description;
-                this.modalsIsShowDescription = true;
+            async setUniversityForFaculty(el) {
+                try {
+                    await this.$store.dispatch('admin/setUniversityForFaculty', {
+                        id: el.target.dataset.id,
+                        params: {
+                            name: el.target.dataset.id,
+                            university_id: el.target.value,
+                        },
+                    });
+                    this.$refs.listFaculties.refresh();
+                    this.$toast.success({
+                        title: this.$t('translation.success'),
+                        message: this.$t('translation.universityChanged'),
+                    });
+                } catch (e) {
+                    this.$toast.error({
+                        title: this.$t('translation.error'),
+                        message: this.$t(e.message),
+                    });
+                }
             },
-            // getUniversitiesId(payload) {
-            //     this.hidePreloader();
-            //     const universitiesId = payload.data.data.data.map(el => ({
-            //         ...el,
-            //         id: el.id,
-            //         name: el.name,
-            //     }));
-            //     this.universityParentsId = universitiesId;
-            // },
-            async editUniversity(universityId) {
+            async editFaculty(id) {
                 try {
                     this.showPreloader();
-                    await this.$store.dispatch('admin/getUniversity', universityId);
-                    this.modalsIsShowEditUniversity = true;
+                    await this.$store.dispatch('admin/getFaculty', id);
+                    this.modalsIsShowEditFaculty = true;
                     this.hidePreloader();
                 } catch (e) {
                     this.$toast.error({
@@ -140,7 +151,7 @@
                     });
                 }
             },
-            async destroyUniversity(universityId) {
+            async destroyFaculty(id) {
                 const result = await this.$swal({
                     title: this.$t('translation.areYouSure'),
                     type: 'warning',
@@ -151,10 +162,10 @@
                     cancelButtonText: this.$t('translation.cancel'),
                 });
                 if (result.value) {
-                    this.showPreloader();
                     try {
-                        await this.$store.dispatch('admin/destroyUniversity', universityId);
-                        this.$refs.listUniversities.refresh();
+                        this.showPreloader();
+                        await this.$store.dispatch('admin/destroyFaculty', id);
+                        this.$refs.listFaculties.refresh();
                     } catch (e) {
                         this.$toast.error({
                             title: this.$t('translation.error'),

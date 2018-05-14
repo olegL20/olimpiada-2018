@@ -31,6 +31,8 @@ export default {
             'isShowUpdateMajor',
             'isShowCreateDepartment',
             'isShowUpdateDepartment',
+            'isShowCreateFaculty',
+            'isShowEditFaculty',
         ]),
     },
 };

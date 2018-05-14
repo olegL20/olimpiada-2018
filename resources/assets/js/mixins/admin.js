@@ -54,6 +54,11 @@ export default {
             'departmentName',
             'departmentDescription',
             'faculties',
+            'facultyId',
+            'facultyUniversityId',
+            'facultyName',
+            'facultyDescription',
+            'facultyImage',
         ]),
     },
 };

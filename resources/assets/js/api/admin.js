@@ -325,4 +325,49 @@ export default {
             return e.response;
         }
     },
+    async createFaculty(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/admin/faculty`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async editFaculty(id, params) {
+        try {
+            const { data, status } = await window.axios.put(`${url}/api/admin/faculty/${id}`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getFaculty(id) {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/admin/faculty/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async setUniversityForFaculty(id, params) {
+        try {
+            const { data, status } = await window.axios.put(`${url}/api/admin/faculty/${id}`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async destroyFaculty(id) {
+        try {
+            const { data, status } = await window.axios.delete(`${url}/api/admin/faculty/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
 };

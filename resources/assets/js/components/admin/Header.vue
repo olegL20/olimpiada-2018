@@ -87,6 +87,9 @@
                     <router-link :to="{ name: 'admin.answers' }" class="link link__accent mr-3">
                         {{ $t('translation.managerAnswers') }}
                     </router-link>
+                    <router-link :to="{ name: 'admin.faculty' }" class="link link__accent mr-3">
+                        {{ $t('translation.managerFaculty') }}
+                    </router-link>
                 </template>
             </div>
         </div>

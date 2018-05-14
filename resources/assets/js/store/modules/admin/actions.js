@@ -283,6 +283,63 @@ export const associate = async (context, payload) => {
     throw json;
 };
 
+export const createFaculty = async (context, payload) => {
+    const json = await admin.createFaculty(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+
+export const editFaculty = async (context, { id, params }) => {
+    const json = await admin.editFaculty(id, params);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getFaculty = async ({ context, commit }, payload) => {
+    const json = await admin.getFaculty(payload);
+
+    if (json.status === 200) {
+        console.log(json.data.data);
+        commit(types.FACULTY_ID, json.data.data.id);
+        commit(types.FACULTY_UNIVERSITY_ID, json.data.data.university_id);
+        commit(types.FACULTY_NAME, json.data.data.name);
+        commit(types.FACULTY_DESCRIPTION, json.data.data.description);
+        commit(types.FACULTY_IMAGE, json.data.data.image);
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const setUniversityForFaculty = async (context, payload) => {
+    const json = await admin.setUniversityForFaculty(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const destroyFaculty = async (context, payload) => {
+    const json = await admin.destroyFaculty(payload);
+
+    if (json.status === 204) {
+        return json.data;
+    }
+
+    throw json;
+};
+
 export const getMajors = async ({ commit }, payload) => {
     const json = await admin.getMajors(payload);
 
@@ -437,6 +494,11 @@ export default {
     updateMajor,
     destroyMajor,
     associate,
+    createFaculty,
+    editFaculty,
+    getFaculty,
+    setUniversityForFaculty,
+    destroyFaculty,
     getMajors,
     getDepartments,
     getFaculties,

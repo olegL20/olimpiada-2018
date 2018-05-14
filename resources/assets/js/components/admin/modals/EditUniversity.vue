@@ -104,7 +104,6 @@
                             </option>
                         </select>
                     </div> -->
-
                     <div class="form-group">
                         <div :class="{ 'is-invalid__date': errors.has('photo') }">
                             <label for="image">{{ $t("translation.photo") }}</label>

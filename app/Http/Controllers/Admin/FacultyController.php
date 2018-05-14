@@ -71,8 +71,10 @@ class FacultyController extends Controller
         $faculty = $this->faculty->fill($request->except('image'));
         $faculty->save();
 
-        $image = $this->asset->image(AssetService::fileRandomName('jpg'), $request->get('image'));
-        $faculty->image()->save($image);
+        if ($request->has('image')) {
+            $image = $this->asset->image(AssetService::fileRandomName('jpg'), $request->get('image'));
+            $faculty->image()->save($image);
+        }
 
         $faculty->load('image');
 

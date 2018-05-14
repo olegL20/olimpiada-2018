@@ -52,8 +52,10 @@ class UniversityController extends Controller
         $university = $this->university->fill($request->except('image'));
         $university->save();
 
-        $image = $this->asset->image(AssetService::fileRandomName('jpg'), $request->get('image'));
-        $university->image()->save($image);
+        if ($request->has('image')) {
+            $image = $this->asset->image(AssetService::fileRandomName('jpg'), $request->get('image'));
+            $university->image()->save($image);
+        }
 
         if ($request->has('file')) {
             $file = $this->asset->image(AssetService::fileRandomName('docx'), $request->get('file'));

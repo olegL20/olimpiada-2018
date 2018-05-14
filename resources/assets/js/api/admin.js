@@ -1,5 +1,5 @@
-const url = '';
-// const url = 'https://itpm-194220.appspot.com';
+// const url = '';
+const url = 'https://itpm-194220.appspot.com';
 export default {
     async destroyUniversity(id) {
         try {

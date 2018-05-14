@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		10: 0
+/******/ 		12: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -11921,7 +11921,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(23)(function () {
+module.exports = !__webpack_require__(22)(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -12212,6 +12212,19 @@ module.exports = function (it, key) {
 /* 22 */
 /***/ (function(module, exports) {
 
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (e) {
+    return true;
+  }
+};
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports) {
+
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -12288,19 +12301,6 @@ function toComment(sourceMap) {
 
 	return '/*# ' + data + ' */';
 }
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
 
 
 /***/ }),
@@ -12421,6 +12421,19 @@ module.exports = function (it) {
 
 /***/ }),
 /* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+var $keys = __webpack_require__(82);
+var enumBugKeys = __webpack_require__(49);
+
+module.exports = Object.keys || function keys(O) {
+  return $keys(O, enumBugKeys);
+};
+
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -12645,19 +12658,6 @@ function applyToTag (styleElement, obj) {
     styleElement.appendChild(document.createTextNode(css))
   }
 }
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(82);
-var enumBugKeys = __webpack_require__(49);
-
-module.exports = Object.keys || function keys(O) {
-  return $keys(O, enumBugKeys);
-};
 
 
 /***/ }),
@@ -24556,13 +24556,6 @@ exports.default = {
 
 /***/ }),
 /* 73 */
-/***/ (function(module, exports) {
-
-exports.f = {}.propertyIsEnumerable;
-
-
-/***/ }),
-/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24597,6 +24590,13 @@ exports.default = {
         }
     }
 };
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports) {
+
+exports.f = {}.propertyIsEnumerable;
+
 
 /***/ }),
 /* 75 */
@@ -24657,7 +24657,7 @@ __webpack_require__(59)(String, 'String', function (iterated) {
 /* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(13) && !__webpack_require__(23)(function () {
+module.exports = !__webpack_require__(13) && !__webpack_require__(22)(function () {
   return Object.defineProperty(__webpack_require__(39)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -26024,7 +26024,7 @@ var content = __webpack_require__(102);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(29)("78dc4eec", content, false, {});
+var update = __webpack_require__(30)("78dc4eec", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -26043,7 +26043,7 @@ if(false) {
 /* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -26398,7 +26398,7 @@ var content = __webpack_require__(109);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(29)("9762adce", content, false, {});
+var update = __webpack_require__(30)("9762adce", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -26417,7 +26417,7 @@ if(false) {
 /* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -58785,7 +58785,7 @@ var routes = [{
     path: '/admin/login',
     name: 'admin.login',
     component: function component() {
-        return __webpack_require__.e/* import() */(23).then(__webpack_require__.bind(null, 246));
+        return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, 246));
     }
 }, {
     path: '/admin/home',
@@ -58803,13 +58803,13 @@ var routes = [{
     path: '/admin/university/admins',
     name: 'admin.university.admins',
     component: function component() {
-        return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 249));
+        return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 249));
     }
 }, {
     path: '/admin/coefficients',
     name: 'admin.coefficients',
     component: function component() {
-        return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 250));
+        return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 250));
     }
 }, {
     path: '/admin/tests',
@@ -58821,13 +58821,13 @@ var routes = [{
     path: '/admin/questions',
     name: 'admin.questions',
     component: function component() {
-        return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 393));
+        return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 252));
     }
 }, {
     path: '/admin/answers',
     name: 'admin.answers',
     component: function component() {
-        return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 397));
+        return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 253));
     }
 },
 
@@ -58837,7 +58837,7 @@ var routes = [{
 {
     path: '*',
     component: function component() {
-        return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, 252));
+        return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, 254));
     }
 }];
 
@@ -63725,7 +63725,7 @@ module.exports = function (Constructor, NAME, next) {
 
 var dP = __webpack_require__(15);
 var anObject = __webpack_require__(12);
-var getKeys = __webpack_require__(30);
+var getKeys = __webpack_require__(29);
 
 module.exports = __webpack_require__(13) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -64676,15 +64676,15 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(185) });
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var getKeys = __webpack_require__(30);
+var getKeys = __webpack_require__(29);
 var gOPS = __webpack_require__(76);
-var pIE = __webpack_require__(73);
+var pIE = __webpack_require__(74);
 var toObject = __webpack_require__(41);
 var IObject = __webpack_require__(60);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(23)(function () {
+module.exports = !$assign || __webpack_require__(22)(function () {
   var A = {};
   var B = {};
   // eslint-disable-next-line no-undef
@@ -65905,8 +65905,8 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var url = '';
-// const url = 'https://itpm-194220.appspot.com';
+// const url = '';
+var url = 'https://itpm-194220.appspot.com';
 exports.default = {
     destroyUniversity: function destroyUniversity(id) {
         var _this = this;
@@ -78572,7 +78572,7 @@ if(false) {
 /* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -79098,7 +79098,7 @@ var content = __webpack_require__(227);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(29)("909892fc", content, false, {});
+var update = __webpack_require__(30)("909892fc", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79117,7 +79117,7 @@ if(false) {
 /* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -79158,7 +79158,7 @@ var _user = __webpack_require__(31);
 
 var _user2 = _interopRequireDefault(_user);
 
-var _preload = __webpack_require__(74);
+var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
@@ -79227,7 +79227,7 @@ module.exports = __webpack_require__(5).Object.keys;
 
 // 19.1.2.14 Object.keys(O)
 var toObject = __webpack_require__(41);
-var $keys = __webpack_require__(30);
+var $keys = __webpack_require__(29);
 
 __webpack_require__(232)('keys', function () {
   return function keys(it) {
@@ -79243,7 +79243,7 @@ __webpack_require__(232)('keys', function () {
 // most Object methods by ES6 should accept primitives
 var $export = __webpack_require__(11);
 var core = __webpack_require__(5);
-var fails = __webpack_require__(23);
+var fails = __webpack_require__(22);
 module.exports = function (KEY, exec) {
   var fn = (core.Object || {})[KEY] || Object[KEY];
   var exp = {};

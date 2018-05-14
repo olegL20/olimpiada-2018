@@ -6,9 +6,9 @@ webpackJsonp([1],{
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(381)
+var __vue_script__ = __webpack_require__(390)
 /* template */
-var __vue_template__ = __webpack_require__(386)
+var __vue_template__ = __webpack_require__(398)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,13 +48,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 253:
+/***/ 255:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var bind = __webpack_require__(259);
+var bind = __webpack_require__(261);
 
 /*global toString:true*/
 
@@ -355,7 +355,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 254:
+/***/ 256:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.f = __webpack_require__(3);
@@ -363,13 +363,13 @@ exports.f = __webpack_require__(3);
 
 /***/ }),
 
-/***/ 255:
+/***/ 257:
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(2);
 var core = __webpack_require__(5);
 var LIBRARY = __webpack_require__(44);
-var wksExt = __webpack_require__(254);
+var wksExt = __webpack_require__(256);
 var defineProperty = __webpack_require__(15).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -379,13 +379,13 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 256:
+/***/ 258:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 var normalizeHeaderName = __webpack_require__(286);
 
 var PROTECTION_PREFIX = /^\)\]\}',?\n/;
@@ -403,10 +403,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(260);
+    adapter = __webpack_require__(262);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(260);
+    adapter = __webpack_require__(262);
   }
   return adapter;
 }
@@ -481,7 +481,7 @@ module.exports = defaults;
 
 /***/ }),
 
-/***/ 257:
+/***/ 259:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -508,7 +508,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 258:
+/***/ 260:
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
@@ -522,7 +522,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ 259:
+/***/ 261:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -541,18 +541,18 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 
-/***/ 260:
+/***/ 262:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 var settle = __webpack_require__(287);
 var buildURL = __webpack_require__(289);
 var parseHeaders = __webpack_require__(290);
 var isURLSameOrigin = __webpack_require__(291);
-var createError = __webpack_require__(261);
+var createError = __webpack_require__(263);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(292);
 
 module.exports = function xhrAdapter(config) {
@@ -726,7 +726,7 @@ module.exports = function xhrAdapter(config) {
 
 /***/ }),
 
-/***/ 261:
+/***/ 263:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -751,7 +751,7 @@ module.exports = function createError(message, config, code, response) {
 
 /***/ }),
 
-/***/ 262:
+/***/ 264:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -764,7 +764,7 @@ module.exports = function isCancel(value) {
 
 /***/ }),
 
-/***/ 263:
+/***/ 265:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -853,7 +853,7 @@ var content = __webpack_require__(268);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(29)("c96b1a10", content, false, {});
+var update = __webpack_require__(30)("c96b1a10", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -873,7 +873,7 @@ if(false) {
 /***/ 268:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -1881,7 +1881,7 @@ module.exports = { "default": __webpack_require__(272), __esModule: true };
 
 __webpack_require__(78);
 __webpack_require__(83);
-module.exports = __webpack_require__(254).f('iterator');
+module.exports = __webpack_require__(256).f('iterator');
 
 
 /***/ }),
@@ -1917,13 +1917,13 @@ var DESCRIPTORS = __webpack_require__(13);
 var $export = __webpack_require__(11);
 var redefine = __webpack_require__(80);
 var META = __webpack_require__(276).KEY;
-var $fails = __webpack_require__(23);
+var $fails = __webpack_require__(22);
 var shared = __webpack_require__(48);
 var setToStringTag = __webpack_require__(32);
 var uid = __webpack_require__(46);
 var wks = __webpack_require__(3);
-var wksExt = __webpack_require__(254);
-var wksDefine = __webpack_require__(255);
+var wksExt = __webpack_require__(256);
+var wksDefine = __webpack_require__(257);
 var enumKeys = __webpack_require__(277);
 var isArray = __webpack_require__(278);
 var anObject = __webpack_require__(12);
@@ -1935,7 +1935,7 @@ var _create = __webpack_require__(81);
 var gOPNExt = __webpack_require__(279);
 var $GOPD = __webpack_require__(280);
 var $DP = __webpack_require__(15);
-var $keys = __webpack_require__(30);
+var $keys = __webpack_require__(29);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -2058,8 +2058,8 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(258).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(73).f = $propertyIsEnumerable;
+  __webpack_require__(260).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(74).f = $propertyIsEnumerable;
   __webpack_require__(76).f = $getOwnPropertySymbols;
 
   if (DESCRIPTORS && !__webpack_require__(44)) {
@@ -2158,7 +2158,7 @@ var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
 };
-var FREEZE = !__webpack_require__(23)(function () {
+var FREEZE = !__webpack_require__(22)(function () {
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function (it) {
@@ -2211,9 +2211,9 @@ var meta = module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(30);
+var getKeys = __webpack_require__(29);
 var gOPS = __webpack_require__(76);
-var pIE = __webpack_require__(73);
+var pIE = __webpack_require__(74);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -2246,7 +2246,7 @@ module.exports = Array.isArray || function isArray(arg) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(28);
-var gOPN = __webpack_require__(258).f;
+var gOPN = __webpack_require__(260).f;
 var toString = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -2270,7 +2270,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 /***/ 280:
 /***/ (function(module, exports, __webpack_require__) {
 
-var pIE = __webpack_require__(73);
+var pIE = __webpack_require__(74);
 var createDesc = __webpack_require__(45);
 var toIObject = __webpack_require__(28);
 var toPrimitive = __webpack_require__(75);
@@ -2293,7 +2293,7 @@ exports.f = __webpack_require__(13) ? gOPD : function getOwnPropertyDescriptor(O
 /***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(255)('asyncIterator');
+__webpack_require__(257)('asyncIterator');
 
 
 /***/ }),
@@ -2301,7 +2301,7 @@ __webpack_require__(255)('asyncIterator');
 /***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(255)('observable');
+__webpack_require__(257)('observable');
 
 
 /***/ }),
@@ -2319,10 +2319,10 @@ module.exports = __webpack_require__(284);
 "use strict";
 
 
-var utils = __webpack_require__(253);
-var bind = __webpack_require__(259);
+var utils = __webpack_require__(255);
+var bind = __webpack_require__(261);
 var Axios = __webpack_require__(285);
-var defaults = __webpack_require__(256);
+var defaults = __webpack_require__(258);
 
 /**
  * Create an instance of Axios
@@ -2355,9 +2355,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(263);
+axios.Cancel = __webpack_require__(265);
 axios.CancelToken = __webpack_require__(299);
-axios.isCancel = __webpack_require__(262);
+axios.isCancel = __webpack_require__(264);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -2379,8 +2379,8 @@ module.exports.default = axios;
 "use strict";
 
 
-var defaults = __webpack_require__(256);
-var utils = __webpack_require__(253);
+var defaults = __webpack_require__(258);
+var utils = __webpack_require__(255);
 var InterceptorManager = __webpack_require__(294);
 var dispatchRequest = __webpack_require__(295);
 var isAbsoluteURL = __webpack_require__(297);
@@ -2472,7 +2472,7 @@ module.exports = Axios;
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -2492,7 +2492,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(261);
+var createError = __webpack_require__(263);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -2552,7 +2552,7 @@ module.exports = function enhanceError(error, config, code, response) {
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -2628,7 +2628,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 /**
  * Parse headers into an object
@@ -2673,7 +2673,7 @@ module.exports = function parseHeaders(headers) {
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -2793,7 +2793,7 @@ module.exports = btoa;
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -2854,7 +2854,7 @@ module.exports = (
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 function InterceptorManager() {
   this.handlers = [];
@@ -2914,10 +2914,10 @@ module.exports = InterceptorManager;
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 var transformData = __webpack_require__(296);
-var isCancel = __webpack_require__(262);
-var defaults = __webpack_require__(256);
+var isCancel = __webpack_require__(264);
+var defaults = __webpack_require__(258);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -3001,7 +3001,7 @@ module.exports = function dispatchRequest(config) {
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 /**
  * Transform the data for a request or a response
@@ -3071,7 +3071,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(263);
+var Cancel = __webpack_require__(265);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -4549,15 +4549,15 @@ var IMAGE_MAX_SIZE = exports.IMAGE_MAX_SIZE = 3;
 
 /***/ }),
 
-/***/ 319:
+/***/ 318:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(320)
+var __vue_script__ = __webpack_require__(319)
 /* template */
-var __vue_template__ = __webpack_require__(321)
+var __vue_template__ = __webpack_require__(320)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4597,7 +4597,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 320:
+/***/ 319:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4611,11 +4611,11 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(257);
+var _admin = __webpack_require__(259);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _preload = __webpack_require__(74);
+var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
@@ -4682,7 +4682,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 321:
+/***/ 320:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4847,7 +4847,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 381:
+/***/ 390:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4873,7 +4873,7 @@ var _VuetablePagination = __webpack_require__(302);
 
 var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
 
-var _tests = __webpack_require__(382);
+var _tests = __webpack_require__(391);
 
 var _tests2 = _interopRequireDefault(_tests);
 
@@ -4881,23 +4881,23 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _preload = __webpack_require__(74);
+var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-var _admin = __webpack_require__(257);
+var _admin = __webpack_require__(259);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _CreateTest = __webpack_require__(383);
+var _CreateTest = __webpack_require__(392);
 
 var _CreateTest2 = _interopRequireDefault(_CreateTest);
 
-var _UpdateTest = __webpack_require__(390);
+var _UpdateTest = __webpack_require__(395);
 
 var _UpdateTest2 = _interopRequireDefault(_UpdateTest);
 
-var _ShowDescription = __webpack_require__(319);
+var _ShowDescription = __webpack_require__(318);
 
 var _ShowDescription2 = _interopRequireDefault(_ShowDescription);
 
@@ -5107,7 +5107,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 382:
+/***/ 391:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5171,15 +5171,15 @@ exports.default = {
 
 /***/ }),
 
-/***/ 383:
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(384)
+var __vue_script__ = __webpack_require__(393)
 /* template */
-var __vue_template__ = __webpack_require__(385)
+var __vue_template__ = __webpack_require__(394)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -5219,7 +5219,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 384:
+/***/ 393:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5241,11 +5241,11 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(257);
+var _admin = __webpack_require__(259);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _preload = __webpack_require__(74);
+var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
@@ -5386,7 +5386,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 385:
+/***/ 394:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5585,192 +5585,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 386:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container-fluid" },
-    [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
-          _c("div", { staticClass: "col-md-10" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerTests")))])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 align-self-center" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-primary btn-md float-right",
-                attrs: { href: "javascript:" },
-                on: {
-                  click: function($event) {
-                    _vm.modalsIsShowCreateTest = true
-                  }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.$t("translation.addTest")) +
-                    "\n                "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-12 mt-3" },
-            [
-              _c("vuetable", {
-                ref: "listTests",
-                attrs: {
-                  "api-url": "/api/admin/test",
-                  fields: _vm.fields,
-                  "pagination-path": "",
-                  css: _vm.css.table,
-                  "data-path": "data.data",
-                  "detail-row-component": "my-detail-row"
-                },
-                on: {
-                  "vuetable:load-success": _vm.hidePreloader,
-                  "vuetable:load-error": _vm.hidePreloader,
-                  "vuetable:pagination-data": _vm.onPaginationData,
-                  "vuetable:cell-clicked": _vm.onCellClicked
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "questions",
-                    fn: function(props) {
-                      return [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-outline-secondary btn-md",
-                            attrs: {
-                              href: "javascript:",
-                              title: _vm.$t("translation.edit")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.editTest(props.rowData.id)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-pencil",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("router-link")
-                      ]
-                    }
-                  },
-                  {
-                    key: "actions",
-                    fn: function(props) {
-                      return [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-outline-secondary btn-md",
-                            attrs: {
-                              href: "javascript:",
-                              title: _vm.$t("translation.edit")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.editTest(props.rowData.id)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-pencil",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-outline-danger btn-md",
-                            attrs: {
-                              type: "button",
-                              title: _vm.$t("translation.remove")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.destroyTest(props.rowData.id)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-trash-o" })]
-                        )
-                      ]
-                    }
-                  }
-                ])
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-12 m-3" },
-            [
-              _c("vuetable-pagination", {
-                ref: "pagination",
-                attrs: { css: _vm.css.pagination },
-                on: { "vuetable-pagination:change-page": _vm.onChangePage }
-              })
-            ],
-            1
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("modal-create-test"),
-      _vm._v(" "),
-      _c("modal-update-test"),
-      _vm._v(" "),
-      _c("modal-show-description")
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-433d5c06", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 390:
+/***/ 395:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(391)
+var __vue_script__ = __webpack_require__(396)
 /* template */
-var __vue_template__ = __webpack_require__(392)
+var __vue_template__ = __webpack_require__(397)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -5810,7 +5633,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 391:
+/***/ 396:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5832,11 +5655,11 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(257);
+var _admin = __webpack_require__(259);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _preload = __webpack_require__(74);
+var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
@@ -5977,7 +5800,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 392:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -6171,6 +5994,183 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-0620ccdd", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 398:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container-fluid" },
+    [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
+          _c("div", { staticClass: "col-md-10" }, [
+            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerTests")))])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 align-self-center" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary btn-md float-right",
+                attrs: { href: "javascript:" },
+                on: {
+                  click: function($event) {
+                    _vm.modalsIsShowCreateTest = true
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.$t("translation.addTest")) +
+                    "\n                "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-12 mt-3" },
+            [
+              _c("vuetable", {
+                ref: "listTests",
+                attrs: {
+                  "api-url": "/api/admin/test",
+                  fields: _vm.fields,
+                  "pagination-path": "",
+                  css: _vm.css.table,
+                  "data-path": "data.data",
+                  "detail-row-component": "my-detail-row"
+                },
+                on: {
+                  "vuetable:load-success": _vm.hidePreloader,
+                  "vuetable:load-error": _vm.hidePreloader,
+                  "vuetable:pagination-data": _vm.onPaginationData,
+                  "vuetable:cell-clicked": _vm.onCellClicked
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "questions",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-outline-secondary btn-md",
+                            attrs: {
+                              href: "javascript:",
+                              title: _vm.$t("translation.edit")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.editTest(props.rowData.id)
+                              }
+                            }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-pencil",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("router-link")
+                      ]
+                    }
+                  },
+                  {
+                    key: "actions",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-outline-secondary btn-md",
+                            attrs: {
+                              href: "javascript:",
+                              title: _vm.$t("translation.edit")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.editTest(props.rowData.id)
+                              }
+                            }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-pencil",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-danger btn-md",
+                            attrs: {
+                              type: "button",
+                              title: _vm.$t("translation.remove")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.destroyTest(props.rowData.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash-o" })]
+                        )
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-12 m-3" },
+            [
+              _c("vuetable-pagination", {
+                ref: "pagination",
+                attrs: { css: _vm.css.pagination },
+                on: { "vuetable-pagination:change-page": _vm.onChangePage }
+              })
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("modal-create-test"),
+      _vm._v(" "),
+      _c("modal-update-test"),
+      _vm._v(" "),
+      _c("modal-show-description")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-433d5c06", module.exports)
   }
 }
 

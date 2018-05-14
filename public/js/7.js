@@ -2652,7 +2652,7 @@ exports.default = {
                                 valid = _context.sent;
 
                                 if (!valid) {
-                                    _context.next = 16;
+                                    _context.next = 15;
                                     break;
                                 }
 
@@ -2664,14 +2664,20 @@ exports.default = {
                                 });
 
                             case 7:
-                                window.Cookies.set('first_stage', 3);
-                                _this.userFirstStage = 3;
+                                if (_this.userRole === 'user') {
+                                    window.Cookies.set('first_stage', 3);
+                                    _this.userFirstStage = 3;
+                                } else {
+                                    _this.$router.push({
+                                        name: 'admin.home'
+                                    });
+                                }
                                 _this.hide();
-                                _context.next = 16;
+                                _context.next = 15;
                                 break;
 
-                            case 12:
-                                _context.prev = 12;
+                            case 11:
+                                _context.prev = 11;
                                 _context.t0 = _context['catch'](4);
 
                                 _this.hide();
@@ -2680,12 +2686,12 @@ exports.default = {
                                     message: _this.$t(_context.t0.data.message)
                                 });
 
-                            case 16:
+                            case 15:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[4, 12]]);
+                }, _callee, _this, [[4, 11]]);
             }))();
         },
         authenticate: function authenticate(provider) {
@@ -2969,61 +2975,20 @@ var _Register = __webpack_require__(310);
 
 var registerModal = _interopRequireWildcard(_Register);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _user = __webpack_require__(31);
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var _user2 = _interopRequireDefault(_user);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 exports.default = {
     components: {
         loginModal: loginModal,
         registerModal: registerModal
     },
+    mixins: [_user2.default],
     data: function data() {
         return {
             isAdmin: true
@@ -3034,14 +2999,60 @@ exports.default = {
             title: this.$t('translation.homepage')
         };
     },
-    created: function created() {
-        if (!this.userRole === 'admin') {
+    mounted: function mounted() {
+        if (this.userRole === 'uni_admin' || this.userRole === 'global_admin') {
             this.$router.push({
                 name: 'admin.home'
             });
         }
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 

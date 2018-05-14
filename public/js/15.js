@@ -1,14 +1,14 @@
 webpackJsonp([15],{
 
-/***/ 252:
+/***/ 249:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(399)
+var __vue_script__ = __webpack_require__(375)
 /* template */
-var __vue_template__ = __webpack_require__(407)
+var __vue_template__ = __webpack_require__(383)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/pages/admin/tests/Questions.vue"
+Component.options.__file = "resources/assets/js/pages/admin/UniversityAdmins.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0c122ab2", Component.options)
+    hotAPI.createRecord("data-v-1baac36f", Component.options)
   } else {
-    hotAPI.reload("data-v-0c122ab2", Component.options)
+    hotAPI.reload("data-v-1baac36f", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -358,18 +358,45 @@ module.exports = {
 /***/ 256:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(3);
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends2 = __webpack_require__(0);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _schepotinVuexHelpers = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
+        namespace: 'admin',
+        prefix: false
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
+};
 
 /***/ }),
 
 /***/ 257:
 /***/ (function(module, exports, __webpack_require__) {
 
+exports.f = __webpack_require__(3);
+
+
+/***/ }),
+
+/***/ 258:
+/***/ (function(module, exports, __webpack_require__) {
+
 var global = __webpack_require__(2);
 var core = __webpack_require__(5);
 var LIBRARY = __webpack_require__(44);
-var wksExt = __webpack_require__(256);
+var wksExt = __webpack_require__(257);
 var defineProperty = __webpack_require__(15).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -379,7 +406,7 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 258:
+/***/ 259:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -478,33 +505,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)))
-
-/***/ }),
-
-/***/ 259:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends2 = __webpack_require__(0);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _schepotinVuexHelpers = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
-        namespace: 'admin',
-        prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
-};
 
 /***/ }),
 
@@ -1881,7 +1881,7 @@ module.exports = { "default": __webpack_require__(272), __esModule: true };
 
 __webpack_require__(78);
 __webpack_require__(83);
-module.exports = __webpack_require__(256).f('iterator');
+module.exports = __webpack_require__(257).f('iterator');
 
 
 /***/ }),
@@ -1922,8 +1922,8 @@ var shared = __webpack_require__(48);
 var setToStringTag = __webpack_require__(32);
 var uid = __webpack_require__(46);
 var wks = __webpack_require__(3);
-var wksExt = __webpack_require__(256);
-var wksDefine = __webpack_require__(257);
+var wksExt = __webpack_require__(257);
+var wksDefine = __webpack_require__(258);
 var enumKeys = __webpack_require__(277);
 var isArray = __webpack_require__(278);
 var anObject = __webpack_require__(12);
@@ -2293,7 +2293,7 @@ exports.f = __webpack_require__(13) ? gOPD : function getOwnPropertyDescriptor(O
 /***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(257)('asyncIterator');
+__webpack_require__(258)('asyncIterator');
 
 
 /***/ }),
@@ -2301,7 +2301,7 @@ __webpack_require__(257)('asyncIterator');
 /***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(257)('observable');
+__webpack_require__(258)('observable');
 
 
 /***/ }),
@@ -2322,7 +2322,7 @@ module.exports = __webpack_require__(284);
 var utils = __webpack_require__(255);
 var bind = __webpack_require__(261);
 var Axios = __webpack_require__(285);
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 
 /**
  * Create an instance of Axios
@@ -2379,7 +2379,7 @@ module.exports.default = axios;
 "use strict";
 
 
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 var utils = __webpack_require__(255);
 var InterceptorManager = __webpack_require__(294);
 var dispatchRequest = __webpack_require__(295);
@@ -2917,7 +2917,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(255);
 var transformData = __webpack_require__(296);
 var isCancel = __webpack_require__(264);
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -4547,9 +4547,13 @@ var BUTTON_COLOR_CONFIRM = exports.BUTTON_COLOR_CONFIRM = '#3085d6';
 var BUTTON_COLOR_CANCEL = exports.BUTTON_COLOR_CANCEL = '#d33d33';
 var IMAGE_MAX_SIZE = exports.IMAGE_MAX_SIZE = 3;
 
+var USER = exports.USER = 'user';
+var UNIVERSITY_ADMIN = exports.UNIVERSITY_ADMIN = 'uni_admin';
+var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
+
 /***/ }),
 
-/***/ 399:
+/***/ 375:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4575,9 +4579,9 @@ var _VuetablePagination = __webpack_require__(302);
 
 var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
 
-var _questions = __webpack_require__(400);
+var _universityAdmin = __webpack_require__(376);
 
-var _questions2 = _interopRequireDefault(_questions);
+var _universityAdmin2 = _interopRequireDefault(_universityAdmin);
 
 var _modals = __webpack_require__(43);
 
@@ -4587,17 +4591,21 @@ var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _CreateQuestion = __webpack_require__(401);
+var _user = __webpack_require__(31);
 
-var _CreateQuestion2 = _interopRequireDefault(_CreateQuestion);
+var _user2 = _interopRequireDefault(_user);
 
-var _UpdateQuestion = __webpack_require__(404);
+var _InviteUniversityAdmin = __webpack_require__(377);
 
-var _UpdateQuestion2 = _interopRequireDefault(_UpdateQuestion);
+var _InviteUniversityAdmin2 = _interopRequireDefault(_InviteUniversityAdmin);
+
+var _AssociateUniversityAdmin = __webpack_require__(380);
+
+var _AssociateUniversityAdmin2 = _interopRequireDefault(_AssociateUniversityAdmin);
 
 var _constants = __webpack_require__(307);
 
@@ -4607,28 +4615,100 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 exports.default = {
-    mixins: [_admin2.default, _modals2.default, _preload2.default, _questions2.default],
+    mixins: [_preload2.default, _modals2.default, _admin2.default, _user2.default, _universityAdmin2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default,
-        ModalCreateQuestion: _CreateQuestion2.default,
-        ModalUpdateQuestion: _UpdateQuestion2.default
+        ModalInviteUniversityAdmin: _InviteUniversityAdmin2.default,
+        ModalsAssociateUniversityAdmin: _AssociateUniversityAdmin2.default
+    },
+    data: function data() {
+        return {
+            constants: constants
+        };
     },
     mounted: function mounted() {
         this.showPreloader();
+        this.$store.dispatch('admin/getAllUniversities');
     },
 
-    watch: {
-        refreshTable: function refreshTable() {
-            if (this.refreshTable) {
-                this.$refs.listQuestions.refresh();
-                this.switchRefreshTable(false);
-            }
-        }
-    },
     methods: {
-        editQuestion: function editQuestion(id) {
+        onCellClicked: function onCellClicked(data) {
+            console.log(data);
+            this.universityUserId = data.id;
+            this.modalsIsShowAssociateUniversityAdmin = true;
+        },
+        onPaginationData: function onPaginationData(paginationData) {
+            this.$refs.paginationListUniversityAdministrators.setPaginationData(paginationData);
+        },
+        onChangePage: function onChangePage(page) {
+            this.$refs.listUniversityAdministrators.changePage(page);
+        },
+        setUniversityId: function setUniversityId(el) {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -4638,15 +4718,22 @@ exports.default = {
                             case 0:
                                 _context.prev = 0;
                                 _context.next = 3;
-                                return _this.$store.dispatch('admin/getQuestion', id);
+                                return _this.$store.dispatch('admin/associate', {
+                                    user_id: el.target.dataset.id,
+                                    university_id: el.target.value
+                                });
 
                             case 3:
-                                _this.modalsIsShowUpdateQuestion = true;
-                                _context.next = 9;
+                                _this.$refs.listUniversityAdministrators.refresh();
+                                _this.$toast.success({
+                                    title: _this.$t('translation.success'),
+                                    message: _this.$t('translation.universityChanged')
+                                });
+                                _context.next = 10;
                                 break;
 
-                            case 6:
-                                _context.prev = 6;
+                            case 7:
+                                _context.prev = 7;
                                 _context.t0 = _context['catch'](0);
 
                                 _this.$toast.error({
@@ -4654,140 +4741,20 @@ exports.default = {
                                     message: _this.$t(_context.t0.message)
                                 });
 
-                            case 9:
+                            case 10:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[0, 6]]);
+                }, _callee, _this, [[0, 7]]);
             }))();
-        },
-        destroyQuestion: function destroyQuestion(id) {
-            var _this2 = this;
-
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-                var result;
-                return _regenerator2.default.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.next = 2;
-                                return _this2.$swal({
-                                    title: _this2.$t('translation.areYouSure'),
-                                    type: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: constants.BUTTON_COLOR_CONFIRM,
-                                    confirmButtonText: _this2.$t('translation.yes'),
-                                    cancelButtonColor: constants.BUTTON_COLOR_CANCEL,
-                                    cancelButtonText: _this2.$t('translation.cancel')
-                                });
-
-                            case 2:
-                                result = _context2.sent;
-
-                                if (!result.value) {
-                                    _context2.next = 14;
-                                    break;
-                                }
-
-                                _context2.prev = 4;
-                                _context2.next = 7;
-                                return _this2.$store.dispatch('admin/destroyQuestion', id);
-
-                            case 7:
-                                _this2.$refs.listQuestions.refresh();
-                                _this2.showPreloader();
-                                _context2.next = 14;
-                                break;
-
-                            case 11:
-                                _context2.prev = 11;
-                                _context2.t0 = _context2['catch'](4);
-
-                                _this2.$toast.error({
-                                    title: _this2.$t('translation.error'),
-                                    message: _this2.$t(_context2.t0.statusText)
-                                });
-
-                            case 14:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, _this2, [[4, 11]]);
-            }))();
-        },
-        onPaginationData: function onPaginationData(paginationData) {
-            this.$refs.pagination.setPaginationData(paginationData);
-        },
-        onChangePage: function onChangePage(page) {
-            this.$refs.listQuestions.changePage(page);
         }
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 
-/***/ 400:
+/***/ 376:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4799,10 +4766,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     data: function data() {
         return {
-            fields: [{
-                name: 'test_id',
-                sortField: 'test_id',
-                title: this.$t('translation.testId'),
+            fieldsListUniversityAdministrators: [{
+                name: 'surname',
+                sortField: 'surname',
+                title: this.$t('translation.surname'),
                 titleClass: 'text-left',
                 dataClass: 'text-left'
             }, {
@@ -4812,31 +4779,33 @@ exports.default = {
                 titleClass: 'text-left',
                 dataClass: 'text-left'
             }, {
-                name: 'type',
-                sortField: 'type',
-                title: this.$t('translation.typeTest'),
+                name: 'email',
+                sortField: 'email',
+                title: this.$t('translation.email'),
                 titleClass: 'text-left',
                 dataClass: 'text-left'
             }, {
-                name: 'type_fill',
-                sortField: 'type_fill',
-                title: this.$t('translation.typeFillTest'),
+                name: '__slot:university',
+                title: this.$t('translation.universityAdmin'),
                 titleClass: 'text-left',
                 dataClass: 'text-left'
             }, {
-                name: '__slot:answers',
-                title: this.$t('translation.answers'),
+                name: 'created_at',
+                sortField: 'created_at',
+                title: this.$t('translation.created_at'),
                 titleClass: 'text-center',
                 dataClass: 'text-center'
-            }, {
-                name: '__slot:actions',
-                title: this.$t('translation.actions'),
+            }],
+            fieldsInvites: [{
+                name: 'created_at',
+                sortField: 'created_at',
+                title: this.$t('translation.created_at'),
                 titleClass: 'text-center',
                 dataClass: 'text-center'
             }],
             css: {
                 table: {
-                    tableClass: 'table table-hover cursor-pointer',
+                    tableClass: 'table',
                     loadingClass: 'loading',
                     ascendingIcon: 'fa fa-angle-up ',
                     descendingIcon: 'fa fa-angle-down ',
@@ -4863,15 +4832,15 @@ exports.default = {
 
 /***/ }),
 
-/***/ 401:
+/***/ 377:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(402)
+var __vue_script__ = __webpack_require__(378)
 /* template */
-var __vue_template__ = __webpack_require__(403)
+var __vue_template__ = __webpack_require__(379)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4888,7 +4857,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/CreateQuestion.vue"
+Component.options.__file = "resources/assets/js/components/admin/modals/InviteUniversityAdmin.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -4897,9 +4866,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3a5fc738", Component.options)
+    hotAPI.createRecord("data-v-1e2700a6", Component.options)
   } else {
-    hotAPI.reload("data-v-3a5fc738", Component.options)
+    hotAPI.reload("data-v-1e2700a6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -4911,7 +4880,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 402:
+/***/ 378:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4933,7 +4902,7 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -4945,84 +4914,100 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
     mixins: [_modals2.default, _admin2.default, _preload2.default],
-    data: function data() {
-        return {};
+    mounted: function mounted() {
+        var _this = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+            return _regenerator2.default.wrap(function _callee$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            _context.next = 2;
+                            return _this.$store.dispatch('admin/getAllUniversities');
+
+                        case 2:
+                            _this.universityId = _this.universities[0].id;
+
+                        case 3:
+                        case 'end':
+                            return _context.stop();
+                    }
+                }
+            }, _callee, _this);
+        }))();
     },
 
     methods: {
         hide: function hide() {
-            this.modalsIsShowCreateQuestion = false;
+            this.modalsIsShowInviteUniversityAdmin = false;
 
-            this.questionTestId = null;
-            this.questionName = null;
-            this.questionType = null;
-            this.questionTypeFill = null;
+            this.universityEmail = null;
+            this.universityId = null;
         },
-        createQuestion: function createQuestion() {
-            var _this = this;
+        inviteUniversityAdmin: function inviteUniversityAdmin() {
+            var _this2 = this;
 
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
                 var valid;
-                return _regenerator2.default.wrap(function _callee$(_context) {
+                return _regenerator2.default.wrap(function _callee2$(_context2) {
                     while (1) {
-                        switch (_context.prev = _context.next) {
+                        switch (_context2.prev = _context2.next) {
                             case 0:
-                                _context.next = 2;
-                                return _this.$validator.validateAll();
+                                _context2.next = 2;
+                                return _this2.$validator.validateAll();
 
                             case 2:
-                                valid = _context.sent;
+                                valid = _context2.sent;
 
                                 if (!valid) {
-                                    _context.next = 16;
+                                    _context2.next = 17;
                                     break;
                                 }
 
-                                _context.prev = 4;
+                                _context2.prev = 4;
 
-                                _this.showPreloader();
-                                _context.next = 8;
-                                return _this.$store.dispatch('admin/createQuestion', {
-                                    test_id: _this.questionTestId,
-                                    name: _this.questionName,
-                                    type: _this.questionType,
-                                    type_fill: _this.questionTypeFill
+                                _this2.showPreloader();
+                                _context2.next = 8;
+                                return _this2.$store.dispatch('admin/sendInviteUniversityAdmin', {
+                                    email: _this2.universityEmail,
+                                    university_id: _this2.universityId
                                 });
 
                             case 8:
-                                _this.switchRefreshTable(true);
-                                _this.$toast.success({
-                                    title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.createQuestion')
+                                _this2.hide();
+                                _this2.switchRefreshTable(true);
+                                _this2.$toast.success({
+                                    title: _this2.$t('translation.success'),
+                                    message: _this2.$t('translation.inviteUniversityAdminSent')
                                 });
-                                _context.next = 15;
+                                _context2.next = 16;
                                 break;
 
-                            case 12:
-                                _context.prev = 12;
-                                _context.t0 = _context['catch'](4);
+                            case 13:
+                                _context2.prev = 13;
+                                _context2.t0 = _context2['catch'](4);
 
-                                if (_context.t0.status === 404) {
-                                    _this.$toast.error({
-                                        title: _this.$t('translation.error'),
-                                        message: _this.$t('translation.error')
+                                if (_context2.t0.status === 404) {
+                                    _this2.$toast.error({
+                                        title: _this2.$t('translation.error'),
+                                        message: _this2.$t('translation.inviteNotFound')
                                     });
                                 } else {
-                                    _this.$toast.error({
-                                        title: _this.$t('translation.error'),
-                                        message: _this.$t(_context.t0.message)
+                                    _this2.$toast.error({
+                                        title: _this2.$t('translation.error'),
+                                        message: _this2.$t(_context2.t0.data.message)
                                     });
                                 }
 
-                            case 15:
-                                _this.hide();
-
                             case 16:
+                                _this2.hidePreloader();
+
+                            case 17:
                             case 'end':
-                                return _context.stop();
+                                return _context2.stop();
                         }
                     }
-                }, _callee, _this, [[4, 12]]);
+                }, _callee2, _this2, [[4, 13]]);
             }))();
         }
     }
@@ -5069,35 +5054,10 @@ exports.default = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
 
-/***/ 403:
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5105,279 +5065,167 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowCreateQuestion
+    _vm.modalsIsShowInviteUniversityAdmin
       ? _c("div", { staticClass: "modal__wrap" }, [
-          _c("div", { staticClass: "modal__content modal__md" }, [
-            _c("h4", { staticClass: "modal__head" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.$t("translation.createQuestion")) +
-                  "\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal__body" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "questionName" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.questionName")))
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|max:255",
-                      expression: "'required|max:255'"
-                    },
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.questionName,
-                      expression: "questionName"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "questionName",
-                    "aria-describedby": "questionNameHelp",
-                    placeholder: _vm.$t("translation.questionNamePlaceholder"),
-                    name: "questionName",
-                    "data-vv-as": _vm.$t("translation.questionName")
-                  },
-                  domProps: { value: _vm.questionName },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.questionName = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "small",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("questionName"),
-                        expression: "errors.has('questionName')"
-                      }
-                    ],
-                    staticClass: "form-text text-danger",
-                    attrs: { id: "questionNameHelp" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.errors.first("questionName")) +
-                        "\n                    "
-                    )
-                  ]
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "click-outside",
+                  rawName: "v-click-outside",
+                  value: _vm.hide,
+                  expression: "hide"
+                }
+              ],
+              staticClass: "modal__content modal__md"
+            },
+            [
+              _c("h4", { staticClass: "modal__head" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("translation.inviteUniversityAdmin")) +
+                    "\n            "
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
-                  _vm._v(_vm._s(_vm.$t("translation.typeTest")))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.questionType,
-                          expression: "questionType"
-                        }
-                      ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "radio",
-                        name: "inlineRadioOptions",
-                        id: "inlineRadio1",
-                        value: "option1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.questionType, "option1")
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.questionType = "option1"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "inlineRadio1" }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("translation.typeTestOne")))]
-                    )
+              _c("div", { staticClass: "modal__body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityEmail" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityEmail")))
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|email|max:255",
+                        expression: "'required|email|max:255'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityEmail,
+                        expression: "universityEmail"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "email",
+                      id: "universityEmail",
+                      "aria-describedby": "universityEmailHelp",
+                      placeholder: _vm.$t(
+                        "translation.universityEmailPlaceholder"
+                      ),
+                      name: "universityEmail",
+                      "data-vv-as": _vm.$t("translation.universityEmail")
+                    },
+                    domProps: { value: _vm.universityEmail },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityEmail = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
                       directives: [
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.questionType,
-                          expression: "questionType"
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universityEmail"),
+                          expression: "errors.has('universityEmail')"
                         }
                       ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "radio",
-                        name: "inlineRadioOptions",
-                        id: "inlineRadio2",
-                        value: "option2"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.questionType, "option2")
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.questionType = "option2"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "inlineRadio2" }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("translation.typeTestPoly")))]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
-                  _vm._v(_vm._s(_vm.$t("translation.typeFillTest")))
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityEmailHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universityEmail")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.questionTypeFill,
-                          expression: "questionTypeFill"
-                        }
-                      ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "radio",
-                        name: "inlineRadioOptions",
-                        id: "inlineRadio3",
-                        value: "option1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.questionTypeFill, "option1")
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.questionTypeFill = "option1"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "inlineRadio3" }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("translation.typeFillAuto")))]
-                    )
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universities" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.university")))
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
-                      directives: [
+                  this.universities
+                    ? _c(
+                        "select",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.questionTypeFill,
-                          expression: "questionTypeFill"
-                        }
-                      ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "radio",
-                        name: "inlineRadioOptions",
-                        id: "inlineRadio4",
-                        value: "option2"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.questionTypeFill, "option2")
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.questionTypeFill = "option2"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "inlineRadio4" }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("translation.typeFillManually")))]
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.universityId,
+                              expression: "universityId"
+                            }
+                          ],
+                          staticClass: "select-style",
+                          attrs: { name: "type_field", id: "universities" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.universityId = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
+                        },
+                        _vm._l(this.universities, function(university) {
+                          return _c(
+                            "option",
+                            { domProps: { value: university.id } },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(university.name) +
+                                  "\n                        "
+                              )
+                            ]
+                          )
+                        })
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-md btn-success float-right mt-4",
+                    attrs: { type: "button" },
+                    on: { click: _vm.inviteUniversityAdmin }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.send")) +
+                        "\n                "
                     )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-secondary float-right mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.hide }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.close")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-success mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.createQuestion }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.save")) +
-                      "\n                "
-                  )
-                ]
-              )
-            ])
-          ])
+                  ]
+                )
+              ])
+            ]
+          )
         ])
       : _vm._e()
   ])
@@ -5388,21 +5236,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3a5fc738", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1e2700a6", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 404:
+/***/ 380:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(405)
+var __vue_script__ = __webpack_require__(381)
 /* template */
-var __vue_template__ = __webpack_require__(406)
+var __vue_template__ = __webpack_require__(382)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -5419,7 +5267,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/UpdateQuestion.vue"
+Component.options.__file = "resources/assets/js/components/admin/modals/AssociateUniversityAdmin.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -5428,9 +5276,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-322c68b1", Component.options)
+    hotAPI.createRecord("data-v-0d1324c5", Component.options)
   } else {
-    hotAPI.reload("data-v-322c68b1", Component.options)
+    hotAPI.reload("data-v-0d1324c5", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -5442,7 +5290,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 405:
+/***/ 381:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5452,19 +5300,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _regenerator = __webpack_require__(9);
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(10);
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
 var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -5476,85 +5316,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
     mixins: [_modals2.default, _admin2.default, _preload2.default],
-    data: function data() {
-        return {};
-    },
-
     methods: {
         hide: function hide() {
-            this.modalsIsShowCreateQuestion = false;
+            this.modalsIsShowAssociateUniversityAdmin = false;
 
-            this.questionTestId = null;
-            this.questionName = null;
-            this.questionType = null;
-            this.questionTypeFill = null;
-        },
-        updateQuestion: function updateQuestion() {
-            var _this = this;
-
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-                var valid;
-                return _regenerator2.default.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _this.$validator.validateAll();
-
-                            case 2:
-                                valid = _context.sent;
-
-                                if (!valid) {
-                                    _context.next = 16;
-                                    break;
-                                }
-
-                                _context.prev = 4;
-
-                                _this.showPreloader();
-                                _context.next = 8;
-                                return _this.$store.dispatch('admin/updateQuestion', {
-                                    test_id: _this.questionTestId,
-                                    name: _this.questionName,
-                                    type: _this.questionType,
-                                    type_fill: _this.questionTypeFill
-                                });
-
-                            case 8:
-                                _this.switchRefreshTable(true);
-                                _this.$toast.success({
-                                    title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.createTest')
-                                });
-                                _context.next = 15;
-                                break;
-
-                            case 12:
-                                _context.prev = 12;
-                                _context.t0 = _context['catch'](4);
-
-                                if (_context.t0.status === 404) {
-                                    _this.$toast.error({
-                                        title: _this.$t('translation.error'),
-                                        message: _this.$t('translation.error')
-                                    });
-                                } else {
-                                    _this.$toast.error({
-                                        title: _this.$t('translation.error'),
-                                        message: _this.$t(_context.t0.message)
-                                    });
-                                }
-
-                            case 15:
-                                _this.hide();
-
-                            case 16:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, _this, [[4, 12]]);
-            }))();
+            this.universityAddress = null;
+            this.universityZipCode = null;
+            this.universityDescription = null;
         }
     }
 }; //
@@ -5590,45 +5358,10 @@ exports.default = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
 
-/***/ 406:
+/***/ 382:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5636,279 +5369,90 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowUpdateQuestion
+    _vm.modalsIsShowAssociateUniversityAdmin
       ? _c("div", { staticClass: "modal__wrap" }, [
-          _c("div", { staticClass: "modal__content modal__md" }, [
-            _c("h4", { staticClass: "modal__head" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.$t("translation.updateQuestion")) +
-                  "\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal__body" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "questionName" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.questionName")))
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|max:255",
-                      expression: "'required|max:255'"
-                    },
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.questionName,
-                      expression: "questionName"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "questionName",
-                    "aria-describedby": "questionNameHelp",
-                    placeholder: _vm.$t("translation.questionNamePlaceholder"),
-                    name: "questionName",
-                    "data-vv-as": _vm.$t("translation.questionName")
-                  },
-                  domProps: { value: _vm.questionName },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.questionName = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "small",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("questionName"),
-                        expression: "errors.has('questionName')"
-                      }
-                    ],
-                    staticClass: "form-text text-danger",
-                    attrs: { id: "questionNameHelp" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.errors.first("questionName")) +
-                        "\n                    "
-                    )
-                  ]
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "click-outside",
+                  rawName: "v-click-outside",
+                  value: _vm.hide,
+                  expression: "hide"
+                }
+              ],
+              staticClass: "modal__content modal__md"
+            },
+            [
+              _c("h4", { staticClass: "modal__head" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("translation.moreInfo")) +
+                    "\n            "
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
-                  _vm._v(_vm._s(_vm.$t("translation.typeTest")))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.questionType,
-                          expression: "questionType"
-                        }
-                      ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "radio",
-                        name: "inlineRadioOptions",
-                        id: "inlineRadio1",
-                        value: "option1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.questionType, "option1")
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.questionType = "option1"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "inlineRadio1" }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("translation.typeTestOne")))]
-                    )
+              _c("div", { staticClass: "modal__body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityAddress" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityAddress")))
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
-                      directives: [
+                  _vm.universities
+                    ? _c(
+                        "select",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.questionType,
-                          expression: "questionType"
-                        }
-                      ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "radio",
-                        name: "inlineRadioOptions",
-                        id: "inlineRadio2",
-                        value: "option2"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.questionType, "option2")
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.questionType = "option2"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "inlineRadio2" }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("translation.typeTestPoly")))]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
-                  _vm._v(_vm._s(_vm.$t("translation.typeFillTest")))
+                          staticClass: "select-style",
+                          attrs: {
+                            "data-id": _vm.props.rowData.university_id,
+                            name: "university_id"
+                          },
+                          domProps: { value: _vm.props.rowData.university_id }
+                        },
+                        [
+                          _vm._v("-->\n                        "),
+                          _c("option", { domProps: { value: null } }, [
+                            _vm._v(_vm._s(_vm.$t("translation.noData")))
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.universities, function(item) {
+                            return _c(
+                              "option",
+                              { domProps: { value: item.id } },
+                              [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(item.name) +
+                                    "\n                        "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.questionTypeFill,
-                          expression: "questionTypeFill"
-                        }
-                      ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "radio",
-                        name: "inlineRadioOptions",
-                        id: "inlineRadio3",
-                        value: "option1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.questionTypeFill, "option1")
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.questionTypeFill = "option1"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "inlineRadio3" }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("translation.typeFillAuto")))]
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-md btn-secondary float-right mt-4",
+                    attrs: { type: "button" },
+                    on: { click: _vm.hide }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.close")) +
+                        "\n                "
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.questionTypeFill,
-                          expression: "questionTypeFill"
-                        }
-                      ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "radio",
-                        name: "inlineRadioOptions",
-                        id: "inlineRadio4",
-                        value: "option2"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.questionTypeFill, "option2")
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.questionTypeFill = "option2"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "inlineRadio4" }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("translation.typeFillManually")))]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-secondary float-right mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.hide }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.close")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-success mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.updateQuestion }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.save")) +
-                      "\n                "
-                  )
-                ]
-              )
-            ])
-          ])
+                  ]
+                )
+              ])
+            ]
+          )
         ])
       : _vm._e()
   ])
@@ -5919,13 +5463,13 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-322c68b1", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0d1324c5", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 407:
+/***/ 383:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5936,10 +5480,34 @@ var render = function() {
     "div",
     { staticClass: "container-fluid" },
     [
-      _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "col-md-12 mb-5" }, [
         _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
           _c("div", { staticClass: "col-md-10" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerQuestions")))])
+            _c("h1", [
+              _vm._v(_vm._s(_vm.$t("translation.managerUniversityAdmin")))
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 align-self-center" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary btn-md float-right",
+                attrs: { href: "javascript:" },
+                on: {
+                  click: function($event) {
+                    _vm.modalsIsShowInviteUniversityAdmin = true
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.$t("translation.addInvite")) +
+                    "\n                "
+                )
+              ]
+            )
           ]),
           _vm._v(" "),
           _c(
@@ -5947,70 +5515,67 @@ var render = function() {
             { staticClass: "col-md-12 mt-3" },
             [
               _c("vuetable", {
-                ref: "listQuestions",
+                ref: "listUniversityAdministrators",
                 attrs: {
-                  "api-url": "/api/admin/questions",
-                  fields: _vm.fields,
-                  "pagination-path": "",
+                  "api-url":
+                    "https://itpm-194220.appspot.com/api/admin/users?role=" +
+                    _vm.constants.UNIVERSITY_ADMIN,
+                  fields: _vm.fieldsListUniversityAdministrators,
+                  "pagination-path": "data",
                   css: _vm.css.table,
                   "data-path": "data.data",
-                  "detail-row-component": "my-detail-row"
+                  "http-options": {
+                    headers: {
+                      Authorization: "Bearer " + _vm.userToken
+                    }
+                  }
                 },
                 on: {
                   "vuetable:load-success": _vm.hidePreloader,
-                  "vuetable:load-error": _vm.hidePreloader,
                   "vuetable:pagination-data": _vm.onPaginationData,
                   "vuetable:cell-clicked": _vm.onCellClicked
                 },
                 scopedSlots: _vm._u([
                   {
-                    key: "answers",
-                    fn: function(props) {
-                      return [_c("router-link")]
-                    }
-                  },
-                  {
-                    key: "actions",
+                    key: "university",
                     fn: function(props) {
                       return [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-outline-secondary btn-md",
-                            attrs: {
-                              href: "javascript:",
-                              title: _vm.$t("translation.edit")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.editQuestion(props.rowData.id)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-pencil",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-outline-danger btn-md",
-                            attrs: {
-                              type: "button",
-                              title: _vm.$t("translation.remove")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.destroyQuestion(props.rowData.id)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-trash-o" })]
-                        )
+                        _vm.universities
+                          ? _c(
+                              "select",
+                              {
+                                staticClass: "select-style",
+                                attrs: {
+                                  name: "university_id",
+                                  "data-id": props.rowData.id
+                                },
+                                domProps: {
+                                  value: props.rowData.university_id
+                                },
+                                on: { change: _vm.setUniversityId }
+                              },
+                              [
+                                _c("option", { attrs: { value: "" } }, [
+                                  _vm._v(_vm._s(_vm.$t("translation.noData")))
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(_vm.universities, function(item) {
+                                  return _c(
+                                    "option",
+                                    { domProps: { value: item.id } },
+                                    [
+                                      _vm._v(
+                                        "\n                                " +
+                                          _vm._s(item.name) +
+                                          "\n                            "
+                                      )
+                                    ]
+                                  )
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e()
                       ]
                     }
                   }
@@ -6025,7 +5590,7 @@ var render = function() {
             { staticClass: "col-md-12 m-3" },
             [
               _c("vuetable-pagination", {
-                ref: "pagination",
+                ref: "paginationListUniversityAdministrators",
                 attrs: { css: _vm.css.pagination },
                 on: { "vuetable-pagination:change-page": _vm.onChangePage }
               })
@@ -6035,9 +5600,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("modal-create-question"),
-      _vm._v(" "),
-      _c("modal-update-question")
+      _c("modal-invite-university-admin")
     ],
     1
   )
@@ -6048,7 +5611,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0c122ab2", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1baac36f", module.exports)
   }
 }
 

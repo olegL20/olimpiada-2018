@@ -1,14 +1,14 @@
 webpackJsonp([5],{
 
-/***/ 249:
+/***/ 250:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(375)
+var __vue_script__ = __webpack_require__(384)
 /* template */
-var __vue_template__ = __webpack_require__(380)
+var __vue_template__ = __webpack_require__(392)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/pages/admin/UniversityAdmins.vue"
+Component.options.__file = "resources/assets/js/pages/admin/Coefficients.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1baac36f", Component.options)
+    hotAPI.createRecord("data-v-279e8a9b", Component.options)
   } else {
-    hotAPI.reload("data-v-1baac36f", Component.options)
+    hotAPI.reload("data-v-279e8a9b", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -358,18 +358,45 @@ module.exports = {
 /***/ 256:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(3);
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends2 = __webpack_require__(0);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _schepotinVuexHelpers = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
+        namespace: 'admin',
+        prefix: false
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
+};
 
 /***/ }),
 
 /***/ 257:
 /***/ (function(module, exports, __webpack_require__) {
 
+exports.f = __webpack_require__(3);
+
+
+/***/ }),
+
+/***/ 258:
+/***/ (function(module, exports, __webpack_require__) {
+
 var global = __webpack_require__(2);
 var core = __webpack_require__(5);
 var LIBRARY = __webpack_require__(44);
-var wksExt = __webpack_require__(256);
+var wksExt = __webpack_require__(257);
 var defineProperty = __webpack_require__(15).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -379,7 +406,7 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 258:
+/***/ 259:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -478,33 +505,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)))
-
-/***/ }),
-
-/***/ 259:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends2 = __webpack_require__(0);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _schepotinVuexHelpers = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
-        namespace: 'admin',
-        prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
-};
 
 /***/ }),
 
@@ -1881,7 +1881,7 @@ module.exports = { "default": __webpack_require__(272), __esModule: true };
 
 __webpack_require__(78);
 __webpack_require__(83);
-module.exports = __webpack_require__(256).f('iterator');
+module.exports = __webpack_require__(257).f('iterator');
 
 
 /***/ }),
@@ -1922,8 +1922,8 @@ var shared = __webpack_require__(48);
 var setToStringTag = __webpack_require__(32);
 var uid = __webpack_require__(46);
 var wks = __webpack_require__(3);
-var wksExt = __webpack_require__(256);
-var wksDefine = __webpack_require__(257);
+var wksExt = __webpack_require__(257);
+var wksDefine = __webpack_require__(258);
 var enumKeys = __webpack_require__(277);
 var isArray = __webpack_require__(278);
 var anObject = __webpack_require__(12);
@@ -2293,7 +2293,7 @@ exports.f = __webpack_require__(13) ? gOPD : function getOwnPropertyDescriptor(O
 /***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(257)('asyncIterator');
+__webpack_require__(258)('asyncIterator');
 
 
 /***/ }),
@@ -2301,7 +2301,7 @@ __webpack_require__(257)('asyncIterator');
 /***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(257)('observable');
+__webpack_require__(258)('observable');
 
 
 /***/ }),
@@ -2322,7 +2322,7 @@ module.exports = __webpack_require__(284);
 var utils = __webpack_require__(255);
 var bind = __webpack_require__(261);
 var Axios = __webpack_require__(285);
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 
 /**
  * Create an instance of Axios
@@ -2379,7 +2379,7 @@ module.exports.default = axios;
 "use strict";
 
 
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 var utils = __webpack_require__(255);
 var InterceptorManager = __webpack_require__(294);
 var dispatchRequest = __webpack_require__(295);
@@ -2917,7 +2917,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(255);
 var transformData = __webpack_require__(296);
 var isCancel = __webpack_require__(264);
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -4534,7 +4534,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 375:
+/***/ 384:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4552,21 +4552,29 @@ var _VuetablePagination = __webpack_require__(302);
 
 var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
 
-var _major = __webpack_require__(376);
+var _coefficient = __webpack_require__(385);
 
-var _major2 = _interopRequireDefault(_major);
+var _coefficient2 = _interopRequireDefault(_coefficient);
 
 var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
+var _user = __webpack_require__(31);
+
+var _user2 = _interopRequireDefault(_user);
+
 var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-var _InviteUniversityAdmin = __webpack_require__(377);
+var _CreateCoefficient = __webpack_require__(386);
 
-var _InviteUniversityAdmin2 = _interopRequireDefault(_InviteUniversityAdmin);
+var _CreateCoefficient2 = _interopRequireDefault(_CreateCoefficient);
+
+var _UpdateCoefficient = __webpack_require__(389);
+
+var _UpdateCoefficient2 = _interopRequireDefault(_UpdateCoefficient);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4609,13 +4617,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 exports.default = {
-    mixins: [_preload2.default, _modals2.default, _major2.default],
+    mixins: [_preload2.default, _modals2.default, _user2.default, _coefficient2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default,
-        ModalInviteUniversityAdmin: _InviteUniversityAdmin2.default
+        ModalCreateCoefficient: _CreateCoefficient2.default,
+        ModalUpdateCoefficient: _UpdateCoefficient2.default
     },
     mounted: function mounted() {
         // this.showPreloader();
@@ -4633,7 +4648,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 376:
+/***/ 385:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4645,66 +4660,33 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     data: function data() {
         return {
-            fields: [
-            // {
-            //     name: 'name',
-            //     sortField: 'name',
-            //     title: this.$t('translation.name'),
-            //     titleClass: 'text-left',
-            //     dataClass: 'text-left',
-            // },
-            {
-                name: 'email',
-                sortField: 'email',
-                title: this.$t('translation.email'),
+            fields: [{
+                name: 'name',
+                sortField: 'name',
+                title: this.$t('translation.name'),
                 titleClass: 'text-left',
                 dataClass: 'text-left'
-            },
-            // {
-            //     name: 'address',
-            //     sortField: 'address',
-            //     title: this.$t('translation.address'),
-            //     titleClass: 'text-left',
-            //     dataClass: 'text-left',
-            // },
-            // {
-            //     name: 'phone',
-            //     sortField: 'phone',
-            //     title: this.$t('translation.phone'),
-            //     titleClass: 'text-left',
-            //     dataClass: 'text-left',
-            // },
-            // {
-            //     name: 'site',
-            //     sortField: 'site',
-            //     title: this.$t('translation.site'),
-            //     titleClass: 'text-left',
-            //     dataClass: 'text-left',
-            // },
-            // {
-            //     name: 'zip_code',
-            //     sortField: 'zip_code',
-            //     title: this.$t('translation.zip_code'),
-            //     titleClass: 'text-center',
-            //     dataClass: 'text-center',
-            // },
-            // {
-            //     name: '__slot:description',
-            //     sortField: 'description',
-            //     title: this.$t('translation.description'),
-            //     titleClass: 'text-left',
-            //     dataClass: 'text-left ellipsis',
-            // },
-            {
-                name: 'created_at',
-                sortField: 'created_at',
-                title: this.$t('translation.created_at'),
+            }, {
+                name: 'major_id',
+                sortField: 'major_id',
+                title: this.$t('translation.majorId'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'coefficient',
+                sortField: 'coefficient',
+                title: this.$t('translation.coefficient'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: '__slot:actions',
+                title: this.$t('translation.actions'),
                 titleClass: 'text-center',
                 dataClass: 'text-center'
             }],
             css: {
                 table: {
-                    tableClass: 'table',
+                    tableClass: 'table table-hover cursor-pointer',
                     loadingClass: 'loading',
                     ascendingIcon: 'fa fa-angle-up ',
                     descendingIcon: 'fa fa-angle-down ',
@@ -4731,15 +4713,15 @@ exports.default = {
 
 /***/ }),
 
-/***/ 377:
+/***/ 386:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(378)
+var __vue_script__ = __webpack_require__(387)
 /* template */
-var __vue_template__ = __webpack_require__(379)
+var __vue_template__ = __webpack_require__(388)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4756,7 +4738,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/InviteUniversityAdmin.vue"
+Component.options.__file = "resources/assets/js/components/admin/modals/CreateCoefficient.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -4765,9 +4747,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1e2700a6", Component.options)
+    hotAPI.createRecord("data-v-0f6db6a7", Component.options)
   } else {
-    hotAPI.reload("data-v-1e2700a6", Component.options)
+    hotAPI.reload("data-v-0f6db6a7", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -4779,7 +4761,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 378:
+/***/ 387:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4801,7 +4783,7 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -4813,100 +4795,90 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
     mixins: [_modals2.default, _admin2.default, _preload2.default],
-    mounted: function mounted() {
-        var _this = this;
-
-        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-            return _regenerator2.default.wrap(function _callee$(_context) {
-                while (1) {
-                    switch (_context.prev = _context.next) {
-                        case 0:
-                            _context.next = 2;
-                            return _this.$store.dispatch('admin/getAllUniversities');
-
-                        case 2:
-                            _this.universityId = _this.universities[0].id;
-
-                        case 3:
-                        case 'end':
-                            return _context.stop();
-                    }
-                }
-            }, _callee, _this);
-        }))();
+    data: function data() {
+        return {
+            options: [{
+                name: '1',
+                id: 1
+            }, {
+                name: '2',
+                id: 2
+            }]
+        };
     },
 
     methods: {
         hide: function hide() {
-            this.modalsIsShowInviteUniversityAdmin = false;
+            this.modalsIsShowCreateCoefficient = false;
 
-            this.universityEmail = null;
-            this.universityId = null;
+            this.coefficientMajorId = null;
+            this.coefficientName = null;
+            this.coefficientCoefficient = null;
         },
-        inviteUniversityAdmin: function inviteUniversityAdmin() {
-            var _this2 = this;
+        createCoefficient: function createCoefficient() {
+            var _this = this;
 
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
                 var valid;
-                return _regenerator2.default.wrap(function _callee2$(_context2) {
+                return _regenerator2.default.wrap(function _callee$(_context) {
                     while (1) {
-                        switch (_context2.prev = _context2.next) {
+                        switch (_context.prev = _context.next) {
                             case 0:
-                                _context2.next = 2;
-                                return _this2.$validator.validateAll();
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
 
                             case 2:
-                                valid = _context2.sent;
+                                valid = _context.sent;
 
                                 if (!valid) {
-                                    _context2.next = 17;
+                                    _context.next = 16;
                                     break;
                                 }
 
-                                _context2.prev = 4;
+                                _context.prev = 4;
 
-                                _this2.showPreloader();
-                                _context2.next = 8;
-                                return _this2.$store.dispatch('admin/sendInviteUniversityAdmin', {
-                                    email: _this2.universityEmail,
-                                    university_id: _this2.universityId
+                                _this.showPreloader();
+                                _context.next = 8;
+                                return _this.$store.dispatch('admin/createCoefficient', {
+                                    major_id: _this.coefficientMajorId,
+                                    name: _this.coefficientName,
+                                    coefficient: _this.coefficientCoefficient
                                 });
 
                             case 8:
-                                _this2.hide();
-                                _this2.switchRefreshTable(true);
-                                _this2.$toast.success({
-                                    title: _this2.$t('translation.success'),
-                                    message: _this2.$t('translation.inviteUniversityAdminSent')
+                                _this.switchRefreshTable(true);
+                                _this.$toast.success({
+                                    title: _this.$t('translation.success'),
+                                    message: _this.$t('translation.createdCoefficient')
                                 });
-                                _context2.next = 16;
+                                _context.next = 15;
                                 break;
 
-                            case 13:
-                                _context2.prev = 13;
-                                _context2.t0 = _context2['catch'](4);
+                            case 12:
+                                _context.prev = 12;
+                                _context.t0 = _context['catch'](4);
 
-                                if (_context2.t0.status === 404) {
-                                    _this2.$toast.error({
-                                        title: _this2.$t('translation.error'),
-                                        message: _this2.$t('translation.inviteNotFound')
+                                if (_context.t0.status === 404) {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t('translation.error')
                                     });
                                 } else {
-                                    _this2.$toast.error({
-                                        title: _this2.$t('translation.error'),
-                                        message: _this2.$t(_context2.t0.data.message)
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t(_context.t0.message)
                                     });
                                 }
 
-                            case 16:
-                                _this2.hidePreloader();
+                            case 15:
+                                _this.hide();
 
-                            case 17:
+                            case 16:
                             case 'end':
-                                return _context2.stop();
+                                return _context.stop();
                         }
                     }
-                }, _callee2, _this2, [[4, 13]]);
+                }, _callee, _this, [[4, 12]]);
             }))();
         }
     }
@@ -4953,10 +4925,25 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
-/***/ 379:
+/***/ 388:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4964,34 +4951,24 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowInviteUniversityAdmin
+    _vm.modalsIsShowCreateCoefficient
       ? _c("div", { staticClass: "modal__wrap" }, [
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "click-outside",
-                  rawName: "v-click-outside",
-                  value: _vm.hide,
-                  expression: "hide"
-                }
-              ],
-              staticClass: "modal__content modal__md"
-            },
-            [
-              _c("h4", { staticClass: "modal__head" }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.$t("translation.inviteUniversityAdmin")) +
-                    "\n            "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal__body" }, [
+          _c("div", { staticClass: "modal__content modal__md" }, [
+            _c("h4", { staticClass: "modal__head" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.$t("translation.createCoefficient")) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "modal__body" },
+              [
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universityEmail" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.universityEmail")))
+                  _c("label", { attrs: { for: "coefficientName" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.coefficientName")))
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -4999,34 +4976,34 @@ var render = function() {
                       {
                         name: "validate",
                         rawName: "v-validate",
-                        value: "required|email|max:255",
-                        expression: "'required|email|max:255'"
+                        value: "required|max:255",
+                        expression: "'required|max:255'"
                       },
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.universityEmail,
-                        expression: "universityEmail"
+                        value: _vm.coefficientName,
+                        expression: "coefficientName"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "email",
-                      id: "universityEmail",
-                      "aria-describedby": "universityEmailHelp",
+                      type: "text",
+                      id: "coefficientName",
+                      "aria-describedby": "coefficientNameHelp",
                       placeholder: _vm.$t(
-                        "translation.universityEmailPlaceholder"
+                        "translation.coefficientNamePlaceholder"
                       ),
-                      name: "universityEmail",
-                      "data-vv-as": _vm.$t("translation.universityEmail")
+                      name: "coefficientName",
+                      "data-vv-as": _vm.$t("translation.coefficientName")
                     },
-                    domProps: { value: _vm.universityEmail },
+                    domProps: { value: _vm.coefficientName },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.universityEmail = $event.target.value
+                        _vm.coefficientName = $event.target.value
                       }
                     }
                   }),
@@ -5038,17 +5015,17 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.errors.has("universityEmail"),
-                          expression: "errors.has('universityEmail')"
+                          value: _vm.errors.has("coefficientName"),
+                          expression: "errors.has('coefficientName')"
                         }
                       ],
                       staticClass: "form-text text-danger",
-                      attrs: { id: "universityEmailHelp" }
+                      attrs: { id: "coefficientNameHelp" }
                     },
                     [
                       _vm._v(
                         "\n                        " +
-                          _vm._s(_vm.errors.first("universityEmail")) +
+                          _vm._s(_vm.errors.first("coefficientName")) +
                           "\n                    "
                       )
                     ]
@@ -5056,75 +5033,106 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universities" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.university")))
-                  ]),
+                  _c(
+                    "label",
+                    { attrs: { for: "formControlRange" } },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.$t("translation.coefficient")) +
+                          "\n                        "
+                      ),
+                      _vm.coefficientCoefficient
+                        ? [
+                            _vm._v(
+                              "\n                            : (" +
+                                _vm._s(_vm.coefficientCoefficient) +
+                                ")\n                        "
+                            )
+                          ]
+                        : _vm._e()
+                    ],
+                    2
+                  ),
                   _vm._v(" "),
-                  this.universities
-                    ? _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.universityId,
-                              expression: "universityId"
-                            }
-                          ],
-                          staticClass: "select-style",
-                          attrs: { name: "type_field", id: "universities" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.universityId = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        _vm._l(this.universities, function(university) {
-                          return _c(
-                            "option",
-                            { domProps: { value: university.id } },
-                            [
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(university.name) +
-                                  "\n                        "
-                              )
-                            ]
-                          )
-                        })
-                      )
-                    : _vm._e()
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.coefficientCoefficient,
+                        expression: "coefficientCoefficient"
+                      }
+                    ],
+                    staticClass: "form-control-range",
+                    attrs: {
+                      min: "0",
+                      max: "1",
+                      step: "0.01",
+                      type: "range",
+                      id: "formControlRange"
+                    },
+                    domProps: { value: _vm.coefficientCoefficient },
+                    on: {
+                      __r: function($event) {
+                        _vm.coefficientCoefficient = $event.target.value
+                      }
+                    }
+                  })
                 ]),
+                _vm._v(" "),
+                _c("multiselect", {
+                  attrs: {
+                    options: _vm.options,
+                    searchable: true,
+                    "show-labels": false,
+                    label: "name",
+                    "track-by": "id",
+                    placeholder: _vm.$t("translation.selectFromList")
+                  },
+                  model: {
+                    value: _vm.coefficientMajorId,
+                    callback: function($$v) {
+                      _vm.coefficientMajorId = $$v
+                    },
+                    expression: "coefficientMajorId"
+                  }
+                }),
                 _vm._v(" "),
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-md btn-success float-right mt-4",
+                    staticClass: "btn btn-md btn-secondary float-right mt-4",
                     attrs: { type: "button" },
-                    on: { click: _vm.inviteUniversityAdmin }
+                    on: { click: _vm.hide }
                   },
                   [
                     _vm._v(
                       "\n                    " +
-                        _vm._s(_vm.$t("translation.send")) +
+                        _vm._s(_vm.$t("translation.close")) +
+                        "\n                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-md btn-success mt-4",
+                    attrs: { type: "button" },
+                    on: { click: _vm.createCoefficient }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.save")) +
                         "\n                "
                     )
                   ]
                 )
-              ])
-            ]
-          )
+              ],
+              1
+            )
+          ])
         ])
       : _vm._e()
   ])
@@ -5135,13 +5143,449 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1e2700a6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0f6db6a7", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 380:
+/***/ 389:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(390)
+/* template */
+var __vue_template__ = __webpack_require__(391)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/modals/UpdateCoefficient.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5540eb3a", Component.options)
+  } else {
+    hotAPI.reload("data-v-5540eb3a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 390:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(9);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(10);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _modals = __webpack_require__(43);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+var _admin = __webpack_require__(256);
+
+var _admin2 = _interopRequireDefault(_admin);
+
+var _preload = __webpack_require__(73);
+
+var _preload2 = _interopRequireDefault(_preload);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    mixins: [_modals2.default, _admin2.default, _preload2.default],
+    data: function data() {
+        return {
+            options: [{
+                name: '1',
+                id: 1
+            }, {
+                name: '2',
+                id: 2
+            }]
+        };
+    },
+
+    methods: {
+        hide: function hide() {
+            this.modalsIsShowUpdateCoefficient = false;
+
+            this.coefficientMajorId = null;
+            this.coefficientName = null;
+            this.coefficientCoefficient = null;
+        },
+        createCoefficient: function createCoefficient() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+                                if (!valid) {
+                                    _context.next = 16;
+                                    break;
+                                }
+
+                                _context.prev = 4;
+
+                                _this.showPreloader();
+                                _context.next = 8;
+                                return _this.$store.dispatch('admin/updateCoefficient', {
+                                    major_id: _this.coefficientMajorId,
+                                    name: _this.coefficientName,
+                                    coefficient: _this.coefficientCoefficient
+                                });
+
+                            case 8:
+                                _this.switchRefreshTable(true);
+                                _this.$toast.success({
+                                    title: _this.$t('translation.success'),
+                                    message: _this.$t('translation.updatedCoefficient')
+                                });
+                                _context.next = 15;
+                                break;
+
+                            case 12:
+                                _context.prev = 12;
+                                _context.t0 = _context['catch'](4);
+
+                                if (_context.t0.status === 404) {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t('translation.error')
+                                    });
+                                } else {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t(_context.t0.message)
+                                    });
+                                }
+
+                            case 15:
+                                _this.hide();
+
+                            case 16:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[4, 12]]);
+            }))();
+        }
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 391:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowUpdateCoefficient
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c("div", { staticClass: "modal__content modal__md" }, [
+            _c("h4", { staticClass: "modal__head" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.$t("translation.createCoefficient")) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "modal__body" },
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "coefficientName" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.coefficientName")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|max:255",
+                        expression: "'required|max:255'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.coefficientName,
+                        expression: "coefficientName"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "coefficientName",
+                      "aria-describedby": "coefficientNameHelp",
+                      placeholder: _vm.$t(
+                        "translation.coefficientNamePlaceholder"
+                      ),
+                      name: "coefficientName",
+                      "data-vv-as": _vm.$t("translation.coefficientName")
+                    },
+                    domProps: { value: _vm.coefficientName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.coefficientName = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("coefficientName"),
+                          expression: "errors.has('coefficientName')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "coefficientNameHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("coefficientName")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "formControlRange" } },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.$t("translation.coefficient")) +
+                          "\n                        "
+                      ),
+                      _vm.coefficientCoefficient
+                        ? [
+                            _vm._v(
+                              "\n                            : (" +
+                                _vm._s(_vm.coefficientCoefficient) +
+                                ")\n                        "
+                            )
+                          ]
+                        : _vm._e()
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.coefficientCoefficient,
+                        expression: "coefficientCoefficient"
+                      }
+                    ],
+                    staticClass: "form-control-range",
+                    attrs: {
+                      min: "0",
+                      max: "1",
+                      step: "0.01",
+                      type: "range",
+                      id: "formControlRange"
+                    },
+                    domProps: { value: _vm.coefficientCoefficient },
+                    on: {
+                      __r: function($event) {
+                        _vm.coefficientCoefficient = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("multiselect", {
+                  attrs: {
+                    options: _vm.options,
+                    searchable: true,
+                    "show-labels": false,
+                    label: "name",
+                    "track-by": "id",
+                    placeholder: _vm.$t("translation.selectFromList")
+                  },
+                  model: {
+                    value: _vm.coefficientMajorId,
+                    callback: function($$v) {
+                      _vm.coefficientMajorId = $$v
+                    },
+                    expression: "coefficientMajorId"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-md btn-secondary float-right mt-4",
+                    attrs: { type: "button" },
+                    on: { click: _vm.hide }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.close")) +
+                        "\n                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-md btn-success mt-4",
+                    attrs: { type: "button" },
+                    on: { click: _vm.updateCoefficient }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.save")) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5540eb3a", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5156,7 +5600,7 @@ var render = function() {
         _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
           _c("div", { staticClass: "col-md-10" }, [
             _c("h1", [
-              _vm._v(_vm._s(_vm.$t("translation.managerUniversityAdmin")))
+              _vm._v(_vm._s(_vm.$t("translation.managerCoefficients")))
             ])
           ]),
           _vm._v(" "),
@@ -5168,14 +5612,14 @@ var render = function() {
                 attrs: { href: "javascript:" },
                 on: {
                   click: function($event) {
-                    _vm.modalsIsShowInviteUniversityAdmin = true
+                    _vm.modalsIsShowCreateCoefficient = true
                   }
                 }
               },
               [
                 _vm._v(
                   "\n                    " +
-                    _vm._s(_vm.$t("translation.addUniversityAdmin")) +
+                    _vm._s(_vm.$t("translation.createCoefficient")) +
                     "\n                "
                 )
               ]
@@ -5187,13 +5631,19 @@ var render = function() {
             { staticClass: "col-md-12 mt-3" },
             [
               _c("vuetable", {
-                ref: "listUniversitAdministrotors",
+                ref: "listCoefficients",
                 attrs: {
-                  "api-url": "/api/admin/users",
+                  "api-url":
+                    "https://itpm-194220.appspot.com/api/admin/subjects-coefficients",
                   fields: _vm.fields,
                   "pagination-path": "",
                   css: _vm.css.table,
-                  "data-path": "data.data"
+                  "data-path": "data.data",
+                  "http-options": {
+                    headers: {
+                      Authorization: "Bearer " + _vm.userToken
+                    }
+                  }
                 },
                 on: {
                   "vuetable:load-success": _vm.hidePreloader,
@@ -5219,7 +5669,9 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("modal-invite-university-admin")
+      _c("modal-create-coefficient"),
+      _vm._v(" "),
+      _c("modal-update-coefficient")
     ],
     1
   )
@@ -5230,7 +5682,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1baac36f", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-279e8a9b", module.exports)
   }
 }
 

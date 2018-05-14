@@ -13,11 +13,16 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listTests"
-                              api-url="/api/admin/test"
+                              api-url="https://itpm-194220.appspot.com/api/admin/test"
                               :fields="fields"
                               pagination-path = ""
                               :css="css.table"
                               data-path="data.data"
+                              :http-options="{
+                                headers: {
+                                    Authorization: `Bearer ${userToken}`,
+                                },
+                              }"
                               detail-row-component="my-detail-row"
                               @vuetable:load-success="hidePreloader"
                               @vuetable:load-error="hidePreloader"
@@ -72,6 +77,7 @@
     import MixinModals from '../../../mixins/modals';
     import MixinPreloader from '../../../mixins/preload';
     import MixinAdmin from '../../../mixins/admin';
+    import MixinUser from '../../../mixins/user';
     import ModalCreateTest from '../../../components/admin/modals/CreateTest.vue';
     import ModalUpdateTest from '../../../components/admin/modals/UpdateTest.vue';
     import ModalShowDescription from '../../../components/admin/modals/ShowDescription.vue';
@@ -81,6 +87,7 @@
     export default {
         mixins: [
             MixinAdmin,
+            MixinUser,
             MixinModals,
             MixinPreloader,
             FieldsTest,

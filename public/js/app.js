@@ -12683,7 +12683,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'user',
         prefix: true
-    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role']))
+    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role', 'token']))
 };
 
 /***/ }),
@@ -24471,6 +24471,7 @@ exports.default = {
     isShowEditUniversity: false,
     isShowDescription: false,
     isShowInviteUniversityAdmin: false,
+    modalsIsShowAssociateUniversityAdmin: false,
     isShowCreateQuestion: false,
     isShowUpdateQuestion: false,
     isShowCreateAnswer: false,
@@ -24519,6 +24520,7 @@ var COEFFICIENT_ID = exports.COEFFICIENT_ID = 'COEFFICIENT_ID';
 var COEFFICIENT_NAME = exports.COEFFICIENT_NAME = 'COEFFICIENT_NAME';
 var COEFFICIENT_MAJOR_ID = exports.COEFFICIENT_MAJOR_ID = 'COEFFICIENT_MAJOR_ID';
 var COEFFICIENT_COEFFICIENT = exports.COEFFICIENT_COEFFICIENT = 'COEFFICIENT_COEFFICIENT';
+var UNIVERSITY_USER_ID = exports.UNIVERSITY_USER_ID = 'UNIVERSITY_USER_ID';
 
 /***/ }),
 /* 72 */
@@ -24543,6 +24545,7 @@ exports.default = {
     universityParentsId: [],
     universityImage: null,
     universityPosition: null,
+    universityUserId: null,
     universities: null,
     tests: null,
     testId: null,
@@ -58766,74 +58769,104 @@ var routes = [{
     component: function component() {
         return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, 243));
     }
-},
-// {
-//     path: '/confirmation/:id',
-//     name: 'auth.confirmation',
-//     component: () => import('../pages/auth/EmailConfirmation.vue'),
-//     meta: {
-//         guest: true,
-//     },
-// },
-{
+}, {
+    path: '/confirmation/:id',
+    name: 'auth.confirmation',
+    component: function component() {
+        return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, 423));
+    },
+    meta: {
+        guest: true
+    }
+}, {
     path: '/room',
     name: 'user.room',
     component: function component() {
-        return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, 244));
+        return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, 244));
+    },
+    meta: {
+        auth: true,
+        user: true
     }
 }, {
     path: '/invite/:id',
     name: 'auth.invite',
     component: function component() {
-        return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, 245));
-    }
-}, {
-    path: '/admin/login',
-    name: 'admin.login',
-    component: function component() {
-        return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, 246));
+        return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, 245));
+    },
+    meta: {
+        guest: true
     }
 }, {
     path: '/admin/home',
     name: 'admin.home',
     component: function component() {
         return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 247));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true,
+        globalAdmin: true
     }
 }, {
     path: '/admin/university',
     name: 'admin.university',
     component: function component() {
         return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 248));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
     }
 }, {
     path: '/admin/university/admins',
     name: 'admin.university.admins',
     component: function component() {
-        return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 249));
+        return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 249));
+    },
+    meta: {
+        auth: true,
+        globalAdmin: true
     }
 }, {
     path: '/admin/coefficients',
     name: 'admin.coefficients',
     component: function component() {
-        return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 250));
+        return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 250));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
     }
 }, {
     path: '/admin/tests',
     name: 'admin.tests',
     component: function component() {
         return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 251));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
     }
 }, {
     path: '/admin/questions',
     name: 'admin.questions',
     component: function component() {
-        return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 252));
+        return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 252));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
     }
 }, {
     path: '/admin/answers',
     name: 'admin.answers',
     component: function component() {
-        return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 253));
+        return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 253));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
     }
 },
 
@@ -58864,10 +58897,6 @@ router.beforeEach(function (to, from, next) {
     if (to.matched.some(function (record) {
         return record.meta.auth;
     }) && !_store2.default.getters['user/logged']) {
-        /**
-         * If the user is not authenticated and visits
-         * a page that requires authentication, redirect to the login page
-         */
         next({
             name: 'auth.login',
             query: {
@@ -58877,19 +58906,20 @@ router.beforeEach(function (to, from, next) {
     } else if (to.matched.some(function (record) {
         return record.meta.guest;
     }) && _store2.default.getters['user/logged']) {
-        /**
-         * If the user is authenticated and visits
-         * an guest page, redirect to the homepage
-         */
         next({
             name: 'home'
         });
-    } else if (_store2.default.getters['user/role'] === 'user') {
+    } else if (to.matched.some(function (record) {
+        return record.meta.uniAdmin;
+    }) && _store2.default.getters['user/role'] === 'user') {
         next({
-            name: 'admin.home',
-            query: {
-                redirect: to.fullPath
-            }
+            name: 'home'
+        });
+    } else if (to.matched.some(function (record) {
+        return record.meta.globalAdmin;
+    }) && _store2.default.getters['user/role'] === 'user') {
+        next({
+            name: 'home'
         });
     } else {
         next();
@@ -65017,7 +65047,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.destroyCoefficient = exports.updateCoefficient = exports.getCoefficient = exports.createCoefficient = exports.destroyAnswer = exports.updateAnswer = exports.getAnswer = exports.createAnswer = exports.destroyQuestion = exports.updateQuestion = exports.getQuestion = exports.createQuestion = exports.destroyTest = exports.updateTest = exports.getTest = exports.createTest = exports.sendInviteUniversityAdmin = exports.getAllUniversities = exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
+exports.associate = exports.destroyCoefficient = exports.updateCoefficient = exports.getCoefficient = exports.createCoefficient = exports.destroyAnswer = exports.updateAnswer = exports.getAnswer = exports.createAnswer = exports.destroyQuestion = exports.updateQuestion = exports.getQuestion = exports.createQuestion = exports.destroyTest = exports.updateTest = exports.getTest = exports.createTest = exports.sendInviteUniversityAdmin = exports.getAllUniversities = exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
 
 var _regenerator = __webpack_require__(9);
 
@@ -65880,6 +65910,42 @@ var destroyCoefficient = exports.destroyCoefficient = function () {
     };
 }();
 
+var associate = exports.associate = function () {
+    var _ref34 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee23(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee23$(_context23) {
+            while (1) {
+                switch (_context23.prev = _context23.next) {
+                    case 0:
+                        _context23.next = 2;
+                        return _admin2.default.associate(payload);
+
+                    case 2:
+                        json = _context23.sent;
+
+                        if (!(json.status === 200)) {
+                            _context23.next = 5;
+                            break;
+                        }
+
+                        return _context23.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context23.stop();
+                }
+            }
+        }, _callee23, undefined);
+    }));
+
+    return function associate(_x44, _x45) {
+        return _ref34.apply(this, arguments);
+    };
+}();
+
 exports.default = {
     destroyUniversity: destroyUniversity,
     getUniversity: getUniversity,
@@ -65902,7 +65968,8 @@ exports.default = {
     createCoefficient: createCoefficient,
     getCoefficient: getCoefficient,
     updateCoefficient: updateCoefficient,
-    destroyCoefficient: destroyCoefficient
+    destroyCoefficient: destroyCoefficient,
+    associate: associate
 };
 
 /***/ }),
@@ -66127,7 +66194,7 @@ exports.default = {
             }, _callee6, _this6, [[0, 9]]);
         }))();
     },
-    createTest: function createTest(params) {
+    associate: function associate(params) {
         var _this7 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {
@@ -66139,7 +66206,7 @@ exports.default = {
                         case 0:
                             _context7.prev = 0;
                             _context7.next = 3;
-                            return window.axios.post(url + '/api/admin/test', params);
+                            return window.axios.post(url + '/api/admin/associate', params);
 
                         case 3:
                             _ref7 = _context7.sent;
@@ -66160,7 +66227,7 @@ exports.default = {
             }, _callee7, _this7, [[0, 9]]);
         }))();
     },
-    getTest: function getTest(id) {
+    createTest: function createTest(params) {
         var _this8 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8() {
@@ -66172,7 +66239,7 @@ exports.default = {
                         case 0:
                             _context8.prev = 0;
                             _context8.next = 3;
-                            return window.axios.get(url + '/api/admin/test/' + id);
+                            return window.axios.post(url + '/api/admin/test', params);
 
                         case 3:
                             _ref8 = _context8.sent;
@@ -66193,7 +66260,7 @@ exports.default = {
             }, _callee8, _this8, [[0, 9]]);
         }))();
     },
-    updateTest: function updateTest(id, params) {
+    getTest: function getTest(id) {
         var _this9 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9() {
@@ -66205,7 +66272,7 @@ exports.default = {
                         case 0:
                             _context9.prev = 0;
                             _context9.next = 3;
-                            return window.axios.put(url + '/api/admin/test/' + id, params);
+                            return window.axios.get(url + '/api/admin/test/' + id);
 
                         case 3:
                             _ref9 = _context9.sent;
@@ -66226,7 +66293,7 @@ exports.default = {
             }, _callee9, _this9, [[0, 9]]);
         }))();
     },
-    destroyTest: function destroyTest(id) {
+    updateTest: function updateTest(id, params) {
         var _this10 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10() {
@@ -66238,7 +66305,7 @@ exports.default = {
                         case 0:
                             _context10.prev = 0;
                             _context10.next = 3;
-                            return window.axios.delete(url + '/api/admin/test/' + id);
+                            return window.axios.put(url + '/api/admin/test/' + id, params);
 
                         case 3:
                             _ref10 = _context10.sent;
@@ -66259,7 +66326,7 @@ exports.default = {
             }, _callee10, _this10, [[0, 9]]);
         }))();
     },
-    createQuestion: function createQuestion(params) {
+    destroyTest: function destroyTest(id) {
         var _this11 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11() {
@@ -66271,7 +66338,7 @@ exports.default = {
                         case 0:
                             _context11.prev = 0;
                             _context11.next = 3;
-                            return window.axios.post(url + '/api/admin/question', params);
+                            return window.axios.delete(url + '/api/admin/test/' + id);
 
                         case 3:
                             _ref11 = _context11.sent;
@@ -66292,7 +66359,7 @@ exports.default = {
             }, _callee11, _this11, [[0, 9]]);
         }))();
     },
-    getQuestion: function getQuestion(id) {
+    createQuestion: function createQuestion(params) {
         var _this12 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12() {
@@ -66304,7 +66371,7 @@ exports.default = {
                         case 0:
                             _context12.prev = 0;
                             _context12.next = 3;
-                            return window.axios.get(url + '/api/admin/question/' + id);
+                            return window.axios.post(url + '/api/admin/question', params);
 
                         case 3:
                             _ref12 = _context12.sent;
@@ -66325,7 +66392,7 @@ exports.default = {
             }, _callee12, _this12, [[0, 9]]);
         }))();
     },
-    updateQuestion: function updateQuestion(id, params) {
+    getQuestion: function getQuestion(id) {
         var _this13 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee13() {
@@ -66337,7 +66404,7 @@ exports.default = {
                         case 0:
                             _context13.prev = 0;
                             _context13.next = 3;
-                            return window.axios.put(url + '/api/admin/question/' + id, params);
+                            return window.axios.get(url + '/api/admin/question/' + id);
 
                         case 3:
                             _ref13 = _context13.sent;
@@ -66358,7 +66425,7 @@ exports.default = {
             }, _callee13, _this13, [[0, 9]]);
         }))();
     },
-    destroyQuestion: function destroyQuestion(id) {
+    updateQuestion: function updateQuestion(id, params) {
         var _this14 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee14() {
@@ -66370,7 +66437,7 @@ exports.default = {
                         case 0:
                             _context14.prev = 0;
                             _context14.next = 3;
-                            return window.axios.delete(url + '/api/admin/question/' + id);
+                            return window.axios.put(url + '/api/admin/question/' + id, params);
 
                         case 3:
                             _ref14 = _context14.sent;
@@ -66391,7 +66458,7 @@ exports.default = {
             }, _callee14, _this14, [[0, 9]]);
         }))();
     },
-    createAnswer: function createAnswer(params) {
+    destroyQuestion: function destroyQuestion(id) {
         var _this15 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee15() {
@@ -66403,7 +66470,7 @@ exports.default = {
                         case 0:
                             _context15.prev = 0;
                             _context15.next = 3;
-                            return window.axios.post(url + '/api/admin/answer', params);
+                            return window.axios.delete(url + '/api/admin/question/' + id);
 
                         case 3:
                             _ref15 = _context15.sent;
@@ -66424,7 +66491,7 @@ exports.default = {
             }, _callee15, _this15, [[0, 9]]);
         }))();
     },
-    getAnswer: function getAnswer(id) {
+    createAnswer: function createAnswer(params) {
         var _this16 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee16() {
@@ -66436,7 +66503,7 @@ exports.default = {
                         case 0:
                             _context16.prev = 0;
                             _context16.next = 3;
-                            return window.axios.get(url + '/api/admin/answer/' + id);
+                            return window.axios.post(url + '/api/admin/answer', params);
 
                         case 3:
                             _ref16 = _context16.sent;
@@ -66457,7 +66524,7 @@ exports.default = {
             }, _callee16, _this16, [[0, 9]]);
         }))();
     },
-    updateAnswer: function updateAnswer(id, params) {
+    getAnswer: function getAnswer(id) {
         var _this17 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee17() {
@@ -66469,7 +66536,7 @@ exports.default = {
                         case 0:
                             _context17.prev = 0;
                             _context17.next = 3;
-                            return window.axios.put(url + '/api/admin/answer/' + id, params);
+                            return window.axios.get(url + '/api/admin/answer/' + id);
 
                         case 3:
                             _ref17 = _context17.sent;
@@ -66490,7 +66557,7 @@ exports.default = {
             }, _callee17, _this17, [[0, 9]]);
         }))();
     },
-    destroyAnswer: function destroyAnswer(id) {
+    updateAnswer: function updateAnswer(id, params) {
         var _this18 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee18() {
@@ -66502,7 +66569,7 @@ exports.default = {
                         case 0:
                             _context18.prev = 0;
                             _context18.next = 3;
-                            return window.axios.delete(url + '/api/admin/answer/' + id);
+                            return window.axios.put(url + '/api/admin/answer/' + id, params);
 
                         case 3:
                             _ref18 = _context18.sent;
@@ -66523,7 +66590,7 @@ exports.default = {
             }, _callee18, _this18, [[0, 9]]);
         }))();
     },
-    createCoefficient: function createCoefficient(params) {
+    destroyAnswer: function destroyAnswer(id) {
         var _this19 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee19() {
@@ -66535,7 +66602,7 @@ exports.default = {
                         case 0:
                             _context19.prev = 0;
                             _context19.next = 3;
-                            return window.axios.post(url + '/api/admin/subjects-coefficients', params);
+                            return window.axios.delete(url + '/api/admin/answer/' + id);
 
                         case 3:
                             _ref19 = _context19.sent;
@@ -66556,7 +66623,7 @@ exports.default = {
             }, _callee19, _this19, [[0, 9]]);
         }))();
     },
-    getCoefficient: function getCoefficient(id) {
+    createCoefficient: function createCoefficient(params) {
         var _this20 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee20() {
@@ -66568,7 +66635,7 @@ exports.default = {
                         case 0:
                             _context20.prev = 0;
                             _context20.next = 3;
-                            return window.axios.get(url + '/api/admin/subjects-coefficients/' + id);
+                            return window.axios.post(url + '/api/admin/subjects-coefficients', params);
 
                         case 3:
                             _ref20 = _context20.sent;
@@ -66589,7 +66656,7 @@ exports.default = {
             }, _callee20, _this20, [[0, 9]]);
         }))();
     },
-    updateCoefficient: function updateCoefficient(id, params) {
+    getCoefficient: function getCoefficient(id) {
         var _this21 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee21() {
@@ -66601,7 +66668,7 @@ exports.default = {
                         case 0:
                             _context21.prev = 0;
                             _context21.next = 3;
-                            return window.axios.put(url + '/api/admin/subjects-coefficients/' + id, params);
+                            return window.axios.get(url + '/api/admin/subjects-coefficients/' + id);
 
                         case 3:
                             _ref21 = _context21.sent;
@@ -66622,7 +66689,7 @@ exports.default = {
             }, _callee21, _this21, [[0, 9]]);
         }))();
     },
-    destroyCoefficient: function destroyCoefficient(id) {
+    updateCoefficient: function updateCoefficient(id, params) {
         var _this22 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee22() {
@@ -66634,7 +66701,7 @@ exports.default = {
                         case 0:
                             _context22.prev = 0;
                             _context22.next = 3;
-                            return window.axios.delete(url + '/api/admin/subjects-coefficients/' + id);
+                            return window.axios.put(url + '/api/admin/subjects-coefficients/' + id, params);
 
                         case 3:
                             _ref22 = _context22.sent;
@@ -66653,6 +66720,39 @@ exports.default = {
                     }
                 }
             }, _callee22, _this22, [[0, 9]]);
+        }))();
+    },
+    destroyCoefficient: function destroyCoefficient(id) {
+        var _this23 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee23() {
+            var _ref23, data, status;
+
+            return _regenerator2.default.wrap(function _callee23$(_context23) {
+                while (1) {
+                    switch (_context23.prev = _context23.next) {
+                        case 0:
+                            _context23.prev = 0;
+                            _context23.next = 3;
+                            return window.axios.delete(url + '/api/admin/subjects-coefficients/' + id);
+
+                        case 3:
+                            _ref23 = _context23.sent;
+                            data = _ref23.data;
+                            status = _ref23.status;
+                            return _context23.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context23.prev = 9;
+                            _context23.t0 = _context23['catch'](0);
+                            return _context23.abrupt('return', _context23.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context23.stop();
+                    }
+                }
+            }, _callee23, _this23, [[0, 9]]);
         }))();
     }
 };
@@ -68522,11 +68622,12 @@ exports.default = {
         olegText: 'С другой стороны начало повседневной работы по формированию позиции представляет собой' + 'интересный эксперимент проверки систем массового участия. Задача организации, в особенности же' + 'прогрессивного развития.',
         annAdvice: 'Звичайно, всі рідні, друзі та знайомі переживають за твоє майбутнє. Вислухай їхні поради, ' + 'можливо чиясь стане дійсно корисною)',
         yourEmailConfirm: 'Ваш E-mail успішно підтверджений, тепер ви можете авторизуватись або перейти' + 'на головну сторінку',
+        yourEmailUnConfirm: 'Ваш E-mail не підтверджено, користувача не знайдено або токен не вірний',
         acquaintWithStudentLife: 'спробувати самому зібрати потрібні документи документи та відправити їх' + 'у приймальнукомісію',
         annHello: 'Привіт! Я вчуся на другому курсі за спеціальністю психолог, тому легко знаходжу спільну мову' + ' з людьми. Думаю і з тобою ми порозуміємося. Я допоможу тобі в усьому розібратися. Давай знайомитися?',
         beforeEveryone: 'Перед кожним школярем рано чи пізно постає питання вибору' + 'професії та вступу до ВНЗ. Цей сервіс допоможе' + 'майбутньому студенту у вигляді захопливого квесту',
         managerUniversity: 'Менеджер університетів',
-        managerUniversityAdmin: 'Менеджер адміністраторів',
+        managerUniversityAdmin: 'Адміністратори університетів',
         addUniversity: 'Додати університет',
         addUniversityAdmin: 'Додати адміністратора',
         remove: 'Видалити',
@@ -68601,7 +68702,10 @@ exports.default = {
         coefficientName: 'Назва коефіцієнту',
         coefficientNamePlaceholder: 'Назва коефіцієнту',
         coefficient: 'Коефіцієнт',
-        majorId: 'ID головного'
+        majorId: 'ID головного',
+        universityAdmin: 'Адміністратор університету',
+        addInvite: 'Створити запрошення',
+        universityChanged: 'Університет змінено'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'
@@ -79227,6 +79331,12 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 229 */
@@ -80074,7 +80184,9 @@ var render = function() {
     "div",
     { ref: "app", class: _vm.userBackground, attrs: { id: "app" } },
     [
-      _vm.userRole === "user" ? _c("user-header") : _c("admin-header"),
+      _vm.userRole === "global_admin" || _vm.userRole === "uni_admin"
+        ? _c("admin-header")
+        : _c("user-header"),
       _vm._v(" "),
       _c(
         "transition",
@@ -80083,7 +80195,9 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.userRole !== "user" ? _c("admin-footer") : _vm._e(),
+      _vm.userRole === "global_admin" || _vm.userRole === "uni_admin"
+        ? _c("admin-footer")
+        : _vm._e(),
       _vm._v(" "),
       _vm.showPreload ? _c("preload") : _vm._e()
     ],

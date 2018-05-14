@@ -358,18 +358,45 @@ module.exports = {
 /***/ 256:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(3);
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends2 = __webpack_require__(0);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _schepotinVuexHelpers = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
+        namespace: 'admin',
+        prefix: false
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
+};
 
 /***/ }),
 
 /***/ 257:
 /***/ (function(module, exports, __webpack_require__) {
 
+exports.f = __webpack_require__(3);
+
+
+/***/ }),
+
+/***/ 258:
+/***/ (function(module, exports, __webpack_require__) {
+
 var global = __webpack_require__(2);
 var core = __webpack_require__(5);
 var LIBRARY = __webpack_require__(44);
-var wksExt = __webpack_require__(256);
+var wksExt = __webpack_require__(257);
 var defineProperty = __webpack_require__(15).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -379,7 +406,7 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 258:
+/***/ 259:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -478,33 +505,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)))
-
-/***/ }),
-
-/***/ 259:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends2 = __webpack_require__(0);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _schepotinVuexHelpers = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
-        namespace: 'admin',
-        prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
-};
 
 /***/ }),
 
@@ -1881,7 +1881,7 @@ module.exports = { "default": __webpack_require__(272), __esModule: true };
 
 __webpack_require__(78);
 __webpack_require__(83);
-module.exports = __webpack_require__(256).f('iterator');
+module.exports = __webpack_require__(257).f('iterator');
 
 
 /***/ }),
@@ -1922,8 +1922,8 @@ var shared = __webpack_require__(48);
 var setToStringTag = __webpack_require__(32);
 var uid = __webpack_require__(46);
 var wks = __webpack_require__(3);
-var wksExt = __webpack_require__(256);
-var wksDefine = __webpack_require__(257);
+var wksExt = __webpack_require__(257);
+var wksDefine = __webpack_require__(258);
 var enumKeys = __webpack_require__(277);
 var isArray = __webpack_require__(278);
 var anObject = __webpack_require__(12);
@@ -2293,7 +2293,7 @@ exports.f = __webpack_require__(13) ? gOPD : function getOwnPropertyDescriptor(O
 /***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(257)('asyncIterator');
+__webpack_require__(258)('asyncIterator');
 
 
 /***/ }),
@@ -2301,7 +2301,7 @@ __webpack_require__(257)('asyncIterator');
 /***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(257)('observable');
+__webpack_require__(258)('observable');
 
 
 /***/ }),
@@ -2322,7 +2322,7 @@ module.exports = __webpack_require__(284);
 var utils = __webpack_require__(255);
 var bind = __webpack_require__(261);
 var Axios = __webpack_require__(285);
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 
 /**
  * Create an instance of Axios
@@ -2379,7 +2379,7 @@ module.exports.default = axios;
 "use strict";
 
 
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 var utils = __webpack_require__(255);
 var InterceptorManager = __webpack_require__(294);
 var dispatchRequest = __webpack_require__(295);
@@ -2917,7 +2917,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(255);
 var transformData = __webpack_require__(296);
 var isCancel = __webpack_require__(264);
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -4547,6 +4547,10 @@ var BUTTON_COLOR_CONFIRM = exports.BUTTON_COLOR_CONFIRM = '#3085d6';
 var BUTTON_COLOR_CANCEL = exports.BUTTON_COLOR_CANCEL = '#d33d33';
 var IMAGE_MAX_SIZE = exports.IMAGE_MAX_SIZE = 3;
 
+var USER = exports.USER = 'user';
+var UNIVERSITY_ADMIN = exports.UNIVERSITY_ADMIN = 'uni_admin';
+var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
+
 /***/ }),
 
 /***/ 308:
@@ -4749,7 +4753,7 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -5023,9 +5027,13 @@ var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
+
+var _user = __webpack_require__(31);
+
+var _user2 = _interopRequireDefault(_user);
 
 var _CreateUniversity = __webpack_require__(368);
 
@@ -5047,70 +5055,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 exports.default = {
-    mixins: [_admin2.default, _modals2.default, _preload2.default, _university2.default],
+    mixins: [_admin2.default, _user2.default, _modals2.default, _preload2.default, _university2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default,
@@ -5135,6 +5081,7 @@ exports.default = {
             this.$refs.pagination.setPaginationData(paginationData);
         },
         onChangePage: function onChangePage(page) {
+            this.showPreloader();
             this.$refs.listUniversities.changePage(page);
         },
         onCellClicked: function onCellClicked(data) {
@@ -5243,7 +5190,71 @@ exports.default = {
             }))();
         }
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -5421,7 +5432,7 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -6337,7 +6348,7 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -7259,12 +7270,17 @@ var render = function() {
               _c("vuetable", {
                 ref: "listUniversities",
                 attrs: {
-                  "api-url": "/api/admin/university",
+                  "api-url":
+                    "https://itpm-194220.appspot.com/api/admin/university",
                   fields: _vm.fields,
                   "pagination-path": "data",
                   css: _vm.css.table,
                   "data-path": "data.data",
-                  "detail-row-component": "my-detail-row"
+                  "http-options": {
+                    headers: {
+                      Authorization: "Bearer " + _vm.userToken
+                    }
+                  }
                 },
                 on: {
                   "vuetable:load-success": _vm.hidePreloader,

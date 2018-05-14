@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 253:
+/***/ 252:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(408)
+var __vue_script__ = __webpack_require__(402)
 /* template */
-var __vue_template__ = __webpack_require__(416)
+var __vue_template__ = __webpack_require__(410)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/pages/admin/tests/Answers.vue"
+Component.options.__file = "resources/assets/js/pages/admin/tests/Questions.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8c8485cc", Component.options)
+    hotAPI.createRecord("data-v-0c122ab2", Component.options)
   } else {
-    hotAPI.reload("data-v-8c8485cc", Component.options)
+    hotAPI.reload("data-v-0c122ab2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -358,18 +358,45 @@ module.exports = {
 /***/ 256:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(3);
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends2 = __webpack_require__(0);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _schepotinVuexHelpers = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
+        namespace: 'admin',
+        prefix: false
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
+};
 
 /***/ }),
 
 /***/ 257:
 /***/ (function(module, exports, __webpack_require__) {
 
+exports.f = __webpack_require__(3);
+
+
+/***/ }),
+
+/***/ 258:
+/***/ (function(module, exports, __webpack_require__) {
+
 var global = __webpack_require__(2);
 var core = __webpack_require__(5);
 var LIBRARY = __webpack_require__(44);
-var wksExt = __webpack_require__(256);
+var wksExt = __webpack_require__(257);
 var defineProperty = __webpack_require__(15).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -379,7 +406,7 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 258:
+/***/ 259:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -478,33 +505,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)))
-
-/***/ }),
-
-/***/ 259:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends2 = __webpack_require__(0);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _schepotinVuexHelpers = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
-        namespace: 'admin',
-        prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
-};
 
 /***/ }),
 
@@ -1881,7 +1881,7 @@ module.exports = { "default": __webpack_require__(272), __esModule: true };
 
 __webpack_require__(78);
 __webpack_require__(83);
-module.exports = __webpack_require__(256).f('iterator');
+module.exports = __webpack_require__(257).f('iterator');
 
 
 /***/ }),
@@ -1922,8 +1922,8 @@ var shared = __webpack_require__(48);
 var setToStringTag = __webpack_require__(32);
 var uid = __webpack_require__(46);
 var wks = __webpack_require__(3);
-var wksExt = __webpack_require__(256);
-var wksDefine = __webpack_require__(257);
+var wksExt = __webpack_require__(257);
+var wksDefine = __webpack_require__(258);
 var enumKeys = __webpack_require__(277);
 var isArray = __webpack_require__(278);
 var anObject = __webpack_require__(12);
@@ -2293,7 +2293,7 @@ exports.f = __webpack_require__(13) ? gOPD : function getOwnPropertyDescriptor(O
 /***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(257)('asyncIterator');
+__webpack_require__(258)('asyncIterator');
 
 
 /***/ }),
@@ -2301,7 +2301,7 @@ __webpack_require__(257)('asyncIterator');
 /***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(257)('observable');
+__webpack_require__(258)('observable');
 
 
 /***/ }),
@@ -2322,7 +2322,7 @@ module.exports = __webpack_require__(284);
 var utils = __webpack_require__(255);
 var bind = __webpack_require__(261);
 var Axios = __webpack_require__(285);
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 
 /**
  * Create an instance of Axios
@@ -2379,7 +2379,7 @@ module.exports.default = axios;
 "use strict";
 
 
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 var utils = __webpack_require__(255);
 var InterceptorManager = __webpack_require__(294);
 var dispatchRequest = __webpack_require__(295);
@@ -2917,7 +2917,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(255);
 var transformData = __webpack_require__(296);
 var isCancel = __webpack_require__(264);
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -4547,9 +4547,13 @@ var BUTTON_COLOR_CONFIRM = exports.BUTTON_COLOR_CONFIRM = '#3085d6';
 var BUTTON_COLOR_CANCEL = exports.BUTTON_COLOR_CANCEL = '#d33d33';
 var IMAGE_MAX_SIZE = exports.IMAGE_MAX_SIZE = 3;
 
+var USER = exports.USER = 'user';
+var UNIVERSITY_ADMIN = exports.UNIVERSITY_ADMIN = 'uni_admin';
+var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
+
 /***/ }),
 
-/***/ 408:
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4575,9 +4579,9 @@ var _VuetablePagination = __webpack_require__(302);
 
 var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
 
-var _answers = __webpack_require__(409);
+var _questions = __webpack_require__(403);
 
-var _answers2 = _interopRequireDefault(_answers);
+var _questions2 = _interopRequireDefault(_questions);
 
 var _modals = __webpack_require__(43);
 
@@ -4587,17 +4591,21 @@ var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _CreateAnswer = __webpack_require__(410);
+var _user = __webpack_require__(31);
 
-var _CreateAnswer2 = _interopRequireDefault(_CreateAnswer);
+var _user2 = _interopRequireDefault(_user);
 
-var _UpdateAnswer = __webpack_require__(413);
+var _CreateQuestion = __webpack_require__(404);
 
-var _UpdateAnswer2 = _interopRequireDefault(_UpdateAnswer);
+var _CreateQuestion2 = _interopRequireDefault(_CreateQuestion);
+
+var _UpdateQuestion = __webpack_require__(407);
+
+var _UpdateQuestion2 = _interopRequireDefault(_UpdateQuestion);
 
 var _constants = __webpack_require__(307);
 
@@ -4607,13 +4615,79 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 exports.default = {
-    mixins: [_admin2.default, _modals2.default, _preload2.default, _answers2.default],
+    mixins: [_admin2.default, _user2.default, _modals2.default, _preload2.default, _questions2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default,
-        ModalCreateAnswer: _CreateAnswer2.default,
-        ModalUpdateAnswer: _UpdateAnswer2.default
+        ModalCreateQuestion: _CreateQuestion2.default,
+        ModalUpdateQuestion: _UpdateQuestion2.default
     },
     mounted: function mounted() {
         this.showPreloader();
@@ -4622,13 +4696,13 @@ exports.default = {
     watch: {
         refreshTable: function refreshTable() {
             if (this.refreshTable) {
-                this.$refs.listAnswers.refresh();
+                this.$refs.listQuestions.refresh();
                 this.switchRefreshTable(false);
             }
         }
     },
     methods: {
-        editAnswer: function editAnswer(id) {
+        editQuestion: function editQuestion(id) {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -4638,10 +4712,10 @@ exports.default = {
                             case 0:
                                 _context.prev = 0;
                                 _context.next = 3;
-                                return _this.$store.dispatch('admin/getAnswer', id);
+                                return _this.$store.dispatch('admin/getQuestion', id);
 
                             case 3:
-                                _this.modalsIsShowUpdateAnswer = true;
+                                _this.modalsIsShowUpdateQuestion = true;
                                 _context.next = 9;
                                 break;
 
@@ -4662,7 +4736,7 @@ exports.default = {
                 }, _callee, _this, [[0, 6]]);
             }))();
         },
-        destroyAnswer: function destroyAnswer(id) {
+        destroyQuestion: function destroyQuestion(id) {
             var _this2 = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
@@ -4692,10 +4766,10 @@ exports.default = {
 
                                 _context2.prev = 4;
                                 _context2.next = 7;
-                                return _this2.$store.dispatch('admin/destroyAnswer', id);
+                                return _this2.$store.dispatch('admin/destroyQuestion', id);
 
                             case 7:
-                                _this2.$refs.listAnswers.refresh();
+                                _this2.$refs.listQuestions.refresh();
                                 _this2.showPreloader();
                                 _context2.next = 14;
                                 break;
@@ -4721,10 +4795,795 @@ exports.default = {
             this.$refs.pagination.setPaginationData(paginationData);
         },
         onChangePage: function onChangePage(page) {
-            this.$refs.listAnswers.changePage(page);
+            this.$refs.listQuestions.changePage(page);
+        }
+    }
+};
+
+/***/ }),
+
+/***/ 403:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    data: function data() {
+        return {
+            fields: [{
+                name: 'test_id',
+                sortField: 'test_id',
+                title: this.$t('translation.testId'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'name',
+                sortField: 'name',
+                title: this.$t('translation.name'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'type',
+                sortField: 'type',
+                title: this.$t('translation.typeTest'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'type_fill',
+                sortField: 'type_fill',
+                title: this.$t('translation.typeFillTest'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: '__slot:answers',
+                title: this.$t('translation.answers'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }, {
+                name: '__slot:actions',
+                title: this.$t('translation.actions'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }],
+            css: {
+                table: {
+                    tableClass: 'table table-hover cursor-pointer',
+                    loadingClass: 'loading',
+                    ascendingIcon: 'fa fa-angle-up ',
+                    descendingIcon: 'fa fa-angle-down ',
+                    handleIcon: 'glyphicon glyphicon-menu-hamburger'
+                },
+                pagination: {
+                    infoClass: 'pull-left',
+                    wrapperClass: 'vuetable-pagination text-center',
+                    activeClass: 'btn btn-primary text-white',
+                    disabledClass: 'btn text-secondary',
+                    pageClass: 'btn pgn-btn-border border',
+                    linkClass: 'btn pgn-btn-border border',
+                    icons: {
+                        first: 'fa fa-angle-double-left',
+                        prev: 'fa fa-angle-left',
+                        next: 'fa fa-angle-right',
+                        last: 'fa fa-angle-double-right'
+                    }
+                }
+            }
+        };
+    }
+};
+
+/***/ }),
+
+/***/ 404:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(405)
+/* template */
+var __vue_template__ = __webpack_require__(406)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/modals/CreateQuestion.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3a5fc738", Component.options)
+  } else {
+    hotAPI.reload("data-v-3a5fc738", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 405:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(9);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(10);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _modals = __webpack_require__(43);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+var _admin = __webpack_require__(256);
+
+var _admin2 = _interopRequireDefault(_admin);
+
+var _preload = __webpack_require__(73);
+
+var _preload2 = _interopRequireDefault(_preload);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    mixins: [_modals2.default, _admin2.default, _preload2.default],
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        hide: function hide() {
+            this.modalsIsShowCreateQuestion = false;
+
+            this.questionTestId = null;
+            this.questionName = null;
+            this.questionType = null;
+            this.questionTypeFill = null;
+        },
+        createQuestion: function createQuestion() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+                                if (!valid) {
+                                    _context.next = 16;
+                                    break;
+                                }
+
+                                _context.prev = 4;
+
+                                _this.showPreloader();
+                                _context.next = 8;
+                                return _this.$store.dispatch('admin/createQuestion', {
+                                    test_id: _this.questionTestId,
+                                    name: _this.questionName,
+                                    type: _this.questionType,
+                                    type_fill: _this.questionTypeFill
+                                });
+
+                            case 8:
+                                _this.switchRefreshTable(true);
+                                _this.$toast.success({
+                                    title: _this.$t('translation.success'),
+                                    message: _this.$t('translation.createQuestion')
+                                });
+                                _context.next = 15;
+                                break;
+
+                            case 12:
+                                _context.prev = 12;
+                                _context.t0 = _context['catch'](4);
+
+                                if (_context.t0.status === 404) {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t('translation.error')
+                                    });
+                                } else {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t(_context.t0.message)
+                                    });
+                                }
+
+                            case 15:
+                                _this.hide();
+
+                            case 16:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[4, 12]]);
+            }))();
         }
     }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 406:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowCreateQuestion
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c("div", { staticClass: "modal__content modal__md" }, [
+            _c("h4", { staticClass: "modal__head" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.$t("translation.createQuestion")) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal__body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "questionName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.questionName")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.questionName,
+                      expression: "questionName"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "questionName",
+                    "aria-describedby": "questionNameHelp",
+                    placeholder: _vm.$t("translation.questionNamePlaceholder"),
+                    name: "questionName",
+                    "data-vv-as": _vm.$t("translation.questionName")
+                  },
+                  domProps: { value: _vm.questionName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.questionName = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("questionName"),
+                        expression: "errors.has('questionName')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "questionNameHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("questionName")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                  _vm._v(_vm._s(_vm.$t("translation.typeTest")))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionType,
+                          expression: "questionType"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio1",
+                        value: "option1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionType, "option1")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionType = "option1"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio1" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeTestOne")))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionType,
+                          expression: "questionType"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio2",
+                        value: "option2"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionType, "option2")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionType = "option2"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio2" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeTestPoly")))]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                  _vm._v(_vm._s(_vm.$t("translation.typeFillTest")))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionTypeFill,
+                          expression: "questionTypeFill"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio3",
+                        value: "option1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionTypeFill, "option1")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionTypeFill = "option1"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio3" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeFillAuto")))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionTypeFill,
+                          expression: "questionTypeFill"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio4",
+                        value: "option2"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionTypeFill, "option2")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionTypeFill = "option2"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio4" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeFillManually")))]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-secondary float-right mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.hide }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.close")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-success mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.createQuestion }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.save")) +
+                      "\n                "
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3a5fc738", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 407:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(408)
+/* template */
+var __vue_template__ = __webpack_require__(409)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/modals/UpdateQuestion.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-322c68b1", Component.options)
+  } else {
+    hotAPI.reload("data-v-322c68b1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 408:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(9);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(10);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _modals = __webpack_require__(43);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+var _admin = __webpack_require__(256);
+
+var _admin2 = _interopRequireDefault(_admin);
+
+var _preload = __webpack_require__(73);
+
+var _preload2 = _interopRequireDefault(_preload);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    mixins: [_modals2.default, _admin2.default, _preload2.default],
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        hide: function hide() {
+            this.modalsIsShowCreateQuestion = false;
+
+            this.questionTestId = null;
+            this.questionName = null;
+            this.questionType = null;
+            this.questionTypeFill = null;
+        },
+        updateQuestion: function updateQuestion() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+                                if (!valid) {
+                                    _context.next = 16;
+                                    break;
+                                }
+
+                                _context.prev = 4;
+
+                                _this.showPreloader();
+                                _context.next = 8;
+                                return _this.$store.dispatch('admin/updateQuestion', {
+                                    test_id: _this.questionTestId,
+                                    name: _this.questionName,
+                                    type: _this.questionType,
+                                    type_fill: _this.questionTypeFill
+                                });
+
+                            case 8:
+                                _this.switchRefreshTable(true);
+                                _this.$toast.success({
+                                    title: _this.$t('translation.success'),
+                                    message: _this.$t('translation.createTest')
+                                });
+                                _context.next = 15;
+                                break;
+
+                            case 12:
+                                _context.prev = 12;
+                                _context.t0 = _context['catch'](4);
+
+                                if (_context.t0.status === 404) {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t('translation.error')
+                                    });
+                                } else {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t(_context.t0.message)
+                                    });
+                                }
+
+                            case 15:
+                                _this.hide();
+
+                            case 16:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[4, 12]]);
+            }))();
+        }
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4787,735 +5646,301 @@ exports.default = {
 /***/ 409:
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = {
-    data: function data() {
-        return {
-            fields: [{
-                name: 'question_id',
-                sortField: 'question_id',
-                title: this.$t('translation.questionId'),
-                titleClass: 'text-left',
-                dataClass: 'text-left'
-            }, {
-                name: 'name',
-                sortField: 'name',
-                title: this.$t('translation.name'),
-                titleClass: 'text-left',
-                dataClass: 'text-left'
-            }, {
-                name: '__slot:actions',
-                title: this.$t('translation.actions'),
-                titleClass: 'text-center',
-                dataClass: 'text-center'
-            }],
-            css: {
-                table: {
-                    tableClass: 'table table-hover cursor-pointer',
-                    loadingClass: 'loading',
-                    ascendingIcon: 'fa fa-angle-up ',
-                    descendingIcon: 'fa fa-angle-down ',
-                    handleIcon: 'glyphicon glyphicon-menu-hamburger'
-                },
-                pagination: {
-                    infoClass: 'pull-left',
-                    wrapperClass: 'vuetable-pagination text-center',
-                    activeClass: 'btn btn-primary text-white',
-                    disabledClass: 'btn text-secondary',
-                    pageClass: 'btn pgn-btn-border border',
-                    linkClass: 'btn pgn-btn-border border',
-                    icons: {
-                        first: 'fa fa-angle-double-left',
-                        prev: 'fa fa-angle-left',
-                        next: 'fa fa-angle-right',
-                        last: 'fa fa-angle-double-right'
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowUpdateQuestion
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c("div", { staticClass: "modal__content modal__md" }, [
+            _c("h4", { staticClass: "modal__head" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.$t("translation.updateQuestion")) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal__body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "questionName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.questionName")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.questionName,
+                      expression: "questionName"
                     }
-                }
-            }
-        };
-    }
-};
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "questionName",
+                    "aria-describedby": "questionNameHelp",
+                    placeholder: _vm.$t("translation.questionNamePlaceholder"),
+                    name: "questionName",
+                    "data-vv-as": _vm.$t("translation.questionName")
+                  },
+                  domProps: { value: _vm.questionName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.questionName = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("questionName"),
+                        expression: "errors.has('questionName')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "questionNameHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("questionName")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                  _vm._v(_vm._s(_vm.$t("translation.typeTest")))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionType,
+                          expression: "questionType"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio1",
+                        value: "option1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionType, "option1")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionType = "option1"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio1" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeTestOne")))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionType,
+                          expression: "questionType"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio2",
+                        value: "option2"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionType, "option2")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionType = "option2"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio2" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeTestPoly")))]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                  _vm._v(_vm._s(_vm.$t("translation.typeFillTest")))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionTypeFill,
+                          expression: "questionTypeFill"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio3",
+                        value: "option1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionTypeFill, "option1")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionTypeFill = "option1"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio3" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeFillAuto")))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionTypeFill,
+                          expression: "questionTypeFill"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio4",
+                        value: "option2"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionTypeFill, "option2")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionTypeFill = "option2"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio4" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeFillManually")))]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-secondary float-right mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.hide }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.close")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-success mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.updateQuestion }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.save")) +
+                      "\n                "
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-322c68b1", module.exports)
+  }
+}
 
 /***/ }),
 
 /***/ 410:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(4)
-/* script */
-var __vue_script__ = __webpack_require__(411)
-/* template */
-var __vue_template__ = __webpack_require__(412)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/admin/modals/CreateAnswer.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-68c51488", Component.options)
-  } else {
-    hotAPI.reload("data-v-68c51488", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 411:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _regenerator = __webpack_require__(9);
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(10);
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var _modals = __webpack_require__(43);
-
-var _modals2 = _interopRequireDefault(_modals);
-
-var _admin = __webpack_require__(259);
-
-var _admin2 = _interopRequireDefault(_admin);
-
-var _preload = __webpack_require__(73);
-
-var _preload2 = _interopRequireDefault(_preload);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    mixins: [_modals2.default, _admin2.default, _preload2.default],
-    data: function data() {
-        return {};
-    },
-
-    methods: {
-        hide: function hide() {
-            this.modalsIsShowCreateAnswer = false;
-
-            this.answerQuestionId = null;
-            this.answerName = null;
-        },
-        createAnswer: function createAnswer() {
-            var _this = this;
-
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-                var valid;
-                return _regenerator2.default.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _this.$validator.validateAll();
-
-                            case 2:
-                                valid = _context.sent;
-
-                                if (!valid) {
-                                    _context.next = 16;
-                                    break;
-                                }
-
-                                _context.prev = 4;
-
-                                _this.showPreloader();
-                                _context.next = 8;
-                                return _this.$store.dispatch('admin/createAnswer', {
-                                    question_id: _this.answerQuestionId,
-                                    name: _this.answerName
-                                });
-
-                            case 8:
-                                _this.switchRefreshTable(true);
-                                _this.$toast.success({
-                                    title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.createAnswer')
-                                });
-                                _context.next = 15;
-                                break;
-
-                            case 12:
-                                _context.prev = 12;
-                                _context.t0 = _context['catch'](4);
-
-                                if (_context.t0.status === 404) {
-                                    _this.$toast.error({
-                                        title: _this.$t('translation.error'),
-                                        message: _this.$t('translation.error')
-                                    });
-                                } else {
-                                    _this.$toast.error({
-                                        title: _this.$t('translation.error'),
-                                        message: _this.$t(_context.t0.message)
-                                    });
-                                }
-
-                            case 15:
-                                _this.hide();
-
-                            case 16:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, _this, [[4, 12]]);
-            }))();
-        }
-    }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-
-/***/ 412:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowCreateAnswer
-      ? _c("div", { staticClass: "modal__wrap" }, [
-          _c("div", { staticClass: "modal__content modal__md" }, [
-            _c("h4", { staticClass: "modal__head" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.$t("translation.createAnswer")) +
-                  "\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal__body" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "answerName" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.answerName")))
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|max:255",
-                      expression: "'required|max:255'"
-                    },
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.answerName,
-                      expression: "answerName"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "answerName",
-                    "aria-describedby": "answerNameHelp",
-                    placeholder: _vm.$t("translation.answerNamePlaceholder"),
-                    name: "answerName",
-                    "data-vv-as": _vm.$t("translation.answerName")
-                  },
-                  domProps: { value: _vm.answerName },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.answerName = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "small",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("answerName"),
-                        expression: "errors.has('answerName')"
-                      }
-                    ],
-                    staticClass: "form-text text-danger",
-                    attrs: { id: "answerNameHelp" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.errors.first("answerName")) +
-                        "\n                    "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-secondary float-right mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.hide }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.close")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-success mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.createAnswer }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.save")) +
-                      "\n                "
-                  )
-                ]
-              )
-            ])
-          ])
-        ])
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-68c51488", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 413:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(4)
-/* script */
-var __vue_script__ = __webpack_require__(414)
-/* template */
-var __vue_template__ = __webpack_require__(415)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/admin/modals/UpdateAnswer.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-124a7149", Component.options)
-  } else {
-    hotAPI.reload("data-v-124a7149", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 414:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _regenerator = __webpack_require__(9);
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(10);
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var _modals = __webpack_require__(43);
-
-var _modals2 = _interopRequireDefault(_modals);
-
-var _admin = __webpack_require__(259);
-
-var _admin2 = _interopRequireDefault(_admin);
-
-var _preload = __webpack_require__(73);
-
-var _preload2 = _interopRequireDefault(_preload);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    mixins: [_modals2.default, _admin2.default, _preload2.default],
-    data: function data() {
-        return {};
-    },
-
-    methods: {
-        hide: function hide() {
-            this.modalsIsShowUpdateAnswer = false;
-
-            this.answerQuestionId = null;
-            this.answerName = null;
-        },
-        updateAnswer: function updateAnswer() {
-            var _this = this;
-
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-                var valid;
-                return _regenerator2.default.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _this.$validator.validateAll();
-
-                            case 2:
-                                valid = _context.sent;
-
-                                if (!valid) {
-                                    _context.next = 16;
-                                    break;
-                                }
-
-                                _context.prev = 4;
-
-                                _this.showPreloader();
-                                _context.next = 8;
-                                return _this.$store.dispatch('admin/updateAnswer', {
-                                    question_id: _this.answerQuestionId,
-                                    name: _this.answerName
-                                });
-
-                            case 8:
-                                _this.switchRefreshTable(true);
-                                _this.$toast.success({
-                                    title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.updateAnswer')
-                                });
-                                _context.next = 15;
-                                break;
-
-                            case 12:
-                                _context.prev = 12;
-                                _context.t0 = _context['catch'](4);
-
-                                if (_context.t0.status === 404) {
-                                    _this.$toast.error({
-                                        title: _this.$t('translation.error'),
-                                        message: _this.$t('translation.error')
-                                    });
-                                } else {
-                                    _this.$toast.error({
-                                        title: _this.$t('translation.error'),
-                                        message: _this.$t(_context.t0.message)
-                                    });
-                                }
-
-                            case 15:
-                                _this.hide();
-
-                            case 16:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, _this, [[4, 12]]);
-            }))();
-        }
-    }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-
-/***/ 415:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowUpdateAnswer
-      ? _c("div", { staticClass: "modal__wrap" }, [
-          _c("div", { staticClass: "modal__content modal__md" }, [
-            _c("h4", { staticClass: "modal__head" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.$t("translation.createAnswer")) +
-                  "\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal__body" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "answerName" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.answerName")))
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|max:255",
-                      expression: "'required|max:255'"
-                    },
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.answerName,
-                      expression: "answerName"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "answerName",
-                    "aria-describedby": "answerNameHelp",
-                    placeholder: _vm.$t("translation.answerNamePlaceholder"),
-                    name: "answerName",
-                    "data-vv-as": _vm.$t("translation.answerName")
-                  },
-                  domProps: { value: _vm.answerName },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.answerName = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "small",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("answerName"),
-                        expression: "errors.has('answerName')"
-                      }
-                    ],
-                    staticClass: "form-text text-danger",
-                    attrs: { id: "answerNameHelp" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.errors.first("answerName")) +
-                        "\n                    "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-secondary float-right mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.hide }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.close")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-success mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.updateAnswer }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.save")) +
-                      "\n                "
-                  )
-                ]
-              )
-            ])
-          ])
-        ])
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-124a7149", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5529,7 +5954,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
           _c("div", { staticClass: "col-md-10" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerAnswers")))])
+            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerQuestions")))])
           ]),
           _vm._v(" "),
           _c(
@@ -5537,14 +5962,20 @@ var render = function() {
             { staticClass: "col-md-12 mt-3" },
             [
               _c("vuetable", {
-                ref: "listAnswers",
+                ref: "listQuestions",
                 attrs: {
-                  "api-url": "/api/admin/answer",
+                  "api-url":
+                    "https://itpm-194220.appspot.com/api/admin/questions",
                   fields: _vm.fields,
                   "pagination-path": "",
                   css: _vm.css.table,
                   "data-path": "data.data",
-                  "detail-row-component": "my-detail-row"
+                  "detail-row-component": "my-detail-row",
+                  "http-options": {
+                    headers: {
+                      Authorization: "Bearer " + _vm.userToken
+                    }
+                  }
                 },
                 on: {
                   "vuetable:load-success": _vm.hidePreloader,
@@ -5553,6 +5984,12 @@ var render = function() {
                   "vuetable:cell-clicked": _vm.onCellClicked
                 },
                 scopedSlots: _vm._u([
+                  {
+                    key: "answers",
+                    fn: function(props) {
+                      return [_c("router-link")]
+                    }
+                  },
                   {
                     key: "actions",
                     fn: function(props) {
@@ -5567,7 +6004,7 @@ var render = function() {
                             },
                             on: {
                               click: function($event) {
-                                _vm.editAnswer(props.rowData.id)
+                                _vm.editQuestion(props.rowData.id)
                               }
                             }
                           },
@@ -5589,7 +6026,7 @@ var render = function() {
                             },
                             on: {
                               click: function($event) {
-                                _vm.destroyAnswer(props.rowData.id)
+                                _vm.destroyQuestion(props.rowData.id)
                               }
                             }
                           },
@@ -5619,9 +6056,9 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("modal-create-answer"),
+      _c("modal-create-question"),
       _vm._v(" "),
-      _c("modal-update-answer")
+      _c("modal-update-question")
     ],
     1
   )
@@ -5632,7 +6069,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8c8485cc", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0c122ab2", module.exports)
   }
 }
 

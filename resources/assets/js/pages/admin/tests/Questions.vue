@@ -13,12 +13,17 @@
                 <!--</div>-->
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listQuestions"
-                              api-url="/api/admin/questions"
+                              api-url="https://itpm-194220.appspot.com/api/admin/questions"
                               :fields="fields"
                               pagination-path=""
                               :css="css.table"
                               data-path="data.data"
                               detail-row-component="my-detail-row"
+                              :http-options="{
+                                headers: {
+                                    Authorization: `Bearer ${userToken}`,
+                                },
+                              }"
                               @vuetable:load-success="hidePreloader"
                               @vuetable:load-error="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
@@ -66,6 +71,7 @@
     import MixinModals from '../../../mixins/modals';
     import MixinPreloader from '../../../mixins/preload';
     import MixinAdmin from '../../../mixins/admin';
+    import MixinUser from '../../../mixins/user';
     import ModalCreateQuestion from '../../../components/admin/modals/CreateQuestion.vue';
     import ModalUpdateQuestion from '../../../components/admin/modals/UpdateQuestion.vue';
 
@@ -74,6 +80,7 @@
     export default {
         mixins: [
             MixinAdmin,
+            MixinUser,
             MixinModals,
             MixinPreloader,
             FieldsQuestion,

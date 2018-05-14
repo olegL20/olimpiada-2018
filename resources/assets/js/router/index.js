@@ -12,71 +12,94 @@ const routes = [
         name: 'home',
         component: () => import('../pages/Home.vue'),
     },
-    // {
-    //     path: '/confirmation/:id',
-    //     name: 'auth.confirmation',
-    //     component: () => import('../pages/auth/EmailConfirmation.vue'),
-    //     meta: {
-    //         guest: true,
-    //     },
-    // },
+    {
+        path: '/confirmation/:id',
+        name: 'auth.confirmation',
+        component: () => import('../pages/auth/EmailConfirmation.vue'),
+        meta: {
+            guest: true,
+        },
+    },
     {
         path: '/room',
         name: 'user.room',
         component: () => import('../pages/Room.vue'),
+        meta: {
+            auth: true,
+            user: true,
+        },
     },
     {
         path: '/invite/:id',
         name: 'auth.invite',
         component: () => import('../pages/Auth/RegisterInvite.vue'),
-    },
-    {
-        path: '/admin/login',
-        name: 'admin.login',
-        component: () => import('../pages/admin/Login.vue'),
+        meta: {
+            guest: true,
+        },
     },
     {
         path: '/admin/home',
         name: 'admin.home',
         component: () => import('../pages/admin/Home.vue'),
+        meta: {
+            auth: true,
+            uniAdmin: true,
+            globalAdmin: true,
+        },
     },
     {
         path: '/admin/university',
         name: 'admin.university',
         component: () => import('../pages/admin/University.vue'),
-        // meta: {
-        //     auth: true,
-        //     admin: true,
-        // },
+        meta: {
+            auth: true,
+            uniAdmin: true,
+        },
     },
     {
         path: '/admin/university/admins',
         name: 'admin.university.admins',
         component: () => import('../pages/admin/UniversityAdmins.vue'),
-        // meta: {
-        //     auth: true,
-        //     admin: true,
-        // },
+        meta: {
+            auth: true,
+            globalAdmin: true,
+        },
     },
     {
         path: '/admin/coefficients',
         name: 'admin.coefficients',
         component: () => import('../pages/admin/Coefficients.vue'),
+        meta: {
+            auth: true,
+            uniAdmin: true,
+        },
     },
     {
         path: '/admin/tests',
         name: 'admin.tests',
         component: () => import('../pages/admin/tests/Tests.vue'),
+        meta: {
+            auth: true,
+            uniAdmin: true,
+        },
     },
     {
         path: '/admin/questions',
         name: 'admin.questions',
         component: () => import('../pages/admin/tests/Questions.vue'),
+        meta: {
+            auth: true,
+            uniAdmin: true,
+        },
     },
     {
         path: '/admin/answers',
         name: 'admin.answers',
         component: () => import('../pages/admin/tests/Answers.vue'),
+        meta: {
+            auth: true,
+            uniAdmin: true,
+        },
     },
 
     /**
@@ -113,18 +136,13 @@ router.beforeEach((to, from, next) => {
         next({
             name: 'home',
         });
-    // } else if (!to.matched.some(record => record.meta.admin)
-    //     && store.getters['user/logged']
-    //     && to.matched.some(record => record.meta.auth)) {
-    //     next({
-    //         name: 'home',
-    //     });
-    } else if (store.getters['user/role'] === 'user') {
+    } else if (to.matched.some(record => record.meta.uniAdmin) && store.getters['user/role'] === 'user') {
         next({
-            name: 'admin.home',
-            query: {
-                redirect: to.fullPath,
-            },
+            name: 'home',
+        });
+    } else if (to.matched.some(record => record.meta.globalAdmin) && store.getters['user/role'] === 'user') {
+        next({
+            name: 'home',
         });
     } else {
         next();

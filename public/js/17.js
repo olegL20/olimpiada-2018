@@ -1,14 +1,14 @@
 webpackJsonp([17],{
 
-/***/ 250:
+/***/ 253:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(381)
+var __vue_script__ = __webpack_require__(411)
 /* template */
-var __vue_template__ = __webpack_require__(389)
+var __vue_template__ = __webpack_require__(419)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/pages/admin/Coefficients.vue"
+Component.options.__file = "resources/assets/js/pages/admin/tests/Answers.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-279e8a9b", Component.options)
+    hotAPI.createRecord("data-v-8c8485cc", Component.options)
   } else {
-    hotAPI.reload("data-v-279e8a9b", Component.options)
+    hotAPI.reload("data-v-8c8485cc", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -358,18 +358,45 @@ module.exports = {
 /***/ 256:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(3);
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends2 = __webpack_require__(0);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _schepotinVuexHelpers = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
+        namespace: 'admin',
+        prefix: false
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
+};
 
 /***/ }),
 
 /***/ 257:
 /***/ (function(module, exports, __webpack_require__) {
 
+exports.f = __webpack_require__(3);
+
+
+/***/ }),
+
+/***/ 258:
+/***/ (function(module, exports, __webpack_require__) {
+
 var global = __webpack_require__(2);
 var core = __webpack_require__(5);
 var LIBRARY = __webpack_require__(44);
-var wksExt = __webpack_require__(256);
+var wksExt = __webpack_require__(257);
 var defineProperty = __webpack_require__(15).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -379,7 +406,7 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 258:
+/***/ 259:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -478,33 +505,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)))
-
-/***/ }),
-
-/***/ 259:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends2 = __webpack_require__(0);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _schepotinVuexHelpers = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
-        namespace: 'admin',
-        prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
-};
 
 /***/ }),
 
@@ -1881,7 +1881,7 @@ module.exports = { "default": __webpack_require__(272), __esModule: true };
 
 __webpack_require__(78);
 __webpack_require__(83);
-module.exports = __webpack_require__(256).f('iterator');
+module.exports = __webpack_require__(257).f('iterator');
 
 
 /***/ }),
@@ -1922,8 +1922,8 @@ var shared = __webpack_require__(48);
 var setToStringTag = __webpack_require__(32);
 var uid = __webpack_require__(46);
 var wks = __webpack_require__(3);
-var wksExt = __webpack_require__(256);
-var wksDefine = __webpack_require__(257);
+var wksExt = __webpack_require__(257);
+var wksDefine = __webpack_require__(258);
 var enumKeys = __webpack_require__(277);
 var isArray = __webpack_require__(278);
 var anObject = __webpack_require__(12);
@@ -2293,7 +2293,7 @@ exports.f = __webpack_require__(13) ? gOPD : function getOwnPropertyDescriptor(O
 /***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(257)('asyncIterator');
+__webpack_require__(258)('asyncIterator');
 
 
 /***/ }),
@@ -2301,7 +2301,7 @@ __webpack_require__(257)('asyncIterator');
 /***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(257)('observable');
+__webpack_require__(258)('observable');
 
 
 /***/ }),
@@ -2322,7 +2322,7 @@ module.exports = __webpack_require__(284);
 var utils = __webpack_require__(255);
 var bind = __webpack_require__(261);
 var Axios = __webpack_require__(285);
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 
 /**
  * Create an instance of Axios
@@ -2379,7 +2379,7 @@ module.exports.default = axios;
 "use strict";
 
 
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 var utils = __webpack_require__(255);
 var InterceptorManager = __webpack_require__(294);
 var dispatchRequest = __webpack_require__(295);
@@ -2917,7 +2917,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(255);
 var transformData = __webpack_require__(296);
 var isCancel = __webpack_require__(264);
-var defaults = __webpack_require__(258);
+var defaults = __webpack_require__(259);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -4534,7 +4534,26 @@ if (false) {
 
 /***/ }),
 
-/***/ 381:
+/***/ 307:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var BUTTON_COLOR_CONFIRM = exports.BUTTON_COLOR_CONFIRM = '#3085d6';
+var BUTTON_COLOR_CANCEL = exports.BUTTON_COLOR_CANCEL = '#d33d33';
+var IMAGE_MAX_SIZE = exports.IMAGE_MAX_SIZE = 3;
+
+var USER = exports.USER = 'user';
+var UNIVERSITY_ADMIN = exports.UNIVERSITY_ADMIN = 'uni_admin';
+var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
+
+/***/ }),
+
+/***/ 411:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4544,6 +4563,14 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _regenerator = __webpack_require__(9);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(10);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
 var _Vuetable = __webpack_require__(266);
 
 var _Vuetable2 = _interopRequireDefault(_Vuetable);
@@ -4552,9 +4579,9 @@ var _VuetablePagination = __webpack_require__(302);
 
 var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
 
-var _coefficient = __webpack_require__(382);
+var _answers = __webpack_require__(412);
 
-var _coefficient2 = _interopRequireDefault(_coefficient);
+var _answers2 = _interopRequireDefault(_answers);
 
 var _modals = __webpack_require__(43);
 
@@ -4564,80 +4591,215 @@ var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-var _CreateCoefficient = __webpack_require__(383);
+var _admin = __webpack_require__(256);
 
-var _CreateCoefficient2 = _interopRequireDefault(_CreateCoefficient);
+var _admin2 = _interopRequireDefault(_admin);
 
-var _UpdateCoefficient = __webpack_require__(386);
+var _user = __webpack_require__(31);
 
-var _UpdateCoefficient2 = _interopRequireDefault(_UpdateCoefficient);
+var _user2 = _interopRequireDefault(_user);
+
+var _CreateAnswer = __webpack_require__(413);
+
+var _CreateAnswer2 = _interopRequireDefault(_CreateAnswer);
+
+var _UpdateAnswer = __webpack_require__(416);
+
+var _UpdateAnswer2 = _interopRequireDefault(_UpdateAnswer);
+
+var _constants = __webpack_require__(307);
+
+var constants = _interopRequireWildcard(_constants);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 exports.default = {
-    mixins: [_preload2.default, _modals2.default, _coefficient2.default],
+    mixins: [_admin2.default, _user2.default, _modals2.default, _preload2.default, _answers2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default,
-        ModalCreateCoefficient: _CreateCoefficient2.default,
-        ModalUpdateCoefficient: _UpdateCoefficient2.default
+        ModalCreateAnswer: _CreateAnswer2.default,
+        ModalUpdateAnswer: _UpdateAnswer2.default
     },
     mounted: function mounted() {
-        // this.showPreloader();
+        this.showPreloader();
     },
 
+    watch: {
+        refreshTable: function refreshTable() {
+            if (this.refreshTable) {
+                this.$refs.listAnswers.refresh();
+                this.switchRefreshTable(false);
+            }
+        }
+    },
     methods: {
+        editAnswer: function editAnswer(id) {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.prev = 0;
+                                _context.next = 3;
+                                return _this.$store.dispatch('admin/getAnswer', id);
+
+                            case 3:
+                                _this.modalsIsShowUpdateAnswer = true;
+                                _context.next = 9;
+                                break;
+
+                            case 6:
+                                _context.prev = 6;
+                                _context.t0 = _context['catch'](0);
+
+                                _this.$toast.error({
+                                    title: _this.$t('translation.error'),
+                                    message: _this.$t(_context.t0.message)
+                                });
+
+                            case 9:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[0, 6]]);
+            }))();
+        },
+        destroyAnswer: function destroyAnswer(id) {
+            var _this2 = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+                var result;
+                return _regenerator2.default.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.next = 2;
+                                return _this2.$swal({
+                                    title: _this2.$t('translation.areYouSure'),
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: constants.BUTTON_COLOR_CONFIRM,
+                                    confirmButtonText: _this2.$t('translation.yes'),
+                                    cancelButtonColor: constants.BUTTON_COLOR_CANCEL,
+                                    cancelButtonText: _this2.$t('translation.cancel')
+                                });
+
+                            case 2:
+                                result = _context2.sent;
+
+                                if (!result.value) {
+                                    _context2.next = 14;
+                                    break;
+                                }
+
+                                _context2.prev = 4;
+                                _context2.next = 7;
+                                return _this2.$store.dispatch('admin/destroyAnswer', id);
+
+                            case 7:
+                                _this2.$refs.listAnswers.refresh();
+                                _this2.showPreloader();
+                                _context2.next = 14;
+                                break;
+
+                            case 11:
+                                _context2.prev = 11;
+                                _context2.t0 = _context2['catch'](4);
+
+                                _this2.$toast.error({
+                                    title: _this2.$t('translation.error'),
+                                    message: _this2.$t(_context2.t0.statusText)
+                                });
+
+                            case 14:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, _this2, [[4, 11]]);
+            }))();
+        },
         onPaginationData: function onPaginationData(paginationData) {
             this.$refs.pagination.setPaginationData(paginationData);
         },
         onChangePage: function onChangePage(page) {
-            this.$refs.listUniversities.changePage(page);
+            this.$refs.listAnswers.changePage(page);
         }
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 
-/***/ 382:
+/***/ 412:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4650,21 +4812,15 @@ exports.default = {
     data: function data() {
         return {
             fields: [{
+                name: 'question_id',
+                sortField: 'question_id',
+                title: this.$t('translation.questionId'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
                 name: 'name',
                 sortField: 'name',
                 title: this.$t('translation.name'),
-                titleClass: 'text-left',
-                dataClass: 'text-left'
-            }, {
-                name: 'major_id',
-                sortField: 'major_id',
-                title: this.$t('translation.majorId'),
-                titleClass: 'text-left',
-                dataClass: 'text-left'
-            }, {
-                name: 'coefficient',
-                sortField: 'coefficient',
-                title: this.$t('translation.coefficient'),
                 titleClass: 'text-left',
                 dataClass: 'text-left'
             }, {
@@ -4702,15 +4858,15 @@ exports.default = {
 
 /***/ }),
 
-/***/ 383:
+/***/ 413:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(384)
+var __vue_script__ = __webpack_require__(414)
 /* template */
-var __vue_template__ = __webpack_require__(385)
+var __vue_template__ = __webpack_require__(415)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4727,7 +4883,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/CreateCoefficient.vue"
+Component.options.__file = "resources/assets/js/components/admin/modals/CreateAnswer.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -4736,9 +4892,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f6db6a7", Component.options)
+    hotAPI.createRecord("data-v-68c51488", Component.options)
   } else {
-    hotAPI.reload("data-v-0f6db6a7", Component.options)
+    hotAPI.reload("data-v-68c51488", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -4750,7 +4906,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 384:
+/***/ 414:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4772,7 +4928,7 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -4785,26 +4941,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
     mixins: [_modals2.default, _admin2.default, _preload2.default],
     data: function data() {
-        return {
-            options: [{
-                name: '1',
-                id: 1
-            }, {
-                name: '2',
-                id: 2
-            }]
-        };
+        return {};
     },
 
     methods: {
         hide: function hide() {
-            this.modalsIsShowCreateCoefficient = false;
+            this.modalsIsShowCreateAnswer = false;
 
-            this.coefficientMajorId = null;
-            this.coefficientName = null;
-            this.coefficientCoefficient = null;
+            this.answerQuestionId = null;
+            this.answerName = null;
         },
-        createCoefficient: function createCoefficient() {
+        createAnswer: function createAnswer() {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -4828,17 +4975,16 @@ exports.default = {
 
                                 _this.showPreloader();
                                 _context.next = 8;
-                                return _this.$store.dispatch('admin/createCoefficient', {
-                                    major_id: _this.coefficientMajorId,
-                                    name: _this.coefficientName,
-                                    coefficient: _this.coefficientCoefficient
+                                return _this.$store.dispatch('admin/createAnswer', {
+                                    question_id: _this.answerQuestionId,
+                                    name: _this.answerName
                                 });
 
                             case 8:
                                 _this.switchRefreshTable(true);
                                 _this.$toast.success({
                                     title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.createdCoefficient')
+                                    message: _this.$t('translation.createAnswer')
                                 });
                                 _context.next = 15;
                                 break;
@@ -4912,27 +5058,10 @@ exports.default = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
 
-/***/ 385:
+/***/ 415:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4940,187 +5069,114 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowCreateCoefficient
+    _vm.modalsIsShowCreateAnswer
       ? _c("div", { staticClass: "modal__wrap" }, [
           _c("div", { staticClass: "modal__content modal__md" }, [
             _c("h4", { staticClass: "modal__head" }, [
               _vm._v(
                 "\n                " +
-                  _vm._s(_vm.$t("translation.createCoefficient")) +
+                  _vm._s(_vm.$t("translation.createAnswer")) +
                   "\n            "
               )
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal__body" },
-              [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "coefficientName" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.coefficientName")))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|max:255",
-                        expression: "'required|max:255'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.coefficientName,
-                        expression: "coefficientName"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "coefficientName",
-                      "aria-describedby": "coefficientNameHelp",
-                      placeholder: _vm.$t(
-                        "translation.coefficientNamePlaceholder"
-                      ),
-                      name: "coefficientName",
-                      "data-vv-as": _vm.$t("translation.coefficientName")
-                    },
-                    domProps: { value: _vm.coefficientName },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.coefficientName = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
+            _c("div", { staticClass: "modal__body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "answerName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.answerName")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
                     {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("coefficientName"),
-                          expression: "errors.has('coefficientName')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "coefficientNameHelp" }
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
                     },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("coefficientName")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "formControlRange" } },
-                    [
-                      _vm._v(
-                        _vm._s(_vm.$t("translation.coefficient")) +
-                          "\n                        "
-                      ),
-                      _vm.coefficientCoefficient
-                        ? [
-                            _vm._v(
-                              "\n                            : (" +
-                                _vm._s(_vm.coefficientCoefficient) +
-                                ")\n                        "
-                            )
-                          ]
-                        : _vm._e()
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.coefficientCoefficient,
-                        expression: "coefficientCoefficient"
-                      }
-                    ],
-                    staticClass: "form-control-range",
-                    attrs: {
-                      min: "0",
-                      max: "1",
-                      step: "0.01",
-                      type: "range",
-                      id: "formControlRange"
-                    },
-                    domProps: { value: _vm.coefficientCoefficient },
-                    on: {
-                      __r: function($event) {
-                        _vm.coefficientCoefficient = $event.target.value
-                      }
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.answerName,
+                      expression: "answerName"
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("multiselect", {
+                  ],
+                  staticClass: "form-control",
                   attrs: {
-                    options: _vm.options,
-                    searchable: true,
-                    "show-labels": false,
-                    label: "name",
-                    "track-by": "id",
-                    placeholder: _vm.$t("translation.selectFromList")
+                    type: "text",
+                    id: "answerName",
+                    "aria-describedby": "answerNameHelp",
+                    placeholder: _vm.$t("translation.answerNamePlaceholder"),
+                    name: "answerName",
+                    "data-vv-as": _vm.$t("translation.answerName")
                   },
-                  model: {
-                    value: _vm.coefficientMajorId,
-                    callback: function($$v) {
-                      _vm.coefficientMajorId = $$v
-                    },
-                    expression: "coefficientMajorId"
+                  domProps: { value: _vm.answerName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.answerName = $event.target.value
+                    }
                   }
                 }),
                 _vm._v(" "),
                 _c(
-                  "button",
+                  "small",
                   {
-                    staticClass: "btn btn-md btn-secondary float-right mt-4",
-                    attrs: { type: "button" },
-                    on: { click: _vm.hide }
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("answerName"),
+                        expression: "errors.has('answerName')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "answerNameHelp" }
                   },
                   [
                     _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.$t("translation.close")) +
-                        "\n                "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-md btn-success mt-4",
-                    attrs: { type: "button" },
-                    on: { click: _vm.createCoefficient }
-                  },
-                  [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.$t("translation.save")) +
-                        "\n                "
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("answerName")) +
+                        "\n                    "
                     )
                   ]
                 )
-              ],
-              1
-            )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-secondary float-right mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.hide }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.close")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-success mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.createAnswer }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.save")) +
+                      "\n                "
+                  )
+                ]
+              )
+            ])
           ])
         ])
       : _vm._e()
@@ -5132,21 +5188,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0f6db6a7", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-68c51488", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 386:
+/***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(387)
+var __vue_script__ = __webpack_require__(417)
 /* template */
-var __vue_template__ = __webpack_require__(388)
+var __vue_template__ = __webpack_require__(418)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -5163,7 +5219,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/UpdateCoefficient.vue"
+Component.options.__file = "resources/assets/js/components/admin/modals/UpdateAnswer.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -5172,9 +5228,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5540eb3a", Component.options)
+    hotAPI.createRecord("data-v-124a7149", Component.options)
   } else {
-    hotAPI.reload("data-v-5540eb3a", Component.options)
+    hotAPI.reload("data-v-124a7149", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -5186,7 +5242,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 387:
+/***/ 417:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5208,7 +5264,7 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(259);
+var _admin = __webpack_require__(256);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -5221,26 +5277,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
     mixins: [_modals2.default, _admin2.default, _preload2.default],
     data: function data() {
-        return {
-            options: [{
-                name: '1',
-                id: 1
-            }, {
-                name: '2',
-                id: 2
-            }]
-        };
+        return {};
     },
 
     methods: {
         hide: function hide() {
-            this.modalsIsShowUpdateCoefficient = false;
+            this.modalsIsShowUpdateAnswer = false;
 
-            this.coefficientMajorId = null;
-            this.coefficientName = null;
-            this.coefficientCoefficient = null;
+            this.answerQuestionId = null;
+            this.answerName = null;
         },
-        createCoefficient: function createCoefficient() {
+        updateAnswer: function updateAnswer() {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -5264,17 +5311,16 @@ exports.default = {
 
                                 _this.showPreloader();
                                 _context.next = 8;
-                                return _this.$store.dispatch('admin/updateCoefficient', {
-                                    major_id: _this.coefficientMajorId,
-                                    name: _this.coefficientName,
-                                    coefficient: _this.coefficientCoefficient
+                                return _this.$store.dispatch('admin/updateAnswer', {
+                                    question_id: _this.answerQuestionId,
+                                    name: _this.answerName
                                 });
 
                             case 8:
                                 _this.switchRefreshTable(true);
                                 _this.$toast.success({
                                     title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.updatedCoefficient')
+                                    message: _this.$t('translation.updateAnswer')
                                 });
                                 _context.next = 15;
                                 break;
@@ -5348,27 +5394,10 @@ exports.default = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
 
-/***/ 388:
+/***/ 418:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5376,187 +5405,114 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowUpdateCoefficient
+    _vm.modalsIsShowUpdateAnswer
       ? _c("div", { staticClass: "modal__wrap" }, [
           _c("div", { staticClass: "modal__content modal__md" }, [
             _c("h4", { staticClass: "modal__head" }, [
               _vm._v(
                 "\n                " +
-                  _vm._s(_vm.$t("translation.createCoefficient")) +
+                  _vm._s(_vm.$t("translation.createAnswer")) +
                   "\n            "
               )
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal__body" },
-              [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "coefficientName" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.coefficientName")))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|max:255",
-                        expression: "'required|max:255'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.coefficientName,
-                        expression: "coefficientName"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "coefficientName",
-                      "aria-describedby": "coefficientNameHelp",
-                      placeholder: _vm.$t(
-                        "translation.coefficientNamePlaceholder"
-                      ),
-                      name: "coefficientName",
-                      "data-vv-as": _vm.$t("translation.coefficientName")
-                    },
-                    domProps: { value: _vm.coefficientName },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.coefficientName = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
+            _c("div", { staticClass: "modal__body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "answerName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.answerName")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
                     {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("coefficientName"),
-                          expression: "errors.has('coefficientName')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "coefficientNameHelp" }
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
                     },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("coefficientName")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "formControlRange" } },
-                    [
-                      _vm._v(
-                        _vm._s(_vm.$t("translation.coefficient")) +
-                          "\n                        "
-                      ),
-                      _vm.coefficientCoefficient
-                        ? [
-                            _vm._v(
-                              "\n                            : (" +
-                                _vm._s(_vm.coefficientCoefficient) +
-                                ")\n                        "
-                            )
-                          ]
-                        : _vm._e()
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.coefficientCoefficient,
-                        expression: "coefficientCoefficient"
-                      }
-                    ],
-                    staticClass: "form-control-range",
-                    attrs: {
-                      min: "0",
-                      max: "1",
-                      step: "0.01",
-                      type: "range",
-                      id: "formControlRange"
-                    },
-                    domProps: { value: _vm.coefficientCoefficient },
-                    on: {
-                      __r: function($event) {
-                        _vm.coefficientCoefficient = $event.target.value
-                      }
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.answerName,
+                      expression: "answerName"
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("multiselect", {
+                  ],
+                  staticClass: "form-control",
                   attrs: {
-                    options: _vm.options,
-                    searchable: true,
-                    "show-labels": false,
-                    label: "name",
-                    "track-by": "id",
-                    placeholder: _vm.$t("translation.selectFromList")
+                    type: "text",
+                    id: "answerName",
+                    "aria-describedby": "answerNameHelp",
+                    placeholder: _vm.$t("translation.answerNamePlaceholder"),
+                    name: "answerName",
+                    "data-vv-as": _vm.$t("translation.answerName")
                   },
-                  model: {
-                    value: _vm.coefficientMajorId,
-                    callback: function($$v) {
-                      _vm.coefficientMajorId = $$v
-                    },
-                    expression: "coefficientMajorId"
+                  domProps: { value: _vm.answerName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.answerName = $event.target.value
+                    }
                   }
                 }),
                 _vm._v(" "),
                 _c(
-                  "button",
+                  "small",
                   {
-                    staticClass: "btn btn-md btn-secondary float-right mt-4",
-                    attrs: { type: "button" },
-                    on: { click: _vm.hide }
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("answerName"),
+                        expression: "errors.has('answerName')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "answerNameHelp" }
                   },
                   [
                     _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.$t("translation.close")) +
-                        "\n                "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-md btn-success mt-4",
-                    attrs: { type: "button" },
-                    on: { click: _vm.updateCoefficient }
-                  },
-                  [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.$t("translation.save")) +
-                        "\n                "
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("answerName")) +
+                        "\n                    "
                     )
                   ]
                 )
-              ],
-              1
-            )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-secondary float-right mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.hide }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.close")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-success mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.updateAnswer }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.save")) +
+                      "\n                "
+                  )
+                ]
+              )
+            ])
           ])
         ])
       : _vm._e()
@@ -5568,13 +5524,13 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5540eb3a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-124a7149", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 389:
+/***/ 419:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5588,31 +5544,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
           _c("div", { staticClass: "col-md-10" }, [
-            _c("h1", [
-              _vm._v(_vm._s(_vm.$t("translation.managerCoefficients")))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 align-self-center" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-primary btn-md float-right",
-                attrs: { href: "javascript:" },
-                on: {
-                  click: function($event) {
-                    _vm.modalsIsShowCreateCoefficient = true
-                  }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.$t("translation.createCoefficient")) +
-                    "\n                "
-                )
-              ]
-            )
+            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerAnswers")))])
           ]),
           _vm._v(" "),
           _c(
@@ -5620,18 +5552,73 @@ var render = function() {
             { staticClass: "col-md-12 mt-3" },
             [
               _c("vuetable", {
-                ref: "listCoefficients",
+                ref: "listAnswers",
                 attrs: {
-                  "api-url": "/api/admin/subjects-coefficients",
+                  "api-url": "https://itpm-194220.appspot.com/api/admin/answer",
                   fields: _vm.fields,
                   "pagination-path": "",
                   css: _vm.css.table,
-                  "data-path": "data.data"
+                  "data-path": "data.data",
+                  "detail-row-component": "my-detail-row",
+                  "http-options": {
+                    headers: {
+                      Authorization: "Bearer " + _vm.userToken
+                    }
+                  }
                 },
                 on: {
                   "vuetable:load-success": _vm.hidePreloader,
-                  "vuetable:pagination-data": _vm.onPaginationData
-                }
+                  "vuetable:load-error": _vm.hidePreloader,
+                  "vuetable:pagination-data": _vm.onPaginationData,
+                  "vuetable:cell-clicked": _vm.onCellClicked
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "actions",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-outline-secondary btn-md",
+                            attrs: {
+                              href: "javascript:",
+                              title: _vm.$t("translation.edit")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.editAnswer(props.rowData.id)
+                              }
+                            }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-pencil",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-danger btn-md",
+                            attrs: {
+                              type: "button",
+                              title: _vm.$t("translation.remove")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.destroyAnswer(props.rowData.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash-o" })]
+                        )
+                      ]
+                    }
+                  }
+                ])
               })
             ],
             1
@@ -5652,9 +5639,9 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("modal-create-coefficient"),
+      _c("modal-create-answer"),
       _vm._v(" "),
-      _c("modal-update-coefficient")
+      _c("modal-update-answer")
     ],
     1
   )
@@ -5665,7 +5652,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-279e8a9b", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-8c8485cc", module.exports)
   }
 }
 

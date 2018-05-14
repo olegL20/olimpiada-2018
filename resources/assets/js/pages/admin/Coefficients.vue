@@ -13,11 +13,16 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listCoefficients"
-                              api-url="/api/admin/subjects-coefficients"
+                              api-url="https://itpm-194220.appspot.com/api/admin/subjects-coefficients"
                               :fields="fields"
                               pagination-path = ""
                               :css="css.table"
                               data-path="data.data"
+                              :http-options="{
+                                headers: {
+                                    Authorization: `Bearer ${userToken}`,
+                                },
+                              }"
                               @vuetable:load-success="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
                     >
@@ -44,6 +49,7 @@
     import FieldsCoefficient from '../../mixins/formFields/coefficient';
 
     import MixinModals from '../../mixins/modals';
+    import MixinUser from '../../mixins/user';
     import MixinPreload from '../../mixins/preload';
 
     import ModalCreateCoefficient from '../../components/admin/modals/CreateCoefficient.vue';
@@ -53,6 +59,7 @@
         mixins: [
             MixinPreload,
             MixinModals,
+            MixinUser,
             FieldsCoefficient,
         ],
         components: {

@@ -48,12 +48,16 @@
 <script>
     import * as loginModal from '../components/modals/Login.vue';
     import * as registerModal from '../components/modals/Register.vue';
+    import userMixin from '../mixins/user';
 
     export default {
         components: {
             loginModal,
             registerModal,
         },
+        mixins: [
+            userMixin,
+        ],
         data() {
             return {
                 isAdmin: true,
@@ -64,8 +68,9 @@
                 title: this.$t('translation.homepage'),
             };
         },
-        created() {
-            if (!this.userRole === 'admin') {
+        mounted() {
+            if (this.userRole === 'uni_admin'
+                || this.userRole === 'global_admin') {
                 this.$router.push({
                     name: 'admin.home',
                 });

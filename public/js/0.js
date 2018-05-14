@@ -4924,19 +4924,19 @@ exports.default = {
                                     break;
                                 }
 
-                                _context2.prev = 4;
-                                _context2.next = 7;
+                                _this2.showPreloader();
+                                _context2.prev = 5;
+                                _context2.next = 8;
                                 return _this2.$store.dispatch('admin/destroyUniversity', universityId);
 
-                            case 7:
+                            case 8:
                                 _this2.$refs.listUniversities.refresh();
-                                _this2.showPreloader();
                                 _context2.next = 14;
                                 break;
 
                             case 11:
                                 _context2.prev = 11;
-                                _context2.t0 = _context2['catch'](4);
+                                _context2.t0 = _context2['catch'](5);
 
                                 _this2.$toast.error({
                                     title: _this2.$t('translation.error'),
@@ -4948,7 +4948,7 @@ exports.default = {
                                 return _context2.stop();
                         }
                     }
-                }, _callee2, _this2, [[4, 11]]);
+                }, _callee2, _this2, [[5, 11]]);
             }))();
         }
     }
@@ -6172,7 +6172,6 @@ exports.default = {
         }
     }
 }; //
-//
 //
 //
 //

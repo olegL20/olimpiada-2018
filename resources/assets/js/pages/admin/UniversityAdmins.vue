@@ -94,7 +94,6 @@
         },
         methods: {
             onCellClicked(data) {
-                console.log(data);
                 this.universityUserId = data.id;
                 this.isShowAssociateUniversityAdmin = true;
             },
@@ -106,11 +105,12 @@
             },
             async setUniversityId(el) {
                 try {
+                    this.showPreloader();
                     await this.$store.dispatch('admin/associate', {
                         user_id: el.target.dataset.id,
                         university_id: el.target.value,
                     });
-                    this.$refs.listUniversityAdministrators.refresh();
+                    this.hidePreloader();
                     this.$toast.success({
                         title: this.$t('translation.success'),
                         message: this.$t('translation.universityChanged'),

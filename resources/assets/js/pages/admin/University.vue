@@ -144,10 +144,10 @@
                     cancelButtonText: this.$t('translation.cancel'),
                 });
                 if (result.value) {
+                    this.showPreloader();
                     try {
                         await this.$store.dispatch('admin/destroyUniversity', universityId);
                         this.$refs.listUniversities.refresh();
-                        this.showPreloader();
                     } catch (e) {
                         this.$toast.error({
                             title: this.$t('translation.error'),

@@ -5254,7 +5254,6 @@ exports.default = {
 
     methods: {
         onCellClicked: function onCellClicked(data) {
-            console.log(data);
             this.universityUserId = data.id;
             this.isShowAssociateUniversityAdmin = true;
         },
@@ -5273,9 +5272,8 @@ exports.default = {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                console.log(el);
-                                _context.prev = 1;
-                                _context.next = 4;
+                                _context.prev = 0;
+                                _context.next = 3;
                                 return _this.$store.dispatch('admin/setUniversityForFaculty', {
                                     id: el.target.dataset.id,
                                     params: {
@@ -5284,30 +5282,30 @@ exports.default = {
                                     }
                                 });
 
-                            case 4:
+                            case 3:
                                 _this.$refs.listFaculties.refresh();
                                 _this.$toast.success({
                                     title: _this.$t('translation.success'),
                                     message: _this.$t('translation.universityChanged')
                                 });
-                                _context.next = 11;
+                                _context.next = 10;
                                 break;
 
-                            case 8:
-                                _context.prev = 8;
-                                _context.t0 = _context['catch'](1);
+                            case 7:
+                                _context.prev = 7;
+                                _context.t0 = _context['catch'](0);
 
                                 _this.$toast.error({
                                     title: _this.$t('translation.error'),
                                     message: _this.$t(_context.t0.message)
                                 });
 
-                            case 11:
+                            case 10:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[1, 8]]);
+                }, _callee, _this, [[0, 7]]);
             }))();
         },
         editFaculty: function editFaculty(id) {
@@ -5371,36 +5369,36 @@ exports.default = {
                                 result = _context3.sent;
 
                                 if (!result.value) {
-                                    _context3.next = 15;
+                                    _context3.next = 14;
                                     break;
                                 }
 
+                                _context3.prev = 4;
+
                                 _this3.showPreloader();
-                                _context3.prev = 5;
                                 _context3.next = 8;
                                 return _this3.$store.dispatch('admin/destroyFaculty', id);
 
                             case 8:
                                 _this3.$refs.listFaculties.refresh();
-                                _this3.showPreloader();
-                                _context3.next = 15;
+                                _context3.next = 14;
                                 break;
 
-                            case 12:
-                                _context3.prev = 12;
-                                _context3.t0 = _context3['catch'](5);
+                            case 11:
+                                _context3.prev = 11;
+                                _context3.t0 = _context3['catch'](4);
 
                                 _this3.$toast.error({
                                     title: _this3.$t('translation.error'),
                                     message: _this3.$t(_context3.t0.statusText)
                                 });
 
-                            case 15:
+                            case 14:
                             case 'end':
                                 return _context3.stop();
                         }
                     }
-                }, _callee3, _this3, [[5, 12]]);
+                }, _callee3, _this3, [[4, 11]]);
             }))();
         }
     }
@@ -5474,7 +5472,7 @@ var render = function() {
                           "\n                        " +
                             _vm._s(
                               props.rowData.university_id
-                                ? props.rowData.university_id
+                                ? props.rowData.university.name
                                 : _vm.$t("translation.noData")
                             ) +
                             "\n                    "
@@ -5956,287 +5954,298 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "modal__body" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "facultyName" } }, [
-                _vm._v(_vm._s(_vm.$t("translation.university")))
-              ]),
-              _vm._v(" "),
-              _vm.universities
-                ? _c(
-                    "select",
+            _c("div", { staticClass: "modal__body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "facultyName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.facultyName")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
                     {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.facultyUniversityId,
-                          expression: "facultyUniversityId"
-                        }
-                      ],
-                      staticClass: "select-style",
-                      attrs: { name: "university_id" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.facultyUniversityId = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
                     },
-                    _vm._l(_vm.universities, function(item) {
-                      return _c("option", { domProps: { value: item.id } }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(item.name) +
-                            "\n                        "
-                        )
-                      ])
-                    })
-                  )
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "facultyName" } }, [
-                _vm._v(_vm._s(_vm.$t("translation.facultyName")))
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "validate",
-                    rawName: "v-validate",
-                    value: "required|max:255",
-                    expression: "'required|max:255'"
-                  },
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.facultyName,
-                    expression: "facultyName"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "facultyName",
-                  "aria-describedby": "facultyNameHelp",
-                  placeholder: _vm.$t("translation.facultyNamePlaceholder"),
-                  name: "facultyName",
-                  "data-vv-as": _vm.$t("translation.facultyName")
-                },
-                domProps: { value: _vm.facultyName },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.facultyName = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "small",
-                {
-                  directives: [
                     {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.errors.has("facultyName"),
-                      expression: "errors.has('facultyName')"
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.facultyName,
+                      expression: "facultyName"
                     }
                   ],
-                  staticClass: "form-text text-danger",
-                  attrs: { id: "facultyNameHelp" }
-                },
-                [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.errors.first("facultyName")) +
-                      "\n                    "
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "facultyDescription" } }, [
-                _vm._v(_vm._s(_vm.$t("translation.facultyDescription")))
-              ]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "validate",
-                    rawName: "v-validate",
-                    value: "required|max:255",
-                    expression: "'required|max:255'"
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "facultyName",
+                    "aria-describedby": "facultyNameHelp",
+                    placeholder: _vm.$t("translation.facultyNamePlaceholder"),
+                    name: "facultyName",
+                    "data-vv-as": _vm.$t("translation.facultyName")
                   },
+                  domProps: { value: _vm.facultyName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.facultyName = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.facultyDescription,
-                    expression: "facultyDescription"
-                  }
-                ],
-                staticClass: "form-control resize-none h-5",
-                attrs: {
-                  type: "text",
-                  id: "facultyDescription",
-                  "aria-describedby": "facultyDescriptionHelp",
-                  placeholder: _vm.$t(
-                    "translation.facultyDescriptionPlaceholder"
-                  ),
-                  name: "universityDescription",
-                  "data-vv-as": _vm.$t("translation.facultyDescription")
-                },
-                domProps: { value: _vm.facultyDescription },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.facultyDescription = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "small",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.errors.has("facultyDescription"),
-                      expression: "errors.has('facultyDescription')"
-                    }
-                  ],
-                  staticClass: "form-text text-danger",
-                  attrs: { id: "facultyDescriptionHelp" }
-                },
-                [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.errors.first("facultyDescription")) +
-                      "\n                    "
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "div",
-                { class: { "is-invalid__date": _vm.errors.has("photo") } },
-                [
-                  _c("label", { attrs: { for: "image" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.photo")))
-                  ]),
-                  _vm._v(" "),
-                  _vm.facultyImage
-                    ? _c("div", [
-                        _vm.isShowOldImage
-                          ? _c("img", {
-                              staticClass: "img-fluid mt-3 max-w-20",
-                              attrs: { src: _vm.facultyImage.source }
-                            })
-                          : _vm._e()
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("vue-base64-file-upload", {
                     directives: [
                       {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required",
-                        expression: "'required'"
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("facultyName"),
+                        expression: "errors.has('facultyName')"
                       }
                     ],
-                    staticClass: "v1",
-                    attrs: {
-                      accept: "image/png,image/jpeg",
-                      "image-class": "img-fluid mt-3 max-w-20",
-                      "input-class": "input",
-                      "max-size": _vm.customImageMaxSize,
-                      id: "image",
-                      "data-vv-name": "photo",
-                      "data-vv-value-path": "file",
-                      "data-vv-as": _vm.$t("translation.photo"),
-                      placeholder: _vm.$t("translation.photo")
-                    },
-                    on: { file: _vm.onFile, load: _vm.onLoad }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "facultyNameHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("facultyName")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "facultyName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.university")))
+                ]),
+                _vm._v(" "),
+                _vm.universities
+                  ? _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.facultyUniversityId,
+                            expression: "facultyUniversityId"
+                          }
+                        ],
+                        staticClass: "select-style",
+                        attrs: { name: "university_id" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.facultyUniversityId = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v(_vm._s(_vm.$t("translation.noData")))
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.universities, function(item) {
+                          return _c(
+                            "option",
+                            { domProps: { value: item.id } },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(item.name) +
+                                  "\n                        "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "facultyDescription" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.facultyDescription")))
+                ]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
                     {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.facultyDescription,
+                      expression: "facultyDescription"
+                    }
+                  ],
+                  staticClass: "form-control resize-none h-5",
+                  attrs: {
+                    type: "text",
+                    id: "facultyDescription",
+                    "aria-describedby": "facultyDescriptionHelp",
+                    placeholder: _vm.$t(
+                      "translation.facultyDescriptionPlaceholder"
+                    ),
+                    name: "universityDescription",
+                    "data-vv-as": _vm.$t("translation.facultyDescription")
+                  },
+                  domProps: { value: _vm.facultyDescription },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.facultyDescription = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("facultyDescription"),
+                        expression: "errors.has('facultyDescription')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "facultyDescriptionHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("facultyDescription")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "div",
+                  { class: { "is-invalid__date": _vm.errors.has("photo") } },
+                  [
+                    _c("label", { attrs: { for: "image" } }, [
+                      _vm._v(_vm._s(_vm.$t("translation.photo")))
+                    ]),
+                    _vm._v(" "),
+                    _vm.facultyImage
+                      ? _c("div", [
+                          _vm.isShowOldImage
+                            ? _c("img", {
+                                staticClass: "img-fluid mt-3 max-w-20",
+                                attrs: { src: _vm.facultyImage.source }
+                              })
+                            : _vm._e()
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("vue-base64-file-upload", {
                       directives: [
                         {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("photo"),
-                          expression: "errors.has('photo')"
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required",
+                          expression: "'required'"
                         }
                       ],
-                      staticClass: "invalid-feedback"
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.errors.first("photo")) +
-                          "\n                        "
-                      )
-                    ]
+                      staticClass: "v1",
+                      attrs: {
+                        accept: "image/png,image/jpeg",
+                        "image-class": "img-fluid mt-3 max-w-20",
+                        "input-class": "input",
+                        "max-size": _vm.customImageMaxSize,
+                        id: "image",
+                        "data-vv-name": "photo",
+                        "data-vv-value-path": "file",
+                        "data-vv-as": _vm.$t("translation.photo"),
+                        placeholder: _vm.$t("translation.photo")
+                      },
+                      on: { file: _vm.onFile, load: _vm.onLoad }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("photo"),
+                            expression: "errors.has('photo')"
+                          }
+                        ],
+                        staticClass: "invalid-feedback"
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.first("photo")) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-secondary float-right mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.hide }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.cancel")) +
+                      "\n                "
                   )
-                ],
-                1
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-success mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.createFaculty }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.save")) +
+                      "\n                "
+                  )
+                ]
               )
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-md btn-secondary float-right mt-4",
-                attrs: { type: "button" },
-                on: { click: _vm.hide }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.$t("translation.cancel")) +
-                    "\n                "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-md btn-success mt-4",
-                attrs: { type: "button" },
-                on: { click: _vm.createFaculty }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.$t("translation.save")) +
-                    "\n                "
-                )
-              ]
-            )
+            ])
           ])
         ])
       : _vm._e()
@@ -6577,279 +6586,290 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "modal__body" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "facultyName" } }, [
-                _vm._v(_vm._s(_vm.$t("translation.university")))
+            _c("div", { staticClass: "modal__body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "facultyName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.facultyName")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.facultyName,
+                      expression: "facultyName"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "facultyName",
+                    "aria-describedby": "facultyNameHelp",
+                    placeholder: _vm.$t("translation.facultyNamePlaceholder"),
+                    name: "facultyName",
+                    "data-vv-as": _vm.$t("translation.facultyName")
+                  },
+                  domProps: { value: _vm.facultyName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.facultyName = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("facultyName"),
+                        expression: "errors.has('facultyName')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "facultyNameHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("facultyName")) +
+                        "\n                    "
+                    )
+                  ]
+                )
               ]),
               _vm._v(" "),
-              _vm.universities
-                ? _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.facultyUniversityId,
-                          expression: "facultyUniversityId"
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "facultyName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.university")))
+                ]),
+                _vm._v(" "),
+                _vm.universities
+                  ? _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.facultyUniversityId,
+                            expression: "facultyUniversityId"
+                          }
+                        ],
+                        staticClass: "select-style",
+                        attrs: { name: "university_id" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.facultyUniversityId = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
                         }
+                      },
+                      [
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v(_vm._s(_vm.$t("translation.noData")))
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.universities, function(item) {
+                          return _c(
+                            "option",
+                            { domProps: { value: item.id } },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(item.name) +
+                                  "\n                        "
+                              )
+                            ]
+                          )
+                        })
                       ],
-                      staticClass: "select-style",
-                      attrs: { name: "university_id" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.facultyUniversityId = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
+                      2
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "facultyDescription" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.facultyDescription")))
+                ]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
                     },
-                    _vm._l(_vm.universities, function(item) {
-                      return _c("option", { domProps: { value: item.id } }, [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.facultyDescription,
+                      expression: "facultyDescription"
+                    }
+                  ],
+                  staticClass: "form-control resize-none h-5",
+                  attrs: {
+                    type: "text",
+                    id: "facultyDescription",
+                    "aria-describedby": "facultyDescriptionHelp",
+                    placeholder: _vm.$t(
+                      "translation.facultyDescriptionPlaceholder"
+                    ),
+                    name: "universityDescription",
+                    "data-vv-as": _vm.$t("translation.facultyDescription")
+                  },
+                  domProps: { value: _vm.facultyDescription },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.facultyDescription = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("facultyDescription"),
+                        expression: "errors.has('facultyDescription')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "facultyDescriptionHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("facultyDescription")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "div",
+                  { class: { "is-invalid__date": _vm.errors.has("photo") } },
+                  [
+                    _c("label", { attrs: { for: "image" } }, [
+                      _vm._v(_vm._s(_vm.$t("translation.photo")))
+                    ]),
+                    _vm._v(" "),
+                    _vm.facultyImage
+                      ? _c("div", [
+                          _vm.isShowOldImage
+                            ? _c("img", {
+                                staticClass: "img-fluid mt-3 max-w-20",
+                                attrs: { src: _vm.facultyImage.source }
+                              })
+                            : _vm._e()
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("vue-base64-file-upload", {
+                      staticClass: "v1",
+                      attrs: {
+                        accept: "image/png,image/jpeg",
+                        "image-class": "img-fluid mt-3 max-w-20",
+                        "input-class": "input",
+                        "max-size": _vm.customImageMaxSize,
+                        id: "image",
+                        "data-vv-name": "photo",
+                        "data-vv-value-path": "file",
+                        "data-vv-as": _vm.$t("translation.photo"),
+                        placeholder: _vm.$t("translation.photo")
+                      },
+                      on: { file: _vm.onFile, load: _vm.onLoad }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("photo"),
+                            expression: "errors.has('photo')"
+                          }
+                        ],
+                        staticClass: "invalid-feedback"
+                      },
+                      [
                         _vm._v(
                           "\n                            " +
-                            _vm._s(item.name) +
+                            _vm._s(_vm.errors.first("photo")) +
                             "\n                        "
                         )
-                      ])
-                    })
-                  )
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "facultyName" } }, [
-                _vm._v(_vm._s(_vm.$t("translation.facultyName")))
+                      ]
+                    )
+                  ],
+                  1
+                )
               ]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "validate",
-                    rawName: "v-validate",
-                    value: "required|max:255",
-                    expression: "'required|max:255'"
-                  },
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.facultyName,
-                    expression: "facultyName"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "facultyName",
-                  "aria-describedby": "facultyNameHelp",
-                  placeholder: _vm.$t("translation.facultyNamePlaceholder"),
-                  name: "facultyName",
-                  "data-vv-as": _vm.$t("translation.facultyName")
-                },
-                domProps: { value: _vm.facultyName },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.facultyName = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
               _c(
-                "small",
+                "button",
                 {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.errors.has("facultyName"),
-                      expression: "errors.has('facultyName')"
-                    }
-                  ],
-                  staticClass: "form-text text-danger",
-                  attrs: { id: "facultyNameHelp" }
+                  staticClass: "btn btn-md btn-secondary float-right mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.hide }
                 },
                 [
                   _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.errors.first("facultyName")) +
-                      "\n                    "
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.cancel")) +
+                      "\n                "
                   )
                 ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "facultyDescription" } }, [
-                _vm._v(_vm._s(_vm.$t("translation.facultyDescription")))
-              ]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "validate",
-                    rawName: "v-validate",
-                    value: "required|max:255",
-                    expression: "'required|max:255'"
-                  },
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.facultyDescription,
-                    expression: "facultyDescription"
-                  }
-                ],
-                staticClass: "form-control resize-none h-5",
-                attrs: {
-                  type: "text",
-                  id: "facultyDescription",
-                  "aria-describedby": "facultyDescriptionHelp",
-                  placeholder: _vm.$t(
-                    "translation.facultyDescriptionPlaceholder"
-                  ),
-                  name: "universityDescription",
-                  "data-vv-as": _vm.$t("translation.facultyDescription")
-                },
-                domProps: { value: _vm.facultyDescription },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.facultyDescription = $event.target.value
-                  }
-                }
-              }),
+              ),
               _vm._v(" "),
               _c(
-                "small",
+                "button",
                 {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.errors.has("facultyDescription"),
-                      expression: "errors.has('facultyDescription')"
-                    }
-                  ],
-                  staticClass: "form-text text-danger",
-                  attrs: { id: "facultyDescriptionHelp" }
+                  staticClass: "btn btn-md btn-success mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.saveEditFaculty }
                 },
                 [
                   _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.errors.first("facultyDescription")) +
-                      "\n                    "
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.save")) +
+                      "\n                "
                   )
                 ]
               )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "div",
-                { class: { "is-invalid__date": _vm.errors.has("photo") } },
-                [
-                  _c("label", { attrs: { for: "image" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.photo")))
-                  ]),
-                  _vm._v(" "),
-                  _vm.facultyImage
-                    ? _c("div", [
-                        _vm.isShowOldImage
-                          ? _c("img", {
-                              staticClass: "img-fluid mt-3 max-w-20",
-                              attrs: { src: _vm.facultyImage.source }
-                            })
-                          : _vm._e()
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("vue-base64-file-upload", {
-                    staticClass: "v1",
-                    attrs: {
-                      accept: "image/png,image/jpeg",
-                      "image-class": "img-fluid mt-3 max-w-20",
-                      "input-class": "input",
-                      "max-size": _vm.customImageMaxSize,
-                      id: "image",
-                      "data-vv-name": "photo",
-                      "data-vv-value-path": "file",
-                      "data-vv-as": _vm.$t("translation.photo"),
-                      placeholder: _vm.$t("translation.photo")
-                    },
-                    on: { file: _vm.onFile, load: _vm.onLoad }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("photo"),
-                          expression: "errors.has('photo')"
-                        }
-                      ],
-                      staticClass: "invalid-feedback"
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.errors.first("photo")) +
-                          "\n                        "
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-md btn-secondary float-right mt-4",
-                attrs: { type: "button" },
-                on: { click: _vm.hide }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.$t("translation.cancel")) +
-                    "\n                "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-md btn-success mt-4",
-                attrs: { type: "button" },
-                on: { click: _vm.saveEditFaculty }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.$t("translation.save")) +
-                    "\n                "
-                )
-              ]
-            )
+            ])
           ])
         ])
       : _vm._e()

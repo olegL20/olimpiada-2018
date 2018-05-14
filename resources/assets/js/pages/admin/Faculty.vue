@@ -25,7 +25,7 @@
                               @vuetable:cell-clicked="onCellClicked"
                     >
                         <template slot="university" slot-scope="props">
-                            {{ props.rowData.university_id ? props.rowData.university_id : $t('translation.noData') }}
+                            {{ props.rowData.university_id ? props.rowData.university.name : $t('translation.noData') }}
                         </template>
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"
@@ -107,7 +107,6 @@
         },
         methods: {
             onCellClicked(data) {
-                console.log(data);
                 this.universityUserId = data.id;
                 this.isShowAssociateUniversityAdmin = true;
             },
@@ -119,7 +118,6 @@
                 this.$refs.listFaculties.changePage(page);
             },
             async setUniversityForFaculty(el) {
-                console.log(el);
                 try {
                     await this.$store.dispatch('admin/setUniversityForFaculty', {
                         id: el.target.dataset.id,
@@ -164,11 +162,10 @@
                     cancelButtonText: this.$t('translation.cancel'),
                 });
                 if (result.value) {
-                    this.showPreloader();
                     try {
+                        this.showPreloader();
                         await this.$store.dispatch('admin/destroyFaculty', id);
                         this.$refs.listFaculties.refresh();
-                        this.showPreloader();
                     } catch (e) {
                         this.$toast.error({
                             title: this.$t('translation.error'),

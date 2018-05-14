@@ -8,18 +8,6 @@
                 </h4>
 
                 <div class="modal__body">
-                    </div>
-                    <div class="form-group">
-                        <label for="facultyName">{{ $t("translation.university") }}</label>
-
-                        <select name="university_id" class="select-style" v-if="universities" v-model="facultyUniversityId">
-                            <option v-for="item in universities"
-                                    :value="item.id"
-                            >
-                                {{ item.name }}
-                            </option>
-                        </select>
-                    </div>
                     <div class="form-group">
                         <label for="facultyName">{{ $t("translation.facultyName") }}</label>
                         <input type="text" class="form-control" id="facultyName" aria-describedby="facultyNameHelp"
@@ -31,6 +19,17 @@
                         <small id="facultyNameHelp" class="form-text text-danger" v-show="errors.has('facultyName')">
                             {{ errors.first('facultyName') }}
                         </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="facultyName">{{ $t("translation.university") }}</label>
+                        <select name="university_id" class="select-style" v-if="universities" v-model="facultyUniversityId">
+                            <option value="0">{{ $t('translation.noData') }}</option>
+                            <option v-for="item in universities"
+                                    :value="item.id"
+                            >
+                                {{ item.name }}
+                            </option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="facultyDescription">{{ $t("translation.facultyDescription") }}</label>
@@ -83,6 +82,7 @@
                 </div>
 
             </div>
+        </div>
     </transition>
 </template>
 

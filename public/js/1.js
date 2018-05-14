@@ -5346,7 +5346,6 @@ exports.default = {
 
     methods: {
         onCellClicked: function onCellClicked(data) {
-            console.log(data);
             this.universityUserId = data.id;
             this.isShowAssociateUniversityAdmin = true;
         },
@@ -5365,23 +5364,25 @@ exports.default = {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.prev = 0;
-                                _context.next = 3;
+
+                                _this.showPreloader();
+                                _context.next = 4;
                                 return _this.$store.dispatch('admin/associate', {
                                     user_id: el.target.dataset.id,
                                     university_id: el.target.value
                                 });
 
-                            case 3:
-                                _this.$refs.listUniversityAdministrators.refresh();
+                            case 4:
+                                _this.hidePreloader();
                                 _this.$toast.success({
                                     title: _this.$t('translation.success'),
                                     message: _this.$t('translation.universityChanged')
                                 });
-                                _context.next = 10;
+                                _context.next = 11;
                                 break;
 
-                            case 7:
-                                _context.prev = 7;
+                            case 8:
+                                _context.prev = 8;
                                 _context.t0 = _context['catch'](0);
 
                                 _this.$toast.error({
@@ -5389,12 +5390,12 @@ exports.default = {
                                     message: _this.$t(_context.t0.message)
                                 });
 
-                            case 10:
+                            case 11:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[0, 7]]);
+                }, _callee, _this, [[0, 8]]);
             }))();
         }
     }

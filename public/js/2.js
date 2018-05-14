@@ -503,7 +503,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'admin',
         prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
 };
 
 /***/ }),

@@ -113,6 +113,13 @@ router.beforeEach((to, from, next) => {
         next({
             name: 'home',
         });
+    } else if (store.getters['user/role'] === 'user') {
+        next({
+            name: 'admin.home',
+            query: {
+                redirect: to.fullPath,
+            },
+        });
     } else {
         next();
     }

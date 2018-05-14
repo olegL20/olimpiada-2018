@@ -7770,7 +7770,7 @@ var render = function() {
       _vm._v(" "),
       _c("register-modal"),
       _vm._v(" "),
-      _c("advice-modal"),
+      _vm.userLogged ? _c("advice-modal") : _vm._e(),
       _vm._v(" "),
       _c("select-vuz-modal")
     ],

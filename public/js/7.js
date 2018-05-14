@@ -3035,11 +3035,7 @@ exports.default = {
         };
     },
     created: function created() {
-        if (!this.isAdmin) {
-            this.$router.push({
-                name: 'user.room'
-            });
-        } else {
+        if (!this.userRole === 'admin') {
             this.$router.push({
                 name: 'admin.home'
             });

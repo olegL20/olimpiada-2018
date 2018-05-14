@@ -1,14 +1,14 @@
 webpackJsonp([15],{
 
-/***/ 250:
+/***/ 252:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(379)
+var __vue_script__ = __webpack_require__(399)
 /* template */
-var __vue_template__ = __webpack_require__(380)
+var __vue_template__ = __webpack_require__(407)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/pages/admin/Coefficients.vue"
+Component.options.__file = "resources/assets/js/pages/admin/tests/Questions.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-279e8a9b", Component.options)
+    hotAPI.createRecord("data-v-0c122ab2", Component.options)
   } else {
-    hotAPI.reload("data-v-279e8a9b", Component.options)
+    hotAPI.reload("data-v-0c122ab2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,13 +48,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 253:
+/***/ 255:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var bind = __webpack_require__(259);
+var bind = __webpack_require__(261);
 
 /*global toString:true*/
 
@@ -355,7 +355,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 254:
+/***/ 256:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.f = __webpack_require__(3);
@@ -363,13 +363,13 @@ exports.f = __webpack_require__(3);
 
 /***/ }),
 
-/***/ 255:
+/***/ 257:
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(2);
 var core = __webpack_require__(5);
 var LIBRARY = __webpack_require__(44);
-var wksExt = __webpack_require__(254);
+var wksExt = __webpack_require__(256);
 var defineProperty = __webpack_require__(15).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -379,13 +379,13 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 256:
+/***/ 258:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 var normalizeHeaderName = __webpack_require__(286);
 
 var PROTECTION_PREFIX = /^\)\]\}',?\n/;
@@ -403,10 +403,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(260);
+    adapter = __webpack_require__(262);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(260);
+    adapter = __webpack_require__(262);
   }
   return adapter;
 }
@@ -481,7 +481,7 @@ module.exports = defaults;
 
 /***/ }),
 
-/***/ 257:
+/***/ 259:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -503,12 +503,12 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'admin',
         prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName']))
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
 };
 
 /***/ }),
 
-/***/ 258:
+/***/ 260:
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
@@ -522,7 +522,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ 259:
+/***/ 261:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -541,18 +541,18 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 
-/***/ 260:
+/***/ 262:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 var settle = __webpack_require__(287);
 var buildURL = __webpack_require__(289);
 var parseHeaders = __webpack_require__(290);
 var isURLSameOrigin = __webpack_require__(291);
-var createError = __webpack_require__(261);
+var createError = __webpack_require__(263);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(292);
 
 module.exports = function xhrAdapter(config) {
@@ -726,7 +726,7 @@ module.exports = function xhrAdapter(config) {
 
 /***/ }),
 
-/***/ 261:
+/***/ 263:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -751,7 +751,7 @@ module.exports = function createError(message, config, code, response) {
 
 /***/ }),
 
-/***/ 262:
+/***/ 264:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -764,7 +764,7 @@ module.exports = function isCancel(value) {
 
 /***/ }),
 
-/***/ 263:
+/***/ 265:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -853,7 +853,7 @@ var content = __webpack_require__(268);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(29)("c96b1a10", content, false, {});
+var update = __webpack_require__(30)("c96b1a10", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -873,7 +873,7 @@ if(false) {
 /***/ 268:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -1881,7 +1881,7 @@ module.exports = { "default": __webpack_require__(272), __esModule: true };
 
 __webpack_require__(78);
 __webpack_require__(83);
-module.exports = __webpack_require__(254).f('iterator');
+module.exports = __webpack_require__(256).f('iterator');
 
 
 /***/ }),
@@ -1917,13 +1917,13 @@ var DESCRIPTORS = __webpack_require__(13);
 var $export = __webpack_require__(11);
 var redefine = __webpack_require__(80);
 var META = __webpack_require__(276).KEY;
-var $fails = __webpack_require__(23);
+var $fails = __webpack_require__(22);
 var shared = __webpack_require__(48);
 var setToStringTag = __webpack_require__(32);
 var uid = __webpack_require__(46);
 var wks = __webpack_require__(3);
-var wksExt = __webpack_require__(254);
-var wksDefine = __webpack_require__(255);
+var wksExt = __webpack_require__(256);
+var wksDefine = __webpack_require__(257);
 var enumKeys = __webpack_require__(277);
 var isArray = __webpack_require__(278);
 var anObject = __webpack_require__(12);
@@ -1935,7 +1935,7 @@ var _create = __webpack_require__(81);
 var gOPNExt = __webpack_require__(279);
 var $GOPD = __webpack_require__(280);
 var $DP = __webpack_require__(15);
-var $keys = __webpack_require__(30);
+var $keys = __webpack_require__(29);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -2058,8 +2058,8 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(258).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(73).f = $propertyIsEnumerable;
+  __webpack_require__(260).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(74).f = $propertyIsEnumerable;
   __webpack_require__(76).f = $getOwnPropertySymbols;
 
   if (DESCRIPTORS && !__webpack_require__(44)) {
@@ -2158,7 +2158,7 @@ var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
 };
-var FREEZE = !__webpack_require__(23)(function () {
+var FREEZE = !__webpack_require__(22)(function () {
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function (it) {
@@ -2211,9 +2211,9 @@ var meta = module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(30);
+var getKeys = __webpack_require__(29);
 var gOPS = __webpack_require__(76);
-var pIE = __webpack_require__(73);
+var pIE = __webpack_require__(74);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -2246,7 +2246,7 @@ module.exports = Array.isArray || function isArray(arg) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(28);
-var gOPN = __webpack_require__(258).f;
+var gOPN = __webpack_require__(260).f;
 var toString = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -2270,7 +2270,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 /***/ 280:
 /***/ (function(module, exports, __webpack_require__) {
 
-var pIE = __webpack_require__(73);
+var pIE = __webpack_require__(74);
 var createDesc = __webpack_require__(45);
 var toIObject = __webpack_require__(28);
 var toPrimitive = __webpack_require__(75);
@@ -2293,7 +2293,7 @@ exports.f = __webpack_require__(13) ? gOPD : function getOwnPropertyDescriptor(O
 /***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(255)('asyncIterator');
+__webpack_require__(257)('asyncIterator');
 
 
 /***/ }),
@@ -2301,7 +2301,7 @@ __webpack_require__(255)('asyncIterator');
 /***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(255)('observable');
+__webpack_require__(257)('observable');
 
 
 /***/ }),
@@ -2319,10 +2319,10 @@ module.exports = __webpack_require__(284);
 "use strict";
 
 
-var utils = __webpack_require__(253);
-var bind = __webpack_require__(259);
+var utils = __webpack_require__(255);
+var bind = __webpack_require__(261);
 var Axios = __webpack_require__(285);
-var defaults = __webpack_require__(256);
+var defaults = __webpack_require__(258);
 
 /**
  * Create an instance of Axios
@@ -2355,9 +2355,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(263);
+axios.Cancel = __webpack_require__(265);
 axios.CancelToken = __webpack_require__(299);
-axios.isCancel = __webpack_require__(262);
+axios.isCancel = __webpack_require__(264);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -2379,8 +2379,8 @@ module.exports.default = axios;
 "use strict";
 
 
-var defaults = __webpack_require__(256);
-var utils = __webpack_require__(253);
+var defaults = __webpack_require__(258);
+var utils = __webpack_require__(255);
 var InterceptorManager = __webpack_require__(294);
 var dispatchRequest = __webpack_require__(295);
 var isAbsoluteURL = __webpack_require__(297);
@@ -2472,7 +2472,7 @@ module.exports = Axios;
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -2492,7 +2492,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(261);
+var createError = __webpack_require__(263);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -2552,7 +2552,7 @@ module.exports = function enhanceError(error, config, code, response) {
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -2628,7 +2628,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 /**
  * Parse headers into an object
@@ -2673,7 +2673,7 @@ module.exports = function parseHeaders(headers) {
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -2793,7 +2793,7 @@ module.exports = btoa;
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -2854,7 +2854,7 @@ module.exports = (
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 function InterceptorManager() {
   this.handlers = [];
@@ -2914,10 +2914,10 @@ module.exports = InterceptorManager;
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 var transformData = __webpack_require__(296);
-var isCancel = __webpack_require__(262);
-var defaults = __webpack_require__(256);
+var isCancel = __webpack_require__(264);
+var defaults = __webpack_require__(258);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -3001,7 +3001,7 @@ module.exports = function dispatchRequest(config) {
 "use strict";
 
 
-var utils = __webpack_require__(253);
+var utils = __webpack_require__(255);
 
 /**
  * Transform the data for a request or a response
@@ -3071,7 +3071,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(263);
+var Cancel = __webpack_require__(265);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -4534,7 +4534,260 @@ if (false) {
 
 /***/ }),
 
-/***/ 322:
+/***/ 307:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var BUTTON_COLOR_CONFIRM = exports.BUTTON_COLOR_CONFIRM = '#3085d6';
+var BUTTON_COLOR_CANCEL = exports.BUTTON_COLOR_CANCEL = '#d33d33';
+var IMAGE_MAX_SIZE = exports.IMAGE_MAX_SIZE = 3;
+
+/***/ }),
+
+/***/ 399:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(9);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(10);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _Vuetable = __webpack_require__(266);
+
+var _Vuetable2 = _interopRequireDefault(_Vuetable);
+
+var _VuetablePagination = __webpack_require__(302);
+
+var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
+
+var _questions = __webpack_require__(400);
+
+var _questions2 = _interopRequireDefault(_questions);
+
+var _modals = __webpack_require__(43);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+var _preload = __webpack_require__(73);
+
+var _preload2 = _interopRequireDefault(_preload);
+
+var _admin = __webpack_require__(259);
+
+var _admin2 = _interopRequireDefault(_admin);
+
+var _CreateQuestion = __webpack_require__(401);
+
+var _CreateQuestion2 = _interopRequireDefault(_CreateQuestion);
+
+var _UpdateQuestion = __webpack_require__(404);
+
+var _UpdateQuestion2 = _interopRequireDefault(_UpdateQuestion);
+
+var _constants = __webpack_require__(307);
+
+var constants = _interopRequireWildcard(_constants);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    mixins: [_admin2.default, _modals2.default, _preload2.default, _questions2.default],
+    components: {
+        Vuetable: _Vuetable2.default,
+        VuetablePagination: _VuetablePagination2.default,
+        ModalCreateQuestion: _CreateQuestion2.default,
+        ModalUpdateQuestion: _UpdateQuestion2.default
+    },
+    mounted: function mounted() {
+        this.showPreloader();
+    },
+
+    watch: {
+        refreshTable: function refreshTable() {
+            if (this.refreshTable) {
+                this.$refs.listQuestions.refresh();
+                this.switchRefreshTable(false);
+            }
+        }
+    },
+    methods: {
+        editQuestion: function editQuestion(id) {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.prev = 0;
+                                _context.next = 3;
+                                return _this.$store.dispatch('admin/getQuestion', id);
+
+                            case 3:
+                                _this.modalsIsShowUpdateQuestion = true;
+                                _context.next = 9;
+                                break;
+
+                            case 6:
+                                _context.prev = 6;
+                                _context.t0 = _context['catch'](0);
+
+                                _this.$toast.error({
+                                    title: _this.$t('translation.error'),
+                                    message: _this.$t(_context.t0.message)
+                                });
+
+                            case 9:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[0, 6]]);
+            }))();
+        },
+        destroyQuestion: function destroyQuestion(id) {
+            var _this2 = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+                var result;
+                return _regenerator2.default.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.next = 2;
+                                return _this2.$swal({
+                                    title: _this2.$t('translation.areYouSure'),
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: constants.BUTTON_COLOR_CONFIRM,
+                                    confirmButtonText: _this2.$t('translation.yes'),
+                                    cancelButtonColor: constants.BUTTON_COLOR_CANCEL,
+                                    cancelButtonText: _this2.$t('translation.cancel')
+                                });
+
+                            case 2:
+                                result = _context2.sent;
+
+                                if (!result.value) {
+                                    _context2.next = 14;
+                                    break;
+                                }
+
+                                _context2.prev = 4;
+                                _context2.next = 7;
+                                return _this2.$store.dispatch('admin/destroyQuestion', id);
+
+                            case 7:
+                                _this2.$refs.listQuestions.refresh();
+                                _this2.showPreloader();
+                                _context2.next = 14;
+                                break;
+
+                            case 11:
+                                _context2.prev = 11;
+                                _context2.t0 = _context2['catch'](4);
+
+                                _this2.$toast.error({
+                                    title: _this2.$t('translation.error'),
+                                    message: _this2.$t(_context2.t0.statusText)
+                                });
+
+                            case 14:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, _this2, [[4, 11]]);
+            }))();
+        },
+        onPaginationData: function onPaginationData(paginationData) {
+            this.$refs.pagination.setPaginationData(paginationData);
+        },
+        onChangePage: function onChangePage(page) {
+            this.$refs.listQuestions.changePage(page);
+        }
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 400:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4546,66 +4799,44 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     data: function data() {
         return {
-            fields: [
-            // {
-            //     name: 'name',
-            //     sortField: 'name',
-            //     title: this.$t('translation.name'),
-            //     titleClass: 'text-left',
-            //     dataClass: 'text-left',
-            // },
-            {
-                name: 'email',
-                sortField: 'email',
-                title: this.$t('translation.email'),
+            fields: [{
+                name: 'test_id',
+                sortField: 'test_id',
+                title: this.$t('translation.testId'),
                 titleClass: 'text-left',
                 dataClass: 'text-left'
-            },
-            // {
-            //     name: 'address',
-            //     sortField: 'address',
-            //     title: this.$t('translation.address'),
-            //     titleClass: 'text-left',
-            //     dataClass: 'text-left',
-            // },
-            // {
-            //     name: 'phone',
-            //     sortField: 'phone',
-            //     title: this.$t('translation.phone'),
-            //     titleClass: 'text-left',
-            //     dataClass: 'text-left',
-            // },
-            // {
-            //     name: 'site',
-            //     sortField: 'site',
-            //     title: this.$t('translation.site'),
-            //     titleClass: 'text-left',
-            //     dataClass: 'text-left',
-            // },
-            // {
-            //     name: 'zip_code',
-            //     sortField: 'zip_code',
-            //     title: this.$t('translation.zip_code'),
-            //     titleClass: 'text-center',
-            //     dataClass: 'text-center',
-            // },
-            // {
-            //     name: '__slot:description',
-            //     sortField: 'description',
-            //     title: this.$t('translation.description'),
-            //     titleClass: 'text-left',
-            //     dataClass: 'text-left ellipsis',
-            // },
-            {
-                name: 'created_at',
-                sortField: 'created_at',
-                title: this.$t('translation.created_at'),
+            }, {
+                name: 'name',
+                sortField: 'name',
+                title: this.$t('translation.name'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'type',
+                sortField: 'type',
+                title: this.$t('translation.typeTest'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: 'type_fill',
+                sortField: 'type_fill',
+                title: this.$t('translation.typeFillTest'),
+                titleClass: 'text-left',
+                dataClass: 'text-left'
+            }, {
+                name: '__slot:answers',
+                title: this.$t('translation.answers'),
+                titleClass: 'text-center',
+                dataClass: 'text-center'
+            }, {
+                name: '__slot:actions',
+                title: this.$t('translation.actions'),
                 titleClass: 'text-center',
                 dataClass: 'text-center'
             }],
             css: {
                 table: {
-                    tableClass: 'table',
+                    tableClass: 'table table-hover cursor-pointer',
                     loadingClass: 'loading',
                     ascendingIcon: 'fa fa-angle-up ',
                     descendingIcon: 'fa fa-angle-down ',
@@ -4632,15 +4863,15 @@ exports.default = {
 
 /***/ }),
 
-/***/ 323:
+/***/ 401:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(324)
+var __vue_script__ = __webpack_require__(402)
 /* template */
-var __vue_template__ = __webpack_require__(325)
+var __vue_template__ = __webpack_require__(403)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4657,7 +4888,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/InviteUniversityAdmin.vue"
+Component.options.__file = "resources/assets/js/components/admin/modals/CreateQuestion.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -4666,9 +4897,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1e2700a6", Component.options)
+    hotAPI.createRecord("data-v-3a5fc738", Component.options)
   } else {
-    hotAPI.reload("data-v-1e2700a6", Component.options)
+    hotAPI.reload("data-v-3a5fc738", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -4680,7 +4911,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 324:
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4702,11 +4933,11 @@ var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(257);
+var _admin = __webpack_require__(259);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _preload = __webpack_require__(74);
+var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
@@ -4714,100 +4945,84 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
     mixins: [_modals2.default, _admin2.default, _preload2.default],
-    mounted: function mounted() {
-        var _this = this;
-
-        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-            return _regenerator2.default.wrap(function _callee$(_context) {
-                while (1) {
-                    switch (_context.prev = _context.next) {
-                        case 0:
-                            _context.next = 2;
-                            return _this.$store.dispatch('admin/getAllUniversities');
-
-                        case 2:
-                            _this.universityId = _this.universities[0].id;
-
-                        case 3:
-                        case 'end':
-                            return _context.stop();
-                    }
-                }
-            }, _callee, _this);
-        }))();
+    data: function data() {
+        return {};
     },
 
     methods: {
         hide: function hide() {
-            this.modalsIsShowInviteUniversityAdmin = false;
+            this.modalsIsShowCreateQuestion = false;
 
-            this.universityEmail = null;
-            this.universityId = null;
+            this.questionTestId = null;
+            this.questionName = null;
+            this.questionType = null;
+            this.questionTypeFill = null;
         },
-        inviteUniversityAdmin: function inviteUniversityAdmin() {
-            var _this2 = this;
+        createQuestion: function createQuestion() {
+            var _this = this;
 
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
                 var valid;
-                return _regenerator2.default.wrap(function _callee2$(_context2) {
+                return _regenerator2.default.wrap(function _callee$(_context) {
                     while (1) {
-                        switch (_context2.prev = _context2.next) {
+                        switch (_context.prev = _context.next) {
                             case 0:
-                                _context2.next = 2;
-                                return _this2.$validator.validateAll();
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
 
                             case 2:
-                                valid = _context2.sent;
+                                valid = _context.sent;
 
                                 if (!valid) {
-                                    _context2.next = 17;
+                                    _context.next = 16;
                                     break;
                                 }
 
-                                _context2.prev = 4;
+                                _context.prev = 4;
 
-                                _this2.showPreloader();
-                                _context2.next = 8;
-                                return _this2.$store.dispatch('admin/sendInviteUniversityAdmin', {
-                                    email: _this2.universityEmail,
-                                    university_id: _this2.universityId
+                                _this.showPreloader();
+                                _context.next = 8;
+                                return _this.$store.dispatch('admin/createQuestion', {
+                                    test_id: _this.questionTestId,
+                                    name: _this.questionName,
+                                    type: _this.questionType,
+                                    type_fill: _this.questionTypeFill
                                 });
 
                             case 8:
-                                _this2.hide();
-                                _this2.switchRefreshTable(true);
-                                _this2.$toast.success({
-                                    title: _this2.$t('translation.success'),
-                                    message: _this2.$t('translation.inviteUniversityAdminSent')
+                                _this.switchRefreshTable(true);
+                                _this.$toast.success({
+                                    title: _this.$t('translation.success'),
+                                    message: _this.$t('translation.createQuestion')
                                 });
-                                _context2.next = 16;
+                                _context.next = 15;
                                 break;
 
-                            case 13:
-                                _context2.prev = 13;
-                                _context2.t0 = _context2['catch'](4);
+                            case 12:
+                                _context.prev = 12;
+                                _context.t0 = _context['catch'](4);
 
-                                if (_context2.t0.status === 404) {
-                                    _this2.$toast.error({
-                                        title: _this2.$t('translation.error'),
-                                        message: _this2.$t('translation.inviteNotFound')
+                                if (_context.t0.status === 404) {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t('translation.error')
                                     });
                                 } else {
-                                    _this2.$toast.error({
-                                        title: _this2.$t('translation.error'),
-                                        message: _this2.$t(_context2.t0.data.message)
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t(_context.t0.message)
                                     });
                                 }
 
-                            case 16:
-                                _this2.hidePreloader();
+                            case 15:
+                                _this.hide();
 
-                            case 17:
+                            case 16:
                             case 'end':
-                                return _context2.stop();
+                                return _context.stop();
                         }
                     }
-                }, _callee2, _this2, [[4, 13]]);
+                }, _callee, _this, [[4, 12]]);
             }))();
         }
     }
@@ -4854,10 +5069,35 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
-/***/ 325:
+/***/ 403:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4865,167 +5105,279 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowInviteUniversityAdmin
+    _vm.modalsIsShowCreateQuestion
       ? _c("div", { staticClass: "modal__wrap" }, [
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "click-outside",
-                  rawName: "v-click-outside",
-                  value: _vm.hide,
-                  expression: "hide"
-                }
-              ],
-              staticClass: "modal__content modal__md"
-            },
-            [
-              _c("h4", { staticClass: "modal__head" }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.$t("translation.inviteUniversityAdmin")) +
-                    "\n            "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal__body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universityEmail" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.universityEmail")))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|email|max:255",
-                        expression: "'required|email|max:255'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.universityEmail,
-                        expression: "universityEmail"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "email",
-                      id: "universityEmail",
-                      "aria-describedby": "universityEmailHelp",
-                      placeholder: _vm.$t(
-                        "translation.universityEmailPlaceholder"
-                      ),
-                      name: "universityEmail",
-                      "data-vv-as": _vm.$t("translation.universityEmail")
-                    },
-                    domProps: { value: _vm.universityEmail },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.universityEmail = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("universityEmail"),
-                          expression: "errors.has('universityEmail')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "universityEmailHelp" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("universityEmail")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
+          _c("div", { staticClass: "modal__content modal__md" }, [
+            _c("h4", { staticClass: "modal__head" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.$t("translation.createQuestion")) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal__body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "questionName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.questionName")))
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universities" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.university")))
-                  ]),
-                  _vm._v(" "),
-                  this.universities
-                    ? _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.universityId,
-                              expression: "universityId"
-                            }
-                          ],
-                          staticClass: "select-style",
-                          attrs: { name: "type_field", id: "universities" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.universityId = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        _vm._l(this.universities, function(university) {
-                          return _c(
-                            "option",
-                            { domProps: { value: university.id } },
-                            [
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(university.name) +
-                                  "\n                        "
-                              )
-                            ]
-                          )
-                        })
-                      )
-                    : _vm._e()
-                ]),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.questionName,
+                      expression: "questionName"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "questionName",
+                    "aria-describedby": "questionNameHelp",
+                    placeholder: _vm.$t("translation.questionNamePlaceholder"),
+                    name: "questionName",
+                    "data-vv-as": _vm.$t("translation.questionName")
+                  },
+                  domProps: { value: _vm.questionName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.questionName = $event.target.value
+                    }
+                  }
+                }),
                 _vm._v(" "),
                 _c(
-                  "button",
+                  "small",
                   {
-                    staticClass: "btn btn-md btn-success float-right mt-4",
-                    attrs: { type: "button" },
-                    on: { click: _vm.inviteUniversityAdmin }
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("questionName"),
+                        expression: "errors.has('questionName')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "questionNameHelp" }
                   },
                   [
                     _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.$t("translation.send")) +
-                        "\n                "
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("questionName")) +
+                        "\n                    "
                     )
                   ]
                 )
-              ])
-            ]
-          )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                  _vm._v(_vm._s(_vm.$t("translation.typeTest")))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionType,
+                          expression: "questionType"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio1",
+                        value: "option1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionType, "option1")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionType = "option1"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio1" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeTestOne")))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionType,
+                          expression: "questionType"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio2",
+                        value: "option2"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionType, "option2")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionType = "option2"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio2" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeTestPoly")))]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                  _vm._v(_vm._s(_vm.$t("translation.typeFillTest")))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionTypeFill,
+                          expression: "questionTypeFill"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio3",
+                        value: "option1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionTypeFill, "option1")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionTypeFill = "option1"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio3" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeFillAuto")))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionTypeFill,
+                          expression: "questionTypeFill"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio4",
+                        value: "option2"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionTypeFill, "option2")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionTypeFill = "option2"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio4" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeFillManually")))]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-secondary float-right mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.hide }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.close")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-success mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.createQuestion }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.save")) +
+                      "\n                "
+                  )
+                ]
+              )
+            ])
+          ])
         ])
       : _vm._e()
   ])
@@ -5036,13 +5388,61 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1e2700a6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3a5fc738", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 379:
+/***/ 404:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(405)
+/* template */
+var __vue_template__ = __webpack_require__(406)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/modals/UpdateQuestion.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-322c68b1", Component.options)
+  } else {
+    hotAPI.reload("data-v-322c68b1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 405:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5052,96 +5452,480 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Vuetable = __webpack_require__(266);
+var _regenerator = __webpack_require__(9);
 
-var _Vuetable2 = _interopRequireDefault(_Vuetable);
+var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _VuetablePagination = __webpack_require__(302);
+var _asyncToGenerator2 = __webpack_require__(10);
 
-var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
-
-var _major = __webpack_require__(322);
-
-var _major2 = _interopRequireDefault(_major);
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var _modals = __webpack_require__(43);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _preload = __webpack_require__(74);
+var _admin = __webpack_require__(259);
+
+var _admin2 = _interopRequireDefault(_admin);
+
+var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-var _InviteUniversityAdmin = __webpack_require__(323);
-
-var _InviteUniversityAdmin2 = _interopRequireDefault(_InviteUniversityAdmin);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 exports.default = {
-    mixins: [_preload2.default, _modals2.default, _major2.default],
-    components: {
-        Vuetable: _Vuetable2.default,
-        VuetablePagination: _VuetablePagination2.default,
-        ModalInviteUniversityAdmin: _InviteUniversityAdmin2.default
-    },
-    mounted: function mounted() {
-        // this.showPreloader();
+    mixins: [_modals2.default, _admin2.default, _preload2.default],
+    data: function data() {
+        return {};
     },
 
     methods: {
-        onPaginationData: function onPaginationData(paginationData) {
-            this.$refs.pagination.setPaginationData(paginationData);
+        hide: function hide() {
+            this.modalsIsShowCreateQuestion = false;
+
+            this.questionTestId = null;
+            this.questionName = null;
+            this.questionType = null;
+            this.questionTypeFill = null;
         },
-        onChangePage: function onChangePage(page) {
-            this.$refs.listUniversities.changePage(page);
+        updateQuestion: function updateQuestion() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+                                if (!valid) {
+                                    _context.next = 16;
+                                    break;
+                                }
+
+                                _context.prev = 4;
+
+                                _this.showPreloader();
+                                _context.next = 8;
+                                return _this.$store.dispatch('admin/updateQuestion', {
+                                    test_id: _this.questionTestId,
+                                    name: _this.questionName,
+                                    type: _this.questionType,
+                                    type_fill: _this.questionTypeFill
+                                });
+
+                            case 8:
+                                _this.switchRefreshTable(true);
+                                _this.$toast.success({
+                                    title: _this.$t('translation.success'),
+                                    message: _this.$t('translation.createTest')
+                                });
+                                _context.next = 15;
+                                break;
+
+                            case 12:
+                                _context.prev = 12;
+                                _context.t0 = _context['catch'](4);
+
+                                if (_context.t0.status === 404) {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t('translation.error')
+                                    });
+                                } else {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t(_context.t0.message)
+                                    });
+                                }
+
+                            case 15:
+                                _this.hide();
+
+                            case 16:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[4, 12]]);
+            }))();
         }
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
-/***/ 380:
+/***/ 406:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowUpdateQuestion
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c("div", { staticClass: "modal__content modal__md" }, [
+            _c("h4", { staticClass: "modal__head" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.$t("translation.updateQuestion")) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal__body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "questionName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.questionName")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.questionName,
+                      expression: "questionName"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "questionName",
+                    "aria-describedby": "questionNameHelp",
+                    placeholder: _vm.$t("translation.questionNamePlaceholder"),
+                    name: "questionName",
+                    "data-vv-as": _vm.$t("translation.questionName")
+                  },
+                  domProps: { value: _vm.questionName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.questionName = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("questionName"),
+                        expression: "errors.has('questionName')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "questionNameHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("questionName")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                  _vm._v(_vm._s(_vm.$t("translation.typeTest")))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionType,
+                          expression: "questionType"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio1",
+                        value: "option1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionType, "option1")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionType = "option1"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio1" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeTestOne")))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionType,
+                          expression: "questionType"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio2",
+                        value: "option2"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionType, "option2")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionType = "option2"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio2" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeTestPoly")))]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                  _vm._v(_vm._s(_vm.$t("translation.typeFillTest")))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionTypeFill,
+                          expression: "questionTypeFill"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio3",
+                        value: "option1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionTypeFill, "option1")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionTypeFill = "option1"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio3" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeFillAuto")))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-check form-check-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.questionTypeFill,
+                          expression: "questionTypeFill"
+                        }
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: {
+                        type: "radio",
+                        name: "inlineRadioOptions",
+                        id: "inlineRadio4",
+                        value: "option2"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.questionTypeFill, "option2")
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.questionTypeFill = "option2"
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "inlineRadio4" }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("translation.typeFillManually")))]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-secondary float-right mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.hide }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.close")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-success mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.updateQuestion }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.save")) +
+                      "\n                "
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-322c68b1", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 407:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5155,31 +5939,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
           _c("div", { staticClass: "col-md-10" }, [
-            _c("h1", [
-              _vm._v(_vm._s(_vm.$t("translation.managerCoefficients")))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 align-self-center" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-primary btn-md float-right",
-                attrs: { href: "javascript:" },
-                on: {
-                  click: function($event) {
-                    _vm.modalsIsShowInviteUniversityAdmin = true
-                  }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.$t("translation.addUniversityAdmin")) +
-                    "\n                "
-                )
-              ]
-            )
+            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerQuestions")))])
           ]),
           _vm._v(" "),
           _c(
@@ -5187,18 +5947,74 @@ var render = function() {
             { staticClass: "col-md-12 mt-3" },
             [
               _c("vuetable", {
-                ref: "listCoefficients",
+                ref: "listQuestions",
                 attrs: {
-                  "api-url": "/api/admin/users",
+                  "api-url": "/api/admin/questions",
                   fields: _vm.fields,
                   "pagination-path": "",
                   css: _vm.css.table,
-                  "data-path": "data.data"
+                  "data-path": "data.data",
+                  "detail-row-component": "my-detail-row"
                 },
                 on: {
                   "vuetable:load-success": _vm.hidePreloader,
-                  "vuetable:pagination-data": _vm.onPaginationData
-                }
+                  "vuetable:load-error": _vm.hidePreloader,
+                  "vuetable:pagination-data": _vm.onPaginationData,
+                  "vuetable:cell-clicked": _vm.onCellClicked
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "answers",
+                    fn: function(props) {
+                      return [_c("router-link")]
+                    }
+                  },
+                  {
+                    key: "actions",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-outline-secondary btn-md",
+                            attrs: {
+                              href: "javascript:",
+                              title: _vm.$t("translation.edit")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.editQuestion(props.rowData.id)
+                              }
+                            }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-pencil",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-danger btn-md",
+                            attrs: {
+                              type: "button",
+                              title: _vm.$t("translation.remove")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.destroyQuestion(props.rowData.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash-o" })]
+                        )
+                      ]
+                    }
+                  }
+                ])
               })
             ],
             1
@@ -5219,7 +6035,9 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("modal-invite-university-admin")
+      _c("modal-create-question"),
+      _vm._v(" "),
+      _c("modal-update-question")
     ],
     1
   )
@@ -5230,7 +6048,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-279e8a9b", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0c122ab2", module.exports)
   }
 }
 

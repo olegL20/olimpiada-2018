@@ -12683,7 +12683,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'user',
         prefix: true
-    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload']))
+    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role']))
 };
 
 /***/ }),
@@ -24415,6 +24415,7 @@ var UNIVERSITIES = exports.UNIVERSITIES = 'UNIVERSITIES';
 var SELECTED_UNIVERSITY = exports.SELECTED_UNIVERSITY = 'SELECTED_UNIVERSITY';
 var SHOW_PRELOAD = exports.SHOW_PRELOAD = 'SHOW_PRELOAD';
 var REFRESH_TABLE = exports.REFRESH_TABLE = 'REFRESH_TABLE';
+var ROLE = exports.ROLE = 'ROLE';
 
 /***/ }),
 /* 69 */
@@ -24445,7 +24446,8 @@ exports.default = {
     universities: [],
     selectedUniversity: null,
     showPreload: false,
-    refreshTable: false
+    refreshTable: false,
+    role: null
 };
 
 /***/ }),
@@ -24498,6 +24500,8 @@ var UNIVERSITY_ZIP_CODE = exports.UNIVERSITY_ZIP_CODE = 'UNIVERSITY_ZIP_CODE';
 var UNIVERSITY_PARENT_ID = exports.UNIVERSITY_PARENT_ID = 'UNIVERSITY_PARENT_ID';
 var UNIVERSITY_PARENTS_ID = exports.UNIVERSITY_PARENTS_ID = 'UNIVERSITY_PARENTS_ID';
 var UNIVERSITIES = exports.UNIVERSITIES = 'UNIVERSITIES';
+var UNIVERSITY_IMAGE = exports.UNIVERSITY_IMAGE = 'UNIVERSITY_IMAGE';
+var UNIVERSITY_POSITION = exports.UNIVERSITY_POSITION = 'UNIVERSITY_POSITION';
 var TESTS = exports.TESTS = 'TESTS';
 var TEST_ID = exports.TEST_ID = 'TEST_ID';
 var TEST_NAME = exports.TEST_NAME = 'TEST_NAME';
@@ -24537,6 +24541,8 @@ exports.default = {
     universityZipCode: null,
     universityParentId: null,
     universityParentsId: [],
+    universityImage: null,
+    universityPosition: null,
     universities: null,
     tests: null,
     testId: null,
@@ -58878,6 +58884,13 @@ router.beforeEach(function (to, from, next) {
         next({
             name: 'home'
         });
+    } else if (_store2.default.getters['user/role'] === 'user') {
+        next({
+            name: 'admin.home',
+            query: {
+                redirect: to.fullPath
+            }
+        });
     } else {
         next();
     }
@@ -62640,7 +62653,8 @@ var login = exports.login = function () {
 
                         commit(types.LOGIN, {
                             token: json.data.data.token,
-                            user: json.data.data.user
+                            user: json.data.data.user,
+                            role: json.data.data.user.role
                         });
 
                         return _context.abrupt('return', json.data);
@@ -62844,23 +62858,25 @@ var logout = exports.logout = function () {
 var checkLogged = exports.checkLogged = function () {
     var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(_ref16) {
         var commit = _ref16.commit;
-        var token, currentUser;
+        var token, currentUser, role;
         return _regenerator2.default.wrap(function _callee7$(_context7) {
             while (1) {
                 switch (_context7.prev = _context7.next) {
                     case 0:
                         token = window.Cookies.get('token');
                         currentUser = window.Cookies.get('user');
+                        role = window.Cookies.get('role');
 
 
                         if (token !== undefined && currentUser !== undefined) {
                             commit(types.LOGIN, {
                                 token: token,
-                                user: window.JSON.parse(currentUser)
+                                user: window.JSON.parse(currentUser),
+                                role: role
                             });
                         }
 
-                    case 3:
+                    case 4:
                     case 'end':
                         return _context7.stop();
                 }
@@ -64453,8 +64469,8 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var url = '';
-// const url = 'https://itpm-194220.appspot.com';
+// const url = '';
+var url = 'https://itpm-194220.appspot.com';
 exports.default = {
     login: function login(params) {
         var _this = this;
@@ -64747,12 +64763,14 @@ exports.default = (0, _extends4.default)({}, (0, _schepotinVuexHelpers.mapMutati
 }), (_extends2 = {}, (0, _defineProperty3.default)(_extends2, types.LOGIN, function (state, payload) {
     window.Cookies.set('token', payload.token);
     window.Cookies.set('user', window.JSON.stringify(payload.user));
+    window.Cookies.set('role', payload.role);
 
     window.axios.defaults.headers.common.Authorization = 'Bearer ' + payload.token;
 
     state.token = payload.token;
     state.logged = true;
     state.user = payload.user;
+    state.role = payload.role;
 }), (0, _defineProperty3.default)(_extends2, types.LOGOUT, function (state) {
     window.Cookies.remove('token');
     window.axios.defaults.headers.common.Authorization = '';
@@ -65073,10 +65091,11 @@ var getUniversity = exports.getUniversity = function () {
                         json = _context2.sent;
 
                         if (!(json.status === 200)) {
-                            _context2.next = 14;
+                            _context2.next = 17;
                             break;
                         }
 
+                        console.log(json.data.data);
                         commit(types.UNIVERSITY_ID, json.data.data.id);
                         commit(types.UNIVERSITY_NAME, json.data.data.name);
                         commit(types.UNIVERSITY_ADDRESS, json.data.data.address);
@@ -65086,12 +65105,14 @@ var getUniversity = exports.getUniversity = function () {
                         commit(types.UNIVERSITY_ZIP_CODE, json.data.data.zip_code);
                         commit(types.UNIVERSITY_SITE, json.data.data.site);
                         commit(types.UNIVERSITY_PARENT_ID, json.data.data.parent_id);
+                        commit(types.UNIVERSITY_IMAGE, json.data.data.image);
+                        commit(types.UNIVERSITY_POSITION, json.data.data.position);
                         return _context2.abrupt('return', json.data);
 
-                    case 14:
+                    case 17:
                         throw json;
 
-                    case 15:
+                    case 18:
                     case 'end':
                         return _context2.stop();
                 }
@@ -80053,7 +80074,7 @@ var render = function() {
     "div",
     { ref: "app", class: _vm.userBackground, attrs: { id: "app" } },
     [
-      _vm.isAdmin ? _c("admin-header") : _c("user-header"),
+      _vm.userRole === "user" ? _c("user-header") : _c("admin-header"),
       _vm._v(" "),
       _c(
         "transition",
@@ -80062,7 +80083,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.isAdmin ? _c("admin-footer") : _vm._e(),
+      _vm.userRole !== "user" ? _c("admin-footer") : _vm._e(),
       _vm._v(" "),
       _vm.showPreload ? _c("preload") : _vm._e()
     ],

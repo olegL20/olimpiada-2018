@@ -503,7 +503,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'admin',
         prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient']))
 };
 
 /***/ }),
@@ -5108,7 +5108,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
 
 exports.default = {
     mixins: [_admin2.default, _modals2.default, _preload2.default, _university2.default],
@@ -5132,6 +5131,12 @@ exports.default = {
         }
     },
     methods: {
+        onPaginationData: function onPaginationData(paginationData) {
+            this.$refs.pagination.setPaginationData(paginationData);
+        },
+        onChangePage: function onChangePage(page) {
+            this.$refs.listUniversities.changePage(page);
+        },
         onCellClicked: function onCellClicked(data) {
             this.universityAddress = data.address;
             this.universityZipCode = data.zip_code;
@@ -5236,12 +5241,6 @@ exports.default = {
                     }
                 }, _callee2, _this2, [[4, 11]]);
             }))();
-        },
-        onPaginationData: function onPaginationData(paginationData) {
-            this.$refs.pagination.setPaginationData(paginationData);
-        },
-        onChangePage: function onChangePage(page) {
-            this.$refs.listUniversities.changePage(page);
         }
     }
 };
@@ -5332,7 +5331,7 @@ exports.default = {
                     wrapperClass: 'vuetable-pagination text-center',
                     activeClass: 'btn btn-primary text-white',
                     disabledClass: 'btn text-secondary',
-                    pageClass: 'btn pgn-btn-border border',
+                    pageClass: 'btn pgn-btn-border border m-1',
                     linkClass: 'btn pgn-btn-border border',
                     icons: {
                         first: 'fa fa-angle-double-left',
@@ -6225,7 +6224,7 @@ var render = function() {
                 [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.$t("translation.close")) +
+                      _vm._s(_vm.$t("translation.cancel")) +
                       "\n                "
                   )
                 ]
@@ -6360,7 +6359,9 @@ exports.default = {
             customImageMaxSize: _constants.IMAGE_MAX_SIZE,
             imageSubstringLength: null,
             imageBase64: null,
-            latLng: {}
+            latLng: {},
+            isShowOldImage: true,
+            fileName: ''
         };
     },
 
@@ -6372,9 +6373,13 @@ exports.default = {
             return '';
         }
     },
+    watch: {
+        universityPosition: function universityPosition() {
+            this.latLng = this.universityPosition;
+        }
+    },
     methods: {
         setPlace: function setPlace(universityAddress) {
-            console.log(universityAddress);
             this.latLng = {
                 lat: universityAddress.geometry.location.lat(),
                 lng: universityAddress.geometry.location.lng()
@@ -6386,6 +6391,7 @@ exports.default = {
         },
         onLoad: function onLoad(dataUri) {
             this.imageBase64 = dataUri;
+            this.isShowOldImage = false;
         },
         hide: function hide() {
             this.modalsIsShowEditUniversity = false;
@@ -6399,6 +6405,8 @@ exports.default = {
             this.universitySite = null;
             this.universityZipCode = null;
             this.universityParentId = null;
+            this.universityImage = null;
+            this.isShowOldImage = true;
         },
         saveEditUniversity: function saveEditUniversity() {
             var _this = this;
@@ -6619,6 +6627,13 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -6632,551 +6647,556 @@ var render = function() {
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
     _vm.modalsIsShowEditUniversity
       ? _c("div", { staticClass: "modal__wrap" }, [
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "click-outside",
-                  rawName: "v-click-outside",
-                  value: _vm.hide,
-                  expression: "hide"
-                }
-              ],
-              staticClass: "modal__content modal__md"
-            },
-            [
-              _c("h4", { staticClass: "modal__head" }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.$t("translation.editUniversity")) +
-                    "\n            "
+          _c("div", { staticClass: "modal__content modal__md" }, [
+            _c("h4", { staticClass: "modal__head" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.$t("translation.editUniversity")) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal__body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "universityName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.universityName")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.universityName,
+                      expression: "universityName"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "universityName",
+                    "aria-describedby": "universityNameHelp",
+                    placeholder: _vm.$t(
+                      "translation.universityNamePlaceholder"
+                    ),
+                    name: "universityName",
+                    "data-vv-as": _vm.$t("translation.universityName")
+                  },
+                  domProps: { value: _vm.universityName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.universityName = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("universityName"),
+                        expression: "errors.has('universityName')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "universityNameHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("universityName")) +
+                        "\n                    "
+                    )
+                  ]
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal__body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universityName" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.universityName")))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|max:255",
-                        expression: "'required|max:255'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.universityName,
-                        expression: "universityName"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "universityName",
-                      "aria-describedby": "universityNameHelp",
-                      placeholder: _vm.$t(
-                        "translation.universityNamePlaceholder"
-                      ),
-                      name: "universityName",
-                      "data-vv-as": _vm.$t("translation.universityName")
-                    },
-                    domProps: { value: _vm.universityName },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.universityName = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("universityName"),
-                          expression: "errors.has('universityName')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "universityNameHelp" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("universityName")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "universityEmail" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.universityEmail")))
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universityEmail" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.universityEmail")))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|email|max:255",
-                        expression: "'required|email|max:255'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.universityEmail,
-                        expression: "universityEmail"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "email",
-                      id: "universityEmail",
-                      "aria-describedby": "universityEmailHelp",
-                      placeholder: _vm.$t(
-                        "translation.universityEmailPlaceholder"
-                      ),
-                      name: "universityEmail",
-                      "data-vv-as": _vm.$t("translation.universityEmail")
-                    },
-                    domProps: { value: _vm.universityEmail },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.universityEmail = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
+                _c("input", {
+                  directives: [
                     {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("universityEmail"),
-                          expression: "errors.has('universityEmail')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "universityEmailHelp" }
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|email|max:255",
+                      expression: "'required|email|max:255'"
                     },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("universityEmail")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ]),
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.universityEmail,
+                      expression: "universityEmail"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    id: "universityEmail",
+                    "aria-describedby": "universityEmailHelp",
+                    placeholder: _vm.$t(
+                      "translation.universityEmailPlaceholder"
+                    ),
+                    name: "universityEmail",
+                    "data-vv-as": _vm.$t("translation.universityEmail")
+                  },
+                  domProps: { value: _vm.universityEmail },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.universityEmail = $event.target.value
+                    }
+                  }
+                }),
                 _vm._v(" "),
                 _c(
-                  "div",
-                  { staticClass: "form-group-custom" },
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("universityEmail"),
+                        expression: "errors.has('universityEmail')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "universityEmailHelp" }
+                  },
                   [
-                    _c("gmap-place-input", {
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("universityEmail")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group-custom" },
+                [
+                  _c("gmap-place-input", {
+                    attrs: {
+                      className: "form-control",
+                      name: "universityAddress",
+                      "default-place": _vm.universityAddress,
+                      label: _vm.$t("translation.universityAddress"),
+                      placeholder: _vm.$t(
+                        "translation.universityAddressPlaceholder"
+                      ),
+                      "data-vv-rules": "required|max:255",
+                      "data-vv-as": _vm.$t("translation.universityAddress")
+                    },
+                    on: { place_changed: _vm.setPlace }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("universityAddress"),
+                          expression: "errors.has('universityAddress')"
+                        }
+                      ],
+                      staticClass: "form-text text-danger",
+                      attrs: { id: "universityAddressHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("universityAddress")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "universityPhone" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.universityPhone")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.universityPhone,
+                      expression: "universityPhone"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "universityPhone",
+                    "aria-describedby": "universityPhoneHelp",
+                    placeholder: _vm.$t(
+                      "translation.universityPhonePlaceholder"
+                    ),
+                    name: "universityPhone",
+                    "data-vv-as": _vm.$t("translation.universityPhone")
+                  },
+                  domProps: { value: _vm.universityPhone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.universityPhone = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("universityPhone"),
+                        expression: "errors.has('universityPhone')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "universityPhoneHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("universityPhone")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "universitySite" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.universitySite")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|url|max:255",
+                      expression: "'required|url|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.universitySite,
+                      expression: "universitySite"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "universitySite",
+                    "aria-describedby": "universitySiteHelp",
+                    placeholder: _vm.$t(
+                      "translation.universitySitePlaceholder"
+                    ),
+                    name: "universitySite",
+                    "data-vv-as": _vm.$t("translation.universitySite")
+                  },
+                  domProps: { value: _vm.universitySite },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.universitySite = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("universitySite"),
+                        expression: "errors.has('universitySite')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "universitySiteHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("universitySite")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "universityZipCode" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.universityZipCode")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.universityZipCode,
+                      expression: "universityZipCode"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "universityZipCode",
+                    "aria-describedby": "universityZipCodeHelp",
+                    placeholder: _vm.$t(
+                      "translation.universityZipCodePlaceholder"
+                    ),
+                    name: "universityZipCode",
+                    "data-vv-as": _vm.$t("translation.universityZipCode")
+                  },
+                  domProps: { value: _vm.universityZipCode },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.universityZipCode = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("universityZipCode"),
+                        expression: "errors.has('universityZipCode')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "universityZipCodeHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("universityZipCode")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "universityDescription" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.universityDescription")))
+                ]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:255",
+                      expression: "'required|max:255'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.universityDescription,
+                      expression: "universityDescription"
+                    }
+                  ],
+                  staticClass: "form-control resize-none h-5",
+                  attrs: {
+                    type: "text",
+                    id: "universityDescription",
+                    "aria-describedby": "universityDescriptionHelp",
+                    placeholder: _vm.$t(
+                      "translation.universityDescriptionPlaceholder"
+                    ),
+                    name: "universityDescription",
+                    "data-vv-as": _vm.$t("translation.universityDescription")
+                  },
+                  domProps: { value: _vm.universityDescription },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.universityDescription = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "small",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("universityDescription"),
+                        expression: "errors.has('universityDescription')"
+                      }
+                    ],
+                    staticClass: "form-text text-danger",
+                    attrs: { id: "universityDescriptionHelp" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.errors.first("universityDescription")) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "div",
+                  { class: { "is-invalid__date": _vm.errors.has("photo") } },
+                  [
+                    _c("label", { attrs: { for: "image" } }, [
+                      _vm._v(_vm._s(_vm.$t("translation.photo")))
+                    ]),
+                    _vm._v(" "),
+                    _vm.universityImage
+                      ? _c("div", [
+                          _vm.isShowOldImage
+                            ? _c("img", {
+                                staticClass: "img-fluid mt-3 max-w-20",
+                                attrs: { src: _vm.universityImage.source }
+                              })
+                            : _vm._e()
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("vue-base64-file-upload", {
+                      staticClass: "v1",
                       attrs: {
-                        className: "form-control",
-                        name: "universityAddress",
-                        "default-place": _vm.universityAddress,
-                        label: _vm.$t("translation.universityAddress"),
-                        placeholder: _vm.$t(
-                          "translation.universityAddressPlaceholder"
-                        ),
-                        "data-vv-rules": "required|max:255",
-                        "data-vv-as": _vm.$t("translation.universityAddress")
+                        accept: "image/png,image/jpeg",
+                        "image-class": "img-fluid mt-3 max-w-20",
+                        "input-class": "input",
+                        "max-size": _vm.customImageMaxSize,
+                        id: "image",
+                        "data-vv-name": "photo",
+                        "data-vv-value-path": "file",
+                        "data-vv-as": _vm.$t("translation.photo"),
+                        placeholder: _vm.$t("translation.photo")
                       },
-                      on: { place_changed: _vm.setPlace }
+                      on: { file: _vm.onFile, load: _vm.onLoad }
                     }),
                     _vm._v(" "),
                     _c(
-                      "small",
+                      "div",
                       {
                         directives: [
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.errors.has("universityAddress"),
-                            expression: "errors.has('universityAddress')"
+                            value: _vm.errors.has("photo"),
+                            expression: "errors.has('photo')"
                           }
                         ],
-                        staticClass: "form-text text-danger",
-                        attrs: { id: "universityAddressHelp" }
+                        staticClass: "invalid-feedback"
                       },
                       [
                         _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.errors.first("universityAddress")) +
-                            "\n                    "
+                          "\n                            " +
+                            _vm._s(_vm.errors.first("photo")) +
+                            "\n                        "
                         )
                       ]
                     )
                   ],
                   1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universityPhone" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.universityPhone")))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|max:255",
-                        expression: "'required|max:255'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.universityPhone,
-                        expression: "universityPhone"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "universityPhone",
-                      "aria-describedby": "universityPhoneHelp",
-                      placeholder: _vm.$t(
-                        "translation.universityPhonePlaceholder"
-                      ),
-                      name: "universityPhone",
-                      "data-vv-as": _vm.$t("translation.universityPhone")
-                    },
-                    domProps: { value: _vm.universityPhone },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.universityPhone = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("universityPhone"),
-                          expression: "errors.has('universityPhone')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "universityPhoneHelp" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("universityPhone")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universitySite" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.universitySite")))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|url|max:255",
-                        expression: "'required|url|max:255'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.universitySite,
-                        expression: "universitySite"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "universitySite",
-                      "aria-describedby": "universitySiteHelp",
-                      placeholder: _vm.$t(
-                        "translation.universitySitePlaceholder"
-                      ),
-                      name: "universitySite",
-                      "data-vv-as": _vm.$t("translation.universitySite")
-                    },
-                    domProps: { value: _vm.universitySite },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.universitySite = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("universitySite"),
-                          expression: "errors.has('universitySite')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "universitySiteHelp" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("universitySite")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universityZipCode" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.universityZipCode")))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|max:255",
-                        expression: "'required|max:255'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.universityZipCode,
-                        expression: "universityZipCode"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "universityZipCode",
-                      "aria-describedby": "universityZipCodeHelp",
-                      placeholder: _vm.$t(
-                        "translation.universityZipCodePlaceholder"
-                      ),
-                      name: "universityZipCode",
-                      "data-vv-as": _vm.$t("translation.universityZipCode")
-                    },
-                    domProps: { value: _vm.universityZipCode },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.universityZipCode = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("universityZipCode"),
-                          expression: "errors.has('universityZipCode')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "universityZipCodeHelp" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("universityZipCode")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universityDescription" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.universityDescription")))
-                  ]),
-                  _vm._v(" "),
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|max:255",
-                        expression: "'required|max:255'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.universityDescription,
-                        expression: "universityDescription"
-                      }
-                    ],
-                    staticClass: "form-control resize-none h-5",
-                    attrs: {
-                      type: "text",
-                      id: "universityDescription",
-                      "aria-describedby": "universityDescriptionHelp",
-                      placeholder: _vm.$t(
-                        "translation.universityDescriptionPlaceholder"
-                      ),
-                      name: "universityDescription",
-                      "data-vv-as": _vm.$t("translation.universityDescription")
-                    },
-                    domProps: { value: _vm.universityDescription },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.universityDescription = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("universityDescription"),
-                          expression: "errors.has('universityDescription')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "universityDescriptionHelp" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("universityDescription")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "div",
-                    { class: { "is-invalid__date": _vm.errors.has("photo") } },
-                    [
-                      _c("label", { attrs: { for: "image" } }, [
-                        _vm._v(_vm._s(_vm.$t("translation.photo")))
-                      ]),
-                      _vm._v(" "),
-                      _c("vue-base64-file-upload", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        staticClass: "v1",
-                        attrs: {
-                          accept: "image/png,image/jpeg",
-                          "image-class": "img-fluid mt-3 max-w-20",
-                          "input-class": "input",
-                          "max-size": _vm.customImageMaxSize,
-                          id: "image",
-                          "data-vv-name": "photo",
-                          "data-vv-value-path": "file",
-                          "data-vv-as": _vm.$t("translation.photo"),
-                          placeholder: _vm.$t("translation.photo")
-                        },
-                        on: { file: _vm.onFile, load: _vm.onLoad }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("photo"),
-                              expression: "errors.has('photo')"
-                            }
-                          ],
-                          staticClass: "invalid-feedback"
-                        },
-                        [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(_vm.errors.first("photo")) +
-                              "\n                        "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-md btn-success float-right mt-4",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.saveEditUniversity()
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.$t("translation.save")) +
-                        "\n                "
-                    )
-                  ]
                 )
-              ])
-            ]
-          )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-secondary float-right mt-4",
+                  attrs: { type: "button" },
+                  on: { click: _vm.hide }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.cancel")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-md btn-success mt-4",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.saveEditUniversity()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.save")) +
+                      "\n                "
+                  )
+                ]
+              )
+            ])
+          ])
         ])
       : _vm._e()
   ])
@@ -7241,7 +7261,7 @@ var render = function() {
                 attrs: {
                   "api-url": "/api/admin/university",
                   fields: _vm.fields,
-                  "pagination-path": "",
+                  "pagination-path": "data",
                   css: _vm.css.table,
                   "data-path": "data.data",
                   "detail-row-component": "my-detail-row"
@@ -7327,15 +7347,8 @@ var render = function() {
                     }
                   }
                 ])
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-12 m-3" },
-            [
+              }),
+              _vm._v(" "),
               _c("vuetable-pagination", {
                 ref: "pagination",
                 attrs: { css: _vm.css.pagination },

@@ -30,7 +30,7 @@ class MajorController extends Controller
      */
     public function index()
     {
-        $data = $this->major->paginate();
+        $data = $this->major->with(['department'])->paginate();
 
         return response()->json([
             'data' => $data
@@ -45,7 +45,7 @@ class MajorController extends Controller
      */
     public function show($id)
     {
-        $major = $this->major->find($id);
+        $major = $this->major->with(['department'])->find($id);
 
         return response()->json([
             'data' => $major

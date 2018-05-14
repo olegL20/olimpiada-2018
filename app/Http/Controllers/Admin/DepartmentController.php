@@ -30,7 +30,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $data = $this->department->paginate();
+        $data = $this->department->with(['faculty'])->paginate();
 
         return response()->json([
             'data' => $data
@@ -45,7 +45,7 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        $department = $this->department->find($id);
+        $department = $this->department->with(['faculty'])->find($id);
 
         return response()->json([
             'data' => $department

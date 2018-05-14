@@ -1,32 +1,48 @@
 <template>
     <transition name="slide-fade" mode="out-in">
-        <div v-show="modalsIsShowCreateAnswer" class="modal__wrap">
+        <div v-show="modalsIsShowUpdateMajor" class="modal__wrap">
             <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.createAnswer") }}
+                    {{ $t("translation.updateMajor") }}
                 </h4>
 
                 <div class="modal__body">
                     <div class="form-group">
-                        <label for="answerName">{{ $t("translation.answerName") }}</label>
+                        <label for="majorName">{{ $t("translation.majorName") }}</label>
                         <input type="text"
                                class="form-control"
-                               id="answerName"
+                               id="majorName"
                                v-validate="{required: true}"
-                               aria-describedby="answerNameHelp"
-                               :placeholder="$t('translation.answerNamePlaceholder')"
-                               name="answerName"
-                               :data-vv-as="$t('translation.answerName')"
-                               v-model="answerName">
-                        <small id="answerNameHelp" class="form-text text-danger" v-show="errors.has('answerName')">
-                            {{ errors.first('answerName') }}
+                               aria-describedby="majorNameHelp"
+                               :placeholder="$t('translation.majorNamePlaceholder')"
+                               name="majorName"
+                               :data-vv-as="$t('translation.majorName')"
+                               v-model="majorName">
+                        <small id="majorNameHelp" class="form-text text-danger" v-show="errors.has('majorName')">
+                            {{ errors.first('majorName') }}
                         </small>
                     </div>
 
-                    <template v-if="questions">
-                        <multiselect v-model="answerQuestionId"
-                                     :options="questions"
+                    <div class="form-group">
+                        <label for="majorDescription">{{ $t("translation.majorDescription") }}</label>
+                        <textarea class="form-control resize-none h-5"
+                                  id="majorDescription"
+                                  aria-describedby="majorDescriptionHelp"
+                                  :placeholder="$t('translation.majorDescriptionPlaceholder')"
+                                  name="majorDescription"
+                                  v-validate="'required|max:255'"
+                                  :data-vv-as="$t('translation.majorDescription')"
+                                  v-model="majorDescription">
+                        </textarea>
+                        <small id="majorDescriptionHelp" class="form-text text-danger" v-show="errors.has('majorDescription')">
+                            {{ errors.first('majorDescription') }}
+                        </small>
+                    </div>
+
+                    <template v-if="departments">
+                        <multiselect v-model="majorDepartmentId"
+                                     :options="departments"
                                      :searchable="true"
                                      :show-labels="false"
                                      label="name"
@@ -41,7 +57,7 @@
                     </button>
 
                     <button type="button" class="btn btn-md btn-success mt-4"
-                        @click="createAnswer">
+                        @click="updateMajor">
                         {{ $t("translation.save") }}
                     </button>
 
@@ -69,26 +85,31 @@
         },
         methods: {
             hide() {
-                this.modalsIsShowCreateAnswer = false;
+                this.modalsIsShowUpdateMajor = false;
 
-                this.answerQuestionId = null;
-                this.answerName = null;
+                this.majorDepartmentId = null;
+                this.majorName = null;
+                this.majorDescription = null;
             },
 
-            async createAnswer() {
+            async updateMajor() {
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
                     try {
                         this.showPreloader();
-                        await this.$store.dispatch('admin/createAnswer', {
-                            question_id: this.answerQuestionId.id,
-                            name: this.answerName,
+                        await this.$store.dispatch('admin/updateMajor', {
+                            id: this.majorId,
+                            params: {
+                                department_id: this.majorDepartmentId.id,
+                                name: this.majorName,
+                                description: this.majorDescription,
+                            },
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({
                             title: this.$t('translation.success'),
-                            message: this.$t('translation.createdAnswer'),
+                            message: this.$t('translation.updatedMajor'),
                         });
                     } catch (e) {
                         if (e.status === 404) {
@@ -108,7 +129,7 @@
             },
         },
         mounted() {
-            this.$store.dispatch('admin/getQuestions');
+            // this.$store.dispatch('admin/getDepartments');
         },
     };
 </script>

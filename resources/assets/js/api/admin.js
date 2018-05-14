@@ -82,6 +82,15 @@ export default {
             return e.response;
         }
     },
+    async getTests() {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/admin/test`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
     async updateTest(id, params) {
         try {
             const { data, status } = await window.axios.put(`${url}/api/admin/test/${id}`, params);
@@ -112,6 +121,15 @@ export default {
     async getQuestion(id) {
         try {
             const { data, status } = await window.axios.get(`${url}/api/admin/question/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getQuestions() {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/admin/question`);
 
             return { data, status };
         } catch (e) {
@@ -202,6 +220,105 @@ export default {
     async destroyCoefficient(id) {
         try {
             const { data, status } = await window.axios.delete(`${url}/api/admin/subjects-coefficients/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getMajors() {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/admin/major`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async createMajor(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/admin/major`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getMajor(id) {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/admin/major/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async updateMajor(id, params) {
+        try {
+            const { data, status } = await window.axios.put(`${url}/api/admin/major/${id}`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async destroyMajor(id) {
+        try {
+            const { data, status } = await window.axios.delete(`${url}/api/admin/major/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async createDeparment(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/admin/department`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getDepartment(id) {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/admin/department/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async updateDepartment(id, params) {
+        try {
+            const { data, status } = await window.axios.put(`${url}/api/admin/department/${id}`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async destroyDepartment(id) {
+        try {
+            const { data, status } = await window.axios.delete(`${url}/api/admin/department/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getDepartments() {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/admin/department`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getFaculties() {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/admin/faculty`);
 
             return { data, status };
         } catch (e) {

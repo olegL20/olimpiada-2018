@@ -6,14 +6,14 @@
                 <div class="col-md-10">
                     <h1>{{ $t('translation.managerQuestions') }}</h1>
                 </div>
-                <!--<div class="col-md-2 align-self-center">-->
-                    <!--<a href="javascript:" @click="modalsIsShowCreateQuestion = true" class="btn btn-primary btn-md float-right">-->
-                        <!--{{ $t("translation.addQuestion") }}-->
-                    <!--</a>-->
-                <!--</div>-->
+                <div class="col-md-2 align-self-center">
+                    <a href="javascript:" @click="modalsIsShowCreateQuestion = true" class="btn btn-primary btn-md float-right">
+                        {{ $t("translation.addQuestion") }}
+                    </a>
+                </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listQuestions"
-                              api-url="https://itpm-194220.appspot.com/api/admin/questions"
+                              api-url="https://itpm-194220.appspot.com/api/admin/question"
                               :fields="fields"
                               pagination-path=""
                               :css="css.table"
@@ -27,10 +27,9 @@
                               @vuetable:load-success="hidePreloader"
                               @vuetable:load-error="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
-                              @vuetable:cell-clicked="onCellClicked"
                     >
                         <template slot="answers" slot-scope="props">
-                            <router-link></router-link>
+                            <router-link :to="{ name: 'admin.answers' }">{{ $t('translation.answers') }}</router-link>
                         </template>
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"

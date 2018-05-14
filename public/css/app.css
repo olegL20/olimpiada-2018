@@ -14609,6 +14609,14 @@ body {
   width: 100%;
 }
 
+.is-invalid .multiselect__tags {
+  border-color: #dc3545;
+}
+
+.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
 .button-accent {
   color: #fff;
   background-color: #007add;

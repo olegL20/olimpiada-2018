@@ -1,4 +1,4 @@
-webpackJsonp([11],{
+webpackJsonp([25],{
 
 /***/ 247:
 /***/ (function(module, exports, __webpack_require__) {
@@ -57,6 +57,16 @@ module.exports = Component.exports
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -167,6 +177,48 @@ var render = function() {
                     _vm._v(
                       "\n                            " +
                         _vm._s(_vm.$t("translation.managerUniversity")) +
+                        "\n                        "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "link link__accent mr-3",
+                    attrs: { to: { name: "admin.majors" } }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.$t("translation.managerMajors")) +
+                        "\n                        "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "link link__accent mr-3",
+                    attrs: { to: { name: "admin.departments" } }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.$t("translation.managerDepartments")) +
                         "\n                        "
                     )
                   ]

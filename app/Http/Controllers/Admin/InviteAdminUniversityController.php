@@ -71,7 +71,7 @@ class InviteAdminUniversityController extends Controller
 
     public function register($inviteCode, AdminUniversityRegisterRequest $request, Confirmation $confirmation)
     {
-        $invite = $this->universityInvite->where('invite_code', $inviteCode);
+        $invite = $this->universityInvite->where('invite_code', $inviteCode)->first();
         if (!$invite) {
             return response()->json([
                 'message' => trans('api.invite_not_found'),

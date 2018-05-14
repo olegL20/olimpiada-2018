@@ -45,7 +45,7 @@
             },
         },
         created() {
-            this.userBackground = 'background__white';
+            this.userBackground = 'background-white';
         },
     };
 </script>

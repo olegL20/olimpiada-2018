@@ -55,6 +55,15 @@ export default {
             return e.response;
         }
     },
+    async associate(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/admin/associate`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
     async createTest(params) {
         try {
             const { data, status } = await window.axios.post(`${url}/api/admin/test`, params);

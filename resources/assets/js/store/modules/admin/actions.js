@@ -253,6 +253,16 @@ export const destroyCoefficient = async (context, payload) => {
     throw json;
 };
 
+export const associate = async (context, payload) => {
+    const json = await admin.associate(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
 export default {
     destroyUniversity,
     getUniversity,
@@ -276,4 +286,5 @@ export default {
     getCoefficient,
     updateCoefficient,
     destroyCoefficient,
+    associate,
 };

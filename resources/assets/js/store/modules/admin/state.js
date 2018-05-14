@@ -11,6 +11,7 @@ export default {
     universityParentsId: [],
     universityImage: null,
     universityPosition: null,
+    universityUserId: null,
     universities: null,
     tests: null,
     testId: null,

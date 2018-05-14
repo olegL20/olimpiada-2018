@@ -9,6 +9,7 @@ export default {
     isShowEditUniversity: false,
     isShowDescription: false,
     isShowInviteUniversityAdmin: false,
+    modalsIsShowAssociateUniversityAdmin: false,
     isShowCreateQuestion: false,
     isShowUpdateQuestion: false,
     isShowCreateAnswer: false,

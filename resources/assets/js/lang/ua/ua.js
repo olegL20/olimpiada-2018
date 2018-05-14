@@ -81,7 +81,7 @@ export default {
         'професії та вступу до ВНЗ. Цей сервіс допоможе' +
         'майбутньому студенту у вигляді захопливого квесту',
         managerUniversity: 'Менеджер університетів',
-        managerUniversityAdmin: 'Менеджер адміністраторів',
+        managerUniversityAdmin: 'Адміністратори університетів',
         addUniversity: 'Додати університет',
         addUniversityAdmin: 'Додати адміністратора',
         remove: 'Видалити',
@@ -157,6 +157,9 @@ export default {
         coefficientNamePlaceholder: 'Назва коефіцієнту',
         coefficient: 'Коефіцієнт',
         majorId: 'ID головного',
+        universityAdmin: 'Адміністратор університету',
+        addInvite: 'Створити запрошення',
+        universityChanged: 'Університет змінено',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

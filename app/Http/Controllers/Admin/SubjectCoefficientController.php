@@ -43,11 +43,11 @@ class SubjectCoefficientController extends Controller
      */
     public function store(SubjectCoefficientRequest $request)
     {
-        $data = $this->coefficient->fill($request->all());
+        $this->coefficient->fill($request->all());
         $this->coefficient->save();
 
         return response()->json([
-            'data' => $data,
+            'data' => $this->coefficient,
             'message' => trans('api.created')
         ]);
     }

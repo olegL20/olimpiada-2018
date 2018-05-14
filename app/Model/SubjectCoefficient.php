@@ -12,6 +12,8 @@ class SubjectCoefficient extends Model
         'major_id',
     ];
 
+    public $timestamps = false;
+
     public function major()
     {
         return $this->belongsTo(Major::class);

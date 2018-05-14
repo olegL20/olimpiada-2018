@@ -53,6 +53,15 @@ const routes = [
         //     admin: true,
         // },
     },
+    {
+        path: '/admin/faculty',
+        name: 'admin.faculty',
+        component: () => import('../pages/admin/Faculty.vue'),
+        // meta: {
+        //     auth: true,
+        //     admin: true,
+        // },
+    },
 
     /**
      * Must be the last entry in array.

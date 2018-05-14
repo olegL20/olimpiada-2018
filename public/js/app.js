@@ -58732,7 +58732,7 @@ var routes = [{
     path: '/',
     name: 'home',
     component: function component() {
-        return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 244));
+        return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, 244));
     }
 },
 // {
@@ -58747,25 +58747,25 @@ var routes = [{
     path: '/room',
     name: 'user.room',
     component: function component() {
-        return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 245));
+        return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, 245));
     }
 }, {
     path: '/invite/:id',
     name: 'auth.invite',
     component: function component() {
-        return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 246));
+        return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 246));
     }
 }, {
     path: '/admin/login',
     name: 'admin.login',
     component: function component() {
-        return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, 247));
+        return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 247));
     }
 }, {
     path: '/admin/university',
     name: 'admin.university',
     component: function component() {
-        return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 248));
+        return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, 248));
     }
     // meta: {
     //     auth: true,
@@ -58775,7 +58775,17 @@ var routes = [{
     path: '/admin/university/admins',
     name: 'admin.university.admins',
     component: function component() {
-        return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 249));
+        return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 249));
+    }
+    // meta: {
+    //     auth: true,
+    //     admin: true,
+    // },
+}, {
+    path: '/admin/faculty',
+    name: 'admin.faculty',
+    component: function component() {
+        return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 381));
     }
     // meta: {
     //     auth: true,
@@ -58789,7 +58799,7 @@ var routes = [{
 {
     path: '*',
     component: function component() {
-        return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 250));
+        return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 250));
     }
 }];
 
@@ -67390,6 +67400,7 @@ exports.default = {
         beforeEveryone: 'Перед кожним школярем рано чи пізно постає питання вибору' + 'професії та вступу до ВНЗ. Цей сервіс допоможе' + 'майбутньому студенту у вигляді захопливого квесту',
         managerUniversity: 'Менеджер університетів',
         managerUniversityAdmin: 'Адміністратори університетів',
+        managerFaculty: 'Менеджер факультетів',
         addUniversity: 'Додати університет',
         addUniversityAdmin: 'Додати адміністратора',
         remove: 'Видалити',
@@ -77221,6 +77232,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
 
 exports.default = {
     mixins: [_modals2.default, _user2.default],
@@ -77441,6 +77455,21 @@ var render = function() {
                             _vm._s(
                               _vm.$t("translation.managerUniversityAdmin")
                             ) +
+                            "\n                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { to: { name: "admin.faculty" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.$t("translation.managerFaculty")) +
                             "\n                "
                         )
                       ]

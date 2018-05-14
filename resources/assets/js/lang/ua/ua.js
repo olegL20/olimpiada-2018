@@ -82,6 +82,7 @@ export default {
         'майбутньому студенту у вигляді захопливого квесту',
         managerUniversity: 'Менеджер університетів',
         managerUniversityAdmin: 'Адміністратори університетів',
+        managerFaculty: 'Менеджер факультетів',
         addUniversity: 'Додати університет',
         addUniversityAdmin: 'Додати адміністратора',
         remove: 'Видалити',

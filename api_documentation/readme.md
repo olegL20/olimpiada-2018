@@ -7,6 +7,8 @@
  - Admin prefix `admin`
      - [University](Auth/Admin/University.md) 
      - [Faculty](Auth/Admin/Faculty.md) 
+     - [Department](Auth/Admin/Department.md) 
+     - [Major](Auth/Admin/Major.md) 
      - [Invite](Auth/Admin/Invite.md) 
      - [SubjectCoefficient](Auth/Admin/SubjectCoefficient.md) 
      - [Test](Auth/Admin/Test/Test.md) 

@@ -26,7 +26,7 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        $data = $this->answer->paginate();
+        $data = $this->answer->with(['question'])->paginate();
 
         return response()->json([
             'data' => $data
@@ -58,7 +58,7 @@ class AnswerController extends Controller
      */
     public function show($id)
     {
-        $answer = $this->answer->find($id);
+        $answer = $this->answer->with(['question'])->find($id);
 
         return response()->json([
             'data' => $answer

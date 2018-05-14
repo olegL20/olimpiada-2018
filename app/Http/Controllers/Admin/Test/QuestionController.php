@@ -26,7 +26,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $data = $this->question->paginate();
+        $data = $this->question->with(['test'])->paginate();
 
         return response()->json([
             'data' => $data
@@ -60,7 +60,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        $question = $this->question->find($id);
+        $question = $this->question->with(['test'])->find($id);
 
         return response()->json([
             'data' => $question

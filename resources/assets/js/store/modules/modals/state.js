@@ -8,4 +8,5 @@ export default {
     isShowDescription: false,
     isShowInviteUniversityAdmin: false,
     modalsIsShowAssociateUniversityAdmin: false,
+    isShowCreateFaculty: false,
 };

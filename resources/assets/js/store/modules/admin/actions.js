@@ -84,6 +84,36 @@ export const associate = async (context, payload) => {
     throw json;
 };
 
+export const createFaculty = async (context, payload) => {
+    const json = await admin.createFaculty(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const setUniversityForFaculty = async (context, payload) => {
+    const json = await admin.setUniversityForFaculty(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const destroyFaculty = async (context, payload) => {
+    const json = await admin.destroyFaculty(payload);
+
+    if (json.status === 204) {
+        return json.data;
+    }
+
+    throw json;
+};
+
 export default {
     destroyUniversity,
     getUniversity,
@@ -92,4 +122,7 @@ export default {
     getAllUniversities,
     sendInviteUniversityAdmin,
     associate,
+    createFaculty,
+    setUniversityForFaculty,
+    destroyFaculty,
 };

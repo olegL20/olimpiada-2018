@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            fields: [
+            fieldsListFaculties: [
                 {
                     name: 'name',
                     sortField: 'name',
@@ -10,23 +10,14 @@ export default {
                     dataClass: 'text-left',
                 },
                 {
-                    name: 'email',
-                    sortField: 'email',
-                    title: this.$t('translation.email'),
+                    name: '__slot:university',
+                    title: this.$t('translation.university'),
                     titleClass: 'text-left',
                     dataClass: 'text-left',
                 },
                 {
-                    name: 'phone',
-                    sortField: 'phone',
-                    title: this.$t('translation.phone'),
-                    titleClass: 'text-left',
-                    dataClass: 'text-left',
-                },
-                {
-                    name: 'site',
-                    sortField: 'site',
-                    title: this.$t('translation.site'),
+                    name: 'description',
+                    title: this.$t('translation.description'),
                     titleClass: 'text-left',
                     dataClass: 'text-left',
                 },

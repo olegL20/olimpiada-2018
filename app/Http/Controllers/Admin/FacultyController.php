@@ -119,7 +119,9 @@ class FacultyController extends Controller
     public function destroy($id)
     {
         $faculty = $this->faculty->find($id);
-        $faculty->image->delete();
+        if (!is_null($faculty->image)) {
+            $faculty->image->delete();
+        }
         $faculty->delete();
 
         return response()->json([

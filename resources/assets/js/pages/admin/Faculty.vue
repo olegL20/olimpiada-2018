@@ -7,10 +7,16 @@
                     <h1>{{ $t('translation.managerFaculty') }}</h1>
                 </div>
 
+                <div class="col-md-2 align-self-center">
+                    <a href="javascript:" @click="modalsIsShowCreateFaculty = true" class="btn btn-primary btn-md float-right">
+                        {{ $t("translation.addFaculty") }}
+                    </a>
+                </div>
+
                 <div class="col-md-12 mt-3">
-                    <vuetable ref="listUniversityAdministrators"
+                    <vuetable ref="listFaculties"
                               :api-url="`/api/admin/faculty`"
-                              :fields="fieldsListUniversityAdministrators"
+                              :fields="fieldsListFaculties"
                               pagination-path = "data"
                               :css="css.table"
                               data-path="data.data"
@@ -19,23 +25,24 @@
                               @vuetable:cell-clicked="onCellClicked"
                     >
                         <template slot="university" slot-scope="props">
-                            <select  name="university_id" class="select-style"
-                                     @change="setUniversityId"
-                                     :value="props.rowData.university_id"
-                                     :data-id="props.rowData.id"
-                                     v-if="universities">
-                                <option value="">{{ $t('translation.noData') }}</option>
-                                <option v-for="item in universities"
-                                        :value="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
+                            {{ props.rowData.university_id ? props.rowData.university_id : $t('translation.noData') }}
+                        </template>
+                        <template slot="actions" slot-scope="props">
+                            <a href="javascript:" class="btn btn-outline-secondary btn-md"
+                               @click="editUniversity(props.rowData.id)"
+                               :title="$t('translation.edit')">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <button type="button" class="btn btn-outline-danger btn-md"
+                                    @click="destroyFaculty(props.rowData.id)"
+                                    :title="$t('translation.remove')">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
                         </template>
                     </vuetable>
                 </div>
                 <div class="col-md-12 m-3">
-                    <vuetable-pagination ref="paginationListUniversityAdministrators"
+                    <vuetable-pagination ref="paginationFaculties"
                                          :css="css.pagination"
                                          @vuetable-pagination:change-page="onChangePage"
                     >
@@ -45,7 +52,7 @@
             </div>
         </div>
 
-        <modal-invite-university-admin></modal-invite-university-admin>
+        <modal-create-faculty></modal-create-faculty>
 
     </div>
 </template>
@@ -53,14 +60,14 @@
 <script>
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
     import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue';
-    import FieldsUniversityAdmin from '../../mixins/formFields/universityAdmin';
+    import FieldsListFaculties from '../../mixins/formFields/faculty';
 
     import MixinModals from '../../mixins/modals';
     import MixinPreload from '../../mixins/preload';
     import MixinAdmin from '../../mixins/admin';
 
     import ModalInviteUniversityAdmin from '../../components/admin/modals/InviteUniversityAdmin.vue';
-    import ModalsAssociateUniversityAdmin from '../../components/admin/modals/AssociateUniversityAdmin.vue';
+    import ModalCreateFaculty from '../../components/admin/modals/CreateFaculty.vue';
 
     import * as constants from '../../utils/constants';
 
@@ -70,18 +77,26 @@
             MixinPreload,
             MixinModals,
             MixinAdmin,
-            FieldsUniversityAdmin,
+            FieldsListFaculties,
         ],
         components: {
             Vuetable,
             VuetablePagination,
             ModalInviteUniversityAdmin,
-            ModalsAssociateUniversityAdmin,
+            ModalCreateFaculty,
         },
         data() {
             return {
                 constants,
             };
+        },
+        watch: {
+            refreshTable() {
+                if (this.refreshTable) {
+                    this.$refs.listFaculties.refresh();
+                    this.switchRefreshTable(false);
+                }
+            },
         },
         mounted() {
             this.showPreloader();
@@ -94,18 +109,23 @@
                 this.modalsIsShowAssociateUniversityAdmin = true;
             },
             onPaginationData(paginationData) {
-                this.$refs.paginationListUniversityAdministrators.setPaginationData(paginationData);
+                this.$refs.paginationFaculties.setPaginationData(paginationData);
             },
             onChangePage(page) {
-                this.$refs.listUniversityAdministrators.changePage(page);
+                this.showPreloader();
+                this.$refs.listFaculties.changePage(page);
             },
-            async setUniversityId(el) {
+            async setUniversityForFaculty(el) {
+                console.log(el);
                 try {
-                    await this.$store.dispatch('admin/associate', {
-                        user_id: el.target.dataset.id,
-                        university_id: el.target.value,
+                    await this.$store.dispatch('admin/setUniversityForFaculty', {
+                        id: el.target.dataset.id,
+                        params: {
+                            name: el.target.dataset.id,
+                            university_id: el.target.value,
+                        },
                     });
-                    this.$refs.listUniversityAdministrators.refresh();
+                    this.$refs.listFaculties.refresh();
                     this.$toast.success({
                         title: this.$t('translation.success'),
                         message: this.$t('translation.universityChanged'),
@@ -115,6 +135,30 @@
                         title: this.$t('translation.error'),
                         message: this.$t(e.message),
                     });
+                }
+            },
+            async destroyFaculty(id) {
+                const result = await this.$swal({
+                    title: this.$t('translation.areYouSure'),
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: constants.BUTTON_COLOR_CONFIRM,
+                    confirmButtonText: this.$t('translation.yes'),
+                    cancelButtonColor: constants.BUTTON_COLOR_CANCEL,
+                    cancelButtonText: this.$t('translation.cancel'),
+                });
+                if (result.value) {
+                    this.showPreloader();
+                    try {
+                        await this.$store.dispatch('admin/destroyFaculty', id);
+                        this.$refs.listFaculties.refresh();
+                        this.showPreloader();
+                    } catch (e) {
+                        this.$toast.error({
+                            title: this.$t('translation.error'),
+                            message: this.$t(e.statusText),
+                        });
+                    }
                 }
             },
         },

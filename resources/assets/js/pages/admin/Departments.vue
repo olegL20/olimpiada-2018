@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-md-2 align-self-center">
                     <a href="javascript:" @click="modalsIsShowCreateDepartment = true" class="btn btn-primary btn-md float-right">
-                        {{ $t("translation.addMajor") }}
+                        {{ $t("translation.addDepartment") }}
                     </a>
                 </div>
                 <div class="col-md-12 mt-3">

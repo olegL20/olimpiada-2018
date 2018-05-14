@@ -40,16 +40,50 @@
                         </small>
                     </div>
 
-                    <template v-if="departments">
-                        <multiselect v-model="majorDepartmentId"
-                                     :options="departments"
-                                     :searchable="true"
-                                     :show-labels="false"
-                                     label="name"
-                                     track-by="id"
-                                     :placeholder="$t('translation.selectFromList')">
-                        </multiselect>
-                    </template>
+                    <div class="form-group">
+                        <label for="majorDepartmentId">{{ $t("translation.department") }}</label>
+                        <template v-if="departments">
+                            <multiselect v-model="majorDepartmentId"
+                                         :options="departments"
+                                         :searchable="true"
+                                         :show-labels="false"
+                                         aria-describedby="majorDepartmentIdHelp"
+                                         id="majorDepartmentId"
+                                         v-validate="'required'"
+                                         data-vv-name="majorDepartmentId"
+                                         data-vv-value-path="value"
+                                         :class="{ 'multiselect': true, 'is-invalid': errors.has('majorDepartmentId') }"
+                                         label="name"
+                                         track-by="id"
+                                         :placeholder="$t('translation.selectFromList')">
+                            </multiselect>
+                            <small id="majorDepartmentIdHelp" class="form-text text-danger" v-show="errors.has('majorDepartmentId')">
+                                {{ errors.first('majorDepartmentId') }}
+                            </small>
+                        </template>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formControlRange">{{ $t("translation.coefficient") }}
+                            <template v-if="majorCoefficient">
+                                : ({{ majorCoefficient }})
+                            </template>
+                        </label>
+                        <input v-model="majorCoefficient"
+                               min="0"
+                               max="1"
+                               step="0.01"
+                               type="range"
+                               aria-describedby="majorCoefficientHelp"
+                               name="majorCoefficient"
+                               v-validate="'required'"
+                               data-vv-value-path="value"
+                               class="form-control-range"
+                               id="formControlRange">
+                        <small id="majorCoefficientHelp" class="form-text text-danger" v-show="errors.has('majorCoefficient')">
+                            {{ errors.first('majorCoefficient') }}
+                        </small>
+                    </div>
 
                     <button type="button" class="btn btn-md btn-secondary float-right mt-4"
                         @click="hide">
@@ -90,6 +124,7 @@
                 this.majorDepartmentId = null;
                 this.majorName = null;
                 this.majorDescription = null;
+                this.majorCoefficient = null;
             },
 
             async createMajor() {
@@ -102,6 +137,7 @@
                             department_id: this.majorDepartmentId.id,
                             name: this.majorName,
                             description: this.majorDescription,
+                            koef: this.majorCoefficient,
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({

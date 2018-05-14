@@ -370,6 +370,7 @@ export const getMajor = async ({ commit }, payload) => {
         commit(types.MAJOR_DEPARTMENT_ID, json.data.data.department);
         commit(types.MAJOR_NAME, json.data.data.name);
         commit(types.MAJOR_DESCRIPTION, json.data.data.description);
+        commit(types.MAJOR_COEFFICIENT, json.data.data.koef);
         return json.data;
     }
 
@@ -493,6 +494,10 @@ export default {
     getMajor,
     updateMajor,
     destroyMajor,
+    createDepartment,
+    getDepartment,
+    updateDepartment,
+    destroyDepartment,
     associate,
     createFaculty,
     editFaculty,

@@ -176,7 +176,7 @@ export default {
         createdAnswer: 'Відповідь створено',
         updateAnswer: 'Оновити Відповідь',
         updatedAnswer: 'Відповідь оновлено',
-        departmentId: 'ID департамента',
+        departmentId: 'ID кафедри',
         nameMajor: 'Назва спеціальності',
         managerMajor: 'Менеджер спеціальності',
         addMajor: 'Додати спеціальність',
@@ -199,6 +199,9 @@ export default {
         createDepartment: 'Створити кафедру',
         updateDepartment: 'Ововити кафедру',
         updatedDepartment: 'Кафедру оновлено',
+        addDepartment: 'Додати кафедру',
+        department: 'Кафедра',
+        menu: 'Меню',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

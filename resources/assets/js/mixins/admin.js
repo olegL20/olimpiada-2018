@@ -48,6 +48,7 @@ export default {
             'majorId',
             'majorDepartmentId',
             'majorName',
+            'majorCoefficient',
             'departments',
             'departmentId',
             'departmentFacultyId',

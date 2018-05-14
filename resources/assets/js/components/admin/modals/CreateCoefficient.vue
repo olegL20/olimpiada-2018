@@ -110,6 +110,7 @@
                             });
                         }
                     }
+                    this.hidePreloader();
                     this.hide();
                 }
             },

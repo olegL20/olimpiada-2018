@@ -38,7 +38,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $data = $this->faculty->paginate();
+        $data = $this->faculty->with(['university'])->paginate();
 
         return response()->json([
             'data' => $data
@@ -53,7 +53,7 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = $this->faculty->find($id);
+        $faculty = $this->faculty->with(['university'])->find($id);
 
         return response()->json([
             'data' => $faculty

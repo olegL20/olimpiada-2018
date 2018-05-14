@@ -78,7 +78,7 @@ export default {
                     wrapperClass: 'vuetable-pagination text-center',
                     activeClass: 'btn btn-primary text-white',
                     disabledClass: 'btn text-secondary',
-                    pageClass: 'btn pgn-btn-border border',
+                    pageClass: 'btn pgn-btn-border border m-1',
                     linkClass: 'btn pgn-btn-border border',
                     icons: {
                         first: 'fa fa-angle-double-left',

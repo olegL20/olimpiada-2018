@@ -1,7 +1,7 @@
 <template>
     <transition name="slide-fade" mode="out-in">
         <div v-if="modalsIsShowEditUniversity" class="modal__wrap">
-            <div v-click-outside="hide" class="modal__content modal__md">
+            <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
                     {{ $t("translation.editUniversity") }}
@@ -108,6 +108,9 @@
                     <div class="form-group">
                         <div :class="{ 'is-invalid__date': errors.has('photo') }">
                             <label for="image">{{ $t("translation.photo") }}</label>
+                            <div v-if="universityImage">
+                                <img :src="universityImage.source" v-if="isShowOldImage" class="img-fluid mt-3 max-w-20">
+                            </div>
                             <vue-base64-file-upload
                                     class="v1"
                                     accept="image/png,image/jpeg"
@@ -119,7 +122,6 @@
                                     id="image"
                                     data-vv-name="photo"
                                     data-vv-value-path="file"
-                                    v-validate="'required'"
                                     :data-vv-as="$t('translation.photo')"
                                     :placeholder="$t('translation.photo')"/>
                             <div v-show="errors.has('photo')" class="invalid-feedback">
@@ -128,7 +130,12 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-md btn-success float-right mt-4"
+                    <button type="button" class="btn btn-md btn-secondary float-right mt-4"
+                            @click="hide">
+                        {{ $t("translation.cancel") }}
+                    </button>
+
+                    <button type="button" class="btn btn-md btn-success mt-4"
                             @click="saveEditUniversity()">
                         {{ $t("translation.save") }}
                     </button>
@@ -164,6 +171,8 @@
                 imageSubstringLength: null,
                 imageBase64: null,
                 latLng: {},
+                isShowOldImage: true,
+                fileName: '',
             };
         },
         computed: {
@@ -174,9 +183,13 @@
                 return '';
             },
         },
+        watch: {
+            universityPosition() {
+                this.latLng = this.universityPosition;
+            },
+        },
         methods: {
             setPlace(universityAddress) {
-                console.log(universityAddress);
                 this.latLng = {
                     lat: universityAddress.geometry.location.lat(),
                     lng: universityAddress.geometry.location.lng(),
@@ -188,6 +201,7 @@
             },
             onLoad(dataUri) {
                 this.imageBase64 = dataUri;
+                this.isShowOldImage = false;
             },
             hide() {
                 this.modalsIsShowEditUniversity = false;
@@ -201,6 +215,8 @@
                 this.universitySite = null;
                 this.universityZipCode = null;
                 this.universityParentId = null;
+                this.universityImage = null;
+                this.isShowOldImage = true;
             },
             async saveEditUniversity() {
                 const valid = await this.$validator.validateAll();

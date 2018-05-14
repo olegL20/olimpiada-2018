@@ -120,7 +120,7 @@
 
                     <button type="button" class="btn btn-md btn-secondary float-right mt-4"
                         @click="hide">
-                        {{ $t("translation.close") }}
+                        {{ $t("translation.cancel") }}
                     </button>
 
                     <button type="button" class="btn btn-md btn-success mt-4"

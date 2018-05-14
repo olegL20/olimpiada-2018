@@ -15,7 +15,7 @@
                     <vuetable ref="listUniversities"
                               api-url="/api/admin/university"
                               :fields="fields"
-                              pagination-path = ""
+                              pagination-path = "data"
                               :css="css.table"
                               data-path="data.data"
                               detail-row-component="my-detail-row"
@@ -41,8 +41,7 @@
                             </button>
                         </template>
                     </vuetable>
-                </div>
-                <div class="col-md-12 m-3">
+
                     <vuetable-pagination ref="pagination"
                                          :css="css.pagination"
                                          @vuetable-pagination:change-page="onChangePage"
@@ -100,6 +99,12 @@
             },
         },
         methods: {
+            onPaginationData(paginationData) {
+                this.$refs.pagination.setPaginationData(paginationData);
+            },
+            onChangePage(page) {
+                this.$refs.listUniversities.changePage(page);
+            },
             onCellClicked(data) {
                 this.universityAddress = data.address;
                 this.universityZipCode = data.zip_code;
@@ -148,12 +153,6 @@
                         });
                     }
                 }
-            },
-            onPaginationData(paginationData) {
-                this.$refs.pagination.setPaginationData(paginationData);
-            },
-            onChangePage(page) {
-                this.$refs.listUniversities.changePage(page);
             },
         },
     };

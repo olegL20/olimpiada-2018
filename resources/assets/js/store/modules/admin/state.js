@@ -9,6 +9,8 @@ export default {
     universityZipCode: null,
     universityParentId: null,
     universityParentsId: [],
+    universityImage: null,
+    universityPosition: null,
     universities: null,
     tests: null,
     testId: null,

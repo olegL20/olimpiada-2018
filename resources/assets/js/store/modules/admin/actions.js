@@ -15,6 +15,7 @@ export const getUniversity = async ({ context, commit }, payload) => {
     const json = await admin.getUniversity(payload);
 
     if (json.status === 200) {
+        console.log(json.data.data);
         commit(types.UNIVERSITY_ID, json.data.data.id);
         commit(types.UNIVERSITY_NAME, json.data.data.name);
         commit(types.UNIVERSITY_ADDRESS, json.data.data.address);
@@ -24,6 +25,8 @@ export const getUniversity = async ({ context, commit }, payload) => {
         commit(types.UNIVERSITY_ZIP_CODE, json.data.data.zip_code);
         commit(types.UNIVERSITY_SITE, json.data.data.site);
         commit(types.UNIVERSITY_PARENT_ID, json.data.data.parent_id);
+        commit(types.UNIVERSITY_IMAGE, json.data.data.image);
+        commit(types.UNIVERSITY_POSITION, json.data.data.position);
         return json.data;
     }
 

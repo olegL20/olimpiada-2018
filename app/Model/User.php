@@ -50,10 +50,6 @@ class User extends Authenticatable
         'confirmed_token',
     ];
 
-    protected $appends = [
-        'university',
-    ];
-
     protected $with = [
         'image'
     ];

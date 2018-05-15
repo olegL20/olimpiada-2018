@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listUniversities"
-                              api-url="https://itpm-194220.appspot.com/api/admin/university"
+                              :api-url="`${constants.URL}/api/admin/university`"
                               :fields="fields"
                               pagination-path = "data"
                               :css="css.table"
@@ -92,6 +92,11 @@
             ModalCreateUniversity,
             ModalEditUniversity,
             ModalShowDescription,
+        },
+        data() {
+            return {
+                constants,
+            };
         },
         mounted() {
             this.showPreloader();

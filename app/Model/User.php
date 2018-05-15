@@ -78,11 +78,8 @@ class User extends Authenticatable
         return $this->hasOne(UserScore::class);
     }
 
-    public function getUniversityAttribute() {
-        if (!is_null($this->attributes["university_id"])) {
-            return University::find($this->attributes["university_id"]);
-        } else {
-            return null;
-        }
+    public function university()
+    {
+        return $this->belongsTo(University::class);
     }
 }

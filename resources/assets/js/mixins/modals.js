@@ -29,6 +29,12 @@ export default {
             'isShowUpdateAnswer',
             'isShowCreateCoefficient',
             'isShowUpdateCoefficient',
+            'isShowCreateMajor',
+            'isShowUpdateMajor',
+            'isShowCreateDepartment',
+            'isShowUpdateDepartment',
+            'isShowCreateFaculty',
+            'isShowEditFaculty',
         ]),
     },
 };

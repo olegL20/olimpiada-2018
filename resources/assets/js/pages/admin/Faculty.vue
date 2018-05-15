@@ -15,17 +15,22 @@
 
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listFaculties"
-                              :api-url="`/api/admin/faculty`"
+                              :api-url="`https://itpm-194220.appspot.com/api/admin/faculty`"
                               :fields="fieldsListFaculties"
                               pagination-path = "data"
                               :css="css.table"
                               data-path="data.data"
+                              :http-options="{
+                                headers: {
+                                    Authorization: `Bearer ${userToken}`,
+                                },
+                              }"
                               @vuetable:load-success="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
                               @vuetable:cell-clicked="onCellClicked"
                     >
                         <template slot="university" slot-scope="props">
-                            {{ props.rowData.university_id ? props.rowData.university.name : $t('translation.noData') }}
+                            {{ props.rowData.university ? props.rowData.university.name : $t('translation.noData') }}
                         </template>
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"
@@ -66,6 +71,7 @@
     import MixinModals from '../../mixins/modals';
     import MixinPreload from '../../mixins/preload';
     import MixinAdmin from '../../mixins/admin';
+    import MixinUser from '../../mixins/user';
 
     import ModalInviteUniversityAdmin from '../../components/admin/modals/InviteUniversityAdmin.vue';
     import ModalCreateFaculty from '../../components/admin/modals/CreateFaculty.vue';
@@ -79,6 +85,7 @@
             MixinPreload,
             MixinModals,
             MixinAdmin,
+            MixinUser,
             FieldsListFaculties,
         ],
         components: {

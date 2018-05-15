@@ -27,15 +27,11 @@
                               @vuetable:load-success="hidePreloader"
                               @vuetable:load-error="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
-                              @vuetable:cell-clicked="onCellClicked"
                     >
                         <template slot="questions" slot-scope="props">
-                            <a href="javascript:" class="btn btn-outline-secondary btn-md"
-                               @click="editTest(props.rowData.id)"
-                               :title="$t('translation.edit')">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </a>
-                            <router-link></router-link>
+                            <router-link :to="{ name: 'admin.questions' }">
+                                {{ $t('translation.questions') }}
+                            </router-link>
                         </template>
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"
@@ -144,7 +140,6 @@
                 if (result.value) {
                     try {
                         await this.$store.dispatch('admin/destroyTest', id);
-                        this.$refs.listTests.refresh();
                         this.showPreloader();
                     } catch (e) {
                         this.$toast.error({
@@ -152,6 +147,7 @@
                             message: this.$t(e.statusText),
                         });
                     }
+                    this.$refs.listTests.refresh();
                 }
             },
             onPaginationData(paginationData) {

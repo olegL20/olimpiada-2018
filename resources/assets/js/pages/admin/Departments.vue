@@ -4,16 +4,16 @@
             <div class="row border rounded bg-white pt-3 pb-3">
 
                 <div class="col-md-10">
-                    <h1>{{ $t('translation.managerAnswers') }}</h1>
+                    <h1>{{ $t('translation.managerDepartments') }}</h1>
                 </div>
                 <div class="col-md-2 align-self-center">
-                    <a href="javascript:" @click="modalsIsShowCreateAnswer = true" class="btn btn-primary btn-md float-right">
-                        {{ $t("translation.addAnswer") }}
+                    <a href="javascript:" @click="modalsIsShowCreateDepartment = true" class="btn btn-primary btn-md float-right">
+                        {{ $t("translation.addDepartment") }}
                     </a>
                 </div>
                 <div class="col-md-12 mt-3">
-                    <vuetable ref="listAnswers"
-                              api-url="https://itpm-194220.appspot.com/api/admin/answer"
+                    <vuetable ref="listDepartments"
+                              api-url="https://itpm-194220.appspot.com/api/admin/department"
                               :fields="fields"
                               pagination-path=""
                               :css="css.table"
@@ -30,12 +30,12 @@
                     >
                         <template slot="actions" slot-scope="props">
                             <a href="javascript:" class="btn btn-outline-secondary btn-md"
-                               @click="editAnswer(props.rowData.id)"
+                               @click="editDepartment(props.rowData.id)"
                                :title="$t('translation.edit')">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
                             <button type="button" class="btn btn-outline-danger btn-md"
-                                    @click="destroyAnswer(props.rowData.id)"
+                                    @click="destroyDepartment(props.rowData.id)"
                                     :title="$t('translation.remove')">
                                 <i class="fa fa-trash-o"></i>
                             </button>
@@ -53,8 +53,8 @@
             </div>
         </div>
 
-        <modal-create-answer></modal-create-answer>
-        <modal-update-answer></modal-update-answer>
+        <modal-create-department></modal-create-department>
+        <modal-update-department></modal-update-department>
 
     </div>
 </template>
@@ -62,16 +62,16 @@
 <script>
     import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
     import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue';
-    import FieldsAnswer from '../../../mixins/formFields/answers';
+    import FieldsDepartment from '../../mixins/formFields/departments';
 
-    import MixinModals from '../../../mixins/modals';
-    import MixinPreloader from '../../../mixins/preload';
-    import MixinAdmin from '../../../mixins/admin';
-    import MixinUser from '../../../mixins/user';
-    import ModalCreateAnswer from '../../../components/admin/modals/CreateAnswer.vue';
-    import ModalUpdateAnswer from '../../../components/admin/modals/UpdateAnswer.vue';
+    import MixinModals from '../../mixins/modals';
+    import MixinPreloader from '../../mixins/preload';
+    import MixinAdmin from '../../mixins/admin';
+    import MixinUser from '../../mixins/user';
+    import ModalCreateDepartment from '../../components/admin/modals/CreateDepartment.vue';
+    import ModalUpdateDepartment from '../../components/admin/modals/UpdateDepartment.vue';
 
-    import * as constants from '../../../utils/constants';
+    import * as constants from '../../utils/constants';
 
     export default {
         mixins: [
@@ -79,13 +79,13 @@
             MixinUser,
             MixinModals,
             MixinPreloader,
-            FieldsAnswer,
+            FieldsDepartment,
         ],
         components: {
             Vuetable,
             VuetablePagination,
-            ModalCreateAnswer,
-            ModalUpdateAnswer,
+            ModalCreateDepartment,
+            ModalUpdateDepartment,
         },
         mounted() {
             this.showPreloader();
@@ -93,16 +93,16 @@
         watch: {
             refreshTable() {
                 if (this.refreshTable) {
-                    this.$refs.listAnswers.refresh();
+                    this.$refs.listDepartments.refresh();
                     this.switchRefreshTable(false);
                 }
             },
         },
         methods: {
-            async editAnswer(id) {
+            async editDepartment(id) {
                 try {
-                    await this.$store.dispatch('admin/getAnswer', id);
-                    this.modalsIsShowUpdateAnswer = true;
+                    await this.$store.dispatch('admin/getDepartment', id);
+                    this.modalsIsShowUpdateDepartment = true;
                 } catch (e) {
                     this.$toast.error({
                         title: this.$t('translation.error'),
@@ -110,7 +110,7 @@
                     });
                 }
             },
-            async destroyAnswer(id) {
+            async destroyDepartment(id) {
                 const result = await this.$swal({
                     title: this.$t('translation.areYouSure'),
                     type: 'warning',
@@ -122,8 +122,8 @@
                 });
                 if (result.value) {
                     try {
-                        await this.$store.dispatch('admin/destroyAnswer', id);
-                        this.$refs.listAnswers.refresh();
+                        await this.$store.dispatch('admin/destroyDepartment', id);
+                        this.$refs.listDepartments.refresh();
                         this.showPreloader();
                     } catch (e) {
                         this.$toast.error({
@@ -137,7 +137,7 @@
                 this.$refs.pagination.setPaginationData(paginationData);
             },
             onChangePage(page) {
-                this.$refs.listAnswers.changePage(page);
+                this.$refs.listDepartments.changePage(page);
             },
         },
     };

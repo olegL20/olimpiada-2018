@@ -20,19 +20,19 @@
                             {{ errors.first('testName') }}
                         </small>
                     </div>
-                    <div class="form-group">
-                        <label for="testDescription">{{ $t("translation.testDescription") }}</label>
-                        <textarea type="text" class="form-control resize-none h-5" id="testDescription" aria-describedby="testDescriptionHelp"
-                                  :placeholder="$t('translation.testDescriptionPlaceholder')"
-                                  name="testDescription"
-                                  v-validate="'required|max:255'"
-                                  :data-vv-as="$t('translation.testDescription')"
-                                  v-model="testDescription">
-                        </textarea>
-                        <small id="testDescriptionHelp" class="form-text text-danger" v-show="errors.has('testDescription')">
-                            {{ errors.first('testDescription') }}
-                        </small>
-                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label for="testDescription">{{ $t("translation.testDescription") }}</label>-->
+                        <!--<textarea type="text" class="form-control resize-none h-5" id="testDescription" aria-describedby="testDescriptionHelp"-->
+                                  <!--:placeholder="$t('translation.testDescriptionPlaceholder')"-->
+                                  <!--name="testDescription"-->
+                                  <!--v-validate="'required|max:255'"-->
+                                  <!--:data-vv-as="$t('translation.testDescription')"-->
+                                  <!--v-model="testDescription">-->
+                        <!--</textarea>-->
+                        <!--<small id="testDescriptionHelp" class="form-text text-danger" v-show="errors.has('testDescription')">-->
+                            <!--{{ errors.first('testDescription') }}-->
+                        <!--</small>-->
+                    <!--</div>-->
 
                     <button type="button" class="btn btn-md btn-secondary float-right mt-4"
                         @click="hide">
@@ -82,8 +82,10 @@
                     try {
                         this.showPreloader();
                         await this.$store.dispatch('admin/updateTest', {
-                            name: this.testName,
-                            description: this.testDescription,
+                            id: this.testId,
+                            params: {
+                                name: this.testName,
+                            },
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({

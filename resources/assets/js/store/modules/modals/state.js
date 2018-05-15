@@ -19,4 +19,8 @@ export default {
     isShowUpdateAnswer: false,
     isShowCreateCoefficient: false,
     isShowUpdateCoefficient: false,
+    isShowCreateMajor: false,
+    isShowUpdateMajor: false,
+    isShowCreateDepartment: false,
+    isShowUpdateDepartment: false,
 };

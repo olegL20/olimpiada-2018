@@ -18,5 +18,6 @@ export default {
         password: 'Пароль',
         rePassword: 'Підтвердження паролю',
         photo: 'Фото',
+        questionType: 'Тип запитання',
     },
 };

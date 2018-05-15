@@ -4,18 +4,17 @@ import * as types from '../admin/mutation-types';
 export const destroyUniversity = async (context, payload) => {
     const json = await admin.destroyUniversity(payload);
 
-    if (json.status === 200) {
+    if (json.status === 200 || json.status === 204) {
         return json.data;
     }
 
     throw json;
 };
 
-export const getUniversity = async ({ context, commit }, payload) => {
+export const getUniversity = async ({ commit }, payload) => {
     const json = await admin.getUniversity(payload);
 
     if (json.status === 200) {
-        console.log(json.data.data);
         commit(types.UNIVERSITY_ID, json.data.data.id);
         commit(types.UNIVERSITY_NAME, json.data.data.name);
         commit(types.UNIVERSITY_ADDRESS, json.data.data.address);
@@ -84,13 +83,23 @@ export const createTest = async (context, payload) => {
     throw json;
 };
 
-export const getTest = async ({ context, commit }, payload) => {
+export const getTest = async ({ commit }, payload) => {
     const json = await admin.getTest(payload);
 
     if (json.status === 200) {
         commit(types.TEST_ID, json.data.data.id);
         commit(types.TEST_NAME, json.data.data.name);
-        commit(types.TEST_DESCRIPTION, json.data.data.description);
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getTests = async ({ commit }) => {
+    const json = await admin.getTests();
+
+    if (json.status === 200) {
+        commit(types.TESTS, json.data.data.data);
         return json.data;
     }
 
@@ -111,7 +120,7 @@ export const updateTest = async (context, { id, params }) => {
 export const destroyTest = async (context, payload) => {
     const json = await admin.destroyTest(payload);
 
-    if (json.status === 200) {
+    if (json.status === 200 || json.status === 204) {
         return json.data;
     }
 
@@ -128,16 +137,27 @@ export const createQuestion = async (context, payload) => {
     throw json;
 };
 
-export const getQuestion = async ({ context, commit }, payload) => {
+export const getQuestion = async ({ commit }, payload) => {
     const json = await admin.getQuestion(payload);
 
     if (json.status === 200) {
-        commit(types.QUESTION_TEST_ID, json.data.data.id);
+        commit(types.QUESTION_TEST_ID, json.data.data.test);
         commit(types.QUESTION_NAME, json.data.data.name);
         commit(types.QUESTION_TYPE, json.data.data.type);
         commit(types.QUESTION_TYPE_FILL, json.data.data.type_fill);
         commit(types.QUESTION_ID, json.data.data.id);
         commit(types.QUESTION_ANSWER, json.data.data.answer);
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getQuestions = async ({ commit }) => {
+    const json = await admin.getQuestions();
+
+    if (json.status === 200) {
+        commit(types.QUESTIONS, json.data.data.data);
         return json.data;
     }
 
@@ -158,7 +178,7 @@ export const updateQuestion = async (context, { id, params }) => {
 export const destroyQuestion = async (context, payload) => {
     const json = await admin.destroyQuestion(payload);
 
-    if (json.status === 200) {
+    if (json.status === 200 || json.status === 204) {
         return json.data;
     }
 
@@ -175,7 +195,7 @@ export const createAnswer = async (context, payload) => {
     throw json;
 };
 
-export const getAnswer = async ({ context, commit }, payload) => {
+export const getAnswer = async ({ commit }, payload) => {
     const json = await admin.getAnswer(payload);
 
     if (json.status === 200) {
@@ -202,7 +222,7 @@ export const updateAnswer = async (context, { id, params }) => {
 export const destroyAnswer = async (context, payload) => {
     const json = await admin.destroyAnswer(payload);
 
-    if (json.status === 200) {
+    if (json.status === 200 || json.status === 204) {
         return json.data;
     }
 
@@ -219,19 +239,19 @@ export const createCoefficient = async (context, payload) => {
     throw json;
 };
 
-export const getCoefficient = async ({ context, commit }, payload) => {
-    const json = await admin.getAnswer(payload);
+export const getCoefficient = async ({ commit }, payload) => {
+    const json = await admin.getCoefficient(payload);
 
     if (json.status === 200) {
-        commit(types.ANSWER_QUESTION_ID, json.data.data.question_id);
-        commit(types.ANSWER_NAME, json.data.data.name);
-        commit(types.ANSWER_ID, json.data.data.id);
+        commit(types.COEFFICIENT_ID, json.data.data.id);
+        commit(types.COEFFICIENT_NAME, json.data.data.name);
+        commit(types.COEFFICIENT_MAJOR_ID, json.data.data.major_id);
+        commit(types.COEFFICIENT_COEFFICIENT, json.data.data.coefficient);
         return json.data;
     }
 
     throw json;
 };
-
 
 export const updateCoefficient = async (context, { id, params }) => {
     const json = await admin.updateCoefficient(id, params);
@@ -246,7 +266,7 @@ export const updateCoefficient = async (context, { id, params }) => {
 export const destroyCoefficient = async (context, payload) => {
     const json = await admin.destroyCoefficient(payload);
 
-    if (json.status === 200) {
+    if (json.status === 200 || json.status === 204) {
         return json.data;
     }
 
@@ -320,6 +340,131 @@ export const destroyFaculty = async (context, payload) => {
     throw json;
 };
 
+export const getMajors = async ({ commit }, payload) => {
+    const json = await admin.getMajors(payload);
+
+    if (json.status === 200) {
+        commit(types.MAJORS, json.data.data.data);
+
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const createMajor = async (context, payload) => {
+    const json = await admin.createMajor(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getMajor = async ({ commit }, payload) => {
+    const json = await admin.getMajor(payload);
+
+    if (json.status === 200) {
+        commit(types.MAJOR_ID, json.data.data.id);
+        commit(types.MAJOR_DEPARTMENT_ID, json.data.data.department);
+        commit(types.MAJOR_NAME, json.data.data.name);
+        commit(types.MAJOR_DESCRIPTION, json.data.data.description);
+        commit(types.MAJOR_COEFFICIENT, json.data.data.koef);
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const updateMajor = async (context, { id, params }) => {
+    const json = await admin.updateMajor(id, params);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const destroyMajor = async (context, payload) => {
+    const json = await admin.destroyMajor(payload);
+
+    if (json.status === 200 || json.status === 204) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const createDepartment = async (context, payload) => {
+    const json = await admin.createDeparment(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getDepartment = async ({ commit }, payload) => {
+    const json = await admin.getDepartment(payload);
+
+    if (json.status === 200) {
+        commit(types.DEPARTMENT_ID, json.data.data.id);
+        commit(types.DEPARTMENT_FACULTY_ID, json.data.data.faculty);
+        commit(types.DEPARTMENT_NAME, json.data.data.name);
+        commit(types.DEPARTMENT_DESCRIPTION, json.data.data.description);
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const updateDepartment = async (context, { id, params }) => {
+    const json = await admin.updateDepartment(id, params);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const destroyDepartment = async (context, payload) => {
+    const json = await admin.destroyDepartment(payload);
+
+    if (json.status === 200 || json.status === 204) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getDepartments = async ({ commit }, payload) => {
+    const json = await admin.getDepartments(payload);
+
+    if (json.status === 200) {
+        commit(types.DEPARTMENTS, json.data.data.data);
+
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getFaculties = async ({ commit }, payload) => {
+    const json = await admin.getFaculties(payload);
+
+    if (json.status === 200) {
+        commit(types.FACULTIES, json.data.data.data);
+
+        return json.data;
+    }
+
+    throw json;
+};
+
 export default {
     destroyUniversity,
     getUniversity,
@@ -329,10 +474,12 @@ export default {
     sendInviteUniversityAdmin,
     createTest,
     getTest,
+    getTests,
     updateTest,
     destroyTest,
     createQuestion,
     getQuestion,
+    getQuestions,
     updateQuestion,
     destroyQuestion,
     createAnswer,
@@ -343,10 +490,21 @@ export default {
     getCoefficient,
     updateCoefficient,
     destroyCoefficient,
+    createMajor,
+    getMajor,
+    updateMajor,
+    destroyMajor,
+    createDepartment,
+    getDepartment,
+    updateDepartment,
+    destroyDepartment,
     associate,
     createFaculty,
     editFaculty,
     getFaculty,
     setUniversityForFaculty,
     destroyFaculty,
+    getMajors,
+    getDepartments,
+    getFaculties,
 };

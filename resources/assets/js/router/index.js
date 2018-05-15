@@ -102,6 +102,24 @@ const routes = [
         },
     },
     {
+        path: '/admin/majors',
+        name: 'admin.majors',
+        component: () => import('../pages/admin/Majors.vue'),
+        meta: {
+            auth: true,
+            uniAdmin: true,
+        },
+    },
+    {
+        path: '/admin/departments',
+        name: 'admin.departments',
+        component: () => import('../pages/admin/Departments.vue'),
+        meta: {
+            auth: true,
+            uniAdmin: true,
+        },
+    },
+    {
         path: '/admin/faculty',
         name: 'admin.faculty',
         component: () => import('../pages/admin/Faculty.vue'),

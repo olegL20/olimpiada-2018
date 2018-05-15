@@ -69,11 +69,26 @@
                     <router-link :to="{ name: 'admin.university.admins' }" class="link link__accent mr-3">
                         {{ $t('translation.managerUniversityAdmin') }}
                     </router-link>
+                    <router-link :to="{ name: 'admin.faculty' }" class="link link__accent mr-3">
+                        {{ $t('translation.managerFaculty') }}
+                    </router-link>
+                    <router-link :to="{ name: 'admin.departments' }" class="link link__accent mr-3">
+                        {{ $t('translation.managerDepartments') }}
+                    </router-link>
+                    <router-link :to="{ name: 'admin.majors' }" class="link link__accent mr-3">
+                        {{ $t('translation.managerMajors') }}
+                    </router-link>
                     <router-link :to="{ name: 'admin.coefficients' }" class="link link__accent mr-3">
                         {{ $t('translation.managerCoefficients') }}
                     </router-link>
                     <router-link :to="{ name: 'admin.tests' }" class="link link__accent mr-3">
                         {{ $t('translation.managerTests') }}
+                    </router-link>
+                    <router-link :to="{ name: 'admin.questions' }" class="link link__accent mr-3">
+                        {{ $t('translation.managerQuestions') }}
+                    </router-link>
+                    <router-link :to="{ name: 'admin.answers' }" class="link link__accent mr-3">
+                        {{ $t('translation.managerAnswers') }}
                     </router-link>
                     <router-link :to="{ name: 'admin.faculty' }" class="link link__accent mr-3">
                         {{ $t('translation.managerFaculty') }}

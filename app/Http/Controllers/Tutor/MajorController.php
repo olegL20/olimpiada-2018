@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Tutor;
 
 use App\Http\Requests\Admin\MajorRequest;
 use App\Model\Major;

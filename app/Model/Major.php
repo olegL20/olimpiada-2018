@@ -11,7 +11,8 @@ class Major extends Model
         'department_id',
         'name',
         'description',
-        'koef'
+        'koef',
+        'user_id',
     ];
 
 

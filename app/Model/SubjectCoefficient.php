@@ -10,6 +10,7 @@ class SubjectCoefficient extends Model
         'name',
         'coefficient',
         'major_id',
+        'user_id',
     ];
 
     public $timestamps = false;

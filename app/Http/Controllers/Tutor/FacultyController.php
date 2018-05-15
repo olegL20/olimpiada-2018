@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Tutor;
 
 
 use App\Http\Requests\Admin\FacultyRequest;
@@ -38,7 +38,12 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $data = $this->faculty->with(['university'])->paginate();
+        $userId = auth()->user()->id;
+
+        $data = $this->faculty
+            ->with(['university'])
+            ->where('user_id', $userId)
+            ->paginate();
 
         return response()->json([
             'data' => $data
@@ -53,7 +58,9 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = $this->faculty->with(['university'])->find($id);
+        $userId = auth()->user()->id;
+
+        $faculty = $this->faculty->with(['university'])->where('user_id', $userId)->find($id);
 
         return response()->json([
             'data' => $faculty
@@ -68,7 +75,10 @@ class FacultyController extends Controller
      */
     public function store(FacultyRequest $request)
     {
+        $userId = auth()->user()->id;
+
         $faculty = $this->faculty->fill($request->except('image'));
+        $faculty->user_id = $userId;
         $faculty->save();
 
         if ($request->has('image')) {
@@ -93,7 +103,11 @@ class FacultyController extends Controller
      */
     public function update(FacultyRequest $request, $id)
     {
-        $faculty = $this->faculty->find($id)->fill($request->except('image'));
+        $userId = auth()->user()->id;
+
+        $faculty = $this->faculty
+            ->where('user_id', $userId)
+            ->findorFail($id)->fill($request->except('image'));
 
         $universityImage = $faculty->image;
         $this->asset->removeFiles([$universityImage->source]);
@@ -120,7 +134,9 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        $faculty = $this->faculty->find($id);
+        $userId = auth()->user()->id;
+        $faculty = $this->faculty->where('user_id', $userId)->findorFail($id);
+
         if (!is_null($faculty->image)) {
             $faculty->image->delete();
         }

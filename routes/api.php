@@ -33,9 +33,17 @@ Route::group(['middleware' => 'api'], function () {
 
         Route::resource('test', 'Test\TestController');
         Route::resource('university', 'UniversityController');
-        Route::resource('faculty', 'FacultyController');
         Route::post('send-invite', 'InviteAdminUniversityController@invite');
         Route::post('associate', 'InviteAdminUniversityController@associate');
+    });
+
+    Route::group([
+        'middleware' => 'role:' . \App\Model\User::UNIVERSITY_ADMIN . ',jwt.auth',
+        'prefix' => 'tutor-admin',
+        'namespace' => 'Tutor'
+    ], function () {
+        Route::get('university', 'UniversityController@index');
+        Route::resource('faculty', 'FacultyController');
         Route::resource('major', 'MajorController');
         Route::resource('department', 'DepartmentController');
         Route::resource('subjects-coefficients', 'SubjectCoefficientController');

@@ -24,10 +24,10 @@
                                     <div class="advice__info">
                                         <p class="advice__text">{{ $t("translation.galinaText") }}</p>
                                         <div class="advice__links">
-                                            <a class="link link__white advice__link" href="javascript:">
+                                            <a @click="myChoice" class="link link__white advice__link" href="javascript:">
                                                 {{ $t("translation.agree") }} 10б
                                             </a>
-                                            <a class="link link__white advice__link" href="javascript:">
+                                            <a @click="myChoice" class="link link__white advice__link" href="javascript:">
                                                 {{ $t("translation.no") }} 10б
                                             </a>
                                         </div>
@@ -51,10 +51,10 @@
                                     <div class="advice__info">
                                         <p class="advice__text">{{ $t("translation.valyaText") }}</p>
                                         <div class="advice__links">
-                                            <a class="link link__white advice__link" href="javascript:">
+                                            <a @click="myChoice" class="link link__white advice__link" href="javascript:">
                                                 {{ $t("translation.agree") }} 10б
                                             </a>
-                                            <a class="link link__white advice__link" href="javascript:">
+                                            <a @click="myChoice" class="link link__white advice__link" href="javascript:">
                                                 {{ $t("translation.no") }} 10б
                                             </a>
                                         </div>
@@ -78,10 +78,10 @@
                                     <div class="advice__info">
                                         <p class="advice__text">{{ $t("translation.olegText") }}</p>
                                         <div class="advice__links">
-                                            <a class="link link__white advice__link" href="javascript:">
+                                            <a @click="myChoice" class="link link__white advice__link" href="javascript:">
                                                 {{ $t("translation.agree") }} 10б
                                             </a>
-                                            <a class="link link__white advice__link" href="javascript:">
+                                            <a @click="myChoice" class="link link__white advice__link" href="javascript:">
                                                 {{ $t("translation.no") }} 10б
                                             </a>
                                         </div>

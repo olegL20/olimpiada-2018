@@ -1,1 +1,3188 @@
-webpackJsonp([11],{243:function(e,t,a){var s=a(4)(a(330),a(331),!1,null,null,null);e.exports=s.exports},311:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),window.FileReader||console.error("Your browser does not support FileReader API!"),t.default={name:"vue-base64-file-upload",props:{imageClass:{type:String,default:""},inputClass:{type:String,default:""},accept:{type:String,default:"image/png,image/gif,image/jpeg"},maxSize:{type:Number,default:10},disablePreview:{type:Boolean,default:!1},fileName:{type:String,default:""},placeholder:{type:String,default:"Click here to upload image"},defaultPreview:{type:String,default:""}},data:function(){return{file:null,preview:null,visiblePreview:!1}},computed:{wrapperStyles:function(){return{position:"relative",width:"100%"}},fileInputStyles:function(){return{width:"100%",position:"absolute",top:0,left:0,right:0,bottom:0,opacity:0,overflow:"hidden",outline:"none",cursor:"pointer"}},textInputStyles:function(){return{width:"100%",cursor:"pointer"}},previewImage:function(){return this.preview||this.defaultPreview}},methods:{onChange:function(e){var t=this,a=e.target.files||e.dataTransfer.files;if(a.length){var s=a[0],i=s.size&&s.size/Math.pow(1e3,2);if(i>this.maxSize)this.$emit("size-exceeded",i);else{this.file=s,this.$emit("file",s);var n=new FileReader;n.onload=function(e){var a=e.target.result;a&&(t.$emit("load",a),t.preview=a)},n.readAsDataURL(s)}}}},template:'\n    <div class="vue-base64-file-upload">\n      <img\n        v-show="previewImage && !disablePreview"\n        :src="previewImage"\n        :class="imageClass" />\n      <div class="vue-base64-file-upload-wrapper" :style="wrapperStyles">\n        <input\n          type="file"\n          @change="onChange"\n          :style="fileInputStyles"\n          :accept=accept />\n        <input\n          type="text"\n          :class="inputClass"\n          :style="textInputStyles"\n          :value="fileName || file && file.name"\n          :placeholder="placeholder"\n          disabled />\n      </div>\n    </div>\n  '}},312:function(e,t,a){var s=a(4)(a(313),a(315),!1,null,null,null);e.exports=s.exports},313:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var s=d(a(9)),i=d(a(10)),n=d(a(314)),r=d(a(311)),l=d(a(43)),o=d(a(29));function d(e){return e&&e.__esModule?e:{default:e}}t.default={mixins:[l.default,o.default],components:{Datepicker:n.default,VueBase64FileUpload:r.default},data:function(){return{customImageMaxSize:3,imageSubstringLength:null,imageBase64:null}},computed:{photo:function(){return this.imageBase64?this.imageBase64.substr(this.imageSubstringLength):""}},methods:{register:function(){var e=this;return(0,i.default)(s.default.mark(function t(){var a;return s.default.wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,e.$validator.validateAll();case 2:if(!t.sent){t.next=23;break}if(t.prev=4,a={email:e.userEmail,password:e.userPassword,name:e.userName,surname:e.userSurname,password_confirmation:e.userPasswordConfirmation,birthday:window.luxon.DateTime.fromJSDate(e.userDateOfBirth).toFormat("yyyy-LL-dd"),image:e.photo},"auth.invite"!==e.$route.name){t.next=12;break}return t.next=9,e.$store.dispatch("user/registerInvite",{id:e.$route.params.id,params:a});case 9:e.$router.push({name:"home"}),t.next=14;break;case 12:return t.next=14,e.$store.dispatch("user/register",{params:a});case 14:e.hide(),window.Cookies.set("first_stage",2),e.userFirstStage=2,t.next=23;break;case 19:t.prev=19,t.t0=t.catch(4),404===t.t0.status&&"auth.invite"===e.$route.name?e.$toast.error({title:e.$t("translation.error"),message:e.$t("translation.inviteNotFound")}):e.$toast.error({title:e.$t("translation.error"),message:e.$t(t.t0.message)}),e.hide();case 23:case"end":return t.stop()}},t,e,[[4,19]])}))()},hide:function(){"auth.invite"===this.$route.name?(this.modalsIsShowRegister=!1,this.$router.push({name:"home"})):this.modalsIsShowRegister=!1,this.userName=null,this.userSurname=null,this.userDateOfBirth=null,this.userEmail=null,this.userPassword=null,this.userPasswordConfirmation=null},onFile:function(e){this.imageSubstringLength=e.type.length+13},onLoad:function(e){this.imageBase64=e}},beforeDestroy:function(){this.userName=null,this.userSurname=null,this.userDateOfBirth=null,this.userEmail=null,this.userPassword=null,this.userPasswordConfirmation=null}}},314:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var s=function(e,t,a,s){this.language=e,this.months=t,this.monthsAbbr=a,this.days=s,this.rtl=!1,this.ymd=!1,this.yearSuffix=""},i={language:{configurable:!0},months:{configurable:!0},monthsAbbr:{configurable:!0},days:{configurable:!0}};i.language.get=function(){return this._language},i.language.set=function(e){if("string"!=typeof e)throw new TypeError("Language must be a string");this._language=e},i.months.get=function(){return this._months},i.months.set=function(e){if(12!==e.length)throw new RangeError("There must be 12 months for "+this.language+" language");this._months=e},i.monthsAbbr.get=function(){return this._monthsAbbr},i.monthsAbbr.set=function(e){if(12!==e.length)throw new RangeError("There must be 12 abbreviated months for "+this.language+" language");this._monthsAbbr=e},i.days.get=function(){return this._days},i.days.set=function(e){if(7!==e.length)throw new RangeError("There must be 7 days for "+this.language+" language");this._days=e},Object.defineProperties(s.prototype,i);var n=new s("English",["January","February","March","April","May","June","July","August","September","October","November","December"],["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]),r={isValidDate:function(e){return"[object Date]"===Object.prototype.toString.call(e)&&!isNaN(e.getTime())},getDayNameAbbr:function(e,t){if("object"!=typeof e)throw TypeError("Invalid Type");return t[e.getDay()]},getMonthName:function(e,t){if(!t)throw Error("missing 2nd parameter Months array");if("object"==typeof e)return t[e.getMonth()];if("number"==typeof e)return t[e];throw TypeError("Invalid type")},getMonthNameAbbr:function(e,t){if(!t)throw Error("missing 2nd paramter Months array");if("object"==typeof e)return t[e.getMonth()];if("number"==typeof e)return t[e];throw TypeError("Invalid type")},daysInMonth:function(e,t){return/8|3|5|10/.test(t)?30:1===t?(e%4||!(e%100))&&e%400?28:29:31},getNthSuffix:function(e){switch(e){case 1:case 21:case 31:return"st";case 2:case 22:return"nd";case 3:case 23:return"rd";default:return"th"}},formatDate:function(e,t,a){a=a||n;var s=e.getFullYear(),i=e.getMonth()+1,r=e.getDate();return t.replace(/dd/,("0"+r).slice(-2)).replace(/d/,r).replace(/yyyy/,s).replace(/yy/,String(s).slice(2)).replace(/MMMM/,this.getMonthName(e.getMonth(),a.months)).replace(/MMM/,this.getMonthNameAbbr(e.getMonth(),a.monthsAbbr)).replace(/MM/,("0"+i).slice(-2)).replace(/M(?!a|ä|e)/,i).replace(/su/,this.getNthSuffix(e.getDate())).replace(/D(?!e|é|i)/,this.getDayNameAbbr(e,a.days))},createDateArray:function(e,t){for(var a=[];e<=t;)a.push(new Date(e)),e=new Date(e).setDate(new Date(e).getDate()+1);return a}};!function(){if("undefined"!=typeof document){var e=document.head||document.getElementsByTagName("head")[0],t=document.createElement("style");t.type="text/css",t.styleSheet?t.styleSheet.cssText="":t.appendChild(document.createTextNode("")),e.appendChild(t)}}();var l={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",{class:{"input-group":e.bootstrapStyling}},[e.calendarButton?a("span",{staticClass:"vdp-datepicker__calendar-button",class:{"input-group-addon":e.bootstrapStyling},style:{"cursor:not-allowed;":e.disabled},on:{click:e.showCalendar}},[a("i",{class:e.calendarButtonIcon},[e._v(" "+e._s(e.calendarButtonIconContent)+" "),e.calendarButtonIcon?e._e():a("span",[e._v("…")])])]):e._e(),e._v(" "),a("input",{ref:e.refName,class:e.computedInputClass,attrs:{type:e.inline?"hidden":"text",name:e.name,id:e.id,"open-date":e.openDate,placeholder:e.placeholder,"clear-button":e.clearButton,disabled:e.disabled,required:e.required},domProps:{value:e.formattedValue},on:{click:e.showCalendar,keypress:e.parseTypedDate,blur:e.inputBlurred}}),e._v(" "),e.clearButton&&e.selectedDate?a("span",{staticClass:"vdp-datepicker__clear-button",class:{"input-group-addon":e.bootstrapStyling},on:{click:function(t){e.clearDate()}}},[a("i",{class:e.clearButtonIcon},[e.clearButtonIcon?e._e():a("span",[e._v("×")])])]):e._e()])},staticRenderFns:[],props:{selectedDate:Date,format:[String,Function],translation:Object,inline:Boolean,id:String,name:String,refName:String,openDate:Date,placeholder:String,inputClass:[String,Object],clearButton:Boolean,clearButtonIcon:String,calendarButton:Boolean,calendarButtonIcon:String,calendarButtonIconContent:String,disabled:Boolean,required:Boolean,typeable:Boolean,bootstrapStyling:Boolean},data:function(){return{input:null,typedDate:!1}},computed:{formattedValue:function(){return this.selectedDate?this.typedDate?this.typedDate:"function"==typeof this.format?this.format(this.selectedDate):r.formatDate(new Date(this.selectedDate),this.format,this.translation):null},computedInputClass:function(){var e=[this.inputClass];return this.bootstrapStyling&&e.push("form-control"),e.join(" ")}},methods:{showCalendar:function(){this.$emit("showCalendar")},parseTypedDate:function(e){if(!this.typeable)return e.preventDefault(),!1;var t=Date.parse(this.input.value);isNaN(t)||(this.typedDate=this.input.value,this.$emit("typedDate",new Date(this.typedDate)))},inputBlurred:function(){this.typedDate&&(isNaN(Date.parse(this.input.value))&&this.clearDate(),this.input.value=null,this.typedDate=null)},clearDate:function(){this.$emit("clearDate")}},mounted:function(){this.input=this.$el.querySelector("input")}};!function(){if("undefined"!=typeof document){var e=document.head||document.getElementsByTagName("head")[0],t=document.createElement("style");t.type="text/css",t.styleSheet?t.styleSheet.cssText="":t.appendChild(document.createTextNode("")),e.appendChild(t)}}();var o={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",{directives:[{name:"show",rawName:"v-show",value:e.showDayView,expression:"showDayView"}],class:[e.calendarClass,"vdp-datepicker__calendar"],style:e.calendarStyle},[a("header",[a("span",{staticClass:"prev",class:{disabled:e.isRtl?e.isNextMonthDisabled(e.pageTimestamp):e.isPreviousMonthDisabled(e.pageTimestamp)},on:{click:function(t){e.isRtl?e.nextMonth():e.previousMonth()}}},[e._v("<")]),e._v(" "),a("span",{staticClass:"day__month_btn",class:e.allowedToShowView("month")?"up":"",on:{click:e.showMonthCalendar}},[e._v(e._s(e.isYmd?e.currYearName:e.currMonthName)+" "+e._s(e.isYmd?e.currMonthName:e.currYearName))]),e._v(" "),a("span",{staticClass:"next",class:{disabled:e.isRtl?e.isPreviousMonthDisabled(e.pageTimestamp):e.isNextMonthDisabled(e.pageTimestamp)},on:{click:function(t){e.isRtl?e.previousMonth():e.nextMonth()}}},[e._v(">")])]),e._v(" "),a("div",{class:e.isRtl?"flex-rtl":""},[e._l(e.daysOfWeek,function(t){return a("span",{key:t.timestamp,staticClass:"cell day-header"},[e._v(e._s(t))])}),e._v(" "),e.blankDays>0?e._l(e.blankDays,function(e){return a("span",{key:e.timestamp,staticClass:"cell day blank"})}):e._e(),e._l(e.days,function(t){return a("span",{key:t.timestamp,staticClass:"cell day",class:e.dayClasses(t),on:{click:function(a){e.selectDate(t)}}},[e._v(e._s(t.date))])})],2)])},staticRenderFns:[],props:{showDayView:Boolean,selectedDate:Date,pageDate:Date,pageTimestamp:Number,fullMonthName:Boolean,allowedToShowView:Function,disabledDates:Object,highlighted:Object,calendarClass:String,calendarStyle:Object,translation:Object,isRtl:Boolean,mondayFirst:Boolean},computed:{daysOfWeek:function(){if(this.mondayFirst){var e=this.translation.days.slice();return e.push(e.shift()),e}return this.translation.days},blankDays:function(){var e=this.pageDate,t=new Date(e.getFullYear(),e.getMonth(),1,e.getHours(),e.getMinutes());return this.mondayFirst?t.getDay()>0?t.getDay()-1:6:t.getDay()},days:function(){for(var e=this.pageDate,t=[],a=new Date(e.getFullYear(),e.getMonth(),1,e.getHours(),e.getMinutes()),s=r.daysInMonth(a.getFullYear(),a.getMonth()),i=0;i<s;i++)t.push({date:a.getDate(),timestamp:a.getTime(),isSelected:this.isSelectedDate(a),isDisabled:this.isDisabledDate(a),isHighlighted:this.isHighlightedDate(a),isHighlightStart:this.isHighlightStart(a),isHighlightEnd:this.isHighlightEnd(a),isToday:a.toDateString()===(new Date).toDateString(),isWeekend:0===a.getDay()||6===a.getDay(),isSaturday:6===a.getDay(),isSunday:0===a.getDay()}),a.setDate(a.getDate()+1);return t},currMonthName:function(){var e=this.fullMonthName?this.translation.months:this.translation.monthsAbbr;return r.getMonthNameAbbr(this.pageDate.getMonth(),e)},currYearName:function(){var e=this.translation.yearSuffix;return""+this.pageDate.getFullYear()+e},isYmd:function(){return this.translation.ymd&&!0===this.translation.ymd}},methods:{selectDate:function(e){if(e.isDisabled)return this.$emit("selectedDisabled",e),!1;this.$emit("selectDate",e)},getPageMonth:function(){return this.pageDate.getMonth()},showMonthCalendar:function(){this.$emit("showMonthCalendar")},changeMonth:function(e){var t=this.pageDate;t.setMonth(t.getMonth()+e),this.$emit("changedMonth",t)},previousMonth:function(){this.isPreviousMonthDisabled()||this.changeMonth(-1)},isPreviousMonthDisabled:function(){if(!this.disabledDates||!this.disabledDates.to)return!1;var e=this.pageDate;return this.disabledDates.to.getMonth()>=e.getMonth()&&this.disabledDates.to.getFullYear()>=e.getFullYear()},nextMonth:function(){this.isNextMonthDisabled()||this.changeMonth(1)},isNextMonthDisabled:function(){if(!this.disabledDates||!this.disabledDates.from)return!1;var e=this.pageDate;return this.disabledDates.from.getMonth()<=e.getMonth()&&this.disabledDates.from.getFullYear()<=e.getFullYear()},isSelectedDate:function(e){return this.selectedDate&&this.selectedDate.toDateString()===e.toDateString()},isDisabledDate:function(e){var t=!1;return void 0!==this.disabledDates&&(void 0!==this.disabledDates.dates&&this.disabledDates.dates.forEach(function(a){if(e.toDateString()===a.toDateString())return t=!0,!0}),void 0!==this.disabledDates.to&&this.disabledDates.to&&e<this.disabledDates.to&&(t=!0),void 0!==this.disabledDates.from&&this.disabledDates.from&&e>this.disabledDates.from&&(t=!0),void 0!==this.disabledDates.ranges&&this.disabledDates.ranges.forEach(function(a){if(void 0!==a.from&&a.from&&void 0!==a.to&&a.to&&e<a.to&&e>a.from)return t=!0,!0}),void 0!==this.disabledDates.days&&-1!==this.disabledDates.days.indexOf(e.getDay())&&(t=!0),void 0!==this.disabledDates.daysOfMonth&&-1!==this.disabledDates.daysOfMonth.indexOf(e.getDate())&&(t=!0),"function"==typeof this.disabledDates.customPredictor&&this.disabledDates.customPredictor(e)&&(t=!0),t)},isHighlightedDate:function(e){if((!this.highlighted||!this.highlighted.includeDisabled)&&this.isDisabledDate(e))return!1;var t=!1;return void 0!==this.highlighted&&(void 0!==this.highlighted.dates&&this.highlighted.dates.forEach(function(a){if(e.toDateString()===a.toDateString())return t=!0,!0}),this.isDefined(this.highlighted.from)&&this.isDefined(this.highlighted.to)&&(t=e>=this.highlighted.from&&e<=this.highlighted.to),void 0!==this.highlighted.days&&-1!==this.highlighted.days.indexOf(e.getDay())&&(t=!0),void 0!==this.highlighted.daysOfMonth&&-1!==this.highlighted.daysOfMonth.indexOf(e.getDate())&&(t=!0),"function"==typeof this.highlighted.customPredictor&&this.highlighted.customPredictor(e)&&(t=!0),t)},dayClasses:function(e){return{selected:e.isSelected,disabled:e.isDisabled,highlighted:e.isHighlighted,today:e.isToday,weekend:e.isWeekend,sat:e.isSaturday,sun:e.isSunday,"highlight-start":e.isHighlightStart,"highlight-end":e.isHighlightEnd}},isHighlightStart:function(e){return this.isHighlightedDate(e)&&this.highlighted.from instanceof Date&&this.highlighted.from.getFullYear()===e.getFullYear()&&this.highlighted.from.getMonth()===e.getMonth()&&this.highlighted.from.getDate()===e.getDate()},isHighlightEnd:function(e){return this.isHighlightedDate(e)&&this.highlighted.to instanceof Date&&this.highlighted.to.getFullYear()===e.getFullYear()&&this.highlighted.to.getMonth()===e.getMonth()&&this.highlighted.to.getDate()===e.getDate()},isDefined:function(e){return void 0!==e&&e}}};!function(){if("undefined"!=typeof document){var e=document.head||document.getElementsByTagName("head")[0],t=document.createElement("style");t.type="text/css",t.styleSheet?t.styleSheet.cssText="":t.appendChild(document.createTextNode("")),e.appendChild(t)}}();var d={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",{directives:[{name:"show",rawName:"v-show",value:e.showMonthView,expression:"showMonthView"}],class:[e.calendarClass,"vdp-datepicker__calendar"],style:e.calendarStyle},[a("header",[a("span",{staticClass:"prev",class:{disabled:e.isPreviousYearDisabled(e.pageTimestamp)},on:{click:e.previousYear}},[e._v("<")]),e._v(" "),a("span",{staticClass:"month__year_btn",class:e.allowedToShowView("year")?"up":"",on:{click:e.showYearCalendar}},[e._v(e._s(e.pageYearName))]),e._v(" "),a("span",{staticClass:"next",class:{disabled:e.isNextYearDisabled(e.pageTimestamp)},on:{click:e.nextYear}},[e._v(">")])]),e._v(" "),e._l(e.months,function(t){return a("span",{key:t.timestamp,staticClass:"cell month",class:{selected:t.isSelected,disabled:t.isDisabled},on:{click:function(a){a.stopPropagation(),e.selectMonth(t)}}},[e._v(e._s(t.month))])})],2)},staticRenderFns:[],props:{showMonthView:Boolean,selectedDate:Date,pageDate:Date,pageTimestamp:Number,disabledDates:Object,calendarClass:String,calendarStyle:Object,translation:Object,allowedToShowView:Function},computed:{months:function(){for(var e=this.pageDate,t=[],a=new Date(e.getFullYear(),0,e.getDate(),e.getHours(),e.getMinutes()),s=0;s<12;s++)t.push({month:r.getMonthName(s,this.translation.months),timestamp:a.getTime(),isSelected:this.isSelectedMonth(a),isDisabled:this.isDisabledMonth(a)}),a.setMonth(a.getMonth()+1);return t},pageYearName:function(){var e=this.translation.yearSuffix;return""+this.pageDate.getFullYear()+e}},methods:{selectMonth:function(e){if(e.isDisabled)return!1;this.$emit("selectMonth",e)},changeYear:function(e){var t=this.pageDate;t.setYear(t.getFullYear()+e),this.$emit("changedYear",t)},previousYear:function(){this.isPreviousYearDisabled()||this.changeYear(-1)},isPreviousYearDisabled:function(){return!(!this.disabledDates||!this.disabledDates.to)&&this.disabledDates.to.getFullYear()>=this.pageDate.getFullYear()},nextYear:function(){this.isNextYearDisabled()||this.changeYear(1)},isNextYearDisabled:function(){return!(!this.disabledDates||!this.disabledDates.from)&&this.disabledDates.from.getFullYear()<=this.pageDate.getFullYear()},showYearCalendar:function(){this.$emit("showYearCalendar")},isSelectedMonth:function(e){return this.selectedDate&&this.selectedDate.getFullYear()===e.getFullYear()&&this.selectedDate.getMonth()===e.getMonth()},isDisabledMonth:function(e){var t=!1;return void 0!==this.disabledDates&&(void 0!==this.disabledDates.to&&this.disabledDates.to&&(e.getMonth()<this.disabledDates.to.getMonth()&&e.getFullYear()<=this.disabledDates.to.getFullYear()||e.getFullYear()<this.disabledDates.to.getFullYear())&&(t=!0),void 0!==this.disabledDates.from&&this.disabledDates.from&&(this.disabledDates.from&&e.getMonth()>this.disabledDates.from.getMonth()&&e.getFullYear()>=this.disabledDates.from.getFullYear()||e.getFullYear()>this.disabledDates.from.getFullYear())&&(t=!0),t)}}};!function(){if("undefined"!=typeof document){var e=document.head||document.getElementsByTagName("head")[0],t=document.createElement("style");t.type="text/css",t.styleSheet?t.styleSheet.cssText="":t.appendChild(document.createTextNode("")),e.appendChild(t)}}();var c={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",{directives:[{name:"show",rawName:"v-show",value:e.showYearView,expression:"showYearView"}],class:[e.calendarClass,"vdp-datepicker__calendar"],style:e.calendarStyle},[a("header",[a("span",{staticClass:"prev",class:{disabled:e.isPreviousDecadeDisabled(e.pageTimestamp)},on:{click:e.previousDecade}},[e._v("<")]),e._v(" "),a("span",[e._v(e._s(e.getPageDecade))]),e._v(" "),a("span",{staticClass:"next",class:{disabled:e.isNextDecadeDisabled(e.pageTimestamp)},on:{click:e.nextDecade}},[e._v(">")])]),e._v(" "),e._l(e.years,function(t){return a("span",{key:t.timestamp,staticClass:"cell year",class:{selected:t.isSelected,disabled:t.isDisabled},on:{click:function(a){a.stopPropagation(),e.selectYear(t)}}},[e._v(e._s(t.year))])})],2)},staticRenderFns:[],props:{showYearView:Boolean,selectedDate:Date,pageDate:Date,pageTimestamp:Number,disabledDates:Object,highlighted:Object,calendarClass:String,calendarStyle:Object,translation:Object,allowedToShowView:Function},computed:{years:function(){for(var e=this.pageDate,t=[],a=new Date(10*Math.floor(e.getFullYear()/10),e.getMonth(),e.getDate(),e.getHours(),e.getMinutes()),s=0;s<10;s++)t.push({year:a.getFullYear(),timestamp:a.getTime(),isSelected:this.isSelectedYear(a),isDisabled:this.isDisabledYear(a)}),a.setFullYear(a.getFullYear()+1);return t},getPageDecade:function(){var e=10*Math.floor(this.pageDate.getFullYear()/10);return e+" - "+(e+9)+this.translation.yearSuffix}},methods:{selectYear:function(e){if(e.isDisabled)return!1;this.$emit("selectYear",e)},changeYear:function(e){var t=this.pageDate;t.setYear(t.getFullYear()+e),this.$emit("changedDecade",t)},previousDecade:function(){if(this.isPreviousDecadeDisabled())return!1;this.changeYear(-10)},isPreviousDecadeDisabled:function(){return!(!this.disabledDates||!this.disabledDates.to)&&10*Math.floor(this.disabledDates.to.getFullYear()/10)>=10*Math.floor(this.pageDate.getFullYear()/10)},nextDecade:function(){if(this.isNextDecadeDisabled())return!1;this.changeYear(10)},isNextDecadeDisabled:function(){return!(!this.disabledDates||!this.disabledDates.from)&&10*Math.ceil(this.disabledDates.from.getFullYear()/10)<=10*Math.ceil(this.pageDate.getFullYear()/10)},isSelectedYear:function(e){return this.selectedDate&&this.selectedDate.getFullYear()===e.getFullYear()},isDisabledYear:function(e){var t=!1;return!(void 0===this.disabledDates||!this.disabledDates)&&(void 0!==this.disabledDates.to&&this.disabledDates.to&&e.getFullYear()<this.disabledDates.to.getFullYear()&&(t=!0),void 0!==this.disabledDates.from&&this.disabledDates.from&&e.getFullYear()>this.disabledDates.from.getFullYear()&&(t=!0),t)}}};!function(){if("undefined"!=typeof document){var e=document.head||document.getElementsByTagName("head")[0],t=document.createElement("style"),a=".rtl { direction: rtl; } .vdp-datepicker { position: relative; text-align: left; } .vdp-datepicker * { box-sizing: border-box; } .vdp-datepicker__calendar { position: absolute; z-index: 100; background: #fff; width: 300px; border: 1px solid #ccc; } .vdp-datepicker__calendar header { display: block; line-height: 40px; } .vdp-datepicker__calendar header span { display: inline-block; text-align: center; width: 71.42857142857143%; float: left; } .vdp-datepicker__calendar header .prev, .vdp-datepicker__calendar header .next { width: 14.285714285714286%; float: left; text-indent: -10000px; position: relative; } .vdp-datepicker__calendar header .prev:after, .vdp-datepicker__calendar header .next:after { content: ''; position: absolute; left: 50%; top: 50%; -webkit-transform: translateX(-50%) translateY(-50%); transform: translateX(-50%) translateY(-50%); border: 6px solid transparent; } .vdp-datepicker__calendar header .prev:after { border-right: 10px solid #000; margin-left: -5px; } .vdp-datepicker__calendar header .prev.disabled:after { border-right: 10px solid #ddd; } .vdp-datepicker__calendar header .next:after { border-left: 10px solid #000; margin-left: 5px; } .vdp-datepicker__calendar header .next.disabled:after { border-left: 10px solid #ddd; } .vdp-datepicker__calendar header .prev:not(.disabled), .vdp-datepicker__calendar header .next:not(.disabled), .vdp-datepicker__calendar header .up:not(.disabled) { cursor: pointer; } .vdp-datepicker__calendar header .prev:not(.disabled):hover, .vdp-datepicker__calendar header .next:not(.disabled):hover, .vdp-datepicker__calendar header .up:not(.disabled):hover { background: #eee; } .vdp-datepicker__calendar .disabled { color: #ddd; cursor: default; } .vdp-datepicker__calendar .flex-rtl { display: flex; width: inherit; flex-wrap: wrap; } .vdp-datepicker__calendar .cell { display: inline-block; padding: 0 5px; width: 14.285714285714286%; height: 40px; line-height: 40px; text-align: center; vertical-align: middle; border: 1px solid transparent; } .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year { cursor: pointer; } .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day:hover, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover { border: 1px solid #4bd; } .vdp-datepicker__calendar .cell.selected { background: #4bd; } .vdp-datepicker__calendar .cell.selected:hover { background: #4bd; } .vdp-datepicker__calendar .cell.selected.highlighted { background: #4bd; } .vdp-datepicker__calendar .cell.highlighted { background: #cae5ed; } .vdp-datepicker__calendar .cell.highlighted.disabled { color: #a3a3a3; } .vdp-datepicker__calendar .cell.grey { color: #888; } .vdp-datepicker__calendar .cell.grey:hover { background: inherit; } .vdp-datepicker__calendar .cell.day-header { font-size: 75%; white-space: no-wrap; cursor: inherit; } .vdp-datepicker__calendar .cell.day-header:hover { background: inherit; } .vdp-datepicker__calendar .month, .vdp-datepicker__calendar .year { width: 33.333%; } .vdp-datepicker__clear-button, .vdp-datepicker__calendar-button { cursor: pointer; font-style: normal; } .vdp-datepicker__clear-button.disabled, .vdp-datepicker__calendar-button.disabled { color: #999; cursor: default; } ";t.type="text/css",t.styleSheet?t.styleSheet.cssText=a:t.appendChild(document.createTextNode(a)),e.appendChild(t)}}();var u={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",{staticClass:"vdp-datepicker",class:[e.wrapperClass,e.isRtl?"rtl":""]},[a("date-input",{attrs:{selectedDate:e.selectedDate,format:e.format,translation:e.translation,inline:e.inline,id:e.id,name:e.name,refName:e.refName,openDate:e.openDate,placeholder:e.placeholder,inputClass:e.inputClass,typeable:e.typeable,clearButton:e.clearButton,clearButtonIcon:e.clearButtonIcon,calendarButton:e.calendarButton,calendarButtonIcon:e.calendarButtonIcon,calendarButtonIconContent:e.calendarButtonIconContent,disabled:e.disabled,required:e.required,bootstrapStyling:e.bootstrapStyling},on:{showCalendar:e.showCalendar,typedDate:e.setTypedDate,clearDate:e.clearDate}}),e._v(" "),e.allowedToShowView("day")?a("picker-day",{attrs:{pageDate:e.pageDate,selectedDate:e.selectedDate,showDayView:e.showDayView,fullMonthName:e.fullMonthName,allowedToShowView:e.allowedToShowView,disabledDates:e.disabledDates,highlighted:e.highlighted,calendarClass:e.calendarClass,calendarStyle:e.calendarStyle,translation:e.translation,pageTimestamp:e.pageTimestamp,isRtl:e.isRtl,mondayFirst:e.mondayFirst},on:{changedMonth:e.setPageDate,selectDate:e.selectDate,showMonthCalendar:e.showMonthCalendar,selectedDisabled:function(t){e.$emit("selectedDisabled")}}}):e._e(),e._v(" "),e.allowedToShowView("month")?a("picker-month",{attrs:{pageDate:e.pageDate,selectedDate:e.selectedDate,showMonthView:e.showMonthView,allowedToShowView:e.allowedToShowView,disabledDates:e.disabledDates,calendarClass:e.calendarClass,calendarStyle:e.calendarStyle,translation:e.translation},on:{selectMonth:e.selectMonth,showYearCalendar:e.showYearCalendar,changedYear:e.setPageDate}}):e._e(),e._v(" "),e.allowedToShowView("year")?a("picker-year",{attrs:{pageDate:e.pageDate,selectedDate:e.selectedDate,showYearView:e.showYearView,allowedToShowView:e.allowedToShowView,disabledDates:e.disabledDates,calendarClass:e.calendarClass,calendarStyle:e.calendarStyle,translation:e.translation},on:{selectYear:e.selectYear,changedDecade:e.setPageDate}}):e._e()],1)},staticRenderFns:[],components:{DateInput:l,PickerDay:o,PickerMonth:d,PickerYear:c},props:{value:{validator:function(e){return null===e||e instanceof Date||"string"==typeof e||"number"==typeof e}},name:String,refName:String,id:String,format:{type:[String,Function],default:"dd MMM yyyy"},language:{type:Object,default:function(){return n}},openDate:{validator:function(e){return null===e||e instanceof Date||"string"==typeof e||"number"==typeof e}},fullMonthName:Boolean,disabledDates:Object,highlighted:Object,placeholder:String,inline:Boolean,calendarClass:[String,Object],inputClass:[String,Object],wrapperClass:[String,Object],mondayFirst:Boolean,clearButton:Boolean,clearButtonIcon:String,calendarButton:Boolean,calendarButtonIcon:String,calendarButtonIconContent:String,bootstrapStyling:Boolean,initialView:String,disabled:Boolean,required:Boolean,typeable:Boolean,minimumView:{type:String,default:"day"},maximumView:{type:String,default:"year"}},data:function(){return{pageTimestamp:(this.openDate?new Date(this.openDate):new Date).setDate(1),selectedDate:null,showDayView:!1,showMonthView:!1,showYearView:!1,calendarHeight:0}},watch:{value:function(e){this.setValue(e)},openDate:function(){this.setPageDate()},initialView:function(){this.setInitialView()}},computed:{computedInitialView:function(){return this.initialView?this.initialView:this.minimumView},pageDate:function(){return new Date(this.pageTimestamp)},translation:function(){return this.language},calendarStyle:function(){return{position:this.isInline?"static":void 0}},isOpen:function(){return this.showDayView||this.showMonthView||this.showYearView},isInline:function(){return!!this.inline},isRtl:function(){return!0===this.translation.rtl}},methods:{resetDefaultPageDate:function(){null!==this.selectedDate?this.setPageDate(this.selectedDate):this.setPageDate()},showCalendar:function(){return!this.disabled&&!this.isInline&&(this.isOpen?this.close(!0):(this.setInitialView(),void(this.isInline||this.$emit("opened"))))},setInitialView:function(){var e=this.computedInitialView;if(!this.allowedToShowView(e))throw new Error("initialView '"+this.initialView+"' cannot be rendered based on minimum '"+this.minimumView+"' and maximum '"+this.maximumView+"'");switch(e){case"year":this.showYearCalendar();break;case"month":this.showMonthCalendar();break;default:this.showDayCalendar()}},allowedToShowView:function(e){var t=["day","month","year"],a=t.indexOf(this.minimumView),s=t.indexOf(this.maximumView),i=t.indexOf(e);return i>=a&&i<=s},showDayCalendar:function(){return!!this.allowedToShowView("day")&&(this.close(),this.showDayView=!0,this.addOutsideClickListener(),!0)},showMonthCalendar:function(){return!!this.allowedToShowView("month")&&(this.close(),this.showMonthView=!0,this.addOutsideClickListener(),!0)},showYearCalendar:function(){return!!this.allowedToShowView("year")&&(this.close(),this.showYearView=!0,this.addOutsideClickListener(),!0)},setDate:function(e){var t=new Date(e);this.selectedDate=new Date(t),this.setPageDate(t),this.$emit("selected",new Date(t)),this.$emit("input",new Date(t))},clearDate:function(){this.selectedDate=null,this.setPageDate(),this.$emit("selected",null),this.$emit("input",null),this.$emit("cleared")},selectDate:function(e){this.setDate(e.timestamp),this.isInline||this.close(!0)},selectMonth:function(e){var t=new Date(e.timestamp);this.allowedToShowView("day")?(this.setPageDate(t),this.$emit("changedMonth",e),this.showDayCalendar()):(this.setDate(t),this.isInline||this.close(!0))},selectYear:function(e){var t=new Date(e.timestamp);this.allowedToShowView("month")?(this.setPageDate(t),this.$emit("changedYear",e),this.showMonthCalendar()):(this.setDate(t),this.isInline||this.close(!0))},setValue:function(e){if("string"==typeof e||"number"==typeof e){var t=new Date(e);e=isNaN(t.valueOf())?null:t}if(!e)return this.setPageDate(),void(this.selectedDate=null);this.selectedDate=e,this.setPageDate(e)},setPageDate:function(e){e||(e=this.openDate?new Date(this.openDate):new Date),this.pageTimestamp=new Date(e).setDate(1)},setTypedDate:function(e){this.setDate(e.getTime())},addOutsideClickListener:function(){var e=this;this.isInline||setTimeout(function(){document.addEventListener("click",e.clickOutside,!1),document.addEventListener("keyup",e.escapeCalendar,!1)},100)},clickOutside:function(e){this.$el&&!this.$el.contains(e.target)&&(this.resetDefaultPageDate(),this.close(!0))},escapeCalendar:function(e){[27,13].includes(e.keyCode)&&this.close(!0)},close:function(e){this.showDayView=this.showMonthView=this.showYearView=!1,this.isInline||(e&&this.$emit("closed"),document.removeEventListener("click",this.clickOutside,!1),document.addEventListener("keyup",this.escapeCalendar,!1))},init:function(){this.value&&this.setValue(this.value),this.isInline&&this.setInitialView()}},mounted:function(){this.init()}};t.default=u},315:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("transition",{attrs:{name:"slide-fade",mode:"out-in"}},[e.modalsIsShowRegister?a("div",{staticClass:"modal__wrap"},[a("div",{directives:[{name:"click-outside",rawName:"v-click-outside",value:e.hide,expression:"hide"}],staticClass:"modal__content modal__md"},[a("h4",{staticClass:"modal__head"},[e._v("\n                "+e._s(e.$t("translation.register"))+"\n            ")]),e._v(" "),a("div",{staticClass:"modal__body"},[a("div",{staticClass:"row"},[a("div",{staticClass:"col-md-6"},[a("div",{staticClass:"form-group mt-4 mb-4"},[a("label",{attrs:{for:"name"}},[e._v(e._s(e.$t("translation.name")))]),e._v(" "),a("input",{directives:[{name:"model",rawName:"v-model",value:e.userName,expression:"userName"},{name:"validate",rawName:"v-validate",value:"required|min:3",expression:"'required|min:3'"}],staticClass:"input",class:{"is-invalid input__danger":e.errors.has("name")},attrs:{type:"text",id:"name",name:"name",placeholder:e.$t("translation.name")},domProps:{value:e.userName},on:{input:function(t){t.target.composing||(e.userName=t.target.value)}}}),e._v(" "),a("div",{directives:[{name:"show",rawName:"v-show",value:e.errors.has("name"),expression:"errors.has('name')"}],staticClass:"invalid-feedback"},[e._v("\n                                "+e._s(e.errors.first("name"))+"\n                            ")])])]),e._v(" "),a("div",{staticClass:"col-md-6"},[a("div",{staticClass:"form-group mt-4 mb-4"},[a("label",{attrs:{for:"surname"}},[e._v(e._s(e.$t("translation.surname")))]),e._v(" "),a("input",{directives:[{name:"model",rawName:"v-model",value:e.userSurname,expression:"userSurname"},{name:"validate",rawName:"v-validate",value:"required|min:3",expression:"'required|min:3'"}],staticClass:"input",class:{"is-invalid input__danger":e.errors.has("surname")},attrs:{type:"text",id:"surname",name:"surname",placeholder:e.$t("translation.surname")},domProps:{value:e.userSurname},on:{input:function(t){t.target.composing||(e.userSurname=t.target.value)}}}),e._v(" "),a("div",{directives:[{name:"show",rawName:"v-show",value:e.errors.has("surname"),expression:"errors.has('surname')"}],staticClass:"invalid-feedback"},[e._v("\n                                "+e._s(e.errors.first("surname"))+"\n                            ")])])]),e._v(" "),a("div",{staticClass:"col-md-6"},[a("div",{staticClass:"form-group mt-4 mb-4"},[a("label",{attrs:{for:"dateOfBirth"}},[e._v(e._s(e.$t("translation.birthday")))]),e._v(" "),a("div",{class:{"is-invalid__date":e.errors.has("dateOfBirth")}},[a("datepicker",{directives:[{name:"validate",rawName:"v-validate",value:"required",expression:"'required'"}],attrs:{"input-class":"input",format:"yyyy-MM-dd","data-vv-name":"dateOfBirth","data-vv-value-path":"selectedDate",initialView:"year",id:"dateOfBirth",placeholder:e.$t("translation.birthday")},model:{value:e.userDateOfBirth,callback:function(t){e.userDateOfBirth=t},expression:"userDateOfBirth"}}),e._v(" "),a("div",{directives:[{name:"show",rawName:"v-show",value:e.errors.has("dateOfBirth"),expression:"errors.has('dateOfBirth')"}],staticClass:"invalid-feedback"},[e._v("\n                                    "+e._s(e.errors.first("dateOfBirth"))+"\n                                ")])],1)])]),e._v(" "),a("div",{staticClass:"col-md-6"},[a("div",{staticClass:"form-group mt-4 mb-4"},[a("label",{attrs:{for:"email"}},[e._v(e._s(e.$t("translation.email")))]),e._v(" "),a("input",{directives:[{name:"model",rawName:"v-model",value:e.userEmail,expression:"userEmail"},{name:"validate",rawName:"v-validate",value:"required|email",expression:"'required|email'"}],staticClass:"input",class:{"is-invalid input__danger":e.errors.has("email")},attrs:{type:"text",id:"email",name:"email",placeholder:e.$t("translation.email")},domProps:{value:e.userEmail},on:{input:function(t){t.target.composing||(e.userEmail=t.target.value)}}}),e._v(" "),a("div",{directives:[{name:"show",rawName:"v-show",value:e.errors.has("email"),expression:"errors.has('email')"}],staticClass:"invalid-feedback"},[e._v("\n                                "+e._s(e.errors.first("email"))+"\n                            ")])])]),e._v(" "),a("div",{staticClass:"col-md-6"},[a("div",{staticClass:"form-group mb-4"},[a("label",{attrs:{for:"password"}},[e._v(e._s(e.$t("translation.password")))]),e._v(" "),a("input",{directives:[{name:"model",rawName:"v-model",value:e.userPassword,expression:"userPassword"},{name:"validate",rawName:"v-validate",value:"required|min:8",expression:"'required|min:8'"}],staticClass:"input",class:{"is-invalid input__danger":e.errors.has("password")},attrs:{type:"password",id:"password",name:"password",placeholder:e.$t("translation.password")},domProps:{value:e.userPassword},on:{input:function(t){t.target.composing||(e.userPassword=t.target.value)}}}),e._v(" "),a("div",{directives:[{name:"show",rawName:"v-show",value:e.errors.has("password"),expression:"errors.has('password')"}],staticClass:"invalid-feedback"},[e._v("\n                                "+e._s(e.errors.first("password"))+"\n                            ")])])]),e._v(" "),a("div",{staticClass:"col-md-6"},[a("div",{staticClass:"form-group mb-4"},[a("label",{attrs:{for:"rePassword"}},[e._v(e._s(e.$t("translation.confirmPassword")))]),e._v(" "),a("input",{directives:[{name:"model",rawName:"v-model",value:e.userPasswordConfirmation,expression:"userPasswordConfirmation"},{name:"validate",rawName:"v-validate",value:"required|confirmed:password",expression:"'required|confirmed:password'"}],staticClass:"input",class:{"is-invalid input__danger":e.errors.has("rePassword")},attrs:{type:"password",id:"rePassword",name:"rePassword",placeholder:e.$t("translation.confirmPassword")},domProps:{value:e.userPasswordConfirmation},on:{input:function(t){t.target.composing||(e.userPasswordConfirmation=t.target.value)}}}),e._v(" "),a("div",{directives:[{name:"show",rawName:"v-show",value:e.errors.has("rePassword"),expression:"errors.has('rePassword')"}],staticClass:"invalid-feedback"},[e._v("\n                                "+e._s(e.errors.first("rePassword"))+"\n                            ")])])]),e._v(" "),a("div",{staticClass:"col-md-6"},[a("div",{staticClass:"form-group mt-4 mb-4"},[a("div",{class:{"is-invalid__date":e.errors.has("photo")}},[a("label",{attrs:{for:"image"}},[e._v(e._s(e.$t("translation.photo")))]),e._v(" "),a("vue-base64-file-upload",{directives:[{name:"validate",rawName:"v-validate",value:"required",expression:"'required'"}],staticClass:"v1",attrs:{accept:"image/png,image/jpeg","image-class":"image-circle image-circle__45 mt-3","input-class":"input","max-size":e.customImageMaxSize,id:"image","data-vv-name":"photo","data-vv-value-path":"file",placeholder:e.$t("translation.photo")},on:{file:e.onFile,load:e.onLoad}}),e._v(" "),a("div",{directives:[{name:"show",rawName:"v-show",value:e.errors.has("photo"),expression:"errors.has('photo')"}],staticClass:"invalid-feedback"},[e._v("\n                                    "+e._s(e.errors.first("photo"))+"\n                                ")])],1)])])]),e._v(" "),a("button",{staticClass:"btn button-md button-accent button-center mb-4",attrs:{type:"button"},on:{click:e.register}},[e._v("\n                    "+e._s(e.$t("translation.register"))+"\n                ")]),e._v(" "),a("p",{staticClass:"small"},[e._v("\n                    "+e._s(e.$t("translation.enterTheSocialNetwork"))+":\n                ")]),e._v(" "),a("router-link",{staticClass:"link mr-3",attrs:{to:{name:"home"}}},[a("i",{staticClass:"fa fa-google-plus-square fa-2x mr-2 fa-relative",attrs:{"aria-hidden":"true"}}),e._v(" "),a("span",[e._v(e._s(e.$t("translation.throughGoogle")))])]),e._v(" "),a("router-link",{staticClass:"link",attrs:{to:{name:"home"}}},[a("i",{staticClass:"fa fa-facebook-square fa-2x mr-2 fa-relative",attrs:{"aria-hidden":"true"}}),e._v("\n                    "+e._s(e.$t("translation.throughFacebook"))+"\n                ")])],1)])]):e._e()])},staticRenderFns:[]}},317:function(e,t,a){var s=a(4)(a(318),a(319),!1,null,null,null);e.exports=s.exports},318:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var s=l(a(9)),i=l(a(10)),n=l(a(43)),r=l(a(29));function l(e){return e&&e.__esModule?e:{default:e}}t.default={mixins:[n.default,r.default],methods:{hide:function(){this.modalsIsShowLogin=!1,this.userEmail=null,this.userPassword=null},login:function(){var e=this;return(0,i.default)(s.default.mark(function t(){return s.default.wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,e.$validator.validateAll();case 2:if(!t.sent){t.next=15;break}return t.prev=4,t.next=7,e.$store.dispatch("user/login",{email:e.userEmail,password:e.userPassword});case 7:"user"===e.userRole?(window.Cookies.set("first_stage",3),e.userFirstStage=3):e.$router.push({name:"admin.home"}),e.hide(),t.next=15;break;case 11:t.prev=11,t.t0=t.catch(4),e.hide(),e.$toast.error({title:e.$t("translation.error"),message:e.$t(t.t0.data.message)});case 15:case"end":return t.stop()}},t,e,[[4,11]])}))()},authenticate:function(e){this.$auth.authenticate(e).then(function(){})}}}},319:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("transition",{attrs:{name:"slide-fade",mode:"out-in"}},[e.modalsIsShowLogin?a("div",{staticClass:"modal__wrap"},[a("div",{directives:[{name:"click-outside",rawName:"v-click-outside",value:e.hide,expression:"hide"}],staticClass:"modal__content"},[a("h4",{staticClass:"modal__head"},[e._v("\n                "+e._s(e.$t("translation.login"))+"\n            ")]),e._v(" "),a("div",{staticClass:"modal__body"},[a("div",{staticClass:"form-group mt-4 mb-4"},[a("label",{attrs:{for:"email"}},[e._v(e._s(e.$t("translation.email")))]),e._v(" "),a("input",{directives:[{name:"model",rawName:"v-model",value:e.userEmail,expression:"userEmail"},{name:"validate",rawName:"v-validate",value:"required|email",expression:"'required|email'"}],staticClass:"input",class:{"is-invalid input__danger":e.errors.has("email")},attrs:{type:"text",id:"email",name:"email",placeholder:e.$t("translation.email")},domProps:{value:e.userEmail},on:{input:function(t){t.target.composing||(e.userEmail=t.target.value)}}}),e._v(" "),a("div",{directives:[{name:"show",rawName:"v-show",value:e.errors.has("email"),expression:"errors.has('email')"}],staticClass:"invalid-feedback"},[e._v("\n                        "+e._s(e.errors.first("email"))+"\n                    ")])]),e._v(" "),a("div",{staticClass:"form-group mb-4"},[a("label",{attrs:{for:"password"}},[e._v(e._s(e.$t("translation.password")))]),e._v(" "),a("input",{directives:[{name:"model",rawName:"v-model",value:e.userPassword,expression:"userPassword"},{name:"validate",rawName:"v-validate",value:"required|min:8",expression:"'required|min:8'"}],staticClass:"input",class:{"is-invalid input__danger":e.errors.has("password")},attrs:{type:"password",id:"password",name:"password",placeholder:e.$t("translation.password")},domProps:{value:e.userPassword},on:{input:function(t){t.target.composing||(e.userPassword=t.target.value)}}}),e._v(" "),a("div",{directives:[{name:"show",rawName:"v-show",value:e.errors.has("password"),expression:"errors.has('password')"}],staticClass:"invalid-feedback"},[e._v("\n                        "+e._s(e.errors.first("password"))+"\n                    ")])]),e._v(" "),a("button",{staticClass:"btn button-md button-accent button-center mb-4",attrs:{type:"button"},on:{click:e.login}},[e._v("\n                    "+e._s(e.$t("translation.enter"))+"\n                ")]),e._v(" "),a("p",{staticClass:"small"},[e._v("\n                    "+e._s(e.$t("translation.enterTheSocialNetwork"))+":\n                ")]),e._v(" "),a("router-link",{staticClass:"link mr-3",attrs:{to:{name:"home"}}},[a("i",{staticClass:"fa fa-google-plus-square fa-2x mr-2 fa-relative",attrs:{"aria-hidden":"true"}}),e._v(" "),a("span",[e._v(e._s(e.$t("translation.throughGoogle")))])]),e._v(" "),a("a",{staticClass:"link",attrs:{href:"javascript:"},on:{click:function(t){e.authenticate("facebook")}}},[a("i",{staticClass:"fa fa-facebook-square fa-2x mr-2 fa-relative",attrs:{"aria-hidden":"true"}}),e._v("\n                    "+e._s(e.$t("translation.throughFacebook"))+"\n                ")])],1)])]):e._e()])},staticRenderFns:[]}},330:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var s,i=o(a(317)),n=o(a(312)),r=a(29),l=(s=r)&&s.__esModule?s:{default:s};function o(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var a in e)Object.prototype.hasOwnProperty.call(e,a)&&(t[a]=e[a]);return t.default=e,t}t.default={components:{loginModal:i,registerModal:n},mixins:[l.default],data:function(){return{isAdmin:!0}},metaInfo:function(){return{title:this.$t("translation.homepage")}},mounted:function(){"uni_admin"!==this.userRole&&"global_admin"!==this.userRole||this.$router.push({name:"admin.home"})}}},331:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",{staticClass:"homepage"},[a("div",{staticClass:"container"},[a("div",{staticClass:"row"},[a("div",{staticClass:"col-md-6"},[a("h1",[e._v(e._s(e.$t("translation.stride"))+" -"),a("br"),e._v(" "),a("span",{staticClass:"accent-color"},[e._v("\n                        "+e._s(e.$t("translation.greatFuture"))+"\n                    ")])]),e._v(" "),a("p",{staticClass:"gray-color mt-4 mb-1"},[e._v(e._s(e.$t("translation.beforeEveryone"))+":")]),e._v(" "),a("ul",{staticClass:"list list__accent mb-5"},[a("li",[a("span",[e._v(e._s(e.$t("translation.selectUniversity")))])]),e._v(" "),a("li",[a("span",[e._v(e._s(e.$t("translation.acquaintWithUniversity")))])]),e._v(" "),a("li",[a("span",[e._v(e._s(e.$t("translation.tryYourself")))])]),e._v(" "),a("li",[a("span",[e._v(e._s(e.$t("translation.acquaintWithStudentLife")))])])]),e._v(" "),a("router-link",{staticClass:"btn button-md button-accent",attrs:{tag:"button",to:{name:"user.room"},type:"button"}},[e._v("\n                    "+e._s(e.$t("translation.forward"))+"\n                ")])],1),e._v(" "),a("div",{staticClass:"d-none d-md-block bg-right-image"}),e._v(" "),a("span",{staticClass:"copyright ml-3"},[e._v("\n                "+e._s(e.$t("translation.developedByStudents"))+"\n                "),a("a",{staticClass:"link link__accent",attrs:{href:"http://sumdu.edu.ua/"}},[e._v("\n                    "+e._s(e.$t("translation.sumdu"))+"\n                ")])])])]),e._v(" "),a("login-modal"),e._v(" "),a("register-modal")],1)},staticRenderFns:[]}}});
+webpackJsonp([11],{
+
+/***/ 243:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(330)
+/* template */
+var __vue_template__ = __webpack_require__(331)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/pages/Home.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-440dff1c", Component.options)
+  } else {
+    hotAPI.reload("data-v-440dff1c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 311:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+if (!window.FileReader) {
+  console.error('Your browser does not support FileReader API!');
+}
+
+exports.default = {
+  name: 'vue-base64-file-upload',
+
+  props: {
+    imageClass: {
+      type: String,
+      default: ''
+    },
+    inputClass: {
+      type: String,
+      default: ''
+    },
+    accept: {
+      type: String,
+      default: 'image/png,image/gif,image/jpeg'
+    },
+    maxSize: {
+      type: Number,
+      default: 10 // megabytes
+    },
+    disablePreview: {
+      type: Boolean,
+      default: false
+    },
+    fileName: {
+      type: String,
+      default: ''
+    },
+    placeholder: {
+      type: String,
+      default: 'Click here to upload image'
+    },
+    defaultPreview: {
+      type: String,
+      default: ''
+    }
+  },
+
+  data: function data() {
+    return {
+      file: null,
+      preview: null,
+      visiblePreview: false
+    };
+  },
+
+
+  computed: {
+    wrapperStyles: function wrapperStyles() {
+      return {
+        'position': 'relative',
+        'width': '100%'
+      };
+    },
+    fileInputStyles: function fileInputStyles() {
+      return {
+        'width': '100%',
+        'position': 'absolute',
+        'top': 0,
+        'left': 0,
+        'right': 0,
+        'bottom': 0,
+        'opacity': 0,
+        'overflow': 'hidden',
+        'outline': 'none',
+        'cursor': 'pointer'
+      };
+    },
+    textInputStyles: function textInputStyles() {
+      return {
+        'width': '100%',
+        'cursor': 'pointer'
+      };
+    },
+    previewImage: function previewImage() {
+      return this.preview || this.defaultPreview;
+    }
+  },
+
+  methods: {
+    onChange: function onChange(e) {
+      var _this = this;
+
+      var files = e.target.files || e.dataTransfer.files;
+
+      if (!files.length) {
+        return;
+      }
+
+      var file = files[0];
+      var size = file.size && file.size / Math.pow(1000, 2);
+
+      // check file max size
+      if (size > this.maxSize) {
+        this.$emit('size-exceeded', size);
+        return;
+      }
+
+      // update file
+      this.file = file;
+      this.$emit('file', file);
+
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        var dataURI = e.target.result;
+
+        if (dataURI) {
+          _this.$emit('load', dataURI);
+
+          _this.preview = dataURI;
+        }
+      };
+
+      // read blob url from file data
+      reader.readAsDataURL(file);
+    }
+  },
+
+  template: '\n    <div class="vue-base64-file-upload">\n      <img\n        v-show="previewImage && !disablePreview"\n        :src="previewImage"\n        :class="imageClass" />\n      <div class="vue-base64-file-upload-wrapper" :style="wrapperStyles">\n        <input\n          type="file"\n          @change="onChange"\n          :style="fileInputStyles"\n          :accept=accept />\n        <input\n          type="text"\n          :class="inputClass"\n          :style="textInputStyles"\n          :value="fileName || file && file.name"\n          :placeholder="placeholder"\n          disabled />\n      </div>\n    </div>\n  '
+};
+
+
+/***/ }),
+
+/***/ 312:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(313)
+/* template */
+var __vue_template__ = __webpack_require__(315)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/modals/Register.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0c43c885", Component.options)
+  } else {
+    hotAPI.reload("data-v-0c43c885", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 313:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(9);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(10);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _vuejsDatepicker = __webpack_require__(314);
+
+var _vuejsDatepicker2 = _interopRequireDefault(_vuejsDatepicker);
+
+var _vueBase64FileUpload = __webpack_require__(311);
+
+var _vueBase64FileUpload2 = _interopRequireDefault(_vueBase64FileUpload);
+
+var _modals = __webpack_require__(43);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+var _user = __webpack_require__(29);
+
+var _user2 = _interopRequireDefault(_user);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    mixins: [_modals2.default, _user2.default],
+    components: {
+        Datepicker: _vuejsDatepicker2.default,
+        VueBase64FileUpload: _vueBase64FileUpload2.default
+    },
+    data: function data() {
+        return {
+            customImageMaxSize: 3,
+            imageSubstringLength: null,
+            imageBase64: null
+        };
+    },
+
+    computed: {
+        photo: function photo() {
+            if (this.imageBase64) {
+                return this.imageBase64.substr(this.imageSubstringLength);
+            }
+            return '';
+        }
+    },
+    methods: {
+        register: function register() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid, params;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+                                if (!valid) {
+                                    _context.next = 23;
+                                    break;
+                                }
+
+                                _context.prev = 4;
+                                params = {
+                                    email: _this.userEmail,
+                                    password: _this.userPassword,
+                                    name: _this.userName,
+                                    surname: _this.userSurname,
+                                    password_confirmation: _this.userPasswordConfirmation,
+                                    birthday: window.luxon.DateTime.fromJSDate(_this.userDateOfBirth).toFormat('yyyy-LL-dd'),
+                                    image: _this.photo
+                                };
+
+                                if (!(_this.$route.name === 'auth.invite')) {
+                                    _context.next = 12;
+                                    break;
+                                }
+
+                                _context.next = 9;
+                                return _this.$store.dispatch('user/registerInvite', {
+                                    id: _this.$route.params.id,
+                                    params: params
+                                });
+
+                            case 9:
+                                _this.$router.push({
+                                    name: 'home'
+                                });
+                                _context.next = 14;
+                                break;
+
+                            case 12:
+                                _context.next = 14;
+                                return _this.$store.dispatch('user/register', {
+                                    params: params
+                                });
+
+                            case 14:
+                                _this.hide();
+                                window.Cookies.set('first_stage', 2);
+                                _this.userFirstStage = 2;
+                                _context.next = 23;
+                                break;
+
+                            case 19:
+                                _context.prev = 19;
+                                _context.t0 = _context['catch'](4);
+
+                                if (_context.t0.status === 404 && _this.$route.name === 'auth.invite') {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t('translation.inviteNotFound')
+                                    });
+                                } else {
+                                    _this.$toast.error({
+                                        title: _this.$t('translation.error'),
+                                        message: _this.$t(_context.t0.message)
+                                    });
+                                }
+                                _this.hide();
+
+                            case 23:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[4, 19]]);
+            }))();
+        },
+        hide: function hide() {
+            if (this.$route.name === 'auth.invite') {
+                this.modalsIsShowRegister = false;
+                this.$router.push({
+                    name: 'home'
+                });
+            } else {
+                this.modalsIsShowRegister = false;
+            }
+            this.userName = null;
+            this.userSurname = null;
+            this.userDateOfBirth = null;
+            this.userEmail = null;
+            this.userPassword = null;
+            this.userPasswordConfirmation = null;
+        },
+        onFile: function onFile(file) {
+            this.imageSubstringLength = file.type.length + 13;
+        },
+        onLoad: function onLoad(dataUri) {
+            this.imageBase64 = dataUri;
+        }
+    },
+    beforeDestroy: function beforeDestroy() {
+        this.userName = null;
+        this.userSurname = null;
+        this.userDateOfBirth = null;
+        this.userEmail = null;
+        this.userPassword = null;
+        this.userPasswordConfirmation = null;
+    }
+};
+
+/***/ }),
+
+/***/ 314:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/*!
+ * vuejs-datepicker v1.1.2
+ * (c) 2016-2018 Charlie Kassel
+ * Released under the MIT License.
+ */
+var Language = function Language (language, months, monthsAbbr, days) {
+  this.language = language;
+  this.months = months;
+  this.monthsAbbr = monthsAbbr;
+  this.days = days;
+  this.rtl = false;
+  this.ymd = false;
+  this.yearSuffix = '';
+};
+
+var prototypeAccessors = { language: { configurable: true },months: { configurable: true },monthsAbbr: { configurable: true },days: { configurable: true } };
+
+prototypeAccessors.language.get = function () {
+  return this._language
+};
+
+prototypeAccessors.language.set = function (language) {
+  if (typeof language !== 'string') {
+    throw new TypeError('Language must be a string')
+  }
+  this._language = language;
+};
+
+prototypeAccessors.months.get = function () {
+  return this._months
+};
+
+prototypeAccessors.months.set = function (months) {
+  if (months.length !== 12) {
+    throw new RangeError(("There must be 12 months for " + (this.language) + " language"))
+  }
+  this._months = months;
+};
+
+prototypeAccessors.monthsAbbr.get = function () {
+  return this._monthsAbbr
+};
+
+prototypeAccessors.monthsAbbr.set = function (monthsAbbr) {
+  if (monthsAbbr.length !== 12) {
+    throw new RangeError(("There must be 12 abbreviated months for " + (this.language) + " language"))
+  }
+  this._monthsAbbr = monthsAbbr;
+};
+
+prototypeAccessors.days.get = function () {
+  return this._days
+};
+
+prototypeAccessors.days.set = function (days) {
+  if (days.length !== 7) {
+    throw new RangeError(("There must be 7 days for " + (this.language) + " language"))
+  }
+  this._days = days;
+};
+
+Object.defineProperties( Language.prototype, prototypeAccessors );
+
+var en = new Language(
+  'English',
+  ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+)
+// eslint-disable-next-line
+;
+
+var DateUtils = {
+
+  /**
+   * Validates a date object
+   * @param {Date} date - an object instantiated with the new Date constructor
+   * @return {Boolean}
+   */
+  isValidDate: function isValidDate (date) {
+    if (Object.prototype.toString.call(date) !== '[object Date]') {
+      return false
+    }
+    return !isNaN(date.getTime())
+  },
+
+  /**
+   * Return abbreviated week day name
+   * @param {Date}
+   * @param {Array}
+   * @return {String}
+   */
+  getDayNameAbbr: function getDayNameAbbr (date, days) {
+    if (typeof date !== 'object') {
+      throw TypeError('Invalid Type')
+    }
+    return days[date.getDay()]
+  },
+
+  /**
+   * Return name of the month
+   * @param {Number|Date}
+   * @param {Array}
+   * @return {String}
+   */
+  getMonthName: function getMonthName (month, months) {
+    if (!months) {
+      throw Error('missing 2nd parameter Months array')
+    }
+    if (typeof month === 'object') {
+      return months[month.getMonth()]
+    }
+    if (typeof month === 'number') {
+      return months[month]
+    }
+    throw TypeError('Invalid type')
+  },
+
+  /**
+   * Return an abbreviated version of the month
+   * @param {Number|Date}
+   * @return {String}
+   */
+  getMonthNameAbbr: function getMonthNameAbbr (month, monthsAbbr) {
+    if (!monthsAbbr) {
+      throw Error('missing 2nd paramter Months array')
+    }
+    if (typeof month === 'object') {
+      return monthsAbbr[month.getMonth()]
+    }
+    if (typeof month === 'number') {
+      return monthsAbbr[month]
+    }
+    throw TypeError('Invalid type')
+  },
+
+  /**
+   * Alternative get total number of days in month
+   * @param {Number} year
+   * @param {Number} m
+   * @return {Number}
+   */
+  daysInMonth: function daysInMonth (year, month) {
+    return /8|3|5|10/.test(month) ? 30 : month === 1 ? (!(year % 4) && year % 100) || !(year % 400) ? 29 : 28 : 31
+  },
+
+  /**
+   * Get nth suffix for date
+   * @param {Number} day
+   * @return {String}
+   */
+  getNthSuffix: function getNthSuffix (day) {
+    switch (day) {
+      case 1:
+      case 21:
+      case 31:
+        return 'st'
+      case 2:
+      case 22:
+        return 'nd'
+      case 3:
+      case 23:
+        return 'rd'
+      default:
+        return 'th'
+    }
+  },
+
+  /**
+   * Formats date object
+   * @param {Date}
+   * @param {String}
+   * @param {Object}
+   * @return {String}
+   */
+  formatDate: function formatDate (date, format, translation) {
+    translation = (!translation) ? en : translation;
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var str = format
+      .replace(/dd/, ('0' + day).slice(-2))
+      .replace(/d/, day)
+      .replace(/yyyy/, year)
+      .replace(/yy/, String(year).slice(2))
+      .replace(/MMMM/, this.getMonthName(date.getMonth(), translation.months))
+      .replace(/MMM/, this.getMonthNameAbbr(date.getMonth(), translation.monthsAbbr))
+      .replace(/MM/, ('0' + month).slice(-2))
+      .replace(/M(?!a|ä|e)/, month)
+      .replace(/su/, this.getNthSuffix(date.getDate()))
+      .replace(/D(?!e|é|i)/, this.getDayNameAbbr(date, translation.days));
+    return str
+  },
+
+  /**
+   * Creates an array of dates for each day in between two dates.
+   * @param {Date} start
+   * @param {Date} end
+   * @return {Array}
+   */
+  createDateArray: function createDateArray (start, end) {
+    var dates = [];
+    while (start <= end) {
+      dates.push(new Date(start));
+      start = new Date(start).setDate(new Date(start).getDate() + 1);
+    }
+    return dates
+  }
+
+}
+// eslint-disable-next-line
+;
+
+(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=""; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+
+var DateInput = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:{'input-group' : _vm.bootstrapStyling}},[(_vm.calendarButton)?_c('span',{staticClass:"vdp-datepicker__calendar-button",class:{'input-group-addon' : _vm.bootstrapStyling},style:({'cursor:not-allowed;' : _vm.disabled}),on:{"click":_vm.showCalendar}},[_c('i',{class:_vm.calendarButtonIcon},[_vm._v(" "+_vm._s(_vm.calendarButtonIconContent)+" "),(!_vm.calendarButtonIcon)?_c('span',[_vm._v("…")]):_vm._e()])]):_vm._e(),_vm._v(" "),_c('input',{ref:_vm.refName,class:_vm.computedInputClass,attrs:{"type":_vm.inline ? 'hidden' : 'text',"name":_vm.name,"id":_vm.id,"open-date":_vm.openDate,"placeholder":_vm.placeholder,"clear-button":_vm.clearButton,"disabled":_vm.disabled,"required":_vm.required},domProps:{"value":_vm.formattedValue},on:{"click":_vm.showCalendar,"keypress":_vm.parseTypedDate,"blur":_vm.inputBlurred}}),_vm._v(" "),(_vm.clearButton && _vm.selectedDate)?_c('span',{staticClass:"vdp-datepicker__clear-button",class:{'input-group-addon' : _vm.bootstrapStyling},on:{"click":function($event){_vm.clearDate();}}},[_c('i',{class:_vm.clearButtonIcon},[(!_vm.clearButtonIcon)?_c('span',[_vm._v("×")]):_vm._e()])]):_vm._e()])},staticRenderFns: [],
+  props: {
+    selectedDate: Date,
+    format: [String, Function],
+    translation: Object,
+    inline: Boolean,
+    id: String,
+    name: String,
+    refName: String,
+    openDate: Date,
+    placeholder: String,
+    inputClass: [String, Object],
+    clearButton: Boolean,
+    clearButtonIcon: String,
+    calendarButton: Boolean,
+    calendarButtonIcon: String,
+    calendarButtonIconContent: String,
+    disabled: Boolean,
+    required: Boolean,
+    typeable: Boolean,
+    bootstrapStyling: Boolean
+  },
+  data: function data () {
+    return {
+      input: null,
+      typedDate: false
+    }
+  },
+  computed: {
+    formattedValue: function formattedValue () {
+      if (!this.selectedDate) {
+        return null
+      }
+      if (this.typedDate) {
+        return this.typedDate
+      }
+      return typeof this.format === 'function'
+        ? this.format(this.selectedDate)
+        : DateUtils.formatDate(new Date(this.selectedDate), this.format, this.translation)
+    },
+
+    computedInputClass: function computedInputClass () {
+      var cssClass = [this.inputClass];
+      if (this.bootstrapStyling) {
+        cssClass.push('form-control');
+      }
+      return cssClass.join(' ')
+    }
+  },
+  methods: {
+    showCalendar: function showCalendar () {
+      this.$emit('showCalendar');
+    },
+    /**
+     * Attempt to parse a typed date
+     */
+    parseTypedDate: function parseTypedDate (e) {
+      if (!this.typeable) {
+        e.preventDefault();
+        return false
+      }
+      var typedDate = Date.parse(this.input.value);
+      if (!isNaN(typedDate)) {
+        this.typedDate = this.input.value;
+        this.$emit('typedDate', new Date(this.typedDate));
+      }
+    },
+    /**
+     * nullify the typed date to defer to regular formatting
+     * called once the input is blurred
+     */
+    inputBlurred: function inputBlurred () {
+      if (!this.typedDate) {
+        return
+      }
+      if (isNaN(Date.parse(this.input.value))) {
+        this.clearDate();
+      }
+      this.input.value = null;
+      this.typedDate = null;
+    },
+    /**
+     * emit a clearDate event
+     */
+    clearDate: function clearDate () {
+      this.$emit('clearDate');
+    }
+  },
+  mounted: function mounted () {
+    this.input = this.$el.querySelector('input');
+  }
+}
+// eslint-disable-next-line
+;
+
+(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=""; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+var PickerDay = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showDayView),expression:"showDayView"}],class:[_vm.calendarClass, 'vdp-datepicker__calendar'],style:(_vm.calendarStyle)},[_c('header',[_c('span',{staticClass:"prev",class:{ 'disabled' : _vm.isRtl ? _vm.isNextMonthDisabled(_vm.pageTimestamp) : _vm.isPreviousMonthDisabled(_vm.pageTimestamp) },on:{"click":function($event){_vm.isRtl ? _vm.nextMonth() : _vm.previousMonth();}}},[_vm._v("<")]),_vm._v(" "),_c('span',{staticClass:"day__month_btn",class:_vm.allowedToShowView('month') ? 'up' : '',on:{"click":_vm.showMonthCalendar}},[_vm._v(_vm._s(_vm.isYmd ? _vm.currYearName : _vm.currMonthName)+" "+_vm._s(_vm.isYmd ? _vm.currMonthName : _vm.currYearName))]),_vm._v(" "),_c('span',{staticClass:"next",class:{ 'disabled' : _vm.isRtl ? _vm.isPreviousMonthDisabled(_vm.pageTimestamp) : _vm.isNextMonthDisabled(_vm.pageTimestamp) },on:{"click":function($event){_vm.isRtl ? _vm.previousMonth() : _vm.nextMonth();}}},[_vm._v(">")])]),_vm._v(" "),_c('div',{class:_vm.isRtl ? 'flex-rtl' : ''},[_vm._l((_vm.daysOfWeek),function(d){return _c('span',{key:d.timestamp,staticClass:"cell day-header"},[_vm._v(_vm._s(d))])}),_vm._v(" "),(_vm.blankDays > 0)?_vm._l((_vm.blankDays),function(d){return _c('span',{key:d.timestamp,staticClass:"cell day blank"})}):_vm._e(),_vm._l((_vm.days),function(day){return _c('span',{key:day.timestamp,staticClass:"cell day",class:_vm.dayClasses(day),on:{"click":function($event){_vm.selectDate(day);}}},[_vm._v(_vm._s(day.date))])})],2)])},staticRenderFns: [],
+  props: {
+    showDayView: Boolean,
+    selectedDate: Date,
+    pageDate: Date,
+    pageTimestamp: Number,
+    fullMonthName: Boolean,
+    allowedToShowView: Function,
+    disabledDates: Object,
+    highlighted: Object,
+    calendarClass: String,
+    calendarStyle: Object,
+    translation: Object,
+    isRtl: Boolean,
+    mondayFirst: Boolean
+  },
+  computed: {
+    /**
+     * Returns an array of day names
+     * @return {String[]}
+     */
+    daysOfWeek: function daysOfWeek () {
+      if (this.mondayFirst) {
+        var tempDays = this.translation.days.slice();
+        tempDays.push(tempDays.shift());
+        return tempDays
+      }
+      return this.translation.days
+    },
+    /**
+     * Returns the day number of the week less one for the first of the current month
+     * Used to show amount of empty cells before the first in the day calendar layout
+     * @return {Number}
+     */
+    blankDays: function blankDays () {
+      var d = this.pageDate;
+      var dObj = new Date(d.getFullYear(), d.getMonth(), 1, d.getHours(), d.getMinutes());
+      if (this.mondayFirst) {
+        return dObj.getDay() > 0 ? dObj.getDay() - 1 : 6
+      }
+      return dObj.getDay()
+    },
+    /**
+     * @return {Object[]}
+     */
+    days: function days () {
+      var this$1 = this;
+
+      var d = this.pageDate;
+      var days = [];
+      // set up a new date object to the beginning of the current 'page'
+      var dObj = new Date(d.getFullYear(), d.getMonth(), 1, d.getHours(), d.getMinutes());
+      var daysInMonth = DateUtils.daysInMonth(dObj.getFullYear(), dObj.getMonth());
+      for (var i = 0; i < daysInMonth; i++) {
+        days.push({
+          date: dObj.getDate(),
+          timestamp: dObj.getTime(),
+          isSelected: this$1.isSelectedDate(dObj),
+          isDisabled: this$1.isDisabledDate(dObj),
+          isHighlighted: this$1.isHighlightedDate(dObj),
+          isHighlightStart: this$1.isHighlightStart(dObj),
+          isHighlightEnd: this$1.isHighlightEnd(dObj),
+          isToday: dObj.toDateString() === (new Date()).toDateString(),
+          isWeekend: dObj.getDay() === 0 || dObj.getDay() === 6,
+          isSaturday: dObj.getDay() === 6,
+          isSunday: dObj.getDay() === 0
+        });
+        dObj.setDate(dObj.getDate() + 1);
+      }
+      return days
+    },
+    /**
+     * Gets the name of the month the current page is on
+     * @return {String}
+     */
+    currMonthName: function currMonthName () {
+      var monthName = this.fullMonthName ? this.translation.months : this.translation.monthsAbbr;
+      return DateUtils.getMonthNameAbbr(this.pageDate.getMonth(), monthName)
+    },
+    /**
+     * Gets the name of the year that current page is on
+     * @return {Number}
+     */
+    currYearName: function currYearName () {
+      var yearSuffix = this.translation.yearSuffix;
+      return ("" + (this.pageDate.getFullYear()) + yearSuffix)
+    },
+    /**
+     * Is this translation using year/month/day format?
+     * @return {Boolean}
+     */
+    isYmd: function isYmd () {
+      return this.translation.ymd && this.translation.ymd === true
+    }
+  },
+  methods: {
+    selectDate: function selectDate (date) {
+      if (date.isDisabled) {
+        this.$emit('selectedDisabled', date);
+        return false
+      }
+      this.$emit('selectDate', date);
+    },
+    /**
+     * @return {Number}
+     */
+    getPageMonth: function getPageMonth () {
+      return this.pageDate.getMonth()
+    },
+    /**
+     * Emit an event to show the month picker
+     */
+    showMonthCalendar: function showMonthCalendar () {
+      this.$emit('showMonthCalendar');
+    },
+    /**
+     * Change the page month
+     * @param {Number} incrementBy
+     */
+    changeMonth: function changeMonth (incrementBy) {
+      var date = this.pageDate;
+      date.setMonth(date.getMonth() + incrementBy);
+      this.$emit('changedMonth', date);
+    },
+    /**
+     * Decrement the page month
+     */
+    previousMonth: function previousMonth () {
+      if (!this.isPreviousMonthDisabled()) {
+        this.changeMonth(-1);
+      }
+    },
+    /**
+     * Is the previous month disabled?
+     * @return {Boolean}
+     */
+    isPreviousMonthDisabled: function isPreviousMonthDisabled () {
+      if (!this.disabledDates || !this.disabledDates.to) {
+        return false
+      }
+      var d = this.pageDate;
+      return this.disabledDates.to.getMonth() >= d.getMonth() &&
+        this.disabledDates.to.getFullYear() >= d.getFullYear()
+    },
+    /**
+     * Increment the current page month
+     */
+    nextMonth: function nextMonth () {
+      if (!this.isNextMonthDisabled()) {
+        this.changeMonth(+1);
+      }
+    },
+    /**
+     * Is the next month disabled?
+     * @return {Boolean}
+     */
+    isNextMonthDisabled: function isNextMonthDisabled () {
+      if (!this.disabledDates || !this.disabledDates.from) {
+        return false
+      }
+      var d = this.pageDate;
+      return this.disabledDates.from.getMonth() <= d.getMonth() &&
+        this.disabledDates.from.getFullYear() <= d.getFullYear()
+    },
+    /**
+     * Whether a day is selected
+     * @param {Date}
+     * @return {Boolean}
+     */
+    isSelectedDate: function isSelectedDate (dObj) {
+      return this.selectedDate && this.selectedDate.toDateString() === dObj.toDateString()
+    },
+    /**
+     * Whether a day is disabled
+     * @param {Date}
+     * @return {Boolean}
+     */
+    isDisabledDate: function isDisabledDate (date) {
+      var disabledDates = false;
+
+      if (typeof this.disabledDates === 'undefined') {
+        return false
+      }
+
+      if (typeof this.disabledDates.dates !== 'undefined') {
+        this.disabledDates.dates.forEach(function (d) {
+          if (date.toDateString() === d.toDateString()) {
+            disabledDates = true;
+            return true
+          }
+        });
+      }
+      if (typeof this.disabledDates.to !== 'undefined' && this.disabledDates.to && date < this.disabledDates.to) {
+        disabledDates = true;
+      }
+      if (typeof this.disabledDates.from !== 'undefined' && this.disabledDates.from && date > this.disabledDates.from) {
+        disabledDates = true;
+      }
+      if (typeof this.disabledDates.ranges !== 'undefined') {
+        this.disabledDates.ranges.forEach(function (range) {
+          if (typeof range.from !== 'undefined' && range.from && typeof range.to !== 'undefined' && range.to) {
+            if (date < range.to && date > range.from) {
+              disabledDates = true;
+              return true
+            }
+          }
+        });
+      }
+      if (typeof this.disabledDates.days !== 'undefined' && this.disabledDates.days.indexOf(date.getDay()) !== -1) {
+        disabledDates = true;
+      }
+      if (typeof this.disabledDates.daysOfMonth !== 'undefined' && this.disabledDates.daysOfMonth.indexOf(date.getDate()) !== -1) {
+        disabledDates = true;
+      }
+      if (typeof this.disabledDates.customPredictor === 'function' && this.disabledDates.customPredictor(date)) {
+        disabledDates = true;
+      }
+      return disabledDates
+    },
+    /**
+     * Whether a day is highlighted (only if it is not disabled already except when highlighted.includeDisabled is true)
+     * @param {Date}
+     * @return {Boolean}
+     */
+    isHighlightedDate: function isHighlightedDate (date) {
+      if (!(this.highlighted && this.highlighted.includeDisabled) && this.isDisabledDate(date)) {
+        return false
+      }
+
+      var highlighted = false;
+
+      if (typeof this.highlighted === 'undefined') {
+        return false
+      }
+
+      if (typeof this.highlighted.dates !== 'undefined') {
+        this.highlighted.dates.forEach(function (d) {
+          if (date.toDateString() === d.toDateString()) {
+            highlighted = true;
+            return true
+          }
+        });
+      }
+
+      if (this.isDefined(this.highlighted.from) && this.isDefined(this.highlighted.to)) {
+        highlighted = date >= this.highlighted.from && date <= this.highlighted.to;
+      }
+
+      if (typeof this.highlighted.days !== 'undefined' && this.highlighted.days.indexOf(date.getDay()) !== -1) {
+        highlighted = true;
+      }
+
+      if (typeof this.highlighted.daysOfMonth !== 'undefined' && this.highlighted.daysOfMonth.indexOf(date.getDate()) !== -1) {
+        highlighted = true;
+      }
+
+      if (typeof this.highlighted.customPredictor === 'function' && this.highlighted.customPredictor(date)) {
+        highlighted = true;
+      }
+
+      return highlighted
+    },
+    dayClasses: function dayClasses (day) {
+      return {
+        'selected': day.isSelected,
+        'disabled': day.isDisabled,
+        'highlighted': day.isHighlighted,
+        'today': day.isToday,
+        'weekend': day.isWeekend,
+        'sat': day.isSaturday,
+        'sun': day.isSunday,
+        'highlight-start': day.isHighlightStart,
+        'highlight-end': day.isHighlightEnd
+      }
+    },
+    /**
+     * Whether a day is highlighted and it is the first date
+     * in the highlighted range of dates
+     * @param {Date}
+     * @return {Boolean}
+     */
+    isHighlightStart: function isHighlightStart (date) {
+      return this.isHighlightedDate(date) &&
+        (this.highlighted.from instanceof Date) &&
+        (this.highlighted.from.getFullYear() === date.getFullYear()) &&
+        (this.highlighted.from.getMonth() === date.getMonth()) &&
+        (this.highlighted.from.getDate() === date.getDate())
+    },
+    /**
+     * Whether a day is highlighted and it is the first date
+     * in the highlighted range of dates
+     * @param {Date}
+     * @return {Boolean}
+     */
+    isHighlightEnd: function isHighlightEnd (date) {
+      return this.isHighlightedDate(date) &&
+        (this.highlighted.to instanceof Date) &&
+        (this.highlighted.to.getFullYear() === date.getFullYear()) &&
+        (this.highlighted.to.getMonth() === date.getMonth()) &&
+        (this.highlighted.to.getDate() === date.getDate())
+    },
+    /**
+     * Helper
+     * @param  {mixed}  prop
+     * @return {Boolean}
+     */
+    isDefined: function isDefined (prop) {
+      return typeof prop !== 'undefined' && prop
+    }
+  }
+}
+// eslint-disable-next-line
+;
+
+(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=""; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+var PickerMonth = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showMonthView),expression:"showMonthView"}],class:[_vm.calendarClass, 'vdp-datepicker__calendar'],style:(_vm.calendarStyle)},[_c('header',[_c('span',{staticClass:"prev",class:{ 'disabled' : _vm.isPreviousYearDisabled(_vm.pageTimestamp) },on:{"click":_vm.previousYear}},[_vm._v("<")]),_vm._v(" "),_c('span',{staticClass:"month__year_btn",class:_vm.allowedToShowView('year') ? 'up' : '',on:{"click":_vm.showYearCalendar}},[_vm._v(_vm._s(_vm.pageYearName))]),_vm._v(" "),_c('span',{staticClass:"next",class:{ 'disabled' : _vm.isNextYearDisabled(_vm.pageTimestamp) },on:{"click":_vm.nextYear}},[_vm._v(">")])]),_vm._v(" "),_vm._l((_vm.months),function(month){return _c('span',{key:month.timestamp,staticClass:"cell month",class:{'selected': month.isSelected, 'disabled': month.isDisabled},on:{"click":function($event){$event.stopPropagation();_vm.selectMonth(month);}}},[_vm._v(_vm._s(month.month))])})],2)},staticRenderFns: [],
+  props: {
+    showMonthView: Boolean,
+    selectedDate: Date,
+    pageDate: Date,
+    pageTimestamp: Number,
+    disabledDates: Object,
+    calendarClass: String,
+    calendarStyle: Object,
+    translation: Object,
+    allowedToShowView: Function
+  },
+  computed: {
+    months: function months () {
+      var this$1 = this;
+
+      var d = this.pageDate;
+      var months = [];
+      // set up a new date object to the beginning of the current 'page'
+      var dObj = new Date(d.getFullYear(), 0, d.getDate(), d.getHours(), d.getMinutes());
+      for (var i = 0; i < 12; i++) {
+        months.push({
+          month: DateUtils.getMonthName(i, this$1.translation.months),
+          timestamp: dObj.getTime(),
+          isSelected: this$1.isSelectedMonth(dObj),
+          isDisabled: this$1.isDisabledMonth(dObj)
+        });
+        dObj.setMonth(dObj.getMonth() + 1);
+      }
+      return months
+    },
+    /**
+     * Get year name on current page.
+     * @return {String}
+     */
+    pageYearName: function pageYearName () {
+      var yearSuffix = this.translation.yearSuffix;
+      return ("" + (this.pageDate.getFullYear()) + yearSuffix)
+    }
+  },
+  methods: {
+    /**
+     * Emits a selectMonth event
+     * @param {Object} month
+     */
+    selectMonth: function selectMonth (month) {
+      if (month.isDisabled) {
+        return false
+      }
+      this.$emit('selectMonth', month);
+    },
+    /**
+     * Changes the year up or down
+     * @param {Number} incrementBy
+     */
+    changeYear: function changeYear (incrementBy) {
+      var date = this.pageDate;
+      date.setYear(date.getFullYear() + incrementBy);
+      this.$emit('changedYear', date);
+    },
+    /**
+     * Decrements the year
+     */
+    previousYear: function previousYear () {
+      if (!this.isPreviousYearDisabled()) {
+        this.changeYear(-1);
+      }
+    },
+    /**
+     * Checks if the previous year is disabled or not
+     * @return {Boolean}
+     */
+    isPreviousYearDisabled: function isPreviousYearDisabled () {
+      if (!this.disabledDates || !this.disabledDates.to) {
+        return false
+      }
+      return this.disabledDates.to.getFullYear() >= this.pageDate.getFullYear()
+    },
+    /**
+     * Increments the year
+     */
+    nextYear: function nextYear () {
+      if (!this.isNextYearDisabled()) {
+        this.changeYear(1);
+      }
+    },
+    /**
+     * Checks if the next year is disabled or not
+     * @return {Boolean}
+     */
+    isNextYearDisabled: function isNextYearDisabled () {
+      if (!this.disabledDates || !this.disabledDates.from) {
+        return false
+      }
+      return this.disabledDates.from.getFullYear() <= this.pageDate.getFullYear()
+    },
+    /**
+     * Emits an event that shows the year calendar
+     */
+    showYearCalendar: function showYearCalendar () {
+      this.$emit('showYearCalendar');
+    },
+    /**
+     * Whether the selected date is in this month
+     * @param {Date}
+     * @return {Boolean}
+     */
+    isSelectedMonth: function isSelectedMonth (date) {
+      return (this.selectedDate &&
+        this.selectedDate.getFullYear() === date.getFullYear() &&
+        this.selectedDate.getMonth() === date.getMonth())
+    },
+    /**
+     * Whether a month is disabled
+     * @param {Date}
+     * @return {Boolean}
+     */
+    isDisabledMonth: function isDisabledMonth (date) {
+      var disabledDates = false;
+
+      if (typeof this.disabledDates === 'undefined') {
+        return false
+      }
+
+      if (typeof this.disabledDates.to !== 'undefined' && this.disabledDates.to) {
+        if (
+          (date.getMonth() < this.disabledDates.to.getMonth() && date.getFullYear() <= this.disabledDates.to.getFullYear()) ||
+          date.getFullYear() < this.disabledDates.to.getFullYear()
+        ) {
+          disabledDates = true;
+        }
+      }
+      if (typeof this.disabledDates.from !== 'undefined' && this.disabledDates.from) {
+        if (
+          this.disabledDates.from &&
+          (date.getMonth() > this.disabledDates.from.getMonth() && date.getFullYear() >= this.disabledDates.from.getFullYear()) ||
+          date.getFullYear() > this.disabledDates.from.getFullYear()
+        ) {
+          disabledDates = true;
+        }
+      }
+      return disabledDates
+    }
+  }
+}
+// eslint-disable-next-line
+;
+
+(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=""; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var PickerYear = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showYearView),expression:"showYearView"}],class:[_vm.calendarClass, 'vdp-datepicker__calendar'],style:(_vm.calendarStyle)},[_c('header',[_c('span',{staticClass:"prev",class:{ 'disabled' : _vm.isPreviousDecadeDisabled(_vm.pageTimestamp) },on:{"click":_vm.previousDecade}},[_vm._v("<")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.getPageDecade))]),_vm._v(" "),_c('span',{staticClass:"next",class:{ 'disabled' : _vm.isNextDecadeDisabled(_vm.pageTimestamp) },on:{"click":_vm.nextDecade}},[_vm._v(">")])]),_vm._v(" "),_vm._l((_vm.years),function(year){return _c('span',{key:year.timestamp,staticClass:"cell year",class:{ 'selected': year.isSelected, 'disabled': year.isDisabled },on:{"click":function($event){$event.stopPropagation();_vm.selectYear(year);}}},[_vm._v(_vm._s(year.year))])})],2)},staticRenderFns: [],
+  props: {
+    showYearView: Boolean,
+    selectedDate: Date,
+    pageDate: Date,
+    pageTimestamp: Number,
+    disabledDates: Object,
+    highlighted: Object,
+    calendarClass: String,
+    calendarStyle: Object,
+    translation: Object,
+    allowedToShowView: Function
+  },
+  computed: {
+    years: function years () {
+      var this$1 = this;
+
+      var d = this.pageDate;
+      var years = [];
+      // set up a new date object to the beginning of the current 'page'
+      var dObj = new Date(Math.floor(d.getFullYear() / 10) * 10, d.getMonth(), d.getDate(), d.getHours(), d.getMinutes());
+      for (var i = 0; i < 10; i++) {
+        years.push({
+          year: dObj.getFullYear(),
+          timestamp: dObj.getTime(),
+          isSelected: this$1.isSelectedYear(dObj),
+          isDisabled: this$1.isDisabledYear(dObj)
+        });
+        dObj.setFullYear(dObj.getFullYear() + 1);
+      }
+      return years
+    },
+    /**
+     * @return {String}
+     */
+    getPageDecade: function getPageDecade () {
+      var decadeStart = Math.floor(this.pageDate.getFullYear() / 10) * 10;
+      var decadeEnd = decadeStart + 9;
+      var yearSuffix = this.translation.yearSuffix;
+      return (decadeStart + " - " + decadeEnd + yearSuffix)
+    }
+  },
+  methods: {
+    selectYear: function selectYear (year) {
+      if (year.isDisabled) {
+        return false
+      }
+      this.$emit('selectYear', year);
+    },
+    changeYear: function changeYear (incrementBy) {
+      var date = this.pageDate;
+      date.setYear(date.getFullYear() + incrementBy);
+      this.$emit('changedDecade', date);
+    },
+    previousDecade: function previousDecade () {
+      if (this.isPreviousDecadeDisabled()) {
+        return false
+      }
+      this.changeYear(-10);
+    },
+    isPreviousDecadeDisabled: function isPreviousDecadeDisabled () {
+      if (!this.disabledDates || !this.disabledDates.to) {
+        return false
+      }
+      return Math.floor(this.disabledDates.to.getFullYear() / 10) * 10 >= Math.floor(this.pageDate.getFullYear() / 10) * 10
+    },
+    nextDecade: function nextDecade () {
+      if (this.isNextDecadeDisabled()) {
+        return false
+      }
+      this.changeYear(10);
+    },
+    isNextDecadeDisabled: function isNextDecadeDisabled () {
+      if (!this.disabledDates || !this.disabledDates.from) {
+        return false
+      }
+      return Math.ceil(this.disabledDates.from.getFullYear() / 10) * 10 <= Math.ceil(this.pageDate.getFullYear() / 10) * 10
+    },
+
+    /**
+     * Whether the selected date is in this year
+     * @param {Date}
+     * @return {Boolean}
+     */
+    isSelectedYear: function isSelectedYear (date) {
+      return this.selectedDate && this.selectedDate.getFullYear() === date.getFullYear()
+    },
+    /**
+     * Whether a year is disabled
+     * @param {Date}
+     * @return {Boolean}
+     */
+    isDisabledYear: function isDisabledYear (date) {
+      var disabledDates = false;
+      if (typeof this.disabledDates === 'undefined' || !this.disabledDates) {
+        return false
+      }
+
+      if (typeof this.disabledDates.to !== 'undefined' && this.disabledDates.to) {
+        if (date.getFullYear() < this.disabledDates.to.getFullYear()) {
+          disabledDates = true;
+        }
+      }
+      if (typeof this.disabledDates.from !== 'undefined' && this.disabledDates.from) {
+        if (date.getFullYear() > this.disabledDates.from.getFullYear()) {
+          disabledDates = true;
+        }
+      }
+
+      return disabledDates
+    }
+  }
+}
+// eslint-disable-next-line
+;
+
+(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=".rtl { direction: rtl; } .vdp-datepicker { position: relative; text-align: left; } .vdp-datepicker * { box-sizing: border-box; } .vdp-datepicker__calendar { position: absolute; z-index: 100; background: #fff; width: 300px; border: 1px solid #ccc; } .vdp-datepicker__calendar header { display: block; line-height: 40px; } .vdp-datepicker__calendar header span { display: inline-block; text-align: center; width: 71.42857142857143%; float: left; } .vdp-datepicker__calendar header .prev, .vdp-datepicker__calendar header .next { width: 14.285714285714286%; float: left; text-indent: -10000px; position: relative; } .vdp-datepicker__calendar header .prev:after, .vdp-datepicker__calendar header .next:after { content: ''; position: absolute; left: 50%; top: 50%; -webkit-transform: translateX(-50%) translateY(-50%); transform: translateX(-50%) translateY(-50%); border: 6px solid transparent; } .vdp-datepicker__calendar header .prev:after { border-right: 10px solid #000; margin-left: -5px; } .vdp-datepicker__calendar header .prev.disabled:after { border-right: 10px solid #ddd; } .vdp-datepicker__calendar header .next:after { border-left: 10px solid #000; margin-left: 5px; } .vdp-datepicker__calendar header .next.disabled:after { border-left: 10px solid #ddd; } .vdp-datepicker__calendar header .prev:not(.disabled), .vdp-datepicker__calendar header .next:not(.disabled), .vdp-datepicker__calendar header .up:not(.disabled) { cursor: pointer; } .vdp-datepicker__calendar header .prev:not(.disabled):hover, .vdp-datepicker__calendar header .next:not(.disabled):hover, .vdp-datepicker__calendar header .up:not(.disabled):hover { background: #eee; } .vdp-datepicker__calendar .disabled { color: #ddd; cursor: default; } .vdp-datepicker__calendar .flex-rtl { display: flex; width: inherit; flex-wrap: wrap; } .vdp-datepicker__calendar .cell { display: inline-block; padding: 0 5px; width: 14.285714285714286%; height: 40px; line-height: 40px; text-align: center; vertical-align: middle; border: 1px solid transparent; } .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year { cursor: pointer; } .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day:hover, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover { border: 1px solid #4bd; } .vdp-datepicker__calendar .cell.selected { background: #4bd; } .vdp-datepicker__calendar .cell.selected:hover { background: #4bd; } .vdp-datepicker__calendar .cell.selected.highlighted { background: #4bd; } .vdp-datepicker__calendar .cell.highlighted { background: #cae5ed; } .vdp-datepicker__calendar .cell.highlighted.disabled { color: #a3a3a3; } .vdp-datepicker__calendar .cell.grey { color: #888; } .vdp-datepicker__calendar .cell.grey:hover { background: inherit; } .vdp-datepicker__calendar .cell.day-header { font-size: 75%; white-space: no-wrap; cursor: inherit; } .vdp-datepicker__calendar .cell.day-header:hover { background: inherit; } .vdp-datepicker__calendar .month, .vdp-datepicker__calendar .year { width: 33.333%; } .vdp-datepicker__clear-button, .vdp-datepicker__calendar-button { cursor: pointer; font-style: normal; } .vdp-datepicker__clear-button.disabled, .vdp-datepicker__calendar-button.disabled { color: #999; cursor: default; } "; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+var Datepicker = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vdp-datepicker",class:[_vm.wrapperClass, _vm.isRtl ? 'rtl' : '']},[_c('date-input',{attrs:{"selectedDate":_vm.selectedDate,"format":_vm.format,"translation":_vm.translation,"inline":_vm.inline,"id":_vm.id,"name":_vm.name,"refName":_vm.refName,"openDate":_vm.openDate,"placeholder":_vm.placeholder,"inputClass":_vm.inputClass,"typeable":_vm.typeable,"clearButton":_vm.clearButton,"clearButtonIcon":_vm.clearButtonIcon,"calendarButton":_vm.calendarButton,"calendarButtonIcon":_vm.calendarButtonIcon,"calendarButtonIconContent":_vm.calendarButtonIconContent,"disabled":_vm.disabled,"required":_vm.required,"bootstrapStyling":_vm.bootstrapStyling},on:{"showCalendar":_vm.showCalendar,"typedDate":_vm.setTypedDate,"clearDate":_vm.clearDate}}),_vm._v(" "),(_vm.allowedToShowView('day'))?_c('picker-day',{attrs:{"pageDate":_vm.pageDate,"selectedDate":_vm.selectedDate,"showDayView":_vm.showDayView,"fullMonthName":_vm.fullMonthName,"allowedToShowView":_vm.allowedToShowView,"disabledDates":_vm.disabledDates,"highlighted":_vm.highlighted,"calendarClass":_vm.calendarClass,"calendarStyle":_vm.calendarStyle,"translation":_vm.translation,"pageTimestamp":_vm.pageTimestamp,"isRtl":_vm.isRtl,"mondayFirst":_vm.mondayFirst},on:{"changedMonth":_vm.setPageDate,"selectDate":_vm.selectDate,"showMonthCalendar":_vm.showMonthCalendar,"selectedDisabled":function($event){_vm.$emit('selectedDisabled');}}}):_vm._e(),_vm._v(" "),(_vm.allowedToShowView('month'))?_c('picker-month',{attrs:{"pageDate":_vm.pageDate,"selectedDate":_vm.selectedDate,"showMonthView":_vm.showMonthView,"allowedToShowView":_vm.allowedToShowView,"disabledDates":_vm.disabledDates,"calendarClass":_vm.calendarClass,"calendarStyle":_vm.calendarStyle,"translation":_vm.translation},on:{"selectMonth":_vm.selectMonth,"showYearCalendar":_vm.showYearCalendar,"changedYear":_vm.setPageDate}}):_vm._e(),_vm._v(" "),(_vm.allowedToShowView('year'))?_c('picker-year',{attrs:{"pageDate":_vm.pageDate,"selectedDate":_vm.selectedDate,"showYearView":_vm.showYearView,"allowedToShowView":_vm.allowedToShowView,"disabledDates":_vm.disabledDates,"calendarClass":_vm.calendarClass,"calendarStyle":_vm.calendarStyle,"translation":_vm.translation},on:{"selectYear":_vm.selectYear,"changedDecade":_vm.setPageDate}}):_vm._e()],1)},staticRenderFns: [],
+  components: {
+    DateInput: DateInput,
+    PickerDay: PickerDay,
+    PickerMonth: PickerMonth,
+    PickerYear: PickerYear
+  },
+  props: {
+    value: {
+      validator: function (val) {
+        return val === null || val instanceof Date || typeof val === 'string' || typeof val === 'number'
+      }
+    },
+    name: String,
+    refName: String,
+    id: String,
+    format: {
+      type: [String, Function],
+      default: 'dd MMM yyyy'
+    },
+    language: {
+      type: Object,
+      default: function () { return en; }
+    },
+    openDate: {
+      validator: function (val) {
+        return val === null || val instanceof Date || typeof val === 'string' || typeof val === 'number'
+      }
+    },
+    fullMonthName: Boolean,
+    disabledDates: Object,
+    highlighted: Object,
+    placeholder: String,
+    inline: Boolean,
+    calendarClass: [String, Object],
+    inputClass: [String, Object],
+    wrapperClass: [String, Object],
+    mondayFirst: Boolean,
+    clearButton: Boolean,
+    clearButtonIcon: String,
+    calendarButton: Boolean,
+    calendarButtonIcon: String,
+    calendarButtonIconContent: String,
+    bootstrapStyling: Boolean,
+    initialView: String,
+    disabled: Boolean,
+    required: Boolean,
+    typeable: Boolean,
+    minimumView: {
+      type: String,
+      default: 'day'
+    },
+    maximumView: {
+      type: String,
+      default: 'year'
+    }
+  },
+  data: function data () {
+    var startDate = this.openDate ? new Date(this.openDate) : new Date();
+    return {
+      /*
+       * Vue cannot observe changes to a Date Object so date must be stored as a timestamp
+       * This represents the first day of the current viewing month
+       * {Number}
+       */
+      pageTimestamp: startDate.setDate(1),
+      /*
+       * Selected Date
+       * {Date}
+       */
+      selectedDate: null,
+      /*
+       * Flags to show calendar views
+       * {Boolean}
+       */
+      showDayView: false,
+      showMonthView: false,
+      showYearView: false,
+      /*
+       * Positioning
+       */
+      calendarHeight: 0
+    }
+  },
+  watch: {
+    value: function value (value$1) {
+      this.setValue(value$1);
+    },
+    openDate: function openDate () {
+      this.setPageDate();
+    },
+    initialView: function initialView () {
+      this.setInitialView();
+    }
+  },
+  computed: {
+    computedInitialView: function computedInitialView () {
+      if (!this.initialView) {
+        return this.minimumView
+      }
+
+      return this.initialView
+    },
+    pageDate: function pageDate () {
+      return new Date(this.pageTimestamp)
+    },
+
+    translation: function translation () {
+      return this.language
+    },
+
+    calendarStyle: function calendarStyle () {
+      return {
+        position: this.isInline ? 'static' : undefined
+      }
+    },
+    isOpen: function isOpen () {
+      return this.showDayView || this.showMonthView || this.showYearView
+    },
+    isInline: function isInline () {
+      return !!this.inline
+    },
+    isRtl: function isRtl () {
+      return this.translation.rtl === true
+    }
+  },
+  methods: {
+    /**
+     * Called in the event that the user navigates to date pages and
+     * closes the picker without selecting a date.
+     */
+    resetDefaultPageDate: function resetDefaultPageDate () {
+      if (this.selectedDate === null) {
+        this.setPageDate();
+        return
+      }
+      this.setPageDate(this.selectedDate);
+    },
+    /**
+     * Effectively a toggle to show/hide the calendar
+     * @return {mixed}
+     */
+    showCalendar: function showCalendar () {
+      if (this.disabled || this.isInline) {
+        return false
+      }
+      if (this.isOpen) {
+        return this.close(true)
+      }
+      this.setInitialView();
+      if (!this.isInline) {
+        this.$emit('opened');
+      }
+    },
+    /**
+     * Sets the initial picker page view: day, month or year
+     */
+    setInitialView: function setInitialView () {
+      var initialView = this.computedInitialView;
+      if (!this.allowedToShowView(initialView)) {
+        throw new Error(("initialView '" + (this.initialView) + "' cannot be rendered based on minimum '" + (this.minimumView) + "' and maximum '" + (this.maximumView) + "'"))
+      }
+      switch (initialView) {
+        case 'year':
+          this.showYearCalendar();
+          break
+        case 'month':
+          this.showMonthCalendar();
+          break
+        default:
+          this.showDayCalendar();
+          break
+      }
+    },
+    /**
+     * Are we allowed to show a specific picker view?
+     * @param {String} view
+     * @return {Boolean}
+     */
+    allowedToShowView: function allowedToShowView (view) {
+      var views = ['day', 'month', 'year'];
+      var minimumViewIndex = views.indexOf(this.minimumView);
+      var maximumViewIndex = views.indexOf(this.maximumView);
+      var viewIndex = views.indexOf(view);
+
+      return viewIndex >= minimumViewIndex && viewIndex <= maximumViewIndex
+    },
+    /**
+     * Show the day picker
+     * @return {Boolean}
+     */
+    showDayCalendar: function showDayCalendar () {
+      if (!this.allowedToShowView('day')) {
+        return false
+      }
+      this.close();
+      this.showDayView = true;
+      this.addOutsideClickListener();
+      return true
+    },
+    /**
+     * Show the month picker
+     * @return {Boolean}
+     */
+    showMonthCalendar: function showMonthCalendar () {
+      if (!this.allowedToShowView('month')) {
+        return false
+      }
+      this.close();
+      this.showMonthView = true;
+      this.addOutsideClickListener();
+      return true
+    },
+    /**
+     * Show the year picker
+     * @return {Boolean}
+     */
+    showYearCalendar: function showYearCalendar () {
+      if (!this.allowedToShowView('year')) {
+        return false
+      }
+      this.close();
+      this.showYearView = true;
+      this.addOutsideClickListener();
+      return true
+    },
+    /**
+     * Set the selected date
+     * @param {Number} timestamp
+     */
+    setDate: function setDate (timestamp) {
+      var date = new Date(timestamp);
+      this.selectedDate = new Date(date);
+      this.setPageDate(date);
+      this.$emit('selected', new Date(date));
+      this.$emit('input', new Date(date));
+    },
+    /**
+     * Clear the selected date
+     */
+    clearDate: function clearDate () {
+      this.selectedDate = null;
+      this.setPageDate();
+      this.$emit('selected', null);
+      this.$emit('input', null);
+      this.$emit('cleared');
+    },
+    /**
+     * @param {Object} day
+     */
+    selectDate: function selectDate (day) {
+      this.setDate(day.timestamp);
+      if (!this.isInline) {
+        this.close(true);
+      }
+    },
+    /**
+     * @param {Object} month
+     */
+    selectMonth: function selectMonth (month) {
+      var date = new Date(month.timestamp);
+      if (this.allowedToShowView('day')) {
+        this.setPageDate(date);
+        this.$emit('changedMonth', month);
+        this.showDayCalendar();
+      } else {
+        this.setDate(date);
+        if (!this.isInline) {
+          this.close(true);
+        }
+      }
+    },
+    /**
+     * @param {Object} year
+     */
+    selectYear: function selectYear (year) {
+      var date = new Date(year.timestamp);
+      if (this.allowedToShowView('month')) {
+        this.setPageDate(date);
+        this.$emit('changedYear', year);
+        this.showMonthCalendar();
+      } else {
+        this.setDate(date);
+        if (!this.isInline) {
+          this.close(true);
+        }
+      }
+    },
+    /**
+     * Set the datepicker value
+     * @param {Date|String|Number|null} date
+     */
+    setValue: function setValue (date) {
+      if (typeof date === 'string' || typeof date === 'number') {
+        var parsed = new Date(date);
+        date = isNaN(parsed.valueOf()) ? null : parsed;
+      }
+      if (!date) {
+        this.setPageDate();
+        this.selectedDate = null;
+        return
+      }
+      this.selectedDate = date;
+      this.setPageDate(date);
+    },
+    /**
+     * Sets the date that the calendar should open on
+     */
+    setPageDate: function setPageDate (date) {
+      if (!date) {
+        if (this.openDate) {
+          date = new Date(this.openDate);
+        } else {
+          date = new Date();
+        }
+      }
+      this.pageTimestamp = (new Date(date)).setDate(1);
+    },
+    /**
+     * Set the date from a typedDate event
+     */
+    setTypedDate: function setTypedDate (date) {
+      this.setDate(date.getTime());
+    },
+    /**
+     * Set up an event listener for clicks outside the picker
+     */
+    addOutsideClickListener: function addOutsideClickListener () {
+      var this$1 = this;
+
+      if (!this.isInline) {
+        setTimeout(function () {
+          document.addEventListener('click', this$1.clickOutside, false);
+          document.addEventListener('keyup', this$1.escapeCalendar, false);
+        }, 100);
+      }
+    },
+    /**
+     * Close the calendar if clicked outside the datepicker
+     * @param  {Event} event
+     */
+    clickOutside: function clickOutside (event) {
+      if (this.$el && !this.$el.contains(event.target)) {
+        this.resetDefaultPageDate();
+        this.close(true);
+      }
+    },
+    /**
+     * close the calendar if escape or enter are pressed
+     * @param {Event}
+     */
+    escapeCalendar: function escapeCalendar (event) {
+      if ([
+        27, // escape
+        13  // enter
+      ].includes(event.keyCode)) {
+        this.close(true);
+      }
+    },
+    /**
+     * Close all calendar layers
+     * @param {Boolean} full - emit close event
+     */
+    close: function close (full) {
+      this.showDayView = this.showMonthView = this.showYearView = false;
+      if (!this.isInline) {
+        if (full) {
+          this.$emit('closed');
+        }
+        document.removeEventListener('click', this.clickOutside, false);
+        document.addEventListener('keyup', this.escapeCalendar, false);
+      }
+    },
+    /**
+     * Initiate the component
+     */
+    init: function init () {
+      if (this.value) {
+        this.setValue(this.value);
+      }
+      if (this.isInline) {
+        this.setInitialView();
+      }
+    }
+  },
+  mounted: function mounted () {
+    this.init();
+  }
+}
+// eslint-disable-next-line
+;
+
+/* harmony default export */ __webpack_exports__["default"] = (Datepicker);
+
+
+/***/ }),
+
+/***/ 315:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowRegister
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "click-outside",
+                  rawName: "v-click-outside",
+                  value: _vm.hide,
+                  expression: "hide"
+                }
+              ],
+              staticClass: "modal__content modal__md"
+            },
+            [
+              _c("h4", { staticClass: "modal__head" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("translation.register")) +
+                    "\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal__body" },
+                [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group mt-4 mb-4" }, [
+                        _c("label", { attrs: { for: "name" } }, [
+                          _vm._v(_vm._s(_vm.$t("translation.name")))
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.userName,
+                              expression: "userName"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|min:3",
+                              expression: "'required|min:3'"
+                            }
+                          ],
+                          staticClass: "input",
+                          class: {
+                            "is-invalid input__danger": _vm.errors.has("name")
+                          },
+                          attrs: {
+                            type: "text",
+                            id: "name",
+                            name: "name",
+                            placeholder: _vm.$t("translation.name")
+                          },
+                          domProps: { value: _vm.userName },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.userName = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("name"),
+                                expression: "errors.has('name')"
+                              }
+                            ],
+                            staticClass: "invalid-feedback"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.errors.first("name")) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group mt-4 mb-4" }, [
+                        _c("label", { attrs: { for: "surname" } }, [
+                          _vm._v(_vm._s(_vm.$t("translation.surname")))
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.userSurname,
+                              expression: "userSurname"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|min:3",
+                              expression: "'required|min:3'"
+                            }
+                          ],
+                          staticClass: "input",
+                          class: {
+                            "is-invalid input__danger": _vm.errors.has(
+                              "surname"
+                            )
+                          },
+                          attrs: {
+                            type: "text",
+                            id: "surname",
+                            name: "surname",
+                            placeholder: _vm.$t("translation.surname")
+                          },
+                          domProps: { value: _vm.userSurname },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.userSurname = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("surname"),
+                                expression: "errors.has('surname')"
+                              }
+                            ],
+                            staticClass: "invalid-feedback"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.errors.first("surname")) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group mt-4 mb-4" }, [
+                        _c("label", { attrs: { for: "dateOfBirth" } }, [
+                          _vm._v(_vm._s(_vm.$t("translation.birthday")))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            class: {
+                              "is-invalid__date": _vm.errors.has("dateOfBirth")
+                            }
+                          },
+                          [
+                            _c("datepicker", {
+                              directives: [
+                                {
+                                  name: "validate",
+                                  rawName: "v-validate",
+                                  value: "required",
+                                  expression: "'required'"
+                                }
+                              ],
+                              attrs: {
+                                "input-class": "input",
+                                format: "yyyy-MM-dd",
+                                "data-vv-name": "dateOfBirth",
+                                "data-vv-value-path": "selectedDate",
+                                initialView: "year",
+                                id: "dateOfBirth",
+                                placeholder: _vm.$t("translation.birthday")
+                              },
+                              model: {
+                                value: _vm.userDateOfBirth,
+                                callback: function($$v) {
+                                  _vm.userDateOfBirth = $$v
+                                },
+                                expression: "userDateOfBirth"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.errors.has("dateOfBirth"),
+                                    expression: "errors.has('dateOfBirth')"
+                                  }
+                                ],
+                                staticClass: "invalid-feedback"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.errors.first("dateOfBirth")) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group mt-4 mb-4" }, [
+                        _c("label", { attrs: { for: "email" } }, [
+                          _vm._v(_vm._s(_vm.$t("translation.email")))
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.userEmail,
+                              expression: "userEmail"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|email",
+                              expression: "'required|email'"
+                            }
+                          ],
+                          staticClass: "input",
+                          class: {
+                            "is-invalid input__danger": _vm.errors.has("email")
+                          },
+                          attrs: {
+                            type: "text",
+                            id: "email",
+                            name: "email",
+                            placeholder: _vm.$t("translation.email")
+                          },
+                          domProps: { value: _vm.userEmail },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.userEmail = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("email"),
+                                expression: "errors.has('email')"
+                              }
+                            ],
+                            staticClass: "invalid-feedback"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.errors.first("email")) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group mb-4" }, [
+                        _c("label", { attrs: { for: "password" } }, [
+                          _vm._v(_vm._s(_vm.$t("translation.password")))
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.userPassword,
+                              expression: "userPassword"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|min:8",
+                              expression: "'required|min:8'"
+                            }
+                          ],
+                          staticClass: "input",
+                          class: {
+                            "is-invalid input__danger": _vm.errors.has(
+                              "password"
+                            )
+                          },
+                          attrs: {
+                            type: "password",
+                            id: "password",
+                            name: "password",
+                            placeholder: _vm.$t("translation.password")
+                          },
+                          domProps: { value: _vm.userPassword },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.userPassword = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("password"),
+                                expression: "errors.has('password')"
+                              }
+                            ],
+                            staticClass: "invalid-feedback"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.errors.first("password")) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group mb-4" }, [
+                        _c("label", { attrs: { for: "rePassword" } }, [
+                          _vm._v(_vm._s(_vm.$t("translation.confirmPassword")))
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.userPasswordConfirmation,
+                              expression: "userPasswordConfirmation"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|confirmed:password",
+                              expression: "'required|confirmed:password'"
+                            }
+                          ],
+                          staticClass: "input",
+                          class: {
+                            "is-invalid input__danger": _vm.errors.has(
+                              "rePassword"
+                            )
+                          },
+                          attrs: {
+                            type: "password",
+                            id: "rePassword",
+                            name: "rePassword",
+                            placeholder: _vm.$t("translation.confirmPassword")
+                          },
+                          domProps: { value: _vm.userPasswordConfirmation },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.userPasswordConfirmation = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("rePassword"),
+                                expression: "errors.has('rePassword')"
+                              }
+                            ],
+                            staticClass: "invalid-feedback"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.errors.first("rePassword")) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group mt-4 mb-4" }, [
+                        _c(
+                          "div",
+                          {
+                            class: {
+                              "is-invalid__date": _vm.errors.has("photo")
+                            }
+                          },
+                          [
+                            _c("label", { attrs: { for: "image" } }, [
+                              _vm._v(_vm._s(_vm.$t("translation.photo")))
+                            ]),
+                            _vm._v(" "),
+                            _c("vue-base64-file-upload", {
+                              directives: [
+                                {
+                                  name: "validate",
+                                  rawName: "v-validate",
+                                  value: "required",
+                                  expression: "'required'"
+                                }
+                              ],
+                              staticClass: "v1",
+                              attrs: {
+                                accept: "image/png,image/jpeg",
+                                "image-class":
+                                  "image-circle image-circle__45 mt-3",
+                                "input-class": "input",
+                                "max-size": _vm.customImageMaxSize,
+                                id: "image",
+                                "data-vv-name": "photo",
+                                "data-vv-value-path": "file",
+                                placeholder: _vm.$t("translation.photo")
+                              },
+                              on: { file: _vm.onFile, load: _vm.onLoad }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.errors.has("photo"),
+                                    expression: "errors.has('photo')"
+                                  }
+                                ],
+                                staticClass: "invalid-feedback"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.errors.first("photo")) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn button-md button-accent button-center mb-4",
+                      attrs: { type: "button" },
+                      on: { click: _vm.register }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(_vm.$t("translation.register")) +
+                          "\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "small" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.enterTheSocialNetwork")) +
+                        ":\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "link mr-3",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _c("i", {
+                        staticClass:
+                          "fa fa-google-plus-square fa-2x mr-2 fa-relative",
+                        attrs: { "aria-hidden": "true" }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v(_vm._s(_vm.$t("translation.throughGoogle")))
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    { staticClass: "link", attrs: { to: { name: "home" } } },
+                    [
+                      _c("i", {
+                        staticClass:
+                          "fa fa-facebook-square fa-2x mr-2 fa-relative",
+                        attrs: { "aria-hidden": "true" }
+                      }),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(_vm.$t("translation.throughFacebook")) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0c43c885", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 317:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(318)
+/* template */
+var __vue_template__ = __webpack_require__(319)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/modals/Login.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4052ce12", Component.options)
+  } else {
+    hotAPI.reload("data-v-4052ce12", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 318:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _regenerator = __webpack_require__(9);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(10);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _modals = __webpack_require__(43);
+
+var _modals2 = _interopRequireDefault(_modals);
+
+var _user = __webpack_require__(29);
+
+var _user2 = _interopRequireDefault(_user);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    mixins: [_modals2.default, _user2.default],
+    methods: {
+        hide: function hide() {
+            this.modalsIsShowLogin = false;
+            this.userEmail = null;
+            this.userPassword = null;
+        },
+        login: function login() {
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+                                if (!valid) {
+                                    _context.next = 15;
+                                    break;
+                                }
+
+                                _context.prev = 4;
+                                _context.next = 7;
+                                return _this.$store.dispatch('user/login', {
+                                    email: _this.userEmail,
+                                    password: _this.userPassword
+                                });
+
+                            case 7:
+                                if (_this.userRole === 'user') {
+                                    window.Cookies.set('first_stage', 3);
+                                    _this.userFirstStage = 3;
+                                } else {
+                                    _this.$router.push({
+                                        name: 'admin.home'
+                                    });
+                                }
+                                _this.hide();
+                                _context.next = 15;
+                                break;
+
+                            case 11:
+                                _context.prev = 11;
+                                _context.t0 = _context['catch'](4);
+
+                                _this.hide();
+                                _this.$toast.error({
+                                    title: _this.$t('translation.error'),
+                                    message: _this.$t(_context.t0.data.message)
+                                });
+
+                            case 15:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this, [[4, 11]]);
+            }))();
+        },
+        authenticate: function authenticate(provider) {
+            this.$auth.authenticate(provider).then(function () {
+                // Execute application logic after successful social authentication
+            });
+        }
+    }
+};
+
+/***/ }),
+
+/***/ 319:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
+    _vm.modalsIsShowLogin
+      ? _c("div", { staticClass: "modal__wrap" }, [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "click-outside",
+                  rawName: "v-click-outside",
+                  value: _vm.hide,
+                  expression: "hide"
+                }
+              ],
+              staticClass: "modal__content"
+            },
+            [
+              _c("h4", { staticClass: "modal__head" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("translation.login")) +
+                    "\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal__body" },
+                [
+                  _c("div", { staticClass: "form-group mt-4 mb-4" }, [
+                    _c("label", { attrs: { for: "email" } }, [
+                      _vm._v(_vm._s(_vm.$t("translation.email")))
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.userEmail,
+                          expression: "userEmail"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required|email",
+                          expression: "'required|email'"
+                        }
+                      ],
+                      staticClass: "input",
+                      class: {
+                        "is-invalid input__danger": _vm.errors.has("email")
+                      },
+                      attrs: {
+                        type: "text",
+                        id: "email",
+                        name: "email",
+                        placeholder: _vm.$t("translation.email")
+                      },
+                      domProps: { value: _vm.userEmail },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.userEmail = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("email"),
+                            expression: "errors.has('email')"
+                          }
+                        ],
+                        staticClass: "invalid-feedback"
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.errors.first("email")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group mb-4" }, [
+                    _c("label", { attrs: { for: "password" } }, [
+                      _vm._v(_vm._s(_vm.$t("translation.password")))
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.userPassword,
+                          expression: "userPassword"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required|min:8",
+                          expression: "'required|min:8'"
+                        }
+                      ],
+                      staticClass: "input",
+                      class: {
+                        "is-invalid input__danger": _vm.errors.has("password")
+                      },
+                      attrs: {
+                        type: "password",
+                        id: "password",
+                        name: "password",
+                        placeholder: _vm.$t("translation.password")
+                      },
+                      domProps: { value: _vm.userPassword },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.userPassword = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("password"),
+                            expression: "errors.has('password')"
+                          }
+                        ],
+                        staticClass: "invalid-feedback"
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.errors.first("password")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn button-md button-accent button-center mb-4",
+                      attrs: { type: "button" },
+                      on: { click: _vm.login }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(_vm.$t("translation.enter")) +
+                          "\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "small" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.enterTheSocialNetwork")) +
+                        ":\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "link mr-3",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _c("i", {
+                        staticClass:
+                          "fa fa-google-plus-square fa-2x mr-2 fa-relative",
+                        attrs: { "aria-hidden": "true" }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v(_vm._s(_vm.$t("translation.throughGoogle")))
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "link",
+                      attrs: { href: "javascript:" },
+                      on: {
+                        click: function($event) {
+                          _vm.authenticate("facebook")
+                        }
+                      }
+                    },
+                    [
+                      _c("i", {
+                        staticClass:
+                          "fa fa-facebook-square fa-2x mr-2 fa-relative",
+                        attrs: { "aria-hidden": "true" }
+                      }),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(_vm.$t("translation.throughFacebook")) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4052ce12", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 330:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Login = __webpack_require__(317);
+
+var loginModal = _interopRequireWildcard(_Login);
+
+var _Register = __webpack_require__(312);
+
+var registerModal = _interopRequireWildcard(_Register);
+
+var _user = __webpack_require__(29);
+
+var _user2 = _interopRequireDefault(_user);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+exports.default = {
+    components: {
+        loginModal: loginModal,
+        registerModal: registerModal
+    },
+    mixins: [_user2.default],
+    data: function data() {
+        return {
+            isAdmin: true
+        };
+    },
+    metaInfo: function metaInfo() {
+        return {
+            title: this.$t('translation.homepage')
+        };
+    },
+    mounted: function mounted() {
+        if (this.userRole === 'uni_admin' || this.userRole === 'global_admin') {
+            this.$router.push({
+                name: 'admin.home'
+            });
+        }
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 331:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "homepage" },
+    [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-md-6" },
+            [
+              _c("h1", [
+                _vm._v(_vm._s(_vm.$t("translation.stride")) + " -"),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "accent-color" }, [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.$t("translation.greatFuture")) +
+                      "\n                    "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "gray-color mt-4 mb-1" }, [
+                _vm._v(_vm._s(_vm.$t("translation.beforeEveryone")) + ":")
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list list__accent mb-5" }, [
+                _c("li", [
+                  _c("span", [
+                    _vm._v(_vm._s(_vm.$t("translation.selectUniversity")))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("span", [
+                    _vm._v(_vm._s(_vm.$t("translation.acquaintWithUniversity")))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("span", [
+                    _vm._v(_vm._s(_vm.$t("translation.tryYourself")))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("span", [
+                    _vm._v(
+                      _vm._s(_vm.$t("translation.acquaintWithStudentLife"))
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn button-md button-accent",
+                  attrs: {
+                    tag: "button",
+                    to: { name: "user.room" },
+                    type: "button"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.forward")) +
+                      "\n                "
+                  )
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-none d-md-block bg-right-image" }),
+          _vm._v(" "),
+          _c("span", { staticClass: "copyright ml-3" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$t("translation.developedByStudents")) +
+                "\n                "
+            ),
+            _c(
+              "a",
+              {
+                staticClass: "link link__accent",
+                attrs: { href: "http://sumdu.edu.ua/" }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.$t("translation.sumdu")) +
+                    "\n                "
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("login-modal"),
+      _vm._v(" "),
+      _c("register-modal")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-440dff1c", module.exports)
+  }
+}
+
+/***/ })
+
+});

@@ -62,6 +62,8 @@ export const logout = async ({ commit }) => {
     commit(types.ID, null);
     commit(types.NAME, null);
     commit(types.EMAIL, null);
+    commit(types.USER, null);
+    commit(types.FIRST_STAGE, null);
     commit(types.CREATED_AT, null);
     commit(types.UPDATED_AT, null);
     commit(types.LOGOUT);

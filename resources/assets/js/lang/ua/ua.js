@@ -202,6 +202,7 @@ export default {
         addDepartment: 'Додати кафедру',
         department: 'Кафедра',
         menu: 'Меню',
+        exit: 'Вихід',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

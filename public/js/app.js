@@ -63103,8 +63103,11 @@ var getMajors = exports.getMajors = function () {
                     case 2:
                         json = _context10.sent;
 
+
+                        console.log(json);
+
                         if (!(json.status === 200)) {
-                            _context10.next = 6;
+                            _context10.next = 7;
                             break;
                         }
 
@@ -63112,10 +63115,10 @@ var getMajors = exports.getMajors = function () {
 
                         return _context10.abrupt('return', json.data);
 
-                    case 6:
+                    case 7:
                         throw json;
 
-                    case 7:
+                    case 8:
                     case 'end':
                         return _context10.stop();
                 }
@@ -64959,7 +64962,7 @@ exports.default = {
                         case 0:
                             _context8.prev = 0;
                             _context8.next = 3;
-                            return window.axios.get(url + '/api/user/major/' + id);
+                            return window.axios.get(url + '/api/user/majors/' + id);
 
                         case 3:
                             _ref8 = _context8.sent;
@@ -70370,7 +70373,11 @@ exports.default = {
         addDepartment: 'Додати кафедру',
         department: 'Кафедра',
         menu: 'Меню',
-        exit: 'Вихід'
+        exit: 'Вихід',
+        annPuzzle: 'Тепер тобі необхідно подати документи в ВУЗ в електронному виді, але виникла невелика помилка і твій комп\'ютер зламався, спробуй відремонтувати його',
+        major: 'Спеціальність',
+        notSelected: 'Не обрано',
+        annTest: 'Тепер я пропоную тобі пройти тест'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'
@@ -81203,6 +81210,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     mixins: [_modals2.default, _user2.default],
@@ -81266,6 +81281,135 @@ var render = function() {
           [
             _vm.userLogged
               ? [
+                  _vm.userFirstStage > 3
+                    ? _c(
+                        "span",
+                        {
+                          staticClass:
+                            "d-inline-block mb-3 mr-4 notification__parent"
+                        },
+                        [
+                          _c("strong", [
+                            _vm._v(_vm._s(_vm.$t("translation.vnz")) + ":")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.isShowUniversityDetails,
+                                  expression: "isShowUniversityDetails"
+                                }
+                              ],
+                              staticClass: "notification__child"
+                            },
+                            [
+                              _c("span", { staticClass: "row" }, [
+                                _c("span", { staticClass: "col-4" }, [
+                                  _vm.userSelectedUniversity &&
+                                  _vm.userSelectedUniversity.image
+                                    ? _c("img", {
+                                        staticClass:
+                                          "image-circle image-circle__60 mt-3",
+                                        attrs: {
+                                          src:
+                                            _vm.userSelectedUniversity.image
+                                              .source
+                                        }
+                                      })
+                                    : _vm._e()
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "col" }, [
+                                  _c("span", { staticClass: "mb-0" }, [
+                                    _vm._v(
+                                      _vm._s(_vm.$t("translation.faculty")) +
+                                        ":"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("strong", [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "dark-color lh-text mb-0"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(
+                                              _vm.userSelectedFaculty
+                                                ? _vm.userSelectedFaculty.name
+                                                : _vm.$t(
+                                                    "translation.notSelected"
+                                                  )
+                                            ) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "mt-2 mb-0" }, [
+                                    _vm._v(
+                                      _vm._s(_vm.$t("translation.speciality")) +
+                                        ":"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("strong", [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "dark-color lh-text mb-0"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(
+                                              _vm.userSelectedMajor
+                                                ? _vm.userSelectedMajor.name
+                                                : _vm.$t(
+                                                    "translation.notSelected"
+                                                  )
+                                            ) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "link link__accent-dark",
+                              attrs: { href: "javascript:" },
+                              on: {
+                                mouseover: function($event) {
+                                  _vm.isShowUniversityDetails = true
+                                },
+                                mouseleave: function($event) {
+                                  _vm.isShowUniversityDetails = false
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        Сумський державний університет\n                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c("span", { staticClass: "d-inline-block" }, [
                     _c("strong", [
                       _vm._v(_vm._s(_vm.$t("translation.welcome")) + ":")
@@ -81289,7 +81433,7 @@ var render = function() {
                           [_vm._v(_vm._s(_vm.$t("translation.exit")))]
                         ),
                         _vm._v(" "),
-                        _vm.userUser.image.source
+                        _vm.userUser.image
                           ? [
                               _c("img", {
                                 staticClass:

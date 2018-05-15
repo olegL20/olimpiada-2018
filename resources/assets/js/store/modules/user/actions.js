@@ -110,6 +110,8 @@ export const getDepartments = async ({ commit }, payload) => {
 export const getMajors = async ({ commit }, payload) => {
     const json = await user.getMajors(payload.id);
 
+    console.log(json);
+
     if (json.status === 200) {
         commit(types.MAJORS, json.data.data);
 

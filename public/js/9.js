@@ -3986,6 +3986,21 @@ exports.default = {
             isShowPhone: false
         };
     },
+
+    methods: {
+        showAdvice: function showAdvice() {
+            this.isShowMessage = false;
+            this.modalsIsShowAdvice = true;
+        },
+        showPuzzle: function showPuzzle() {
+            window.Cookies.set('first_stage', 5);
+            this.userFirstStage = 5;
+        },
+        showTest: function showTest() {
+            window.Cookies.set('first_stage', 7);
+            this.userFirstStage = 7;
+        }
+    },
     metaInfo: function metaInfo() {
         return {
             title: this.$t('translation.room')
@@ -3999,11 +4014,24 @@ exports.default = {
         if (this.userFirstStage === 4) {
             this.userBackground = 'background-green';
             this.userSelectedUniversity = JSON.parse(window.Cookies.get('university'));
+            this.userSelectedFaculty = JSON.parse(window.Cookies.get('faculty'));
+            this.userSelectedMajor = JSON.parse(window.Cookies.get('major'));
         } else {
             this.userBackground = 'background-blue';
         }
     }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4896,6 +4924,8 @@ exports.default = {
                                     window.Cookies.set('first_stage', 4);
                                     _this.userFirstStage = 4;
                                     window.Cookies.set('university', (0, _stringify2.default)(_this.userSelectedUniversity));
+                                    window.Cookies.set('faculty', (0, _stringify2.default)(_this.userSelectedFaculty));
+                                    window.Cookies.set('major', (0, _stringify2.default)(_this.userSelectedMajor));
                                 }
 
                             case 4:
@@ -5402,11 +5432,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
 
 exports.default = {
     components: {
@@ -5524,7 +5549,7 @@ exports = module.exports = __webpack_require__(23)(false);
 
 
 // module
-exports.push([module.i, "\n.frame-wrapper {\n  margin: 0 auto;\n  position: relative;\n  -webkit-box-shadow: 0 0 0px 10px;\n          box-shadow: 0 0 0px 10px;\n}\n.frame-wrapper .original {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n}\n.frame-wrapper p.win {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    background: rgba(0, 0, 0, 0.5);\n    color: #fff;\n    font-size: 40px;\n    margin: 0 0;\n    background: rgba(43, 181, 82, 0.7);\n    text-transform: uppercase;\n}\n.frame {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  background: #b0d9f0;\n  background-size: cover;\n}\n.controls {\n  margin-top: 30px;\n}\n.controls a {\n    display: inline-block;\n    text-decoration: none;\n    padding: 6px 12px;\n    background: #f78403;\n    color: #fff;\n    border-radius: 3px;\n}\n.controls a.toggle-original {\n      background: #d05b88;\n}\n.controls a.restart {\n      background: #368ba0;\n}\n.controls a.shuffle {\n      background: #3ebb5c;\n}\n", ""]);
+exports.push([module.i, "\n.frame-wrapper {\n  margin: 0 auto;\n  position: relative;\n  -webkit-box-shadow: 0 0 0px 10px;\n          box-shadow: 0 0 0px 10px;\n}\n.frame-wrapper .original {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n}\n.frame-wrapper p.win {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    background: rgba(0, 0, 0, 0.5);\n    color: #fff;\n    font-size: 40px;\n    margin: 0 0;\n    background: rgba(43, 181, 82, 0.7);\n    text-transform: uppercase;\n    line-height: 1.5;\n}\n.frame {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  background: #b0d9f0;\n  background-size: cover;\n}\n.controls {\n  margin-top: 30px;\n}\n.controls a {\n    display: inline-block;\n    text-decoration: none;\n    padding: 6px 12px;\n    background: #f78403;\n    color: #fff;\n    border-radius: 3px;\n}\n.controls a.toggle-original {\n      background: #d05b88;\n}\n.controls a.restart {\n      background: #368ba0;\n}\n.controls a.shuffle {\n      background: #3ebb5c;\n}\n", ""]);
 
 // exports
 
@@ -5553,9 +5578,13 @@ var _Tile = __webpack_require__(351);
 
 var _Tile2 = _interopRequireDefault(_Tile);
 
+var _user = __webpack_require__(29);
+
+var _user2 = _interopRequireDefault(_user);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
+var backupTiles = null; //
 //
 //
 //
@@ -5587,11 +5616,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 
 /* eslint-disable */
-var backupTiles = null;
-
 exports.default = {
     components: { Tile: _Tile2.default },
-
+    mixins: [_user2.default],
     data: function data() {
         return {
             image: null,
@@ -5610,13 +5637,28 @@ exports.default = {
 
 
     computed: {
-        frameSize: function frameSize() {
-            return {
-                width: this.tileSize.width * this.size.horizontal + 'px',
-                height: this.tileSize.height * this.size.vertical + 'px'
-            };
+        frameSize: {
+            get: function get() {
+                if (window.innerWidth < 756) {
+                    return {
+                        width: '200px',
+                        height: '200px'
+                    };
+                } else if (window.innerWidth < 992) {
+                    return {
+                        width: '500px',
+                        height: '500px'
+                    };
+                }
+                return {
+                    width: this.tileSize.width * this.size.horizontal + 'px',
+                    height: this.tileSize.height * this.size.vertical + 'px'
+                };
+            },
+            set: function set(value) {
+                return value;
+            }
         },
-
 
         /**
          * The total number of tiles in the current board.
@@ -5641,6 +5683,9 @@ exports.default = {
                     return false;
                 }
             }
+
+            window.Cookies.set('first_stage', 6);
+            this.userFirstStage = 6;
 
             return true;
         }
@@ -6446,7 +6491,9 @@ var render = function() {
   return _c("div", { staticClass: "board" }, [
     _c("div", { staticClass: "frame-wrapper", style: _vm.frameSize }, [
       _vm.valid
-        ? _c("p", { staticClass: "win" }, [_vm._v("You Win!")])
+        ? _c("p", { staticClass: "win" }, [
+            _vm._v("Ви зібрали ком'ютер та відправили документи!")
+          ])
         : _vm._e(),
       _vm._v(" "),
       _vm.showingOriginal && _vm.image
@@ -6489,7 +6536,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n            Toggle Original Image\n        ")]
+        [_vm._v("\n            Показати оригінальну картинку\n        ")]
       ),
       _vm._v(" "),
       _c(
@@ -6504,7 +6551,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("Reshuffle")]
+        [_vm._v("Перемішати")]
       ),
       _vm._v(" "),
       _c(
@@ -6519,7 +6566,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("Reset")]
+        [_vm._v("Оновити")]
       ),
       _vm._v(" "),
       _c(
@@ -6534,7 +6581,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("New Game")]
+        [_vm._v("Дуже складно")]
       )
     ])
   ])
@@ -6708,8 +6755,8 @@ exports.default = {
             (0, _blueimpLoadImage2.default)(e.target.files[0], function (canvas) {
                 _this.image = canvas.toDataURL();
             }, {
-                maxWidth: 600,
-                maxHeight: 600,
+                maxWidth: 400,
+                maxHeight: 400,
                 minWidth: 200,
                 minHeight: 200,
                 canvas: true
@@ -6732,8 +6779,21 @@ exports.default = {
          * Reset the options.
          */
         reset: function reset() {
-            this.image = null;
-            document.querySelector('#optionsForm').reset();
+            this.$emit('gameStart', {
+                image: this.image,
+                size: {
+                    horizontal: 2,
+                    vertical: 2
+                }
+            });
+        }
+    },
+    mounted: function mounted() {
+        if (this.image) {
+            this.$emit('gameStart', {
+                image: this.image,
+                size: this.size
+            });
         }
     }
 };
@@ -7548,9 +7608,7 @@ var render = function() {
         ],
         ref: "optionsPane",
         on: { gameStart: _vm.start }
-      }),
-      _vm._v(" "),
-      _vm._m(1)
+      })
     ],
     1
   )
@@ -7561,19 +7619,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("header", [_c("h1", [_vm._v("Slider Puzzle")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("footer", [
-      _vm._v("\n        Built with "),
-      _c("a", { attrs: { href: "https://vuejs.org" } }, [_vm._v("Vue")]),
-      _vm._v(" •\n        "),
-      _c("a", { attrs: { href: "https://github.com/phanan/slider-puzzle" } }, [
-        _vm._v("GitHub")
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -7601,7 +7646,9 @@ var render = function() {
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-9 col-sm-8" }, [
-            _vm.userFirstStage !== 4 && _vm.userFirstStage !== 5
+            _vm.userFirstStage !== 4 &&
+            _vm.userFirstStage !== 5 &&
+            _vm.userFirstStage !== 6
               ? _c("div", { staticClass: "things" })
               : _vm._e(),
             _vm._v(" "),
@@ -7614,8 +7661,10 @@ var render = function() {
                           {
                             staticClass: "university__header",
                             style: {
-                              background: _vm.userUser.image
-                                ? "url(" + _vm.userUser.image.source + ")"
+                              background: _vm.userSelectedUniversity.image
+                                ? "url(" +
+                                  _vm.userSelectedUniversity.image.source +
+                                  ")"
                                 : "white"
                             }
                           },
@@ -7625,12 +7674,14 @@ var render = function() {
                               { staticClass: "university__short-info" },
                               [
                                 _c("div", { staticClass: "media" }, [
-                                  _vm.userUser.image
+                                  _vm.userSelectedUniversity.image
                                     ? _c("img", {
                                         staticClass:
                                           "image-circle image-circle__60 mr-4",
                                         attrs: {
-                                          src: _vm.userUser.image.source
+                                          src:
+                                            _vm.userSelectedUniversity.image
+                                              .source
                                         }
                                       })
                                     : _vm._e(),
@@ -7688,11 +7739,15 @@ var render = function() {
                                       ),
                                       _vm._v(" "),
                                       _c(
-                                        "button",
+                                        "a",
                                         {
                                           staticClass:
                                             "btn button-md button-transparent d-block mt-4",
-                                          attrs: { type: "button" }
+                                          attrs: {
+                                            href:
+                                              _vm.userSelectedUniversity.site,
+                                            type: "button"
+                                          }
                                         },
                                         [
                                           _vm._v(
@@ -7770,7 +7825,7 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm.userFirstStage === 5
+            _vm.userFirstStage === 5 || _vm.userFirstStage === 6
               ? _c("div", { staticClass: "room__content" }, [
                   _c(
                     "div",
@@ -7831,7 +7886,7 @@ var render = function() {
                 }
               },
               [
-                !_vm.isShowMessage
+                !_vm.isShowMessage && _vm.userFirstStage !== 5
                   ? _c("div", {
                       staticClass: "message__new-message",
                       attrs: { disabled: !_vm.isShowPhone },
@@ -7841,7 +7896,7 @@ var render = function() {
                         }
                       }
                     })
-                  : _vm.isShowMessage
+                  : _vm.isShowMessage || _vm.userFirstStage === 5
                     ? [
                         _c("p", { staticClass: "message__name" }, [
                           _vm._v(_vm._s(_vm.$t("translation.ann")))
@@ -7965,11 +8020,7 @@ var render = function() {
                                         staticClass:
                                           "link link__white pull-right mr-4",
                                         attrs: { href: "javascript:" },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.modalsIsShowAdvice = true
-                                          }
-                                        }
+                                        on: { click: _vm.showAdvice }
                                       },
                                       [
                                         _vm._v(
@@ -7990,7 +8041,7 @@ var render = function() {
                                   _c("div", { staticClass: "message__quote" }, [
                                     _c("p", { staticClass: "mb-0" }, [
                                       _vm._v(
-                                        _vm._s(_vm.$t("translation.annAdvice"))
+                                        _vm._s(_vm.$t("translation.annPuzzle"))
                                       )
                                     ]),
                                     _vm._v(" "),
@@ -8000,11 +8051,38 @@ var render = function() {
                                         staticClass:
                                           "link link__white pull-right mr-4",
                                         attrs: { href: "javascript:" },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.modalsIsShowAdvice = true
-                                          }
-                                        }
+                                        on: { click: _vm.showPuzzle }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(_vm.$t("translation.next")) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.userFirstStage === 6
+                              ? [
+                                  _c("div", { staticClass: "message__angle" }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "message__quote" }, [
+                                    _c("p", { staticClass: "mb-0" }, [
+                                      _vm._v(
+                                        _vm._s(_vm.$t("translation.annTest"))
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "link link__white pull-right mr-4",
+                                        attrs: { href: "javascript:" },
+                                        on: { click: _vm.showTest }
                                       },
                                       [
                                         _vm._v(

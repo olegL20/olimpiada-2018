@@ -1,7 +1,7 @@
 <template>
     <div class="board">
         <div class="frame-wrapper" :style="frameSize">
-            <p v-if="valid" class="win">You Win!</p>
+            <p v-if="valid" class="win">Ви зібрали ком'ютер та відправили документи!</p>
             <div class="original"
                  v-if="showingOriginal && image"
                  @click="showingOriginal = false"
@@ -19,11 +19,11 @@
 
         <div class="controls">
             <a class="toggle-original" href="#" @click.prevent="showingOriginal = !showingOriginal">
-                Toggle Original Image
+                Показати оригінальну картинку
             </a>
-            <a class="shuffle" href="#" @click.prevent="shuffleTiles">Reshuffle</a>
-            <a class="reset" href="#" @click.prevent="reset">Reset</a>
-            <a class="restart" href="#" @click.prevent="restart">New Game</a>
+            <a class="shuffle" href="#" @click.prevent="shuffleTiles">Перемішати</a>
+            <a class="reset" href="#" @click.prevent="reset">Оновити</a>
+            <a class="restart" href="#" @click.prevent="restart">Дуже складно</a>
         </div>
     </div>
 </template>
@@ -32,12 +32,15 @@
     /* eslint-disable */
     import sample from 'lodash.sample';
     import Tile from './Tile.vue';
+    import userMixin from '../../../mixins/user';
 
     let backupTiles = null;
 
     export default {
         components: { Tile },
-
+        mixins: [
+            userMixin,
+        ],
         data() {
             return {
                 image: null,
@@ -55,11 +58,27 @@
         },
 
         computed: {
-            frameSize() {
-                return {
-                    width: `${this.tileSize.width * this.size.horizontal}px`,
-                    height: `${this.tileSize.height * this.size.vertical}px`,
-                };
+            frameSize: {
+                get() {
+                    if (window.innerWidth < 756) {
+                        return {
+                            width: `200px`,
+                            height: `200px`,
+                        };
+                    } else if (window.innerWidth < 992) {
+                        return {
+                            width: `500px`,
+                            height: `500px`,
+                        };
+                    }
+                    return {
+                        width: `${this.tileSize.width * this.size.horizontal}px`,
+                        height: `${this.tileSize.height * this.size.vertical}px`,
+                    };
+                },
+                set(value) {
+                    return value;
+                },
             },
 
             /**
@@ -84,6 +103,9 @@
                         return false;
                     }
                 }
+
+                window.Cookies.set('first_stage', 6);
+                this.userFirstStage = 6;
 
                 return true
             }
@@ -231,6 +253,7 @@
             margin: 0 0;
             background: rgba(43, 181, 82, 0.7);
             text-transform: uppercase;
+            line-height: 1.5;
         }
     }
 

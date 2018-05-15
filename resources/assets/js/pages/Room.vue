@@ -4,17 +4,17 @@
             <div class="row">
 
                 <div class="col-md-9 col-sm-8">
-                    <div v-if="userFirstStage !== 4 && userFirstStage !== 5" class="things"></div>
+                    <div v-if="userFirstStage !== 4 && userFirstStage !== 5 && userFirstStage !== 6" class="things"></div>
                     <div v-if="userFirstStage === 4" class="room__content">
                         <div v-if="userSelectedUniversity" class="university__wrapper">
                             <div class="university__header"
-                                 :style="{'background': userUser.image
-                                                        ? `url(${userUser.image.source})`
+                                 :style="{'background': userSelectedUniversity.image
+                                                        ? `url(${userSelectedUniversity.image.source})`
                                                         : 'white'}">
                                 <div class="university__short-info">
                                     <div class="media">
-                                        <img v-if="userUser.image"
-                                             :src="userUser.image.source"
+                                        <img v-if="userSelectedUniversity.image"
+                                             :src="userSelectedUniversity.image.source"
                                              class="image-circle image-circle__60 mr-4">
                                         <div class="media-body dark-color mt-1">
                                             <strong>
@@ -25,9 +25,9 @@
                                             <a href="#map" class="link link__accent-dark">
                                                 {{ $t("translation.watchMap") }}
                                             </a>
-                                            <button type="button" class="btn button-md button-transparent d-block mt-4">
+                                            <a :href='userSelectedUniversity.site' type="button" class="btn button-md button-transparent d-block mt-4">
                                                 {{ $t("translation.goToSite") }}
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    <div v-if="userFirstStage === 5" class="room__content">
+                    <div v-if="userFirstStage === 5 || userFirstStage === 6" class="room__content">
                         <div class="puzzle__wrapper">
                             <puzzle></puzzle>
                         </div>
@@ -89,9 +89,9 @@
                          class="phone clearfix"
                          :class="{ 'phone__show': isShowPhone }">
 
-                        <div v-if="!isShowMessage" @click="isShowMessage = true" :disabled="!isShowPhone" class="message__new-message"></div>
+                        <div v-if="!isShowMessage && userFirstStage !== 5" @click="isShowMessage = true" :disabled="!isShowPhone" class="message__new-message"></div>
 
-                        <template v-else-if="isShowMessage">
+                        <template v-else-if="isShowMessage || userFirstStage === 5">
 
                             <p class="message__name">{{ $t("translation.ann") }}</p>
 
@@ -127,7 +127,7 @@
                                     <div class="message__quote">
                                         <p class="mb-0">{{ $t("translation.annAdvice") }}</p>
 
-                                        <a href="javascript:" @click="modalsIsShowAdvice = true" class="link link__white pull-right mr-4">
+                                        <a href="javascript:" @click="showAdvice" class="link link__white pull-right mr-4">
                                             {{ $t("translation.next") }}
                                         </a>
                                     </div>
@@ -136,9 +136,20 @@
                                 <template v-if="userFirstStage === 4">
                                     <div class="message__angle"></div>
                                     <div class="message__quote">
-                                        <p class="mb-0">{{ $t("translation.annAdvice") }}</p>
+                                        <p class="mb-0">{{ $t("translation.annPuzzle") }}</p>
 
-                                        <a href="javascript:" @click="modalsIsShowAdvice = true" class="link link__white pull-right mr-4">
+                                        <a href="javascript:" @click="showPuzzle" class="link link__white pull-right mr-4">
+                                            {{ $t("translation.next") }}
+                                        </a>
+                                    </div>
+                                </template>
+
+                                <template v-if="userFirstStage === 6">
+                                    <div class="message__angle"></div>
+                                    <div class="message__quote">
+                                        <p class="mb-0">{{ $t("translation.annTest") }}</p>
+
+                                        <a href="javascript:" @click="showTest" class="link link__white pull-right mr-4">
                                             {{ $t("translation.next") }}
                                         </a>
                                     </div>
@@ -189,6 +200,20 @@
                 isShowPhone: false,
             };
         },
+        methods: {
+            showAdvice() {
+                this.isShowMessage = false;
+                this.modalsIsShowAdvice = true;
+            },
+            showPuzzle() {
+                window.Cookies.set('first_stage', 5);
+                this.userFirstStage = 5;
+            },
+            showTest() {
+                window.Cookies.set('first_stage', 7);
+                this.userFirstStage = 7;
+            },
+        },
         metaInfo() {
             return {
                 title: this.$t('translation.room'),
@@ -203,6 +228,8 @@
             if (this.userFirstStage === 4) {
                 this.userBackground = 'background-green';
                 this.userSelectedUniversity = JSON.parse(window.Cookies.get('university'));
+                this.userSelectedFaculty = JSON.parse(window.Cookies.get('faculty'));
+                this.userSelectedMajor = JSON.parse(window.Cookies.get('major'));
             } else {
                 this.userBackground = 'background-blue';
             }

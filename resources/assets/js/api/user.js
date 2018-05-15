@@ -67,7 +67,7 @@ export default {
     },
     async getMajors(id) {
         try {
-            const { data, status } = await window.axios.get(`${url}/api/user/major/${id}`);
+            const { data, status } = await window.axios.get(`${url}/api/user/majors/${id}`);
 
             return { data, status };
         } catch (e) {

@@ -153,6 +153,8 @@
                     window.Cookies.set('first_stage', 4);
                     this.userFirstStage = 4;
                     window.Cookies.set('university', JSON.stringify(this.userSelectedUniversity));
+                    window.Cookies.set('faculty', JSON.stringify(this.userSelectedFaculty));
+                    window.Cookies.set('major', JSON.stringify(this.userSelectedMajor));
                 }
             },
         },

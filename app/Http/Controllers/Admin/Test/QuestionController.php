@@ -60,7 +60,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        $question = $this->question->with(['test'])->find($id);
+        $question = $this->question->with(['test', 'answers'])->find($id);
 
         return response()->json([
             'data' => $question

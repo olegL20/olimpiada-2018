@@ -11,6 +11,7 @@ class Department extends Model
         'name',
         'description',
         'faculty_id',
+        'user_id',
     ];
 
     public function faculty()

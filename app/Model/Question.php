@@ -43,4 +43,19 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class);
     }
+
+    public function getAnswerAttribute($value)
+    {
+        $value = (array)json_decode($value);
+        $right = is_array($value['right']) ? $value['right'] : [ $value['right'] ];
+        $other = $value['other'];
+
+        $rights = Answer::whereIn('id', $right)->get();
+        $others = Answer::whereIn('id', $other)->get();
+
+        $value['right'] = $rights;
+        $value['other'] = $others;
+
+        return $value;
+    }
 }

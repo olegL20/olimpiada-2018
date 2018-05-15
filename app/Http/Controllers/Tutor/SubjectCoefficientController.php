@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Tutor;
 
 use App\Http\Requests\Admin\SubjectCoefficientRequest;
 use App\Model\SubjectCoefficient;
@@ -30,7 +30,8 @@ class SubjectCoefficientController extends Controller
      */
     public function index()
     {
-        $data = $this->coefficient->paginate();
+        $userId = auth()->user()->id;
+        $data = $this->coefficient->where('user_id', $userId)->paginate();
 
         return response()->json(compact('data'));
     }
@@ -43,11 +44,13 @@ class SubjectCoefficientController extends Controller
      */
     public function store(SubjectCoefficientRequest $request)
     {
-        $data = $this->coefficient->fill($request->all());
+        $userId = auth()->user()->id;
+        $this->coefficient->fill($request->all());
+        $this->coefficient->user_id = $userId;
         $this->coefficient->save();
 
         return response()->json([
-            'data' => $data,
+            'data' => $this->coefficient,
             'message' => trans('api.created')
         ]);
     }
@@ -60,7 +63,8 @@ class SubjectCoefficientController extends Controller
      */
     public function show($id)
     {
-        $data = $this->coefficient->first($id);
+        $userId = auth()->user()->id;
+        $data = $this->coefficient->where('user_id', $userId)->findorFail($id);
 
         return response()->json(compact('data'));
     }
@@ -74,8 +78,10 @@ class SubjectCoefficientController extends Controller
      */
     public function update(SubjectCoefficientRequest $request, $id)
     {
-        $coefficient = $this->coefficient->find($id);
+        $userId = auth()->user()->id;
+        $coefficient = $this->coefficient->findOrFail($id);
         $coefficient->fill($request->all());
+        $coefficient->user_id = $userId;
         $coefficient->save();
 
         return response()->json([
@@ -92,7 +98,11 @@ class SubjectCoefficientController extends Controller
      */
     public function destroy($id)
     {
-        $this->coefficient->first($id)->delete();
+        $userId = auth()->user()->id;
+        $this->coefficient
+            ->where('user_id', $userId)
+            ->findOrFail($id)
+            ->delete();
 
         return response()->json([
             'message' => trans('api.deleted')

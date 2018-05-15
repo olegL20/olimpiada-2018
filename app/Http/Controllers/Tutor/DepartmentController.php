@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Tutor;
 
 use App\Http\Requests\Admin\DepartmentRequest;
 use App\Model\Department;
@@ -30,7 +30,12 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $data = $this->department->paginate();
+        $userId = auth()->user()->id;
+
+        $data = $this->department
+            ->with(['faculty'])
+            ->where('user_id', $userId)
+            ->paginate();
 
         return response()->json([
             'data' => $data
@@ -45,7 +50,12 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        $department = $this->department->find($id);
+        $userId = auth()->user()->id;
+
+        $department = $this->department
+            ->with(['faculty'])
+            ->where('user_id', $userId)
+            ->find($id);
 
         return response()->json([
             'data' => $department
@@ -60,7 +70,10 @@ class DepartmentController extends Controller
      */
     public function store(DepartmentRequest $request)
     {
+        $userId = auth()->user()->id;
+
         $department = $this->department->fill($request->all());
+        $department->user_id = $userId;
         $department->save();
 
         return response()->json([
@@ -78,7 +91,11 @@ class DepartmentController extends Controller
      */
     public function update(DepartmentRequest $request, $id)
     {
-        $department = $this->department->find($id)->fill($request->all());
+        $userId = auth()->user()->id;
+
+        $department = $this->department
+            ->where('user_id', $userId)
+            ->findOrFail($id)->fill($request->all());
         $department->save();
 
         return response()->json([
@@ -95,7 +112,11 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        $department = $this->department->findOrFail($id);
+        $userId = auth()->user()->id;
+
+        $department = $this->department
+            ->where('user_id', $userId)
+            ->findOrFail($id);
         $department->delete();
 
         return response()->json([

@@ -20,6 +20,7 @@ import './plugins/toastr';
 import './plugins/validator';
 import './plugins/meta';
 import './plugins/swal';
+import './login/example';
 
 /**
  * Main App.

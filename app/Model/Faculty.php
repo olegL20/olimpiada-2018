@@ -17,9 +17,6 @@ class Faculty extends Model
     protected $with = [
         'image'
     ];
-    protected $appends = [
-        'university'
-    ];
 
     public function image()
     {
@@ -34,13 +31,5 @@ class Faculty extends Model
     public function departments()
     {
         return $this->hasMany(Department::class);
-    }
-
-    public function getUniversityAttribute()
-    {
-        if (!is_null($this->attributes['university_id'])) {
-            return University::find($this->attributes['university_id']);
-        }
-        return null;
     }
 }

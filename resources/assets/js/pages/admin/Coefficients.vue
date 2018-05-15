@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listCoefficients"
-                              api-url="https://itpm-194220.appspot.com/api/admin/subjects-coefficients"
+                              :api-url="`${constants.URL}/api/tutor-admin/subjects-coefficients`"
                               :fields="fields"
                               pagination-path = ""
                               :css="css.table"
@@ -27,6 +27,18 @@
                               @vuetable:load-error="hidePreloader"
                               @vuetable:pagination-data="onPaginationData"
                     >
+                        <template slot="actions" slot-scope="props">
+                            <a href="javascript:" class="btn btn-outline-secondary btn-md"
+                               @click="editCoefficient(props.rowData.id)"
+                               :title="$t('translation.edit')">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <button type="button" class="btn btn-outline-danger btn-md"
+                                    @click="destroyCoefficient(props.rowData.id)"
+                                    :title="$t('translation.remove')">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                        </template>
                     </vuetable>
                 </div>
                 <div class="col-md-12 m-3">
@@ -56,6 +68,8 @@
     import ModalCreateCoefficient from '../../components/admin/modals/CreateCoefficient.vue';
     import ModalUpdateCoefficient from '../../components/admin/modals/UpdateCoefficient.vue';
 
+    import * as constants from '../../utils/constants';
+
     export default {
         mixins: [
             MixinPreload,
@@ -69,11 +83,50 @@
             ModalCreateCoefficient,
             ModalUpdateCoefficient,
         },
+        data() {
+            return {
+                constants,
+            };
+        },
         mounted() {
             this.showPreloader();
             this.$store.dispatch('admin/getMajors');
         },
         methods: {
+            async editCoefficient(id) {
+                try {
+                    await this.$store.dispatch('admin/getCoefficient', id);
+                    this.modalsIsShowUpdateCoefficient = true;
+                } catch (e) {
+                    this.$toast.error({
+                        title: this.$t('translation.error'),
+                        message: this.$t(e.message),
+                    });
+                }
+            },
+            async destroyCoefficient(id) {
+                const result = await this.$swal({
+                    title: this.$t('translation.areYouSure'),
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: constants.BUTTON_COLOR_CONFIRM,
+                    confirmButtonText: this.$t('translation.yes'),
+                    cancelButtonColor: constants.BUTTON_COLOR_CANCEL,
+                    cancelButtonText: this.$t('translation.cancel'),
+                });
+                if (result.value) {
+                    try {
+                        await this.$store.dispatch('admin/destroyCoefficient', id);
+                        this.$refs.listDepartments.refresh();
+                        this.showPreloader();
+                    } catch (e) {
+                        this.$toast.error({
+                            title: this.$t('translation.error'),
+                            message: this.$t(e.statusText),
+                        });
+                    }
+                }
+            },
             onPaginationData(paginationData) {
                 this.$refs.pagination.setPaginationData(paginationData);
             },

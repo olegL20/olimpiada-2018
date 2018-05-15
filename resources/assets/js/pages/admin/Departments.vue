@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listDepartments"
-                              :api-url=`${constants.URL}/api/admin/department`
+                              :api-url="`${constants.URL}/api/tutor-admin/department`"
                               :fields="fields"
                               pagination-path=""
                               :css="css.table"
@@ -86,6 +86,11 @@
             VuetablePagination,
             ModalCreateDepartment,
             ModalUpdateDepartment,
+        },
+        data() {
+            return {
+                constants,
+            };
         },
         mounted() {
             this.showPreloader();

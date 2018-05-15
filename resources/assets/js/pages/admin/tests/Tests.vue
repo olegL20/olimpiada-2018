@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listTests"
-                              api-url="https://itpm-194220.appspot.com/api/admin/test"
+                              :api-url="`${constants.URL}/api/admin/test`"
                               :fields="fields"
                               pagination-path = ""
                               :css="css.table"
@@ -94,6 +94,11 @@
             ModalCreateTest,
             ModalUpdateTest,
             ModalShowDescription,
+        },
+        data() {
+            return {
+                constants,
+            };
         },
         mounted() {
             this.showPreloader();

@@ -125,6 +125,7 @@ export default {
         infoAboutUniversity: 'Інформація про університет',
         editUniversity: 'Редагувати університет',
         editFaculty: 'Редагувати факультет',
+        editCoefficient: 'Редагувати коефіцієнт',
         description: 'Опис',
         created_at: 'Час створення',
         address: 'Адреса',
@@ -189,6 +190,9 @@ export default {
         updateMajor: 'Оновлення спеціальності',
         updatedMajor: 'Спеціальність оновлено',
         facultyId: 'ID факультету',
+        facultyNameTable: 'Ім\'я факультету',
+        departmentNameTable: 'Ім\'я департамету',
+        majorNameTable: 'Ім\'я спеціальності',
         managerDepartments: 'Менеджер кафедр',
         managerMajors: 'Менеджер спеціальностей',
         departmentName: 'Назва кафедри',
@@ -211,6 +215,7 @@ export default {
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',
+        user_not_found: 'Користувача не знайдено',
     },
     api: {
         user_not_found_or_token: 'Користувача не знайдено або не вірний токен.',

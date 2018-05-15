@@ -1,5 +1,9 @@
 <?php
 
+use App\Model\Department;
+use App\Model\Faculty;
+use App\Model\Major;
+use App\Model\SubjectCoefficient;
 use App\Model\University;
 use App\Model\User;
 use Illuminate\Database\Seeder;
@@ -26,6 +30,56 @@ class DatabaseSeeder extends Seeder
                 $field->email = 'university'.$id.'@gmail.com';
                 $field->phone = rand(1000000000,9999999999);
                 $field->site = 'university-site'.$id.'.com';
+                $field->save();
+            }
+        }
+        for ($id = 1; $id < 11; $id++) {
+            $field = Faculty::find($id);
+
+            if (is_null($field)) {
+                $field = new Faculty();
+                $field->name = 'faculty' . $id;
+                $field->university_id = $id;
+                $field->description = 'description' . $id;
+                $field->user_id = 3;
+                $field->save();
+            }
+        }
+        for ($id = 1; $id < 11; $id++) {
+            $field = Department::find($id);
+
+            if (is_null($field)) {
+                $field = new Department();
+                $field->name = 'department' . $id;
+                $field->faculty_id = $id;
+                $field->description = 'description' . $id;
+                $field->user_id = 3;
+                $field->save();
+            }
+        }
+        for ($id = 1; $id < 11; $id++) {
+            $field = Major::find($id);
+
+            if (is_null($field)) {
+                $field = new Major();
+                $field->name = 'major' . $id;
+                $field->faculty_id = $id;
+                $field->department_id = $id;
+                $field->user_id = 3;
+                $field->description = 'description' . $id;
+                $field->koef = 3;
+                $field->save();
+            }
+        }
+        for ($id = 1; $id < 11; $id++) {
+            $field = SubjectCoefficient::find($id);
+
+            if (is_null($field)) {
+                $field = new SubjectCoefficient();
+                $field->name = 'coefficient' . $id;
+                $field->coefficient = '0.'.$id;
+                $field->major_id = $id;
+                $field->user_id = 3;
                 $field->save();
             }
         }

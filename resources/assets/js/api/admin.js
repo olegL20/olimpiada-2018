@@ -1,5 +1,7 @@
-const url = '';
-// const url = 'https://itpm-194220.appspot.com';
+import * as constants from '../utils/constants';
+
+const url = constants.URL;
+
 export default {
     async destroyUniversity(id) {
         try {
@@ -192,7 +194,7 @@ export default {
     },
     async createCoefficient(params) {
         try {
-            const { data, status } = await window.axios.post(`${url}/api/admin/subjects-coefficients`, params);
+            const { data, status } = await window.axios.post(`${url}/api/tutor-admin/subjects-coefficients`, params);
 
             return { data, status };
         } catch (e) {
@@ -201,7 +203,7 @@ export default {
     },
     async getCoefficient(id) {
         try {
-            const { data, status } = await window.axios.get(`${url}/api/admin/subjects-coefficients/${id}`);
+            const { data, status } = await window.axios.get(`${url}/api/tutor-admin/subjects-coefficients/${id}`);
 
             return { data, status };
         } catch (e) {
@@ -210,7 +212,7 @@ export default {
     },
     async updateCoefficient(id, params) {
         try {
-            const { data, status } = await window.axios.put(`${url}/api/admin/subjects-coefficients/${id}`, params);
+            const { data, status } = await window.axios.put(`${url}/api/tutor-admin/subjects-coefficients/${id}`, params);
 
             return { data, status };
         } catch (e) {
@@ -219,7 +221,7 @@ export default {
     },
     async destroyCoefficient(id) {
         try {
-            const { data, status } = await window.axios.delete(`${url}/api/admin/subjects-coefficients/${id}`);
+            const { data, status } = await window.axios.delete(`${url}/api/tutor-admin/subjects-coefficients/${id}`);
 
             return { data, status };
         } catch (e) {
@@ -327,7 +329,7 @@ export default {
     },
     async createFaculty(params) {
         try {
-            const { data, status } = await window.axios.post(`${url}/api/admin/faculty`, params);
+            const { data, status } = await window.axios.post(`${url}/api/tutor-admin/faculty`, params);
 
             return { data, status };
         } catch (e) {

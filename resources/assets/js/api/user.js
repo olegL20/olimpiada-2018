@@ -1,5 +1,7 @@
-const url = '';
-// const url = 'https://itpm-194220.appspot.com';
+import * as constants from '../utils/constants';
+
+const url = constants.URL;
+
 export default {
     async login(params) {
         try {

@@ -19,4 +19,5 @@ class SubjectCoefficient extends Model
     {
         return $this->belongsTo(Major::class);
     }
+
 }

@@ -227,6 +227,10 @@
                                 params,
                             });
                         }
+                        this.$toast.success({
+                            title: this.$t('translation.success'),
+                            message: this.$t('translation.emailSend'),
+                        });
                         this.hide();
                         window.Cookies.set('first_stage', 2);
                         this.userFirstStage = 2;

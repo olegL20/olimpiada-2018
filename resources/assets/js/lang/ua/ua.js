@@ -208,6 +208,7 @@ export default {
         notSelected: 'Не обрано',
         annTest: 'Тепер я пропоную тобі пройти тест',
         selectTest: 'Оберіть тест',
+        emailSend: 'Подтвердження реєстрації відправлено на пошту',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

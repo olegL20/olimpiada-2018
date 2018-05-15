@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 250:
+/***/ 252:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(379)
+var __vue_script__ = __webpack_require__(398)
 /* template */
-var __vue_template__ = __webpack_require__(380)
+var __vue_template__ = __webpack_require__(406)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/pages/admin/Faculty.vue"
+Component.options.__file = "resources/assets/js/pages/admin/tests/Tests.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-52bfc292", Component.options)
+    hotAPI.createRecord("data-v-433d5c06", Component.options)
   } else {
-    hotAPI.reload("data-v-52bfc292", Component.options)
+    hotAPI.reload("data-v-433d5c06", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,13 +48,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 252:
+/***/ 259:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var bind = __webpack_require__(259);
+var bind = __webpack_require__(265);
 
 /*global toString:true*/
 
@@ -355,7 +355,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 253:
+/***/ 260:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -377,12 +377,12 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'admin',
         prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'facultyId', 'facultyUniversityId', 'facultyName', 'facultyDescription', 'facultyImage']))
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'facultyId', 'facultyUniversityId', 'facultyName', 'facultyDescription', 'facultyImage', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient', 'majors', 'tests', 'questions', 'majorDescription', 'majorId', 'majorDepartmentId', 'majorName', 'majorCoefficient', 'departments', 'departmentId', 'departmentFacultyId', 'departmentName', 'departmentDescription', 'faculties', 'facultyId', 'facultyUniversityId', 'facultyName', 'facultyDescription', 'facultyImage']))
 };
 
 /***/ }),
 
-/***/ 254:
+/***/ 261:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.f = __webpack_require__(4);
@@ -390,13 +390,13 @@ exports.f = __webpack_require__(4);
 
 /***/ }),
 
-/***/ 255:
+/***/ 262:
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
 var core = __webpack_require__(3);
-var LIBRARY = __webpack_require__(31);
-var wksExt = __webpack_require__(254);
+var LIBRARY = __webpack_require__(30);
+var wksExt = __webpack_require__(261);
 var defineProperty = __webpack_require__(15).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -406,14 +406,14 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 256:
+/***/ 263:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(252);
-var normalizeHeaderName = __webpack_require__(290);
+var utils = __webpack_require__(259);
+var normalizeHeaderName = __webpack_require__(291);
 
 var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 var DEFAULT_CONTENT_TYPE = {
@@ -430,10 +430,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(260);
+    adapter = __webpack_require__(266);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(260);
+    adapter = __webpack_require__(266);
   }
   return adapter;
 }
@@ -508,145 +508,7 @@ module.exports = defaults;
 
 /***/ }),
 
-/***/ 257:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-if (!window.FileReader) {
-  console.error('Your browser does not support FileReader API!');
-}
-
-exports.default = {
-  name: 'vue-base64-file-upload',
-
-  props: {
-    imageClass: {
-      type: String,
-      default: ''
-    },
-    inputClass: {
-      type: String,
-      default: ''
-    },
-    accept: {
-      type: String,
-      default: 'image/png,image/gif,image/jpeg'
-    },
-    maxSize: {
-      type: Number,
-      default: 10 // megabytes
-    },
-    disablePreview: {
-      type: Boolean,
-      default: false
-    },
-    fileName: {
-      type: String,
-      default: ''
-    },
-    placeholder: {
-      type: String,
-      default: 'Click here to upload image'
-    },
-    defaultPreview: {
-      type: String,
-      default: ''
-    }
-  },
-
-  data: function data() {
-    return {
-      file: null,
-      preview: null,
-      visiblePreview: false
-    };
-  },
-
-
-  computed: {
-    wrapperStyles: function wrapperStyles() {
-      return {
-        'position': 'relative',
-        'width': '100%'
-      };
-    },
-    fileInputStyles: function fileInputStyles() {
-      return {
-        'width': '100%',
-        'position': 'absolute',
-        'top': 0,
-        'left': 0,
-        'right': 0,
-        'bottom': 0,
-        'opacity': 0,
-        'overflow': 'hidden',
-        'outline': 'none',
-        'cursor': 'pointer'
-      };
-    },
-    textInputStyles: function textInputStyles() {
-      return {
-        'width': '100%',
-        'cursor': 'pointer'
-      };
-    },
-    previewImage: function previewImage() {
-      return this.preview || this.defaultPreview;
-    }
-  },
-
-  methods: {
-    onChange: function onChange(e) {
-      var _this = this;
-
-      var files = e.target.files || e.dataTransfer.files;
-
-      if (!files.length) {
-        return;
-      }
-
-      var file = files[0];
-      var size = file.size && file.size / Math.pow(1000, 2);
-
-      // check file max size
-      if (size > this.maxSize) {
-        this.$emit('size-exceeded', size);
-        return;
-      }
-
-      // update file
-      this.file = file;
-      this.$emit('file', file);
-
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        var dataURI = e.target.result;
-
-        if (dataURI) {
-          _this.$emit('load', dataURI);
-
-          _this.preview = dataURI;
-        }
-      };
-
-      // read blob url from file data
-      reader.readAsDataURL(file);
-    }
-  },
-
-  template: '\n    <div class="vue-base64-file-upload">\n      <img\n        v-show="previewImage && !disablePreview"\n        :src="previewImage"\n        :class="imageClass" />\n      <div class="vue-base64-file-upload-wrapper" :style="wrapperStyles">\n        <input\n          type="file"\n          @change="onChange"\n          :style="fileInputStyles"\n          :accept=accept />\n        <input\n          type="text"\n          :class="inputClass"\n          :style="textInputStyles"\n          :value="fileName || file && file.name"\n          :placeholder="placeholder"\n          disabled />\n      </div>\n    </div>\n  '
-};
-
-
-/***/ }),
-
-/***/ 258:
+/***/ 264:
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
@@ -660,7 +522,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ 259:
+/***/ 265:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -679,19 +541,19 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 
-/***/ 260:
+/***/ 266:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(252);
-var settle = __webpack_require__(291);
-var buildURL = __webpack_require__(293);
-var parseHeaders = __webpack_require__(294);
-var isURLSameOrigin = __webpack_require__(295);
-var createError = __webpack_require__(261);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(296);
+var utils = __webpack_require__(259);
+var settle = __webpack_require__(292);
+var buildURL = __webpack_require__(294);
+var parseHeaders = __webpack_require__(295);
+var isURLSameOrigin = __webpack_require__(296);
+var createError = __webpack_require__(267);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(297);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -787,7 +649,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(297);
+      var cookies = __webpack_require__(298);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -864,13 +726,13 @@ module.exports = function xhrAdapter(config) {
 
 /***/ }),
 
-/***/ 261:
+/***/ 267:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(292);
+var enhanceError = __webpack_require__(293);
 
 /**
  * Create an Error with the specified message, config, error code, and response.
@@ -889,7 +751,7 @@ module.exports = function createError(message, config, code, response) {
 
 /***/ }),
 
-/***/ 262:
+/***/ 268:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -902,7 +764,7 @@ module.exports = function isCancel(value) {
 
 /***/ }),
 
-/***/ 263:
+/***/ 269:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -929,7 +791,7 @@ module.exports = Cancel;
 
 /***/ }),
 
-/***/ 265:
+/***/ 270:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -948,19 +810,19 @@ var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
 
 /***/ }),
 
-/***/ 270:
+/***/ 271:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(271)
+  __webpack_require__(272)
 }
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(273)
+var __vue_script__ = __webpack_require__(274)
 /* template */
-var __vue_template__ = __webpack_require__(305)
+var __vue_template__ = __webpack_require__(306)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1000,17 +862,17 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 271:
+/***/ 272:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(272);
+var content = __webpack_require__(273);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(30)("c96b1a10", content, false, {});
+var update = __webpack_require__(32)("c96b1a10", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -1027,10 +889,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 272:
+/***/ 273:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -1042,7 +904,7 @@ exports.push([module.i, "\n[v-cloak][data-v-15965e3b] {\n  display: none;\n}\n.v
 
 /***/ }),
 
-/***/ 273:
+/***/ 274:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1052,11 +914,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof2 = __webpack_require__(274);
+var _typeof2 = __webpack_require__(275);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
-var _axios = __webpack_require__(287);
+var _axios = __webpack_require__(288);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -1998,7 +1860,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 274:
+/***/ 275:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2006,11 +1868,11 @@ exports.default = {
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(275);
+var _iterator = __webpack_require__(276);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(277);
+var _symbol = __webpack_require__(278);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -2026,43 +1888,43 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 
 /***/ }),
 
-/***/ 275:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(276), __esModule: true };
-
-/***/ }),
-
 /***/ 276:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(78);
-__webpack_require__(83);
-module.exports = __webpack_require__(254).f('iterator');
-
+module.exports = { "default": __webpack_require__(277), __esModule: true };
 
 /***/ }),
 
 /***/ 277:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(278), __esModule: true };
+__webpack_require__(78);
+__webpack_require__(83);
+module.exports = __webpack_require__(261).f('iterator');
+
 
 /***/ }),
 
 /***/ 278:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(279);
+module.exports = { "default": __webpack_require__(279), __esModule: true };
+
+/***/ }),
+
+/***/ 279:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(280);
 __webpack_require__(77);
-__webpack_require__(285);
 __webpack_require__(286);
+__webpack_require__(287);
 module.exports = __webpack_require__(3).Symbol;
 
 
 /***/ }),
 
-/***/ 279:
+/***/ 280:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2073,26 +1935,26 @@ var has = __webpack_require__(21);
 var DESCRIPTORS = __webpack_require__(13);
 var $export = __webpack_require__(11);
 var redefine = __webpack_require__(80);
-var META = __webpack_require__(280).KEY;
-var $fails = __webpack_require__(23);
+var META = __webpack_require__(281).KEY;
+var $fails = __webpack_require__(22);
 var shared = __webpack_require__(48);
 var setToStringTag = __webpack_require__(33);
 var uid = __webpack_require__(46);
 var wks = __webpack_require__(4);
-var wksExt = __webpack_require__(254);
-var wksDefine = __webpack_require__(255);
-var enumKeys = __webpack_require__(281);
-var isArray = __webpack_require__(282);
+var wksExt = __webpack_require__(261);
+var wksDefine = __webpack_require__(262);
+var enumKeys = __webpack_require__(282);
+var isArray = __webpack_require__(283);
 var anObject = __webpack_require__(12);
 var isObject = __webpack_require__(16);
 var toIObject = __webpack_require__(28);
 var toPrimitive = __webpack_require__(75);
 var createDesc = __webpack_require__(45);
 var _create = __webpack_require__(81);
-var gOPNExt = __webpack_require__(283);
-var $GOPD = __webpack_require__(284);
+var gOPNExt = __webpack_require__(284);
+var $GOPD = __webpack_require__(285);
 var $DP = __webpack_require__(15);
-var $keys = __webpack_require__(32);
+var $keys = __webpack_require__(31);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -2215,11 +2077,11 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(258).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(264).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(74).f = $propertyIsEnumerable;
   __webpack_require__(76).f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(31)) {
+  if (DESCRIPTORS && !__webpack_require__(30)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -2304,7 +2166,7 @@ setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
 
-/***/ 280:
+/***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
 var META = __webpack_require__(46)('meta');
@@ -2315,7 +2177,7 @@ var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
 };
-var FREEZE = !__webpack_require__(23)(function () {
+var FREEZE = !__webpack_require__(22)(function () {
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function (it) {
@@ -2364,11 +2226,11 @@ var meta = module.exports = {
 
 /***/ }),
 
-/***/ 281:
+/***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(32);
+var getKeys = __webpack_require__(31);
 var gOPS = __webpack_require__(76);
 var pIE = __webpack_require__(74);
 module.exports = function (it) {
@@ -2386,7 +2248,7 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 282:
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
@@ -2398,12 +2260,12 @@ module.exports = Array.isArray || function isArray(arg) {
 
 /***/ }),
 
-/***/ 283:
+/***/ 284:
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(28);
-var gOPN = __webpack_require__(258).f;
+var gOPN = __webpack_require__(264).f;
 var toString = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -2424,7 +2286,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 /***/ }),
 
-/***/ 284:
+/***/ 285:
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE = __webpack_require__(74);
@@ -2447,18 +2309,10 @@ exports.f = __webpack_require__(13) ? gOPD : function getOwnPropertyDescriptor(O
 
 /***/ }),
 
-/***/ 285:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(255)('asyncIterator');
-
-
-/***/ }),
-
 /***/ 286:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(255)('observable');
+__webpack_require__(262)('asyncIterator');
 
 
 /***/ }),
@@ -2466,20 +2320,28 @@ __webpack_require__(255)('observable');
 /***/ 287:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(288);
+__webpack_require__(262)('observable');
+
 
 /***/ }),
 
 /***/ 288:
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(289);
+
+/***/ }),
+
+/***/ 289:
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
-var utils = __webpack_require__(252);
-var bind = __webpack_require__(259);
-var Axios = __webpack_require__(289);
-var defaults = __webpack_require__(256);
+var utils = __webpack_require__(259);
+var bind = __webpack_require__(265);
+var Axios = __webpack_require__(290);
+var defaults = __webpack_require__(263);
 
 /**
  * Create an instance of Axios
@@ -2512,15 +2374,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(263);
-axios.CancelToken = __webpack_require__(303);
-axios.isCancel = __webpack_require__(262);
+axios.Cancel = __webpack_require__(269);
+axios.CancelToken = __webpack_require__(304);
+axios.isCancel = __webpack_require__(268);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(304);
+axios.spread = __webpack_require__(305);
 
 module.exports = axios;
 
@@ -2530,18 +2392,18 @@ module.exports.default = axios;
 
 /***/ }),
 
-/***/ 289:
+/***/ 290:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(256);
-var utils = __webpack_require__(252);
-var InterceptorManager = __webpack_require__(298);
-var dispatchRequest = __webpack_require__(299);
-var isAbsoluteURL = __webpack_require__(301);
-var combineURLs = __webpack_require__(302);
+var defaults = __webpack_require__(263);
+var utils = __webpack_require__(259);
+var InterceptorManager = __webpack_require__(299);
+var dispatchRequest = __webpack_require__(300);
+var isAbsoluteURL = __webpack_require__(302);
+var combineURLs = __webpack_require__(303);
 
 /**
  * Create a new instance of Axios
@@ -2623,13 +2485,13 @@ module.exports = Axios;
 
 /***/ }),
 
-/***/ 290:
+/***/ 291:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(252);
+var utils = __webpack_require__(259);
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -2643,13 +2505,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 /***/ }),
 
-/***/ 291:
+/***/ 292:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(261);
+var createError = __webpack_require__(267);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -2676,7 +2538,7 @@ module.exports = function settle(resolve, reject, response) {
 
 /***/ }),
 
-/***/ 292:
+/***/ 293:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2703,13 +2565,13 @@ module.exports = function enhanceError(error, config, code, response) {
 
 /***/ }),
 
-/***/ 293:
+/***/ 294:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(252);
+var utils = __webpack_require__(259);
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -2779,13 +2641,13 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 /***/ }),
 
-/***/ 294:
+/***/ 295:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(252);
+var utils = __webpack_require__(259);
 
 /**
  * Parse headers into an object
@@ -2824,13 +2686,13 @@ module.exports = function parseHeaders(headers) {
 
 /***/ }),
 
-/***/ 295:
+/***/ 296:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(252);
+var utils = __webpack_require__(259);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -2900,7 +2762,7 @@ module.exports = (
 
 /***/ }),
 
-/***/ 296:
+/***/ 297:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2944,13 +2806,13 @@ module.exports = btoa;
 
 /***/ }),
 
-/***/ 297:
+/***/ 298:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(252);
+var utils = __webpack_require__(259);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -3005,13 +2867,13 @@ module.exports = (
 
 /***/ }),
 
-/***/ 298:
+/***/ 299:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(252);
+var utils = __webpack_require__(259);
 
 function InterceptorManager() {
   this.handlers = [];
@@ -3065,16 +2927,16 @@ module.exports = InterceptorManager;
 
 /***/ }),
 
-/***/ 299:
+/***/ 300:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(252);
-var transformData = __webpack_require__(300);
-var isCancel = __webpack_require__(262);
-var defaults = __webpack_require__(256);
+var utils = __webpack_require__(259);
+var transformData = __webpack_require__(301);
+var isCancel = __webpack_require__(268);
+var defaults = __webpack_require__(263);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -3152,13 +3014,13 @@ module.exports = function dispatchRequest(config) {
 
 /***/ }),
 
-/***/ 300:
+/***/ 301:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(252);
+var utils = __webpack_require__(259);
 
 /**
  * Transform the data for a request or a response
@@ -3180,7 +3042,7 @@ module.exports = function transformData(data, headers, fns) {
 
 /***/ }),
 
-/***/ 301:
+/***/ 302:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3202,7 +3064,7 @@ module.exports = function isAbsoluteURL(url) {
 
 /***/ }),
 
-/***/ 302:
+/***/ 303:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3222,13 +3084,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 /***/ }),
 
-/***/ 303:
+/***/ 304:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(263);
+var Cancel = __webpack_require__(269);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -3287,7 +3149,7 @@ module.exports = CancelToken;
 
 /***/ }),
 
-/***/ 304:
+/***/ 305:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3322,7 +3184,7 @@ module.exports = function spread(callback) {
 
 /***/ }),
 
-/***/ 305:
+/***/ 306:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4324,15 +4186,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 306:
+/***/ 307:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(307)
+var __vue_script__ = __webpack_require__(308)
 /* template */
-var __vue_template__ = __webpack_require__(310)
+var __vue_template__ = __webpack_require__(311)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4372,7 +4234,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 307:
+/***/ 308:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4382,7 +4244,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _VuetablePaginationMixin = __webpack_require__(308);
+var _VuetablePaginationMixin = __webpack_require__(309);
 
 var _VuetablePaginationMixin2 = _interopRequireDefault(_VuetablePaginationMixin);
 
@@ -4394,13 +4256,13 @@ exports.default = {
 
 /***/ }),
 
-/***/ 308:
+/***/ 309:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(309)
+var __vue_script__ = __webpack_require__(310)
 /* template */
 var __vue_template__ = null
 /* template functional */
@@ -4442,7 +4304,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 309:
+/***/ 310:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4531,7 +4393,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 310:
+/***/ 311:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4691,15 +4553,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 316:
+/***/ 322:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(317)
+var __vue_script__ = __webpack_require__(323)
 /* template */
-var __vue_template__ = __webpack_require__(318)
+var __vue_template__ = __webpack_require__(324)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4716,7 +4578,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/InviteUniversityAdmin.vue"
+Component.options.__file = "resources/assets/js/components/admin/modals/ShowDescription.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -4725,9 +4587,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1e2700a6", Component.options)
+    hotAPI.createRecord("data-v-69263f4d", Component.options)
   } else {
-    hotAPI.reload("data-v-1e2700a6", Component.options)
+    hotAPI.reload("data-v-69263f4d", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -4739,7 +4601,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 317:
+/***/ 323:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4749,19 +4611,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _regenerator = __webpack_require__(9);
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(10);
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
 var _modals = __webpack_require__(44);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(253);
+var _admin = __webpack_require__(260);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -4773,101 +4627,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
     mixins: [_modals2.default, _admin2.default, _preload2.default],
-    mounted: function mounted() {
-        var _this = this;
-
-        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-            return _regenerator2.default.wrap(function _callee$(_context) {
-                while (1) {
-                    switch (_context.prev = _context.next) {
-                        case 0:
-                            _context.next = 2;
-                            return _this.$store.dispatch('admin/getAllUniversities');
-
-                        case 2:
-                            _this.universityId = _this.universities[0].id;
-
-                        case 3:
-                        case 'end':
-                            return _context.stop();
-                    }
-                }
-            }, _callee, _this);
-        }))();
-    },
-
     methods: {
         hide: function hide() {
-            this.modalsIsShowInviteUniversityAdmin = false;
+            this.modalsIsShowDescription = false;
 
-            this.universityEmail = null;
-            this.universityId = null;
-        },
-        inviteUniversityAdmin: function inviteUniversityAdmin() {
-            var _this2 = this;
-
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-                var valid;
-                return _regenerator2.default.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.next = 2;
-                                return _this2.$validator.validateAll();
-
-                            case 2:
-                                valid = _context2.sent;
-
-                                if (!valid) {
-                                    _context2.next = 17;
-                                    break;
-                                }
-
-                                _context2.prev = 4;
-
-                                _this2.showPreloader();
-                                _context2.next = 8;
-                                return _this2.$store.dispatch('admin/sendInviteUniversityAdmin', {
-                                    email: _this2.universityEmail,
-                                    university_id: _this2.universityId
-                                });
-
-                            case 8:
-                                _this2.hide();
-                                _this2.switchRefreshTable(true);
-                                _this2.$toast.success({
-                                    title: _this2.$t('translation.success'),
-                                    message: _this2.$t('translation.inviteUniversityAdminSent')
-                                });
-                                _context2.next = 16;
-                                break;
-
-                            case 13:
-                                _context2.prev = 13;
-                                _context2.t0 = _context2['catch'](4);
-
-                                if (_context2.t0.status === 404) {
-                                    _this2.$toast.error({
-                                        title: _this2.$t('translation.error'),
-                                        message: _this2.$t('translation.inviteNotFound')
-                                    });
-                                } else {
-                                    _this2.$toast.error({
-                                        title: _this2.$t('translation.error'),
-                                        message: _this2.$t(_context2.t0.data.message)
-                                    });
-                                }
-
-                            case 16:
-                                _this2.hidePreloader();
-
-                            case 17:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, _this2, [[4, 13]]);
-            }))();
+            this.universityAddress = null;
+            this.universityZipCode = null;
+            this.universityDescription = null;
         }
     }
 }; //
@@ -4913,10 +4679,14 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 
-/***/ 318:
+/***/ 324:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4924,7 +4694,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowInviteUniversityAdmin
+    _vm.modalsIsShowDescription
       ? _c("div", { staticClass: "modal__wrap" }, [
           _c(
             "div",
@@ -4943,141 +4713,121 @@ var render = function() {
               _c("h4", { staticClass: "modal__head" }, [
                 _vm._v(
                   "\n                " +
-                    _vm._s(_vm.$t("translation.inviteUniversityAdmin")) +
+                    _vm._s(_vm.$t("translation.moreInfo")) +
                     "\n            "
                 )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal__body" }, [
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universityEmail" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.universityEmail")))
+                  _c("label", { attrs: { for: "universityAddress" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityAddress")))
                   ]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
                       {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|email|max:255",
-                        expression: "'required|email|max:255'"
-                      },
-                      {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.universityEmail,
-                        expression: "universityEmail"
+                        value: _vm.universityAddress,
+                        expression: "universityAddress"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "email",
-                      id: "universityEmail",
-                      "aria-describedby": "universityEmailHelp",
-                      placeholder: _vm.$t(
-                        "translation.universityEmailPlaceholder"
-                      ),
-                      name: "universityEmail",
-                      "data-vv-as": _vm.$t("translation.universityEmail")
+                      id: "universityAddress",
+                      name: "universityAddress",
+                      readonly: ""
                     },
-                    domProps: { value: _vm.universityEmail },
+                    domProps: { value: _vm.universityAddress },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.universityEmail = $event.target.value
+                        _vm.universityAddress = $event.target.value
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "small",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("universityEmail"),
-                          expression: "errors.has('universityEmail')"
-                        }
-                      ],
-                      staticClass: "form-text text-danger",
-                      attrs: { id: "universityEmailHelp" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.errors.first("universityEmail")) +
-                          "\n                    "
-                      )
-                    ]
-                  )
+                  })
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "universities" } }, [
-                    _vm._v(_vm._s(_vm.$t("translation.university")))
+                  _c("label", { attrs: { for: "universityZipCode" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityZipCode")))
                   ]),
                   _vm._v(" "),
-                  this.universities
-                    ? _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.universityId,
-                              expression: "universityId"
-                            }
-                          ],
-                          staticClass: "select-style",
-                          attrs: { name: "type_field", id: "universities" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.universityId = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        _vm._l(this.universities, function(university) {
-                          return _c(
-                            "option",
-                            { domProps: { value: university.id } },
-                            [
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(university.name) +
-                                  "\n                        "
-                              )
-                            ]
-                          )
-                        })
-                      )
-                    : _vm._e()
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityZipCode,
+                        expression: "universityZipCode"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "universityZipCode",
+                      name: "universityZipCode",
+                      readonly: ""
+                    },
+                    domProps: { value: _vm.universityZipCode },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityZipCode = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "universityDescription" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.universityDescription")))
+                  ]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.universityDescription,
+                        expression: "universityDescription"
+                      }
+                    ],
+                    staticClass: "form-control resize-none h-10",
+                    attrs: {
+                      type: "text",
+                      id: "universityDescription",
+                      name: "universityDescription",
+                      readonly: ""
+                    },
+                    domProps: { value: _vm.universityDescription },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.universityDescription = $event.target.value
+                      }
+                    }
+                  })
                 ]),
                 _vm._v(" "),
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-md btn-success float-right mt-4",
+                    staticClass: "btn btn-md btn-secondary float-right mt-4",
                     attrs: { type: "button" },
-                    on: { click: _vm.inviteUniversityAdmin }
+                    on: { click: _vm.hide }
                   },
                   [
                     _vm._v(
                       "\n                    " +
-                        _vm._s(_vm.$t("translation.send")) +
+                        _vm._s(_vm.$t("translation.close")) +
                         "\n                "
                     )
                   ]
@@ -5095,13 +4845,13 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1e2700a6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-69263f4d", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 379:
+/***/ 398:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5119,17 +4869,17 @@ var _asyncToGenerator2 = __webpack_require__(10);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _Vuetable = __webpack_require__(270);
+var _Vuetable = __webpack_require__(271);
 
 var _Vuetable2 = _interopRequireDefault(_Vuetable);
 
-var _VuetablePagination = __webpack_require__(306);
+var _VuetablePagination = __webpack_require__(307);
 
 var _VuetablePagination2 = _interopRequireDefault(_VuetablePagination);
 
-var _faculty = __webpack_require__(384);
+var _tests = __webpack_require__(399);
 
-var _faculty2 = _interopRequireDefault(_faculty);
+var _tests2 = _interopRequireDefault(_tests);
 
 var _modals = __webpack_require__(44);
 
@@ -5139,23 +4889,27 @@ var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-var _admin = __webpack_require__(253);
+var _admin = __webpack_require__(260);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _InviteUniversityAdmin = __webpack_require__(316);
+var _user = __webpack_require__(29);
 
-var _InviteUniversityAdmin2 = _interopRequireDefault(_InviteUniversityAdmin);
+var _user2 = _interopRequireDefault(_user);
 
-var _CreateFaculty = __webpack_require__(385);
+var _CreateTest = __webpack_require__(400);
 
-var _CreateFaculty2 = _interopRequireDefault(_CreateFaculty);
+var _CreateTest2 = _interopRequireDefault(_CreateTest);
 
-var _EditFaculty = __webpack_require__(388);
+var _UpdateTest = __webpack_require__(403);
 
-var _EditFaculty2 = _interopRequireDefault(_EditFaculty);
+var _UpdateTest2 = _interopRequireDefault(_UpdateTest);
 
-var _constants = __webpack_require__(265);
+var _ShowDescription = __webpack_require__(322);
+
+var _ShowDescription2 = _interopRequireDefault(_ShowDescription);
+
+var _constants = __webpack_require__(270);
 
 var constants = _interopRequireWildcard(_constants);
 
@@ -5163,108 +4917,38 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 exports.default = {
-    mixins: [_preload2.default, _modals2.default, _admin2.default, _faculty2.default],
+    mixins: [_admin2.default, _user2.default, _modals2.default, _preload2.default, _tests2.default],
     components: {
         Vuetable: _Vuetable2.default,
         VuetablePagination: _VuetablePagination2.default,
-        ModalInviteUniversityAdmin: _InviteUniversityAdmin2.default,
-        ModalCreateFaculty: _CreateFaculty2.default,
-        ModalEditFaculty: _EditFaculty2.default
+        ModalCreateTest: _CreateTest2.default,
+        ModalUpdateTest: _UpdateTest2.default,
+        ModalShowDescription: _ShowDescription2.default
     },
-    data: function data() {
-        return {
-            constants: constants
-        };
+    mounted: function mounted() {
+        this.showPreloader();
     },
 
     watch: {
         refreshTable: function refreshTable() {
             if (this.refreshTable) {
-                this.$refs.listFaculties.refresh();
+                this.$refs.listTests.refresh();
                 this.switchRefreshTable(false);
             }
         }
     },
-    mounted: function mounted() {
-        this.showPreloader();
-        this.$store.dispatch('admin/getAllUniversities');
-    },
-
     methods: {
-        onCellClicked: function onCellClicked(data) {
-            this.universityUserId = data.id;
-            this.isShowAssociateUniversityAdmin = true;
-        },
-        onPaginationData: function onPaginationData(paginationData) {
-            this.$refs.paginationFaculties.setPaginationData(paginationData);
-        },
-        onChangePage: function onChangePage(page) {
-            this.showPreloader();
-            this.$refs.listFaculties.changePage(page);
-        },
-        setUniversityForFaculty: function setUniversityForFaculty(el) {
+        // getUniversitiesId(payload) {
+        //     this.hidePreloader();
+        //     const universitiesId = payload.data.data.data.map(el => ({
+        //         ...el,
+        //         id: el.id,
+        //         name: el.name,
+        //     }));
+        //     this.universityParentsId = universitiesId;
+        // },
+        editTest: function editTest(id) {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -5274,25 +4958,15 @@ exports.default = {
                             case 0:
                                 _context.prev = 0;
                                 _context.next = 3;
-                                return _this.$store.dispatch('admin/setUniversityForFaculty', {
-                                    id: el.target.dataset.id,
-                                    params: {
-                                        name: el.target.dataset.id,
-                                        university_id: el.target.value
-                                    }
-                                });
+                                return _this.$store.dispatch('admin/getTest', id);
 
                             case 3:
-                                _this.$refs.listFaculties.refresh();
-                                _this.$toast.success({
-                                    title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.universityChanged')
-                                });
-                                _context.next = 10;
+                                _this.modalsIsShowUpdateTest = true;
+                                _context.next = 9;
                                 break;
 
-                            case 7:
-                                _context.prev = 7;
+                            case 6:
+                                _context.prev = 6;
                                 _context.t0 = _context['catch'](0);
 
                                 _this.$toast.error({
@@ -5300,272 +4974,149 @@ exports.default = {
                                     message: _this.$t(_context.t0.message)
                                 });
 
-                            case 10:
+                            case 9:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[0, 7]]);
+                }, _callee, _this, [[0, 6]]);
             }))();
         },
-        editFaculty: function editFaculty(id) {
+        destroyTest: function destroyTest(id) {
             var _this2 = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+                var result;
                 return _regenerator2.default.wrap(function _callee2$(_context2) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
                             case 0:
-                                _context2.prev = 0;
+                                _context2.next = 2;
+                                return _this2.$swal({
+                                    title: _this2.$t('translation.areYouSure'),
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: constants.BUTTON_COLOR_CONFIRM,
+                                    confirmButtonText: _this2.$t('translation.yes'),
+                                    cancelButtonColor: constants.BUTTON_COLOR_CANCEL,
+                                    cancelButtonText: _this2.$t('translation.cancel')
+                                });
 
+                            case 2:
+                                result = _context2.sent;
+
+                                if (!result.value) {
+                                    _context2.next = 14;
+                                    break;
+                                }
+
+                                _context2.prev = 4;
+                                _context2.next = 7;
+                                return _this2.$store.dispatch('admin/destroyTest', id);
+
+                            case 7:
                                 _this2.showPreloader();
-                                _context2.next = 4;
-                                return _this2.$store.dispatch('admin/getFaculty', id);
-
-                            case 4:
-                                _this2.modalsIsShowEditFaculty = true;
-                                _this2.hidePreloader();
-                                _context2.next = 11;
+                                _context2.next = 13;
                                 break;
 
-                            case 8:
-                                _context2.prev = 8;
-                                _context2.t0 = _context2['catch'](0);
+                            case 10:
+                                _context2.prev = 10;
+                                _context2.t0 = _context2['catch'](4);
 
                                 _this2.$toast.error({
                                     title: _this2.$t('translation.error'),
-                                    message: _this2.$t(_context2.t0.message)
+                                    message: _this2.$t(_context2.t0.statusText)
                                 });
 
-                            case 11:
+                            case 13:
+                                _this2.$refs.listTests.refresh();
+
+                            case 14:
                             case 'end':
                                 return _context2.stop();
                         }
                     }
-                }, _callee2, _this2, [[0, 8]]);
+                }, _callee2, _this2, [[4, 10]]);
             }))();
         },
-        destroyFaculty: function destroyFaculty(id) {
-            var _this3 = this;
-
-            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
-                var result;
-                return _regenerator2.default.wrap(function _callee3$(_context3) {
-                    while (1) {
-                        switch (_context3.prev = _context3.next) {
-                            case 0:
-                                _context3.next = 2;
-                                return _this3.$swal({
-                                    title: _this3.$t('translation.areYouSure'),
-                                    type: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: constants.BUTTON_COLOR_CONFIRM,
-                                    confirmButtonText: _this3.$t('translation.yes'),
-                                    cancelButtonColor: constants.BUTTON_COLOR_CANCEL,
-                                    cancelButtonText: _this3.$t('translation.cancel')
-                                });
-
-                            case 2:
-                                result = _context3.sent;
-
-                                if (!result.value) {
-                                    _context3.next = 14;
-                                    break;
-                                }
-
-                                _context3.prev = 4;
-
-                                _this3.showPreloader();
-                                _context3.next = 8;
-                                return _this3.$store.dispatch('admin/destroyFaculty', id);
-
-                            case 8:
-                                _this3.$refs.listFaculties.refresh();
-                                _context3.next = 14;
-                                break;
-
-                            case 11:
-                                _context3.prev = 11;
-                                _context3.t0 = _context3['catch'](4);
-
-                                _this3.$toast.error({
-                                    title: _this3.$t('translation.error'),
-                                    message: _this3.$t(_context3.t0.statusText)
-                                });
-
-                            case 14:
-                            case 'end':
-                                return _context3.stop();
-                        }
-                    }
-                }, _callee3, _this3, [[4, 11]]);
-            }))();
+        onPaginationData: function onPaginationData(paginationData) {
+            this.$refs.pagination.setPaginationData(paginationData);
+        },
+        onChangePage: function onChangePage(page) {
+            this.$refs.listTests.changePage(page);
         }
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
-/***/ 380:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container-fluid" },
-    [
-      _c("div", { staticClass: "col-md-12 mb-5" }, [
-        _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
-          _c("div", { staticClass: "col-md-10" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerFaculty")))])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 align-self-center" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-primary btn-md float-right",
-                attrs: { href: "javascript:" },
-                on: {
-                  click: function($event) {
-                    _vm.modalsIsShowCreateFaculty = true
-                  }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.$t("translation.addFaculty")) +
-                    "\n                "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-12 mt-3" },
-            [
-              _c("vuetable", {
-                ref: "listFaculties",
-                attrs: {
-                  "api-url": "/api/admin/faculty",
-                  fields: _vm.fieldsListFaculties,
-                  "pagination-path": "data",
-                  css: _vm.css.table,
-                  "data-path": "data.data"
-                },
-                on: {
-                  "vuetable:load-success": _vm.hidePreloader,
-                  "vuetable:pagination-data": _vm.onPaginationData,
-                  "vuetable:cell-clicked": _vm.onCellClicked
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "university",
-                    fn: function(props) {
-                      return [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(
-                              props.rowData.university_id
-                                ? props.rowData.university.name
-                                : _vm.$t("translation.noData")
-                            ) +
-                            "\n                    "
-                        )
-                      ]
-                    }
-                  },
-                  {
-                    key: "actions",
-                    fn: function(props) {
-                      return [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-outline-secondary btn-md",
-                            attrs: {
-                              href: "javascript:",
-                              title: _vm.$t("translation.edit")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.editFaculty(props.rowData.id)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-pencil",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-outline-danger btn-md",
-                            attrs: {
-                              type: "button",
-                              title: _vm.$t("translation.remove")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.destroyFaculty(props.rowData.id)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-trash-o" })]
-                        )
-                      ]
-                    }
-                  }
-                ])
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-md-12 m-3" },
-            [
-              _c("vuetable-pagination", {
-                ref: "paginationFaculties",
-                attrs: { css: _vm.css.pagination },
-                on: { "vuetable-pagination:change-page": _vm.onChangePage }
-              })
-            ],
-            1
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("modal-create-faculty"),
-      _vm._v(" "),
-      _c("modal-edit-faculty")
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-52bfc292", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 384:
+/***/ 399:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5577,26 +5128,23 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     data: function data() {
         return {
-            fieldsListFaculties: [{
+            fields: [{
                 name: 'name',
                 sortField: 'name',
                 title: this.$t('translation.name'),
                 titleClass: 'text-left',
                 dataClass: 'text-left'
-            }, {
-                name: '__slot:university',
-                title: this.$t('translation.university'),
-                titleClass: 'text-left',
-                dataClass: 'text-left'
-            }, {
-                name: 'description',
-                title: this.$t('translation.description'),
-                titleClass: 'text-left',
-                dataClass: 'text-left'
-            }, {
-                name: 'created_at',
-                sortField: 'created_at',
-                title: this.$t('translation.created_at'),
+            },
+            // {
+            //     name: 'description',
+            //     sortField: 'description',
+            //     title: this.$t('translation.description'),
+            //     titleClass: 'text-left',
+            //     dataClass: 'text-left',
+            // },
+            {
+                name: '__slot:questions',
+                title: this.$t('translation.questions'),
                 titleClass: 'text-center',
                 dataClass: 'text-center'
             }, {
@@ -5607,7 +5155,7 @@ exports.default = {
             }],
             css: {
                 table: {
-                    tableClass: 'table',
+                    tableClass: 'table table-hover cursor-pointer',
                     loadingClass: 'loading',
                     ascendingIcon: 'fa fa-angle-up ',
                     descendingIcon: 'fa fa-angle-down ',
@@ -5618,7 +5166,7 @@ exports.default = {
                     wrapperClass: 'vuetable-pagination text-center',
                     activeClass: 'btn btn-primary text-white',
                     disabledClass: 'btn text-secondary',
-                    pageClass: 'btn pgn-btn-border border m-1',
+                    pageClass: 'btn pgn-btn-border border',
                     linkClass: 'btn pgn-btn-border border',
                     icons: {
                         first: 'fa fa-angle-double-left',
@@ -5634,15 +5182,15 @@ exports.default = {
 
 /***/ }),
 
-/***/ 385:
+/***/ 400:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(386)
+var __vue_script__ = __webpack_require__(401)
 /* template */
-var __vue_template__ = __webpack_require__(387)
+var __vue_template__ = __webpack_require__(402)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -5659,7 +5207,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/CreateFaculty.vue"
+Component.options.__file = "resources/assets/js/components/admin/modals/CreateTest.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -5668,9 +5216,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e30b9554", Component.options)
+    hotAPI.createRecord("data-v-09405210", Component.options)
   } else {
-    hotAPI.reload("data-v-e30b9554", Component.options)
+    hotAPI.reload("data-v-09405210", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -5682,7 +5230,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 386:
+/***/ 401:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5700,15 +5248,11 @@ var _asyncToGenerator2 = __webpack_require__(10);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _vueBase64FileUpload = __webpack_require__(257);
-
-var _vueBase64FileUpload2 = _interopRequireDefault(_vueBase64FileUpload);
-
 var _modals = __webpack_require__(44);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(253);
+var _admin = __webpack_require__(260);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -5716,65 +5260,22 @@ var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-var _constants = __webpack_require__(265);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
     mixins: [_modals2.default, _admin2.default, _preload2.default],
-    components: {
-        VueBase64FileUpload: _vueBase64FileUpload2.default
-    },
     data: function data() {
-        return {
-            customImageMaxSize: _constants.IMAGE_MAX_SIZE,
-            imageSubstringLength: null,
-            imageBase64: null,
-            latLng: {},
-            isShowOldImage: true
-        };
+        return {};
     },
 
-    computed: {
-        photo: function photo() {
-            if (this.imageBase64) {
-                return this.imageBase64.substr(this.imageSubstringLength);
-            }
-            return '';
-        }
-    },
-    watch: {
-        universities: function universities() {
-            this.facultyUniversityId = this.universities[0].id;
-        }
-    },
     methods: {
-        setPlace: function setPlace(universityAddress) {
-            this.latLng = {
-                lat: universityAddress.geometry.location.lat(),
-                lng: universityAddress.geometry.location.lng()
-            };
-            this.universityAddress = universityAddress.formatted_address;
-        },
-        onFile: function onFile(file) {
-            this.imageSubstringLength = file.type.length + 13;
-        },
-        onLoad: function onLoad(dataUri) {
-            this.imageBase64 = dataUri;
-            this.isShowOldImage = false;
-        },
         hide: function hide() {
-            this.modalsIsShowCreateFaculty = false;
+            this.modalsIsShowCreateTest = false;
 
-            this.facultyId = null;
-            this.facultyUniversityId = this.universities[0].id;
-            this.facultyName = null;
-            this.facultyDescription = null;
-            this.facultyImage = null;
-
-            this.isShowOldImage = true;
+            this.testName = null;
+            this.testDescription = null;
         },
-        createFaculty: function createFaculty() {
+        createTest: function createTest() {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -5790,7 +5291,7 @@ exports.default = {
                                 valid = _context.sent;
 
                                 if (!valid) {
-                                    _context.next = 17;
+                                    _context.next = 16;
                                     break;
                                 }
 
@@ -5798,18 +5299,16 @@ exports.default = {
 
                                 _this.showPreloader();
                                 _context.next = 8;
-                                return _this.$store.dispatch('admin/createFaculty', {
-                                    university_id: _this.facultyUniversityId,
-                                    name: _this.facultyName,
-                                    description: _this.facultyDescription,
-                                    image: _this.photo
+                                return _this.$store.dispatch('admin/createTest', {
+                                    name: _this.testName,
+                                    description: _this.testDescription
                                 });
 
                             case 8:
                                 _this.switchRefreshTable(true);
                                 _this.$toast.success({
                                     title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.createUniversity')
+                                    message: _this.$t('translation.createTest')
                                 });
                                 _context.next = 15;
                                 break;
@@ -5821,7 +5320,7 @@ exports.default = {
                                 if (_context.t0.status === 404) {
                                     _this.$toast.error({
                                         title: _this.$t('translation.error'),
-                                        message: _this.$t('translation.inviteNotFound')
+                                        message: _this.$t('translation.error')
                                     });
                                 } else {
                                     _this.$toast.error({
@@ -5831,10 +5330,9 @@ exports.default = {
                                 }
 
                             case 15:
-                                _this.hidePreloader();
                                 _this.hide();
 
-                            case 17:
+                            case 16:
                             case 'end':
                                 return _context.stop();
                         }
@@ -5896,46 +5394,10 @@ exports.default = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
 
-/***/ 387:
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5943,21 +5405,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowCreateFaculty
+    _vm.modalsIsShowCreateTest
       ? _c("div", { staticClass: "modal__wrap" }, [
           _c("div", { staticClass: "modal__content modal__md" }, [
             _c("h4", { staticClass: "modal__head" }, [
               _vm._v(
                 "\n                " +
-                  _vm._s(_vm.$t("translation.addFaculty")) +
+                  _vm._s(_vm.$t("translation.createTest")) +
                   "\n            "
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal__body" }, [
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "facultyName" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.facultyName")))
+                _c("label", { attrs: { for: "testName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.testName")))
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -5971,26 +5433,26 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.facultyName,
-                      expression: "facultyName"
+                      value: _vm.testName,
+                      expression: "testName"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
                     type: "text",
-                    id: "facultyName",
-                    "aria-describedby": "facultyNameHelp",
-                    placeholder: _vm.$t("translation.facultyNamePlaceholder"),
-                    name: "facultyName",
-                    "data-vv-as": _vm.$t("translation.facultyName")
+                    id: "testName",
+                    "aria-describedby": "testNameHelp",
+                    placeholder: _vm.$t("translation.testNamePlaceholder"),
+                    name: "testName",
+                    "data-vv-as": _vm.$t("translation.testName")
                   },
-                  domProps: { value: _vm.facultyName },
+                  domProps: { value: _vm.testName },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.facultyName = $event.target.value
+                      _vm.testName = $event.target.value
                     }
                   }
                 }),
@@ -6002,17 +5464,17 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: _vm.errors.has("facultyName"),
-                        expression: "errors.has('facultyName')"
+                        value: _vm.errors.has("testName"),
+                        expression: "errors.has('testName')"
                       }
                     ],
                     staticClass: "form-text text-danger",
-                    attrs: { id: "facultyNameHelp" }
+                    attrs: { id: "testNameHelp" }
                   },
                   [
                     _vm._v(
                       "\n                        " +
-                        _vm._s(_vm.errors.first("facultyName")) +
+                        _vm._s(_vm.errors.first("testName")) +
                         "\n                    "
                     )
                   ]
@@ -6020,67 +5482,8 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "facultyName" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.university")))
-                ]),
-                _vm._v(" "),
-                _vm.universities
-                  ? _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.facultyUniversityId,
-                            expression: "facultyUniversityId"
-                          }
-                        ],
-                        staticClass: "select-style",
-                        attrs: { name: "university_id" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.facultyUniversityId = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "0" } }, [
-                          _vm._v(_vm._s(_vm.$t("translation.noData")))
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.universities, function(item) {
-                          return _c(
-                            "option",
-                            { domProps: { value: item.id } },
-                            [
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(item.name) +
-                                  "\n                        "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "facultyDescription" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.facultyDescription")))
+                _c("label", { attrs: { for: "testDescription" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.testDescription")))
                 ]),
                 _vm._v(" "),
                 _c("textarea", {
@@ -6094,28 +5497,28 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.facultyDescription,
-                      expression: "facultyDescription"
+                      value: _vm.testDescription,
+                      expression: "testDescription"
                     }
                   ],
                   staticClass: "form-control resize-none h-5",
                   attrs: {
                     type: "text",
-                    id: "facultyDescription",
-                    "aria-describedby": "facultyDescriptionHelp",
+                    id: "testDescription",
+                    "aria-describedby": "testDescriptionHelp",
                     placeholder: _vm.$t(
-                      "translation.facultyDescriptionPlaceholder"
+                      "translation.testDescriptionPlaceholder"
                     ),
-                    name: "universityDescription",
-                    "data-vv-as": _vm.$t("translation.facultyDescription")
+                    name: "testDescription",
+                    "data-vv-as": _vm.$t("translation.testDescription")
                   },
-                  domProps: { value: _vm.facultyDescription },
+                  domProps: { value: _vm.testDescription },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.facultyDescription = $event.target.value
+                      _vm.testDescription = $event.target.value
                     }
                   }
                 }),
@@ -6127,90 +5530,20 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: _vm.errors.has("facultyDescription"),
-                        expression: "errors.has('facultyDescription')"
+                        value: _vm.errors.has("testDescription"),
+                        expression: "errors.has('testDescription')"
                       }
                     ],
                     staticClass: "form-text text-danger",
-                    attrs: { id: "facultyDescriptionHelp" }
+                    attrs: { id: "testDescriptionHelp" }
                   },
                   [
                     _vm._v(
                       "\n                        " +
-                        _vm._s(_vm.errors.first("facultyDescription")) +
+                        _vm._s(_vm.errors.first("testDescription")) +
                         "\n                    "
                     )
                   ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "div",
-                  { class: { "is-invalid__date": _vm.errors.has("photo") } },
-                  [
-                    _c("label", { attrs: { for: "image" } }, [
-                      _vm._v(_vm._s(_vm.$t("translation.photo")))
-                    ]),
-                    _vm._v(" "),
-                    _vm.facultyImage
-                      ? _c("div", [
-                          _vm.isShowOldImage
-                            ? _c("img", {
-                                staticClass: "img-fluid mt-3 max-w-20",
-                                attrs: { src: _vm.facultyImage.source }
-                              })
-                            : _vm._e()
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("vue-base64-file-upload", {
-                      directives: [
-                        {
-                          name: "validate",
-                          rawName: "v-validate",
-                          value: "required",
-                          expression: "'required'"
-                        }
-                      ],
-                      staticClass: "v1",
-                      attrs: {
-                        accept: "image/png,image/jpeg",
-                        "image-class": "img-fluid mt-3 max-w-20",
-                        "input-class": "input",
-                        "max-size": _vm.customImageMaxSize,
-                        id: "image",
-                        "data-vv-name": "photo",
-                        "data-vv-value-path": "file",
-                        "data-vv-as": _vm.$t("translation.photo"),
-                        placeholder: _vm.$t("translation.photo")
-                      },
-                      on: { file: _vm.onFile, load: _vm.onLoad }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("photo"),
-                            expression: "errors.has('photo')"
-                          }
-                        ],
-                        staticClass: "invalid-feedback"
-                      },
-                      [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.first("photo")) +
-                            "\n                        "
-                        )
-                      ]
-                    )
-                  ],
-                  1
                 )
               ]),
               _vm._v(" "),
@@ -6224,7 +5557,7 @@ var render = function() {
                 [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.$t("translation.cancel")) +
+                      _vm._s(_vm.$t("translation.close")) +
                       "\n                "
                   )
                 ]
@@ -6235,7 +5568,7 @@ var render = function() {
                 {
                   staticClass: "btn btn-md btn-success mt-4",
                   attrs: { type: "button" },
-                  on: { click: _vm.createFaculty }
+                  on: { click: _vm.createTest }
                 },
                 [
                   _vm._v(
@@ -6257,21 +5590,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e30b9554", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-09405210", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 388:
+/***/ 403:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(389)
+var __vue_script__ = __webpack_require__(404)
 /* template */
-var __vue_template__ = __webpack_require__(390)
+var __vue_template__ = __webpack_require__(405)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -6288,7 +5621,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/admin/modals/EditFaculty.vue"
+Component.options.__file = "resources/assets/js/components/admin/modals/UpdateTest.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -6297,9 +5630,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1bb1cdf0", Component.options)
+    hotAPI.createRecord("data-v-0620ccdd", Component.options)
   } else {
-    hotAPI.reload("data-v-1bb1cdf0", Component.options)
+    hotAPI.reload("data-v-0620ccdd", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -6311,7 +5644,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 389:
+/***/ 404:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6329,15 +5662,11 @@ var _asyncToGenerator2 = __webpack_require__(10);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _vueBase64FileUpload = __webpack_require__(257);
-
-var _vueBase64FileUpload2 = _interopRequireDefault(_vueBase64FileUpload);
-
 var _modals = __webpack_require__(44);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _admin = __webpack_require__(253);
+var _admin = __webpack_require__(260);
 
 var _admin2 = _interopRequireDefault(_admin);
 
@@ -6345,69 +5674,26 @@ var _preload = __webpack_require__(73);
 
 var _preload2 = _interopRequireDefault(_preload);
 
-var _constants = __webpack_require__(265);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
     mixins: [_modals2.default, _admin2.default, _preload2.default],
-    components: {
-        VueBase64FileUpload: _vueBase64FileUpload2.default
-    },
     data: function data() {
-        return {
-            customImageMaxSize: _constants.IMAGE_MAX_SIZE,
-            imageSubstringLength: null,
-            imageBase64: null,
-            latLng: {},
-            isShowOldImage: true
-        };
+        return {};
     },
 
-    computed: {
-        photo: function photo() {
-            if (this.imageBase64) {
-                return this.imageBase64.substr(this.imageSubstringLength);
-            }
-            return '';
-        }
-    },
-    watch: {
-        universities: function universities() {
-            this.facultyUniversityId = this.universities[0].id;
-        }
-    },
     methods: {
-        setPlace: function setPlace(universityAddress) {
-            this.latLng = {
-                lat: universityAddress.geometry.location.lat(),
-                lng: universityAddress.geometry.location.lng()
-            };
-            this.universityAddress = universityAddress.formatted_address;
-        },
-        onFile: function onFile(file) {
-            this.imageSubstringLength = file.type.length + 13;
-        },
-        onLoad: function onLoad(dataUri) {
-            this.imageBase64 = dataUri;
-            this.isShowOldImage = false;
-        },
         hide: function hide() {
-            this.modalsIsShowEditFaculty = false;
+            this.modalsIsShowUpdateTest = false;
 
-            this.facultyId = null;
-            this.facultyUniversityId = this.universities[0].id;
-            this.facultyName = null;
-            this.facultyDescription = null;
-            this.facultyImage = null;
-
-            this.isShowOldImage = true;
+            this.testName = null;
+            this.testDescription = null;
         },
-        saveEditFaculty: function saveEditFaculty() {
+        updateTest: function updateTest() {
             var _this = this;
 
             return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-                var valid, params;
+                var valid;
                 return _regenerator2.default.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
@@ -6419,42 +5705,38 @@ exports.default = {
                                 valid = _context.sent;
 
                                 if (!valid) {
-                                    _context.next = 18;
+                                    _context.next = 16;
                                     break;
                                 }
 
                                 _context.prev = 4;
 
                                 _this.showPreloader();
-                                params = {
-                                    university_id: _this.facultyUniversityId,
-                                    name: _this.facultyName,
-                                    description: _this.facultyDescription,
-                                    image: _this.photo
-                                };
-                                _context.next = 9;
-                                return _this.$store.dispatch('admin/editFaculty', {
-                                    id: _this.facultyId,
-                                    params: params
+                                _context.next = 8;
+                                return _this.$store.dispatch('admin/updateTest', {
+                                    id: _this.testId,
+                                    params: {
+                                        name: _this.testName
+                                    }
                                 });
 
-                            case 9:
+                            case 8:
                                 _this.switchRefreshTable(true);
                                 _this.$toast.success({
                                     title: _this.$t('translation.success'),
-                                    message: _this.$t('translation.createUniversity')
+                                    message: _this.$t('translation.updateTest')
                                 });
-                                _context.next = 16;
+                                _context.next = 15;
                                 break;
 
-                            case 13:
-                                _context.prev = 13;
+                            case 12:
+                                _context.prev = 12;
                                 _context.t0 = _context['catch'](4);
 
                                 if (_context.t0.status === 404) {
                                     _this.$toast.error({
                                         title: _this.$t('translation.error'),
-                                        message: _this.$t('translation.inviteNotFound')
+                                        message: _this.$t('translation.error')
                                     });
                                 } else {
                                     _this.$toast.error({
@@ -6463,16 +5745,15 @@ exports.default = {
                                     });
                                 }
 
-                            case 16:
-                                _this.hidePreloader();
+                            case 15:
                                 _this.hide();
 
-                            case 18:
+                            case 16:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[4, 13]]);
+                }, _callee, _this, [[4, 12]]);
             }))();
         }
     }
@@ -6529,45 +5810,10 @@ exports.default = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
 
-/***/ 390:
+/***/ 405:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -6575,21 +5821,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade", mode: "out-in" } }, [
-    _vm.modalsIsShowEditFaculty
+    _vm.modalsIsShowUpdateTest
       ? _c("div", { staticClass: "modal__wrap" }, [
           _c("div", { staticClass: "modal__content modal__md" }, [
             _c("h4", { staticClass: "modal__head" }, [
               _vm._v(
                 "\n                " +
-                  _vm._s(_vm.$t("translation.editFaculty")) +
+                  _vm._s(_vm.$t("translation.updateTest")) +
                   "\n            "
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal__body" }, [
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "facultyName" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.facultyName")))
+                _c("label", { attrs: { for: "testName" } }, [
+                  _vm._v(_vm._s(_vm.$t("translation.testName")))
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -6603,26 +5849,26 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.facultyName,
-                      expression: "facultyName"
+                      value: _vm.testName,
+                      expression: "testName"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
                     type: "text",
-                    id: "facultyName",
-                    "aria-describedby": "facultyNameHelp",
-                    placeholder: _vm.$t("translation.facultyNamePlaceholder"),
-                    name: "facultyName",
-                    "data-vv-as": _vm.$t("translation.facultyName")
+                    id: "testName",
+                    "aria-describedby": "testName",
+                    placeholder: _vm.$t("translation.testNamePlaceholder"),
+                    name: "testName",
+                    "data-vv-as": _vm.$t("translation.testName")
                   },
-                  domProps: { value: _vm.facultyName },
+                  domProps: { value: _vm.testName },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.facultyName = $event.target.value
+                      _vm.testName = $event.target.value
                     }
                   }
                 }),
@@ -6634,207 +5880,20 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: _vm.errors.has("facultyName"),
-                        expression: "errors.has('facultyName')"
+                        value: _vm.errors.has("testName"),
+                        expression: "errors.has('testName')"
                       }
                     ],
                     staticClass: "form-text text-danger",
-                    attrs: { id: "facultyNameHelp" }
+                    attrs: { id: "testNameHelp" }
                   },
                   [
                     _vm._v(
                       "\n                        " +
-                        _vm._s(_vm.errors.first("facultyName")) +
+                        _vm._s(_vm.errors.first("testName")) +
                         "\n                    "
                     )
                   ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "facultyName" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.university")))
-                ]),
-                _vm._v(" "),
-                _vm.universities
-                  ? _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.facultyUniversityId,
-                            expression: "facultyUniversityId"
-                          }
-                        ],
-                        staticClass: "select-style",
-                        attrs: { name: "university_id" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.facultyUniversityId = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "0" } }, [
-                          _vm._v(_vm._s(_vm.$t("translation.noData")))
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.universities, function(item) {
-                          return _c(
-                            "option",
-                            { domProps: { value: item.id } },
-                            [
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(item.name) +
-                                  "\n                        "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "facultyDescription" } }, [
-                  _vm._v(_vm._s(_vm.$t("translation.facultyDescription")))
-                ]),
-                _vm._v(" "),
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|max:255",
-                      expression: "'required|max:255'"
-                    },
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.facultyDescription,
-                      expression: "facultyDescription"
-                    }
-                  ],
-                  staticClass: "form-control resize-none h-5",
-                  attrs: {
-                    type: "text",
-                    id: "facultyDescription",
-                    "aria-describedby": "facultyDescriptionHelp",
-                    placeholder: _vm.$t(
-                      "translation.facultyDescriptionPlaceholder"
-                    ),
-                    name: "universityDescription",
-                    "data-vv-as": _vm.$t("translation.facultyDescription")
-                  },
-                  domProps: { value: _vm.facultyDescription },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.facultyDescription = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "small",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("facultyDescription"),
-                        expression: "errors.has('facultyDescription')"
-                      }
-                    ],
-                    staticClass: "form-text text-danger",
-                    attrs: { id: "facultyDescriptionHelp" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.errors.first("facultyDescription")) +
-                        "\n                    "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "div",
-                  { class: { "is-invalid__date": _vm.errors.has("photo") } },
-                  [
-                    _c("label", { attrs: { for: "image" } }, [
-                      _vm._v(_vm._s(_vm.$t("translation.photo")))
-                    ]),
-                    _vm._v(" "),
-                    _vm.facultyImage
-                      ? _c("div", [
-                          _vm.isShowOldImage
-                            ? _c("img", {
-                                staticClass: "img-fluid mt-3 max-w-20",
-                                attrs: { src: _vm.facultyImage.source }
-                              })
-                            : _vm._e()
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("vue-base64-file-upload", {
-                      staticClass: "v1",
-                      attrs: {
-                        accept: "image/png,image/jpeg",
-                        "image-class": "img-fluid mt-3 max-w-20",
-                        "input-class": "input",
-                        "max-size": _vm.customImageMaxSize,
-                        id: "image",
-                        "data-vv-name": "photo",
-                        "data-vv-value-path": "file",
-                        "data-vv-as": _vm.$t("translation.photo"),
-                        placeholder: _vm.$t("translation.photo")
-                      },
-                      on: { file: _vm.onFile, load: _vm.onLoad }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("photo"),
-                            expression: "errors.has('photo')"
-                          }
-                        ],
-                        staticClass: "invalid-feedback"
-                      },
-                      [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.first("photo")) +
-                            "\n                        "
-                        )
-                      ]
-                    )
-                  ],
-                  1
                 )
               ]),
               _vm._v(" "),
@@ -6848,7 +5907,7 @@ var render = function() {
                 [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.$t("translation.cancel")) +
+                      _vm._s(_vm.$t("translation.close")) +
                       "\n                "
                   )
                 ]
@@ -6859,7 +5918,7 @@ var render = function() {
                 {
                   staticClass: "btn btn-md btn-success mt-4",
                   attrs: { type: "button" },
-                  on: { click: _vm.saveEditFaculty }
+                  on: { click: _vm.updateTest }
                 },
                 [
                   _vm._v(
@@ -6881,7 +5940,176 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1bb1cdf0", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0620ccdd", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 406:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container-fluid" },
+    [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "row border rounded bg-white pt-3 pb-3" }, [
+          _c("div", { staticClass: "col-md-10" }, [
+            _c("h1", [_vm._v(_vm._s(_vm.$t("translation.managerTests")))])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 align-self-center" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary btn-md float-right",
+                attrs: { href: "javascript:" },
+                on: {
+                  click: function($event) {
+                    _vm.modalsIsShowCreateTest = true
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.$t("translation.addTest")) +
+                    "\n                "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-12 mt-3" },
+            [
+              _c("vuetable", {
+                ref: "listTests",
+                attrs: {
+                  "api-url": "https://itpm-194220.appspot.com/api/admin/test",
+                  fields: _vm.fields,
+                  "pagination-path": "",
+                  css: _vm.css.table,
+                  "data-path": "data.data",
+                  "http-options": {
+                    headers: {
+                      Authorization: "Bearer " + _vm.userToken
+                    }
+                  },
+                  "detail-row-component": "my-detail-row"
+                },
+                on: {
+                  "vuetable:load-success": _vm.hidePreloader,
+                  "vuetable:load-error": _vm.hidePreloader,
+                  "vuetable:pagination-data": _vm.onPaginationData
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "questions",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "router-link",
+                          { attrs: { to: { name: "admin.questions" } } },
+                          [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.$t("translation.questions")) +
+                                "\n                        "
+                            )
+                          ]
+                        )
+                      ]
+                    }
+                  },
+                  {
+                    key: "actions",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-outline-secondary btn-md",
+                            attrs: {
+                              href: "javascript:",
+                              title: _vm.$t("translation.edit")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.editTest(props.rowData.id)
+                              }
+                            }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-pencil",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-danger btn-md",
+                            attrs: {
+                              type: "button",
+                              title: _vm.$t("translation.remove")
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.destroyTest(props.rowData.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash-o" })]
+                        )
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-12 m-3" },
+            [
+              _c("vuetable-pagination", {
+                ref: "pagination",
+                attrs: { css: _vm.css.pagination },
+                on: { "vuetable-pagination:change-page": _vm.onChangePage }
+              })
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("modal-create-test"),
+      _vm._v(" "),
+      _c("modal-update-test"),
+      _vm._v(" "),
+      _c("modal-show-description")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-433d5c06", module.exports)
   }
 }
 

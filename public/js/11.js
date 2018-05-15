@@ -6,9 +6,9 @@ webpackJsonp([11],{
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(317)
+var __vue_script__ = __webpack_require__(331)
 /* template */
-var __vue_template__ = __webpack_require__(318)
+var __vue_template__ = __webpack_require__(332)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 252:
+/***/ 312:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -186,15 +186,15 @@ exports.default = {
 
 /***/ }),
 
-/***/ 258:
+/***/ 313:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(259)
+var __vue_script__ = __webpack_require__(314)
 /* template */
-var __vue_template__ = __webpack_require__(261)
+var __vue_template__ = __webpack_require__(316)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -234,7 +234,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 259:
+/***/ 314:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -252,11 +252,11 @@ var _asyncToGenerator2 = __webpack_require__(10);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _vuejsDatepicker = __webpack_require__(260);
+var _vuejsDatepicker = __webpack_require__(315);
 
 var _vuejsDatepicker2 = _interopRequireDefault(_vuejsDatepicker);
 
-var _vueBase64FileUpload = __webpack_require__(252);
+var _vueBase64FileUpload = __webpack_require__(312);
 
 var _vueBase64FileUpload2 = _interopRequireDefault(_vueBase64FileUpload);
 
@@ -264,7 +264,7 @@ var _modals = __webpack_require__(44);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _user = __webpack_require__(28);
+var _user = __webpack_require__(29);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -587,7 +587,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 260:
+/***/ 315:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1905,7 +1905,7 @@ var Datepicker = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
 
 /***/ }),
 
-/***/ 261:
+/***/ 316:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -2493,15 +2493,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 270:
+/***/ 318:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(271)
+var __vue_script__ = __webpack_require__(319)
 /* template */
-var __vue_template__ = __webpack_require__(272)
+var __vue_template__ = __webpack_require__(320)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -2541,7 +2541,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 271:
+/***/ 319:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2563,7 +2563,7 @@ var _modals = __webpack_require__(44);
 
 var _modals2 = _interopRequireDefault(_modals);
 
-var _user = __webpack_require__(28);
+var _user = __webpack_require__(29);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -2659,7 +2659,7 @@ exports.default = {
                                 valid = _context.sent;
 
                                 if (!valid) {
-                                    _context.next = 16;
+                                    _context.next = 15;
                                     break;
                                 }
 
@@ -2671,14 +2671,20 @@ exports.default = {
                                 });
 
                             case 7:
-                                window.Cookies.set('first_stage', 3);
-                                _this.userFirstStage = 3;
+                                if (_this.userRole === 'user') {
+                                    window.Cookies.set('first_stage', 3);
+                                    _this.userFirstStage = 3;
+                                } else {
+                                    _this.$router.push({
+                                        name: 'admin.home'
+                                    });
+                                }
                                 _this.hide();
-                                _context.next = 16;
+                                _context.next = 15;
                                 break;
 
-                            case 12:
-                                _context.prev = 12;
+                            case 11:
+                                _context.prev = 11;
                                 _context.t0 = _context['catch'](4);
 
                                 _this.hide();
@@ -2687,12 +2693,12 @@ exports.default = {
                                     message: _this.$t(_context.t0.data.message)
                                 });
 
-                            case 16:
+                            case 15:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[4, 12]]);
+                }, _callee, _this, [[4, 11]]);
             }))();
         },
         authenticate: function authenticate(provider) {
@@ -2705,7 +2711,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 272:
+/***/ 320:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -2958,7 +2964,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 317:
+/***/ 331:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2968,86 +2974,96 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Login = __webpack_require__(270);
+var _Login = __webpack_require__(318);
 
 var loginModal = _interopRequireWildcard(_Login);
 
-var _Register = __webpack_require__(258);
+var _Register = __webpack_require__(313);
 
 var registerModal = _interopRequireWildcard(_Register);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _user = __webpack_require__(29);
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var _user2 = _interopRequireDefault(_user);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 exports.default = {
     components: {
         loginModal: loginModal,
         registerModal: registerModal
     },
+    mixins: [_user2.default],
+    data: function data() {
+        return {
+            isAdmin: true
+        };
+    },
     metaInfo: function metaInfo() {
         return {
             title: this.$t('translation.homepage')
         };
     },
-    created: function created() {
-        if (Number(window.Cookies.get('first_stage'))) {
+    mounted: function mounted() {
+        if (this.userRole === 'uni_admin' || this.userRole === 'global_admin') {
             this.$router.push({
-                name: 'user.room'
+                name: 'admin.home'
             });
         }
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
-/***/ 318:
+/***/ 332:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

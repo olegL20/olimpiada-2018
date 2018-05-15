@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		8: 0
+/******/ 		15: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -11921,7 +11921,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(23)(function () {
+module.exports = !__webpack_require__(22)(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -12212,6 +12212,19 @@ module.exports = function (it, key) {
 /* 22 */
 /***/ (function(module, exports) {
 
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (e) {
+    return true;
+  }
+};
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports) {
+
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -12288,19 +12301,6 @@ function toComment(sourceMap) {
 
 	return '/*# ' + data + ' */';
 }
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
 
 
 /***/ }),
@@ -12442,11 +12442,31 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'user',
         prefix: true
-    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload']))
+    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role', 'token']))
 };
 
 /***/ }),
 /* 30 */
+/***/ (function(module, exports) {
+
+module.exports = true;
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+var $keys = __webpack_require__(82);
+var enumBugKeys = __webpack_require__(49);
+
+module.exports = Object.keys || function keys(O) {
+  return $keys(O, enumBugKeys);
+};
+
+
+/***/ }),
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -12671,26 +12691,6 @@ function applyToTag (styleElement, obj) {
     styleElement.appendChild(document.createTextNode(css))
   }
 }
-
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports) {
-
-module.exports = true;
-
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(82);
-var enumBugKeys = __webpack_require__(49);
-
-module.exports = Object.keys || function keys(O) {
-  return $keys(O, enumBugKeys);
-};
 
 
 /***/ }),
@@ -13088,7 +13088,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'modals',
         prefix: true
-    }, ['isShowLogin', 'isShowRegister', 'isShowAdvice', 'isShowSelectVuz', 'isShowCreateUniversity', 'isShowEditUniversity', 'isShowDescription', 'isShowInviteUniversityAdmin', 'isShowCreateFaculty', 'isShowEditFaculty']))
+    }, ['isShowLogin', 'isShowRegister', 'isShowAdvice', 'isShowSelectVuz', 'isShowCreateUniversity', 'isShowCreateTest', 'isShowUpdateTest', 'isShowEditUniversity', 'isShowDescription', 'isShowInviteUniversityAdmin', 'isShowCreateFaculty', 'isShowEditFaculty', 'isShowCreateQuestion', 'isShowUpdateQuestion', 'isShowCreateAnswer', 'isShowUpdateAnswer', 'isShowCreateCoefficient', 'isShowUpdateCoefficient', 'isShowCreateMajor', 'isShowUpdateMajor', 'isShowCreateDepartment', 'isShowUpdateDepartment', 'isShowCreateFaculty', 'isShowEditFaculty']))
 };
 
 /***/ }),
@@ -13319,7 +13319,7 @@ var store = global[SHARED] || (global[SHARED] = {});
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
   version: core.version,
-  mode: __webpack_require__(31) ? 'pure' : 'global',
+  mode: __webpack_require__(30) ? 'pure' : 'global',
   copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
 
@@ -24125,7 +24125,7 @@ module.exports = Cancel;
 
 "use strict";
 
-var LIBRARY = __webpack_require__(31);
+var LIBRARY = __webpack_require__(30);
 var $export = __webpack_require__(11);
 var redefine = __webpack_require__(80);
 var hide = __webpack_require__(14);
@@ -24421,6 +24421,7 @@ var UNIVERSITIES = exports.UNIVERSITIES = 'UNIVERSITIES';
 var SELECTED_UNIVERSITY = exports.SELECTED_UNIVERSITY = 'SELECTED_UNIVERSITY';
 var SHOW_PRELOAD = exports.SHOW_PRELOAD = 'SHOW_PRELOAD';
 var REFRESH_TABLE = exports.REFRESH_TABLE = 'REFRESH_TABLE';
+var ROLE = exports.ROLE = 'ROLE';
 
 /***/ }),
 /* 69 */
@@ -24451,7 +24452,8 @@ exports.default = {
     universities: [],
     selectedUniversity: null,
     showPreload: false,
-    refreshTable: false
+    refreshTable: false,
+    role: null
 };
 
 /***/ }),
@@ -24470,12 +24472,25 @@ exports.default = {
     isShowAdvice: false,
     isShowSelectVuz: false,
     isShowCreateUniversity: false,
+    isShowCreateTest: false,
+    isShowUpdateTest: false,
     isShowEditUniversity: false,
     isShowDescription: false,
     isShowInviteUniversityAdmin: false,
     isShowAssociateUniversityAdmin: false,
     isShowCreateFaculty: false,
-    isShowEditFaculty: false
+    isShowEditFaculty: false,
+    modalsIsShowAssociateUniversityAdmin: false,
+    isShowCreateQuestion: false,
+    isShowUpdateQuestion: false,
+    isShowCreateAnswer: false,
+    isShowUpdateAnswer: false,
+    isShowCreateCoefficient: false,
+    isShowUpdateCoefficient: false,
+    isShowCreateMajor: false,
+    isShowUpdateMajor: false,
+    isShowCreateDepartment: false,
+    isShowUpdateDepartment: false
 };
 
 /***/ }),
@@ -24501,7 +24516,37 @@ var UNIVERSITY_PARENTS_ID = exports.UNIVERSITY_PARENTS_ID = 'UNIVERSITY_PARENTS_
 var UNIVERSITIES = exports.UNIVERSITIES = 'UNIVERSITIES';
 var UNIVERSITY_IMAGE = exports.UNIVERSITY_IMAGE = 'UNIVERSITY_IMAGE';
 var UNIVERSITY_POSITION = exports.UNIVERSITY_POSITION = 'UNIVERSITY_POSITION';
+var TESTS = exports.TESTS = 'TESTS';
+var TEST_ID = exports.TEST_ID = 'TEST_ID';
+var TEST_NAME = exports.TEST_NAME = 'TEST_NAME';
+var TEST_DESCRIPTION = exports.TEST_DESCRIPTION = 'TEST_DESCRIPTION';
+var QUESTION_TEST_ID = exports.QUESTION_TEST_ID = 'QUESTION_TEST_ID';
+var QUESTION_NAME = exports.QUESTION_NAME = 'QUESTION_NAME';
+var QUESTION_TYPE = exports.QUESTION_TYPE = 'QUESTION_TYPE';
+var QUESTION_TYPE_FILL = exports.QUESTION_TYPE_FILL = 'QUESTION_TYPE_FILL';
+var QUESTION_ANSWER = exports.QUESTION_ANSWER = 'QUESTION_ANSWER';
+var QUESTION_ID = exports.QUESTION_ID = 'QUESTION_ID';
+var ANSWER_QUESTION_ID = exports.ANSWER_QUESTION_ID = 'ANSWER_QUESTION_ID';
+var ANSWER_NAME = exports.ANSWER_NAME = 'ANSWER_NAME';
+var ANSWER_ID = exports.ANSWER_ID = 'ANSWER_ID';
+var COEFFICIENT_ID = exports.COEFFICIENT_ID = 'COEFFICIENT_ID';
+var COEFFICIENT_NAME = exports.COEFFICIENT_NAME = 'COEFFICIENT_NAME';
+var COEFFICIENT_MAJOR_ID = exports.COEFFICIENT_MAJOR_ID = 'COEFFICIENT_MAJOR_ID';
+var COEFFICIENT_COEFFICIENT = exports.COEFFICIENT_COEFFICIENT = 'COEFFICIENT_COEFFICIENT';
 var UNIVERSITY_USER_ID = exports.UNIVERSITY_USER_ID = 'UNIVERSITY_USER_ID';
+var MAJORS = exports.MAJORS = 'MAJORS';
+var QUESTIONS = exports.QUESTIONS = 'QUESTIONS';
+var MAJOR_DESCRIPTION = exports.MAJOR_DESCRIPTION = 'MAJOR_DESCRIPTION';
+var MAJOR_ID = exports.MAJOR_ID = 'MAJOR_ID';
+var MAJOR_DEPARTMENT_ID = exports.MAJOR_DEPARTMENT_ID = 'MAJOR_DEPARTMENT_ID';
+var MAJOR_NAME = exports.MAJOR_NAME = 'MAJOR_NAME';
+var MAJOR_COEFFICIENT = exports.MAJOR_COEFFICIENT = 'MAJOR_COEFFICIENT';
+var DEPARTMENTS = exports.DEPARTMENTS = 'DEPARTMENTS';
+var DEPARTMENT_ID = exports.DEPARTMENT_ID = 'DEPARTMENT_ID';
+var DEPARTMENT_FACULTY_ID = exports.DEPARTMENT_FACULTY_ID = 'DEPARTMENT_FACULTY_ID';
+var DEPARTMENT_NAME = exports.DEPARTMENT_NAME = 'DEPARTMENT_NAME';
+var DEPARTMENT_DESCRIPTION = exports.DEPARTMENT_DESCRIPTION = 'DEPARTMENT_DESCRIPTION';
+var FACULTIES = exports.FACULTIES = 'FACULTIES';
 var FACULTY_ID = exports.FACULTY_ID = 'FACULTY_ID';
 var FACULTY_NAME = exports.FACULTY_NAME = 'FACULTY_NAME';
 var FACULTY_DESCRIPTION = exports.FACULTY_DESCRIPTION = 'FACULTY_DESCRIPTION';
@@ -24529,7 +24574,6 @@ exports.default = {
     universityZipCode: null,
     universityParentId: null,
     universityParentsId: [],
-    universities: {},
     universityImage: null,
     universityPosition: null,
     universityUserId: null,
@@ -24537,7 +24581,38 @@ exports.default = {
     facultyUniversityId: null,
     facultyName: null,
     facultyDescription: null,
-    facultyImage: null
+    facultyImage: null,
+    universities: null,
+    tests: null,
+    testId: null,
+    testName: null,
+    testDescription: null,
+    questionTestId: null,
+    questionName: null,
+    questionType: null,
+    questionTypeFill: null,
+    questionAnswer: null,
+    questionId: null,
+    coefficientId: null,
+    coefficientName: null,
+    coefficientMajorId: null,
+    coefficientCoefficient: 0.5,
+    majors: null,
+    questions: null,
+    answerName: null,
+    answerId: null,
+    answerQuestionId: null,
+    majorDescription: null,
+    majorId: null,
+    majorDepartmentId: null,
+    majorName: null,
+    majorCoefficient: 0.5,
+    departments: null,
+    departmentId: null,
+    departmentFacultyId: null,
+    departmentName: null,
+    departmentDescription: null,
+    faculties: null
 };
 
 /***/ }),
@@ -24643,7 +24718,7 @@ __webpack_require__(59)(String, 'String', function (iterated) {
 /* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(13) && !__webpack_require__(23)(function () {
+module.exports = !__webpack_require__(13) && !__webpack_require__(22)(function () {
   return Object.defineProperty(__webpack_require__(40)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -26010,7 +26085,7 @@ var content = __webpack_require__(102);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(30)("78dc4eec", content, false, {});
+var update = __webpack_require__(32)("78dc4eec", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -26029,7 +26104,7 @@ if(false) {
 /* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -26384,7 +26459,7 @@ var content = __webpack_require__(109);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(30)("9762adce", content, false, {});
+var update = __webpack_require__(32)("9762adce", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -26403,7 +26478,7 @@ if(false) {
 /* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -58744,60 +58819,132 @@ var routes = [{
     path: '/',
     name: 'home',
     component: function component() {
-        return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 244));
+        return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, 244));
     }
-},
-// {
-//     path: '/confirmation/:id',
-//     name: 'auth.confirmation',
-//     component: () => import('../pages/auth/EmailConfirmation.vue'),
-//     meta: {
-//         guest: true,
-//     },
-// },
-{
+}, {
+    path: '/confirmation/:id',
+    name: 'auth.confirmation',
+    component: function component() {
+        return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, 245));
+    },
+    meta: {
+        guest: true
+    }
+}, {
     path: '/room',
     name: 'user.room',
     component: function component() {
-        return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 245));
+        return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 246));
+    },
+    meta: {
+        auth: true,
+        user: true
     }
 }, {
     path: '/invite/:id',
     name: 'auth.invite',
     component: function component() {
-        return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 246));
+        return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 247));
+    },
+    meta: {
+        guest: true
     }
 }, {
-    path: '/admin/login',
-    name: 'admin.login',
+    path: '/admin/home',
+    name: 'admin.home',
     component: function component() {
-        return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, 247));
+        return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 248));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true,
+        globalAdmin: true
     }
 }, {
     path: '/admin/university',
     name: 'admin.university',
     component: function component() {
-        return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 248));
+        return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 249));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
     }
-    // meta: {
-    //     auth: true,
-    //     admin: true,
-    // },
 }, {
     path: '/admin/university/admins',
     name: 'admin.university.admins',
     component: function component() {
-        return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 249));
+        return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 250));
+    },
+    meta: {
+        auth: true,
+        globalAdmin: true
     }
-    // meta: {
-    //     auth: true,
-    //     admin: true,
-    // },
+}, {
+    path: '/admin/coefficients',
+    name: 'admin.coefficients',
+    component: function component() {
+        return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, 251));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
+    }
+}, {
+    path: '/admin/tests',
+    name: 'admin.tests',
+    component: function component() {
+        return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 252));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
+    }
+}, {
+    path: '/admin/questions',
+    name: 'admin.questions',
+    component: function component() {
+        return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 253));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
+    }
+}, {
+    path: '/admin/answers',
+    name: 'admin.answers',
+    component: function component() {
+        return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, 254));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
+    }
+}, {
+    path: '/admin/majors',
+    name: 'admin.majors',
+    component: function component() {
+        return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 255));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
+    }
+}, {
+    path: '/admin/departments',
+    name: 'admin.departments',
+    component: function component() {
+        return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, 256));
+    },
+    meta: {
+        auth: true,
+        uniAdmin: true
+    }
 }, {
     path: '/admin/faculty',
     name: 'admin.faculty',
     component: function component() {
-        return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 250));
+        return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 257));
     }
     // meta: {
     //     auth: true,
@@ -58811,7 +58958,7 @@ var routes = [{
 {
     path: '*',
     component: function component() {
-        return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, 251));
+        return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 258));
     }
 }];
 
@@ -58844,12 +58991,18 @@ router.beforeEach(function (to, from, next) {
         next({
             name: 'home'
         });
-        // } else if (!to.matched.some(record => record.meta.admin)
-        //     && store.getters['user/logged']
-        //     && to.matched.some(record => record.meta.auth)) {
-        //     next({
-        //         name: 'home',
-        //     });
+    } else if (to.matched.some(function (record) {
+        return record.meta.uniAdmin;
+    }) && _store2.default.getters['user/role'] === 'user') {
+        next({
+            name: 'home'
+        });
+    } else if (to.matched.some(function (record) {
+        return record.meta.globalAdmin;
+    }) && _store2.default.getters['user/role'] === 'user') {
+        next({
+            name: 'home'
+        });
     } else {
         next();
     }
@@ -62612,7 +62765,8 @@ var login = exports.login = function () {
 
                         commit(types.LOGIN, {
                             token: json.data.data.token,
-                            user: json.data.data.user
+                            user: json.data.data.user,
+                            role: json.data.data.user.role
                         });
 
                         return _context.abrupt('return', json.data);
@@ -62816,23 +62970,25 @@ var logout = exports.logout = function () {
 var checkLogged = exports.checkLogged = function () {
     var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(_ref16) {
         var commit = _ref16.commit;
-        var token, currentUser;
+        var token, currentUser, role;
         return _regenerator2.default.wrap(function _callee7$(_context7) {
             while (1) {
                 switch (_context7.prev = _context7.next) {
                     case 0:
                         token = window.Cookies.get('token');
                         currentUser = window.Cookies.get('user');
+                        role = window.Cookies.get('role');
 
 
                         if (token !== undefined && currentUser !== undefined) {
                             commit(types.LOGIN, {
                                 token: token,
-                                user: window.JSON.parse(currentUser)
+                                user: window.JSON.parse(currentUser),
+                                role: role
                             });
                         }
 
-                    case 3:
+                    case 4:
                     case 'end':
                         return _context7.stop();
                 }
@@ -63697,7 +63853,7 @@ module.exports = function (Constructor, NAME, next) {
 
 var dP = __webpack_require__(15);
 var anObject = __webpack_require__(12);
-var getKeys = __webpack_require__(32);
+var getKeys = __webpack_require__(31);
 
 module.exports = __webpack_require__(13) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -63834,7 +63990,7 @@ module.exports = function (done, value) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(31);
+var LIBRARY = __webpack_require__(30);
 var global = __webpack_require__(0);
 var ctx = __webpack_require__(26);
 var classof = __webpack_require__(63);
@@ -64445,8 +64601,8 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var url = '';
-// const url = 'https://itpm-194220.appspot.com';
+// const url = '';
+var url = 'https://itpm-194220.appspot.com';
 exports.default = {
     login: function login(params) {
         var _this = this;
@@ -64668,7 +64824,7 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(186) });
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var getKeys = __webpack_require__(32);
+var getKeys = __webpack_require__(31);
 var gOPS = __webpack_require__(76);
 var pIE = __webpack_require__(74);
 var toObject = __webpack_require__(42);
@@ -64676,7 +64832,7 @@ var IObject = __webpack_require__(60);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(23)(function () {
+module.exports = !$assign || __webpack_require__(22)(function () {
   var A = {};
   var B = {};
   // eslint-disable-next-line no-undef
@@ -64739,12 +64895,14 @@ exports.default = (0, _extends4.default)({}, (0, _schepotinVuexHelpers.mapMutati
 }), (_extends2 = {}, (0, _defineProperty3.default)(_extends2, types.LOGIN, function (state, payload) {
     window.Cookies.set('token', payload.token);
     window.Cookies.set('user', window.JSON.stringify(payload.user));
+    window.Cookies.set('role', payload.role);
 
     window.axios.defaults.headers.common.Authorization = 'Bearer ' + payload.token;
 
     state.token = payload.token;
     state.logged = true;
     state.user = payload.user;
+    state.role = payload.role;
 }), (0, _defineProperty3.default)(_extends2, types.LOGOUT, function (state) {
     window.Cookies.remove('token');
     window.axios.defaults.headers.common.Authorization = '';
@@ -64928,11 +65086,23 @@ var IS_SHOW_REGISTER = exports.IS_SHOW_REGISTER = 'IS_SHOW_REGISTER';
 var IS_SHOW_ADVICE = exports.IS_SHOW_ADVICE = 'IS_SHOW_ADVICE';
 var IS_SHOW_SELECT_VUZ = exports.IS_SHOW_SELECT_VUZ = 'IS_SHOW_SELECT_VUZ';
 var IS_SHOW_CREATE_UNIVERSITY = exports.IS_SHOW_CREATE_UNIVERSITY = 'IS_SHOW_CREATE_UNIVERSITY';
+var IS_SHOW_CREATE_TEST = exports.IS_SHOW_CREATE_TEST = 'IS_SHOW_CREATE_TEST';
+var IS_SHOW_UPDATE_TEST = exports.IS_SHOW_UPDATE_TEST = 'IS_SHOW_UPDATE_TEST';
 var IS_SHOW_EDIT_UNIVERSITY = exports.IS_SHOW_EDIT_UNIVERSITY = 'IS_SHOW_EDIT_UNIVERSITY';
 var IS_SHOW_DESCRIPTION = exports.IS_SHOW_DESCRIPTION = 'IS_SHOW_DESCRIPTION';
 var IS_SHOW_INVITE_UNIVERSITY_ADMIN = exports.IS_SHOW_INVITE_UNIVERSITY_ADMIN = 'IS_SHOW_INVITE_UNIVERSITY_ADMIN';
 var IS_SHOW_CREATE_FACULTY = exports.IS_SHOW_CREATE_FACULTY = 'IS_SHOW_CREATE_FACULTY';
 var IS_SHOW_EDIT_FACULTY = exports.IS_SHOW_EDIT_FACULTY = 'IS_SHOW_EDIT_FACULTY';
+var IS_SHOW_CREATE_QUESTION = exports.IS_SHOW_CREATE_QUESTION = 'IS_SHOW_CREATE_QUESTION';
+var IS_SHOW_UPDATE_QUESTION = exports.IS_SHOW_UPDATE_QUESTION = 'IS_SHOW_UPDATE_QUESTION';
+var IS_SHOW_CREATE_ANSWER = exports.IS_SHOW_CREATE_ANSWER = 'IS_SHOW_CREATE_ANSWER';
+var IS_SHOW_UPDATE_ANSWER = exports.IS_SHOW_UPDATE_ANSWER = 'IS_SHOW_UPDATE_ANSWER';
+var IS_SHOW_CREATE_COEFFICIENT = exports.IS_SHOW_CREATE_COEFFICIENT = 'IS_SHOW_CREATE_COEFFICIENT';
+var IS_SHOW_UPDATE_COEFFICIENT = exports.IS_SHOW_UPDATE_COEFFICIENT = 'IS_SHOW_UPDATE_COEFFICIENT';
+var IS_SHOW_CREATE_MAJOR = exports.IS_SHOW_CREATE_MAJOR = 'IS_SHOW_CREATE_MAJOR';
+var IS_SHOW_UPDATE_MAJOR = exports.IS_SHOW_UPDATE_MAJOR = 'IS_SHOW_UPDATE_MAJOR';
+var IS_SHOW_CREATE_DEPARTMENT = exports.IS_SHOW_CREATE_DEPARTMENT = 'IS_SHOW_CREATE_DEPARTMENT';
+var IS_SHOW_UPDATE_DEPARTMENT = exports.IS_SHOW_UPDATE_DEPARTMENT = 'IS_SHOW_UPDATE_DEPARTMENT';
 
 /***/ }),
 /* 197 */
@@ -64985,7 +65155,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.destroyFaculty = exports.setUniversityForFaculty = exports.getFaculty = exports.editFaculty = exports.createFaculty = exports.associate = exports.sendInviteUniversityAdmin = exports.getAllUniversities = exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
+exports.getFaculties = exports.getDepartments = exports.destroyDepartment = exports.updateDepartment = exports.getDepartment = exports.createDepartment = exports.destroyMajor = exports.updateMajor = exports.getMajor = exports.createMajor = exports.getMajors = exports.destroyFaculty = exports.setUniversityForFaculty = exports.getFaculty = exports.editFaculty = exports.createFaculty = exports.associate = exports.destroyCoefficient = exports.updateCoefficient = exports.getCoefficient = exports.createCoefficient = exports.destroyAnswer = exports.updateAnswer = exports.getAnswer = exports.createAnswer = exports.destroyQuestion = exports.updateQuestion = exports.getQuestions = exports.getQuestion = exports.createQuestion = exports.destroyTest = exports.updateTest = exports.getTests = exports.getTest = exports.createTest = exports.sendInviteUniversityAdmin = exports.getAllUniversities = exports.createUniversity = exports.editUniversity = exports.getUniversity = exports.destroyUniversity = undefined;
 
 var _regenerator = __webpack_require__(9);
 
@@ -65020,7 +65190,7 @@ var destroyUniversity = exports.destroyUniversity = function () {
                     case 2:
                         json = _context.sent;
 
-                        if (!(json.status === 200)) {
+                        if (!(json.status === 200 || json.status === 204)) {
                             _context.next = 5;
                             break;
                         }
@@ -65045,8 +65215,7 @@ var destroyUniversity = exports.destroyUniversity = function () {
 
 var getUniversity = exports.getUniversity = function () {
     var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(_ref3, payload) {
-        var context = _ref3.context,
-            commit = _ref3.commit;
+        var commit = _ref3.commit;
         var json;
         return _regenerator2.default.wrap(function _callee2$(_context2) {
             while (1) {
@@ -65059,11 +65228,10 @@ var getUniversity = exports.getUniversity = function () {
                         json = _context2.sent;
 
                         if (!(json.status === 200)) {
-                            _context2.next = 17;
+                            _context2.next = 16;
                             break;
                         }
 
-                        console.log(json.data.data);
                         commit(types.UNIVERSITY_ID, json.data.data.id);
                         commit(types.UNIVERSITY_NAME, json.data.data.name);
                         commit(types.UNIVERSITY_ADDRESS, json.data.data.address);
@@ -65077,10 +65245,10 @@ var getUniversity = exports.getUniversity = function () {
                         commit(types.UNIVERSITY_POSITION, json.data.data.position);
                         return _context2.abrupt('return', json.data);
 
-                    case 17:
+                    case 16:
                         throw json;
 
-                    case 18:
+                    case 17:
                     case 'end':
                         return _context2.stop();
                 }
@@ -65241,7 +65409,7 @@ var sendInviteUniversityAdmin = exports.sendInviteUniversityAdmin = function () 
     };
 }();
 
-var associate = exports.associate = function () {
+var createTest = exports.createTest = function () {
     var _ref10 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(context, payload) {
         var json;
         return _regenerator2.default.wrap(function _callee7$(_context7) {
@@ -65249,7 +65417,7 @@ var associate = exports.associate = function () {
                 switch (_context7.prev = _context7.next) {
                     case 0:
                         _context7.next = 2;
-                        return _admin2.default.associate(payload);
+                        return _admin2.default.createTest(payload);
 
                     case 2:
                         json = _context7.sent;
@@ -65272,35 +65440,38 @@ var associate = exports.associate = function () {
         }, _callee7, undefined);
     }));
 
-    return function associate(_x12, _x13) {
+    return function createTest(_x12, _x13) {
         return _ref10.apply(this, arguments);
     };
 }();
 
-var createFaculty = exports.createFaculty = function () {
-    var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8(context, payload) {
+var getTest = exports.getTest = function () {
+    var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8(_ref12, payload) {
+        var commit = _ref12.commit;
         var json;
         return _regenerator2.default.wrap(function _callee8$(_context8) {
             while (1) {
                 switch (_context8.prev = _context8.next) {
                     case 0:
                         _context8.next = 2;
-                        return _admin2.default.createFaculty(payload);
+                        return _admin2.default.getTest(payload);
 
                     case 2:
                         json = _context8.sent;
 
                         if (!(json.status === 200)) {
-                            _context8.next = 5;
+                            _context8.next = 7;
                             break;
                         }
 
+                        commit(types.TEST_ID, json.data.data.id);
+                        commit(types.TEST_NAME, json.data.data.name);
                         return _context8.abrupt('return', json.data);
 
-                    case 5:
+                    case 7:
                         throw json;
 
-                    case 6:
+                    case 8:
                     case 'end':
                         return _context8.stop();
                 }
@@ -65308,37 +65479,37 @@ var createFaculty = exports.createFaculty = function () {
         }, _callee8, undefined);
     }));
 
-    return function createFaculty(_x14, _x15) {
+    return function getTest(_x14, _x15) {
         return _ref11.apply(this, arguments);
     };
 }();
 
-var editFaculty = exports.editFaculty = function () {
-    var _ref12 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9(context, _ref13) {
-        var id = _ref13.id,
-            params = _ref13.params;
+var getTests = exports.getTests = function () {
+    var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9(_ref14) {
+        var commit = _ref14.commit;
         var json;
         return _regenerator2.default.wrap(function _callee9$(_context9) {
             while (1) {
                 switch (_context9.prev = _context9.next) {
                     case 0:
                         _context9.next = 2;
-                        return _admin2.default.editFaculty(id, params);
+                        return _admin2.default.getTests();
 
                     case 2:
                         json = _context9.sent;
 
                         if (!(json.status === 200)) {
-                            _context9.next = 5;
+                            _context9.next = 6;
                             break;
                         }
 
+                        commit(types.TESTS, json.data.data.data);
                         return _context9.abrupt('return', json.data);
 
-                    case 5:
+                    case 6:
                         throw json;
 
-                    case 6:
+                    case 7:
                     case 'end':
                         return _context9.stop();
                 }
@@ -65346,43 +65517,37 @@ var editFaculty = exports.editFaculty = function () {
         }, _callee9, undefined);
     }));
 
-    return function editFaculty(_x16, _x17) {
-        return _ref12.apply(this, arguments);
+    return function getTests(_x16) {
+        return _ref13.apply(this, arguments);
     };
 }();
 
-var getFaculty = exports.getFaculty = function () {
-    var _ref14 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10(_ref15, payload) {
-        var context = _ref15.context,
-            commit = _ref15.commit;
+var updateTest = exports.updateTest = function () {
+    var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10(context, _ref16) {
+        var id = _ref16.id,
+            params = _ref16.params;
         var json;
         return _regenerator2.default.wrap(function _callee10$(_context10) {
             while (1) {
                 switch (_context10.prev = _context10.next) {
                     case 0:
                         _context10.next = 2;
-                        return _admin2.default.getFaculty(payload);
+                        return _admin2.default.updateTest(id, params);
 
                     case 2:
                         json = _context10.sent;
 
                         if (!(json.status === 200)) {
-                            _context10.next = 11;
+                            _context10.next = 5;
                             break;
                         }
 
-                        console.log(json.data.data);
-                        commit(types.FACULTY_ID, json.data.data.id);
-                        commit(types.FACULTY_UNIVERSITY_ID, json.data.data.university_id);
-                        commit(types.FACULTY_NAME, json.data.data.name);
-                        commit(types.FACULTY_DESCRIPTION, json.data.data.description);
-                        commit(types.FACULTY_IMAGE, json.data.data.image);
                         return _context10.abrupt('return', json.data);
 
-                    case 11:
+                    case 5:
                         throw json;
 
-                    case 12:
+                    case 6:
                     case 'end':
                         return _context10.stop();
                 }
@@ -65390,25 +65555,25 @@ var getFaculty = exports.getFaculty = function () {
         }, _callee10, undefined);
     }));
 
-    return function getFaculty(_x18, _x19) {
-        return _ref14.apply(this, arguments);
+    return function updateTest(_x17, _x18) {
+        return _ref15.apply(this, arguments);
     };
 }();
 
-var setUniversityForFaculty = exports.setUniversityForFaculty = function () {
-    var _ref16 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11(context, payload) {
+var destroyTest = exports.destroyTest = function () {
+    var _ref17 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11(context, payload) {
         var json;
         return _regenerator2.default.wrap(function _callee11$(_context11) {
             while (1) {
                 switch (_context11.prev = _context11.next) {
                     case 0:
                         _context11.next = 2;
-                        return _admin2.default.setUniversityForFaculty(payload);
+                        return _admin2.default.destroyTest(payload);
 
                     case 2:
                         json = _context11.sent;
 
-                        if (!(json.status === 200)) {
+                        if (!(json.status === 200 || json.status === 204)) {
                             _context11.next = 5;
                             break;
                         }
@@ -65426,25 +65591,25 @@ var setUniversityForFaculty = exports.setUniversityForFaculty = function () {
         }, _callee11, undefined);
     }));
 
-    return function setUniversityForFaculty(_x20, _x21) {
-        return _ref16.apply(this, arguments);
+    return function destroyTest(_x19, _x20) {
+        return _ref17.apply(this, arguments);
     };
 }();
 
-var destroyFaculty = exports.destroyFaculty = function () {
-    var _ref17 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12(context, payload) {
+var createQuestion = exports.createQuestion = function () {
+    var _ref18 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12(context, payload) {
         var json;
         return _regenerator2.default.wrap(function _callee12$(_context12) {
             while (1) {
                 switch (_context12.prev = _context12.next) {
                     case 0:
                         _context12.next = 2;
-                        return _admin2.default.destroyFaculty(payload);
+                        return _admin2.default.createQuestion(payload);
 
                     case 2:
                         json = _context12.sent;
 
-                        if (!(json.status === 204)) {
+                        if (!(json.status === 200)) {
                             _context12.next = 5;
                             break;
                         }
@@ -65462,8 +65627,1110 @@ var destroyFaculty = exports.destroyFaculty = function () {
         }, _callee12, undefined);
     }));
 
-    return function destroyFaculty(_x22, _x23) {
-        return _ref17.apply(this, arguments);
+    return function createQuestion(_x21, _x22) {
+        return _ref18.apply(this, arguments);
+    };
+}();
+
+var getQuestion = exports.getQuestion = function () {
+    var _ref19 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee13(_ref20, payload) {
+        var commit = _ref20.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee13$(_context13) {
+            while (1) {
+                switch (_context13.prev = _context13.next) {
+                    case 0:
+                        _context13.next = 2;
+                        return _admin2.default.getQuestion(payload);
+
+                    case 2:
+                        json = _context13.sent;
+
+                        if (!(json.status === 200)) {
+                            _context13.next = 11;
+                            break;
+                        }
+
+                        commit(types.QUESTION_TEST_ID, json.data.data.test);
+                        commit(types.QUESTION_NAME, json.data.data.name);
+                        commit(types.QUESTION_TYPE, json.data.data.type);
+                        commit(types.QUESTION_TYPE_FILL, json.data.data.type_fill);
+                        commit(types.QUESTION_ID, json.data.data.id);
+                        commit(types.QUESTION_ANSWER, json.data.data.answer);
+                        return _context13.abrupt('return', json.data);
+
+                    case 11:
+                        throw json;
+
+                    case 12:
+                    case 'end':
+                        return _context13.stop();
+                }
+            }
+        }, _callee13, undefined);
+    }));
+
+    return function getQuestion(_x23, _x24) {
+        return _ref19.apply(this, arguments);
+    };
+}();
+
+var getQuestions = exports.getQuestions = function () {
+    var _ref21 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee14(_ref22) {
+        var commit = _ref22.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee14$(_context14) {
+            while (1) {
+                switch (_context14.prev = _context14.next) {
+                    case 0:
+                        _context14.next = 2;
+                        return _admin2.default.getQuestions();
+
+                    case 2:
+                        json = _context14.sent;
+
+                        if (!(json.status === 200)) {
+                            _context14.next = 6;
+                            break;
+                        }
+
+                        commit(types.QUESTIONS, json.data.data.data);
+                        return _context14.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context14.stop();
+                }
+            }
+        }, _callee14, undefined);
+    }));
+
+    return function getQuestions(_x25) {
+        return _ref21.apply(this, arguments);
+    };
+}();
+
+var updateQuestion = exports.updateQuestion = function () {
+    var _ref23 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee15(context, _ref24) {
+        var id = _ref24.id,
+            params = _ref24.params;
+        var json;
+        return _regenerator2.default.wrap(function _callee15$(_context15) {
+            while (1) {
+                switch (_context15.prev = _context15.next) {
+                    case 0:
+                        _context15.next = 2;
+                        return _admin2.default.updateQuestion(id, params);
+
+                    case 2:
+                        json = _context15.sent;
+
+                        if (!(json.status === 200)) {
+                            _context15.next = 5;
+                            break;
+                        }
+
+                        return _context15.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context15.stop();
+                }
+            }
+        }, _callee15, undefined);
+    }));
+
+    return function updateQuestion(_x26, _x27) {
+        return _ref23.apply(this, arguments);
+    };
+}();
+
+var destroyQuestion = exports.destroyQuestion = function () {
+    var _ref25 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee16(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee16$(_context16) {
+            while (1) {
+                switch (_context16.prev = _context16.next) {
+                    case 0:
+                        _context16.next = 2;
+                        return _admin2.default.destroyQuestion(payload);
+
+                    case 2:
+                        json = _context16.sent;
+
+                        if (!(json.status === 200 || json.status === 204)) {
+                            _context16.next = 5;
+                            break;
+                        }
+
+                        return _context16.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context16.stop();
+                }
+            }
+        }, _callee16, undefined);
+    }));
+
+    return function destroyQuestion(_x28, _x29) {
+        return _ref25.apply(this, arguments);
+    };
+}();
+
+var createAnswer = exports.createAnswer = function () {
+    var _ref26 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee17(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee17$(_context17) {
+            while (1) {
+                switch (_context17.prev = _context17.next) {
+                    case 0:
+                        _context17.next = 2;
+                        return _admin2.default.createAnswer(payload);
+
+                    case 2:
+                        json = _context17.sent;
+
+                        if (!(json.status === 200)) {
+                            _context17.next = 5;
+                            break;
+                        }
+
+                        return _context17.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context17.stop();
+                }
+            }
+        }, _callee17, undefined);
+    }));
+
+    return function createAnswer(_x30, _x31) {
+        return _ref26.apply(this, arguments);
+    };
+}();
+
+var getAnswer = exports.getAnswer = function () {
+    var _ref27 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee18(_ref28, payload) {
+        var commit = _ref28.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee18$(_context18) {
+            while (1) {
+                switch (_context18.prev = _context18.next) {
+                    case 0:
+                        _context18.next = 2;
+                        return _admin2.default.getAnswer(payload);
+
+                    case 2:
+                        json = _context18.sent;
+
+                        if (!(json.status === 200)) {
+                            _context18.next = 8;
+                            break;
+                        }
+
+                        commit(types.ANSWER_QUESTION_ID, json.data.data.question_id);
+                        commit(types.ANSWER_NAME, json.data.data.name);
+                        commit(types.ANSWER_ID, json.data.data.id);
+                        return _context18.abrupt('return', json.data);
+
+                    case 8:
+                        throw json;
+
+                    case 9:
+                    case 'end':
+                        return _context18.stop();
+                }
+            }
+        }, _callee18, undefined);
+    }));
+
+    return function getAnswer(_x32, _x33) {
+        return _ref27.apply(this, arguments);
+    };
+}();
+
+var updateAnswer = exports.updateAnswer = function () {
+    var _ref29 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee19(context, _ref30) {
+        var id = _ref30.id,
+            params = _ref30.params;
+        var json;
+        return _regenerator2.default.wrap(function _callee19$(_context19) {
+            while (1) {
+                switch (_context19.prev = _context19.next) {
+                    case 0:
+                        _context19.next = 2;
+                        return _admin2.default.updateAnswer(id, params);
+
+                    case 2:
+                        json = _context19.sent;
+
+                        if (!(json.status === 200)) {
+                            _context19.next = 5;
+                            break;
+                        }
+
+                        return _context19.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context19.stop();
+                }
+            }
+        }, _callee19, undefined);
+    }));
+
+    return function updateAnswer(_x34, _x35) {
+        return _ref29.apply(this, arguments);
+    };
+}();
+
+var destroyAnswer = exports.destroyAnswer = function () {
+    var _ref31 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee20(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee20$(_context20) {
+            while (1) {
+                switch (_context20.prev = _context20.next) {
+                    case 0:
+                        _context20.next = 2;
+                        return _admin2.default.destroyAnswer(payload);
+
+                    case 2:
+                        json = _context20.sent;
+
+                        if (!(json.status === 200 || json.status === 204)) {
+                            _context20.next = 5;
+                            break;
+                        }
+
+                        return _context20.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context20.stop();
+                }
+            }
+        }, _callee20, undefined);
+    }));
+
+    return function destroyAnswer(_x36, _x37) {
+        return _ref31.apply(this, arguments);
+    };
+}();
+
+var createCoefficient = exports.createCoefficient = function () {
+    var _ref32 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee21(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee21$(_context21) {
+            while (1) {
+                switch (_context21.prev = _context21.next) {
+                    case 0:
+                        _context21.next = 2;
+                        return _admin2.default.createCoefficient(payload);
+
+                    case 2:
+                        json = _context21.sent;
+
+                        if (!(json.status === 200)) {
+                            _context21.next = 5;
+                            break;
+                        }
+
+                        return _context21.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context21.stop();
+                }
+            }
+        }, _callee21, undefined);
+    }));
+
+    return function createCoefficient(_x38, _x39) {
+        return _ref32.apply(this, arguments);
+    };
+}();
+
+var getCoefficient = exports.getCoefficient = function () {
+    var _ref33 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee22(_ref34, payload) {
+        var commit = _ref34.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee22$(_context22) {
+            while (1) {
+                switch (_context22.prev = _context22.next) {
+                    case 0:
+                        _context22.next = 2;
+                        return _admin2.default.getCoefficient(payload);
+
+                    case 2:
+                        json = _context22.sent;
+
+                        if (!(json.status === 200)) {
+                            _context22.next = 9;
+                            break;
+                        }
+
+                        commit(types.COEFFICIENT_ID, json.data.data.id);
+                        commit(types.COEFFICIENT_NAME, json.data.data.name);
+                        commit(types.COEFFICIENT_MAJOR_ID, json.data.data.major_id);
+                        commit(types.COEFFICIENT_COEFFICIENT, json.data.data.coefficient);
+                        return _context22.abrupt('return', json.data);
+
+                    case 9:
+                        throw json;
+
+                    case 10:
+                    case 'end':
+                        return _context22.stop();
+                }
+            }
+        }, _callee22, undefined);
+    }));
+
+    return function getCoefficient(_x40, _x41) {
+        return _ref33.apply(this, arguments);
+    };
+}();
+
+var updateCoefficient = exports.updateCoefficient = function () {
+    var _ref35 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee23(context, _ref36) {
+        var id = _ref36.id,
+            params = _ref36.params;
+        var json;
+        return _regenerator2.default.wrap(function _callee23$(_context23) {
+            while (1) {
+                switch (_context23.prev = _context23.next) {
+                    case 0:
+                        _context23.next = 2;
+                        return _admin2.default.updateCoefficient(id, params);
+
+                    case 2:
+                        json = _context23.sent;
+
+                        if (!(json.status === 200)) {
+                            _context23.next = 5;
+                            break;
+                        }
+
+                        return _context23.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context23.stop();
+                }
+            }
+        }, _callee23, undefined);
+    }));
+
+    return function updateCoefficient(_x42, _x43) {
+        return _ref35.apply(this, arguments);
+    };
+}();
+
+var destroyCoefficient = exports.destroyCoefficient = function () {
+    var _ref37 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee24(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee24$(_context24) {
+            while (1) {
+                switch (_context24.prev = _context24.next) {
+                    case 0:
+                        _context24.next = 2;
+                        return _admin2.default.destroyCoefficient(payload);
+
+                    case 2:
+                        json = _context24.sent;
+
+                        if (!(json.status === 200 || json.status === 204)) {
+                            _context24.next = 5;
+                            break;
+                        }
+
+                        return _context24.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context24.stop();
+                }
+            }
+        }, _callee24, undefined);
+    }));
+
+    return function destroyCoefficient(_x44, _x45) {
+        return _ref37.apply(this, arguments);
+    };
+}();
+
+var associate = exports.associate = function () {
+    var _ref38 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee25(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee25$(_context25) {
+            while (1) {
+                switch (_context25.prev = _context25.next) {
+                    case 0:
+                        _context25.next = 2;
+                        return _admin2.default.associate(payload);
+
+                    case 2:
+                        json = _context25.sent;
+
+                        if (!(json.status === 200)) {
+                            _context25.next = 5;
+                            break;
+                        }
+
+                        return _context25.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context25.stop();
+                }
+            }
+        }, _callee25, undefined);
+    }));
+
+    return function associate(_x46, _x47) {
+        return _ref38.apply(this, arguments);
+    };
+}();
+
+var createFaculty = exports.createFaculty = function () {
+    var _ref39 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee26(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee26$(_context26) {
+            while (1) {
+                switch (_context26.prev = _context26.next) {
+                    case 0:
+                        _context26.next = 2;
+                        return _admin2.default.createFaculty(payload);
+
+                    case 2:
+                        json = _context26.sent;
+
+                        if (!(json.status === 200)) {
+                            _context26.next = 5;
+                            break;
+                        }
+
+                        return _context26.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context26.stop();
+                }
+            }
+        }, _callee26, undefined);
+    }));
+
+    return function createFaculty(_x48, _x49) {
+        return _ref39.apply(this, arguments);
+    };
+}();
+
+var editFaculty = exports.editFaculty = function () {
+    var _ref40 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee27(context, _ref41) {
+        var id = _ref41.id,
+            params = _ref41.params;
+        var json;
+        return _regenerator2.default.wrap(function _callee27$(_context27) {
+            while (1) {
+                switch (_context27.prev = _context27.next) {
+                    case 0:
+                        _context27.next = 2;
+                        return _admin2.default.editFaculty(id, params);
+
+                    case 2:
+                        json = _context27.sent;
+
+                        if (!(json.status === 200)) {
+                            _context27.next = 5;
+                            break;
+                        }
+
+                        return _context27.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context27.stop();
+                }
+            }
+        }, _callee27, undefined);
+    }));
+
+    return function editFaculty(_x50, _x51) {
+        return _ref40.apply(this, arguments);
+    };
+}();
+
+var getFaculty = exports.getFaculty = function () {
+    var _ref42 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee28(_ref43, payload) {
+        var context = _ref43.context,
+            commit = _ref43.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee28$(_context28) {
+            while (1) {
+                switch (_context28.prev = _context28.next) {
+                    case 0:
+                        _context28.next = 2;
+                        return _admin2.default.getFaculty(payload);
+
+                    case 2:
+                        json = _context28.sent;
+
+                        if (!(json.status === 200)) {
+                            _context28.next = 11;
+                            break;
+                        }
+
+                        console.log(json.data.data);
+                        commit(types.FACULTY_ID, json.data.data.id);
+                        commit(types.FACULTY_UNIVERSITY_ID, json.data.data.university_id);
+                        commit(types.FACULTY_NAME, json.data.data.name);
+                        commit(types.FACULTY_DESCRIPTION, json.data.data.description);
+                        commit(types.FACULTY_IMAGE, json.data.data.image);
+                        return _context28.abrupt('return', json.data);
+
+                    case 11:
+                        throw json;
+
+                    case 12:
+                    case 'end':
+                        return _context28.stop();
+                }
+            }
+        }, _callee28, undefined);
+    }));
+
+    return function getFaculty(_x52, _x53) {
+        return _ref42.apply(this, arguments);
+    };
+}();
+
+var setUniversityForFaculty = exports.setUniversityForFaculty = function () {
+    var _ref44 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee29(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee29$(_context29) {
+            while (1) {
+                switch (_context29.prev = _context29.next) {
+                    case 0:
+                        _context29.next = 2;
+                        return _admin2.default.setUniversityForFaculty(payload);
+
+                    case 2:
+                        json = _context29.sent;
+
+                        if (!(json.status === 200)) {
+                            _context29.next = 5;
+                            break;
+                        }
+
+                        return _context29.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context29.stop();
+                }
+            }
+        }, _callee29, undefined);
+    }));
+
+    return function setUniversityForFaculty(_x54, _x55) {
+        return _ref44.apply(this, arguments);
+    };
+}();
+
+var destroyFaculty = exports.destroyFaculty = function () {
+    var _ref45 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee30(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee30$(_context30) {
+            while (1) {
+                switch (_context30.prev = _context30.next) {
+                    case 0:
+                        _context30.next = 2;
+                        return _admin2.default.destroyFaculty(payload);
+
+                    case 2:
+                        json = _context30.sent;
+
+                        if (!(json.status === 204)) {
+                            _context30.next = 5;
+                            break;
+                        }
+
+                        return _context30.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context30.stop();
+                }
+            }
+        }, _callee30, undefined);
+    }));
+
+    return function destroyFaculty(_x56, _x57) {
+        return _ref45.apply(this, arguments);
+    };
+}();
+
+var getMajors = exports.getMajors = function () {
+    var _ref46 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee31(_ref47, payload) {
+        var commit = _ref47.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee31$(_context31) {
+            while (1) {
+                switch (_context31.prev = _context31.next) {
+                    case 0:
+                        _context31.next = 2;
+                        return _admin2.default.getMajors(payload);
+
+                    case 2:
+                        json = _context31.sent;
+
+                        if (!(json.status === 200)) {
+                            _context31.next = 6;
+                            break;
+                        }
+
+                        commit(types.MAJORS, json.data.data.data);
+
+                        return _context31.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context31.stop();
+                }
+            }
+        }, _callee31, undefined);
+    }));
+
+    return function getMajors(_x58, _x59) {
+        return _ref46.apply(this, arguments);
+    };
+}();
+
+var createMajor = exports.createMajor = function () {
+    var _ref48 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee32(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee32$(_context32) {
+            while (1) {
+                switch (_context32.prev = _context32.next) {
+                    case 0:
+                        _context32.next = 2;
+                        return _admin2.default.createMajor(payload);
+
+                    case 2:
+                        json = _context32.sent;
+
+                        if (!(json.status === 200)) {
+                            _context32.next = 5;
+                            break;
+                        }
+
+                        return _context32.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context32.stop();
+                }
+            }
+        }, _callee32, undefined);
+    }));
+
+    return function createMajor(_x60, _x61) {
+        return _ref48.apply(this, arguments);
+    };
+}();
+
+var getMajor = exports.getMajor = function () {
+    var _ref49 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee33(_ref50, payload) {
+        var commit = _ref50.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee33$(_context33) {
+            while (1) {
+                switch (_context33.prev = _context33.next) {
+                    case 0:
+                        _context33.next = 2;
+                        return _admin2.default.getMajor(payload);
+
+                    case 2:
+                        json = _context33.sent;
+
+                        if (!(json.status === 200)) {
+                            _context33.next = 10;
+                            break;
+                        }
+
+                        commit(types.MAJOR_ID, json.data.data.id);
+                        commit(types.MAJOR_DEPARTMENT_ID, json.data.data.department);
+                        commit(types.MAJOR_NAME, json.data.data.name);
+                        commit(types.MAJOR_DESCRIPTION, json.data.data.description);
+                        commit(types.MAJOR_COEFFICIENT, json.data.data.koef);
+                        return _context33.abrupt('return', json.data);
+
+                    case 10:
+                        throw json;
+
+                    case 11:
+                    case 'end':
+                        return _context33.stop();
+                }
+            }
+        }, _callee33, undefined);
+    }));
+
+    return function getMajor(_x62, _x63) {
+        return _ref49.apply(this, arguments);
+    };
+}();
+
+var updateMajor = exports.updateMajor = function () {
+    var _ref51 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee34(context, _ref52) {
+        var id = _ref52.id,
+            params = _ref52.params;
+        var json;
+        return _regenerator2.default.wrap(function _callee34$(_context34) {
+            while (1) {
+                switch (_context34.prev = _context34.next) {
+                    case 0:
+                        _context34.next = 2;
+                        return _admin2.default.updateMajor(id, params);
+
+                    case 2:
+                        json = _context34.sent;
+
+                        if (!(json.status === 200)) {
+                            _context34.next = 5;
+                            break;
+                        }
+
+                        return _context34.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context34.stop();
+                }
+            }
+        }, _callee34, undefined);
+    }));
+
+    return function updateMajor(_x64, _x65) {
+        return _ref51.apply(this, arguments);
+    };
+}();
+
+var destroyMajor = exports.destroyMajor = function () {
+    var _ref53 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee35(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee35$(_context35) {
+            while (1) {
+                switch (_context35.prev = _context35.next) {
+                    case 0:
+                        _context35.next = 2;
+                        return _admin2.default.destroyMajor(payload);
+
+                    case 2:
+                        json = _context35.sent;
+
+                        if (!(json.status === 200 || json.status === 204)) {
+                            _context35.next = 5;
+                            break;
+                        }
+
+                        return _context35.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context35.stop();
+                }
+            }
+        }, _callee35, undefined);
+    }));
+
+    return function destroyMajor(_x66, _x67) {
+        return _ref53.apply(this, arguments);
+    };
+}();
+
+var createDepartment = exports.createDepartment = function () {
+    var _ref54 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee36(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee36$(_context36) {
+            while (1) {
+                switch (_context36.prev = _context36.next) {
+                    case 0:
+                        _context36.next = 2;
+                        return _admin2.default.createDeparment(payload);
+
+                    case 2:
+                        json = _context36.sent;
+
+                        if (!(json.status === 200)) {
+                            _context36.next = 5;
+                            break;
+                        }
+
+                        return _context36.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context36.stop();
+                }
+            }
+        }, _callee36, undefined);
+    }));
+
+    return function createDepartment(_x68, _x69) {
+        return _ref54.apply(this, arguments);
+    };
+}();
+
+var getDepartment = exports.getDepartment = function () {
+    var _ref55 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee37(_ref56, payload) {
+        var commit = _ref56.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee37$(_context37) {
+            while (1) {
+                switch (_context37.prev = _context37.next) {
+                    case 0:
+                        _context37.next = 2;
+                        return _admin2.default.getDepartment(payload);
+
+                    case 2:
+                        json = _context37.sent;
+
+                        if (!(json.status === 200)) {
+                            _context37.next = 9;
+                            break;
+                        }
+
+                        commit(types.DEPARTMENT_ID, json.data.data.id);
+                        commit(types.DEPARTMENT_FACULTY_ID, json.data.data.faculty);
+                        commit(types.DEPARTMENT_NAME, json.data.data.name);
+                        commit(types.DEPARTMENT_DESCRIPTION, json.data.data.description);
+                        return _context37.abrupt('return', json.data);
+
+                    case 9:
+                        throw json;
+
+                    case 10:
+                    case 'end':
+                        return _context37.stop();
+                }
+            }
+        }, _callee37, undefined);
+    }));
+
+    return function getDepartment(_x70, _x71) {
+        return _ref55.apply(this, arguments);
+    };
+}();
+
+var updateDepartment = exports.updateDepartment = function () {
+    var _ref57 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee38(context, _ref58) {
+        var id = _ref58.id,
+            params = _ref58.params;
+        var json;
+        return _regenerator2.default.wrap(function _callee38$(_context38) {
+            while (1) {
+                switch (_context38.prev = _context38.next) {
+                    case 0:
+                        _context38.next = 2;
+                        return _admin2.default.updateDepartment(id, params);
+
+                    case 2:
+                        json = _context38.sent;
+
+                        if (!(json.status === 200)) {
+                            _context38.next = 5;
+                            break;
+                        }
+
+                        return _context38.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context38.stop();
+                }
+            }
+        }, _callee38, undefined);
+    }));
+
+    return function updateDepartment(_x72, _x73) {
+        return _ref57.apply(this, arguments);
+    };
+}();
+
+var destroyDepartment = exports.destroyDepartment = function () {
+    var _ref59 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee39(context, payload) {
+        var json;
+        return _regenerator2.default.wrap(function _callee39$(_context39) {
+            while (1) {
+                switch (_context39.prev = _context39.next) {
+                    case 0:
+                        _context39.next = 2;
+                        return _admin2.default.destroyDepartment(payload);
+
+                    case 2:
+                        json = _context39.sent;
+
+                        if (!(json.status === 200 || json.status === 204)) {
+                            _context39.next = 5;
+                            break;
+                        }
+
+                        return _context39.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context39.stop();
+                }
+            }
+        }, _callee39, undefined);
+    }));
+
+    return function destroyDepartment(_x74, _x75) {
+        return _ref59.apply(this, arguments);
+    };
+}();
+
+var getDepartments = exports.getDepartments = function () {
+    var _ref60 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee40(_ref61, payload) {
+        var commit = _ref61.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee40$(_context40) {
+            while (1) {
+                switch (_context40.prev = _context40.next) {
+                    case 0:
+                        _context40.next = 2;
+                        return _admin2.default.getDepartments(payload);
+
+                    case 2:
+                        json = _context40.sent;
+
+                        if (!(json.status === 200)) {
+                            _context40.next = 6;
+                            break;
+                        }
+
+                        commit(types.DEPARTMENTS, json.data.data.data);
+
+                        return _context40.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context40.stop();
+                }
+            }
+        }, _callee40, undefined);
+    }));
+
+    return function getDepartments(_x76, _x77) {
+        return _ref60.apply(this, arguments);
+    };
+}();
+
+var getFaculties = exports.getFaculties = function () {
+    var _ref62 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee41(_ref63, payload) {
+        var commit = _ref63.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee41$(_context41) {
+            while (1) {
+                switch (_context41.prev = _context41.next) {
+                    case 0:
+                        _context41.next = 2;
+                        return _admin2.default.getFaculties(payload);
+
+                    case 2:
+                        json = _context41.sent;
+
+                        if (!(json.status === 200)) {
+                            _context41.next = 6;
+                            break;
+                        }
+
+                        commit(types.FACULTIES, json.data.data.data);
+
+                        return _context41.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context41.stop();
+                }
+            }
+        }, _callee41, undefined);
+    }));
+
+    return function getFaculties(_x78, _x79) {
+        return _ref62.apply(this, arguments);
     };
 }();
 
@@ -65474,12 +66741,41 @@ exports.default = {
     createUniversity: createUniversity,
     getAllUniversities: getAllUniversities,
     sendInviteUniversityAdmin: sendInviteUniversityAdmin,
+    createTest: createTest,
+    getTest: getTest,
+    getTests: getTests,
+    updateTest: updateTest,
+    destroyTest: destroyTest,
+    createQuestion: createQuestion,
+    getQuestion: getQuestion,
+    getQuestions: getQuestions,
+    updateQuestion: updateQuestion,
+    destroyQuestion: destroyQuestion,
+    createAnswer: createAnswer,
+    getAnswer: getAnswer,
+    updateAnswer: updateAnswer,
+    destroyAnswer: destroyAnswer,
+    createCoefficient: createCoefficient,
+    getCoefficient: getCoefficient,
+    updateCoefficient: updateCoefficient,
+    destroyCoefficient: destroyCoefficient,
+    createMajor: createMajor,
+    getMajor: getMajor,
+    updateMajor: updateMajor,
+    destroyMajor: destroyMajor,
+    createDepartment: createDepartment,
+    getDepartment: getDepartment,
+    updateDepartment: updateDepartment,
+    destroyDepartment: destroyDepartment,
     associate: associate,
     createFaculty: createFaculty,
     editFaculty: editFaculty,
     getFaculty: getFaculty,
     setUniversityForFaculty: setUniversityForFaculty,
-    destroyFaculty: destroyFaculty
+    destroyFaculty: destroyFaculty,
+    getMajors: getMajors,
+    getDepartments: getDepartments,
+    getFaculties: getFaculties
 };
 
 /***/ }),
@@ -65737,7 +67033,7 @@ exports.default = {
             }, _callee7, _this7, [[0, 9]]);
         }))();
     },
-    createFaculty: function createFaculty(params) {
+    createTest: function createTest(params) {
         var _this8 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8() {
@@ -65749,7 +67045,7 @@ exports.default = {
                         case 0:
                             _context8.prev = 0;
                             _context8.next = 3;
-                            return window.axios.post(url + '/api/admin/faculty', params);
+                            return window.axios.post(url + '/api/admin/test', params);
 
                         case 3:
                             _ref8 = _context8.sent;
@@ -65770,7 +67066,7 @@ exports.default = {
             }, _callee8, _this8, [[0, 9]]);
         }))();
     },
-    editFaculty: function editFaculty(id, params) {
+    getTest: function getTest(id) {
         var _this9 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9() {
@@ -65782,7 +67078,7 @@ exports.default = {
                         case 0:
                             _context9.prev = 0;
                             _context9.next = 3;
-                            return window.axios.put(url + '/api/admin/faculty/' + id, params);
+                            return window.axios.get(url + '/api/admin/test/' + id);
 
                         case 3:
                             _ref9 = _context9.sent;
@@ -65803,7 +67099,7 @@ exports.default = {
             }, _callee9, _this9, [[0, 9]]);
         }))();
     },
-    getFaculty: function getFaculty(id) {
+    getTests: function getTests() {
         var _this10 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10() {
@@ -65815,7 +67111,7 @@ exports.default = {
                         case 0:
                             _context10.prev = 0;
                             _context10.next = 3;
-                            return window.axios.get(url + '/api/admin/faculty/' + id);
+                            return window.axios.get(url + '/api/admin/test');
 
                         case 3:
                             _ref10 = _context10.sent;
@@ -65836,7 +67132,7 @@ exports.default = {
             }, _callee10, _this10, [[0, 9]]);
         }))();
     },
-    setUniversityForFaculty: function setUniversityForFaculty(id, params) {
+    updateTest: function updateTest(id, params) {
         var _this11 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11() {
@@ -65848,7 +67144,7 @@ exports.default = {
                         case 0:
                             _context11.prev = 0;
                             _context11.next = 3;
-                            return window.axios.put(url + '/api/admin/faculty/' + id, params);
+                            return window.axios.put(url + '/api/admin/test/' + id, params);
 
                         case 3:
                             _ref11 = _context11.sent;
@@ -65869,7 +67165,7 @@ exports.default = {
             }, _callee11, _this11, [[0, 9]]);
         }))();
     },
-    destroyFaculty: function destroyFaculty(id) {
+    destroyTest: function destroyTest(id) {
         var _this12 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12() {
@@ -65881,7 +67177,7 @@ exports.default = {
                         case 0:
                             _context12.prev = 0;
                             _context12.next = 3;
-                            return window.axios.delete(url + '/api/admin/faculty/' + id);
+                            return window.axios.delete(url + '/api/admin/test/' + id);
 
                         case 3:
                             _ref12 = _context12.sent;
@@ -65900,6 +67196,963 @@ exports.default = {
                     }
                 }
             }, _callee12, _this12, [[0, 9]]);
+        }))();
+    },
+    createQuestion: function createQuestion(params) {
+        var _this13 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee13() {
+            var _ref13, data, status;
+
+            return _regenerator2.default.wrap(function _callee13$(_context13) {
+                while (1) {
+                    switch (_context13.prev = _context13.next) {
+                        case 0:
+                            _context13.prev = 0;
+                            _context13.next = 3;
+                            return window.axios.post(url + '/api/admin/question', params);
+
+                        case 3:
+                            _ref13 = _context13.sent;
+                            data = _ref13.data;
+                            status = _ref13.status;
+                            return _context13.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context13.prev = 9;
+                            _context13.t0 = _context13['catch'](0);
+                            return _context13.abrupt('return', _context13.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context13.stop();
+                    }
+                }
+            }, _callee13, _this13, [[0, 9]]);
+        }))();
+    },
+    getQuestion: function getQuestion(id) {
+        var _this14 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee14() {
+            var _ref14, data, status;
+
+            return _regenerator2.default.wrap(function _callee14$(_context14) {
+                while (1) {
+                    switch (_context14.prev = _context14.next) {
+                        case 0:
+                            _context14.prev = 0;
+                            _context14.next = 3;
+                            return window.axios.get(url + '/api/admin/question/' + id);
+
+                        case 3:
+                            _ref14 = _context14.sent;
+                            data = _ref14.data;
+                            status = _ref14.status;
+                            return _context14.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context14.prev = 9;
+                            _context14.t0 = _context14['catch'](0);
+                            return _context14.abrupt('return', _context14.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context14.stop();
+                    }
+                }
+            }, _callee14, _this14, [[0, 9]]);
+        }))();
+    },
+    getQuestions: function getQuestions() {
+        var _this15 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee15() {
+            var _ref15, data, status;
+
+            return _regenerator2.default.wrap(function _callee15$(_context15) {
+                while (1) {
+                    switch (_context15.prev = _context15.next) {
+                        case 0:
+                            _context15.prev = 0;
+                            _context15.next = 3;
+                            return window.axios.get(url + '/api/admin/question');
+
+                        case 3:
+                            _ref15 = _context15.sent;
+                            data = _ref15.data;
+                            status = _ref15.status;
+                            return _context15.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context15.prev = 9;
+                            _context15.t0 = _context15['catch'](0);
+                            return _context15.abrupt('return', _context15.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context15.stop();
+                    }
+                }
+            }, _callee15, _this15, [[0, 9]]);
+        }))();
+    },
+    updateQuestion: function updateQuestion(id, params) {
+        var _this16 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee16() {
+            var _ref16, data, status;
+
+            return _regenerator2.default.wrap(function _callee16$(_context16) {
+                while (1) {
+                    switch (_context16.prev = _context16.next) {
+                        case 0:
+                            _context16.prev = 0;
+                            _context16.next = 3;
+                            return window.axios.put(url + '/api/admin/question/' + id, params);
+
+                        case 3:
+                            _ref16 = _context16.sent;
+                            data = _ref16.data;
+                            status = _ref16.status;
+                            return _context16.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context16.prev = 9;
+                            _context16.t0 = _context16['catch'](0);
+                            return _context16.abrupt('return', _context16.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context16.stop();
+                    }
+                }
+            }, _callee16, _this16, [[0, 9]]);
+        }))();
+    },
+    destroyQuestion: function destroyQuestion(id) {
+        var _this17 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee17() {
+            var _ref17, data, status;
+
+            return _regenerator2.default.wrap(function _callee17$(_context17) {
+                while (1) {
+                    switch (_context17.prev = _context17.next) {
+                        case 0:
+                            _context17.prev = 0;
+                            _context17.next = 3;
+                            return window.axios.delete(url + '/api/admin/question/' + id);
+
+                        case 3:
+                            _ref17 = _context17.sent;
+                            data = _ref17.data;
+                            status = _ref17.status;
+                            return _context17.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context17.prev = 9;
+                            _context17.t0 = _context17['catch'](0);
+                            return _context17.abrupt('return', _context17.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context17.stop();
+                    }
+                }
+            }, _callee17, _this17, [[0, 9]]);
+        }))();
+    },
+    createAnswer: function createAnswer(params) {
+        var _this18 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee18() {
+            var _ref18, data, status;
+
+            return _regenerator2.default.wrap(function _callee18$(_context18) {
+                while (1) {
+                    switch (_context18.prev = _context18.next) {
+                        case 0:
+                            _context18.prev = 0;
+                            _context18.next = 3;
+                            return window.axios.post(url + '/api/admin/answer', params);
+
+                        case 3:
+                            _ref18 = _context18.sent;
+                            data = _ref18.data;
+                            status = _ref18.status;
+                            return _context18.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context18.prev = 9;
+                            _context18.t0 = _context18['catch'](0);
+                            return _context18.abrupt('return', _context18.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context18.stop();
+                    }
+                }
+            }, _callee18, _this18, [[0, 9]]);
+        }))();
+    },
+    getAnswer: function getAnswer(id) {
+        var _this19 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee19() {
+            var _ref19, data, status;
+
+            return _regenerator2.default.wrap(function _callee19$(_context19) {
+                while (1) {
+                    switch (_context19.prev = _context19.next) {
+                        case 0:
+                            _context19.prev = 0;
+                            _context19.next = 3;
+                            return window.axios.get(url + '/api/admin/answer/' + id);
+
+                        case 3:
+                            _ref19 = _context19.sent;
+                            data = _ref19.data;
+                            status = _ref19.status;
+                            return _context19.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context19.prev = 9;
+                            _context19.t0 = _context19['catch'](0);
+                            return _context19.abrupt('return', _context19.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context19.stop();
+                    }
+                }
+            }, _callee19, _this19, [[0, 9]]);
+        }))();
+    },
+    updateAnswer: function updateAnswer(id, params) {
+        var _this20 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee20() {
+            var _ref20, data, status;
+
+            return _regenerator2.default.wrap(function _callee20$(_context20) {
+                while (1) {
+                    switch (_context20.prev = _context20.next) {
+                        case 0:
+                            _context20.prev = 0;
+                            _context20.next = 3;
+                            return window.axios.put(url + '/api/admin/answer/' + id, params);
+
+                        case 3:
+                            _ref20 = _context20.sent;
+                            data = _ref20.data;
+                            status = _ref20.status;
+                            return _context20.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context20.prev = 9;
+                            _context20.t0 = _context20['catch'](0);
+                            return _context20.abrupt('return', _context20.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context20.stop();
+                    }
+                }
+            }, _callee20, _this20, [[0, 9]]);
+        }))();
+    },
+    destroyAnswer: function destroyAnswer(id) {
+        var _this21 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee21() {
+            var _ref21, data, status;
+
+            return _regenerator2.default.wrap(function _callee21$(_context21) {
+                while (1) {
+                    switch (_context21.prev = _context21.next) {
+                        case 0:
+                            _context21.prev = 0;
+                            _context21.next = 3;
+                            return window.axios.delete(url + '/api/admin/answer/' + id);
+
+                        case 3:
+                            _ref21 = _context21.sent;
+                            data = _ref21.data;
+                            status = _ref21.status;
+                            return _context21.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context21.prev = 9;
+                            _context21.t0 = _context21['catch'](0);
+                            return _context21.abrupt('return', _context21.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context21.stop();
+                    }
+                }
+            }, _callee21, _this21, [[0, 9]]);
+        }))();
+    },
+    createCoefficient: function createCoefficient(params) {
+        var _this22 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee22() {
+            var _ref22, data, status;
+
+            return _regenerator2.default.wrap(function _callee22$(_context22) {
+                while (1) {
+                    switch (_context22.prev = _context22.next) {
+                        case 0:
+                            _context22.prev = 0;
+                            _context22.next = 3;
+                            return window.axios.post(url + '/api/admin/subjects-coefficients', params);
+
+                        case 3:
+                            _ref22 = _context22.sent;
+                            data = _ref22.data;
+                            status = _ref22.status;
+                            return _context22.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context22.prev = 9;
+                            _context22.t0 = _context22['catch'](0);
+                            return _context22.abrupt('return', _context22.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context22.stop();
+                    }
+                }
+            }, _callee22, _this22, [[0, 9]]);
+        }))();
+    },
+    getCoefficient: function getCoefficient(id) {
+        var _this23 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee23() {
+            var _ref23, data, status;
+
+            return _regenerator2.default.wrap(function _callee23$(_context23) {
+                while (1) {
+                    switch (_context23.prev = _context23.next) {
+                        case 0:
+                            _context23.prev = 0;
+                            _context23.next = 3;
+                            return window.axios.get(url + '/api/admin/subjects-coefficients/' + id);
+
+                        case 3:
+                            _ref23 = _context23.sent;
+                            data = _ref23.data;
+                            status = _ref23.status;
+                            return _context23.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context23.prev = 9;
+                            _context23.t0 = _context23['catch'](0);
+                            return _context23.abrupt('return', _context23.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context23.stop();
+                    }
+                }
+            }, _callee23, _this23, [[0, 9]]);
+        }))();
+    },
+    updateCoefficient: function updateCoefficient(id, params) {
+        var _this24 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee24() {
+            var _ref24, data, status;
+
+            return _regenerator2.default.wrap(function _callee24$(_context24) {
+                while (1) {
+                    switch (_context24.prev = _context24.next) {
+                        case 0:
+                            _context24.prev = 0;
+                            _context24.next = 3;
+                            return window.axios.put(url + '/api/admin/subjects-coefficients/' + id, params);
+
+                        case 3:
+                            _ref24 = _context24.sent;
+                            data = _ref24.data;
+                            status = _ref24.status;
+                            return _context24.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context24.prev = 9;
+                            _context24.t0 = _context24['catch'](0);
+                            return _context24.abrupt('return', _context24.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context24.stop();
+                    }
+                }
+            }, _callee24, _this24, [[0, 9]]);
+        }))();
+    },
+    destroyCoefficient: function destroyCoefficient(id) {
+        var _this25 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee25() {
+            var _ref25, data, status;
+
+            return _regenerator2.default.wrap(function _callee25$(_context25) {
+                while (1) {
+                    switch (_context25.prev = _context25.next) {
+                        case 0:
+                            _context25.prev = 0;
+                            _context25.next = 3;
+                            return window.axios.delete(url + '/api/admin/subjects-coefficients/' + id);
+
+                        case 3:
+                            _ref25 = _context25.sent;
+                            data = _ref25.data;
+                            status = _ref25.status;
+                            return _context25.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context25.prev = 9;
+                            _context25.t0 = _context25['catch'](0);
+                            return _context25.abrupt('return', _context25.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context25.stop();
+                    }
+                }
+            }, _callee25, _this25, [[0, 9]]);
+        }))();
+    },
+    getMajors: function getMajors() {
+        var _this26 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee26() {
+            var _ref26, data, status;
+
+            return _regenerator2.default.wrap(function _callee26$(_context26) {
+                while (1) {
+                    switch (_context26.prev = _context26.next) {
+                        case 0:
+                            _context26.prev = 0;
+                            _context26.next = 3;
+                            return window.axios.get(url + '/api/admin/major');
+
+                        case 3:
+                            _ref26 = _context26.sent;
+                            data = _ref26.data;
+                            status = _ref26.status;
+                            return _context26.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context26.prev = 9;
+                            _context26.t0 = _context26['catch'](0);
+                            return _context26.abrupt('return', _context26.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context26.stop();
+                    }
+                }
+            }, _callee26, _this26, [[0, 9]]);
+        }))();
+    },
+    createMajor: function createMajor(params) {
+        var _this27 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee27() {
+            var _ref27, data, status;
+
+            return _regenerator2.default.wrap(function _callee27$(_context27) {
+                while (1) {
+                    switch (_context27.prev = _context27.next) {
+                        case 0:
+                            _context27.prev = 0;
+                            _context27.next = 3;
+                            return window.axios.post(url + '/api/admin/major', params);
+
+                        case 3:
+                            _ref27 = _context27.sent;
+                            data = _ref27.data;
+                            status = _ref27.status;
+                            return _context27.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context27.prev = 9;
+                            _context27.t0 = _context27['catch'](0);
+                            return _context27.abrupt('return', _context27.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context27.stop();
+                    }
+                }
+            }, _callee27, _this27, [[0, 9]]);
+        }))();
+    },
+    getMajor: function getMajor(id) {
+        var _this28 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee28() {
+            var _ref28, data, status;
+
+            return _regenerator2.default.wrap(function _callee28$(_context28) {
+                while (1) {
+                    switch (_context28.prev = _context28.next) {
+                        case 0:
+                            _context28.prev = 0;
+                            _context28.next = 3;
+                            return window.axios.get(url + '/api/admin/major/' + id);
+
+                        case 3:
+                            _ref28 = _context28.sent;
+                            data = _ref28.data;
+                            status = _ref28.status;
+                            return _context28.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context28.prev = 9;
+                            _context28.t0 = _context28['catch'](0);
+                            return _context28.abrupt('return', _context28.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context28.stop();
+                    }
+                }
+            }, _callee28, _this28, [[0, 9]]);
+        }))();
+    },
+    updateMajor: function updateMajor(id, params) {
+        var _this29 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee29() {
+            var _ref29, data, status;
+
+            return _regenerator2.default.wrap(function _callee29$(_context29) {
+                while (1) {
+                    switch (_context29.prev = _context29.next) {
+                        case 0:
+                            _context29.prev = 0;
+                            _context29.next = 3;
+                            return window.axios.put(url + '/api/admin/major/' + id, params);
+
+                        case 3:
+                            _ref29 = _context29.sent;
+                            data = _ref29.data;
+                            status = _ref29.status;
+                            return _context29.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context29.prev = 9;
+                            _context29.t0 = _context29['catch'](0);
+                            return _context29.abrupt('return', _context29.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context29.stop();
+                    }
+                }
+            }, _callee29, _this29, [[0, 9]]);
+        }))();
+    },
+    destroyMajor: function destroyMajor(id) {
+        var _this30 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee30() {
+            var _ref30, data, status;
+
+            return _regenerator2.default.wrap(function _callee30$(_context30) {
+                while (1) {
+                    switch (_context30.prev = _context30.next) {
+                        case 0:
+                            _context30.prev = 0;
+                            _context30.next = 3;
+                            return window.axios.delete(url + '/api/admin/major/' + id);
+
+                        case 3:
+                            _ref30 = _context30.sent;
+                            data = _ref30.data;
+                            status = _ref30.status;
+                            return _context30.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context30.prev = 9;
+                            _context30.t0 = _context30['catch'](0);
+                            return _context30.abrupt('return', _context30.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context30.stop();
+                    }
+                }
+            }, _callee30, _this30, [[0, 9]]);
+        }))();
+    },
+    createDeparment: function createDeparment(params) {
+        var _this31 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee31() {
+            var _ref31, data, status;
+
+            return _regenerator2.default.wrap(function _callee31$(_context31) {
+                while (1) {
+                    switch (_context31.prev = _context31.next) {
+                        case 0:
+                            _context31.prev = 0;
+                            _context31.next = 3;
+                            return window.axios.post(url + '/api/admin/department', params);
+
+                        case 3:
+                            _ref31 = _context31.sent;
+                            data = _ref31.data;
+                            status = _ref31.status;
+                            return _context31.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context31.prev = 9;
+                            _context31.t0 = _context31['catch'](0);
+                            return _context31.abrupt('return', _context31.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context31.stop();
+                    }
+                }
+            }, _callee31, _this31, [[0, 9]]);
+        }))();
+    },
+    getDepartment: function getDepartment(id) {
+        var _this32 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee32() {
+            var _ref32, data, status;
+
+            return _regenerator2.default.wrap(function _callee32$(_context32) {
+                while (1) {
+                    switch (_context32.prev = _context32.next) {
+                        case 0:
+                            _context32.prev = 0;
+                            _context32.next = 3;
+                            return window.axios.get(url + '/api/admin/department/' + id);
+
+                        case 3:
+                            _ref32 = _context32.sent;
+                            data = _ref32.data;
+                            status = _ref32.status;
+                            return _context32.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context32.prev = 9;
+                            _context32.t0 = _context32['catch'](0);
+                            return _context32.abrupt('return', _context32.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context32.stop();
+                    }
+                }
+            }, _callee32, _this32, [[0, 9]]);
+        }))();
+    },
+    updateDepartment: function updateDepartment(id, params) {
+        var _this33 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee33() {
+            var _ref33, data, status;
+
+            return _regenerator2.default.wrap(function _callee33$(_context33) {
+                while (1) {
+                    switch (_context33.prev = _context33.next) {
+                        case 0:
+                            _context33.prev = 0;
+                            _context33.next = 3;
+                            return window.axios.put(url + '/api/admin/department/' + id, params);
+
+                        case 3:
+                            _ref33 = _context33.sent;
+                            data = _ref33.data;
+                            status = _ref33.status;
+                            return _context33.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context33.prev = 9;
+                            _context33.t0 = _context33['catch'](0);
+                            return _context33.abrupt('return', _context33.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context33.stop();
+                    }
+                }
+            }, _callee33, _this33, [[0, 9]]);
+        }))();
+    },
+    destroyDepartment: function destroyDepartment(id) {
+        var _this34 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee34() {
+            var _ref34, data, status;
+
+            return _regenerator2.default.wrap(function _callee34$(_context34) {
+                while (1) {
+                    switch (_context34.prev = _context34.next) {
+                        case 0:
+                            _context34.prev = 0;
+                            _context34.next = 3;
+                            return window.axios.delete(url + '/api/admin/department/' + id);
+
+                        case 3:
+                            _ref34 = _context34.sent;
+                            data = _ref34.data;
+                            status = _ref34.status;
+                            return _context34.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context34.prev = 9;
+                            _context34.t0 = _context34['catch'](0);
+                            return _context34.abrupt('return', _context34.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context34.stop();
+                    }
+                }
+            }, _callee34, _this34, [[0, 9]]);
+        }))();
+    },
+    getDepartments: function getDepartments() {
+        var _this35 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee35() {
+            var _ref35, data, status;
+
+            return _regenerator2.default.wrap(function _callee35$(_context35) {
+                while (1) {
+                    switch (_context35.prev = _context35.next) {
+                        case 0:
+                            _context35.prev = 0;
+                            _context35.next = 3;
+                            return window.axios.get(url + '/api/admin/department');
+
+                        case 3:
+                            _ref35 = _context35.sent;
+                            data = _ref35.data;
+                            status = _ref35.status;
+                            return _context35.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context35.prev = 9;
+                            _context35.t0 = _context35['catch'](0);
+                            return _context35.abrupt('return', _context35.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context35.stop();
+                    }
+                }
+            }, _callee35, _this35, [[0, 9]]);
+        }))();
+    },
+    getFaculties: function getFaculties() {
+        var _this36 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee36() {
+            var _ref36, data, status;
+
+            return _regenerator2.default.wrap(function _callee36$(_context36) {
+                while (1) {
+                    switch (_context36.prev = _context36.next) {
+                        case 0:
+                            _context36.prev = 0;
+                            _context36.next = 3;
+                            return window.axios.get(url + '/api/admin/faculty');
+
+                        case 3:
+                            _ref36 = _context36.sent;
+                            data = _ref36.data;
+                            status = _ref36.status;
+                            return _context36.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context36.prev = 9;
+                            _context36.t0 = _context36['catch'](0);
+                            return _context36.abrupt('return', _context36.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context36.stop();
+                    }
+                }
+            }, _callee36, _this36, [[0, 9]]);
+        }))();
+    },
+    createFaculty: function createFaculty(params) {
+        var _this37 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee37() {
+            var _ref37, data, status;
+
+            return _regenerator2.default.wrap(function _callee37$(_context37) {
+                while (1) {
+                    switch (_context37.prev = _context37.next) {
+                        case 0:
+                            _context37.prev = 0;
+                            _context37.next = 3;
+                            return window.axios.post(url + '/api/admin/faculty', params);
+
+                        case 3:
+                            _ref37 = _context37.sent;
+                            data = _ref37.data;
+                            status = _ref37.status;
+                            return _context37.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context37.prev = 9;
+                            _context37.t0 = _context37['catch'](0);
+                            return _context37.abrupt('return', _context37.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context37.stop();
+                    }
+                }
+            }, _callee37, _this37, [[0, 9]]);
+        }))();
+    },
+    editFaculty: function editFaculty(id, params) {
+        var _this38 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee38() {
+            var _ref38, data, status;
+
+            return _regenerator2.default.wrap(function _callee38$(_context38) {
+                while (1) {
+                    switch (_context38.prev = _context38.next) {
+                        case 0:
+                            _context38.prev = 0;
+                            _context38.next = 3;
+                            return window.axios.put(url + '/api/admin/faculty/' + id, params);
+
+                        case 3:
+                            _ref38 = _context38.sent;
+                            data = _ref38.data;
+                            status = _ref38.status;
+                            return _context38.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context38.prev = 9;
+                            _context38.t0 = _context38['catch'](0);
+                            return _context38.abrupt('return', _context38.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context38.stop();
+                    }
+                }
+            }, _callee38, _this38, [[0, 9]]);
+        }))();
+    },
+    getFaculty: function getFaculty(id) {
+        var _this39 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee39() {
+            var _ref39, data, status;
+
+            return _regenerator2.default.wrap(function _callee39$(_context39) {
+                while (1) {
+                    switch (_context39.prev = _context39.next) {
+                        case 0:
+                            _context39.prev = 0;
+                            _context39.next = 3;
+                            return window.axios.get(url + '/api/admin/faculty/' + id);
+
+                        case 3:
+                            _ref39 = _context39.sent;
+                            data = _ref39.data;
+                            status = _ref39.status;
+                            return _context39.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context39.prev = 9;
+                            _context39.t0 = _context39['catch'](0);
+                            return _context39.abrupt('return', _context39.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context39.stop();
+                    }
+                }
+            }, _callee39, _this39, [[0, 9]]);
+        }))();
+    },
+    setUniversityForFaculty: function setUniversityForFaculty(id, params) {
+        var _this40 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee40() {
+            var _ref40, data, status;
+
+            return _regenerator2.default.wrap(function _callee40$(_context40) {
+                while (1) {
+                    switch (_context40.prev = _context40.next) {
+                        case 0:
+                            _context40.prev = 0;
+                            _context40.next = 3;
+                            return window.axios.put(url + '/api/admin/faculty/' + id, params);
+
+                        case 3:
+                            _ref40 = _context40.sent;
+                            data = _ref40.data;
+                            status = _ref40.status;
+                            return _context40.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context40.prev = 9;
+                            _context40.t0 = _context40['catch'](0);
+                            return _context40.abrupt('return', _context40.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context40.stop();
+                    }
+                }
+            }, _callee40, _this40, [[0, 9]]);
+        }))();
+    },
+    destroyFaculty: function destroyFaculty(id) {
+        var _this41 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee41() {
+            var _ref41, data, status;
+
+            return _regenerator2.default.wrap(function _callee41$(_context41) {
+                while (1) {
+                    switch (_context41.prev = _context41.next) {
+                        case 0:
+                            _context41.prev = 0;
+                            _context41.next = 3;
+                            return window.axios.delete(url + '/api/admin/faculty/' + id);
+
+                        case 3:
+                            _ref41 = _context41.sent;
+                            data = _ref41.data;
+                            status = _ref41.status;
+                            return _context41.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context41.prev = 9;
+                            _context41.t0 = _context41['catch'](0);
+                            return _context41.abrupt('return', _context41.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context41.stop();
+                    }
+                }
+            }, _callee41, _this41, [[0, 9]]);
         }))();
     }
 };
@@ -67769,6 +70022,7 @@ exports.default = {
         olegText: 'С другой стороны начало повседневной работы по формированию позиции представляет собой' + 'интересный эксперимент проверки систем массового участия. Задача организации, в особенности же' + 'прогрессивного развития.',
         annAdvice: 'Звичайно, всі рідні, друзі та знайомі переживають за твоє майбутнє. Вислухай їхні поради, ' + 'можливо чиясь стане дійсно корисною)',
         yourEmailConfirm: 'Ваш E-mail успішно підтверджений, тепер ви можете авторизуватись або перейти' + 'на головну сторінку',
+        yourEmailUnConfirm: 'Ваш E-mail не підтверджено, користувача не знайдено або токен не вірний',
         acquaintWithStudentLife: 'спробувати самому зібрати потрібні документи документи та відправити їх' + 'у приймальнукомісію',
         annHello: 'Привіт! Я вчуся на другому курсі за спеціальністю психолог, тому легко знаходжу спільну мову' + ' з людьми. Думаю і з тобою ми порозуміємося. Я допоможу тобі в усьому розібратися. Давай знайомитися?',
         beforeEveryone: 'Перед кожним школярем рано чи пізно постає питання вибору' + 'професії та вступу до ВНЗ. Цей сервіс допоможе' + 'майбутньому студенту у вигляді захопливого квесту',
@@ -67803,6 +70057,14 @@ exports.default = {
         facultyNamePlaceholder: 'Ім\'я',
         facultyDescription: 'Опис',
         facultyDescriptionPlaceholder: 'Опис',
+        testName: 'Ім\'я',
+        testNamePlaceholder: 'Ім\'я',
+        testDescription: 'Опис',
+        testDescriptionPlaceholder: 'Опис',
+        questionName: 'Запитання',
+        questionNamePlaceholder: 'Запитання',
+        answerName: 'Відповідь',
+        answerNamePlaceholder: 'Відповідь',
         save: 'Зберегти',
         send: 'Надіслати',
         infoAboutUniversity: 'Інформація про університет',
@@ -67819,13 +70081,72 @@ exports.default = {
         universityParentId: 'Батьківський ідентифікатор',
         infoUpdate: 'Інформацію оновлено',
         createUniversity: 'Університет створено',
+        createQuestion: 'Запитання створено',
+        createTest: 'Тест створено',
+        createAnswer: 'Створення відповіді',
         university: 'Університет',
         inviteUniversityAdmin: 'Запрошення стати адміністратором університету',
         inviteUniversityAdminSent: 'Запрошення стати адміністратором університету надіслано',
         moreInfo: 'Докладніше',
+        managerCoefficients: 'Менеджер коефіцієнтів',
+        managerTests: 'Менеджер тестів',
+        managerQuestions: 'Менеджер запитань',
+        managerAnswers: 'Менеджер відповідей',
+        addTest: 'Додати тест',
+        addQuestion: 'Додати запитання',
+        questions: 'Запитання',
+        testId: 'ID тесту',
+        questionId: 'ID запитання',
+        typeTest: 'Тип відповіді (Одна/Декілька)',
+        typeTestOne: 'Одна',
+        typeTestPoly: 'Декілька',
+        typeFillTest: 'Тип вводу відповіді (Вручну/Автоматично)',
+        typeFillAuto: 'Вручну',
+        typeFillManually: 'Автоматично',
+        createCoefficient: 'Додати коефіцієнт',
+        createdCoefficient: 'Коефіцієнт додано',
+        updatedCoefficient: 'Коефіцієнт оновлено',
+        coefficientName: 'Назва коефіцієнту',
+        coefficientNamePlaceholder: 'Назва коефіцієнту',
+        coefficient: 'Коефіцієнт',
+        majorId: 'ID головного',
         universityAdmin: 'Адміністратор університету',
         addInvite: 'Створити запрошення',
-        universityChanged: 'Університет змінено'
+        universityChanged: 'Університет змінено',
+        updateTest: 'Оновлення тесту',
+        answers: 'Відповіді',
+        updateQuestion: 'Оновлення запитання',
+        updatedQuestion: 'Запитання оновлено',
+        addAnswer: 'Додати відповідь',
+        createdAnswer: 'Відповідь створено',
+        updateAnswer: 'Оновити Відповідь',
+        updatedAnswer: 'Відповідь оновлено',
+        departmentId: 'ID кафедри',
+        nameMajor: 'Назва спеціальності',
+        managerMajor: 'Менеджер спеціальності',
+        addMajor: 'Додати спеціальність',
+        createMajor: 'Створення спеціальності',
+        majorName: 'Назва Спеціальності',
+        majorNamePlaceholder: 'Назва Спеціальності',
+        createdMajor: 'Спеціальність створена',
+        majorDescription: 'Опис спеціальності',
+        majorDescriptionPlaceholder: 'Опис спеціальності',
+        updateMajor: 'Оновлення спеціальності',
+        updatedMajor: 'Спеціальність оновлено',
+        facultyId: 'ID факультету',
+        managerDepartments: 'Менеджер кафедр',
+        managerMajors: 'Менеджер спеціальностей',
+        departmentName: 'Назва кафедри',
+        departmentNamePlaceholder: 'Назва кафедри',
+        departmentDescription: 'Опис кафедри',
+        departmentDescriptionPlaceholder: 'Опис кафедри',
+        createdDepartment: 'Кафедру створено',
+        createDepartment: 'Створити кафедру',
+        updateDepartment: 'Ововити кафедру',
+        updatedDepartment: 'Кафедру оновлено',
+        addDepartment: 'Додати кафедру',
+        department: 'Кафедра',
+        menu: 'Меню'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'
@@ -73202,7 +75523,8 @@ exports.default = {
         email: 'E-mail',
         password: 'Пароль',
         rePassword: 'Підтвердження паролю',
-        photo: 'Фото'
+        photo: 'Фото',
+        questionType: 'Тип запитання'
     }
 };
 
@@ -76356,7 +78678,7 @@ if(false) {
 /* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -76882,7 +79204,7 @@ var content = __webpack_require__(228);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(30)("909892fc", content, false, {});
+var update = __webpack_require__(32)("909892fc", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -76901,7 +79223,7 @@ if(false) {
 /* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // imports
 
 
@@ -76990,6 +79312,12 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 230 */
@@ -77011,7 +79339,7 @@ module.exports = __webpack_require__(3).Object.keys;
 
 // 19.1.2.14 Object.keys(O)
 var toObject = __webpack_require__(42);
-var $keys = __webpack_require__(32);
+var $keys = __webpack_require__(31);
 
 __webpack_require__(233)('keys', function () {
   return function keys(it) {
@@ -77027,7 +79355,7 @@ __webpack_require__(233)('keys', function () {
 // most Object methods by ES6 should accept primitives
 var $export = __webpack_require__(11);
 var core = __webpack_require__(3);
-var fails = __webpack_require__(23);
+var fails = __webpack_require__(22);
 module.exports = function (KEY, exec) {
   var fn = (core.Object || {})[KEY] || Object[KEY];
   var exp = {};
@@ -77615,6 +79943,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     mixins: [_modals2.default, _user2.default],
@@ -77676,185 +80025,157 @@ var render = function() {
           "div",
           { staticClass: "pull-right" },
           [
-            _vm.userLogged
-              ? [
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-inline-block mb-3 mr-4 notification__parent"
-                    },
-                    [
-                      _c("strong", [
-                        _vm._v(_vm._s(_vm.$t("translation.vnz")) + ":")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.isShowUniversityDetails,
-                              expression: "isShowUniversityDetails"
-                            }
-                          ],
-                          staticClass: "notification__child"
-                        },
-                        [
-                          _c("span", { staticClass: "row" }, [
-                            _c("span", { staticClass: "col-4" }, [
-                              _c("img", {
-                                staticClass:
-                                  "image-circle image-circle__60 mt-3",
-                                attrs: { src: _vm.userUser.image.source }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "col" }, [
-                              _c("p", { staticClass: "mb-0" }, [
-                                _vm._v(
-                                  _vm._s(_vm.$t("translation.faculty")) + ":"
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(0),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mt-2 mb-0" }, [
-                                _vm._v(
-                                  _vm._s(_vm.$t("translation.speciality")) + ":"
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(1)
-                            ])
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "link link__accent-dark",
-                          attrs: { href: "javascript:" },
-                          on: {
-                            mouseover: function($event) {
-                              _vm.isShowUniversityDetails = true
-                            },
-                            mouseleave: function($event) {
-                              _vm.isShowUniversityDetails = false
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Сумський державний університет\n                    "
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "d-inline-block" }, [
-                    _c("strong", [
-                      _vm._v(_vm._s(_vm.$t("translation.welcome")) + ":")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "link link__accent mr-3",
-                        attrs: { href: "javascript:" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.userUser.name) +
-                            "\n                        "
-                        ),
-                        _vm.userUser.image.source
-                          ? [
-                              _c("img", {
-                                staticClass:
-                                  "image-circle image-circle__45 ml-2 mb-3",
-                                attrs: { src: _vm.userUser.image.source }
-                              })
-                            ]
-                          : [
-                              _c("img", {
-                                staticClass:
-                                  "image-circle image-circle__45 ml-2 mb-3",
-                                attrs: { src: "/images/no-photo.png" }
-                              })
-                            ]
-                      ],
-                      2
-                    )
-                  ])
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "link link__accent mr-3",
+                  attrs: { to: { name: "admin.university" } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.managerUniversity")) +
+                      "\n                "
+                  )
                 ]
-              : _vm.$route.name === "user.room"
-                ? [
-                    _c("span", { staticClass: "d-inline-block" }, [
-                      _c("strong", [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.$t("translation.welcome")) +
-                            ":\n                        " +
-                            _vm._s(_vm.$t("translation.entrant")) +
-                            "!\n                    "
-                        )
-                      ])
-                    ])
-                  ]
-                : [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "link link__accent mr-3",
-                        attrs: { to: { name: "admin.university" } }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(_vm.$t("translation.managerUniversity")) +
-                            "\n                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "link link__accent mr-3",
-                        attrs: { to: { name: "admin.university.admins" } }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(
-                              _vm.$t("translation.managerUniversityAdmin")
-                            ) +
-                            "\n                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "link link__accent mr-3",
-                        attrs: { to: { name: "admin.faculty" } }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(_vm.$t("translation.managerFaculty")) +
-                            "\n                "
-                        )
-                      ]
-                    )
-                  ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "link link__accent mr-3",
+                  attrs: { to: { name: "admin.university.admins" } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.managerUniversityAdmin")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "link link__accent mr-3",
+                  attrs: { to: { name: "admin.faculty" } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.managerFaculty")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "link link__accent mr-3",
+                  attrs: { to: { name: "admin.departments" } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.managerDepartments")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "link link__accent mr-3",
+                  attrs: { to: { name: "admin.majors" } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.managerMajors")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "link link__accent mr-3",
+                  attrs: { to: { name: "admin.coefficients" } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.managerCoefficients")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "link link__accent mr-3",
+                  attrs: { to: { name: "admin.tests" } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.managerTests")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "link link__accent mr-3",
+                  attrs: { to: { name: "admin.questions" } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.managerQuestions")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "link link__accent mr-3",
+                  attrs: { to: { name: "admin.answers" } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.managerAnswers")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "link link__accent mr-3",
+                  attrs: { to: { name: "admin.faculty" } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.managerFaculty")) +
+                      "\n                "
+                  )
+                ]
+              )
+            ]
           ],
           2
         )
@@ -77863,26 +80184,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [
-      _c("p", { staticClass: "dark-color lh-text mb-0" }, [_vm._v("ЕЛіТ")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [
-      _c("p", { staticClass: "dark-color lh-text mb-0" }, [
-        _vm._v("Прикладна математика")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -77971,7 +80273,9 @@ var render = function() {
     "div",
     { ref: "app", class: _vm.userBackground, attrs: { id: "app" } },
     [
-      _vm.isAdmin ? _c("admin-header") : _c("user-header"),
+      _vm.userRole === "global_admin" || _vm.userRole === "uni_admin"
+        ? _c("admin-header")
+        : _c("user-header"),
       _vm._v(" "),
       _c(
         "transition",
@@ -77980,7 +80284,9 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.isAdmin ? _c("admin-footer") : _vm._e(),
+      _vm.userRole === "global_admin" || _vm.userRole === "uni_admin"
+        ? _c("admin-footer")
+        : _vm._e(),
       _vm._v(" "),
       _vm.showPreload ? _c("preload") : _vm._e()
     ],

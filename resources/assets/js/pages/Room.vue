@@ -6,7 +6,7 @@
                 <div class="col-md-9 col-sm-8">
                     <div v-if="userFirstStage !== 4 && userFirstStage !== 5" class="things"></div>
                     <div v-if="userFirstStage === 4" class="room__content">
-                        <div class="university__wrapper">
+                        <div v-if="userSelectedUniversity" class="university__wrapper">
                             <div class="university__header"
                                  :style="{'background': userUser.image
                                                         ? `url(${userUser.image.source})`
@@ -18,10 +18,10 @@
                                              class="image-circle image-circle__60 mr-4">
                                         <div class="media-body dark-color mt-1">
                                             <strong>
-                                                <h4>{{ userSelectedUniversity.name }}</h4>
+                                                <h4 v-if="userSelectedUniversity">{{ userSelectedUniversity.name }}</h4>
                                             </strong>
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <span>{{ userSelectedUniversity.address }}</span>
+                                            <span v-if="userSelectedUniversity">{{ userSelectedUniversity.address }}</span>
                                             <a href="#map" class="link link__accent-dark">
                                                 {{ $t("translation.watchMap") }}
                                             </a>
@@ -158,7 +158,7 @@
         <login-modal></login-modal>
         <register-modal></register-modal>
         <advice-modal v-if="userLogged"></advice-modal>
-        <select-vuz-modal></select-vuz-modal>
+        <select-vuz-modal v-if="userLogged"></select-vuz-modal>
     </div>
 </template>
 

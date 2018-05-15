@@ -27,7 +27,7 @@
                                             <a @click="myChoice" class="link link__white advice__link" href="javascript:">
                                                 {{ $t("translation.agree") }} 10б
                                             </a>
-                                            <a @click="myChoice" class="link link__white advice__link" href="javascript:">
+                                            <a class="link link__white advice__link" href="javascript:">
                                                 {{ $t("translation.no") }} 10б
                                             </a>
                                         </div>
@@ -81,7 +81,7 @@
                                             <a @click="myChoice" class="link link__white advice__link" href="javascript:">
                                                 {{ $t("translation.agree") }} 10б
                                             </a>
-                                            <a @click="myChoice" class="link link__white advice__link" href="javascript:">
+                                            <a class="link link__white advice__link" href="javascript:">
                                                 {{ $t("translation.no") }} 10б
                                             </a>
                                         </div>

@@ -12442,7 +12442,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'user',
         prefix: true
-    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role', 'token']))
+    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role', 'token', 'departments', 'faculties', 'majors', 'selectedDepartment', 'selectedFaculty', 'selectedMajor']))
 };
 
 /***/ }),
@@ -24412,7 +24412,13 @@ var USER = exports.USER = 'USER';
 var BACKGROUND = exports.BACKGROUND = 'BACKGROUND';
 var FIRST_STAGE = exports.FIRST_STAGE = 'FIRST_STAGE';
 var UNIVERSITIES = exports.UNIVERSITIES = 'UNIVERSITIES';
+var DEPARTMENTS = exports.DEPARTMENTS = 'DEPARTMENTS';
+var FACULTIES = exports.FACULTIES = 'FACULTIES';
+var MAJORS = exports.MAJORS = 'MAJORS';
 var SELECTED_UNIVERSITY = exports.SELECTED_UNIVERSITY = 'SELECTED_UNIVERSITY';
+var SELECTED_FACULTY = exports.SELECTED_FACULTY = 'SELECTED_FACULTY';
+var SELECTED_DEPARTMENT = exports.SELECTED_DEPARTMENT = 'SELECTED_DEPARTMENT';
+var SELECTED_MAJOR = exports.SELECTED_MAJOR = 'SELECTED_MAJOR';
 var SHOW_PRELOAD = exports.SHOW_PRELOAD = 'SHOW_PRELOAD';
 var REFRESH_TABLE = exports.REFRESH_TABLE = 'REFRESH_TABLE';
 var ROLE = exports.ROLE = 'ROLE';
@@ -24444,7 +24450,13 @@ exports.default = {
     background: null,
     firstStage: 1,
     universities: [],
+    departments: [],
+    faculties: [],
+    majors: [],
     selectedUniversity: null,
+    selectedDepartment: null,
+    selectedFaculty: null,
+    selectedMajor: null,
     showPreload: false,
     refreshTable: false,
     role: null
@@ -62714,7 +62726,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.checkLogged = exports.logout = exports.getUniversities = exports.confirmation = exports.registerInvite = exports.register = exports.login = undefined;
+exports.getMajors = exports.getDepartments = exports.getFaculties = exports.getUniversities = exports.checkLogged = exports.logout = exports.confirmation = exports.registerInvite = exports.register = exports.login = undefined;
 
 var _regenerator = __webpack_require__(9);
 
@@ -62897,48 +62909,12 @@ var confirmation = exports.confirmation = function () {
     };
 }();
 
-var getUniversities = exports.getUniversities = function () {
+var logout = exports.logout = function () {
     var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(_ref12) {
         var commit = _ref12.commit;
-        var json;
         return _regenerator2.default.wrap(function _callee5$(_context5) {
             while (1) {
                 switch (_context5.prev = _context5.next) {
-                    case 0:
-                        _context5.next = 2;
-                        return _user2.default.getUniversities();
-
-                    case 2:
-                        json = _context5.sent;
-
-
-                        commit(types.UNIVERSITIES, json.data);
-
-                        // if (json.status === 200) {
-                        //     return json.data;
-                        // }
-                        //
-                        // throw json;
-
-                    case 4:
-                    case 'end':
-                        return _context5.stop();
-                }
-            }
-        }, _callee5, undefined);
-    }));
-
-    return function getUniversities(_x9) {
-        return _ref11.apply(this, arguments);
-    };
-}();
-
-var logout = exports.logout = function () {
-    var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(_ref14) {
-        var commit = _ref14.commit;
-        return _regenerator2.default.wrap(function _callee6$(_context6) {
-            while (1) {
-                switch (_context6.prev = _context6.next) {
                     case 0:
                         commit(types.ID, null);
                         commit(types.NAME, null);
@@ -62951,24 +62927,24 @@ var logout = exports.logout = function () {
 
                     case 8:
                     case 'end':
-                        return _context6.stop();
+                        return _context5.stop();
                 }
             }
-        }, _callee6, undefined);
+        }, _callee5, undefined);
     }));
 
-    return function logout(_x10) {
-        return _ref13.apply(this, arguments);
+    return function logout(_x9) {
+        return _ref11.apply(this, arguments);
     };
 }();
 
 var checkLogged = exports.checkLogged = function () {
-    var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(_ref16) {
-        var commit = _ref16.commit;
+    var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(_ref14) {
+        var commit = _ref14.commit;
         var token, currentUser, role;
-        return _regenerator2.default.wrap(function _callee7$(_context7) {
+        return _regenerator2.default.wrap(function _callee6$(_context6) {
             while (1) {
-                switch (_context7.prev = _context7.next) {
+                switch (_context6.prev = _context6.next) {
                     case 0:
                         token = window.Cookies.get('token');
                         currentUser = window.Cookies.get('user');
@@ -62985,14 +62961,170 @@ var checkLogged = exports.checkLogged = function () {
 
                     case 4:
                     case 'end':
+                        return _context6.stop();
+                }
+            }
+        }, _callee6, undefined);
+    }));
+
+    return function checkLogged(_x10) {
+        return _ref13.apply(this, arguments);
+    };
+}();
+
+var getUniversities = exports.getUniversities = function () {
+    var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(_ref16) {
+        var commit = _ref16.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee7$(_context7) {
+            while (1) {
+                switch (_context7.prev = _context7.next) {
+                    case 0:
+                        _context7.next = 2;
+                        return _user2.default.getUniversities();
+
+                    case 2:
+                        json = _context7.sent;
+
+                        if (!(json.status === 200)) {
+                            _context7.next = 6;
+                            break;
+                        }
+
+                        commit(types.UNIVERSITIES, json.data.data);
+
+                        return _context7.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
                         return _context7.stop();
                 }
             }
         }, _callee7, undefined);
     }));
 
-    return function checkLogged(_x11) {
+    return function getUniversities(_x11) {
         return _ref15.apply(this, arguments);
+    };
+}();
+
+var getFaculties = exports.getFaculties = function () {
+    var _ref17 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8(_ref18, payload) {
+        var commit = _ref18.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee8$(_context8) {
+            while (1) {
+                switch (_context8.prev = _context8.next) {
+                    case 0:
+                        _context8.next = 2;
+                        return _user2.default.getFaculties(payload.id);
+
+                    case 2:
+                        json = _context8.sent;
+
+                        if (!(json.status === 200)) {
+                            _context8.next = 6;
+                            break;
+                        }
+
+                        commit(types.FACULTIES, json.data.data);
+
+                        return _context8.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context8.stop();
+                }
+            }
+        }, _callee8, undefined);
+    }));
+
+    return function getFaculties(_x12, _x13) {
+        return _ref17.apply(this, arguments);
+    };
+}();
+
+var getDepartments = exports.getDepartments = function () {
+    var _ref19 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9(_ref20, payload) {
+        var commit = _ref20.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee9$(_context9) {
+            while (1) {
+                switch (_context9.prev = _context9.next) {
+                    case 0:
+                        _context9.next = 2;
+                        return _user2.default.getDepartments(payload.id);
+
+                    case 2:
+                        json = _context9.sent;
+
+                        if (!(json.status === 200)) {
+                            _context9.next = 6;
+                            break;
+                        }
+
+                        commit(types.DEPARTMENTS, json.data.data);
+
+                        return _context9.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context9.stop();
+                }
+            }
+        }, _callee9, undefined);
+    }));
+
+    return function getDepartments(_x14, _x15) {
+        return _ref19.apply(this, arguments);
+    };
+}();
+
+var getMajors = exports.getMajors = function () {
+    var _ref21 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10(_ref22, payload) {
+        var commit = _ref22.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee10$(_context10) {
+            while (1) {
+                switch (_context10.prev = _context10.next) {
+                    case 0:
+                        _context10.next = 2;
+                        return _user2.default.getMajors(payload.id);
+
+                    case 2:
+                        json = _context10.sent;
+
+                        if (!(json.status === 200)) {
+                            _context10.next = 6;
+                            break;
+                        }
+
+                        commit(types.MAJORS, json.data.data);
+
+                        return _context10.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context10.stop();
+                }
+            }
+        }, _callee10, undefined);
+    }));
+
+    return function getMajors(_x16, _x17) {
+        return _ref21.apply(this, arguments);
     };
 }();
 
@@ -63003,7 +63135,10 @@ exports.default = {
     registerInvite: registerInvite,
     checkLogged: checkLogged,
     confirmation: confirmation,
-    getUniversities: getUniversities
+    getUniversities: getUniversities,
+    getFaculties: getFaculties,
+    getDepartments: getDepartments,
+    getMajors: getMajors
 };
 
 /***/ }),
@@ -64717,26 +64852,132 @@ exports.default = {
         var _this5 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
-            var _ref5, data;
+            var _ref5, data, status;
 
             return _regenerator2.default.wrap(function _callee5$(_context5) {
                 while (1) {
                     switch (_context5.prev = _context5.next) {
                         case 0:
-                            _context5.next = 2;
-                            return window.axios.get('/api/user/university');
+                            _context5.prev = 0;
+                            _context5.next = 3;
+                            return window.axios.get(url + '/api/user/university');
 
-                        case 2:
+                        case 3:
                             _ref5 = _context5.sent;
                             data = _ref5.data;
-                            return _context5.abrupt('return', data);
+                            status = _ref5.status;
+                            return _context5.abrupt('return', { data: data, status: status });
 
-                        case 5:
+                        case 9:
+                            _context5.prev = 9;
+                            _context5.t0 = _context5['catch'](0);
+                            return _context5.abrupt('return', _context5.t0.response);
+
+                        case 12:
                         case 'end':
                             return _context5.stop();
                     }
                 }
-            }, _callee5, _this5);
+            }, _callee5, _this5, [[0, 9]]);
+        }))();
+    },
+    getFaculties: function getFaculties(id) {
+        var _this6 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6() {
+            var _ref6, data, status;
+
+            return _regenerator2.default.wrap(function _callee6$(_context6) {
+                while (1) {
+                    switch (_context6.prev = _context6.next) {
+                        case 0:
+                            _context6.prev = 0;
+                            _context6.next = 3;
+                            return window.axios.get(url + '/api/user/faculty/' + id);
+
+                        case 3:
+                            _ref6 = _context6.sent;
+                            data = _ref6.data;
+                            status = _ref6.status;
+                            return _context6.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context6.prev = 9;
+                            _context6.t0 = _context6['catch'](0);
+                            return _context6.abrupt('return', _context6.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context6.stop();
+                    }
+                }
+            }, _callee6, _this6, [[0, 9]]);
+        }))();
+    },
+    getDepartments: function getDepartments(id) {
+        var _this7 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {
+            var _ref7, data, status;
+
+            return _regenerator2.default.wrap(function _callee7$(_context7) {
+                while (1) {
+                    switch (_context7.prev = _context7.next) {
+                        case 0:
+                            _context7.prev = 0;
+                            _context7.next = 3;
+                            return window.axios.get(url + '/api/user/department/' + id);
+
+                        case 3:
+                            _ref7 = _context7.sent;
+                            data = _ref7.data;
+                            status = _ref7.status;
+                            return _context7.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context7.prev = 9;
+                            _context7.t0 = _context7['catch'](0);
+                            return _context7.abrupt('return', _context7.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context7.stop();
+                    }
+                }
+            }, _callee7, _this7, [[0, 9]]);
+        }))();
+    },
+    getMajors: function getMajors(id) {
+        var _this8 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8() {
+            var _ref8, data, status;
+
+            return _regenerator2.default.wrap(function _callee8$(_context8) {
+                while (1) {
+                    switch (_context8.prev = _context8.next) {
+                        case 0:
+                            _context8.prev = 0;
+                            _context8.next = 3;
+                            return window.axios.get(url + '/api/user/major/' + id);
+
+                        case 3:
+                            _ref8 = _context8.sent;
+                            data = _ref8.data;
+                            status = _ref8.status;
+                            return _context8.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context8.prev = 9;
+                            _context8.t0 = _context8['catch'](0);
+                            return _context8.abrupt('return', _context8.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context8.stop();
+                    }
+                }
+            }, _callee8, _this8, [[0, 9]]);
         }))();
     }
 };

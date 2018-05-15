@@ -27,6 +27,12 @@ export default {
             'showPreload',
             'role',
             'token',
+            'departments',
+            'faculties',
+            'majors',
+            'selectedDepartment',
+            'selectedFaculty',
+            'selectedMajor',
         ]),
     },
 };

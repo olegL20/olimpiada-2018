@@ -39,9 +39,40 @@ export default {
         }
     },
     async getUniversities() {
-        const { data } = await window.axios.get('/api/user/university');
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/user/university`);
 
-        return data;
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getFaculties(id) {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/user/faculty/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getDepartments(id) {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/user/department/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getMajors(id) {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/user/major/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
     },
     // async passwordEmail(params) {
     //     const { data } = await window.axios.post('/api/v1/password/email', params);

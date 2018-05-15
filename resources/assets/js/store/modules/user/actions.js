@@ -46,18 +46,6 @@ export const confirmation = async ({ dispatch, commit }, payload) => {
     throw json;
 };
 
-export const getUniversities = async ({ commit }) => {
-    const json = await user.getUniversities();
-
-    commit(types.UNIVERSITIES, json.data);
-
-    // if (json.status === 200) {
-    //     return json.data;
-    // }
-    //
-    // throw json;
-};
-
 export const logout = async ({ commit }) => {
     commit(types.ID, null);
     commit(types.NAME, null);
@@ -83,6 +71,54 @@ export const checkLogged = async ({ commit }) => {
     }
 };
 
+export const getUniversities = async ({ commit }) => {
+    const json = await user.getUniversities();
+
+    if (json.status === 200) {
+        commit(types.UNIVERSITIES, json.data.data);
+
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getFaculties = async ({ commit }, payload) => {
+    const json = await user.getFaculties(payload.id);
+
+    if (json.status === 200) {
+        commit(types.FACULTIES, json.data.data);
+
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getDepartments = async ({ commit }, payload) => {
+    const json = await user.getDepartments(payload.id);
+
+    if (json.status === 200) {
+        commit(types.DEPARTMENTS, json.data.data);
+
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getMajors = async ({ commit }, payload) => {
+    const json = await user.getMajors(payload.id);
+
+    if (json.status === 200) {
+        commit(types.MAJORS, json.data.data);
+
+        return json.data;
+    }
+
+    throw json;
+};
+
 export default {
     login,
     logout,
@@ -91,4 +127,7 @@ export default {
     checkLogged,
     confirmation,
     getUniversities,
+    getFaculties,
+    getDepartments,
+    getMajors,
 };

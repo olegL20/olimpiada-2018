@@ -38,7 +38,12 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $data = $this->faculty->with(['university'])->paginate();
+        $universityId = auth()->user()->university_id;
+
+        $data = $this->faculty
+            ->with(['university'])
+            ->where('university_id', $universityId)
+            ->paginate();
 
         return response()->json([
             'data' => $data

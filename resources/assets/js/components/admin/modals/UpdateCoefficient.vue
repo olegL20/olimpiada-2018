@@ -4,7 +4,7 @@
             <div class="modal__content modal__md">
 
                 <h4 class="modal__head">
-                    {{ $t("translation.createCoefficient") }}
+                    {{ $t("translation.editCoefficient") }}
                 </h4>
 
                 <div class="modal__body">
@@ -31,7 +31,7 @@
                     </div>
 
                     <multiselect v-model="coefficientMajorId"
-                                 :options="options"
+                                 :options="majors"
                                  :searchable="true"
                                  :show-labels="false"
                                  label="name"
@@ -41,11 +41,11 @@
 
                     <button type="button" class="btn btn-md btn-secondary float-right mt-4"
                         @click="hide">
-                        {{ $t("translation.close") }}
+                        {{ $t("translation.cancel") }}
                     </button>
 
                     <button type="button" class="btn btn-md btn-success mt-4"
-                        @click="updateCoefficient">
+                        @click="saveEditCoefficient">
                         {{ $t("translation.save") }}
                     </button>
 
@@ -57,7 +57,6 @@
 </template>
 
 <script>
-
     import MixinModals from '../../../mixins/modals';
     import MixinAdmin from '../../../mixins/admin';
     import MixinPreload from '../../../mixins/preload';
@@ -68,44 +67,33 @@
             MixinAdmin,
             MixinPreload,
         ],
-        data() {
-            return {
-                options: [
-                    {
-                        name: '1',
-                        id: 1,
-                    },
-                    {
-                        name: '2',
-                        id: 2,
-                    },
-                ],
-            };
-        },
         methods: {
             hide() {
                 this.modalsIsShowUpdateCoefficient = false;
 
+                this.coefficientId = null;
                 this.coefficientMajorId = null;
                 this.coefficientName = null;
                 this.coefficientCoefficient = null;
             },
-
-            async createCoefficient() {
+            async saveEditCoefficient() {
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
                     try {
                         this.showPreloader();
                         await this.$store.dispatch('admin/updateCoefficient', {
-                            major_id: this.coefficientMajorId,
-                            name: this.coefficientName,
-                            coefficient: this.coefficientCoefficient,
+                            id: this.coefficientId,
+                            params: {
+                                major_id: this.coefficientMajorId.id,
+                                name: this.coefficientName,
+                                coefficient: Number(this.coefficientCoefficient),
+                            },
                         });
                         this.switchRefreshTable(true);
                         this.$toast.success({
                             title: this.$t('translation.success'),
-                            message: this.$t('translation.updatedCoefficient'),
+                            message: this.$t('translation.createdCoefficient'),
                         });
                     } catch (e) {
                         if (e.status === 404) {
@@ -120,6 +108,7 @@
                             });
                         }
                     }
+                    this.hidePreloader();
                     this.hide();
                 }
             },

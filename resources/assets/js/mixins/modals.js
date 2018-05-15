@@ -21,6 +21,8 @@ export default {
             'isShowEditUniversity',
             'isShowDescription',
             'isShowInviteUniversityAdmin',
+            'isShowCreateFaculty',
+            'isShowEditFaculty',
             'isShowCreateQuestion',
             'isShowUpdateQuestion',
             'isShowCreateAnswer',

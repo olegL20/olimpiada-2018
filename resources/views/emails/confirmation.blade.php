@@ -1,1 +1,1 @@
-Перейдите по <a href="{{ config('core.front_url')  }}/confirmation/{{$data['token']}}">этой ссылке</a> для подтверждения аккаунта
+Перейдите по <a href="{{ config('core.front_url')  }}confirmation/{{$data['token']}}">этой ссылке</a> для подтверждения аккаунта

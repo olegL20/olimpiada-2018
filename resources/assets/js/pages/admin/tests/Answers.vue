@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listAnswers"
-                              api-url="https://itpm-194220.appspot.com/api/admin/answer"
+                              :api-url="`${constants.URL}/api/admin/answer`"
                               :fields="fields"
                               pagination-path=""
                               :css="css.table"
@@ -86,6 +86,11 @@
             VuetablePagination,
             ModalCreateAnswer,
             ModalUpdateAnswer,
+        },
+        data() {
+            return {
+                constants,
+            };
         },
         mounted() {
             this.showPreloader();

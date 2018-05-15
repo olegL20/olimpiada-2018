@@ -6,5 +6,5 @@ export const USER = 'user';
 export const UNIVERSITY_ADMIN = 'uni_admin';
 export const GLOBAL_ADMIN = 'global_admin';
 
-export const URL = '';
-// export const URL = 'https://itpm-194220.appspot.com';
+// export const URL = '';
+export const URL = 'https://itpm-194220.appspot.com';

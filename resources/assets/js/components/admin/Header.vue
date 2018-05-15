@@ -39,6 +39,20 @@
                         </router-link>
                     </template>
                 </template>
+
+                <span class="d-inline-block">
+                        <strong>{{ $t("translation.welcome") }}:</strong>
+                        <a href="javascript:" class="link link__accent mr-3">
+                            {{ userUser.name }}
+                            <span @click="logout" class="ml-2">{{ $t("translation.exit") }}</span>
+                            <template v-if="userUser.image">
+                                <img :src="userUser.image.source" class="image-circle image-circle__45 ml-2 mb-3">
+                            </template>
+                            <template v-else>
+                                <img src="/images/no-photo.png" class="image-circle image-circle__45 ml-2 mb-3">
+                            </template>
+                        </a>
+                    </span>
             </div>
 
         </div>

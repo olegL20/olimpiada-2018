@@ -5675,28 +5675,19 @@ exports.default = {
 
 
     computed: {
-        frameSize: {
-            get: function get() {
-                if (window.innerWidth < 756) {
-                    return {
-                        width: '200px',
-                        height: '200px'
-                    };
-                } else if (window.innerWidth < 992) {
-                    return {
-                        width: '500px',
-                        height: '500px'
-                    };
-                }
+        frameSize: function frameSize() {
+            if (window.innerWidth < 756) {
                 return {
-                    width: this.tileSize.width * this.size.horizontal + 'px',
-                    height: this.tileSize.height * this.size.vertical + 'px'
+                    width: '200px',
+                    height: '200px'
                 };
-            },
-            set: function set(value) {
-                return value;
             }
+            return {
+                width: '500px',
+                height: '500px'
+            };
         },
+
 
         /**
          * The total number of tiles in the current board.
@@ -5741,8 +5732,8 @@ exports.default = {
             // detect the width and height of the frame
             var img = new Image();
             img.onload = function () {
-                _this.tileSize.width = Math.floor(img.width / size.horizontal);
-                _this.tileSize.height = Math.floor(img.height / size.vertical);
+                _this.tileSize.width = Math.floor(_this.frameSize.width.slice(0, -2) / size.horizontal);
+                _this.tileSize.height = Math.floor(_this.frameSize.height.slice(0, -2) / size.vertical);
                 _this.generateTiles();
                 _this.shuffleTiles();
             };
@@ -6795,8 +6786,8 @@ exports.default = {
             }, {
                 maxWidth: 400,
                 maxHeight: 400,
-                minWidth: 200,
-                minHeight: 200,
+                minWidth: 20,
+                minHeight: 20,
                 canvas: true
             });
         },

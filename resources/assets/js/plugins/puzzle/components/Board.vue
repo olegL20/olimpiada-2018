@@ -58,27 +58,17 @@
         },
 
         computed: {
-            frameSize: {
-                get() {
-                    if (window.innerWidth < 756) {
-                        return {
-                            width: `200px`,
-                            height: `200px`,
-                        };
-                    } else if (window.innerWidth < 992) {
-                        return {
-                            width: `500px`,
-                            height: `500px`,
-                        };
-                    }
+            frameSize() {
+                if (window.innerWidth < 756) {
                     return {
-                        width: `${this.tileSize.width * this.size.horizontal}px`,
-                        height: `${this.tileSize.height * this.size.vertical}px`,
+                        width: `200px`,
+                        height: `200px`,
                     };
-                },
-                set(value) {
-                    return value;
-                },
+                }
+                return {
+                    width: `500px`,
+                    height: `500px`,
+                };
             },
 
             /**
@@ -118,8 +108,8 @@
                 // detect the width and height of the frame
                 const img = new Image()
                 img.onload = () => {
-                    this.tileSize.width = Math.floor(img.width / size.horizontal)
-                    this.tileSize.height = Math.floor(img.height / size.vertical)
+                    this.tileSize.width = Math.floor(this.frameSize.width.slice(0,-2) / size.horizontal)
+                    this.tileSize.height = Math.floor(this.frameSize.height.slice(0,-2) / size.vertical)
                     this.generateTiles()
                     this.shuffleTiles()
                 }

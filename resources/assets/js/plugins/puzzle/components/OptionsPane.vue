@@ -45,8 +45,8 @@
                 }, {
                     maxWidth: 400,
                     maxHeight: 400,
-                    minWidth: 200,
-                    minHeight: 200,
+                    minWidth: 20,
+                    minHeight: 20,
                     canvas: true,
                 });
             },

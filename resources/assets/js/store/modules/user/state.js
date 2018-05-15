@@ -28,4 +28,5 @@ export default {
     tests: null,
     selectedTest: null,
     test: null,
+    questions: [],
 };

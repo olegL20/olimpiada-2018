@@ -27,3 +27,4 @@ export const ROLE = 'ROLE';
 export const TESTS = 'TESTS';
 export const SELECTED_TEST = 'SELECTED_TEST';
 export const TEST = 'TEST';
+export const QUESTIONS = 'QUESTIONS';

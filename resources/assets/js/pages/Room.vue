@@ -72,10 +72,33 @@
                         </div>
 
                         <template v-else>
-                            <h3>{{ userTest.name }}</h3>
-                            <div v-for="item in userTest.questions">
+                            <h3 class="test__name">{{ userTest.name }}</h3>
 
+                            <div v-if="question.answer.right && question.answer.other"
+                                 v-for="(question, indexQuestion) in userTest.questions"
+                                 class="jumbotron">
+                                <div class="container">
+                                    <div class="lead">
+                                        <h4>{{ question.name }}</h4>
+                                        <!--<ul class="list-group">-->
+                                            <!--<li v-for="(answer, indexAnswer) in question.answer.other"-->
+                                                <!--@click="checkTest(indexQuestion, indexAnswer)"-->
+                                                <!--class="pointer list-group-item"-->
+                                                <!--:class="{ 'list-group-item-success': false}">-->
+                                                 <!--{{ answer.name }}-->
+                                            <!--</li>-->
+                                        <!--</ul>-->
+                                        <div v-for="(answer, indexAnswer) in question.answer.other" class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" :id="indexAnswer" :value="answer.id">
+                                            <label class="form-check-label" :for="indexAnswer">
+                                                {{ answer.name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <button @click="endTest" type="button" class="btn button-md button-accent">{{ $t("translation.setTest") }}</button>
                         </template>
 
 
@@ -93,27 +116,27 @@
 
                     <img src="/images/calendar1.png" class="w-100 clearfix mb-3">
 
-                    <p class="pull-right mb-1">
-                        {{ $t("translation.scores") }}:
-                        <span class="accent-color">
-                            <strong>0 б</strong>
-                        </span>
-                    </p>
+                    <!--<p class="pull-right mb-1">-->
+                        <!--{{ $t("translation.scores") }}:-->
+                        <!--<span class="accent-color">-->
+                            <!--<strong>0 б</strong>-->
+                        <!--</span>-->
+                    <!--</p>-->
 
-                    <p class="pull-right">
-                        {{ $t("translation.passingTime") }}:
-                        <span class="accent-color">
-                            <strong>00:32</strong>
-                        </span>
-                    </p>
+                    <!--<p class="pull-right">-->
+                        <!--{{ $t("translation.passingTime") }}:-->
+                        <!--<span class="accent-color">-->
+                            <!--<strong>00:32</strong>-->
+                        <!--</span>-->
+                    <!--</p>-->
 
                     <div @click="isShowPhone = true"
                          class="phone clearfix"
-                         :class="{ 'phone__show': isShowPhone }">
+                         :class="{ 'phone__show': isShowPhone }" v-if="userFirstStage < 9">
 
-                        <div v-if="!isShowMessage && userFirstStage !== 5" @click="isShowMessage = true" :disabled="!isShowPhone" class="message__new-message"></div>
+                        <div v-if="!isShowMessage && userFirstStage !== 5 && userFirstStage !== 7" @click="isShowMessage = true" :disabled="!isShowPhone" class="message__new-message"></div>
 
-                        <template v-else-if="isShowMessage || userFirstStage === 5">
+                        <template v-else-if="isShowMessage || userFirstStage === 5 || userFirstStage === 7">
 
                             <p class="message__name">{{ $t("translation.ann") }}</p>
 
@@ -177,6 +200,17 @@
                                     </div>
                                 </template>
 
+                                <template v-if="userFirstStage === 8">
+                                    <div class="message__angle"></div>
+                                    <div class="message__quote">
+                                        <p class="mb-0">{{ $t("translation.annTestResult") }}</p>
+
+                                        <a href="javascript:" @click="showVideo" class="link link__white pull-right mr-4">
+                                            {{ $t("translation.showVideo") }}
+                                        </a>
+                                    </div>
+                                </template>
+
                             </div>
 
                         </template>
@@ -223,6 +257,37 @@
             };
         },
         methods: {
+            async checkTest(question, answer) {
+                console.log(question, answer);
+                // this.userQuestions[question].answer.other[answer].status = 'true';
+                // try {
+                //     const response = await this.$store.dispatch('user/testAnswer', {
+                //         question_id: questionId,
+                //         answer: answerId,
+                //     });
+                //     console.log(response.result);
+                // } catch (e) {
+                //     if (e.status === 404) {
+                //         this.$toast.error({
+                //             title: this.$t('translation.error'),
+                //             message: this.$t('translation.error'),
+                //         });
+                //     } else {
+                //         this.$toast.error({
+                //             title: this.$t('translation.error'),
+                //             message: this.$t(e.message),
+                //         });
+                //     }
+                // }
+            },
+            endTest() {
+                window.Cookies.set('first_stage', 8);
+                this.userFirstStage = 8;
+            },
+            showVideo() {
+                window.Cookies.set('first_stage', 9);
+                this.userFirstStage = 9;
+            },
             selectTest() {
                 if (this.userSelectedTest) {
                     this.$store.dispatch('user/getTest', {

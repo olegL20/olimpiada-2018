@@ -3993,6 +3993,29 @@ exports.default = {
             isShowPhone: false
         };
     },
+
+    methods: {
+        selectTest: function selectTest() {
+            if (this.userSelectedTest) {
+                this.$store.dispatch('user/getTest', {
+                    id: this.userSelectedTest.id
+                });
+            }
+        },
+        showAdvice: function showAdvice() {
+            this.isShowMessage = false;
+            this.modalsIsShowAdvice = true;
+        },
+        showPuzzle: function showPuzzle() {
+            window.Cookies.set('first_stage', 5);
+            this.userFirstStage = 5;
+        },
+        showTest: function showTest() {
+            this.$store.dispatch('user/getTests');
+            window.Cookies.set('first_stage', 7);
+            this.userFirstStage = 7;
+        }
+    },
     metaInfo: function metaInfo() {
         return {
             title: this.$t('translation.room')
@@ -4006,11 +4029,50 @@ exports.default = {
         if (this.userFirstStage === 4) {
             this.userBackground = 'background-green';
             this.userSelectedUniversity = JSON.parse(window.Cookies.get('university'));
+            this.userSelectedFaculty = JSON.parse(window.Cookies.get('faculty'));
+            this.userSelectedMajor = JSON.parse(window.Cookies.get('major'));
         } else {
             this.userBackground = 'background-blue';
         }
+
+        if (this.userFirstStage === 7) {
+            this.$store.dispatch('user/getTests');
+        }
     }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4469,7 +4531,8 @@ var render = function() {
                               "a",
                               {
                                 staticClass: "link link__white advice__link",
-                                attrs: { href: "javascript:" }
+                                attrs: { href: "javascript:" },
+                                on: { click: _vm.myChoice }
                               },
                               [
                                 _vm._v(
@@ -4529,7 +4592,8 @@ var render = function() {
                               "a",
                               {
                                 staticClass: "link link__white advice__link",
-                                attrs: { href: "javascript:" }
+                                attrs: { href: "javascript:" },
+                                on: { click: _vm.myChoice }
                               },
                               [
                                 _vm._v(
@@ -4544,7 +4608,8 @@ var render = function() {
                               "a",
                               {
                                 staticClass: "link link__white advice__link",
-                                attrs: { href: "javascript:" }
+                                attrs: { href: "javascript:" },
+                                on: { click: _vm.myChoice }
                               },
                               [
                                 _vm._v(
@@ -4589,7 +4654,8 @@ var render = function() {
                               "a",
                               {
                                 staticClass: "link link__white advice__link",
-                                attrs: { href: "javascript:" }
+                                attrs: { href: "javascript:" },
+                                on: { click: _vm.myChoice }
                               },
                               [
                                 _vm._v(
@@ -4715,9 +4781,17 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _regenerator = __webpack_require__(9);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
 var _stringify = __webpack_require__(328);
 
 var _stringify2 = _interopRequireDefault(_stringify);
+
+var _asyncToGenerator2 = __webpack_require__(10);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var _modals = __webpack_require__(44);
 
@@ -4799,6 +4873,45 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     mixins: [_modals2.default, _user2.default],
@@ -4807,13 +4920,62 @@ exports.default = {
     },
 
     methods: {
+        selectFaculty: function selectFaculty() {
+            if (this.userSelectedUniversity) {
+                this.$store.dispatch('user/getFaculties', {
+                    id: this.userSelectedUniversity.id
+                });
+            }
+        },
+        selectDepartment: function selectDepartment() {
+            if (this.userSelectedFaculty) {
+                this.$store.dispatch('user/getDepartments', {
+                    id: this.userSelectedFaculty.id
+                });
+            }
+        },
+        selectMajor: function selectMajor() {
+            if (this.userSelectedDepartment) {
+                this.$store.dispatch('user/getMajors', {
+                    id: this.userSelectedDepartment.id
+                });
+            }
+        },
         hide: function hide() {
             this.modalsIsShowSelectVuz = false;
         },
         select: function select() {
-            this.hide();
-            window.Cookies.set('first_stage', 4);
-            window.Cookies.set('university', (0, _stringify2.default)(this.userSelectedUniversity));
+            var _this = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+                var valid;
+                return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _this.$validator.validateAll();
+
+                            case 2:
+                                valid = _context.sent;
+
+
+                                if (valid) {
+                                    _this.hide();
+                                    window.Cookies.set('first_stage', 4);
+                                    _this.userFirstStage = 4;
+                                    window.Cookies.set('university', (0, _stringify2.default)(_this.userSelectedUniversity));
+                                    window.Cookies.set('faculty', (0, _stringify2.default)(_this.userSelectedFaculty));
+                                    window.Cookies.set('major', (0, _stringify2.default)(_this.userSelectedMajor));
+                                }
+
+                            case 4:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this);
+            }))();
         }
     }
 };
@@ -4872,15 +5034,31 @@ var render = function() {
                     _c("label", [_vm._v(_vm._s(_vm.$t("translation.vnz")))]),
                     _vm._v(" "),
                     _c("multiselect", {
-                      staticClass: "input",
+                      directives: [
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required",
+                          expression: "'required'"
+                        }
+                      ],
+                      class: {
+                        multiselect: true,
+                        "is-invalid": _vm.errors.has("userSelectedUniversity")
+                      },
                       attrs: {
                         options: _vm.userUniversities,
                         searchable: true,
                         "show-labels": false,
+                        "aria-describedby": "userSelectedUniversityHelp",
+                        id: "userSelectedUniversityId",
+                        "data-vv-name": "userSelectedUniversity",
+                        "data-vv-value-path": "value",
                         label: "name",
-                        "track-by": "name",
+                        "track-by": "id",
                         placeholder: _vm.$t("translation.selectFromList")
                       },
+                      on: { input: _vm.selectFaculty },
                       model: {
                         value: _vm.userSelectedUniversity,
                         callback: function($$v) {
@@ -4891,22 +5069,23 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c(
-                      "div",
+                      "small",
                       {
                         directives: [
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.errors.has("email"),
-                            expression: "errors.has('email')"
+                            value: _vm.errors.has("userSelectedUniversity"),
+                            expression: "errors.has('userSelectedUniversity')"
                           }
                         ],
-                        staticClass: "invalid-feedback"
+                        staticClass: "form-text text-danger",
+                        attrs: { id: "userSelectedUniversityHelp" }
                       },
                       [
                         _vm._v(
                           "\n                        " +
-                            _vm._s(_vm.errors.first("email")) +
+                            _vm._s(_vm.errors.first("userSelectedUniversity")) +
                             "\n                    "
                         )
                       ]
@@ -4915,109 +5094,224 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group mt-4 mb-4" },
-                  [
-                    _c("label", [
-                      _vm._v(_vm._s(_vm.$t("translation.faculty")))
-                    ]),
-                    _vm._v(" "),
-                    _c("multiselect", {
-                      staticClass: "input",
-                      attrs: {
-                        options: _vm.userUniversities,
-                        searchable: true,
-                        "show-labels": false,
-                        label: "name",
-                        "track-by": "name",
-                        placeholder: _vm.$t("translation.selectFromList")
-                      },
-                      model: {
-                        value: _vm.userSelectedUniversity,
-                        callback: function($$v) {
-                          _vm.userSelectedUniversity = $$v
-                        },
-                        expression: "userSelectedUniversity"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
+                _vm.userFaculties && _vm.userFaculties.length > 0
+                  ? _c(
                       "div",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("email"),
-                            expression: "errors.has('email')"
-                          }
-                        ],
-                        staticClass: "invalid-feedback"
-                      },
+                      { staticClass: "form-group mt-4 mb-4" },
                       [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.errors.first("email")) +
-                            "\n                    "
+                        _c("label", [
+                          _vm._v(_vm._s(_vm.$t("translation.faculty")))
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          class: {
+                            multiselect: true,
+                            "is-invalid": _vm.errors.has("userSelectedFaculty")
+                          },
+                          attrs: {
+                            options: _vm.userFaculties,
+                            searchable: true,
+                            "show-labels": false,
+                            "aria-describedby": "userSelectedFacultyHelp",
+                            id: "userSelectedFacultyId",
+                            "data-vv-name": "userSelectedFaculty",
+                            "data-vv-value-path": "value",
+                            label: "name",
+                            "track-by": "id",
+                            placeholder: _vm.$t("translation.selectFromList")
+                          },
+                          on: { input: _vm.selectDepartment },
+                          model: {
+                            value: _vm.userSelectedFaculty,
+                            callback: function($$v) {
+                              _vm.userSelectedFaculty = $$v
+                            },
+                            expression: "userSelectedFaculty"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "small",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("userSelectedFaculty"),
+                                expression: "errors.has('userSelectedFaculty')"
+                              }
+                            ],
+                            staticClass: "form-text text-danger",
+                            attrs: { id: "userSelectedFacultyHelp" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(
+                                  _vm.errors.first("userSelectedFaculty")
+                                ) +
+                                "\n                    "
+                            )
+                          ]
                         )
-                      ]
+                      ],
+                      1
                     )
-                  ],
-                  1
-                ),
+                  : _vm._e(),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group mt-4 mb-4" },
-                  [
-                    _c("label", [
-                      _vm._v(_vm._s(_vm.$t("translation.speciality")))
-                    ]),
-                    _vm._v(" "),
-                    _c("multiselect", {
-                      staticClass: "input",
-                      attrs: {
-                        options: _vm.userUniversities,
-                        searchable: true,
-                        "show-labels": false,
-                        label: "name",
-                        "track-by": "name",
-                        placeholder: _vm.$t("translation.selectFromList")
-                      },
-                      model: {
-                        value: _vm.userSelectedUniversity,
-                        callback: function($$v) {
-                          _vm.userSelectedUniversity = $$v
-                        },
-                        expression: "userSelectedUniversity"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
+                _vm.userDepartments && _vm.userDepartments.length > 0
+                  ? _c(
                       "div",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("email"),
-                            expression: "errors.has('email')"
-                          }
-                        ],
-                        staticClass: "invalid-feedback"
-                      },
+                      { staticClass: "form-group mt-4 mb-4" },
                       [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.errors.first("email")) +
-                            "\n                    "
+                        _c("label", [
+                          _vm._v(_vm._s(_vm.$t("translation.department")))
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          class: {
+                            multiselect: true,
+                            "is-invalid": _vm.errors.has(
+                              "userSelectedDepartment"
+                            )
+                          },
+                          attrs: {
+                            options: _vm.userDepartments,
+                            searchable: true,
+                            "show-labels": false,
+                            "aria-describedby": "userSelectedDepartmentHelp",
+                            id: "userSelectedDepartmentId",
+                            "data-vv-name": "userSelectedDepartment",
+                            "data-vv-value-path": "value",
+                            label: "name",
+                            "track-by": "id",
+                            placeholder: _vm.$t("translation.selectFromList")
+                          },
+                          on: { input: _vm.selectMajor },
+                          model: {
+                            value: _vm.userSelectedDepartment,
+                            callback: function($$v) {
+                              _vm.userSelectedDepartment = $$v
+                            },
+                            expression: "userSelectedDepartment"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "small",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("userSelectedDepartment"),
+                                expression:
+                                  "errors.has('userSelectedDepartment')"
+                              }
+                            ],
+                            staticClass: "form-text text-danger",
+                            attrs: { id: "userSelectedDepartmentHelp" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(
+                                  _vm.errors.first("userSelectedDepartment")
+                                ) +
+                                "\n                    "
+                            )
+                          ]
                         )
-                      ]
+                      ],
+                      1
                     )
-                  ],
-                  1
-                ),
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.userMajors && _vm.userMajors.length > 0
+                  ? _c(
+                      "div",
+                      { staticClass: "form-group mt-4 mb-4" },
+                      [
+                        _c("label", [
+                          _vm._v(_vm._s(_vm.$t("translation.major")))
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          class: {
+                            multiselect: true,
+                            "is-invalid": _vm.errors.has("userSelectedMajor")
+                          },
+                          attrs: {
+                            options: _vm.userMajors,
+                            searchable: true,
+                            "show-labels": false,
+                            "aria-describedby": "userSelectedMajorHelp",
+                            id: "userSelectedMajorId",
+                            "data-vv-name": "userSelectedMajor",
+                            "data-vv-value-path": "value",
+                            label: "name",
+                            "track-by": "id",
+                            placeholder: _vm.$t("translation.selectFromList")
+                          },
+                          model: {
+                            value: _vm.userSelectedMajor,
+                            callback: function($$v) {
+                              _vm.userSelectedMajor = $$v
+                            },
+                            expression: "userSelectedMajor"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "small",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("userSelectedMajor"),
+                                expression: "errors.has('userSelectedMajor')"
+                              }
+                            ],
+                            staticClass: "form-text text-danger",
+                            attrs: { id: "userSelectedMajorHelp" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(_vm.errors.first("userSelectedMajor")) +
+                                "\n                    "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "button",
@@ -5179,11 +5473,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
 
 exports.default = {
     components: {
@@ -5301,7 +5590,7 @@ exports = module.exports = __webpack_require__(23)(false);
 
 
 // module
-exports.push([module.i, "\n.frame-wrapper {\n  margin: 0 auto;\n  position: relative;\n  -webkit-box-shadow: 0 0 0px 10px;\n          box-shadow: 0 0 0px 10px;\n}\n.frame-wrapper .original {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n}\n.frame-wrapper p.win {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    background: rgba(0, 0, 0, 0.5);\n    color: #fff;\n    font-size: 40px;\n    margin: 0 0;\n    background: rgba(43, 181, 82, 0.7);\n    text-transform: uppercase;\n}\n.frame {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  background: #b0d9f0;\n  background-size: cover;\n}\n.controls {\n  margin-top: 30px;\n}\n.controls a {\n    display: inline-block;\n    text-decoration: none;\n    padding: 6px 12px;\n    background: #f78403;\n    color: #fff;\n    border-radius: 3px;\n}\n.controls a.toggle-original {\n      background: #d05b88;\n}\n.controls a.restart {\n      background: #368ba0;\n}\n.controls a.shuffle {\n      background: #3ebb5c;\n}\n", ""]);
+exports.push([module.i, "\n.frame-wrapper {\n  margin: 0 auto;\n  position: relative;\n  -webkit-box-shadow: 0 0 0px 10px;\n          box-shadow: 0 0 0px 10px;\n}\n.frame-wrapper .original {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n}\n.frame-wrapper p.win {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    background: rgba(0, 0, 0, 0.5);\n    color: #fff;\n    font-size: 40px;\n    margin: 0 0;\n    background: rgba(43, 181, 82, 0.7);\n    text-transform: uppercase;\n    line-height: 1.5;\n}\n.frame {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  background: #b0d9f0;\n  background-size: cover;\n}\n.controls {\n  margin-top: 30px;\n}\n.controls a {\n    display: inline-block;\n    text-decoration: none;\n    padding: 6px 12px;\n    background: #f78403;\n    color: #fff;\n    border-radius: 3px;\n}\n.controls a.toggle-original {\n      background: #d05b88;\n}\n.controls a.restart {\n      background: #368ba0;\n}\n.controls a.shuffle {\n      background: #3ebb5c;\n}\n", ""]);
 
 // exports
 
@@ -5330,9 +5619,13 @@ var _Tile = __webpack_require__(352);
 
 var _Tile2 = _interopRequireDefault(_Tile);
 
+var _user = __webpack_require__(29);
+
+var _user2 = _interopRequireDefault(_user);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
+var backupTiles = null; //
 //
 //
 //
@@ -5364,11 +5657,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 
 /* eslint-disable */
-var backupTiles = null;
-
 exports.default = {
     components: { Tile: _Tile2.default },
-
+    mixins: [_user2.default],
     data: function data() {
         return {
             image: null,
@@ -5387,13 +5678,28 @@ exports.default = {
 
 
     computed: {
-        frameSize: function frameSize() {
-            return {
-                width: this.tileSize.width * this.size.horizontal + 'px',
-                height: this.tileSize.height * this.size.vertical + 'px'
-            };
+        frameSize: {
+            get: function get() {
+                if (window.innerWidth < 756) {
+                    return {
+                        width: '200px',
+                        height: '200px'
+                    };
+                } else if (window.innerWidth < 992) {
+                    return {
+                        width: '500px',
+                        height: '500px'
+                    };
+                }
+                return {
+                    width: this.tileSize.width * this.size.horizontal + 'px',
+                    height: this.tileSize.height * this.size.vertical + 'px'
+                };
+            },
+            set: function set(value) {
+                return value;
+            }
         },
-
 
         /**
          * The total number of tiles in the current board.
@@ -5418,6 +5724,9 @@ exports.default = {
                     return false;
                 }
             }
+
+            window.Cookies.set('first_stage', 6);
+            this.userFirstStage = 6;
 
             return true;
         }
@@ -6223,7 +6532,9 @@ var render = function() {
   return _c("div", { staticClass: "board" }, [
     _c("div", { staticClass: "frame-wrapper", style: _vm.frameSize }, [
       _vm.valid
-        ? _c("p", { staticClass: "win" }, [_vm._v("You Win!")])
+        ? _c("p", { staticClass: "win" }, [
+            _vm._v("Ви зібрали ком'ютер та відправили документи!")
+          ])
         : _vm._e(),
       _vm._v(" "),
       _vm.showingOriginal && _vm.image
@@ -6266,7 +6577,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n            Toggle Original Image\n        ")]
+        [_vm._v("\n            Показати оригінальну картинку\n        ")]
       ),
       _vm._v(" "),
       _c(
@@ -6281,7 +6592,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("Reshuffle")]
+        [_vm._v("Перемішати")]
       ),
       _vm._v(" "),
       _c(
@@ -6296,7 +6607,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("Reset")]
+        [_vm._v("Оновити")]
       ),
       _vm._v(" "),
       _c(
@@ -6311,7 +6622,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("New Game")]
+        [_vm._v("Дуже складно")]
       )
     ])
   ])
@@ -6485,8 +6796,8 @@ exports.default = {
             (0, _blueimpLoadImage2.default)(e.target.files[0], function (canvas) {
                 _this.image = canvas.toDataURL();
             }, {
-                maxWidth: 600,
-                maxHeight: 600,
+                maxWidth: 400,
+                maxHeight: 400,
                 minWidth: 200,
                 minHeight: 200,
                 canvas: true
@@ -6509,8 +6820,21 @@ exports.default = {
          * Reset the options.
          */
         reset: function reset() {
-            this.image = null;
-            document.querySelector('#optionsForm').reset();
+            this.$emit('gameStart', {
+                image: this.image,
+                size: {
+                    horizontal: 2,
+                    vertical: 2
+                }
+            });
+        }
+    },
+    mounted: function mounted() {
+        if (this.image) {
+            this.$emit('gameStart', {
+                image: this.image,
+                size: this.size
+            });
         }
     }
 };
@@ -7325,9 +7649,7 @@ var render = function() {
         ],
         ref: "optionsPane",
         on: { gameStart: _vm.start }
-      }),
-      _vm._v(" "),
-      _vm._m(1)
+      })
     ],
     1
   )
@@ -7338,19 +7660,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("header", [_c("h1", [_vm._v("Slider Puzzle")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("footer", [
-      _vm._v("\n        Built with "),
-      _c("a", { attrs: { href: "https://vuejs.org" } }, [_vm._v("Vue")]),
-      _vm._v(" •\n        "),
-      _c("a", { attrs: { href: "https://github.com/phanan/slider-puzzle" } }, [
-        _vm._v("GitHub")
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -7378,149 +7687,187 @@ var render = function() {
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-9 col-sm-8" }, [
-            _vm.userFirstStage !== 4 && _vm.userFirstStage !== 5
+            _vm.userFirstStage !== 4 &&
+            _vm.userFirstStage !== 5 &&
+            _vm.userFirstStage !== 6 &&
+            _vm.userFirstStage !== 7
               ? _c("div", { staticClass: "things" })
               : _vm._e(),
             _vm._v(" "),
             _vm.userFirstStage === 4
               ? _c("div", { staticClass: "room__content" }, [
-                  _c("div", { staticClass: "university__wrapper" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "university__header",
-                        style: {
-                          background: _vm.userUser.image
-                            ? "url(" + _vm.userUser.image.source + ")"
-                            : "white"
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "university__short-info" }, [
-                          _c("div", { staticClass: "media" }, [
-                            _vm.userUser.image
-                              ? _c("img", {
-                                  staticClass:
-                                    "image-circle image-circle__60 mr-4",
-                                  attrs: { src: _vm.userUser.image.source }
-                                })
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "media-body dark-color mt-1" },
-                              [
-                                _c("strong", [
-                                  _c("h4", [
-                                    _vm._v(
-                                      _vm._s(_vm.userSelectedUniversity.name)
-                                    )
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("i", {
-                                  staticClass: "fa fa-map-marker",
-                                  attrs: { "aria-hidden": "true" }
-                                }),
-                                _vm._v(" "),
-                                _c("span", [
-                                  _vm._v(
-                                    _vm._s(_vm.userSelectedUniversity.address)
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "link link__accent-dark",
-                                    attrs: { href: "#map" }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            " +
-                                        _vm._s(_vm.$t("translation.watchMap")) +
-                                        "\n                                        "
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass:
-                                      "btn button-md button-transparent d-block mt-4",
-                                    attrs: { type: "button" }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            " +
-                                        _vm._s(_vm.$t("translation.goToSite")) +
-                                        "\n                                        "
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "university__info" }, [
-                      _c("div", { staticClass: "col" }, [
-                        _vm.userSelectedUniversity.description
-                          ? _c("p", [
-                              _vm._v(
-                                _vm._s(_vm.userSelectedUniversity.description)
-                              )
-                            ])
-                          : _c("p", [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.$t(
-                                    "translation.emptyUniversityDescription"
-                                  )
-                                )
-                              )
-                            ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "university__map",
-                        attrs: { name: "map" }
-                      },
-                      [
+                  _vm.userSelectedUniversity
+                    ? _c("div", { staticClass: "university__wrapper" }, [
                         _c(
-                          "GmapMap",
+                          "div",
                           {
-                            staticStyle: { width: "100%", height: "100%" },
-                            attrs: {
-                              center: _vm.userSelectedUniversity.position,
-                              zoom: 17
+                            staticClass: "university__header",
+                            style: {
+                              background: _vm.userSelectedUniversity.image
+                                ? "url(" +
+                                  _vm.userSelectedUniversity.image.source +
+                                  ")"
+                                : "white"
                             }
                           },
                           [
-                            _c("GmapMarker", {
-                              attrs: {
-                                position: _vm.userSelectedUniversity.position,
-                                clickable: true,
-                                draggable: true
-                              }
-                            })
+                            _c(
+                              "div",
+                              { staticClass: "university__short-info" },
+                              [
+                                _c("div", { staticClass: "media" }, [
+                                  _vm.userSelectedUniversity.image
+                                    ? _c("img", {
+                                        staticClass:
+                                          "image-circle image-circle__60 mr-4",
+                                        attrs: {
+                                          src:
+                                            _vm.userSelectedUniversity.image
+                                              .source
+                                        }
+                                      })
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "media-body dark-color mt-1"
+                                    },
+                                    [
+                                      _c("strong", [
+                                        _vm.userSelectedUniversity
+                                          ? _c("h4", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.userSelectedUniversity
+                                                    .name
+                                                )
+                                              )
+                                            ])
+                                          : _vm._e()
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("i", {
+                                        staticClass: "fa fa-map-marker",
+                                        attrs: { "aria-hidden": "true" }
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.userSelectedUniversity
+                                        ? _c("span", [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.userSelectedUniversity
+                                                  .address
+                                              )
+                                            )
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "link link__accent-dark",
+                                          attrs: { href: "#map" }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                            " +
+                                              _vm._s(
+                                                _vm.$t("translation.watchMap")
+                                              ) +
+                                              "\n                                        "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "btn button-md button-transparent d-block mt-4",
+                                          attrs: {
+                                            href:
+                                              _vm.userSelectedUniversity.site,
+                                            type: "button"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                            " +
+                                              _vm._s(
+                                                _vm.$t("translation.goToSite")
+                                              ) +
+                                              "\n                                        "
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "university__info" }, [
+                          _c("div", { staticClass: "col" }, [
+                            _vm.userSelectedUniversity.description
+                              ? _c("p", [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.userSelectedUniversity.description
+                                    )
+                                  )
+                                ])
+                              : _c("p", [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.$t(
+                                        "translation.emptyUniversityDescription"
+                                      )
+                                    )
+                                  )
+                                ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "university__map",
+                            attrs: { name: "map" }
+                          },
+                          [
+                            _c(
+                              "GmapMap",
+                              {
+                                staticStyle: { width: "100%", height: "100%" },
+                                attrs: {
+                                  center: _vm.userSelectedUniversity.position,
+                                  zoom: 17
+                                }
+                              },
+                              [
+                                _c("GmapMarker", {
+                                  attrs: {
+                                    position:
+                                      _vm.userSelectedUniversity.position,
+                                    clickable: true,
+                                    draggable: true
+                                  }
+                                })
+                              ],
+                              1
+                            )
                           ],
                           1
                         )
-                      ],
-                      1
-                    )
-                  ])
+                      ])
+                    : _vm._e()
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm.userFirstStage === 5
+            _vm.userFirstStage === 5 || _vm.userFirstStage === 6
               ? _c("div", { staticClass: "room__content" }, [
                   _c(
                     "div",
@@ -7529,6 +7876,93 @@ var render = function() {
                     1
                   )
                 ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.userFirstStage === 7
+              ? _c(
+                  "div",
+                  { staticClass: "room__content" },
+                  [
+                    !_vm.userTest
+                      ? _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "test" } }, [
+                            _vm._v(_vm._s(_vm.$t("translation.selectTest")))
+                          ]),
+                          _vm._v(" "),
+                          _vm.userTests
+                            ? _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.userSelectedTest,
+                                      expression: "userSelectedTest"
+                                    }
+                                  ],
+                                  staticClass: "select-style",
+                                  attrs: { id: "test", name: "university_id" },
+                                  on: {
+                                    change: [
+                                      function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.userSelectedTest = $event.target
+                                          .multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      },
+                                      _vm.selectTest
+                                    ]
+                                  }
+                                },
+                                [
+                                  _vm.userTests && _vm.userTests.length > 0
+                                    ? _c("option", { attrs: { value: "0" } }, [
+                                        _vm._v(
+                                          _vm._s(_vm.$t("translation.noData"))
+                                        )
+                                      ])
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.userTests, function(item) {
+                                    return _c(
+                                      "option",
+                                      { domProps: { value: item } },
+                                      [
+                                        _vm._v(
+                                          "\n                                " +
+                                            _vm._s(item.name) +
+                                            "\n                            "
+                                        )
+                                      ]
+                                    )
+                                  })
+                                ],
+                                2
+                              )
+                            : _vm._e()
+                        ])
+                      : [
+                          _c("h3", [_vm._v(_vm._s(_vm.userTest.name))]),
+                          _vm._v(" "),
+                          _vm._l(_vm.userTest.questions, function(item) {
+                            return _c("div")
+                          })
+                        ]
+                  ],
+                  2
+                )
               : _vm._e()
           ]),
           _vm._v(" "),
@@ -7581,7 +8015,7 @@ var render = function() {
                 }
               },
               [
-                !_vm.isShowMessage
+                !_vm.isShowMessage && _vm.userFirstStage !== 5
                   ? _c("div", {
                       staticClass: "message__new-message",
                       attrs: { disabled: !_vm.isShowPhone },
@@ -7591,7 +8025,7 @@ var render = function() {
                         }
                       }
                     })
-                  : _vm.isShowMessage
+                  : _vm.isShowMessage || _vm.userFirstStage === 5
                     ? [
                         _c("p", { staticClass: "message__name" }, [
                           _vm._v(_vm._s(_vm.$t("translation.ann")))
@@ -7715,11 +8149,7 @@ var render = function() {
                                         staticClass:
                                           "link link__white pull-right mr-4",
                                         attrs: { href: "javascript:" },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.modalsIsShowAdvice = true
-                                          }
-                                        }
+                                        on: { click: _vm.showAdvice }
                                       },
                                       [
                                         _vm._v(
@@ -7740,7 +8170,7 @@ var render = function() {
                                   _c("div", { staticClass: "message__quote" }, [
                                     _c("p", { staticClass: "mb-0" }, [
                                       _vm._v(
-                                        _vm._s(_vm.$t("translation.annAdvice"))
+                                        _vm._s(_vm.$t("translation.annPuzzle"))
                                       )
                                     ]),
                                     _vm._v(" "),
@@ -7750,11 +8180,38 @@ var render = function() {
                                         staticClass:
                                           "link link__white pull-right mr-4",
                                         attrs: { href: "javascript:" },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.modalsIsShowAdvice = true
-                                          }
-                                        }
+                                        on: { click: _vm.showPuzzle }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(_vm.$t("translation.next")) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.userFirstStage === 6
+                              ? [
+                                  _c("div", { staticClass: "message__angle" }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "message__quote" }, [
+                                    _c("p", { staticClass: "mb-0" }, [
+                                      _vm._v(
+                                        _vm._s(_vm.$t("translation.annTest"))
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "link link__white pull-right mr-4",
+                                        attrs: { href: "javascript:" },
+                                        on: { click: _vm.showTest }
                                       },
                                       [
                                         _vm._v(
@@ -7785,7 +8242,7 @@ var render = function() {
       _vm._v(" "),
       _vm.userLogged ? _c("advice-modal") : _vm._e(),
       _vm._v(" "),
-      _c("select-vuz-modal")
+      _vm.userLogged ? _c("select-vuz-modal") : _vm._e()
     ],
     1
   )

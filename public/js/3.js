@@ -808,6 +808,9 @@ var USER = exports.USER = 'user';
 var UNIVERSITY_ADMIN = exports.UNIVERSITY_ADMIN = 'uni_admin';
 var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
 
+var URL = exports.URL = '';
+// export const URL = 'https://itpm-194220.appspot.com';
+
 /***/ }),
 
 /***/ 271:
@@ -5519,7 +5522,8 @@ var render = function() {
                 ref: "listUniversityAdministrators",
                 attrs: {
                   "api-url":
-                    "https://itpm-194220.appspot.com/api/admin/users?role=" +
+                    _vm.constants.URL +
+                    "/api/admin/users?role=" +
                     _vm.constants.UNIVERSITY_ADMIN,
                   fields: _vm.fieldsListUniversityAdministrators,
                   "pagination-path": "data",

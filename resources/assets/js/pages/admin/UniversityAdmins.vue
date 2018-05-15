@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listUniversityAdministrators"
-                              :api-url="`https://itpm-194220.appspot.com/api/admin/users?role=${constants.UNIVERSITY_ADMIN}`"
+                              :api-url="`${constants.URL}/api/admin/users?role=${constants.UNIVERSITY_ADMIN}`"
                               :fields="fieldsListUniversityAdministrators"
                               pagination-path = "data"
                               :css="css.table"

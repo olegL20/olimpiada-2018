@@ -808,6 +808,9 @@ var USER = exports.USER = 'user';
 var UNIVERSITY_ADMIN = exports.UNIVERSITY_ADMIN = 'uni_admin';
 var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
 
+var URL = exports.URL = '';
+// export const URL = 'https://itpm-194220.appspot.com';
+
 /***/ }),
 
 /***/ 271:
@@ -5859,79 +5862,61 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-12 mt-3" },
+            {
+              staticClass: "col-md-12 mt-3",
+              scopedSlots: _vm._u([
+                {
+                  key: "actions",
+                  fn: function(props) {
+                    return [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-outline-secondary btn-md",
+                          attrs: {
+                            href: "javascript:",
+                            title: _vm.$t("translation.edit")
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.editDepartment(props.rowData.id)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa fa-pencil",
+                            attrs: { "aria-hidden": "true" }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-outline-danger btn-md",
+                          attrs: {
+                            type: "button",
+                            title: _vm.$t("translation.remove")
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.destroyDepartment(props.rowData.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-trash-o" })]
+                      )
+                    ]
+                  }
+                }
+              ])
+            },
             [
-              _c("vuetable", {
-                ref: "listDepartments",
-                attrs: {
-                  "api-url":
-                    "https://itpm-194220.appspot.com/api/admin/department",
-                  fields: _vm.fields,
-                  "pagination-path": "",
-                  css: _vm.css.table,
-                  "data-path": "data.data",
-                  "detail-row-component": "my-detail-row",
-                  "http-options": {
-                    headers: {
-                      Authorization: "Bearer " + _vm.userToken
-                    }
-                  }
-                },
-                on: {
-                  "vuetable:load-success": _vm.hidePreloader,
-                  "vuetable:load-error": _vm.hidePreloader,
-                  "vuetable:pagination-data": _vm.onPaginationData
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "actions",
-                    fn: function(props) {
-                      return [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-outline-secondary btn-md",
-                            attrs: {
-                              href: "javascript:",
-                              title: _vm.$t("translation.edit")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.editDepartment(props.rowData.id)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-pencil",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-outline-danger btn-md",
-                            attrs: {
-                              type: "button",
-                              title: _vm.$t("translation.remove")
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.destroyDepartment(props.rowData.id)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-trash-o" })]
-                        )
-                      ]
-                    }
-                  }
-                ])
-              })
-            ],
-            1
+              _vm._v(
+                '=`${constants.URL}/api/admin/department`\n                          :fields="fields"\n                          pagination-path=""\n                          :css="css.table"\n                          data-path="data.data"\n                          detail-row-component="my-detail-row"\n                          :http-options="{\n                            headers: {\n                                Authorization: `Bearer ${userToken}`,\n                            },\n                          }"\n                          @vuetable:load-success="hidePreloader"\n                          @vuetable:load-error="hidePreloader"\n                          @vuetable:pagination-data="onPaginationData"\n                >\n                    '
+              )
+            ]
           ),
           _vm._v(" "),
           _c(

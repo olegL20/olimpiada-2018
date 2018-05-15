@@ -12442,7 +12442,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'user',
         prefix: true
-    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role', 'token']))
+    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role', 'token', 'departments', 'faculties', 'majors', 'selectedDepartment', 'selectedFaculty', 'selectedMajor', 'tests', 'test', 'selectedTest']))
 };
 
 /***/ }),
@@ -24418,10 +24418,19 @@ var USER = exports.USER = 'USER';
 var BACKGROUND = exports.BACKGROUND = 'BACKGROUND';
 var FIRST_STAGE = exports.FIRST_STAGE = 'FIRST_STAGE';
 var UNIVERSITIES = exports.UNIVERSITIES = 'UNIVERSITIES';
+var DEPARTMENTS = exports.DEPARTMENTS = 'DEPARTMENTS';
+var FACULTIES = exports.FACULTIES = 'FACULTIES';
+var MAJORS = exports.MAJORS = 'MAJORS';
 var SELECTED_UNIVERSITY = exports.SELECTED_UNIVERSITY = 'SELECTED_UNIVERSITY';
+var SELECTED_FACULTY = exports.SELECTED_FACULTY = 'SELECTED_FACULTY';
+var SELECTED_DEPARTMENT = exports.SELECTED_DEPARTMENT = 'SELECTED_DEPARTMENT';
+var SELECTED_MAJOR = exports.SELECTED_MAJOR = 'SELECTED_MAJOR';
 var SHOW_PRELOAD = exports.SHOW_PRELOAD = 'SHOW_PRELOAD';
 var REFRESH_TABLE = exports.REFRESH_TABLE = 'REFRESH_TABLE';
 var ROLE = exports.ROLE = 'ROLE';
+var TESTS = exports.TESTS = 'TESTS';
+var SELECTED_TEST = exports.SELECTED_TEST = 'SELECTED_TEST';
+var TEST = exports.TEST = 'TEST';
 
 /***/ }),
 /* 69 */
@@ -24450,10 +24459,19 @@ exports.default = {
     background: null,
     firstStage: 1,
     universities: [],
+    departments: [],
+    faculties: [],
+    majors: [],
     selectedUniversity: null,
+    selectedDepartment: null,
+    selectedFaculty: null,
+    selectedMajor: null,
     showPreload: false,
     refreshTable: false,
-    role: null
+    role: null,
+    tests: null,
+    selectedTest: null,
+    test: null
 };
 
 /***/ }),
@@ -62721,7 +62739,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.checkLogged = exports.logout = exports.getUniversities = exports.confirmation = exports.registerInvite = exports.register = exports.login = undefined;
+exports.getTests = exports.getTest = exports.getMajors = exports.getDepartments = exports.getFaculties = exports.getUniversities = exports.checkLogged = exports.logout = exports.confirmation = exports.registerInvite = exports.register = exports.login = undefined;
 
 var _regenerator = __webpack_require__(9);
 
@@ -62904,30 +62922,23 @@ var confirmation = exports.confirmation = function () {
     };
 }();
 
-var getUniversities = exports.getUniversities = function () {
+var logout = exports.logout = function () {
     var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(_ref12) {
         var commit = _ref12.commit;
-        var json;
         return _regenerator2.default.wrap(function _callee5$(_context5) {
             while (1) {
                 switch (_context5.prev = _context5.next) {
                     case 0:
-                        _context5.next = 2;
-                        return _user2.default.getUniversities();
+                        commit(types.ID, null);
+                        commit(types.NAME, null);
+                        commit(types.EMAIL, null);
+                        commit(types.USER, null);
+                        commit(types.FIRST_STAGE, null);
+                        commit(types.CREATED_AT, null);
+                        commit(types.UPDATED_AT, null);
+                        commit(types.LOGOUT);
 
-                    case 2:
-                        json = _context5.sent;
-
-
-                        commit(types.UNIVERSITIES, json.data);
-
-                        // if (json.status === 200) {
-                        //     return json.data;
-                        // }
-                        //
-                        // throw json;
-
-                    case 4:
+                    case 8:
                     case 'end':
                         return _context5.stop();
                 }
@@ -62935,45 +62946,18 @@ var getUniversities = exports.getUniversities = function () {
         }, _callee5, undefined);
     }));
 
-    return function getUniversities(_x9) {
+    return function logout(_x9) {
         return _ref11.apply(this, arguments);
     };
 }();
 
-var logout = exports.logout = function () {
+var checkLogged = exports.checkLogged = function () {
     var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(_ref14) {
         var commit = _ref14.commit;
+        var token, currentUser, role;
         return _regenerator2.default.wrap(function _callee6$(_context6) {
             while (1) {
                 switch (_context6.prev = _context6.next) {
-                    case 0:
-                        commit(types.ID, null);
-                        commit(types.NAME, null);
-                        commit(types.EMAIL, null);
-                        commit(types.CREATED_AT, null);
-                        commit(types.UPDATED_AT, null);
-                        commit(types.LOGOUT);
-
-                    case 6:
-                    case 'end':
-                        return _context6.stop();
-                }
-            }
-        }, _callee6, undefined);
-    }));
-
-    return function logout(_x10) {
-        return _ref13.apply(this, arguments);
-    };
-}();
-
-var checkLogged = exports.checkLogged = function () {
-    var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(_ref16) {
-        var commit = _ref16.commit;
-        var token, currentUser, role;
-        return _regenerator2.default.wrap(function _callee7$(_context7) {
-            while (1) {
-                switch (_context7.prev = _context7.next) {
                     case 0:
                         token = window.Cookies.get('token');
                         currentUser = window.Cookies.get('user');
@@ -62990,14 +62974,248 @@ var checkLogged = exports.checkLogged = function () {
 
                     case 4:
                     case 'end':
+                        return _context6.stop();
+                }
+            }
+        }, _callee6, undefined);
+    }));
+
+    return function checkLogged(_x10) {
+        return _ref13.apply(this, arguments);
+    };
+}();
+
+var getUniversities = exports.getUniversities = function () {
+    var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(_ref16) {
+        var commit = _ref16.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee7$(_context7) {
+            while (1) {
+                switch (_context7.prev = _context7.next) {
+                    case 0:
+                        _context7.next = 2;
+                        return _user2.default.getUniversities();
+
+                    case 2:
+                        json = _context7.sent;
+
+                        if (!(json.status === 200)) {
+                            _context7.next = 6;
+                            break;
+                        }
+
+                        commit(types.UNIVERSITIES, json.data.data);
+
+                        return _context7.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
                         return _context7.stop();
                 }
             }
         }, _callee7, undefined);
     }));
 
-    return function checkLogged(_x11) {
+    return function getUniversities(_x11) {
         return _ref15.apply(this, arguments);
+    };
+}();
+
+var getFaculties = exports.getFaculties = function () {
+    var _ref17 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8(_ref18, payload) {
+        var commit = _ref18.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee8$(_context8) {
+            while (1) {
+                switch (_context8.prev = _context8.next) {
+                    case 0:
+                        _context8.next = 2;
+                        return _user2.default.getFaculties(payload.id);
+
+                    case 2:
+                        json = _context8.sent;
+
+                        if (!(json.status === 200)) {
+                            _context8.next = 6;
+                            break;
+                        }
+
+                        commit(types.FACULTIES, json.data.data);
+
+                        return _context8.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context8.stop();
+                }
+            }
+        }, _callee8, undefined);
+    }));
+
+    return function getFaculties(_x12, _x13) {
+        return _ref17.apply(this, arguments);
+    };
+}();
+
+var getDepartments = exports.getDepartments = function () {
+    var _ref19 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9(_ref20, payload) {
+        var commit = _ref20.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee9$(_context9) {
+            while (1) {
+                switch (_context9.prev = _context9.next) {
+                    case 0:
+                        _context9.next = 2;
+                        return _user2.default.getDepartments(payload.id);
+
+                    case 2:
+                        json = _context9.sent;
+
+                        if (!(json.status === 200)) {
+                            _context9.next = 6;
+                            break;
+                        }
+
+                        commit(types.DEPARTMENTS, json.data.data);
+
+                        return _context9.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context9.stop();
+                }
+            }
+        }, _callee9, undefined);
+    }));
+
+    return function getDepartments(_x14, _x15) {
+        return _ref19.apply(this, arguments);
+    };
+}();
+
+var getMajors = exports.getMajors = function () {
+    var _ref21 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10(_ref22, payload) {
+        var commit = _ref22.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee10$(_context10) {
+            while (1) {
+                switch (_context10.prev = _context10.next) {
+                    case 0:
+                        _context10.next = 2;
+                        return _user2.default.getMajors(payload.id);
+
+                    case 2:
+                        json = _context10.sent;
+
+                        if (!(json.status === 200)) {
+                            _context10.next = 6;
+                            break;
+                        }
+
+                        commit(types.MAJORS, json.data.data);
+
+                        return _context10.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context10.stop();
+                }
+            }
+        }, _callee10, undefined);
+    }));
+
+    return function getMajors(_x16, _x17) {
+        return _ref21.apply(this, arguments);
+    };
+}();
+
+var getTest = exports.getTest = function () {
+    var _ref23 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11(_ref24, payload) {
+        var commit = _ref24.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee11$(_context11) {
+            while (1) {
+                switch (_context11.prev = _context11.next) {
+                    case 0:
+                        _context11.next = 2;
+                        return _user2.default.getTest(payload.id);
+
+                    case 2:
+                        json = _context11.sent;
+
+                        if (!(json.status === 200)) {
+                            _context11.next = 6;
+                            break;
+                        }
+
+                        commit(types.TEST, json.data.data);
+
+                        return _context11.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context11.stop();
+                }
+            }
+        }, _callee11, undefined);
+    }));
+
+    return function getTest(_x18, _x19) {
+        return _ref23.apply(this, arguments);
+    };
+}();
+
+var getTests = exports.getTests = function () {
+    var _ref25 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12(_ref26) {
+        var commit = _ref26.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee12$(_context12) {
+            while (1) {
+                switch (_context12.prev = _context12.next) {
+                    case 0:
+                        _context12.next = 2;
+                        return _user2.default.getTests();
+
+                    case 2:
+                        json = _context12.sent;
+
+                        if (!(json.status === 200)) {
+                            _context12.next = 6;
+                            break;
+                        }
+
+                        commit(types.TESTS, json.data.data);
+
+                        return _context12.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context12.stop();
+                }
+            }
+        }, _callee12, undefined);
+    }));
+
+    return function getTests(_x20) {
+        return _ref25.apply(this, arguments);
     };
 }();
 
@@ -63008,7 +63226,12 @@ exports.default = {
     registerInvite: registerInvite,
     checkLogged: checkLogged,
     confirmation: confirmation,
-    getUniversities: getUniversities
+    getUniversities: getUniversities,
+    getFaculties: getFaculties,
+    getDepartments: getDepartments,
+    getMajors: getMajors,
+    getTests: getTests,
+    getTest: getTest
 };
 
 /***/ }),
@@ -64601,8 +64824,8 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// const url = '';
-var url = 'https://itpm-194220.appspot.com';
+var url = '';
+// const url = 'https://itpm-194220.appspot.com';
 exports.default = {
     login: function login(params) {
         var _this = this;
@@ -64742,26 +64965,198 @@ exports.default = {
         var _this5 = this;
 
         return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
-            var _ref5, data;
+            var _ref5, data, status;
 
             return _regenerator2.default.wrap(function _callee5$(_context5) {
                 while (1) {
                     switch (_context5.prev = _context5.next) {
                         case 0:
-                            _context5.next = 2;
-                            return window.axios.get('/api/user/university');
+                            _context5.prev = 0;
+                            _context5.next = 3;
+                            return window.axios.get(url + '/api/user/university');
 
-                        case 2:
+                        case 3:
                             _ref5 = _context5.sent;
                             data = _ref5.data;
-                            return _context5.abrupt('return', data);
+                            status = _ref5.status;
+                            return _context5.abrupt('return', { data: data, status: status });
 
-                        case 5:
+                        case 9:
+                            _context5.prev = 9;
+                            _context5.t0 = _context5['catch'](0);
+                            return _context5.abrupt('return', _context5.t0.response);
+
+                        case 12:
                         case 'end':
                             return _context5.stop();
                     }
                 }
-            }, _callee5, _this5);
+            }, _callee5, _this5, [[0, 9]]);
+        }))();
+    },
+    getFaculties: function getFaculties(id) {
+        var _this6 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6() {
+            var _ref6, data, status;
+
+            return _regenerator2.default.wrap(function _callee6$(_context6) {
+                while (1) {
+                    switch (_context6.prev = _context6.next) {
+                        case 0:
+                            _context6.prev = 0;
+                            _context6.next = 3;
+                            return window.axios.get(url + '/api/user/faculty/' + id);
+
+                        case 3:
+                            _ref6 = _context6.sent;
+                            data = _ref6.data;
+                            status = _ref6.status;
+                            return _context6.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context6.prev = 9;
+                            _context6.t0 = _context6['catch'](0);
+                            return _context6.abrupt('return', _context6.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context6.stop();
+                    }
+                }
+            }, _callee6, _this6, [[0, 9]]);
+        }))();
+    },
+    getDepartments: function getDepartments(id) {
+        var _this7 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {
+            var _ref7, data, status;
+
+            return _regenerator2.default.wrap(function _callee7$(_context7) {
+                while (1) {
+                    switch (_context7.prev = _context7.next) {
+                        case 0:
+                            _context7.prev = 0;
+                            _context7.next = 3;
+                            return window.axios.get(url + '/api/user/department/' + id);
+
+                        case 3:
+                            _ref7 = _context7.sent;
+                            data = _ref7.data;
+                            status = _ref7.status;
+                            return _context7.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context7.prev = 9;
+                            _context7.t0 = _context7['catch'](0);
+                            return _context7.abrupt('return', _context7.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context7.stop();
+                    }
+                }
+            }, _callee7, _this7, [[0, 9]]);
+        }))();
+    },
+    getMajors: function getMajors(id) {
+        var _this8 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8() {
+            var _ref8, data, status;
+
+            return _regenerator2.default.wrap(function _callee8$(_context8) {
+                while (1) {
+                    switch (_context8.prev = _context8.next) {
+                        case 0:
+                            _context8.prev = 0;
+                            _context8.next = 3;
+                            return window.axios.get(url + '/api/user/majors/' + id);
+
+                        case 3:
+                            _ref8 = _context8.sent;
+                            data = _ref8.data;
+                            status = _ref8.status;
+                            return _context8.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context8.prev = 9;
+                            _context8.t0 = _context8['catch'](0);
+                            return _context8.abrupt('return', _context8.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context8.stop();
+                    }
+                }
+            }, _callee8, _this8, [[0, 9]]);
+        }))();
+    },
+    getTest: function getTest(id) {
+        var _this9 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9() {
+            var _ref9, data, status;
+
+            return _regenerator2.default.wrap(function _callee9$(_context9) {
+                while (1) {
+                    switch (_context9.prev = _context9.next) {
+                        case 0:
+                            _context9.prev = 0;
+                            _context9.next = 3;
+                            return window.axios.get(url + '/api/user/test/' + id);
+
+                        case 3:
+                            _ref9 = _context9.sent;
+                            data = _ref9.data;
+                            status = _ref9.status;
+                            return _context9.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context9.prev = 9;
+                            _context9.t0 = _context9['catch'](0);
+                            return _context9.abrupt('return', _context9.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context9.stop();
+                    }
+                }
+            }, _callee9, _this9, [[0, 9]]);
+        }))();
+    },
+    getTests: function getTests() {
+        var _this10 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10() {
+            var _ref10, data, status;
+
+            return _regenerator2.default.wrap(function _callee10$(_context10) {
+                while (1) {
+                    switch (_context10.prev = _context10.next) {
+                        case 0:
+                            _context10.prev = 0;
+                            _context10.next = 3;
+                            return window.axios.get(url + '/api/user/test');
+
+                        case 3:
+                            _ref10 = _context10.sent;
+                            data = _ref10.data;
+                            status = _ref10.status;
+                            return _context10.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context10.prev = 9;
+                            _context10.t0 = _context10['catch'](0);
+                            return _context10.abrupt('return', _context10.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context10.stop();
+                    }
+                }
+            }, _callee10, _this10, [[0, 9]]);
         }))();
     }
 };
@@ -64905,10 +65300,17 @@ exports.default = (0, _extends4.default)({}, (0, _schepotinVuexHelpers.mapMutati
     state.role = payload.role;
 }), (0, _defineProperty3.default)(_extends2, types.LOGOUT, function (state) {
     window.Cookies.remove('token');
+    window.Cookies.remove('user');
+    window.Cookies.remove('role');
+    window.Cookies.remove('token');
+    window.Cookies.remove('first_stage');
     window.axios.defaults.headers.common.Authorization = '';
 
     state.token = null;
     state.logged = false;
+    state.user = null;
+    state.role = null;
+    state.firstStage = null;
 }), (0, _defineProperty3.default)(_extends2, types.CURRENT_LANG, function (state, payload) {
     window.Cookies.set('locale', payload);
 
@@ -66799,8 +67201,8 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// const url = '';
-var url = 'https://itpm-194220.appspot.com';
+var url = '';
+// const url = 'https://itpm-194220.appspot.com';
 exports.default = {
     destroyUniversity: function destroyUniversity(id) {
         var _this = this;
@@ -68002,7 +68404,7 @@ exports.default = {
                         case 0:
                             _context37.prev = 0;
                             _context37.next = 3;
-                            return window.axios.post(url + '/api/tutor-admin/faculty', params);
+                            return window.axios.post(url + '/api/admin/faculty', params);
 
                         case 3:
                             _ref37 = _context37.sent;
@@ -70146,13 +70548,20 @@ exports.default = {
         updatedDepartment: 'Кафедру оновлено',
         addDepartment: 'Додати кафедру',
         department: 'Кафедра',
-        menu: 'Меню'
+        menu: 'Меню',
+        exit: 'Вихід',
+        annPuzzle: 'Тепер тобі необхідно подати документи в ВУЗ в електронному виді, але виникла невелика помилка і твій комп\'ютер зламався, спробуй відремонтувати його',
+        major: 'Спеціальність',
+        notSelected: 'Не обрано',
+        annTest: 'Тепер я пропоную тобі пройти тест',
+        selectTest: 'Оберіть тест'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'
     },
     api: {
         user_not_found_or_token: 'Користувача не знайдено або не вірний токен.',
+        user_not_found: 'Користувача не знайдено.',
         invite_by_email_exists: 'Запрошення на поточний e-mail вже надіслано.'
     }
 };
@@ -79517,6 +79926,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     mixins: [_modals2.default, _user2.default],
@@ -79580,83 +79998,134 @@ var render = function() {
           [
             _vm.userLogged
               ? [
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-inline-block mb-3 mr-4 notification__parent"
-                    },
-                    [
-                      _c("strong", [
-                        _vm._v(_vm._s(_vm.$t("translation.vnz")) + ":")
-                      ]),
-                      _vm._v(" "),
-                      _c(
+                  _vm.userFirstStage > 3
+                    ? _c(
                         "span",
                         {
-                          directives: [
+                          staticClass:
+                            "d-inline-block mb-3 mr-4 notification__parent"
+                        },
+                        [
+                          _c("strong", [
+                            _vm._v(_vm._s(_vm.$t("translation.vnz")) + ":")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "span",
                             {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.isShowUniversityDetails,
-                              expression: "isShowUniversityDetails"
-                            }
-                          ],
-                          staticClass: "notification__child"
-                        },
-                        [
-                          _c("span", { staticClass: "row" }, [
-                            _c("span", { staticClass: "col-4" }, [
-                              _c("img", {
-                                staticClass:
-                                  "image-circle image-circle__60 mt-3",
-                                attrs: { src: _vm.userUser.image.source }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "col" }, [
-                              _c("p", { staticClass: "mb-0" }, [
-                                _vm._v(
-                                  _vm._s(_vm.$t("translation.faculty")) + ":"
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(0),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mt-2 mb-0" }, [
-                                _vm._v(
-                                  _vm._s(_vm.$t("translation.speciality")) + ":"
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(1)
-                            ])
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "link link__accent-dark",
-                          attrs: { href: "javascript:" },
-                          on: {
-                            mouseover: function($event) {
-                              _vm.isShowUniversityDetails = true
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.isShowUniversityDetails,
+                                  expression: "isShowUniversityDetails"
+                                }
+                              ],
+                              staticClass: "notification__child"
                             },
-                            mouseleave: function($event) {
-                              _vm.isShowUniversityDetails = false
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Сумський державний університет\n                    "
+                            [
+                              _c("span", { staticClass: "row" }, [
+                                _c("span", { staticClass: "col-4" }, [
+                                  _vm.userSelectedUniversity &&
+                                  _vm.userSelectedUniversity.image
+                                    ? _c("img", {
+                                        staticClass:
+                                          "image-circle image-circle__60 mt-3",
+                                        attrs: {
+                                          src:
+                                            _vm.userSelectedUniversity.image
+                                              .source
+                                        }
+                                      })
+                                    : _vm._e()
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "col" }, [
+                                  _c("span", { staticClass: "mb-0" }, [
+                                    _vm._v(
+                                      _vm._s(_vm.$t("translation.faculty")) +
+                                        ":"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("strong", [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "dark-color lh-text mb-0"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(
+                                              _vm.userSelectedFaculty
+                                                ? _vm.userSelectedFaculty.name
+                                                : _vm.$t(
+                                                    "translation.notSelected"
+                                                  )
+                                            ) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "mt-2 mb-0" }, [
+                                    _vm._v(
+                                      _vm._s(_vm.$t("translation.speciality")) +
+                                        ":"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("strong", [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "dark-color lh-text mb-0"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(
+                                              _vm.userSelectedMajor
+                                                ? _vm.userSelectedMajor.name
+                                                : _vm.$t(
+                                                    "translation.notSelected"
+                                                  )
+                                            ) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "link link__accent-dark",
+                              attrs: { href: "javascript:" },
+                              on: {
+                                mouseover: function($event) {
+                                  _vm.isShowUniversityDetails = true
+                                },
+                                mouseleave: function($event) {
+                                  _vm.isShowUniversityDetails = false
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        Сумський державний університет\n                    "
+                              )
+                            ]
                           )
                         ]
                       )
-                    ]
-                  ),
+                    : _vm._e(),
                   _vm._v(" "),
                   _c("span", { staticClass: "d-inline-block" }, [
                     _c("strong", [
@@ -79675,7 +80144,13 @@ var render = function() {
                             _vm._s(_vm.userUser.name) +
                             "\n                        "
                         ),
-                        _vm.userUser.image.source
+                        _c(
+                          "span",
+                          { staticClass: "ml-2", on: { click: _vm.logout } },
+                          [_vm._v(_vm._s(_vm.$t("translation.exit")))]
+                        ),
+                        _vm._v(" "),
+                        _vm.userUser.image
                           ? [
                               _c("img", {
                                 staticClass:
@@ -79758,26 +80233,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [
-      _c("p", { staticClass: "dark-color lh-text mb-0" }, [_vm._v("ЕЛіТ")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [
-      _c("p", { staticClass: "dark-color lh-text mb-0" }, [
-        _vm._v("Прикладна математика")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

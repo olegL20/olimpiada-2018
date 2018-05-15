@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listDepartments"
-                              api-url="https://itpm-194220.appspot.com/api/admin/department"
+                              :api-url=`${constants.URL}/api/admin/department`
                               :fields="fields"
                               pagination-path=""
                               :css="css.table"

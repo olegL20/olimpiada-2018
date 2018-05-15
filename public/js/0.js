@@ -808,6 +808,9 @@ var USER = exports.USER = 'user';
 var UNIVERSITY_ADMIN = exports.UNIVERSITY_ADMIN = 'uni_admin';
 var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
 
+var URL = exports.URL = '';
+// export const URL = 'https://itpm-194220.appspot.com';
+
 /***/ }),
 
 /***/ 271:
@@ -5064,6 +5067,11 @@ exports.default = {
         ModalEditUniversity: _EditUniversity2.default,
         ModalShowDescription: _ShowDescription2.default
     },
+    data: function data() {
+        return {
+            constants: constants
+        };
+    },
     mounted: function mounted() {
         this.showPreloader();
     },
@@ -7249,8 +7257,7 @@ var render = function() {
               _c("vuetable", {
                 ref: "listUniversities",
                 attrs: {
-                  "api-url":
-                    "https://itpm-194220.appspot.com/api/admin/university",
+                  "api-url": _vm.constants.URL + "/api/admin/university",
                   fields: _vm.fields,
                   "pagination-path": "data",
                   css: _vm.css.table,

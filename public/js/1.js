@@ -808,6 +808,9 @@ var USER = exports.USER = 'user';
 var UNIVERSITY_ADMIN = exports.UNIVERSITY_ADMIN = 'uni_admin';
 var GLOBAL_ADMIN = exports.GLOBAL_ADMIN = 'global_admin';
 
+var URL = exports.URL = '';
+// export const URL = 'https://itpm-194220.appspot.com';
+
 /***/ }),
 
 /***/ 271:
@@ -6781,8 +6784,7 @@ var render = function() {
               _c("vuetable", {
                 ref: "listFaculties",
                 attrs: {
-                  "api-url":
-                    "https://itpm-194220.appspot.com/api/admin/faculty",
+                  "api-url": _vm.constants.URL + "/api/tutor-admin/faculty",
                   fields: _vm.fieldsListFaculties,
                   "pagination-path": "data",
                   css: _vm.css.table,

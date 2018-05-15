@@ -1,5 +1,5 @@
-// const url = '';
-const url = 'https://itpm-194220.appspot.com';
+const url = '';
+// const url = 'https://itpm-194220.appspot.com';
 export default {
     async destroyUniversity(id) {
         try {
@@ -327,7 +327,7 @@ export default {
     },
     async createFaculty(params) {
         try {
-            const { data, status } = await window.axios.post(`${url}/api/tutor-admin/faculty`, params);
+            const { data, status } = await window.axios.post(`${url}/api/admin/faculty`, params);
 
             return { data, status };
         } catch (e) {

@@ -37,7 +37,12 @@ return [
     'facebook' => [
         'client_id' => '1726162654141453',
         'client_secret' => '1aa1ac8eb7e40a9589a1ae9c0f262cec',
-        'redirect' => '/callback',
+        'redirect' => 'http://127.0.0.1:8000/api/auth/callbackFacebook',
+        ],
+    'google' => [
+        'client_id' => '700321256690-g72opu4c23n3nggf7ei8n0f6tmvi08se.apps.googleusercontent.com',
+        'client_secret' => 'bG7xcigUK7b1eTGFwEEoOvGz',
+        'redirect' => 'http://127.0.0.1:8000/api/auth/callbackGoogle',
         ]
 
 ];

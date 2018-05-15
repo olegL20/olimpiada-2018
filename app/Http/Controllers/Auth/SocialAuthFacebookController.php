@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Services\SocialFacebookAccountService;
 use Illuminate\Http\Request;
-use Laravel\Socialite;
+use Socialite;
 
 class SocialAuthFacebookController extends Controller
 {
@@ -15,7 +15,7 @@ class SocialAuthFacebookController extends Controller
      */
     public function redirect()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')->stateless()->redirect();
     }
 
     /**
@@ -27,6 +27,6 @@ class SocialAuthFacebookController extends Controller
     {
         $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
         auth()->login($user);
-        return redirect()->to('/home');
+        return redirect()->to('/room');
     }
 }

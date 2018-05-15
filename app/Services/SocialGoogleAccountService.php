@@ -6,7 +6,7 @@ use App\Model\User;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 
-class SocialFacebookAccountService
+class SocialGoogleAccountService
 {
     public function createOrGetUser(ProviderUser $providerUser)
     {
@@ -29,9 +29,8 @@ class SocialFacebookAccountService
 
                 $user = User::create([
                     'email' => $providerUser->getEmail(),
-
                     'name' => $providerUser->getName(),
-                    'password' =>Hash::make(md5(rand(1,10000))),
+                    'password' => Hash::make(md5(rand(1,10000))),
                 ]);
             }
 

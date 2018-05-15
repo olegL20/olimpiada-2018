@@ -6,7 +6,10 @@ Route::group(['middleware' => 'api'], function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::post('signin', 'Auth\AuthenticateController@signIn');
         Route::post('signup', 'Auth\AuthenticateController@signUp');
-
+        Route::get('/redirectFacebook', 'Auth\SocialAuthFacebookController@redirect');
+        Route::get('/redirectGoogle', 'Auth\SocialAuthGoogleController@redirect');
+        Route::get('/callbackFacebook', 'Auth\SocialAuthFacebookController@callback');
+        Route::get('/callbackGoogle', 'Auth\SocialAuthGoogleController@callback');
         Route::post('confirmation', 'Auth\AuthenticateController@confirmation');
 
         Route::group(['prefix' => 'password'], function () {
@@ -61,7 +64,4 @@ Route::group(['middleware' => 'api'], function () {
         Route::get('test', 'Test\TestController@index');
         Route::get('test/{id}', 'Test\TestController@getTest');
     });
-
-    Route::get('/redirect', 'SocialAuthFacebookController@redirect');
-    Route::get('/callback', 'SocialAuthFacebookController@callback');
 });

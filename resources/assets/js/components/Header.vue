@@ -103,7 +103,7 @@
                 await this.$store.dispatch('user/logout');
 
                 this.$router.push({
-                    name: 'auth.login',
+                    name: 'home',
                 });
             },
         },

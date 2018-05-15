@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Tutor;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\DepartmentRequest;
 use App\Model\Department;

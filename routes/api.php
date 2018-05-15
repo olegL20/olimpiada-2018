@@ -28,11 +28,6 @@ Route::group(['middleware' => 'api'], function () {
         Route::resource('question', 'Test\QuestionController');
         Route::resource('answer', 'Test\AnswerController');
 
-        Route::resource('faculty', 'FacultyController');
-        Route::resource('major', 'MajorController');
-        Route::resource('department', 'DepartmentController');
-        Route::resource('subjects-coefficients', 'SubjectCoefficientController');
-
         Route::get('invites', 'InviteController@index');
         Route::get('users', 'UserController@index');
 
@@ -48,6 +43,11 @@ Route::group(['middleware' => 'api'], function () {
         'namespace' => 'Tutor'
     ], function () {
         Route::get('university', 'UniversityController@index');
+
+        Route::resource('faculty', 'FacultyController');
+        Route::resource('major', 'MajorController');
+        Route::resource('department', 'DepartmentController');
+        Route::resource('subjects-coefficients', 'SubjectCoefficientController');
     });
 
     Route::group([

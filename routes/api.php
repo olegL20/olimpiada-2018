@@ -61,4 +61,7 @@ Route::group(['middleware' => 'api'], function () {
         Route::get('test', 'Test\TestController@index');
         Route::get('test/{id}', 'Test\TestController@getTest');
     });
+
+    Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+    Route::get('/callback', 'SocialAuthFacebookController@callback');
 });

@@ -51,7 +51,7 @@
                         <i class="fa fa-google-plus-square fa-2x mr-2 fa-relative" aria-hidden="true"></i>
                         <span>{{ $t("translation.throughGoogle") }}</span>
                     </router-link>
-                    <a href="javascript:" @click="authenticate('facebook')" class="link">
+                    <a href="{{url('/redirect')}}" class="link">
                         <i class="fa fa-facebook-square fa-2x mr-2 fa-relative" aria-hidden="true"></i>
                         {{ $t("translation.throughFacebook") }}
                     </a>

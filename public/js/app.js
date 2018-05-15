@@ -66799,8 +66799,8 @@ var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var url = '';
-// const url = 'https://itpm-194220.appspot.com';
+// const url = '';
+var url = 'https://itpm-194220.appspot.com';
 exports.default = {
     destroyUniversity: function destroyUniversity(id) {
         var _this = this;
@@ -67639,7 +67639,7 @@ exports.default = {
                         case 0:
                             _context26.prev = 0;
                             _context26.next = 3;
-                            return window.axios.get(url + '/api/admin/major');
+                            return window.axios.get(url + '/api/tutor-admin/major');
 
                         case 3:
                             _ref26 = _context26.sent;
@@ -67672,7 +67672,7 @@ exports.default = {
                         case 0:
                             _context27.prev = 0;
                             _context27.next = 3;
-                            return window.axios.post(url + '/api/admin/major', params);
+                            return window.axios.post(url + '/api/tutor-admin/major', params);
 
                         case 3:
                             _ref27 = _context27.sent;
@@ -67705,7 +67705,7 @@ exports.default = {
                         case 0:
                             _context28.prev = 0;
                             _context28.next = 3;
-                            return window.axios.get(url + '/api/admin/major/' + id);
+                            return window.axios.get(url + '/api/tutor-admin/major/' + id);
 
                         case 3:
                             _ref28 = _context28.sent;
@@ -67738,7 +67738,7 @@ exports.default = {
                         case 0:
                             _context29.prev = 0;
                             _context29.next = 3;
-                            return window.axios.put(url + '/api/admin/major/' + id, params);
+                            return window.axios.put(url + '/api/tutor-admin/major/' + id, params);
 
                         case 3:
                             _ref29 = _context29.sent;
@@ -67771,7 +67771,7 @@ exports.default = {
                         case 0:
                             _context30.prev = 0;
                             _context30.next = 3;
-                            return window.axios.delete(url + '/api/admin/major/' + id);
+                            return window.axios.delete(url + '/api/tutor-admin/major/' + id);
 
                         case 3:
                             _ref30 = _context30.sent;
@@ -67804,7 +67804,7 @@ exports.default = {
                         case 0:
                             _context31.prev = 0;
                             _context31.next = 3;
-                            return window.axios.post(url + '/api/admin/department', params);
+                            return window.axios.post(url + '/api/tutor-admin/department', params);
 
                         case 3:
                             _ref31 = _context31.sent;
@@ -67837,7 +67837,7 @@ exports.default = {
                         case 0:
                             _context32.prev = 0;
                             _context32.next = 3;
-                            return window.axios.get(url + '/api/admin/department/' + id);
+                            return window.axios.get(url + '/api/tutor-admin/department/' + id);
 
                         case 3:
                             _ref32 = _context32.sent;
@@ -67870,7 +67870,7 @@ exports.default = {
                         case 0:
                             _context33.prev = 0;
                             _context33.next = 3;
-                            return window.axios.put(url + '/api/admin/department/' + id, params);
+                            return window.axios.put(url + '/api/tutor-admin/department/' + id, params);
 
                         case 3:
                             _ref33 = _context33.sent;
@@ -67903,7 +67903,7 @@ exports.default = {
                         case 0:
                             _context34.prev = 0;
                             _context34.next = 3;
-                            return window.axios.delete(url + '/api/admin/department/' + id);
+                            return window.axios.delete(url + '/api/tutor-admin/department/' + id);
 
                         case 3:
                             _ref34 = _context34.sent;
@@ -67936,7 +67936,7 @@ exports.default = {
                         case 0:
                             _context35.prev = 0;
                             _context35.next = 3;
-                            return window.axios.get(url + '/api/admin/department');
+                            return window.axios.get(url + '/api/tutor-admin/department');
 
                         case 3:
                             _ref35 = _context35.sent;
@@ -67969,7 +67969,7 @@ exports.default = {
                         case 0:
                             _context36.prev = 0;
                             _context36.next = 3;
-                            return window.axios.get(url + '/api/admin/faculty');
+                            return window.axios.get(url + '/api/tutor-admin/faculty');
 
                         case 3:
                             _ref36 = _context36.sent;
@@ -68002,7 +68002,7 @@ exports.default = {
                         case 0:
                             _context37.prev = 0;
                             _context37.next = 3;
-                            return window.axios.post(url + '/api/admin/faculty', params);
+                            return window.axios.post(url + '/api/tutor-admin/faculty', params);
 
                         case 3:
                             _ref37 = _context37.sent;
@@ -68035,7 +68035,7 @@ exports.default = {
                         case 0:
                             _context38.prev = 0;
                             _context38.next = 3;
-                            return window.axios.put(url + '/api/admin/faculty/' + id, params);
+                            return window.axios.put(url + '/api/tutor-admin/faculty/' + id, params);
 
                         case 3:
                             _ref38 = _context38.sent;
@@ -68068,7 +68068,7 @@ exports.default = {
                         case 0:
                             _context39.prev = 0;
                             _context39.next = 3;
-                            return window.axios.get(url + '/api/admin/faculty/' + id);
+                            return window.axios.get(url + '/api/tutor-admin/faculty/' + id);
 
                         case 3:
                             _ref39 = _context39.sent;
@@ -68101,7 +68101,7 @@ exports.default = {
                         case 0:
                             _context40.prev = 0;
                             _context40.next = 3;
-                            return window.axios.put(url + '/api/admin/faculty/' + id, params);
+                            return window.axios.put(url + '/api/tutor-admin/faculty/' + id, params);
 
                         case 3:
                             _ref40 = _context40.sent;
@@ -68134,7 +68134,7 @@ exports.default = {
                         case 0:
                             _context41.prev = 0;
                             _context41.next = 3;
-                            return window.axios.delete(url + '/api/admin/faculty/' + id);
+                            return window.axios.delete(url + '/api/tutor-admin/faculty/' + id);
 
                         case 3:
                             _ref41 = _context41.sent;
@@ -79910,60 +79910,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
     mixins: [_modals2.default, _user2.default],
@@ -80026,155 +79972,150 @@ var render = function() {
           { staticClass: "pull-right" },
           [
             [
-              _c(
-                "router-link",
-                {
-                  staticClass: "link link__accent mr-3",
-                  attrs: { to: { name: "admin.university" } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.managerUniversity")) +
-                      "\n                "
-                  )
-                ]
-              ),
+              _vm.userRole === "global_admin"
+                ? [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { to: { name: "admin.university" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("translation.managerUniversity")) +
+                            "\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { to: { name: "admin.university.admins" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(
+                              _vm.$t("translation.managerUniversityAdmin")
+                            ) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ]
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "link link__accent mr-3",
-                  attrs: { to: { name: "admin.university.admins" } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.managerUniversityAdmin")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "link link__accent mr-3",
-                  attrs: { to: { name: "admin.faculty" } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.managerFaculty")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "link link__accent mr-3",
-                  attrs: { to: { name: "admin.departments" } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.managerDepartments")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "link link__accent mr-3",
-                  attrs: { to: { name: "admin.majors" } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.managerMajors")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "link link__accent mr-3",
-                  attrs: { to: { name: "admin.coefficients" } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.managerCoefficients")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "link link__accent mr-3",
-                  attrs: { to: { name: "admin.tests" } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.managerTests")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "link link__accent mr-3",
-                  attrs: { to: { name: "admin.questions" } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.managerQuestions")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "link link__accent mr-3",
-                  attrs: { to: { name: "admin.answers" } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.managerAnswers")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "link link__accent mr-3",
-                  attrs: { to: { name: "admin.faculty" } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.managerFaculty")) +
-                      "\n                "
-                  )
-                ]
-              )
+              _vm.userRole === "uni_admin"
+                ? [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { to: { name: "admin.faculty" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("translation.managerFaculty")) +
+                            "\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { to: { name: "admin.departments" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("translation.managerDepartments")) +
+                            "\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { to: { name: "admin.majors" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("translation.managerMajors")) +
+                            "\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { to: { name: "admin.coefficients" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("translation.managerCoefficients")) +
+                            "\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { to: { name: "admin.tests" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("translation.managerTests")) +
+                            "\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { to: { name: "admin.questions" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("translation.managerQuestions")) +
+                            "\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "link link__accent mr-3",
+                        attrs: { to: { name: "admin.answers" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.$t("translation.managerAnswers")) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ]
+                : _vm._e()
             ]
           ],
           2

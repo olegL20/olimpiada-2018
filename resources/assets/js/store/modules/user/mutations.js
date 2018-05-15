@@ -31,10 +31,17 @@ export default {
     },
     [types.LOGOUT](state) {
         window.Cookies.remove('token');
+        window.Cookies.remove('user');
+        window.Cookies.remove('role');
+        window.Cookies.remove('token');
+        window.Cookies.remove('first_stage');
         window.axios.defaults.headers.common.Authorization = '';
 
         state.token = null;
         state.logged = false;
+        state.user = null;
+        state.role = null;
+        state.firstStage = null;
     },
     [types.CURRENT_LANG](state, payload) {
         window.Cookies.set('locale', payload);

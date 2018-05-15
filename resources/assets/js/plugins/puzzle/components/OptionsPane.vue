@@ -43,8 +43,8 @@
                 loadImage(e.target.files[0], (canvas) => {
                     this.image = canvas.toDataURL();
                 }, {
-                    maxWidth: 600,
-                    maxHeight: 600,
+                    maxWidth: 400,
+                    maxHeight: 400,
                     minWidth: 200,
                     minHeight: 200,
                     canvas: true,
@@ -65,9 +65,22 @@
              * Reset the options.
              */
             reset() {
-                this.image = null;
-                document.querySelector('#optionsForm').reset();
+                this.$emit('gameStart', {
+                    image: this.image,
+                    size: {
+                        horizontal: 2,
+                        vertical: 2,
+                    },
+                });
             },
+        },
+        mounted() {
+            if (this.image) {
+                this.$emit('gameStart', {
+                    image: this.image,
+                    size: this.size,
+                });
+            }
         },
     };
 </script>

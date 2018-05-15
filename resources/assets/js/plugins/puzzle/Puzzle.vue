@@ -6,11 +6,6 @@
 
         <Board ref="board" v-show="playing" @restart="restart"/>
         <OptionsPane ref="optionsPane" @gameStart="start" v-show="!playing"/>
-
-        <footer>
-            Built with <a href="https://vuejs.org">Vue</a> •
-            <a href="https://github.com/phanan/slider-puzzle">GitHub</a>
-        </footer>
     </div>
 </template>
 

@@ -87,17 +87,19 @@
                                  :options="tests"
                                  :searchable="true"
                                  :show-labels="false"
-                                 label="name"
+                                 aria-describedby="questionTestIdHelp"
+                                 id="questionTestId"
                                  v-validate="'required'"
-                                 track-by="id"
                                  data-vv-name="questionTestId"
                                  data-vv-value-path="value"
-                                 :class="{ 'multiselect': true, 'is-invalid': errors.has('teamsLeader') }"
+                                 :class="{ 'multiselect': true, 'is-invalid': errors.has('questionTestId') }"
+                                 label="name"
+                                 track-by="id"
                                  :placeholder="$t('translation.selectFromList')">
                     </multiselect>
-                    <div class="invalid-feedback" v-show="errors.has('questionTestId')">
+                    <small id="questionTestIdHelp" class="form-text text-danger" v-show="errors.has('questionTestId')">
                         {{ errors.first('questionTestId') }}
-                    </div>
+                    </small>
 
                     <button type="button" class="btn btn-md btn-secondary float-right mt-4"
                         @click="hide">
@@ -140,6 +142,7 @@
                 this.questionName = null;
                 this.questionType = null;
                 this.questionTypeFill = null;
+                this.questionId = null;
             },
 
             async createQuestion() {

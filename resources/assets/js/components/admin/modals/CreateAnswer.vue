@@ -25,14 +25,26 @@
                     </div>
 
                     <template v-if="questions">
-                        <multiselect v-model="answerQuestionId"
-                                     :options="questions"
-                                     :searchable="true"
-                                     :show-labels="false"
-                                     label="name"
-                                     track-by="id"
-                                     :placeholder="$t('translation.selectFromList')">
-                        </multiselect>
+                        <div class="form-group">
+                            <label for="answerQuestionId">{{ $t("translation.questions") }}</label>
+                            <multiselect v-model="answerQuestionId"
+                                         :options="questions"
+                                         :searchable="true"
+                                         :show-labels="false"
+                                         aria-describedby="answerQuestionIdHelp"
+                                         id="answerQuestionId"
+                                         v-validate="'required'"
+                                         data-vv-name="answerQuestionId"
+                                         data-vv-value-path="value"
+                                         :class="{ 'multiselect': true, 'is-invalid': errors.has('answerQuestionId') }"
+                                         label="name"
+                                         track-by="id"
+                                         :placeholder="$t('translation.selectFromList')">
+                            </multiselect>
+                            <small id="answerQuestionIdHelp" class="form-text text-danger" v-show="errors.has('answerQuestionId')">
+                                {{ errors.first('answerQuestionId') }}
+                            </small>
+                        </div>
                     </template>
 
                     <button type="button" class="btn btn-md btn-secondary float-right mt-4"
@@ -40,7 +52,7 @@
                         {{ $t("translation.close") }}
                     </button>
 
-                    <button type="button" class="btn btn-md btn-success mt-4"
+                    <button v-if="questions" type="button" class="btn btn-md btn-success mt-4"
                         @click="createAnswer">
                         {{ $t("translation.save") }}
                     </button>

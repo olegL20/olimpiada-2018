@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-12 mt-3">
                     <vuetable ref="listMajors"
-                              api-url="https://itpm-194220.appspot.com/api/admin/major"
+                              :api-url="`${constants.URL}/api/tutor-admin/major`"
                               :fields="fields"
                               pagination-path=""
                               :css="css.table"
@@ -86,6 +86,11 @@
             VuetablePagination,
             ModalCreateMajor,
             ModalUpdateMajor,
+        },
+        data() {
+            return {
+                constants,
+            };
         },
         mounted() {
             this.showPreloader();

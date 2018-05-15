@@ -31,6 +31,7 @@
     import * as loginModal from '../../components/modals/Login.vue';
     import * as registerModal from '../../components/modals/Register.vue';
     import userMixin from '../../mixins/user';
+    import modalMixin from '../../mixins/modals';
     import preloadMixin from '../../mixins/preload';
 
     export default {
@@ -41,6 +42,7 @@
         mixins: [
             userMixin,
             preloadMixin,
+            modalMixin,
         ],
         data() {
             return {

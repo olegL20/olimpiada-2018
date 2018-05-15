@@ -22,10 +22,10 @@
                                             </strong>
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                                             <span v-if="userSelectedUniversity">{{ userSelectedUniversity.address }}</span>
-                                            <a href="#map" class="link link__accent-dark">
-                                                {{ $t("translation.watchMap") }}
-                                            </a>
-                                            <a :href='userSelectedUniversity.site' type="button" class="btn button-md button-transparent d-block mt-4">
+                                            <!--<a href="#map" class="link link__accent-dark">-->
+                                                <!--{{ $t("translation.watchMap") }}-->
+                                            <!--</a>-->
+                                            <a :href='userSelectedUniversity.site' class="d-inline-block btn button-md button-transparent mt-4">
                                                 {{ $t("translation.goToSite") }}
                                             </a>
                                         </div>

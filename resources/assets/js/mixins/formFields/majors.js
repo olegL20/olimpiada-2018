@@ -10,9 +10,9 @@ export default {
                     dataClass: 'text-left',
                 },
                 {
-                    name: 'department_id',
-                    sortField: 'department_id',
-                    title: this.$t('translation.departmentId'),
+                    name: 'department.name',
+                    sortField: 'department.name',
+                    title: this.$t('translation.departmentNameTable'),
                     titleClass: 'text-left',
                     dataClass: 'text-left',
                 },

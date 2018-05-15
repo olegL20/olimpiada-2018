@@ -1,5 +1,7 @@
-// const url = '';
-const url = 'https://itpm-194220.appspot.com';
+import * as constants from '../utils/constants';
+
+const url = constants.URL;
+
 export default {
     async destroyUniversity(id) {
         try {
@@ -192,7 +194,7 @@ export default {
     },
     async createCoefficient(params) {
         try {
-            const { data, status } = await window.axios.post(`${url}/api/admin/subjects-coefficients`, params);
+            const { data, status } = await window.axios.post(`${url}/api/tutor-admin/subjects-coefficients`, params);
 
             return { data, status };
         } catch (e) {
@@ -201,7 +203,7 @@ export default {
     },
     async getCoefficient(id) {
         try {
-            const { data, status } = await window.axios.get(`${url}/api/admin/subjects-coefficients/${id}`);
+            const { data, status } = await window.axios.get(`${url}/api/tutor-admin/subjects-coefficients/${id}`);
 
             return { data, status };
         } catch (e) {
@@ -210,7 +212,7 @@ export default {
     },
     async updateCoefficient(id, params) {
         try {
-            const { data, status } = await window.axios.put(`${url}/api/admin/subjects-coefficients/${id}`, params);
+            const { data, status } = await window.axios.put(`${url}/api/tutor-admin/subjects-coefficients/${id}`, params);
 
             return { data, status };
         } catch (e) {
@@ -219,7 +221,7 @@ export default {
     },
     async destroyCoefficient(id) {
         try {
-            const { data, status } = await window.axios.delete(`${url}/api/admin/subjects-coefficients/${id}`);
+            const { data, status } = await window.axios.delete(`${url}/api/tutor-admin/subjects-coefficients/${id}`);
 
             return { data, status };
         } catch (e) {
@@ -228,7 +230,7 @@ export default {
     },
     async getMajors() {
         try {
-            const { data, status } = await window.axios.get(`${url}/api/admin/major`);
+            const { data, status } = await window.axios.get(`${url}/api/tutor-admin/major`);
 
             return { data, status };
         } catch (e) {
@@ -237,7 +239,7 @@ export default {
     },
     async createMajor(params) {
         try {
-            const { data, status } = await window.axios.post(`${url}/api/admin/major`, params);
+            const { data, status } = await window.axios.post(`${url}/api/tutor-admin/major`, params);
 
             return { data, status };
         } catch (e) {
@@ -246,7 +248,7 @@ export default {
     },
     async getMajor(id) {
         try {
-            const { data, status } = await window.axios.get(`${url}/api/admin/major/${id}`);
+            const { data, status } = await window.axios.get(`${url}/api/tutor-admin/major/${id}`);
 
             return { data, status };
         } catch (e) {
@@ -255,7 +257,7 @@ export default {
     },
     async updateMajor(id, params) {
         try {
-            const { data, status } = await window.axios.put(`${url}/api/admin/major/${id}`, params);
+            const { data, status } = await window.axios.put(`${url}/api/tutor-admin/major/${id}`, params);
 
             return { data, status };
         } catch (e) {
@@ -264,7 +266,7 @@ export default {
     },
     async destroyMajor(id) {
         try {
-            const { data, status } = await window.axios.delete(`${url}/api/admin/major/${id}`);
+            const { data, status } = await window.axios.delete(`${url}/api/tutor-admin/major/${id}`);
 
             return { data, status };
         } catch (e) {
@@ -273,7 +275,7 @@ export default {
     },
     async createDeparment(params) {
         try {
-            const { data, status } = await window.axios.post(`${url}/api/admin/department`, params);
+            const { data, status } = await window.axios.post(`${url}/api/tutor-admin/department`, params);
 
             return { data, status };
         } catch (e) {
@@ -282,7 +284,7 @@ export default {
     },
     async getDepartment(id) {
         try {
-            const { data, status } = await window.axios.get(`${url}/api/admin/department/${id}`);
+            const { data, status } = await window.axios.get(`${url}/api/tutor-admin/department/${id}`);
 
             return { data, status };
         } catch (e) {
@@ -291,7 +293,7 @@ export default {
     },
     async updateDepartment(id, params) {
         try {
-            const { data, status } = await window.axios.put(`${url}/api/admin/department/${id}`, params);
+            const { data, status } = await window.axios.put(`${url}/api/tutor-admin/department/${id}`, params);
 
             return { data, status };
         } catch (e) {
@@ -300,7 +302,7 @@ export default {
     },
     async destroyDepartment(id) {
         try {
-            const { data, status } = await window.axios.delete(`${url}/api/admin/department/${id}`);
+            const { data, status } = await window.axios.delete(`${url}/api/tutor-admin/department/${id}`);
 
             return { data, status };
         } catch (e) {
@@ -309,7 +311,7 @@ export default {
     },
     async getDepartments() {
         try {
-            const { data, status } = await window.axios.get(`${url}/api/admin/department`);
+            const { data, status } = await window.axios.get(`${url}/api/tutor-admin/department`);
 
             return { data, status };
         } catch (e) {
@@ -318,7 +320,7 @@ export default {
     },
     async getFaculties() {
         try {
-            const { data, status } = await window.axios.get(`${url}/api/admin/faculty`);
+            const { data, status } = await window.axios.get(`${url}/api/tutor-admin/faculty`);
 
             return { data, status };
         } catch (e) {
@@ -327,7 +329,7 @@ export default {
     },
     async createFaculty(params) {
         try {
-            const { data, status } = await window.axios.post(`${url}/api/admin/faculty`, params);
+            const { data, status } = await window.axios.post(`${url}/api/tutor-admin/faculty`, params);
 
             return { data, status };
         } catch (e) {
@@ -336,7 +338,7 @@ export default {
     },
     async editFaculty(id, params) {
         try {
-            const { data, status } = await window.axios.put(`${url}/api/admin/faculty/${id}`, params);
+            const { data, status } = await window.axios.put(`${url}/api/tutor-admin/faculty/${id}`, params);
 
             return { data, status };
         } catch (e) {
@@ -345,7 +347,7 @@ export default {
     },
     async getFaculty(id) {
         try {
-            const { data, status } = await window.axios.get(`${url}/api/admin/faculty/${id}`);
+            const { data, status } = await window.axios.get(`${url}/api/tutor-admin/faculty/${id}`);
 
             return { data, status };
         } catch (e) {
@@ -354,7 +356,7 @@ export default {
     },
     async setUniversityForFaculty(id, params) {
         try {
-            const { data, status } = await window.axios.put(`${url}/api/admin/faculty/${id}`, params);
+            const { data, status } = await window.axios.put(`${url}/api/tutor-admin/faculty/${id}`, params);
 
             return { data, status };
         } catch (e) {
@@ -363,7 +365,7 @@ export default {
     },
     async destroyFaculty(id) {
         try {
-            const { data, status } = await window.axios.delete(`${url}/api/admin/faculty/${id}`);
+            const { data, status } = await window.axios.delete(`${url}/api/tutor-admin/faculty/${id}`);
 
             return { data, status };
         } catch (e) {

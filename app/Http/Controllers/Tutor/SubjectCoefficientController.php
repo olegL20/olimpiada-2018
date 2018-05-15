@@ -31,7 +31,10 @@ class SubjectCoefficientController extends Controller
     public function index()
     {
         $userId = auth()->user()->id;
-        $data = $this->coefficient->where('user_id', $userId)->paginate();
+        $data = $this->coefficient
+            ->with(['major'])
+            ->where('user_id', $userId)
+            ->paginate();
 
         return response()->json(compact('data'));
     }
@@ -64,7 +67,10 @@ class SubjectCoefficientController extends Controller
     public function show($id)
     {
         $userId = auth()->user()->id;
-        $data = $this->coefficient->where('user_id', $userId)->findorFail($id);
+        $data = $this->coefficient
+            ->with(['major'])
+            ->where('user_id', $userId)
+            ->findorFail($id);
 
         return response()->json(compact('data'));
     }

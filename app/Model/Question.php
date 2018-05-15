@@ -47,7 +47,12 @@ class Question extends Model
     public function getAnswerAttribute($value)
     {
         $value = (array)json_decode($value);
-        if (!$value['right'] || !$value['other']) {
+        $isRightNull = !array_key_exists('right', $value) || is_null($value['right']);
+        $isOtherNull = !array_key_exists('other', $value) || is_null($value['other']);
+
+        if ($isRightNull || $isOtherNull) {
+            $value['right'] = null;
+            $value['other'] = null;
             return $value;
         }
 

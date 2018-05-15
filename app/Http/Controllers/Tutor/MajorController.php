@@ -30,7 +30,11 @@ class MajorController extends Controller
      */
     public function index()
     {
-        $data = $this->major->with(['department'])->paginate();
+        $userId = auth()->user()->id;
+        $data = $this->major
+            ->with(['department'])
+            ->where('user_id', $userId)
+            ->paginate();
 
         return response()->json([
             'data' => $data
@@ -45,7 +49,11 @@ class MajorController extends Controller
      */
     public function show($id)
     {
-        $major = $this->major->with(['department'])->find($id);
+        $userId = auth()->user()->id;
+        $major = $this->major
+            ->with(['department'])
+            ->where('user_id', $userId)
+            ->findOrFail($id);
 
         return response()->json([
             'data' => $major
@@ -60,7 +68,9 @@ class MajorController extends Controller
      */
     public function store(MajorRequest $request)
     {
+        $userId = auth()->user()->id;
         $major = $this->major->fill($request->all());
+        $major->user_id = $userId;
         $major->save();
 
         return response()->json([
@@ -78,7 +88,10 @@ class MajorController extends Controller
      */
     public function update(MajorRequest $request, $id)
     {
-        $major = $this->major->find($id)->fill($request->all());
+        $userId = auth()->user()->id;
+        $major = $this->major
+            ->where('user_id', $userId)
+            ->findOrFail($id)->fill($request->all());
         $major->save();
 
         return response()->json([
@@ -95,7 +108,8 @@ class MajorController extends Controller
      */
     public function destroy($id)
     {
-        $major = $this->major->findOrFail($id);
+        $userId = auth()->user()->id;
+        $major = $this->major->where('user_id', $userId)->findOrFail($id);
         $major->delete();
 
         return response()->json([

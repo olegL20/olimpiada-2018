@@ -24536,6 +24536,9 @@ var QUESTION_NAME = exports.QUESTION_NAME = 'QUESTION_NAME';
 var QUESTION_TYPE = exports.QUESTION_TYPE = 'QUESTION_TYPE';
 var QUESTION_TYPE_FILL = exports.QUESTION_TYPE_FILL = 'QUESTION_TYPE_FILL';
 var QUESTION_ANSWER = exports.QUESTION_ANSWER = 'QUESTION_ANSWER';
+var QUESTION_ANSWERS = exports.QUESTION_ANSWERS = 'QUESTION_ANSWERS';
+var QUESTION_RIGHT_ANSWERS = exports.QUESTION_RIGHT_ANSWERS = 'QUESTION_RIGHT_ANSWERS';
+var QUESTION_ALL_ANSWERS = exports.QUESTION_ALL_ANSWERS = 'QUESTION_ALL_ANSWERS';
 var QUESTION_ID = exports.QUESTION_ID = 'QUESTION_ID';
 var ANSWER_QUESTION_ID = exports.ANSWER_QUESTION_ID = 'ANSWER_QUESTION_ID';
 var ANSWER_NAME = exports.ANSWER_NAME = 'ANSWER_NAME';
@@ -24603,6 +24606,9 @@ exports.default = {
     questionType: null,
     questionTypeFill: null,
     questionAnswer: null,
+    questionAnswers: null,
+    questionAllAnswers: null,
+    questionRightAnswers: null,
     questionId: null,
     coefficientId: null,
     coefficientName: null,
@@ -66022,7 +66028,7 @@ var getQuestion = exports.getQuestion = function () {
                         json = _context13.sent;
 
                         if (!(json.status === 200)) {
-                            _context13.next = 11;
+                            _context13.next = 14;
                             break;
                         }
 
@@ -66032,12 +66038,27 @@ var getQuestion = exports.getQuestion = function () {
                         commit(types.QUESTION_TYPE_FILL, json.data.data.type_fill);
                         commit(types.QUESTION_ID, json.data.data.id);
                         commit(types.QUESTION_ANSWER, json.data.data.answer);
+                        commit(types.QUESTION_ANSWERS, json.data.data.answers);
+
+                        if (json.data.data.answer.right) {
+                            if (json.data.data.type === 1) {
+                                commit(types.QUESTION_RIGHT_ANSWERS, json.data.data.answer.right[0]);
+                            } else {
+                                commit(types.QUESTION_RIGHT_ANSWERS, json.data.data.answer.right);
+                            }
+                        }
+
+                        if (json.data.data.answer.other) {
+                            commit(types.QUESTION_ALL_ANSWERS, json.data.data.answer.other);
+                        } else {
+                            commit(types.QUESTION_ALL_ANSWERS, json.data.data.answers);
+                        }
                         return _context13.abrupt('return', json.data);
 
-                    case 11:
+                    case 14:
                         throw json;
 
-                    case 12:
+                    case 15:
                     case 'end':
                         return _context13.stop();
                 }
@@ -70528,7 +70549,9 @@ exports.default = {
         notSelected: 'Не обрано',
         annTest: 'Тепер я пропоную тобі пройти тест',
         selectTest: 'Оберіть тест',
-        emailSend: 'Подтвердження реєстрації відправлено на пошту'
+        emailSend: 'Подтвердження реєстрації відправлено на пошту',
+        rightAnswers: 'Правильні відповіді',
+        allAnswers: 'Всі відповіді'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'

@@ -83,18 +83,70 @@
                         </div>
                     </div>
 
-                    <multiselect v-model="questionTestId"
-                                 :options="tests"
-                                 :searchable="true"
-                                 :show-labels="false"
-                                 label="name"
-                                 v-validate="'required'"
-                                 track-by="id"
-                                 data-vv-name="questionTestId"
-                                 data-vv-value-path="value"
-                                 :class="{ 'multiselect': true, 'is-invalid': errors.has('teamsLeader') }"
-                                 :placeholder="$t('translation.selectFromList')">
-                    </multiselect>
+                    <div class="form-group">
+                        <label for="questionTestId">{{ $t("translation.questions") }}</label>
+                        <multiselect v-model="questionTestId"
+                                     :options="tests"
+                                     :searchable="true"
+                                     :show-labels="false"
+                                     aria-describedby="questionTestIdHelp"
+                                     id="questionTestId"
+                                     v-validate="'required'"
+                                     data-vv-name="questionTestId"
+                                     data-vv-value-path="value"
+                                     :class="{ 'multiselect': true, 'is-invalid': errors.has('questionTestId') }"
+                                     label="name"
+                                     track-by="id"
+                                     :placeholder="$t('translation.selectFromList')">
+                        </multiselect>
+                        <small id="questionTestIdHelp" class="form-text text-danger" v-show="errors.has('questionTestId')">
+                            {{ errors.first('questionTestId') }}
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="questionAllAnswers">{{ $t("translation.allAnswers") }}</label>
+                        <multiselect v-model="questionAllAnswers"
+                                     :options="questionAnswers"
+                                     :multiple="true"
+                                     :searchable="true"
+                                     :show-labels="false"
+                                     aria-describedby="questionAllAnswersHelp"
+                                     id="questionAllAnswers"
+                                     v-validate="'required'"
+                                     data-vv-name="questionAllAnswers"
+                                     data-vv-value-path="value"
+                                     :class="{ 'multiselect': true, 'is-invalid': errors.has('questionAllAnswers') }"
+                                     label="name"
+                                     track-by="id"
+                                     :placeholder="$t('translation.selectFromList')">
+                        </multiselect>
+                        <small id="questionAllAnswersHelp" class="form-text text-danger" v-show="errors.has('questionAllAnswers')">
+                            {{ errors.first('questionAllAnswers') }}
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="questionRightAnswers">{{ $t("translation.rightAnswers") }}</label>
+                        <multiselect v-model="questionRightAnswers"
+                                     :options="questionAnswers"
+                                     :searchable="true"
+                                     :multiple="questionType === '2'"
+                                     :show-labels="false"
+                                     aria-describedby="questionRightAnswersHelp"
+                                     id="questionRightAnswers"
+                                     v-validate="'required'"
+                                     data-vv-name="questionRightAnswers"
+                                     data-vv-value-path="value"
+                                     :class="{ 'multiselect': true, 'is-invalid': errors.has('questionRightAnswers') }"
+                                     label="name"
+                                     track-by="id"
+                                     :placeholder="$t('translation.selectFromList')">
+                        </multiselect>
+                        <small id="questionRightAnswersHelp" class="form-text text-danger" v-show="errors.has('questionRightAnswers')">
+                            {{ errors.first('questionRightAnswers') }}
+                        </small>
+                    </div>
 
                     <button type="button" class="btn btn-md btn-secondary float-right mt-4"
                         @click="hide">
@@ -137,12 +189,21 @@
                 this.questionName = null;
                 this.questionType = null;
                 this.questionTypeFill = null;
+                this.questionId = null;
+                this.questionAnswers = null;
+                this.questionAllAnswers = null;
+                this.questionRightAnswers = null;
             },
 
             async updateQuestion() {
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
+                    const right = this.questionRightAnswers && this.questionRightAnswers.length > 0
+                        ? this.questionRightAnswers.map(el => el.id) : this.questionRightAnswers.id;
+                    const other = this.questionAllAnswers && this.questionAllAnswers.length > 0
+                        ? this.questionAllAnswers.map(el => el.id) : this.questionAllAnswers.id;
+
                     try {
                         this.showPreloader();
                         await this.$store.dispatch('admin/updateQuestion', {
@@ -152,6 +213,10 @@
                                 name: this.questionName,
                                 type: this.questionType,
                                 type_fill: this.questionTypeFill,
+                                answer: {
+                                    right,
+                                    other,
+                                },
                             },
                         });
                         this.switchRefreshTable(true);

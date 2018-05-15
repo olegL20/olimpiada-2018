@@ -147,6 +147,21 @@ export const getQuestion = async ({ commit }, payload) => {
         commit(types.QUESTION_TYPE_FILL, json.data.data.type_fill);
         commit(types.QUESTION_ID, json.data.data.id);
         commit(types.QUESTION_ANSWER, json.data.data.answer);
+        commit(types.QUESTION_ANSWERS, json.data.data.answers);
+
+        if (json.data.data.answer.right) {
+            if (json.data.data.type === 1) {
+                commit(types.QUESTION_RIGHT_ANSWERS, json.data.data.answer.right[0]);
+            } else {
+                commit(types.QUESTION_RIGHT_ANSWERS, json.data.data.answer.right);
+            }
+        }
+
+        if (json.data.data.answer.other) {
+            commit(types.QUESTION_ALL_ANSWERS, json.data.data.answer.other);
+        } else {
+            commit(types.QUESTION_ALL_ANSWERS, json.data.data.answers);
+        }
         return json.data;
     }
 

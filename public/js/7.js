@@ -377,7 +377,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'admin',
         prefix: false
-    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient', 'majors', 'tests', 'questions', 'majorDescription', 'majorId', 'majorDepartmentId', 'majorName', 'majorCoefficient', 'departments', 'departmentId', 'departmentFacultyId', 'departmentName', 'departmentDescription', 'faculties', 'facultyId', 'facultyUniversityId', 'facultyName', 'facultyDescription', 'facultyImage']))
+    }, ['universityId', 'universityAddress', 'universityDescription', 'universityEmail', 'universityName', 'universityPhone', 'universitySite', 'universityZipCode', 'universityParentId', 'universityParentsId', 'universities', 'universityImage', 'universityPosition', 'tests', 'testId', 'testName', 'testDescription', 'questionTestId', 'questionName', 'questionType', 'questionTypeFill', 'questionAnswer', 'questionAnswers', 'questionAllAnswers', 'questionRightAnswers', 'questionId', 'answerId', 'answerQuestionId', 'answerName', 'coefficientId', 'coefficientName', 'coefficientMajorId', 'coefficientCoefficient', 'majors', 'tests', 'questions', 'majorDescription', 'majorId', 'majorDepartmentId', 'majorName', 'majorCoefficient', 'departments', 'departmentId', 'departmentFacultyId', 'departmentName', 'departmentDescription', 'faculties', 'facultyId', 'facultyUniversityId', 'facultyName', 'facultyDescription', 'facultyImage']))
 };
 
 /***/ }),
@@ -5073,6 +5073,18 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -5177,23 +5189,73 @@ var render = function() {
               _vm._v(" "),
               _vm.questions
                 ? [
-                    _c("multiselect", {
-                      attrs: {
-                        options: _vm.questions,
-                        searchable: true,
-                        "show-labels": false,
-                        label: "name",
-                        "track-by": "id",
-                        placeholder: _vm.$t("translation.selectFromList")
-                      },
-                      model: {
-                        value: _vm.answerQuestionId,
-                        callback: function($$v) {
-                          _vm.answerQuestionId = $$v
-                        },
-                        expression: "answerQuestionId"
-                      }
-                    })
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("label", { attrs: { for: "answerQuestionId" } }, [
+                          _vm._v(_vm._s(_vm.$t("translation.questions")))
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          class: {
+                            multiselect: true,
+                            "is-invalid": _vm.errors.has("answerQuestionId")
+                          },
+                          attrs: {
+                            options: _vm.questions,
+                            searchable: true,
+                            "show-labels": false,
+                            "aria-describedby": "answerQuestionIdHelp",
+                            id: "answerQuestionId",
+                            "data-vv-name": "answerQuestionId",
+                            "data-vv-value-path": "value",
+                            label: "name",
+                            "track-by": "id",
+                            placeholder: _vm.$t("translation.selectFromList")
+                          },
+                          model: {
+                            value: _vm.answerQuestionId,
+                            callback: function($$v) {
+                              _vm.answerQuestionId = $$v
+                            },
+                            expression: "answerQuestionId"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "small",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("answerQuestionId"),
+                                expression: "errors.has('answerQuestionId')"
+                              }
+                            ],
+                            staticClass: "form-text text-danger",
+                            attrs: { id: "answerQuestionIdHelp" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.errors.first("answerQuestionId")) +
+                                "\n                        "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
                   ]
                 : _vm._e(),
               _vm._v(" "),
@@ -5213,21 +5275,23 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-md btn-success mt-4",
-                  attrs: { type: "button" },
-                  on: { click: _vm.createAnswer }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.$t("translation.save")) +
-                      "\n                "
+              _vm.questions
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-md btn-success mt-4",
+                      attrs: { type: "button" },
+                      on: { click: _vm.createAnswer }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(_vm.$t("translation.save")) +
+                          "\n                "
+                      )
+                    ]
                   )
-                ]
-              )
+                : _vm._e()
             ],
             2
           )

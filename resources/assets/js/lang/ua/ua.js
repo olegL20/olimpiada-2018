@@ -209,6 +209,8 @@ export default {
         annTest: 'Тепер я пропоную тобі пройти тест',
         selectTest: 'Оберіть тест',
         emailSend: 'Подтвердження реєстрації відправлено на пошту',
+        rightAnswers: 'Правильні відповіді',
+        allAnswers: 'Всі відповіді',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

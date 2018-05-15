@@ -74,6 +74,24 @@ export default {
             return e.response;
         }
     },
+    async getTest(id) {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/user/test/${id}`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getTests() {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/user/test`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
     // async passwordEmail(params) {
     //     const { data } = await window.axios.post('/api/v1/password/email', params);
     //

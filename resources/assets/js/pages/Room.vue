@@ -4,7 +4,7 @@
             <div class="row">
 
                 <div class="col-md-9 col-sm-8">
-                    <div v-if="userFirstStage !== 4 && userFirstStage !== 5 && userFirstStage !== 6" class="things"></div>
+                    <div v-if="userFirstStage !== 4 && userFirstStage !== 5 && userFirstStage !== 6 && userFirstStage !== 7" class="things"></div>
                     <div v-if="userFirstStage === 4" class="room__content">
                         <div v-if="userSelectedUniversity" class="university__wrapper">
                             <div class="university__header"
@@ -57,6 +57,28 @@
                         <div class="puzzle__wrapper">
                             <puzzle></puzzle>
                         </div>
+                    </div>
+                    <div v-if="userFirstStage === 7" class="room__content">
+                        <div v-if="!userTest" class="form-group">
+                            <label for="test">{{ $t("translation.selectTest") }}</label>
+                            <select id="test" name="university_id" @change="selectTest" class="select-style" v-if="userTests" v-model="userSelectedTest">
+                                <option v-if="userTests && userTests.length > 0" value="0">{{ $t('translation.noData') }}</option>
+                                <option v-for="item in userTests"
+                                        :value="item"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <template v-else>
+                            <h3>{{ userTest.name }}</h3>
+                            <div v-for="item in userTest.questions">
+
+                            </div>
+                        </template>
+
+
                     </div>
                 </div>
 
@@ -201,6 +223,13 @@
             };
         },
         methods: {
+            selectTest() {
+                if (this.userSelectedTest) {
+                    this.$store.dispatch('user/getTest', {
+                        id: this.userSelectedTest.id,
+                    });
+                }
+            },
             showAdvice() {
                 this.isShowMessage = false;
                 this.modalsIsShowAdvice = true;
@@ -210,6 +239,7 @@
                 this.userFirstStage = 5;
             },
             showTest() {
+                this.$store.dispatch('user/getTests');
                 window.Cookies.set('first_stage', 7);
                 this.userFirstStage = 7;
             },
@@ -232,6 +262,10 @@
                 this.userSelectedMajor = JSON.parse(window.Cookies.get('major'));
             } else {
                 this.userBackground = 'background-blue';
+            }
+
+            if (this.userFirstStage === 7) {
+                this.$store.dispatch('user/getTests');
             }
         },
     };

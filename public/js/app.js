@@ -12442,7 +12442,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'user',
         prefix: true
-    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role', 'token', 'departments', 'faculties', 'majors', 'selectedDepartment', 'selectedFaculty', 'selectedMajor']))
+    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role', 'token', 'departments', 'faculties', 'majors', 'selectedDepartment', 'selectedFaculty', 'selectedMajor', 'tests', 'test', 'selectedTest']))
 };
 
 /***/ }),
@@ -24422,6 +24422,9 @@ var SELECTED_MAJOR = exports.SELECTED_MAJOR = 'SELECTED_MAJOR';
 var SHOW_PRELOAD = exports.SHOW_PRELOAD = 'SHOW_PRELOAD';
 var REFRESH_TABLE = exports.REFRESH_TABLE = 'REFRESH_TABLE';
 var ROLE = exports.ROLE = 'ROLE';
+var TESTS = exports.TESTS = 'TESTS';
+var SELECTED_TEST = exports.SELECTED_TEST = 'SELECTED_TEST';
+var TEST = exports.TEST = 'TEST';
 
 /***/ }),
 /* 69 */
@@ -24459,7 +24462,10 @@ exports.default = {
     selectedMajor: null,
     showPreload: false,
     refreshTable: false,
-    role: null
+    role: null,
+    tests: null,
+    selectedTest: null,
+    test: null
 };
 
 /***/ }),
@@ -62726,7 +62732,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.getMajors = exports.getDepartments = exports.getFaculties = exports.getUniversities = exports.checkLogged = exports.logout = exports.confirmation = exports.registerInvite = exports.register = exports.login = undefined;
+exports.getTests = exports.getTest = exports.getMajors = exports.getDepartments = exports.getFaculties = exports.getUniversities = exports.checkLogged = exports.logout = exports.confirmation = exports.registerInvite = exports.register = exports.login = undefined;
 
 var _regenerator = __webpack_require__(9);
 
@@ -63103,11 +63109,8 @@ var getMajors = exports.getMajors = function () {
                     case 2:
                         json = _context10.sent;
 
-
-                        console.log(json);
-
                         if (!(json.status === 200)) {
-                            _context10.next = 7;
+                            _context10.next = 6;
                             break;
                         }
 
@@ -63115,10 +63118,10 @@ var getMajors = exports.getMajors = function () {
 
                         return _context10.abrupt('return', json.data);
 
-                    case 7:
+                    case 6:
                         throw json;
 
-                    case 8:
+                    case 7:
                     case 'end':
                         return _context10.stop();
                 }
@@ -63128,6 +63131,84 @@ var getMajors = exports.getMajors = function () {
 
     return function getMajors(_x16, _x17) {
         return _ref21.apply(this, arguments);
+    };
+}();
+
+var getTest = exports.getTest = function () {
+    var _ref23 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11(_ref24, payload) {
+        var commit = _ref24.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee11$(_context11) {
+            while (1) {
+                switch (_context11.prev = _context11.next) {
+                    case 0:
+                        _context11.next = 2;
+                        return _user2.default.getTest(payload.id);
+
+                    case 2:
+                        json = _context11.sent;
+
+                        if (!(json.status === 200)) {
+                            _context11.next = 6;
+                            break;
+                        }
+
+                        commit(types.TEST, json.data.data);
+
+                        return _context11.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context11.stop();
+                }
+            }
+        }, _callee11, undefined);
+    }));
+
+    return function getTest(_x18, _x19) {
+        return _ref23.apply(this, arguments);
+    };
+}();
+
+var getTests = exports.getTests = function () {
+    var _ref25 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12(_ref26) {
+        var commit = _ref26.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee12$(_context12) {
+            while (1) {
+                switch (_context12.prev = _context12.next) {
+                    case 0:
+                        _context12.next = 2;
+                        return _user2.default.getTests();
+
+                    case 2:
+                        json = _context12.sent;
+
+                        if (!(json.status === 200)) {
+                            _context12.next = 6;
+                            break;
+                        }
+
+                        commit(types.TESTS, json.data.data);
+
+                        return _context12.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context12.stop();
+                }
+            }
+        }, _callee12, undefined);
+    }));
+
+    return function getTests(_x20) {
+        return _ref25.apply(this, arguments);
     };
 }();
 
@@ -63141,7 +63222,9 @@ exports.default = {
     getUniversities: getUniversities,
     getFaculties: getFaculties,
     getDepartments: getDepartments,
-    getMajors: getMajors
+    getMajors: getMajors,
+    getTests: getTests,
+    getTest: getTest
 };
 
 /***/ }),
@@ -64981,6 +65064,72 @@ exports.default = {
                     }
                 }
             }, _callee8, _this8, [[0, 9]]);
+        }))();
+    },
+    getTest: function getTest(id) {
+        var _this9 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9() {
+            var _ref9, data, status;
+
+            return _regenerator2.default.wrap(function _callee9$(_context9) {
+                while (1) {
+                    switch (_context9.prev = _context9.next) {
+                        case 0:
+                            _context9.prev = 0;
+                            _context9.next = 3;
+                            return window.axios.get(url + '/api/user/test/' + id);
+
+                        case 3:
+                            _ref9 = _context9.sent;
+                            data = _ref9.data;
+                            status = _ref9.status;
+                            return _context9.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context9.prev = 9;
+                            _context9.t0 = _context9['catch'](0);
+                            return _context9.abrupt('return', _context9.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context9.stop();
+                    }
+                }
+            }, _callee9, _this9, [[0, 9]]);
+        }))();
+    },
+    getTests: function getTests() {
+        var _this10 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10() {
+            var _ref10, data, status;
+
+            return _regenerator2.default.wrap(function _callee10$(_context10) {
+                while (1) {
+                    switch (_context10.prev = _context10.next) {
+                        case 0:
+                            _context10.prev = 0;
+                            _context10.next = 3;
+                            return window.axios.get(url + '/api/user/test');
+
+                        case 3:
+                            _ref10 = _context10.sent;
+                            data = _ref10.data;
+                            status = _ref10.status;
+                            return _context10.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context10.prev = 9;
+                            _context10.t0 = _context10['catch'](0);
+                            return _context10.abrupt('return', _context10.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context10.stop();
+                    }
+                }
+            }, _callee10, _this10, [[0, 9]]);
         }))();
     }
 };
@@ -70377,7 +70526,8 @@ exports.default = {
         annPuzzle: 'Тепер тобі необхідно подати документи в ВУЗ в електронному виді, але виникла невелика помилка і твій комп\'ютер зламався, спробуй відремонтувати його',
         major: 'Спеціальність',
         notSelected: 'Не обрано',
-        annTest: 'Тепер я пропоную тобі пройти тест'
+        annTest: 'Тепер я пропоную тобі пройти тест',
+        selectTest: 'Оберіть тест'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено'

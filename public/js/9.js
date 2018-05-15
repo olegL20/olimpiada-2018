@@ -3988,6 +3988,13 @@ exports.default = {
     },
 
     methods: {
+        selectTest: function selectTest() {
+            if (this.userSelectedTest) {
+                this.$store.dispatch('user/getTest', {
+                    id: this.userSelectedTest.id
+                });
+            }
+        },
         showAdvice: function showAdvice() {
             this.isShowMessage = false;
             this.modalsIsShowAdvice = true;
@@ -3997,6 +4004,7 @@ exports.default = {
             this.userFirstStage = 5;
         },
         showTest: function showTest() {
+            this.$store.dispatch('user/getTests');
             window.Cookies.set('first_stage', 7);
             this.userFirstStage = 7;
         }
@@ -4019,8 +4027,34 @@ exports.default = {
         } else {
             this.userBackground = 'background-blue';
         }
+
+        if (this.userFirstStage === 7) {
+            this.$store.dispatch('user/getTests');
+        }
     }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7648,7 +7682,8 @@ var render = function() {
           _c("div", { staticClass: "col-md-9 col-sm-8" }, [
             _vm.userFirstStage !== 4 &&
             _vm.userFirstStage !== 5 &&
-            _vm.userFirstStage !== 6
+            _vm.userFirstStage !== 6 &&
+            _vm.userFirstStage !== 7
               ? _c("div", { staticClass: "things" })
               : _vm._e(),
             _vm._v(" "),
@@ -7834,6 +7869,93 @@ var render = function() {
                     1
                   )
                 ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.userFirstStage === 7
+              ? _c(
+                  "div",
+                  { staticClass: "room__content" },
+                  [
+                    !_vm.userTest
+                      ? _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "test" } }, [
+                            _vm._v(_vm._s(_vm.$t("translation.selectTest")))
+                          ]),
+                          _vm._v(" "),
+                          _vm.userTests
+                            ? _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.userSelectedTest,
+                                      expression: "userSelectedTest"
+                                    }
+                                  ],
+                                  staticClass: "select-style",
+                                  attrs: { id: "test", name: "university_id" },
+                                  on: {
+                                    change: [
+                                      function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.userSelectedTest = $event.target
+                                          .multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      },
+                                      _vm.selectTest
+                                    ]
+                                  }
+                                },
+                                [
+                                  _vm.userTests && _vm.userTests.length > 0
+                                    ? _c("option", { attrs: { value: "0" } }, [
+                                        _vm._v(
+                                          _vm._s(_vm.$t("translation.noData"))
+                                        )
+                                      ])
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.userTests, function(item) {
+                                    return _c(
+                                      "option",
+                                      { domProps: { value: item } },
+                                      [
+                                        _vm._v(
+                                          "\n                                " +
+                                            _vm._s(item.name) +
+                                            "\n                            "
+                                        )
+                                      ]
+                                    )
+                                  })
+                                ],
+                                2
+                              )
+                            : _vm._e()
+                        ])
+                      : [
+                          _c("h3", [_vm._v(_vm._s(_vm.userTest.name))]),
+                          _vm._v(" "),
+                          _vm._l(_vm.userTest.questions, function(item) {
+                            return _c("div")
+                          })
+                        ]
+                  ],
+                  2
+                )
               : _vm._e()
           ]),
           _vm._v(" "),

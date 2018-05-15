@@ -207,6 +207,7 @@ export default {
         major: 'Спеціальність',
         notSelected: 'Не обрано',
         annTest: 'Тепер я пропоную тобі пройти тест',
+        selectTest: 'Оберіть тест',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

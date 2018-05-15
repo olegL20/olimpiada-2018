@@ -33,6 +33,9 @@ export default {
             'selectedDepartment',
             'selectedFaculty',
             'selectedMajor',
+            'tests',
+            'test',
+            'selectedTest',
         ]),
     },
 };

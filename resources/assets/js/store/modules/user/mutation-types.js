@@ -24,3 +24,6 @@ export const SELECTED_MAJOR = 'SELECTED_MAJOR';
 export const SHOW_PRELOAD = 'SHOW_PRELOAD';
 export const REFRESH_TABLE = 'REFRESH_TABLE';
 export const ROLE = 'ROLE';
+export const TESTS = 'TESTS';
+export const SELECTED_TEST = 'SELECTED_TEST';
+export const TEST = 'TEST';

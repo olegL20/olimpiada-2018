@@ -110,10 +110,32 @@ export const getDepartments = async ({ commit }, payload) => {
 export const getMajors = async ({ commit }, payload) => {
     const json = await user.getMajors(payload.id);
 
-    console.log(json);
-
     if (json.status === 200) {
         commit(types.MAJORS, json.data.data);
+
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getTest = async ({ commit }, payload) => {
+    const json = await user.getTest(payload.id);
+
+    if (json.status === 200) {
+        commit(types.TEST, json.data.data);
+
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getTests = async ({ commit }) => {
+    const json = await user.getTests();
+
+    if (json.status === 200) {
+        commit(types.TESTS, json.data.data);
 
         return json.data;
     }
@@ -132,4 +154,6 @@ export default {
     getFaculties,
     getDepartments,
     getMajors,
+    getTests,
+    getTest,
 };

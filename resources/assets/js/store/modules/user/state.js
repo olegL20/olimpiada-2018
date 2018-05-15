@@ -25,4 +25,7 @@ export default {
     showPreload: false,
     refreshTable: false,
     role: null,
+    tests: null,
+    selectedTest: null,
+    test: null,
 };

@@ -47,6 +47,10 @@ class Question extends Model
     public function getAnswerAttribute($value)
     {
         $value = (array)json_decode($value);
+        if (!$value['right'] || !$value['other']) {
+            return $value;
+        }
+
         $right = is_array($value['right']) ? $value['right'] : [ $value['right'] ];
         $other = $value['other'];
 

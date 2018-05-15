@@ -214,6 +214,7 @@ export default {
     },
     api: {
         user_not_found_or_token: 'Користувача не знайдено або не вірний токен.',
+        user_not_found: 'Користувача не знайдено.',
         invite_by_email_exists: 'Запрошення на поточний e-mail вже надіслано.',
     },
 };

@@ -5,6 +5,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\SocialAccountService;
 use Illuminate\Http\Request;
 use Socialite;
 
@@ -25,9 +26,9 @@ class SocialAuthGoogleController extends Controller
      *
      * @return callback URL from google
      */
-    public function callback(SocialFacebookAccountService $service)
+    public function callback(SocialAccountService $service)
     {
-        $user = $service->createOrGetUser(Socialite::driver('google')->user());
+        $user = $service->createOrGetGoogleUser(Socialite::driver('google')->user());
         auth()->login($user);
         return redirect()->to('/room');
     }

@@ -7,8 +7,6 @@
 ##### Method: `POST`
 
 #### Body - empty
-
-##### Response
 ```json
 {
 	"average_score_school": 11.6,
@@ -27,6 +25,30 @@
 			"score": 7
 		}
 	]
+}
+```
+
+##### Response
+```json
+{
+  "data": {
+          	"average_score_school": 11.6,
+          	"additional_courses": 102,
+          	"subjects_score": [
+          		{
+          			"name": "Subject1",
+          			"score": 10
+          		},
+          		{
+          			"name": "Subject2",
+          			"score": 12
+          		},
+          		{
+          			"name": "Subject3",
+          			"score": 7
+          		}
+          	]
+          }
 }
 ```
 

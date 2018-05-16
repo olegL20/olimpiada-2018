@@ -174,11 +174,13 @@
     import VueBase64FileUpload from 'vue-base64-file-upload';
     import modalsMixin from '../../mixins/modals';
     import userMixin from '../../mixins/user';
+    import preloadMixin from '../../mixins/preload';
 
     export default {
         mixins: [
             modalsMixin,
             userMixin,
+            preloadMixin,
         ],
         components: {
             Datepicker,
@@ -204,6 +206,7 @@
                 const valid = await this.$validator.validateAll();
 
                 if (valid) {
+                    this.showPreloader();
                     try {
                         const params = {
                             email: this.userEmail,
@@ -249,6 +252,7 @@
                         this.hide();
                     }
                 }
+                this.hidePreloader();
             },
             hide() {
                 if (this.$route.name === 'auth.invite') {

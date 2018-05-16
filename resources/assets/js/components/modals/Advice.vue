@@ -9,7 +9,7 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="d-table">
+                                <div class="d-md-table">
                                     <div class="media mx-auto">
                                         <img src="/images/advice1.png">
                                         <div class="media-body ml-3">
@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <div class="d-table mx-auto">
+                                <div class="d-md-table mx-auto">
                                     <div class="media">
                                         <img src="/images/advice2.png">
                                         <div class="media-body ml-3">
@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <div class="d-table mx-auto">
+                                <div class="d-md-table mx-auto">
                                     <div class="media">
                                         <img src="/images/advice3.png">
                                         <div class="media-body ml-3">

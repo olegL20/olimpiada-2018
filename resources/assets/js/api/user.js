@@ -94,14 +94,22 @@ export default {
             return e.response;
         }
     },
-    // async passwordEmail(params) {
-    //     const { data } = await window.axios.post('/api/v1/password/email', params);
-    //
-    //     return data;
-    // },
-    // async resetPassword(params) {
-    //     const { data } = await window.axios.post('/api/v1/reset/password', params);
-    //
-    //     return data;
-    // },
+    async getTestResults() {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/user/test`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async testAnswer(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/user/test/answer`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
 };

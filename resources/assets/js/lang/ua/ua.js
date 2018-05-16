@@ -215,6 +215,9 @@ export default {
         emailSend: 'Подтвердження реєстрації відправлено на пошту',
         rightAnswers: 'Правильні відповіді',
         allAnswers: 'Всі відповіді',
+        setTest: 'Здати тест',
+        annTestResult: 'Ти досить непогано склав тест як для абітурієнта, що ж ти готовий вступати до університета',
+        showVideo: 'Педивись відео',
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',

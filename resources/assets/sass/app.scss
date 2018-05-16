@@ -146,6 +146,10 @@ body {
   }
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .is-invalid {
   .multiselect__tags {
     border-color: #dc3545;
@@ -165,6 +169,7 @@ body {
 @import "components/images";
 @import "components/notifications";
 @import "components/preloader";
+@import "components/test";
 @import "pages/homepage";
 @import "pages/confirmation";
 @import "pages/room";

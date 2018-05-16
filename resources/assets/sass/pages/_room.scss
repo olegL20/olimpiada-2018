@@ -1,5 +1,5 @@
 .things {
-  height: calc(100vh - 7.8rem);
+  height: calc(100vh - 8.8rem);
   background: url("/images/things.png") no-repeat 50% 100%;
   background-size: contain;
 }
@@ -10,9 +10,9 @@
 
 .phone {
   clear: both;
-  position: absolute;
+  //position: absolute;
   bottom: 0;
-  width: calc(100% - 30px);
+  //width: calc(100% - 30px);
   height: calc(100vh - 30.6rem);
   max-height: 20rem;
   display: flex;
@@ -20,6 +20,10 @@
   background-image: url("/images/phone.png");
   background-size: cover;
   transition: all ease-out 1s;
+
+  position: fixed;
+  width: 160px;
+  right: 30px;
 
   &__show {
     height: 20rem;
@@ -153,8 +157,8 @@
   &__short-info {
     position: absolute;
     z-index: 1;
-    margin-left: 6rem;
-    margin-top: 4rem;
+    margin-left: 2rem;
+    margin-top: 3rem;
   }
 
   &__info {

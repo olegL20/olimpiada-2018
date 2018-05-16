@@ -36,6 +36,7 @@ export default {
             'tests',
             'test',
             'selectedTest',
+            'questions',
         ]),
     },
 };

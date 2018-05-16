@@ -46,6 +46,16 @@ export const confirmation = async ({ dispatch, commit }, payload) => {
     throw json;
 };
 
+export const testAnswer = async ({ dispatch, commit }, payload) => {
+    const json = await user.testAnswer(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
 export const logout = async ({ commit }) => {
     commit(types.ID, null);
     commit(types.NAME, null);
@@ -125,6 +135,34 @@ export const getTest = async ({ commit }, payload) => {
     if (json.status === 200) {
         commit(types.TEST, json.data.data);
 
+        const questions = json.data.data.questions.map((el) => {
+            if (el.answer.other && el.answer.right) {
+                const other = el.answer.other.map((element) => {
+                    const object = {
+                        name: element.name,
+                        id: element.id,
+                        status: 'wait',
+                    };
+                    return object;
+                });
+                const obj = {
+                    answer: {
+                        right: el.answer.right,
+                        other,
+                    },
+                    answers: el.answers,
+                    id: el.id,
+                    test_id: el.test_id,
+                    type: el.type,
+                    type_fill: el.type_fill,
+                };
+                return obj;
+            }
+            return el;
+        });
+
+        commit(types.QUESTIONS, questions);
+
         return json.data;
     }
 
@@ -156,4 +194,5 @@ export default {
     getMajors,
     getTests,
     getTest,
+    testAnswer,
 };

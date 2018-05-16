@@ -6,15 +6,16 @@
 Защищенные роуты
  - Admin prefix `admin`
      - [University](Auth/Admin/University.md) 
-     - [Faculty](Auth/Admin/Faculty.md) 
-     - [Department](Auth/Admin/Department.md) 
-     - [Major](Auth/Admin/Major.md) 
      - [Invite](Auth/Admin/Invite.md) 
-     - [SubjectCoefficient](Auth/Admin/SubjectCoefficient.md) 
      - [Test](Auth/Admin/Test/Test.md) 
      - [Question](Auth/Admin/Test/Question.md) 
      - [Answer](Auth/Admin/Test/Answer.md) 
      - [User](Auth/Admin/User.md) 
+ - Tutor prefix `tutor-admin`
+     - [Faculty](Auth/Admin/Faculty.md) 
+     - [Department](Auth/Admin/Department.md) 
+     - [Major](Auth/Admin/Major.md) 
+     - [SubjectCoefficient](Auth/Admin/SubjectCoefficient.md) 
  - User prefix `user`
      - [University](Auth/User/University.md) 
      - [Score](Auth/User/Score.md) 

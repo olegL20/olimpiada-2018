@@ -47,11 +47,11 @@
                         {{ $t("translation.enterTheSocialNetwork") }}:
                     </p>
 
-                    <a href="{{url('/api/auth/redirectGoogle')}}" class="link mr-3">
+                    <a :href="`${url}/api/auth/redirectGoogle`" class="link mr-3">
                         <i class="fa fa-google-plus-square fa-2x mr-2 fa-relative" aria-hidden="true"></i>
                         <span>{{ $t("translation.throughGoogle") }}</span>
                     </a>
-                    <a href="{{url('/api/auth/redirectFacebook')}}" class="link">
+                    <a :href="`${url}/api/auth/redirectFacebook`" class="link">
                         <i class="fa fa-facebook-square fa-2x mr-2 fa-relative" aria-hidden="true"></i>
                         {{ $t("translation.throughFacebook") }}
                     </a>
@@ -66,12 +66,19 @@
 <script>
     import modalsMixin from '../../mixins/modals';
     import userMixin from '../../mixins/user';
+    import * as constants from '../../utils/constants';
+
 
     export default {
         mixins: [
             modalsMixin,
             userMixin,
         ],
+        data() {
+            return {
+                url: constants.URL,
+            };
+        },
         methods: {
             hide() {
                 this.modalsIsShowLogin = false;

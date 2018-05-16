@@ -37,6 +37,10 @@ export default {
             'test',
             'selectedTest',
             'questions',
+            'averageScoreSchool',
+            'additionalCourses',
+            'subjectsScore',
+            'scores',
         ]),
     },
 };

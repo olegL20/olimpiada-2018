@@ -112,4 +112,22 @@ export default {
             return e.response;
         }
     },
+    async saveScore(params) {
+        try {
+            const { data, status } = await window.axios.post(`${url}/api/user/score/`, params);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
+    async getScores() {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/user/score/`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
 };

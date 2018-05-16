@@ -46,16 +46,6 @@ export const confirmation = async ({ dispatch, commit }, payload) => {
     throw json;
 };
 
-export const testAnswer = async ({ dispatch, commit }, payload) => {
-    const json = await user.testAnswer(payload);
-
-    if (json.status === 200) {
-        return json.data;
-    }
-
-    throw json;
-};
-
 export const logout = async ({ commit }) => {
     commit(types.ID, null);
     commit(types.NAME, null);
@@ -181,6 +171,38 @@ export const getTests = async ({ commit }) => {
     throw json;
 };
 
+export const testAnswer = async ({ dispatch, commit }, payload) => {
+    const json = await user.testAnswer(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const saveScore = async ({ dispatch, commit }, payload) => {
+    const json = await user.saveScore(payload);
+
+    if (json.status === 200) {
+        return json.data;
+    }
+
+    throw json;
+};
+
+export const getScores = async ({ commit }) => {
+    const json = await user.getScores();
+
+    if (json.status === 200) {
+        commit(types.SCORES, json.data.data);
+
+        return json.data;
+    }
+
+    throw json;
+};
+
 export default {
     login,
     logout,
@@ -195,4 +217,6 @@ export default {
     getTests,
     getTest,
     testAnswer,
+    saveScore,
+    getScores,
 };

@@ -22,9 +22,9 @@
                     </div>
                     <div class="form-group">
                         <label for="facultyName">{{ $t("translation.university") }}</label>
-                        <select name="university_id" class="select-style" v-if="universities" v-model="facultyUniversityId">
+                        <select name="university_id" class="select-style" v-model="facultyUniversityId">
                             <option value="0">{{ $t('translation.noData') }}</option>
-                            <option v-for="item in universities"
+                            <option v-if="universities" v-for="item in universities"
                                     :value="item.id"
                             >
                                 {{ item.name }}

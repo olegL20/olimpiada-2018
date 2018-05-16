@@ -232,9 +232,11 @@
                             site: this.universitySite,
                             zip_code: this.universityZipCode,
                             // parent_id: this.universityParentId,
-                            image: this.photo,
                             position: this.latLng,
                         };
+                        if (this.photo) {
+                            params.image = this.photo;
+                        }
                         await this.$store.dispatch('admin/editUniversity', {
                             id: this.universityId,
                             params,

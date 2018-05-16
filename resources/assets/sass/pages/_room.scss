@@ -123,6 +123,9 @@
   &__content {
     height: calc(100vh - 8.2rem);
   }
+  &__tests {
+    overflow-x: auto;
+  }
 }
 
 .university {
@@ -177,8 +180,8 @@
   }
 }
 
-.puzzle {
-  &__wrapper {
-
+@media (max-width: 767.98px) {
+  .things {
+    height: calc(100vh - 13.8rem);
   }
 }

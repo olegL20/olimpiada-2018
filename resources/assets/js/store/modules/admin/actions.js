@@ -63,6 +63,17 @@ export const getAllUniversities = async ({ commit }) => {
     throw json;
 };
 
+export const getAllUniversitiesForUniAdmin = async ({ commit }) => {
+    const json = await admin.getAllUniversitiesForUniAdmin();
+
+    if (json.status === 200) {
+        commit(types.UNIVERSITIES, json.data.data.data);
+        return json.data;
+    }
+
+    throw json;
+};
+
 export const sendInviteUniversityAdmin = async (context, payload) => {
     const json = await admin.sendInviteUniversityAdmin(payload);
 
@@ -486,6 +497,7 @@ export default {
     editUniversity,
     createUniversity,
     getAllUniversities,
+    getAllUniversitiesForUniAdmin,
     sendInviteUniversityAdmin,
     createTest,
     getTest,

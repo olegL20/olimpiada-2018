@@ -48,6 +48,15 @@ export default {
             return e.response;
         }
     },
+    async getAllUniversitiesForUniAdmin() {
+        try {
+            const { data, status } = await window.axios.get(`${url}/api/tutor-admin/university`);
+
+            return { data, status };
+        } catch (e) {
+            return e.response;
+        }
+    },
     async sendInviteUniversityAdmin(params) {
         try {
             const { data, status } = await window.axios.post(`${url}/api/admin/send-invite`, params);

@@ -29,4 +29,8 @@ export default {
     selectedTest: null,
     test: null,
     questions: [],
+    averageScoreSchool: null,
+    additionalCourses: null,
+    subjectsScore: null,
+    scores: null,
 };

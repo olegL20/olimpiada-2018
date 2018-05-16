@@ -15208,6 +15208,10 @@ p {
   height: calc(100vh - 8.2rem);
 }
 
+.room__tests {
+  overflow-x: auto;
+}
+
 .university__wrapper {
   background-color: #fff;
   border-top-left-radius: 20px;
@@ -15256,5 +15260,11 @@ p {
 
 .university__map {
   height: 250px;
+}
+
+@media (max-width: 767.98px) {
+  .things {
+    height: calc(100vh - 13.8rem);
+  }
 }
 

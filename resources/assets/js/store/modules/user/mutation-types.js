@@ -28,3 +28,7 @@ export const TESTS = 'TESTS';
 export const SELECTED_TEST = 'SELECTED_TEST';
 export const TEST = 'TEST';
 export const QUESTIONS = 'QUESTIONS';
+export const AVERAGE_SCORE_SCHOOL = 'AVERAGE_SCORE_SCHOOL';
+export const ADDITIONAL_COURSES = 'ADDITIONAL_COURSES';
+export const SUBJECTS_SCORE = 'SUBJECTS_SCORE';
+export const SCORES = 'SCORES';

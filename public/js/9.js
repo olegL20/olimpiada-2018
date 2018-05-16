@@ -4001,7 +4001,17 @@ exports.default = {
     data: function data() {
         return {
             isShowMessage: false,
-            isShowPhone: false
+            isShowPhone: false,
+            subjects: [{
+                name: '',
+                score: ''
+            }, {
+                name: '',
+                score: ''
+            }, {
+                name: '',
+                score: ''
+            }]
         };
     },
 
@@ -4044,11 +4054,82 @@ exports.default = {
                 }, _callee, _this);
             }))();
         },
+        saveScore: function saveScore() {
+            var _this2 = this;
+
+            return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+                var valid, params;
+                return _regenerator2.default.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.next = 2;
+                                return _this2.$validator.validateAll();
+
+                            case 2:
+                                valid = _context2.sent;
+
+                                if (!valid) {
+                                    _context2.next = 18;
+                                    break;
+                                }
+
+                                params = {
+                                    average_score_school: _this2.userAverageScoreSchool,
+                                    subjects_score: _this2.subjects
+                                };
+
+                                if (_this2.userAdditionalCourses) {
+                                    params.additional_courses = _this2.userAdditionalCourses;
+                                }
+                                _context2.prev = 6;
+                                _context2.next = 9;
+                                return _this2.$store.dispatch('user/saveScore', params);
+
+                            case 9:
+                                _this2.$toast.success({
+                                    title: _this2.$t('translation.success'),
+                                    message: _this2.$t('translation.scoreSaved')
+                                });
+                                window.Cookies.set('first_stage', 10);
+                                _this2.userFirstStage = 10;
+                                _this2.$store.dispatch('user/getScores');
+                                _context2.next = 18;
+                                break;
+
+                            case 15:
+                                _context2.prev = 15;
+                                _context2.t0 = _context2['catch'](6);
+
+                                _this2.$toast.error({
+                                    title: _this2.$t('translation.error'),
+                                    message: _this2.$t('translation.error')
+                                });
+
+                            case 18:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, _this2, [[6, 15]]);
+            }))();
+        },
+        addSubject: function addSubject() {
+            this.subjects.push({
+                name: '',
+                score: ''
+            });
+        },
+        removeSubject: function removeSubject() {
+            if (this.subjects.length > 3) {
+                this.subjects.pop();
+            }
+        },
         endTest: function endTest() {
             window.Cookies.set('first_stage', 8);
             this.userFirstStage = 8;
         },
-        showVideo: function showVideo() {
+        enterScore: function enterScore() {
             window.Cookies.set('first_stage', 9);
             this.userFirstStage = 9;
         },
@@ -4083,8 +4164,8 @@ exports.default = {
     },
     mounted: function mounted() {
         this.userFirstStage = Number(window.Cookies.get('first_stage')) ? Number(window.Cookies.get('first_stage')) : 1;
-        if (this.userFirstStage === 4) {
-            this.userBackground = 'background-green';
+        if (this.userFirstStage >= 4) {
+            this.userBackground = 'background-blue';
             this.userSelectedUniversity = JSON.parse(window.Cookies.get('university'));
             this.userSelectedFaculty = JSON.parse(window.Cookies.get('faculty'));
             this.userSelectedMajor = JSON.parse(window.Cookies.get('major'));
@@ -4095,8 +4176,127 @@ exports.default = {
         if (this.userFirstStage === 7) {
             this.$store.dispatch('user/getTests');
         }
+
+        if (this.userFirstStage === 10) {
+            this.$store.dispatch('user/getScores');
+        }
     }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7772,7 +7972,8 @@ var render = function() {
             _vm.userFirstStage !== 4 &&
             _vm.userFirstStage !== 5 &&
             _vm.userFirstStage !== 6 &&
-            _vm.userFirstStage !== 7
+            _vm.userFirstStage !== 7 &&
+            _vm.userFirstStage !== 9
               ? _c("div", { staticClass: "things" })
               : _vm._e(),
             _vm._v(" "),
@@ -7945,7 +8146,7 @@ var render = function() {
             _vm.userFirstStage === 7
               ? _c(
                   "div",
-                  { staticClass: "room__content" },
+                  { staticClass: "room__content room__tests" },
                   [
                     !_vm.userTest
                       ? _c("div", { staticClass: "form-group" }, [
@@ -8085,7 +8286,7 @@ var render = function() {
                           _c(
                             "button",
                             {
-                              staticClass: "btn button-md button-accent",
+                              staticClass: "btn button-md button-accent mb-3",
                               attrs: { type: "button" },
                               on: { click: _vm.endTest }
                             },
@@ -8095,358 +8296,728 @@ var render = function() {
                   ],
                   2
                 )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.userFirstStage === 9
+              ? _c("div", { staticClass: "room__content room__score" }, [
+                  _c("div", { staticClass: "card" }, [
+                    _c("div", { staticClass: "card-header" }, [
+                      _c("h2", [_vm._v(_vm._s(_vm.$t("translation.score")))])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "averageScoreSchool" } }, [
+                          _vm._v(
+                            _vm._s(_vm.$t("translation.averageScoreSchool"))
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required|numeric",
+                              expression: "'required|numeric'"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.userAverageScoreSchool,
+                              expression: "userAverageScoreSchool"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "averageScoreSchool",
+                            "aria-describedby": "averageScoreSchoolHelp",
+                            placeholder: _vm.$t(
+                              "translation.averageScoreSchool"
+                            ),
+                            name: "averageScoreSchool",
+                            "data-vv-as": _vm.$t(
+                              "translation.averageScoreSchool"
+                            )
+                          },
+                          domProps: { value: _vm.userAverageScoreSchool },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.userAverageScoreSchool = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "small",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("averageScoreSchool"),
+                                expression: "errors.has('averageScoreSchool')"
+                              }
+                            ],
+                            staticClass: "form-text text-danger",
+                            attrs: { id: "averageScoreSchoolHelp" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(_vm.errors.first("averageScoreSchool")) +
+                                "\n                                "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "additionalCourses" } }, [
+                          _vm._v(
+                            _vm._s(_vm.$t("translation.additionalCourses"))
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "numeric",
+                              expression: "'numeric'"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.userAdditionalCourses,
+                              expression: "userAdditionalCourses"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "additionalCourses",
+                            "aria-describedby": "additionalCoursesHelp",
+                            placeholder: _vm.$t(
+                              "translation.additionalCourses"
+                            ),
+                            name: "additionalCourses",
+                            "data-vv-as": _vm.$t(
+                              "translation.additionalCourses"
+                            )
+                          },
+                          domProps: { value: _vm.userAdditionalCourses },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.userAdditionalCourses = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "small",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.errors.has("additionalCourses"),
+                                expression: "errors.has('additionalCourses')"
+                              }
+                            ],
+                            staticClass: "form-text text-danger",
+                            attrs: { id: "additionalCoursesHelp" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(_vm.errors.first("additionalCourses")) +
+                                "\n                                "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "additionalCourses" } }, [
+                            _vm._v(_vm._s(_vm.$t("translation.subjects")))
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.subjects, function(item, index) {
+                            return _c("div", { staticClass: "row mb-2" }, [
+                              _c("div", { staticClass: "col-6" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "validate",
+                                      rawName: "v-validate",
+                                      value: "required",
+                                      expression: "'required'"
+                                    },
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: item.name,
+                                      expression: "item.name"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    "aria-describedby":
+                                      "subjectName" + index + "Help",
+                                    placeholder: _vm.$t(
+                                      "translation.subjectName"
+                                    ),
+                                    name: "subjectName" + index
+                                  },
+                                  domProps: { value: item.name },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        item,
+                                        "name",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "small",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.errors.has(
+                                          "subjectName" + index
+                                        ),
+                                        expression:
+                                          "errors.has(`subjectName${index}`)"
+                                      }
+                                    ],
+                                    staticClass: "form-text text-danger",
+                                    attrs: {
+                                      id: "subjectName" + index + "Help"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            " +
+                                        _vm._s(
+                                          _vm.errors.first(
+                                            "subjectName" + index
+                                          )
+                                        ) +
+                                        "\n                                        "
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-6" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "validate",
+                                      rawName: "v-validate",
+                                      value: "required|numeric",
+                                      expression: "'required|numeric'"
+                                    },
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: item.score,
+                                      expression: "item.score"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    "aria-describedby":
+                                      "subjectScore" + index + "Help",
+                                    placeholder: _vm.$t(
+                                      "translation.subjectScore"
+                                    ),
+                                    name: "subjectScore" + index
+                                  },
+                                  domProps: { value: item.score },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        item,
+                                        "score",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "small",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.errors.has(
+                                          "subjectScore" + index
+                                        ),
+                                        expression:
+                                          "errors.has(`subjectScore${index}`)"
+                                      }
+                                    ],
+                                    staticClass: "form-text text-danger",
+                                    attrs: {
+                                      id: "subjectName" + index + "Help"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            " +
+                                        _vm._s(
+                                          _vm.errors.first(
+                                            "subjectScore" + index
+                                          )
+                                        ) +
+                                        "\n                                        "
+                                    )
+                                  ]
+                                )
+                              ])
+                            ])
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "badge badge-primary pull-right mt-2",
+                              attrs: { href: "javascript:" },
+                              on: { click: _vm.addSubject }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.$t("translation.addSubject")) +
+                                  "\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "badge badge-danger pull-right mt-2 mr-2",
+                              attrs: { href: "javascript:" },
+                              on: { click: _vm.removeSubject }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.$t("translation.removeSubject")) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn button-accent mt-3",
+                          attrs: { type: "button" },
+                          on: { click: _vm.saveScore }
+                        },
+                        [_vm._v(_vm._s(_vm.$t("translation.saveResult")))]
+                      )
+                    ])
+                  ])
+                ])
               : _vm._e()
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-3 col-sm-4" }, [
-            _c("p", { staticClass: "pull-right" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(_vm.$t("translation.stage")) +
-                  ":\n                    "
-              ),
-              _c("span", { staticClass: "accent-color" }, [
-                _c("strong", [
-                  _vm._v(_vm._s(_vm.$t("translation.homeAdventures")))
-                ])
-              ])
-            ]),
-            _vm._v(" "),
             _c("img", {
               staticClass: "w-100 clearfix mb-3",
               attrs: { src: "/images/calendar1.png" }
             }),
             _vm._v(" "),
-            _vm.userFirstStage < 9
-              ? _c(
-                  "div",
-                  {
-                    staticClass: "phone clearfix",
-                    class: { phone__show: _vm.isShowPhone },
-                    on: {
-                      click: function($event) {
-                        _vm.isShowPhone = true
+            _vm.userScores && _vm.userScores.average_score_zno
+              ? _c("p", { staticClass: "pull-right mb-1" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.averageScoreSchool")) +
+                      ":\n                    "
+                  ),
+                  _c("span", { staticClass: "accent-color" }, [
+                    _c("strong", [
+                      _vm._v(_vm._s(_vm.userScores.average_score_zno) + "б")
+                    ])
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.userScores && _vm.userScores.additional_courses
+              ? _c("p", { staticClass: "pull-right mb-1" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.additionalCourses")) +
+                      ":\n                    "
+                  ),
+                  _c("span", { staticClass: "accent-color" }, [
+                    _c("strong", [
+                      _vm._v(_vm._s(_vm.userScores.additional_courses) + "б")
+                    ])
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.userScores && _vm.userScores.summary
+              ? _c("p", { staticClass: "pull-right mb-1" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.summaryScore")) +
+                      ":\n                    "
+                  ),
+                  _c("span", { staticClass: "accent-color" }, [
+                    _c("strong", [_vm._v(_vm._s(_vm.userScores.summary) + "б")])
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "phone clearfix",
+                class: { phone__show: _vm.isShowPhone },
+                on: {
+                  click: function($event) {
+                    _vm.isShowPhone = true
+                  }
+                }
+              },
+              [
+                !_vm.isShowMessage &&
+                _vm.userFirstStage !== 5 &&
+                _vm.userFirstStage !== 7 &&
+                _vm.userFirstStage !== 9
+                  ? _c("div", {
+                      staticClass: "message__new-message",
+                      attrs: { disabled: !_vm.isShowPhone },
+                      on: {
+                        click: function($event) {
+                          _vm.isShowMessage = true
+                        }
                       }
-                    }
-                  },
-                  [
-                    !_vm.isShowMessage &&
-                    _vm.userFirstStage !== 5 &&
-                    _vm.userFirstStage !== 7
-                      ? _c("div", {
-                          staticClass: "message__new-message",
-                          attrs: { disabled: !_vm.isShowPhone },
-                          on: {
-                            click: function($event) {
-                              _vm.isShowMessage = true
-                            }
-                          }
-                        })
-                      : _vm.isShowMessage ||
-                        _vm.userFirstStage === 5 ||
-                        _vm.userFirstStage === 7
-                        ? [
-                            _c("p", { staticClass: "message__name" }, [
-                              _vm._v(_vm._s(_vm.$t("translation.ann")))
-                            ]),
+                    })
+                  : _vm.isShowMessage ||
+                    _vm.userFirstStage === 5 ||
+                    _vm.userFirstStage === 7 ||
+                    _vm.userFirstStage === 9
+                    ? [
+                        _c("p", { staticClass: "message__name" }, [
+                          _vm._v(_vm._s(_vm.$t("translation.ann")))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "message__ann" },
+                          [
+                            _vm.userFirstStage === 1
+                              ? [
+                                  _c("div", { staticClass: "message__angle" }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "message__quote" }, [
+                                    _c("p", { staticClass: "mb-0" }, [
+                                      _vm._v(
+                                        _vm._s(_vm.$t("translation.annHello"))
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "link link__white pull-right mr-4",
+                                        attrs: { href: "javascript:" },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.modalsIsShowRegister = true
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(_vm.$t("translation.next")) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              : _vm._e(),
                             _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "message__ann" },
-                              [
-                                _vm.userFirstStage === 1
-                                  ? [
-                                      _c("div", {
-                                        staticClass: "message__angle"
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "message__quote" },
-                                        [
-                                          _c("p", { staticClass: "mb-0" }, [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.$t("translation.annHello")
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "link link__white pull-right mr-4",
-                                              attrs: { href: "javascript:" },
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.modalsIsShowRegister = true
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                        " +
-                                                  _vm._s(
-                                                    _vm.$t("translation.next")
-                                                  ) +
-                                                  "\n                                    "
-                                              )
-                                            ]
-                                          )
-                                        ]
+                            _vm.userFirstStage === 2
+                              ? [
+                                  _c("div", { staticClass: "message__angle" }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "message__quote" }, [
+                                    _c("p", { staticClass: "mb-0" }, [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.$t("translation.annRegister")
+                                        )
                                       )
-                                    ]
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm.userFirstStage === 2
-                                  ? [
-                                      _c("div", {
-                                        staticClass: "message__angle"
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "message__quote" },
-                                        [
-                                          _c("p", { staticClass: "mb-0" }, [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.$t(
-                                                  "translation.annRegister"
-                                                )
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "link link__white pull-right mr-4",
-                                              attrs: { href: "javascript:" },
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.modalsIsShowLogin = true
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                        " +
-                                                  _vm._s(
-                                                    _vm.$t("translation.login")
-                                                  ) +
-                                                  "\n                                    "
-                                              )
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "link link__white pull-right mr-4",
-                                              attrs: { href: "javascript:" },
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.modalsIsShowRegister = true
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                        " +
-                                                  _vm._s(
-                                                    _vm.$t(
-                                                      "translation.register"
-                                                    )
-                                                  ) +
-                                                  "\n                                    "
-                                              )
-                                            ]
-                                          )
-                                        ]
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "link link__white pull-right mr-4",
+                                        attrs: { href: "javascript:" },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.modalsIsShowLogin = true
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(
+                                              _vm.$t("translation.login")
+                                            ) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "link link__white pull-right mr-4",
+                                        attrs: { href: "javascript:" },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.modalsIsShowRegister = true
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(
+                                              _vm.$t("translation.register")
+                                            ) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.userFirstStage === 3
+                              ? [
+                                  _c("div", { staticClass: "message__angle" }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "message__quote" }, [
+                                    _c("p", { staticClass: "mb-0" }, [
+                                      _vm._v(
+                                        _vm._s(_vm.$t("translation.annAdvice"))
                                       )
-                                    ]
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm.userFirstStage === 3
-                                  ? [
-                                      _c("div", {
-                                        staticClass: "message__angle"
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "message__quote" },
-                                        [
-                                          _c("p", { staticClass: "mb-0" }, [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.$t("translation.annAdvice")
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "link link__white pull-right mr-4",
-                                              attrs: { href: "javascript:" },
-                                              on: { click: _vm.showAdvice }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                        " +
-                                                  _vm._s(
-                                                    _vm.$t("translation.next")
-                                                  ) +
-                                                  "\n                                    "
-                                              )
-                                            ]
-                                          )
-                                        ]
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "link link__white pull-right mr-4",
+                                        attrs: { href: "javascript:" },
+                                        on: { click: _vm.showAdvice }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(_vm.$t("translation.next")) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.userFirstStage === 4
+                              ? [
+                                  _c("div", { staticClass: "message__angle" }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "message__quote" }, [
+                                    _c("p", { staticClass: "mb-0" }, [
+                                      _vm._v(
+                                        _vm._s(_vm.$t("translation.annPuzzle"))
                                       )
-                                    ]
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm.userFirstStage === 4
-                                  ? [
-                                      _c("div", {
-                                        staticClass: "message__angle"
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "message__quote" },
-                                        [
-                                          _c("p", { staticClass: "mb-0" }, [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.$t("translation.annPuzzle")
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "link link__white pull-right mr-4",
-                                              attrs: { href: "javascript:" },
-                                              on: { click: _vm.showPuzzle }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                        " +
-                                                  _vm._s(
-                                                    _vm.$t("translation.next")
-                                                  ) +
-                                                  "\n                                    "
-                                              )
-                                            ]
-                                          )
-                                        ]
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "link link__white pull-right mr-4",
+                                        attrs: { href: "javascript:" },
+                                        on: { click: _vm.showPuzzle }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(_vm.$t("translation.next")) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.userFirstStage === 6
+                              ? [
+                                  _c("div", { staticClass: "message__angle" }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "message__quote" }, [
+                                    _c("p", { staticClass: "mb-0" }, [
+                                      _vm._v(
+                                        _vm._s(_vm.$t("translation.annTest"))
                                       )
-                                    ]
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm.userFirstStage === 6
-                                  ? [
-                                      _c("div", {
-                                        staticClass: "message__angle"
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "message__quote" },
-                                        [
-                                          _c("p", { staticClass: "mb-0" }, [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.$t("translation.annTest")
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "link link__white pull-right mr-4",
-                                              attrs: { href: "javascript:" },
-                                              on: { click: _vm.showTest }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                        " +
-                                                  _vm._s(
-                                                    _vm.$t("translation.next")
-                                                  ) +
-                                                  "\n                                    "
-                                              )
-                                            ]
-                                          )
-                                        ]
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "link link__white pull-right mr-4",
+                                        attrs: { href: "javascript:" },
+                                        on: { click: _vm.showTest }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(_vm.$t("translation.next")) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.userFirstStage === 8
+                              ? [
+                                  _c("div", { staticClass: "message__angle" }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "message__quote" }, [
+                                    _c("p", { staticClass: "mb-0" }, [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.$t("translation.annTestResult")
+                                        )
                                       )
-                                    ]
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm.userFirstStage === 8
-                                  ? [
-                                      _c("div", {
-                                        staticClass: "message__angle"
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "message__quote" },
-                                        [
-                                          _c("p", { staticClass: "mb-0" }, [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.$t(
-                                                  "translation.annTestResult"
-                                                )
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "link link__white pull-right mr-4",
-                                              attrs: { href: "javascript:" },
-                                              on: { click: _vm.showScore }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                        " +
-                                                  _vm._s(
-                                                    _vm.$t(
-                                                      "translation.showScore"
-                                                    )
-                                                  ) +
-                                                  "\n                                    "
-                                              )
-                                            ]
-                                          )
-                                        ]
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "link link__white pull-right mr-4",
+                                        attrs: { href: "javascript:" },
+                                        on: { click: _vm.enterScore }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(
+                                              _vm.$t("translation.enterScore")
+                                            ) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.userFirstStage === 10
+                              ? [
+                                  _c("div", { staticClass: "message__angle" }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "message__quote" }, [
+                                    _c("p", { staticClass: "mb-0" }, [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.$t("translation.annCongrats")
+                                        )
                                       )
-                                    ]
-                                  : _vm._e()
-                              ],
-                              2
-                            )
-                          ]
-                        : _vm._e()
-                  ],
-                  2
-                )
-              : _vm._e()
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm.userSelectedUniversity &&
+                                    _vm.userSelectedUniversity.site
+                                      ? _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "link link__white pull-right mr-4",
+                                            attrs: {
+                                              href:
+                                                "http://" +
+                                                _vm.userSelectedUniversity.site
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                        " +
+                                                _vm._s(
+                                                  _vm.$t("translation.goToVuz")
+                                                ) +
+                                                "\n                                    "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ])
+                                ]
+                              : _vm._e()
+                          ],
+                          2
+                        )
+                      ]
+                    : _vm._e()
+              ],
+              2
+            )
           ])
         ])
       ]),

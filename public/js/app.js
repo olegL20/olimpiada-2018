@@ -12442,7 +12442,7 @@ exports.default = {
     computed: (0, _extends3.default)({}, (0, _schepotinVuexHelpers.mapTwoWayState)({
         namespace: 'user',
         prefix: true
-    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role', 'token', 'departments', 'faculties', 'majors', 'selectedDepartment', 'selectedFaculty', 'selectedMajor', 'tests', 'test', 'selectedTest', 'questions']))
+    }, ['user', 'logged', 'name', 'surname', 'email', 'password', 'passwordConfirmation', 'currentLang', 'dateOfBirth', 'background', 'firstStage', 'universities', 'selectedUniversity', 'showPreload', 'role', 'token', 'departments', 'faculties', 'majors', 'selectedDepartment', 'selectedFaculty', 'selectedMajor', 'tests', 'test', 'selectedTest', 'questions', 'averageScoreSchool', 'additionalCourses', 'subjectsScore', 'scores']))
 };
 
 /***/ }),
@@ -24447,6 +24447,10 @@ var TESTS = exports.TESTS = 'TESTS';
 var SELECTED_TEST = exports.SELECTED_TEST = 'SELECTED_TEST';
 var TEST = exports.TEST = 'TEST';
 var QUESTIONS = exports.QUESTIONS = 'QUESTIONS';
+var AVERAGE_SCORE_SCHOOL = exports.AVERAGE_SCORE_SCHOOL = 'AVERAGE_SCORE_SCHOOL';
+var ADDITIONAL_COURSES = exports.ADDITIONAL_COURSES = 'ADDITIONAL_COURSES';
+var SUBJECTS_SCORE = exports.SUBJECTS_SCORE = 'SUBJECTS_SCORE';
+var SCORES = exports.SCORES = 'SCORES';
 
 /***/ }),
 /* 70 */
@@ -24488,7 +24492,11 @@ exports.default = {
     tests: null,
     selectedTest: null,
     test: null,
-    questions: []
+    questions: [],
+    averageScoreSchool: null,
+    additionalCourses: null,
+    subjectsScore: null,
+    scores: null
 };
 
 /***/ }),
@@ -62762,7 +62770,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.getTests = exports.getTest = exports.getMajors = exports.getDepartments = exports.getFaculties = exports.getUniversities = exports.checkLogged = exports.logout = exports.testAnswer = exports.confirmation = exports.registerInvite = exports.register = exports.login = undefined;
+exports.getScores = exports.saveScore = exports.testAnswer = exports.getTests = exports.getTest = exports.getMajors = exports.getDepartments = exports.getFaculties = exports.getUniversities = exports.checkLogged = exports.logout = exports.confirmation = exports.registerInvite = exports.register = exports.login = undefined;
 
 var _regenerator = __webpack_require__(9);
 
@@ -62945,50 +62953,12 @@ var confirmation = exports.confirmation = function () {
     };
 }();
 
-var testAnswer = exports.testAnswer = function () {
-    var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(_ref12, payload) {
-        var dispatch = _ref12.dispatch,
-            commit = _ref12.commit;
-        var json;
+var logout = exports.logout = function () {
+    var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(_ref12) {
+        var commit = _ref12.commit;
         return _regenerator2.default.wrap(function _callee5$(_context5) {
             while (1) {
                 switch (_context5.prev = _context5.next) {
-                    case 0:
-                        _context5.next = 2;
-                        return _user2.default.testAnswer(payload);
-
-                    case 2:
-                        json = _context5.sent;
-
-                        if (!(json.status === 200)) {
-                            _context5.next = 5;
-                            break;
-                        }
-
-                        return _context5.abrupt('return', json.data);
-
-                    case 5:
-                        throw json;
-
-                    case 6:
-                    case 'end':
-                        return _context5.stop();
-                }
-            }
-        }, _callee5, undefined);
-    }));
-
-    return function testAnswer(_x9, _x10) {
-        return _ref11.apply(this, arguments);
-    };
-}();
-
-var logout = exports.logout = function () {
-    var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(_ref14) {
-        var commit = _ref14.commit;
-        return _regenerator2.default.wrap(function _callee6$(_context6) {
-            while (1) {
-                switch (_context6.prev = _context6.next) {
                     case 0:
                         commit(types.ID, null);
                         commit(types.NAME, null);
@@ -63001,24 +62971,24 @@ var logout = exports.logout = function () {
 
                     case 8:
                     case 'end':
-                        return _context6.stop();
+                        return _context5.stop();
                 }
             }
-        }, _callee6, undefined);
+        }, _callee5, undefined);
     }));
 
-    return function logout(_x11) {
-        return _ref13.apply(this, arguments);
+    return function logout(_x9) {
+        return _ref11.apply(this, arguments);
     };
 }();
 
 var checkLogged = exports.checkLogged = function () {
-    var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(_ref16) {
-        var commit = _ref16.commit;
+    var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(_ref14) {
+        var commit = _ref14.commit;
         var token, currentUser, role;
-        return _regenerator2.default.wrap(function _callee7$(_context7) {
+        return _regenerator2.default.wrap(function _callee6$(_context6) {
             while (1) {
-                switch (_context7.prev = _context7.next) {
+                switch (_context6.prev = _context6.next) {
                     case 0:
                         token = window.Cookies.get('token');
                         currentUser = window.Cookies.get('user');
@@ -63035,19 +63005,58 @@ var checkLogged = exports.checkLogged = function () {
 
                     case 4:
                     case 'end':
+                        return _context6.stop();
+                }
+            }
+        }, _callee6, undefined);
+    }));
+
+    return function checkLogged(_x10) {
+        return _ref13.apply(this, arguments);
+    };
+}();
+
+var getUniversities = exports.getUniversities = function () {
+    var _ref15 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(_ref16) {
+        var commit = _ref16.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee7$(_context7) {
+            while (1) {
+                switch (_context7.prev = _context7.next) {
+                    case 0:
+                        _context7.next = 2;
+                        return _user2.default.getUniversities();
+
+                    case 2:
+                        json = _context7.sent;
+
+                        if (!(json.status === 200)) {
+                            _context7.next = 6;
+                            break;
+                        }
+
+                        commit(types.UNIVERSITIES, json.data.data);
+
+                        return _context7.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
                         return _context7.stop();
                 }
             }
         }, _callee7, undefined);
     }));
 
-    return function checkLogged(_x12) {
+    return function getUniversities(_x11) {
         return _ref15.apply(this, arguments);
     };
 }();
 
-var getUniversities = exports.getUniversities = function () {
-    var _ref17 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8(_ref18) {
+var getFaculties = exports.getFaculties = function () {
+    var _ref17 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8(_ref18, payload) {
         var commit = _ref18.commit;
         var json;
         return _regenerator2.default.wrap(function _callee8$(_context8) {
@@ -63055,7 +63064,7 @@ var getUniversities = exports.getUniversities = function () {
                 switch (_context8.prev = _context8.next) {
                     case 0:
                         _context8.next = 2;
-                        return _user2.default.getUniversities();
+                        return _user2.default.getFaculties(payload.id);
 
                     case 2:
                         json = _context8.sent;
@@ -63065,7 +63074,7 @@ var getUniversities = exports.getUniversities = function () {
                             break;
                         }
 
-                        commit(types.UNIVERSITIES, json.data.data);
+                        commit(types.FACULTIES, json.data.data);
 
                         return _context8.abrupt('return', json.data);
 
@@ -63080,12 +63089,12 @@ var getUniversities = exports.getUniversities = function () {
         }, _callee8, undefined);
     }));
 
-    return function getUniversities(_x13) {
+    return function getFaculties(_x12, _x13) {
         return _ref17.apply(this, arguments);
     };
 }();
 
-var getFaculties = exports.getFaculties = function () {
+var getDepartments = exports.getDepartments = function () {
     var _ref19 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9(_ref20, payload) {
         var commit = _ref20.commit;
         var json;
@@ -63094,7 +63103,7 @@ var getFaculties = exports.getFaculties = function () {
                 switch (_context9.prev = _context9.next) {
                     case 0:
                         _context9.next = 2;
-                        return _user2.default.getFaculties(payload.id);
+                        return _user2.default.getDepartments(payload.id);
 
                     case 2:
                         json = _context9.sent;
@@ -63104,7 +63113,7 @@ var getFaculties = exports.getFaculties = function () {
                             break;
                         }
 
-                        commit(types.FACULTIES, json.data.data);
+                        commit(types.DEPARTMENTS, json.data.data);
 
                         return _context9.abrupt('return', json.data);
 
@@ -63119,12 +63128,12 @@ var getFaculties = exports.getFaculties = function () {
         }, _callee9, undefined);
     }));
 
-    return function getFaculties(_x14, _x15) {
+    return function getDepartments(_x14, _x15) {
         return _ref19.apply(this, arguments);
     };
 }();
 
-var getDepartments = exports.getDepartments = function () {
+var getMajors = exports.getMajors = function () {
     var _ref21 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10(_ref22, payload) {
         var commit = _ref22.commit;
         var json;
@@ -63133,7 +63142,7 @@ var getDepartments = exports.getDepartments = function () {
                 switch (_context10.prev = _context10.next) {
                     case 0:
                         _context10.next = 2;
-                        return _user2.default.getDepartments(payload.id);
+                        return _user2.default.getMajors(payload.id);
 
                     case 2:
                         json = _context10.sent;
@@ -63143,7 +63152,7 @@ var getDepartments = exports.getDepartments = function () {
                             break;
                         }
 
-                        commit(types.DEPARTMENTS, json.data.data);
+                        commit(types.MAJORS, json.data.data);
 
                         return _context10.abrupt('return', json.data);
 
@@ -63158,66 +63167,27 @@ var getDepartments = exports.getDepartments = function () {
         }, _callee10, undefined);
     }));
 
-    return function getDepartments(_x16, _x17) {
+    return function getMajors(_x16, _x17) {
         return _ref21.apply(this, arguments);
     };
 }();
 
-var getMajors = exports.getMajors = function () {
+var getTest = exports.getTest = function () {
     var _ref23 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11(_ref24, payload) {
         var commit = _ref24.commit;
-        var json;
+        var json, questions;
         return _regenerator2.default.wrap(function _callee11$(_context11) {
             while (1) {
                 switch (_context11.prev = _context11.next) {
                     case 0:
                         _context11.next = 2;
-                        return _user2.default.getMajors(payload.id);
+                        return _user2.default.getTest(payload.id);
 
                     case 2:
                         json = _context11.sent;
 
                         if (!(json.status === 200)) {
-                            _context11.next = 6;
-                            break;
-                        }
-
-                        commit(types.MAJORS, json.data.data);
-
-                        return _context11.abrupt('return', json.data);
-
-                    case 6:
-                        throw json;
-
-                    case 7:
-                    case 'end':
-                        return _context11.stop();
-                }
-            }
-        }, _callee11, undefined);
-    }));
-
-    return function getMajors(_x18, _x19) {
-        return _ref23.apply(this, arguments);
-    };
-}();
-
-var getTest = exports.getTest = function () {
-    var _ref25 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12(_ref26, payload) {
-        var commit = _ref26.commit;
-        var json, questions;
-        return _regenerator2.default.wrap(function _callee12$(_context12) {
-            while (1) {
-                switch (_context12.prev = _context12.next) {
-                    case 0:
-                        _context12.next = 2;
-                        return _user2.default.getTest(payload.id);
-
-                    case 2:
-                        json = _context12.sent;
-
-                        if (!(json.status === 200)) {
-                            _context12.next = 8;
+                            _context11.next = 8;
                             break;
                         }
 
@@ -63252,12 +63222,51 @@ var getTest = exports.getTest = function () {
 
                         commit(types.QUESTIONS, questions);
 
-                        return _context12.abrupt('return', json.data);
+                        return _context11.abrupt('return', json.data);
 
                     case 8:
                         throw json;
 
                     case 9:
+                    case 'end':
+                        return _context11.stop();
+                }
+            }
+        }, _callee11, undefined);
+    }));
+
+    return function getTest(_x18, _x19) {
+        return _ref23.apply(this, arguments);
+    };
+}();
+
+var getTests = exports.getTests = function () {
+    var _ref25 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12(_ref26) {
+        var commit = _ref26.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee12$(_context12) {
+            while (1) {
+                switch (_context12.prev = _context12.next) {
+                    case 0:
+                        _context12.next = 2;
+                        return _user2.default.getTests();
+
+                    case 2:
+                        json = _context12.sent;
+
+                        if (!(json.status === 200)) {
+                            _context12.next = 6;
+                            break;
+                        }
+
+                        commit(types.TESTS, json.data.data);
+
+                        return _context12.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
                     case 'end':
                         return _context12.stop();
                 }
@@ -63265,38 +63274,37 @@ var getTest = exports.getTest = function () {
         }, _callee12, undefined);
     }));
 
-    return function getTest(_x20, _x21) {
+    return function getTests(_x20) {
         return _ref25.apply(this, arguments);
     };
 }();
 
-var getTests = exports.getTests = function () {
-    var _ref27 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee13(_ref28) {
-        var commit = _ref28.commit;
+var testAnswer = exports.testAnswer = function () {
+    var _ref27 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee13(_ref28, payload) {
+        var dispatch = _ref28.dispatch,
+            commit = _ref28.commit;
         var json;
         return _regenerator2.default.wrap(function _callee13$(_context13) {
             while (1) {
                 switch (_context13.prev = _context13.next) {
                     case 0:
                         _context13.next = 2;
-                        return _user2.default.getTests();
+                        return _user2.default.testAnswer(payload);
 
                     case 2:
                         json = _context13.sent;
 
                         if (!(json.status === 200)) {
-                            _context13.next = 6;
+                            _context13.next = 5;
                             break;
                         }
 
-                        commit(types.TESTS, json.data.data);
-
                         return _context13.abrupt('return', json.data);
 
-                    case 6:
+                    case 5:
                         throw json;
 
-                    case 7:
+                    case 6:
                     case 'end':
                         return _context13.stop();
                 }
@@ -63304,8 +63312,85 @@ var getTests = exports.getTests = function () {
         }, _callee13, undefined);
     }));
 
-    return function getTests(_x22) {
+    return function testAnswer(_x21, _x22) {
         return _ref27.apply(this, arguments);
+    };
+}();
+
+var saveScore = exports.saveScore = function () {
+    var _ref29 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee14(_ref30, payload) {
+        var dispatch = _ref30.dispatch,
+            commit = _ref30.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee14$(_context14) {
+            while (1) {
+                switch (_context14.prev = _context14.next) {
+                    case 0:
+                        _context14.next = 2;
+                        return _user2.default.saveScore(payload);
+
+                    case 2:
+                        json = _context14.sent;
+
+                        if (!(json.status === 200)) {
+                            _context14.next = 5;
+                            break;
+                        }
+
+                        return _context14.abrupt('return', json.data);
+
+                    case 5:
+                        throw json;
+
+                    case 6:
+                    case 'end':
+                        return _context14.stop();
+                }
+            }
+        }, _callee14, undefined);
+    }));
+
+    return function saveScore(_x23, _x24) {
+        return _ref29.apply(this, arguments);
+    };
+}();
+
+var getScores = exports.getScores = function () {
+    var _ref31 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee15(_ref32) {
+        var commit = _ref32.commit;
+        var json;
+        return _regenerator2.default.wrap(function _callee15$(_context15) {
+            while (1) {
+                switch (_context15.prev = _context15.next) {
+                    case 0:
+                        _context15.next = 2;
+                        return _user2.default.getScores();
+
+                    case 2:
+                        json = _context15.sent;
+
+                        if (!(json.status === 200)) {
+                            _context15.next = 6;
+                            break;
+                        }
+
+                        commit(types.SCORES, json.data.data);
+
+                        return _context15.abrupt('return', json.data);
+
+                    case 6:
+                        throw json;
+
+                    case 7:
+                    case 'end':
+                        return _context15.stop();
+                }
+            }
+        }, _callee15, undefined);
+    }));
+
+    return function getScores(_x25) {
+        return _ref31.apply(this, arguments);
     };
 }();
 
@@ -63322,7 +63407,9 @@ exports.default = {
     getMajors: getMajors,
     getTests: getTests,
     getTest: getTest,
-    testAnswer: testAnswer
+    testAnswer: testAnswer,
+    saveScore: saveScore,
+    getScores: getScores
 };
 
 /***/ }),
@@ -65300,6 +65387,72 @@ exports.default = {
                     }
                 }
             }, _callee12, _this12, [[0, 9]]);
+        }))();
+    },
+    saveScore: function saveScore(params) {
+        var _this13 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee13() {
+            var _ref13, data, status;
+
+            return _regenerator2.default.wrap(function _callee13$(_context13) {
+                while (1) {
+                    switch (_context13.prev = _context13.next) {
+                        case 0:
+                            _context13.prev = 0;
+                            _context13.next = 3;
+                            return window.axios.post(url + '/api/user/score/', params);
+
+                        case 3:
+                            _ref13 = _context13.sent;
+                            data = _ref13.data;
+                            status = _ref13.status;
+                            return _context13.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context13.prev = 9;
+                            _context13.t0 = _context13['catch'](0);
+                            return _context13.abrupt('return', _context13.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context13.stop();
+                    }
+                }
+            }, _callee13, _this13, [[0, 9]]);
+        }))();
+    },
+    getScores: function getScores() {
+        var _this14 = this;
+
+        return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee14() {
+            var _ref14, data, status;
+
+            return _regenerator2.default.wrap(function _callee14$(_context14) {
+                while (1) {
+                    switch (_context14.prev = _context14.next) {
+                        case 0:
+                            _context14.prev = 0;
+                            _context14.next = 3;
+                            return window.axios.get(url + '/api/user/score/');
+
+                        case 3:
+                            _ref14 = _context14.sent;
+                            data = _ref14.data;
+                            status = _ref14.status;
+                            return _context14.abrupt('return', { data: data, status: status });
+
+                        case 9:
+                            _context14.prev = 9;
+                            _context14.t0 = _context14['catch'](0);
+                            return _context14.abrupt('return', _context14.t0.response);
+
+                        case 12:
+                        case 'end':
+                            return _context14.stop();
+                    }
+                }
+            }, _callee14, _this14, [[0, 9]]);
         }))();
     }
 };
@@ -70727,8 +70880,22 @@ exports.default = {
         rightAnswers: 'Правильні відповіді',
         allAnswers: 'Всі відповіді',
         setTest: 'Здати тест',
-        annTestResult: 'Ти досить непогано склав тест як для абітурієнта, що ж ти готовий вступати до університета',
-        showVideo: 'Педивись відео'
+        annTestResult: 'Ти досить непогано склав тест як для абітурієнта, тепер тобі необхідно ввести бали зі школи, давай зробимо це зараз',
+        showVideo: 'Педивись відео',
+        enterScore: 'Ввести бали',
+        averageScoreSchool: 'Середній шкільний бал',
+        score: 'Бали',
+        additionalCourses: 'Додаткові курси',
+        addSubject: 'Додати предмет',
+        subjects: 'Предмети',
+        subjectName: 'Назва предмету',
+        subjectScore: 'Оцінка',
+        removeSubject: 'Видалити предмет',
+        saveResult: 'Зберегти результат',
+        scoreSaved: 'Бали сбережено',
+        annCongrats: 'Поздоровляю, ти успішно пройшов усі етапи, та повністю готовий вступати до ВНЗ, бажаю тобі успіхів',
+        goToVuz: 'Перейти на сторінку ВНЗ',
+        summaryScore: 'Підсумкова оцінка'
     },
     messages: {
         not_email_confirmed: 'E-mail не підтверджено',
@@ -76073,7 +76240,33 @@ exports.default = {
         password: 'Пароль',
         rePassword: 'Підтвердження паролю',
         photo: 'Фото',
-        questionType: 'Тип запитання'
+        questionType: 'Тип запитання',
+        subjectName0: 'Назва предмету',
+        subjectName1: 'Назва предмету',
+        subjectName2: 'Назва предмету',
+        subjectName3: 'Назва предмету',
+        subjectName4: 'Назва предмету',
+        subjectName5: 'Назва предмету',
+        subjectName6: 'Назва предмету',
+        subjectName7: 'Назва предмету',
+        subjectName8: 'Назва предмету',
+        subjectName9: 'Назва предмету',
+        subjectName10: 'Назва предмету',
+        subjectName11: 'Назва предмету',
+        subjectName12: 'Назва предмету',
+        subjectScore0: 'Оцінка',
+        subjectScore1: 'Оцінка',
+        subjectScore2: 'Оцінка',
+        subjectScore3: 'Оцінка',
+        subjectScore4: 'Оцінка',
+        subjectScore5: 'Оцінка',
+        subjectScore6: 'Оцінка',
+        subjectScore7: 'Оцінка',
+        subjectScore8: 'Оцінка',
+        subjectScore9: 'Оцінка',
+        subjectScore10: 'Оцінка',
+        subjectScore11: 'Оцінка',
+        subjectScore12: 'Оцінка'
     }
 };
 

@@ -205,8 +205,8 @@
                                     <div class="message__quote">
                                         <p class="mb-0">{{ $t("translation.annTestResult") }}</p>
 
-                                        <a href="javascript:" @click="showVideo" class="link link__white pull-right mr-4">
-                                            {{ $t("translation.showVideo") }}
+                                        <a href="javascript:" @click="showScore" class="link link__white pull-right mr-4">
+                                            {{ $t("translation.showScore") }}
                                         </a>
                                     </div>
                                 </template>

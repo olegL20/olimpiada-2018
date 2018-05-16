@@ -2570,76 +2570,22 @@ var _user = __webpack_require__(29);
 
 var _user2 = _interopRequireDefault(_user);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _constants = __webpack_require__(47);
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var constants = _interopRequireWildcard(_constants);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
     mixins: [_modals2.default, _user2.default],
+    data: function data() {
+        return {
+            url: constants.URL
+        };
+    },
+
     methods: {
         hide: function hide() {
             this.modalsIsShowLogin = false;
@@ -2710,7 +2656,71 @@ exports.default = {
             });
         }
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -2746,209 +2756,199 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal__body" },
-                [
-                  _c("div", { staticClass: "form-group mt-4 mb-4" }, [
-                    _c("label", { attrs: { for: "email" } }, [
-                      _vm._v(_vm._s(_vm.$t("translation.email")))
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.userEmail,
-                          expression: "userEmail"
-                        },
-                        {
-                          name: "validate",
-                          rawName: "v-validate",
-                          value: "required|email",
-                          expression: "'required|email'"
-                        }
-                      ],
-                      staticClass: "input",
-                      class: {
-                        "is-invalid input__danger": _vm.errors.has("email")
-                      },
-                      attrs: {
-                        type: "text",
-                        id: "email",
-                        name: "email",
-                        placeholder: _vm.$t("translation.email")
-                      },
-                      domProps: { value: _vm.userEmail },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.userEmail = $event.target.value
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("email"),
-                            expression: "errors.has('email')"
-                          }
-                        ],
-                        staticClass: "invalid-feedback"
-                      },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.errors.first("email")) +
-                            "\n                    "
-                        )
-                      ]
-                    )
+              _c("div", { staticClass: "modal__body" }, [
+                _c("div", { staticClass: "form-group mt-4 mb-4" }, [
+                  _c("label", { attrs: { for: "email" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.email")))
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group mb-4" }, [
-                    _c("label", { attrs: { for: "password" } }, [
-                      _vm._v(_vm._s(_vm.$t("translation.password")))
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.userPassword,
-                          expression: "userPassword"
-                        },
-                        {
-                          name: "validate",
-                          rawName: "v-validate",
-                          value: "required|min:8",
-                          expression: "'required|min:8'"
-                        }
-                      ],
-                      staticClass: "input",
-                      class: {
-                        "is-invalid input__danger": _vm.errors.has("password")
-                      },
-                      attrs: {
-                        type: "password",
-                        id: "password",
-                        name: "password",
-                        placeholder: _vm.$t("translation.password")
-                      },
-                      domProps: { value: _vm.userPassword },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.userPassword = $event.target.value
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
+                  _c("input", {
+                    directives: [
                       {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("password"),
-                            expression: "errors.has('password')"
-                          }
-                        ],
-                        staticClass: "invalid-feedback"
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.userEmail,
+                        expression: "userEmail"
                       },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.errors.first("password")) +
-                            "\n                    "
-                        )
-                      ]
-                    )
-                  ]),
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|email",
+                        expression: "'required|email'"
+                      }
+                    ],
+                    staticClass: "input",
+                    class: {
+                      "is-invalid input__danger": _vm.errors.has("email")
+                    },
+                    attrs: {
+                      type: "text",
+                      id: "email",
+                      name: "email",
+                      placeholder: _vm.$t("translation.email")
+                    },
+                    domProps: { value: _vm.userEmail },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.userEmail = $event.target.value
+                      }
+                    }
+                  }),
                   _vm._v(" "),
                   _c(
-                    "button",
+                    "div",
                     {
-                      staticClass:
-                        "btn button-md button-accent button-center mb-4",
-                      attrs: { type: "button" },
-                      on: { click: _vm.login }
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("email"),
+                          expression: "errors.has('email')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
                     },
                     [
                       _vm._v(
-                        "\n                    " +
-                          _vm._s(_vm.$t("translation.enter")) +
-                          "\n                "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "small" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.$t("translation.enterTheSocialNetwork")) +
-                        ":\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "link mr-3",
-                      attrs: { to: { name: "home" } }
-                    },
-                    [
-                      _c("i", {
-                        staticClass:
-                          "fa fa-google-plus-square fa-2x mr-2 fa-relative",
-                        attrs: { "aria-hidden": "true" }
-                      }),
-                      _vm._v(" "),
-                      _c("span", [
-                        _vm._v(_vm._s(_vm.$t("translation.throughGoogle")))
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "link",
-                      attrs: { href: "javascript:" },
-                      on: {
-                        click: function($event) {
-                          _vm.authenticate("facebook")
-                        }
-                      }
-                    },
-                    [
-                      _c("i", {
-                        staticClass:
-                          "fa fa-facebook-square fa-2x mr-2 fa-relative",
-                        attrs: { "aria-hidden": "true" }
-                      }),
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(_vm.$t("translation.throughFacebook")) +
-                          "\n                "
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("email")) +
+                          "\n                    "
                       )
                     ]
                   )
-                ],
-                1
-              )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group mb-4" }, [
+                  _c("label", { attrs: { for: "password" } }, [
+                    _vm._v(_vm._s(_vm.$t("translation.password")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.userPassword,
+                        expression: "userPassword"
+                      },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|min:8",
+                        expression: "'required|min:8'"
+                      }
+                    ],
+                    staticClass: "input",
+                    class: {
+                      "is-invalid input__danger": _vm.errors.has("password")
+                    },
+                    attrs: {
+                      type: "password",
+                      id: "password",
+                      name: "password",
+                      placeholder: _vm.$t("translation.password")
+                    },
+                    domProps: { value: _vm.userPassword },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.userPassword = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("password"),
+                          expression: "errors.has('password')"
+                        }
+                      ],
+                      staticClass: "invalid-feedback"
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.first("password")) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "btn button-md button-accent button-center mb-4",
+                    attrs: { type: "button" },
+                    on: { click: _vm.login }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.enter")) +
+                        "\n                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("p", { staticClass: "small" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.$t("translation.enterTheSocialNetwork")) +
+                      ":\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "link mr-3",
+                    attrs: { href: _vm.url + "/api/auth/redirectGoogle" }
+                  },
+                  [
+                    _c("i", {
+                      staticClass:
+                        "fa fa-google-plus-square fa-2x mr-2 fa-relative",
+                      attrs: { "aria-hidden": "true" }
+                    }),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v(_vm._s(_vm.$t("translation.throughGoogle")))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "link",
+                    attrs: { href: _vm.url + "/api/auth/redirectFacebook" }
+                  },
+                  [
+                    _c("i", {
+                      staticClass:
+                        "fa fa-facebook-square fa-2x mr-2 fa-relative",
+                      attrs: { "aria-hidden": "true" }
+                    }),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.$t("translation.throughFacebook")) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ])
             ]
           )
         ])

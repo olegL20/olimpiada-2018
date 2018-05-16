@@ -6401,7 +6401,7 @@ exports.default = {
                                 valid = _context.sent;
 
                                 if (!valid) {
-                                    _context.next = 18;
+                                    _context.next = 19;
                                     break;
                                 }
 
@@ -6417,27 +6417,30 @@ exports.default = {
                                     site: _this.universitySite,
                                     zip_code: _this.universityZipCode,
                                     // parent_id: this.universityParentId,
-                                    image: _this.photo,
                                     position: _this.latLng
                                 };
-                                _context.next = 9;
+
+                                if (_this.photo) {
+                                    params.image = _this.photo;
+                                }
+                                _context.next = 10;
                                 return _this.$store.dispatch('admin/editUniversity', {
                                     id: _this.universityId,
                                     params: params
                                 });
 
-                            case 9:
+                            case 10:
                                 _this.switchRefreshTable(true);
                                 _this.hide();
                                 _this.$toast.success({
                                     title: _this.$t('translation.success'),
                                     message: _this.$t('translation.infoUpdate')
                                 });
-                                _context.next = 18;
+                                _context.next = 19;
                                 break;
 
-                            case 14:
-                                _context.prev = 14;
+                            case 15:
+                                _context.prev = 15;
                                 _context.t0 = _context['catch'](4);
 
                                 if (_context.t0.status === 404) {
@@ -6453,12 +6456,12 @@ exports.default = {
                                 }
                                 _this.hide();
 
-                            case 18:
+                            case 19:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, _this, [[4, 14]]);
+                }, _callee, _this, [[4, 15]]);
             }))();
         }
     }

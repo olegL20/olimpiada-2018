@@ -27,7 +27,7 @@ class UniversityController extends Controller
     {
         $universityId = auth()->user()->university_id;
 
-        $data = $this->university->findOrFail($universityId);
+        $data = $this->university->find($universityId);
 
         return response()->json(compact('data'));
     }

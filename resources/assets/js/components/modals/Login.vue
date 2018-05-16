@@ -47,11 +47,11 @@
                         {{ $t("translation.enterTheSocialNetwork") }}:
                     </p>
 
-                    <router-link :to="{ name: 'home' }" class="link mr-3">
+                    <a href="{{url('/api/auth/redirectGoogle')}}" class="link mr-3">
                         <i class="fa fa-google-plus-square fa-2x mr-2 fa-relative" aria-hidden="true"></i>
                         <span>{{ $t("translation.throughGoogle") }}</span>
-                    </router-link>
-                    <a href="javascript:" @click="authenticate('facebook')" class="link">
+                    </a>
+                    <a href="{{url('/api/auth/redirectFacebook')}}" class="link">
                         <i class="fa fa-facebook-square fa-2x mr-2 fa-relative" aria-hidden="true"></i>
                         {{ $t("translation.throughFacebook") }}
                     </a>

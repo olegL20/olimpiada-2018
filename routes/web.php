@@ -13,3 +13,4 @@
 
 Route::get('password/reset/{token}', 'SpaController@index')->name('password.reset');
 Route::get('/{capture?}', 'SpaController@index')->where('capture', '[\/\w\.-]*');
+

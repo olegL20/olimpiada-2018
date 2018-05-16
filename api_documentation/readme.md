@@ -12,10 +12,10 @@
      - [Answer](Auth/Admin/Test/Answer.md) 
      - [User](Auth/Admin/User.md) 
  - Tutor prefix `tutor-admin`
-     - [Faculty](Auth/Admin/Faculty.md) 
-     - [Department](Auth/Admin/Department.md) 
-     - [Major](Auth/Admin/Major.md) 
-     - [SubjectCoefficient](Auth/Admin/SubjectCoefficient.md) 
+     - [Faculty](Auth/Tutor/Faculty.md) 
+     - [Department](Auth/Tutor/Department.md) 
+     - [Major](Auth/Tutor/Major.md) 
+     - [SubjectCoefficient](Auth/Tutor/SubjectCoefficient.md) 
  - User prefix `user`
      - [University](Auth/User/University.md) 
      - [Score](Auth/User/Score.md) 

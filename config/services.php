@@ -42,7 +42,7 @@ return [
     'google' => [
         'client_id' => '700321256690-g72opu4c23n3nggf7ei8n0f6tmvi08se.apps.googleusercontent.com',
         'client_secret' => 'bG7xcigUK7b1eTGFwEEoOvGz',
-            'redirect' => 'https://itpm-194220.appspot.com/api/auth/callbackGoogle',
+            'redirect' => 'http://127.0.0.1:8000/api/auth/callbackGoogle',
         ]
 
 ];

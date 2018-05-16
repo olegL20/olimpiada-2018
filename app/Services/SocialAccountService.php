@@ -26,10 +26,10 @@ class SocialAccountService
             $user = User::whereEmail($providerUser->getEmail())->first();
 
             if (!$user) {
-
                 $user = User::create([
                     'email' => $providerUser->getEmail(),
                     'name' => $providerUser->getName(),
+                    'image' => $providerUser->getAvatar(),
                     'password' => Hash::make(md5(rand(1,10000))),
                 ]);
             }
@@ -63,6 +63,8 @@ class SocialAccountService
                 $user = User::create([
                     'email' => $providerUser->getEmail(),
                     'name' => $providerUser->getName(),
+                    'confirmed' => true,
+                    'role' =>  User::USER,
                     'password' => Hash::make(md5(rand(1,10000))),
                 ]);
             }

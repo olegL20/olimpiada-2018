@@ -110,7 +110,7 @@
         },
         mounted() {
             this.showPreloader();
-            this.$store.dispatch('admin/getAllUniversities');
+            this.$store.dispatch('admin/getAllUniversitiesForUniAdmin');
         },
         methods: {
             onCellClicked(data) {
